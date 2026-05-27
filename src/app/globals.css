@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0d0d0d;
+  --paper: #f5f0e8;
+  --gold: #c9a84c;
+  --gold-light: #e8d5a3;
+  --gold-dim: rgba(201, 168, 76, 0.15);
+  --rust: #8b3a2a;
+  --stone: #6b6560;
+  --stone-light: #b5afa8;
+  --stone-dark: #3d3a36;
+  --spotlight-x: 50%;
+  --spotlight-y: 50%;
+  --trail-x: 50%;
+  --trail-y: 50%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body), sans-serif;
+}
+
+/* ── Theta background ── */
+.theta-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(92vw, 92vh);
+  height: min(92vw, 92vh);
+  transform: translate(-50%, -50%);
+  opacity: 0.055;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  animation: thetaFloat 12s ease-in-out infinite;
+}
+
+@keyframes thetaFloat {
+  0%   { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  30%  { transform: translate(-50%, calc(-50% - 14px)) rotate(1.2deg) scale(1.012); }
+  65%  { transform: translate(-50%, calc(-50% + 10px)) rotate(-0.8deg) scale(0.991); }
+  100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+}
+
+/* ── Cursor spotlight ── */
+.spotlight-bg {
+  background:
+    radial-gradient(
+      600px circle at var(--spotlight-x) var(--spotlight-y),
+      rgba(201, 168, 76, 0.1) 0%,
+      transparent 80%
+    ),
+    radial-gradient(
+      900px circle at var(--trail-x) var(--trail-y),
+      rgba(201, 168, 76, 0.04) 0%,
+      transparent 75%
+    );
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--stone-dark);
+  border-radius: 3px;
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--gold-dim);
+  color: var(--gold-light);
+}
+
+/* ── Nav links ── */
+.nav-link {
+  @apply flex items-center gap-3 text-xs font-mono tracking-widest uppercase text-stone transition-all duration-300;
+}
+.nav-link::before {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 24px;
+  background-color: var(--stone);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  @apply text-paper;
+}
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 48px;
+  background-color: var(--paper);
+}
+
+/* ── Section card hover ── */
+.section-card {
+  @apply relative rounded-lg p-6 transition-all duration-300 border border-transparent;
+}
+@media (hover: hover) {
+  .section-card:hover {
+    background: rgba(201, 168, 76, 0.04);
+    border-color: rgba(201, 168, 76, 0.12);
+    box-shadow: 0 4px 24px rgba(201, 168, 76, 0.06);
+  }
+}
+
+/* ── Tag pill ── */
+.tag-pill {
+  @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-mono tracking-wide;
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+/* ── Gold link ── */
+.gold-link {
+  @apply relative font-medium;
+  color: var(--stone-light);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.gold-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.gold-link:hover {
+  color: var(--gold-light);
+}
+.gold-link:hover::after {
+  width: 100%;
+}
+
+/* ── Decorative rule ── */
+.deco-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+/* ── Mobile horizontal scroll sections ── */
+@media (max-width: 1023px) {
+  .mobile-sections-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0;
+    scrollbar-width: none;
+  }
+  .mobile-sections-container::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-section-panel {
+    flex: 0 0 100vw;
+    min-width: 100vw;
+    scroll-snap-align: start;
+    padding: 2rem 1.5rem;
+    min-height: calc(100vh - 240px);
+  }
+}
+
+/* ── Fade-in on load ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+.fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+.fade-up-delay-3 { animation-delay: 0.35s; opacity: 0; }
+.fade-up-delay-4 { animation-delay: 0.5s; opacity: 0; }
+.fade-up-delay-5 { animation-delay: 0.65s; opacity: 0; }
+
+/* ── Ornamental bracket ── */
+.ornament {
+  color: var(--gold);
+  opacity: 0.4;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+/* ── Section heading ── */
+.section-heading {
+  @apply sticky top-0 z-10 mb-6 py-3 text-xs font-mono uppercase tracking-widest;
+  color: var(--stone-light);
+}
+
+/* ── Experience date ── */
+.exp-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--stone);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+/* ── Arrow icon ── */
+.arrow-icon {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+a:hover .arrow-icon {
+  transform: translate(3px, -3px);
+}
+
+/* ── Mobile tab indicator ── */
+.mobile-tab-active {
+  background: var(--gold);
+  opacity: 1;
+}
+.mobile-tab-inactive {
+  background: var(--stone-dark);
+  opacity: 0.5;
+}
