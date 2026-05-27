@@ -8,8 +8,8 @@ export const person = {
   } as BL,
   company: "Akos Digital Services",
   role: {
-    en: "Web Architect",
-    el: "Αρχιτέκτονας Ιστού",
+    en: "Web Developer",
+    el: "Web Developer",
   } as BL,
   tagline: {
     en: "I craft bespoke digital experiences that blend precise code with personalized design.",
@@ -17,14 +17,14 @@ export const person = {
   } as BL,
   about: {
     en: [
-      "I'm a web architect building purposeful digital presences for brands across Greece. My work sits at the intersection of visual identity, technical architecture, and human-centred design.",
+      "I build purposeful digital presences for brands and other entities across Greece. My work sits at the intersection of visual identity, accurate architecture, and human-centered design.",
       "<a href='#' class='gold-link'>Akos Digital Services</a> is a solo studio. I'm the only person you'll work with, from the first conversation to launch. No account managers, no handoffs. Every project starts with a real conversation about what your brand needs to say and why.",
       "The modern tech world moves fast and scales wide, but it rarely stops to listen. I do. Understanding a client's vision on a personal level, the way another person can, not a process, this is what every project I build is founded on.",
     ],
     el: [
-      "Είμαι αρχιτέκτονας ιστού που δημιουργεί στοχευμένες ψηφιακές παρουσίες για επιχειρήσεις αλλά και όχι μόνο, στην Ελλάδα. Η δουλειά μου βρίσκεται επάνω τομή της οπτικής ταυτότητας και της τεχνικής αρχιτεκτονικής με τον ανθρωποκεντρικό σχεδιασμό.",
+      "Δημιουργώ στοχευμένες ψηφιακές παρουσίες για επιχειρήσεις, αλλά και όχι μόνο, στην Ελλάδα. Η δουλειά μου βρίσκεται επάνω στην τομή της οπτικής ταυτότητας και της άρτιας αρχιτεκτονικής με τον ανθρωποκεντρικό σχεδιασμό.",
       "Η <a href='#' class='gold-link'>Akos Digital Services</a> είναι στούντιο ενός ατόμου. Είμαι ο μόνος με τον οποίο θα συνεργαστείς, από την πρώτη κουβέντα ως την παράδοση. Χωρίς μεσάζοντες. Κάθε έργο ξεκινά με μια πραγματική συζήτηση για το τι χρειάζεται να πει η επωνυμία σου και γιατί.",
-      "Ο σύγχρονος τεχνολογικός κόσμος κινείται γρήγορα, αλλά σπάνια σταματά να ακούσει. Εγώ το κάνω. Η κατανόηση του οράματος ενός πελάτη σε προσωπικό επίπεδο, με τον τρόπο που μπορεί ένας άνθρωπος, όχι μια διαδικασία, αυτό είναι το θεμέλιο κάθε έργου που φτιάχνω.",
+      "Ο σύγχρονος τεχνολογικός κόσμος κινείται γρήγορα, αλλά σπάνια σταματά να ακούσει. Εγώ το κάνω. Η κατανόηση του οράματος του πελάτη σε προσωπικό επίπεδο, με τον τρόπο που μπορεί ένας άνθρωπος, όχι μια διαδικασία, είναι το θεμέλιο κάθε έργου που φτιάχνω.",
     ],
   } as BLA,
   socials: [

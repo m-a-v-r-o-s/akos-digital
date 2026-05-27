@@ -23,11 +23,14 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Θεόδωρος Ι. Μαύρος — Akos Digital Services",
+  title: "Akos Digital Services",
   description:
     "Digital strategist & web architect building bespoke digital experiences for ambitious brands across Greece and Europe.",
+  icons: {
+    icon: "/projects/favicon.ico",
+  },
   openGraph: {
-    title: "Θεόδωρος Ι. Μαύρος — Akos Digital Services",
+    title: "Akos Digital Services",
     description:
       "Digital strategist & web architect building bespoke digital experiences for ambitious brands.",
     locale: "el_GR",

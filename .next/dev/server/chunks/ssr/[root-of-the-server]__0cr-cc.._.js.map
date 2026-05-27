@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///home/akos/Downloads/akos-digital/src/components/LanguageContext.tsx"],"sourcesContent":["\"use client\";\n\nimport { createContext, useContext, useState } from \"react\";\n\nexport type Lang = \"en\" | \"el\";\n\nconst LanguageContext = createContext<{\n  lang: Lang;\n  setLang: (l: Lang) => void;\n}>({ lang: \"el\", setLang: () => {} });\n\nexport function LanguageProvider({ children }: { children: React.ReactNode }) {\n  const [lang, setLang] = useState<Lang>(\"el\");\n  return (\n    <LanguageContext.Provider value={{ lang, setLang }}>\n      {children}\n    </LanguageContext.Provider>\n  );\n}\n\nexport function useLanguage() {\n  return useContext(LanguageContext);\n}\n"],"names":["LanguageContext","lang","setLang","LanguageProvider","children","Provider","value","useLanguage"],"mappings":";;;;;;;AAEA;AAFA;;;AAMA,MAAMA,gCAAkB,IAAA,sPAAa,EAGlC;IAAEC,MAAM;IAAMC,SAAS,KAAO;AAAE;AAE5B,SAASC,iBAAiB,EAAEC,QAAQ,EAAiC;IAC1E,MAAM,CAACH,MAAMC,QAAQ,GAAG,IAAA,iPAAQ,EAAO;IACvC,qBACE,8QAACF,gBAAgBK,QAAQ;QAACC,OAAO;YAAEL;YAAMC;QAAQ;kBAC9CE;;;;;;AAGP;AAEO,SAASG;IACd,OAAO,IAAA,mPAAU,EAACP;AACpB"}}]
+}
