@@ -444,13 +444,11 @@ const person = {
     about: {
         en: [
             "I build purposeful digital presences for brands and other entities across Greece. My work sits at the intersection of visual identity, accurate architecture, and human-centered design.",
-            "<a href='#' class='gold-link'>Akos Digital Services</a> is a solo studio. I'm the only person you'll work with, from the first conversation to launch. No account managers, no handoffs. Every project starts with a real conversation about what your brand needs to say and why.",
-            "The modern tech world moves fast and scales wide, but it rarely stops to listen. I do. Understanding a client's vision on a personal level, the way another person can, not a process, this is what every project I build is founded on."
+            "<a href='#' class='gold-link'>Akos Digital Services</a> is a solo studio. I'm the only person you'll work with, from the first conversation to launch. No account managers, no handoffs. Every project starts with a real conversation about what your brand needs to say and why."
         ],
         el: [
-            "Δημιουργώ στοχευμένες ψηφιακές παρουσίες για επιχειρήσεις, αλλά και όχι μόνο, στην Ελλάδα. Η δουλειά μου βρίσκεται επάνω στην τομή της οπτικής ταυτότητας και της άρτιας αρχιτεκτονικής με τον ανθρωποκεντρικό σχεδιασμό.",
-            "Η <a href='#' class='gold-link'>Akos Digital Services</a> είναι στούντιο ενός ατόμου. Είμαι ο μόνος με τον οποίο θα συνεργαστείς, από την πρώτη κουβέντα ως την παράδοση. Χωρίς μεσάζοντες. Κάθε έργο ξεκινά με μια πραγματική συζήτηση για το τι χρειάζεται να πει η επωνυμία σου και γιατί.",
-            "Ο σύγχρονος τεχνολογικός κόσμος κινείται γρήγορα, αλλά σπάνια σταματά να ακούσει. Εγώ το κάνω. Η κατανόηση του οράματος του πελάτη σε προσωπικό επίπεδο, με τον τρόπο που μπορεί ένας άνθρωπος, όχι μια διαδικασία, είναι το θεμέλιο κάθε έργου που φτιάχνω."
+            "Δημιουργώ στοχευμένες ψηφιακές παρουσίες για επιχειρήσεις και όχι μόνο στην Ελλάδα. Η δουλειά μου βρίσκεται επάνω στην τομή της οπτικής ταυτότητας και της άρτιας αρχιτεκτονικής με τον ανθρωποκεντρικό σχεδιασμό.",
+            "Η <a href='#' class='gold-link'>Akos Digital Services</a> είναι μονομελές στούντιο. Είμαι ο μόνος με τον οποίο θα συνεργαστείς, από την πρώτη κουβέντα ως την παράδοση. Χωρίς μεσάζοντες. Κάθε έργο ξεκινά με μια πραγματική συζήτηση για το τι χρειάζεται να πει η επωνυμία σου και γιατί."
         ]
     },
     socials: [
@@ -500,7 +498,7 @@ const education = [
         institutionUrl: "https://www.42heilbronn.de/en/",
         description: {
             en: "Attended the full month-long Piscine at 42 Heilbronn, an intensive peer-to-peer coding immersion.",
-            el: "Συμμετοχή στο πλήρες μηνιαίο Piscine της 42 Heilbronn, μία εντατική peer-to-peer εμβύθιση στον προγραμματισμό."
+            el: "Συμμετοχή στο πλήρες μηνιαίο Piscine της 42 Heilbronn, μία εντατική peer-to-peer εμβάθυνση στον προγραμματισμό."
         },
         tags: [
             "C++",
