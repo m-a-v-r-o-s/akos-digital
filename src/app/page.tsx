@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import NavLinks from "@/components/NavLinks";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -30,6 +31,16 @@ const ui = {
 export default function Home() {
   const { lang } = useLanguage();
   const t = ui[lang];
+
+  useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname);
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <SpotlightWrapper>
@@ -105,6 +116,7 @@ export default function Home() {
                     dangerouslySetInnerHTML={{ __html: para }}
                   />
                 ))}
+              <br /><br /><br />
               </div>
             </section>
 

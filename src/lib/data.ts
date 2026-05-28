@@ -74,6 +74,17 @@ export const education = [
 
 export const projects = [
   {
+    title: "Those Rambling Fools Band",
+    description: {
+      en: "Web app featuring a working vinyl record player, highly interactive and stylized to the bands aesthetic and vision.",
+      el: "Web app με λειτουργικό πικάπ βινυλίου, εξαιρετικά διαδραστικό και στιλιζαρισμένο σύμφωνα με την αισθητική και το όραμα του συγκροτήματος.",
+    } as BL,
+    tags: ["Next.js", "TypeScript", "Interactive Animations", "Tailwind", "HTML"],
+    image: "/projects/trf.png",
+    links: [{ label: "Live Site", href: "https://trf.up.railway.app/" }],
+    year: "2026",
+  },
+  {
     title: "Ellie Tattooer",
     description: {
       en: "Portfolio and merch shop for Ellie Tattooer, resident at Ritual Tattoo Athens. Highly stylized to match her vision and brand identity.",
