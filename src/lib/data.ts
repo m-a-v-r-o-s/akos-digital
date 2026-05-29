@@ -81,19 +81,19 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Interactive Animations", "Tailwind", "HTML"],
     image: "/projects/trf.png",
-    links: [{ label: "Live Site", href: "https://trf.up.railway.app/" }],
-    year: "2026",
+    links: [{ label: "Live Site", href: "https://thoseramblingfools.com/" }],
+    year: "",
   },
   {
     title: "Ellie Tattooer",
     description: {
-      en: "Portfolio and merch shop for Ellie Tattooer, resident at Ritual Tattoo Athens. Highly stylized to match her vision and brand identity.",
-      el: "Portfolio και merch shop για την Ellie Tattooer, από το Ritual Tattoo Athens. Στιλιζαρισμένο για να ταιριάζει με το όραμά της και την ταυτότητα της.",
+      en: "Gallery and e-commerce platform for Ellie Tattooer, resident at Ritual Tattoo Athens. Highly stylized to match her vision and brand identity.",
+      el: "Γκαλερί και e-commerce πλατφόρμα για την Ellie Tattooer, από το Ritual Tattoo Athens. Στιλιζαρισμένο για να ταιριάζει με το όραμά της και την ταυτότητα της.",
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "E-commerce"],
     image: "/projects/ellietattooer.png",
     links: [{ label: "Live Site", href: "https://ellietattooer.com/" }],
-    year: "2026",
+    year: "",
   },
   {
     title: "Blessed Coffee & Spirits",
@@ -104,7 +104,7 @@ export const projects = [
     tags: ["React", "JavaScript", "Tailwind", "HTML", "Brand Identity"],
     image: "/projects/blessed.png",
     links: [{ label: "Live Site", href: "https://blessed.cafe/" }],
-    year: "2026",
+    year: "",
   },
 ];
 

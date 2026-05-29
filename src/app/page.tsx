@@ -215,9 +215,11 @@ export default function Home() {
                           <h4 className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors leading-snug">
                             {proj.title}
                           </h4>
-                          <span className="font-mono text-xs text-stone-dark shrink-0">
-                            {proj.year}
-                          </span>
+                          {proj.year && (
+                            <span className="font-mono text-xs text-stone-dark shrink-0">
+                              {proj.year}
+                            </span>
+                          )}
                         </div>
                         <p className="text-xs text-stone leading-relaxed mb-3">
                           {proj.description[lang]}

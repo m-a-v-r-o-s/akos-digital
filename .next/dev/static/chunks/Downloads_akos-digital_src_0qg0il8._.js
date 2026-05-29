@@ -618,16 +618,16 @@ const projects = [
         links: [
             {
                 label: "Live Site",
-                href: "https://trf.up.railway.app/"
+                href: "https://thoseramblingfools.com/"
             }
         ],
-        year: "2026"
+        year: ""
     },
     {
         title: "Ellie Tattooer",
         description: {
-            en: "Portfolio and merch shop for Ellie Tattooer, resident at Ritual Tattoo Athens. Highly stylized to match her vision and brand identity.",
-            el: "Portfolio και merch shop για την Ellie Tattooer, από το Ritual Tattoo Athens. Στιλιζαρισμένο για να ταιριάζει με το όραμά της και την ταυτότητα της."
+            en: "Gallery and e-commerce platform for Ellie Tattooer, resident at Ritual Tattoo Athens. Highly stylized to match her vision and brand identity.",
+            el: "Γκαλερί και e-commerce πλατφόρμα για την Ellie Tattooer, από το Ritual Tattoo Athens. Στιλιζαρισμένο για να ταιριάζει με το όραμά της και την ταυτότητα της."
         },
         tags: [
             "Next.js",
@@ -643,7 +643,7 @@ const projects = [
                 href: "https://ellietattooer.com/"
             }
         ],
-        year: "2026"
+        year: ""
     },
     {
         title: "Blessed Coffee & Spirits",
@@ -665,7 +665,7 @@ const projects = [
                 href: "https://blessed.cafe/"
             }
         ],
-        year: "2026"
+        year: ""
     }
 ];
 const services = [
@@ -1191,13 +1191,13 @@ function MobileScrollSections() {
                                                         lineNumber: 201,
                                                         columnNumber: 19
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    proj.year && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "font-mono text-xs text-stone-dark shrink-0",
                                                         children: proj.year
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                        lineNumber: 204,
-                                                        columnNumber: 19
+                                                        lineNumber: 205,
+                                                        columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
@@ -1210,7 +1210,7 @@ function MobileScrollSections() {
                                                 children: proj.description[lang]
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 208,
+                                                lineNumber: 210,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1221,7 +1221,7 @@ function MobileScrollSections() {
                                                             children: tag
                                                         }, tag, false, {
                                                             fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                            lineNumber: 213,
+                                                            lineNumber: 215,
                                                             columnNumber: 21
                                                         }, this)),
                                                     proj.links.map((lnk)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1238,24 +1238,24 @@ function MobileScrollSections() {
                                                                         size: 11
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                                        lineNumber: 227,
+                                                                        lineNumber: 229,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                                    lineNumber: 226,
+                                                                    lineNumber: 228,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, lnk.label, true, {
                                                             fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                            lineNumber: 218,
+                                                            lineNumber: 220,
                                                             columnNumber: 21
                                                         }, this))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 211,
+                                                lineNumber: 213,
                                                 columnNumber: 17
                                             }, this)
                                         ]
@@ -1276,12 +1276,12 @@ function MobileScrollSections() {
                                     children: copyright[lang]
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 240,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 237,
+                                lineNumber: 239,
                                 columnNumber: 11
                             }, this)
                         ]
@@ -1304,12 +1304,12 @@ function MobileScrollSections() {
                         "aria-label": `Go to section ${i + 1}`
                     }, i, false, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 248,
+                        lineNumber: 250,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                lineNumber: 246,
+                lineNumber: 248,
                 columnNumber: 7
             }, this)
         ]
@@ -1843,13 +1843,13 @@ function Home() {
                                                                                 lineNumber: 215,
                                                                                 columnNumber: 27
                                                                             }, this),
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            proj.year && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                 className: "font-mono text-xs text-stone-dark shrink-0",
                                                                                 children: proj.year
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                                                                lineNumber: 218,
-                                                                                columnNumber: 27
+                                                                                lineNumber: 219,
+                                                                                columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
@@ -1862,7 +1862,7 @@ function Home() {
                                                                         children: proj.description[lang]
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                                                        lineNumber: 222,
+                                                                        lineNumber: 224,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1873,7 +1873,7 @@ function Home() {
                                                                                     children: tag
                                                                                 }, tag, false, {
                                                                                     fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                                                                    lineNumber: 227,
+                                                                                    lineNumber: 229,
                                                                                     columnNumber: 29
                                                                                 }, this)),
                                                                             proj.links.map((lnk)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1888,24 +1888,24 @@ function Home() {
                                                                                                 size: 11
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                                                                                lineNumber: 239,
+                                                                                                lineNumber: 241,
                                                                                                 columnNumber: 33
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                                                                            lineNumber: 238,
+                                                                                            lineNumber: 240,
                                                                                             columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, lnk.label, true, {
                                                                                     fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                                                                    lineNumber: 232,
+                                                                                    lineNumber: 234,
                                                                                     columnNumber: 29
                                                                                 }, this))
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                                                        lineNumber: 225,
+                                                                        lineNumber: 227,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
@@ -1943,12 +1943,12 @@ function Home() {
                                         children: t.copyright
                                     }, void 0, false, {
                                         fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                        lineNumber: 253,
+                                        lineNumber: 255,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                                    lineNumber: 252,
+                                    lineNumber: 254,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -1965,7 +1965,7 @@ function Home() {
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$src$2f$components$2f$MobileScrollSections$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/Downloads/akos-digital/src/app/page.tsx",
-                    lineNumber: 261,
+                    lineNumber: 263,
                     columnNumber: 9
                 }, this)
             ]

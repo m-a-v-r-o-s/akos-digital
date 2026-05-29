@@ -1,22 +1,10 @@
-{"timestamp":"00:00:00.524","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:01.417","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:01:24.480","source":"Server","level":"LOG","message":"✓ Compiled in 516ms"}
-{"timestamp":"00:01:29.965","source":"Server","level":"LOG","message":"✓ Compiled in 47ms"}
-{"timestamp":"00:06:40.327","source":"Server","level":"LOG","message":"✓ Compiled in 9ms"}
-{"timestamp":"00:07:05.282","source":"Server","level":"LOG","message":"✓ Compiled in 7ms"}
-{"timestamp":"00:07:05.315","source":"Browser","level":"ERROR","message":"Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. Those Rambling Fools"}
-{"timestamp":"00:07:05.315","source":"Browser","level":"ERROR","message":"Encountered two children with the same key, `%s`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. Those Rambling Fools"}
-{"timestamp":"00:07:05.371","source":"Server","level":"ERROR","message":"[browser] \"Encountered two children with the same key, `Those Rambling Fools`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.\" \"\""}
-{"timestamp":"00:07:05.371","source":"Browser","level":"ERROR","message":"Encountered two children with the same key, `Those Rambling Fools`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. \"\""}
-{"timestamp":"00:07:05.371","source":"Server","level":"ERROR","message":"[browser] \"Encountered two children with the same key, `Those Rambling Fools`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.\" \"\""}
-{"timestamp":"00:07:05.371","source":"Browser","level":"ERROR","message":"Encountered two children with the same key, `Those Rambling Fools`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version. \"\""}
-{"timestamp":"00:07:11.200","source":"Server","level":"LOG","message":"✓ Compiled in 6ms"}
-{"timestamp":"00:07:39.573","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:07:44.501","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:08:20.328","source":"Server","level":"LOG","message":"✓ Compiled in 6ms"}
-{"timestamp":"00:08:53.389","source":"Server","level":"LOG","message":"✓ Compiled in 6ms"}
-{"timestamp":"00:09:36.119","source":"Server","level":"LOG","message":"✓ Compiled in 7ms"}
-{"timestamp":"00:09:52.731","source":"Server","level":"LOG","message":"✓ Compiled in 6ms"}
-{"timestamp":"00:10:05.312","source":"Server","level":"LOG","message":"✓ Compiled in 10ms"}
-{"timestamp":"00:11:15.791","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:15:12.636","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:00.966","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:11.094","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:02:05.905","source":"Server","level":"LOG","message":"✓ Compiled in 115ms"}
+{"timestamp":"00:02:14.480","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:02:41.654","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:03:06.322","source":"Server","level":"LOG","message":"✓ Compiled in 6ms"}
+{"timestamp":"00:03:12.994","source":"Server","level":"LOG","message":"✓ Compiled in 574ms"}
+{"timestamp":"00:03:16.673","source":"Server","level":"LOG","message":"✓ Compiled in 41ms"}
+{"timestamp":"00:04:20.184","source":"Server","level":"LOG","message":"✓ Compiled in 7ms"}
+{"timestamp":"00:04:53.545","source":"Server","level":"LOG","message":"✓ Compiled in 8ms"}
