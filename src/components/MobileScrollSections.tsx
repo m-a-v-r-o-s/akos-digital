@@ -94,18 +94,27 @@ export default function MobileScrollSections() {
       </div>
 
       {/* Tab bar */}
-      <div className="flex border-b border-stone-dark sticky top-0 z-20">
+      <div className="flex sticky top-0 z-20 pt-3">
         {tabs.map((label, i) => (
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className={`flex-1 py-3 text-xs font-mono tracking-wider uppercase transition-colors duration-200 ${
-              active === i
-                ? "text-paper border-b-2 border-paper -mb-px"
-                : "text-stone"
-            }`}
+            className="flex-1 flex flex-col items-center gap-2 pb-3 transition-colors duration-300"
           >
-            {label}
+            <span
+              className="text-xs font-mono tracking-widest uppercase transition-colors duration-300"
+              style={{ color: active === i ? "var(--paper)" : "var(--stone)" }}
+            >
+              {label}
+            </span>
+            <span
+              className="block h-px transition-all duration-300"
+              style={{
+                width: active === i ? (i === 1 || i === 2 ? "3rem" : "2rem") : "0",
+                backgroundColor: "var(--paper)",
+                opacity: active === i ? 1 : 0,
+              }}
+            />
           </button>
         ))}
       </div>
@@ -124,7 +133,7 @@ export default function MobileScrollSections() {
         {/* ── Panel 1: About ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>{headings.about}
+            <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
           <div className="space-y-4">
             {person.about[lang].map((para, i) => (
@@ -141,7 +150,7 @@ export default function MobileScrollSections() {
         {/* ── Panel 2: Services ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>{headings.services}
+            <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
           <div className="space-y-4">
             {services.map((svc) => (
@@ -163,7 +172,7 @@ export default function MobileScrollSections() {
         {/* ── Panel 3: Education ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>{headings.education}
+            <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
           <ol className="space-y-2">
             {education.map((edu) => (
@@ -192,7 +201,7 @@ export default function MobileScrollSections() {
         {/* ── Panel 4: Projects ── */}
         <div className="flex-none w-full py-8 pb-20" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>{headings.projects}
+            <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
           <ul className="space-y-3">
             {projects.map((proj) => (
@@ -235,22 +244,16 @@ export default function MobileScrollSections() {
             ))}
           </ul>
 
-          {/* Mobile footer */}
-          <div className="mt-12 pt-6 border-t border-stone-dark">
-            <p className="text-xs text-stone leading-relaxed">
-              {copyright[lang]}
-            </p>
-          </div>
         </div>
       </div>
 
       {/* Scroll progress dots */}
-      <div className="fixed bottom-5 left-0 right-0 flex justify-center gap-1.5 z-30 pointer-events-none">
+      <div className="flex justify-center gap-1.5 py-4">
         {tabs.map((_, i) => (
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className={`pointer-events-auto rounded-full transition-all duration-300 ${
+            className={`rounded-full transition-all duration-300 ${
               active === i
                 ? "w-5 h-1.5 bg-gold"
                 : "w-1.5 h-1.5 bg-stone-dark"
@@ -259,6 +262,11 @@ export default function MobileScrollSections() {
           />
         ))}
       </div>
+
+      {/* Copyright */}
+      <p className="text-xs text-stone leading-relaxed pb-8 border-t border-stone-dark pt-4">
+        {copyright[lang]}
+      </p>
     </div>
   );
 }

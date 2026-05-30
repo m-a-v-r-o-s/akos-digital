@@ -31,7 +31,7 @@ export const person = {
     { label: "Phone", href: "tel:+306995358972", icon: "phone" },
     { label: "Telegram", href: "https://t.me/+306995358972", icon: "telegram" },
     { label: "WhatsApp", href: "https://wa.me/306995358972", icon: "whatsapp" },
-    { label: "Email", href: "mailto:digitalaakos@gmail.com", icon: "email" },
+    { label: "Email", href: "mailto:info@akosds.com", icon: "email" },
   ],
 };
 
@@ -151,6 +151,17 @@ export const services = [
     description: {
       en: "Headless storefronts, custom configurators, and shipping cost estimation built into platforms that convert browsers into buyers and buyers into advocates.",
       el: "Headless storefronts, custom configurators και ενσωματωμένη εκτίμηση κόστους αποστολής, σε πλατφόρμες που μετατρέπουν επισκέπτες σε αγοραστές και αγοραστές σε υποστηρικτές.",
+    } as BL,
+  },
+  {
+    icon: "⊡",
+    title: {
+      en: "AI Automations",
+      el: "Αυτοματισμοί AI",
+    } as BL,
+    description: {
+      en: "Intelligent automations tailored to your business. AI receptionists that handle inquiries and bookings 24/7, automated follow-ups, and workflow integrations that eliminate repetitive tasks.",
+      el: "Έξυπνοι αυτοματισμοί προσαρμοσμένοι στην επιχείρησή σου. AI ρεσεψιονίστ που διαχειρίζεται ερωτήματα και κρατήσεις 24/7, αυτοματοποιεί follow-ups και εξαλείφει επαναλαμβανόμενες εργασίες.",
     } as BL,
   },
 ];

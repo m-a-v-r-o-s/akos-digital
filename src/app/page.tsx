@@ -69,6 +69,7 @@ export default function Home() {
 
               <p className="fade-up fade-up-delay-4 text-sm text-stone leading-relaxed max-w-xs">
                 {person.tagline[lang]}
+                {lang === "en" && <><br /><br /></>}
               </p>
 
               {/* Desktop nav */}
@@ -92,7 +93,7 @@ export default function Home() {
                 </a>
               ))}
               <span className="ml-2 text-xs font-mono text-stone-dark tracking-wider">
-                digitalaakos@gmail.com
+                info@AkosDS.com
               </span>
               <div className="ml-auto">
                 <LanguageToggle />
@@ -251,7 +252,7 @@ export default function Home() {
             </section>
 
             {/* FOOTER */}
-            <footer className="pb-20 pt-8 border-t border-stone-dark">
+            <footer className="pt-8 border-t border-stone-dark">
               <p className="text-xs text-stone leading-relaxed">
                 {t.copyright}
               </p>
