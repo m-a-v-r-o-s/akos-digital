@@ -34,6 +34,7 @@ const sectionHeadings = {
 
 export default function MobileScrollSections() {
   const [active, setActive] = useState(1);
+  const [scrolled, setScrolled] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { lang } = useLanguage();
   const tabs = tabLabels[lang];
@@ -43,6 +44,12 @@ export default function MobileScrollSections() {
     const container = containerRef.current;
     if (!container) return;
     container.scrollLeft = container.offsetWidth;
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 350);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollTo = (idx: number) => {
@@ -100,7 +107,10 @@ export default function MobileScrollSections() {
       </div>
 
       {/* Tab bar */}
-      <div className="flex sticky top-0 z-20 pt-3">
+      <div
+        className="flex sticky top-0 z-20 pt-3 transition-all duration-300"
+        style={scrolled ? { backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", backgroundColor: "rgba(13,13,13,0.15)" } : {}}
+      >
         {tabs.map((label, i) => (
           <button
             key={i}
