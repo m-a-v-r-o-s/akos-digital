@@ -7,8 +7,8 @@ import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services } from "@/lib/data";
 
 const tabLabels = {
-  en: ["About", "Services", "Education", "Works"],
-  el: ["Σχετικά", "Υπηρεσίες", "Εκπαίδευση", "Έργα"],
+  en: ["Services", "About", "Education", "Works"],
+  el: ["Υπηρεσίες", "Σχετικά", "Εκπαίδευση", "Έργα"],
 };
 
 const copyright = {
@@ -33,7 +33,7 @@ const sectionHeadings = {
 
 
 export default function MobileScrollSections() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { lang } = useLanguage();
@@ -43,7 +43,7 @@ export default function MobileScrollSections() {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    container.scrollLeft = container.offsetWidth;
+    container.scrollLeft = 0;
   }, []);
 
   useEffect(() => {
@@ -126,7 +126,7 @@ export default function MobileScrollSections() {
             <span
               className="block h-px transition-all duration-300"
               style={{
-                width: active === i ? (i === 1 || i === 2 ? "3rem" : "2rem") : "0",
+                width: active === i ? (i === 0 || i === 2 ? "3rem" : "2rem") : "0",
                 backgroundColor: "var(--paper)",
                 opacity: active === i ? 1 : 0,
               }}
@@ -146,24 +146,7 @@ export default function MobileScrollSections() {
           scrollbarWidth: "none",
         }}
       >
-        {/* ── Panel 1: About ── */}
-        <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
-          <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
-          </h3>
-          <div className="space-y-4">
-            {person.about[lang].map((para, i) => (
-              <p
-                key={i}
-                className="text-sm text-stone leading-[1.85]"
-                dangerouslySetInnerHTML={{ __html: para }}
-              />
-            ))}
-            <br /><br /><br />
-          </div>
-        </div>
-
-        {/* ── Panel 2: Services ── */}
+        {/* ── Panel 1: Services ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
             <span className="text-gold opacity-50 mr-2">§</span>
@@ -182,6 +165,23 @@ export default function MobileScrollSections() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* ── Panel 2: About ── */}
+        <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
+          <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
+            <span className="text-gold opacity-50 mr-2">§</span>
+          </h3>
+          <div className="space-y-4">
+            {person.about[lang].map((para, i) => (
+              <p
+                key={i}
+                className="text-sm text-stone leading-[1.85]"
+                dangerouslySetInnerHTML={{ __html: para }}
+              />
+            ))}
+            <br /><br /><br />
           </div>
         </div>
 
