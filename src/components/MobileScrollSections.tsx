@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/Icons";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
@@ -33,11 +33,17 @@ const sectionHeadings = {
 
 
 export default function MobileScrollSections() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
   const { lang } = useLanguage();
   const tabs = tabLabels[lang];
   const headings = sectionHeadings[lang];
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    container.scrollLeft = container.offsetWidth;
+  }, []);
 
   const scrollTo = (idx: number) => {
     setActive(idx);

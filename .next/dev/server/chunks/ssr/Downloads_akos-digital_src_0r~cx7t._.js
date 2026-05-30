@@ -714,11 +714,16 @@ const sectionHeadings = {
     }
 };
 function MobileScrollSections() {
-    const [active, setActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [active, setActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
     const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const { lang } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$src$2f$components$2f$LanguageContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLanguage"])();
     const tabs = tabLabels[lang];
     const headings = sectionHeadings[lang];
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const container = containerRef.current;
+        if (!container) return;
+        container.scrollLeft = container.offsetWidth;
+    }, []);
     const scrollTo = (idx)=>{
         setActive(idx);
         const container = containerRef.current;
@@ -749,18 +754,18 @@ function MobileScrollSections() {
                                 children: __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["person"].company
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 62,
+                                lineNumber: 68,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$src$2f$components$2f$LanguageToggle$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 65,
+                                lineNumber: 71,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 61,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -768,14 +773,14 @@ function MobileScrollSections() {
                         children: __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["person"].name[lang]
                     }, void 0, false, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 67,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "deco-rule mb-4"
                     }, void 0, false, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 70,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -783,7 +788,7 @@ function MobileScrollSections() {
                         children: __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["person"].role[lang]
                     }, void 0, false, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 71,
+                        lineNumber: 77,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -791,7 +796,7 @@ function MobileScrollSections() {
                         children: __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$src$2f$lib$2f$data$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["person"].tagline[lang]
                     }, void 0, false, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 74,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -807,23 +812,23 @@ function MobileScrollSections() {
                                     size: 17
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 93,
                                     columnNumber: 15
                                 }, this)
                             }, s.label, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 79,
+                                lineNumber: 85,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 77,
+                        lineNumber: 83,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                lineNumber: 60,
+                lineNumber: 66,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -840,7 +845,7 @@ function MobileScrollSections() {
                                 children: label
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 104,
+                                lineNumber: 110,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -852,18 +857,18 @@ function MobileScrollSections() {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 110,
+                                lineNumber: 116,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, i, true, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 99,
+                        lineNumber: 105,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                lineNumber: 97,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -889,12 +894,12 @@ function MobileScrollSections() {
                                     children: "§"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                    lineNumber: 136,
+                                    lineNumber: 142,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 135,
+                                lineNumber: 141,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -907,34 +912,34 @@ function MobileScrollSections() {
                                             }
                                         }, i, false, {
                                             fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                            lineNumber: 140,
+                                            lineNumber: 146,
                                             columnNumber: 15
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 152,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 152,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                        lineNumber: 146,
+                                        lineNumber: 152,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 138,
+                                lineNumber: 144,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 134,
+                        lineNumber: 140,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -950,12 +955,12 @@ function MobileScrollSections() {
                                     children: "§"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                    lineNumber: 153,
+                                    lineNumber: 159,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 152,
+                                lineNumber: 158,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -968,7 +973,7 @@ function MobileScrollSections() {
                                                 children: svc.icon
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 158,
+                                                lineNumber: 164,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -976,7 +981,7 @@ function MobileScrollSections() {
                                                 children: svc.title[lang]
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 161,
+                                                lineNumber: 167,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -984,24 +989,24 @@ function MobileScrollSections() {
                                                 children: svc.description[lang]
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 164,
+                                                lineNumber: 170,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, svc.title.en, true, {
                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                        lineNumber: 157,
+                                        lineNumber: 163,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 155,
+                                lineNumber: 161,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 151,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1017,12 +1022,12 @@ function MobileScrollSections() {
                                     children: "§"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                    lineNumber: 175,
+                                    lineNumber: 181,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 174,
+                                lineNumber: 180,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
@@ -1035,7 +1040,7 @@ function MobileScrollSections() {
                                                 children: edu.period
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 180,
+                                                lineNumber: 186,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -1047,7 +1052,7 @@ function MobileScrollSections() {
                                                         children: "·"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                        lineNumber: 183,
+                                                        lineNumber: 189,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1058,13 +1063,13 @@ function MobileScrollSections() {
                                                         children: edu.institution[lang]
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                        lineNumber: 184,
+                                                        lineNumber: 190,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 181,
+                                                lineNumber: 187,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1072,7 +1077,7 @@ function MobileScrollSections() {
                                                 children: edu.description[lang]
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 186,
+                                                lineNumber: 192,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1082,29 +1087,29 @@ function MobileScrollSections() {
                                                         children: tag
                                                     }, tag, false, {
                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                        lineNumber: 191,
+                                                        lineNumber: 197,
                                                         columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 189,
+                                                lineNumber: 195,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, edu.degree.en, true, {
                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                        lineNumber: 179,
+                                        lineNumber: 185,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 177,
+                                lineNumber: 183,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 173,
+                        lineNumber: 179,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1120,12 +1125,12 @@ function MobileScrollSections() {
                                     children: "§"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                    lineNumber: 204,
+                                    lineNumber: 210,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 203,
+                                lineNumber: 209,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1141,7 +1146,7 @@ function MobileScrollSections() {
                                                         children: proj.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                        lineNumber: 210,
+                                                        lineNumber: 216,
                                                         columnNumber: 19
                                                     }, this),
                                                     proj.year && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1149,13 +1154,13 @@ function MobileScrollSections() {
                                                         children: proj.year
                                                     }, void 0, false, {
                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                        lineNumber: 214,
+                                                        lineNumber: 220,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 209,
+                                                lineNumber: 215,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1163,7 +1168,7 @@ function MobileScrollSections() {
                                                 children: proj.description[lang]
                                             }, void 0, false, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 219,
+                                                lineNumber: 225,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1174,7 +1179,7 @@ function MobileScrollSections() {
                                                             children: tag
                                                         }, tag, false, {
                                                             fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                            lineNumber: 224,
+                                                            lineNumber: 230,
                                                             columnNumber: 21
                                                         }, this)),
                                                     proj.links.map((lnk)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1191,47 +1196,47 @@ function MobileScrollSections() {
                                                                         size: 11
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                                        lineNumber: 238,
+                                                                        lineNumber: 244,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                                    lineNumber: 237,
+                                                                    lineNumber: 243,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, lnk.label, true, {
                                                             fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                            lineNumber: 229,
+                                                            lineNumber: 235,
                                                             columnNumber: 21
                                                         }, this))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                                lineNumber: 222,
+                                                lineNumber: 228,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, proj.title, true, {
                                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                        lineNumber: 208,
+                                        lineNumber: 214,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                                lineNumber: 206,
+                                lineNumber: 212,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 202,
+                        lineNumber: 208,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                lineNumber: 123,
+                lineNumber: 129,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1242,12 +1247,12 @@ function MobileScrollSections() {
                         "aria-label": `Go to section ${i + 1}`
                     }, i, false, {
                         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                        lineNumber: 253,
+                        lineNumber: 259,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                lineNumber: 251,
+                lineNumber: 257,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1255,13 +1260,13 @@ function MobileScrollSections() {
                 children: copyright[lang]
             }, void 0, false, {
                 fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-                lineNumber: 267,
+                lineNumber: 273,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Downloads/akos-digital/src/components/MobileScrollSections.tsx",
-        lineNumber: 58,
+        lineNumber: 64,
         columnNumber: 5
     }, this);
 }
