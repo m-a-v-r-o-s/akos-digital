@@ -445,10 +445,6 @@ img, video {
   height: 100%;
 }
 
-.h-px {
-  height: 1px;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -654,6 +650,11 @@ img, video {
   padding-bottom: 5rem;
 }
 
+.py-3 {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -670,10 +671,6 @@ img, video {
 
 .pb-20 {
   padding-bottom: 5rem;
-}
-
-.pb-3 {
-  padding-bottom: .75rem;
 }
 
 .pb-6 {

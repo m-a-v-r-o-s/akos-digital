@@ -115,22 +115,17 @@ export default function MobileScrollSections() {
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className="flex-1 flex flex-col items-center gap-2 pb-3 transition-colors duration-300"
+            className="flex-1 flex items-center justify-center py-3 transition-colors duration-300"
           >
             <span
-              className="text-xs font-mono tracking-widest uppercase transition-colors duration-300"
-              style={{ color: active === i ? "var(--paper)" : "var(--stone)" }}
+              className="font-mono tracking-widest uppercase transition-colors duration-300"
+              style={{
+                color: active === i ? "var(--paper)" : "var(--stone)",
+                fontSize: "clamp(0.55rem, 2.2vw, 0.75rem)",
+              }}
             >
               {label}
             </span>
-            <span
-              className="block h-px transition-all duration-300"
-              style={{
-                width: active === i ? (i === 0 || i === 2 ? "3rem" : "2rem") : "0",
-                backgroundColor: "var(--paper)",
-                opacity: active === i ? 1 : 0,
-              }}
-            />
           </button>
         ))}
       </div>
