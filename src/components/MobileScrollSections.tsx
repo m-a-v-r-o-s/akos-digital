@@ -98,7 +98,7 @@ export default function MobileScrollSections() {
               className="text-stone hover:text-gold-light transition-colors"
             >
               <Icon
-                name={s.icon as "linkedin" | "github" | "behance" | "email" | "phone" | "whatsapp" | "telegram"}
+                name={s.icon as "linkedin" | "github" | "behance" | "email" | "phone" | "whatsapp" | "telegram" | "instagram"}
                 size={17}
               />
             </a>

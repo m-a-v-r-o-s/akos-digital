@@ -389,6 +389,52 @@ function Icon({ name, size = 18 }) {
                 lineNumber: 67,
                 columnNumber: 9
             }, this);
+        case "instagram":
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                width: size,
+                height: size,
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: 1.5,
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                        x: "2",
+                        y: "2",
+                        width: "20",
+                        height: "20",
+                        rx: "5",
+                        ry: "5"
+                    }, void 0, false, {
+                        fileName: "[project]/Downloads/akos-digital/src/components/Icons.tsx",
+                        lineNumber: 74,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                        d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                    }, void 0, false, {
+                        fileName: "[project]/Downloads/akos-digital/src/components/Icons.tsx",
+                        lineNumber: 75,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                        x1: "17.5",
+                        y1: "6.5",
+                        x2: "17.51",
+                        y2: "6.5"
+                    }, void 0, false, {
+                        fileName: "[project]/Downloads/akos-digital/src/components/Icons.tsx",
+                        lineNumber: 76,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Downloads/akos-digital/src/components/Icons.tsx",
+                lineNumber: 73,
+                columnNumber: 9
+            }, this);
         case "arrow":
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$akos$2d$digital$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                 width: size,
@@ -401,12 +447,12 @@ function Icon({ name, size = 18 }) {
                     d: "M7 17 17 7M7 7h10v10"
                 }, void 0, false, {
                     fileName: "[project]/Downloads/akos-digital/src/components/Icons.tsx",
-                    lineNumber: 81,
+                    lineNumber: 89,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Downloads/akos-digital/src/components/Icons.tsx",
-                lineNumber: 73,
+                lineNumber: 81,
                 columnNumber: 9
             }, this);
         default:
@@ -461,6 +507,11 @@ const person = {
             label: "Behance",
             href: "https://www.behance.net/akosdigital",
             icon: "behance"
+        },
+        {
+            label: "Instagram",
+            href: "https://www.instagram.com/akosdigitalservices",
+            icon: "instagram"
         },
         {
             label: "Phone",

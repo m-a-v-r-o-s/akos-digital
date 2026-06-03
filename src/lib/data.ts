@@ -28,6 +28,7 @@ export const person = {
   socials: [
     { label: "GitHub", href: "https://github.com/m-a-v-r-o-s", icon: "github" },
     { label: "Behance", href: "https://www.behance.net/akosdigital", icon: "behance" },
+    { label: "Instagram", href: "https://www.instagram.com/akosdigitalservices", icon: "instagram" },
     { label: "Phone", href: "tel:+306995358972", icon: "phone" },
     { label: "Telegram", href: "https://t.me/+306995358972", icon: "telegram" },
     { label: "WhatsApp", href: "https://wa.me/306995358972", icon: "whatsapp" },
