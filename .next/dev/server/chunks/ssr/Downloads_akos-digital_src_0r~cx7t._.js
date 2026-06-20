@@ -588,6 +588,50 @@ const education = [
 ];
 const projects = [
     {
+        title: "Kyma Villa Concept",
+        description: {
+            en: "Concept site for a private seafront villa in Paros. Clean, coastal aesthetic with booking integration and immersive photography.",
+            el: "Concept site για ιδιωτική παραθαλάσσια βίλα στην Πάρο. Καθαρή, παράκτια αισθητική με ενσωμάτωση κρατήσεων και εμβυθιστική φωτογραφία."
+        },
+        tags: [
+            "Next.js",
+            "TypeScript",
+            "Tailwind",
+            "HTML",
+            "Booking"
+        ],
+        image: "/projects/kyma.png",
+        links: [
+            {
+                label: "Live Demo",
+                href: "https://kyma-production-dd16.up.railway.app/"
+            }
+        ],
+        year: ""
+    },
+    {
+        title: "Levká Dental Concept",
+        description: {
+            en: "Concept site for a modern dental clinic. Professional and approachable design with online appointment booking and a focus on patient trust.",
+            el: "Concept site για σύγχρονη οδοντιατρική κλινική. Επαγγελματικός και προσιτός σχεδιασμός με online ραντεβού και έμφαση στην εμπιστοσύνη του ασθενή."
+        },
+        tags: [
+            "Next.js",
+            "TypeScript",
+            "Tailwind",
+            "HTML",
+            "Booking"
+        ],
+        image: "/projects/levka.png",
+        links: [
+            {
+                label: "Live Demo",
+                href: "https://levka-production.up.railway.app/"
+            }
+        ],
+        year: ""
+    },
+    {
         title: "Those Rambling Fools Band",
         description: {
             en: "Web app featuring a working vinyl record player, highly interactive and stylized to the bands aesthetic and vision.",
