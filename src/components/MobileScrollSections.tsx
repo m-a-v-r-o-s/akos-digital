@@ -7,8 +7,8 @@ import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services } from "@/lib/data";
 
 const tabLabels = {
-  en: ["Services", "About", "Education", "Works"],
-  el: ["Υπηρεσίες", "Σχετικά", "Εκπαίδευση", "Έργα"],
+  en: ["Works", "Services", "Education", "About"],
+  el: ["Έργα", "Υπηρεσίες", "Εκπαίδευση", "Σχετικά"],
 };
 
 const copyright = {
@@ -141,7 +141,63 @@ export default function MobileScrollSections() {
           scrollbarWidth: "none",
         }}
       >
-        {/* ── Panel 1: Services ── */}
+        {/* ── Panel 1: Projects ── */}
+        <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
+          <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
+            <span className="text-gold opacity-50 mr-2">§</span>
+          </h3>
+          <ul className="space-y-3">
+            {projects.map((proj) => (
+              <li key={proj.title} className="section-card relative">
+                {proj.links[0] && (
+                  <a
+                    href={proj.links[0].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={proj.title}
+                    className="absolute inset-0 z-10"
+                  />
+                )}
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <h4 className="font-display font-semibold text-paper text-sm leading-snug">
+                    {proj.title}
+                  </h4>
+                  {proj.year && (
+                    <span className="font-mono text-xs text-stone-dark shrink-0">
+                      {proj.year}
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-stone leading-relaxed mb-3">
+                  {proj.description[lang]}
+                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {proj.tags.map((tag) => (
+                    <span key={tag} className="tag-pill">
+                      {tag}
+                    </span>
+                  ))}
+                  {proj.links.map((lnk) => (
+                    <a
+                      key={lnk.label}
+                      href={lnk.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
+                    >
+                      {lnk.label}
+                      <span className="arrow-icon">
+                        <Icon name="arrow" size={11} />
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ── Panel 2: Services ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
             <span className="text-gold opacity-50 mr-2">§</span>
@@ -160,23 +216,6 @@ export default function MobileScrollSections() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* ── Panel 2: About ── */}
-        <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
-          <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
-          </h3>
-          <div className="space-y-4">
-            {person.about[lang].map((para, i) => (
-              <p
-                key={i}
-                className="text-sm text-stone leading-[1.85]"
-                dangerouslySetInnerHTML={{ __html: para }}
-              />
-            ))}
-            <br /><br /><br />
           </div>
         </div>
 
@@ -209,52 +248,21 @@ export default function MobileScrollSections() {
           </ol>
         </div>
 
-        {/* ── Panel 4: Projects ── */}
+        {/* ── Panel 4: About ── */}
         <div className="flex-none w-full py-8 pb-20" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
             <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
-          <ul className="space-y-3">
-            {projects.map((proj) => (
-              <li key={proj.title} className="section-card">
-                <div className="flex items-start justify-between gap-2 mb-1">
-                  <h4 className="font-display font-semibold text-paper text-sm leading-snug">
-                    {proj.title}
-                  </h4>
-                  {proj.year && (
-                    <span className="font-mono text-xs text-stone-dark shrink-0">
-                      {proj.year}
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-stone leading-relaxed mb-3">
-                  {proj.description[lang]}
-                </p>
-                <div className="flex flex-wrap items-center gap-2">
-                  {proj.tags.map((tag) => (
-                    <span key={tag} className="tag-pill">
-                      {tag}
-                    </span>
-                  ))}
-                  {proj.links.map((lnk) => (
-                    <a
-                      key={lnk.label}
-                      href={lnk.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
-                    >
-                      {lnk.label}
-                      <span className="arrow-icon">
-                        <Icon name="arrow" size={11} />
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </li>
+          <div className="space-y-4">
+            {person.about[lang].map((para, i) => (
+              <p
+                key={i}
+                className="text-sm text-stone leading-[1.85]"
+                dangerouslySetInnerHTML={{ __html: para }}
+              />
             ))}
-          </ul>
-
+            <br /><br /><br />
+          </div>
         </div>
       </div>
 

@@ -103,85 +103,6 @@ export default function Home() {
 
           {/* ── RIGHT COLUMN — scrollable on desktop ── */}
           <main className="hidden lg:block flex-1 py-20 space-y-32">
-            {/* ABOUT */}
-            <section id="about">
-              <h3 className="section-heading">
-                <span className="ornament mr-2">§</span>
-                {t.about}
-              </h3>
-              <div className="space-y-4">
-                {person.about[lang].map((para, i) => (
-                  <p
-                    key={i}
-                    className="text-sm text-stone leading-[1.85] max-w-prose"
-                    dangerouslySetInnerHTML={{ __html: para }}
-                  />
-                ))}
-              <br /><br /><br />
-              </div>
-            </section>
-
-            {/* SERVICES */}
-            <section id="services">
-              <h3 className="section-heading">
-                <span className="ornament mr-2">§</span>
-                {t.services}
-              </h3>
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                {services.map((svc) => (
-                  <div key={svc.title.en} className="section-card group">
-                    <span className="text-gold text-xl mb-3 block leading-none">
-                      {svc.icon}
-                    </span>
-                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
-                      {svc.title[lang]}
-                    </h4>
-                    <p className="text-xs text-stone leading-relaxed">
-                      {svc.description[lang]}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* EDUCATION */}
-            <section id="education">
-              <h3 className="section-heading">
-                <span className="ornament mr-2">§</span>
-                {t.education}
-              </h3>
-              <ol className="space-y-2">
-                {education.map((edu) => (
-                  <li key={edu.degree.en} className="section-card group">
-                    <div className="flex flex-col sm:flex-row sm:gap-6">
-                      <p className="exp-date sm:w-36 shrink-0 mb-1 sm:mb-0">
-                        {edu.period}
-                      </p>
-                      <div className="flex-1">
-                        <h4 className="font-display font-semibold text-paper text-sm mb-0.5 group-hover:text-gold-light transition-colors leading-snug">
-                          {edu.degree[lang]}
-                          <span className="text-stone mx-2">·</span>
-                          <a href={edu.institutionUrl} className="gold-link">
-                            {edu.institution[lang]}
-                          </a>
-                        </h4>
-                        <p className="text-xs text-stone leading-relaxed mt-2 mb-3">
-                          {edu.description[lang]}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {edu.tags.map((tag) => (
-                            <span key={tag} className="tag-pill">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </section>
-
             {/* PROJECTS */}
             <section id="projects">
               <h3 className="section-heading">
@@ -190,7 +111,16 @@ export default function Home() {
               </h3>
               <ul className="space-y-2">
                 {projects.map((proj) => (
-                  <li key={proj.title} className="section-card group">
+                  <li key={proj.title} className="section-card group relative">
+                    {proj.links[0] && (
+                      <a
+                        href={proj.links[0].href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={proj.title}
+                        className="absolute inset-0 z-10"
+                      />
+                    )}
                     <div className="flex gap-5">
                       <div
                         className="hidden sm:block w-24 h-16 rounded shrink-0 overflow-hidden"
@@ -235,7 +165,9 @@ export default function Home() {
                             <a
                               key={lnk.label}
                               href={lnk.href}
-                              className="inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
                             >
                               {lnk.label}
                               <span className="arrow-icon">
@@ -249,6 +181,85 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+            </section>
+
+            {/* SERVICES */}
+            <section id="services">
+              <h3 className="section-heading">
+                <span className="ornament mr-2">§</span>
+                {t.services}
+              </h3>
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                {services.map((svc) => (
+                  <div key={svc.title.en} className="section-card group">
+                    <span className="text-gold text-xl mb-3 block leading-none">
+                      {svc.icon}
+                    </span>
+                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                      {svc.title[lang]}
+                    </h4>
+                    <p className="text-xs text-stone leading-relaxed">
+                      {svc.description[lang]}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* EDUCATION */}
+            <section id="education">
+              <h3 className="section-heading">
+                <span className="ornament mr-2">§</span>
+                {t.education}
+              </h3>
+              <ol className="space-y-2">
+                {education.map((edu) => (
+                  <li key={edu.degree.en} className="section-card group">
+                    <div className="flex flex-col sm:flex-row sm:gap-6">
+                      <p className="exp-date sm:w-36 shrink-0 mb-1 sm:mb-0">
+                        {edu.period}
+                      </p>
+                      <div className="flex-1">
+                        <h4 className="font-display font-semibold text-paper text-sm mb-0.5 group-hover:text-gold-light transition-colors leading-snug">
+                          {edu.degree[lang]}
+                          <span className="text-stone mx-2">·</span>
+                          <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="gold-link">
+                            {edu.institution[lang]}
+                          </a>
+                        </h4>
+                        <p className="text-xs text-stone leading-relaxed mt-2 mb-3">
+                          {edu.description[lang]}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {edu.tags.map((tag) => (
+                            <span key={tag} className="tag-pill">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
+            {/* ABOUT */}
+            <section id="about">
+              <h3 className="section-heading">
+                <span className="ornament mr-2">§</span>
+                {t.about}
+              </h3>
+              <div className="space-y-4">
+                {person.about[lang].map((para, i) => (
+                  <p
+                    key={i}
+                    className="text-sm text-stone leading-[1.85] max-w-prose"
+                    dangerouslySetInnerHTML={{ __html: para }}
+                  />
+                ))}
+              <br /><br /><br />
+              </div>
             </section>
 
             {/* FOOTER */}
