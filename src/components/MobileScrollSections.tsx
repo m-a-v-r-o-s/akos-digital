@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Icon } from "@/components/Icons";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services } from "@/lib/data";
+import SecretName from "@/components/SecretName";
 
 const tabLabels = {
   en: ["Works", "Services", "Education", "About"],
@@ -14,6 +16,11 @@ const tabLabels = {
 const copyright = {
   en: "© Akos Digital 2026. All Rights Reserved.",
   el: "© Akos Digital 2026. Με επιφύλαξη παντός δικαιώματος.",
+};
+
+const requestQuote = {
+  en: "Request a Quote",
+  el: "Ζητήστε Προσφορά",
 };
 
 const sectionHeadings = {
@@ -78,7 +85,7 @@ export default function MobileScrollSections() {
           <LanguageToggle />
         </div>
         <h1 className="font-display text-3xl font-bold text-paper mb-4">
-          {person.name[lang]}
+          <SecretName name={person.name[lang]} />
         </h1>
         <div className="deco-rule mb-4" />
         <h2 className="font-body text-base font-light text-stone-light tracking-wide mb-4">
@@ -104,6 +111,13 @@ export default function MobileScrollSections() {
             </a>
           ))}
         </div>
+
+        <Link href="/request" className="cta-button mt-7">
+          {requestQuote[lang]}
+          <span className="arrow-icon">
+            <Icon name="arrow" size={13} />
+          </span>
+        </Link>
       </div>
 
       {/* Tab bar */}

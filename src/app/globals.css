@@ -266,3 +266,125 @@ a:hover .arrow-icon {
   background: var(--stone-dark);
   opacity: 0.5;
 }
+
+/* ── CTA button (request a quote) ── */
+.cta-button {
+  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 font-mono text-xs tracking-widest uppercase transition-all duration-300;
+  color: var(--ink);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  cursor: pointer;
+}
+.cta-button:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  box-shadow: 0 6px 24px rgba(201, 168, 76, 0.22);
+}
+
+/* ── Form field (request wizard) ── */
+.field-input {
+  @apply w-full rounded-lg px-4 py-3 text-base text-paper transition-all duration-200;
+  background: rgba(245, 240, 232, 0.03);
+  border: 1px solid var(--stone-dark);
+  outline: none;
+}
+.field-input::placeholder {
+  color: var(--stone-dark);
+}
+.field-input:focus {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.04);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+}
+
+/* ── Choice option (wizard answers) ── */
+.choice-option {
+  @apply rounded-lg px-4 py-3.5 transition-all duration-200;
+  background: rgba(245, 240, 232, 0.02);
+  border: 1px solid var(--stone-dark);
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .choice-option:hover {
+    border-color: rgba(201, 168, 76, 0.5);
+    background: rgba(201, 168, 76, 0.04);
+  }
+}
+.choice-option-selected {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.1);
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.08);
+}
+.choice-option-compact {
+  @apply px-4 py-2;
+}
+
+/* ── Checkbox marker for multi-select choices ── */
+.choice-check {
+  @apply flex h-5 w-5 shrink-0 items-center justify-center rounded transition-all duration-200;
+  border: 1px solid var(--stone);
+  color: var(--ink);
+}
+.choice-check-on {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ── Hidden trigger letter (CRM keypad) — visually identical to its text ── */
+.secret-letter {
+  cursor: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Keypad ── */
+.keypad-key {
+  @apply flex items-center justify-center rounded-full font-mono text-xl text-paper transition-all duration-150 select-none;
+  width: 4rem;
+  height: 4rem;
+  background: rgba(245, 240, 232, 0.03);
+  border: 1px solid var(--stone-dark);
+  cursor: pointer;
+}
+.keypad-key:active {
+  background: rgba(201, 168, 76, 0.14);
+  border-color: var(--gold);
+  transform: scale(0.96);
+}
+.keypad-key-sm {
+  @apply flex items-center justify-center rounded-md font-mono text-paper transition-all duration-150 select-none;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  font-size: 0.78rem;
+  background: rgba(245, 240, 232, 0.04);
+  border: 1px solid var(--stone-dark);
+  cursor: pointer;
+}
+.keypad-key-sm:active {
+  background: rgba(201, 168, 76, 0.16);
+  border-color: var(--gold);
+  transform: scale(0.94);
+}
+.keypad-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid var(--stone);
+  transition: all 0.2s ease;
+}
+.keypad-dot-on {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.shake {
+  animation: shake 0.4s ease;
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import NavLinks from "@/components/NavLinks";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -8,6 +9,7 @@ import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
 import { person, education, projects, services } from "@/lib/data";
 import MobileScrollSections from "@/components/MobileScrollSections";
+import SecretName from "@/components/SecretName";
 
 const ui = {
   en: {
@@ -16,6 +18,7 @@ const ui = {
     education: "Education",
     projects: "Selected Works",
     fullCV: "Full CV",
+    requestQuote: "Request a Quote",
     copyright: "© Akos Digital 2026. All Rights Reserved.",
   },
   el: {
@@ -24,6 +27,7 @@ const ui = {
     education: "Εκπαίδευση",
     projects: "Επιλεγμένα Έργα",
     fullCV: "Πλήρες Βιογραφικό",
+    requestQuote: "Ζητήστε Προσφορά",
     copyright: "© Akos Digital 2026. Με επιφύλαξη παντός δικαιώματος.",
   },
 };
@@ -58,7 +62,7 @@ export default function Home() {
               </p>
 
               <h1 className="fade-up fade-up-delay-2 font-display text-4xl xl:text-5xl font-bold leading-tight text-paper mb-6">
-                {person.name[lang]}
+                <SecretName name={person.name[lang]} inlineKeypad />
               </h1>
 
               <div className="fade-up fade-up-delay-3 deco-rule mb-6" />
@@ -75,6 +79,16 @@ export default function Home() {
               {/* Desktop nav */}
               <div className="fade-up fade-up-delay-5">
                 <NavLinks />
+              </div>
+
+              {/* Request a quote CTA */}
+              <div className="fade-up fade-up-delay-5 mt-10">
+                <Link href="/request" className="cta-button">
+                  {t.requestQuote}
+                  <span className="arrow-icon">
+                    <Icon name="arrow" size={13} />
+                  </span>
+                </Link>
               </div>
             </div>
 
