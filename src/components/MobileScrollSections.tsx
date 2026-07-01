@@ -304,9 +304,17 @@ export default function MobileScrollSections() {
       </div>
 
       {/* Copyright */}
-      <p className="text-xs text-stone leading-relaxed pb-8 border-t border-stone-dark pt-4">
-        {copyright[lang]}
-      </p>
+      <div className="flex items-center justify-between gap-4 pb-8 border-t border-stone-dark pt-4">
+        <p className="text-xs text-stone leading-relaxed">
+          {copyright[lang]}
+        </p>
+        <Link
+          href="/terms"
+          className="shrink-0 text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
+        >
+          {lang === "en" ? "Terms" : "Όροι"}
+        </Link>
+      </div>
     </div>
   );
 }

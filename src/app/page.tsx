@@ -19,6 +19,7 @@ const ui = {
     projects: "Selected Works",
     fullCV: "Full CV",
     requestQuote: "Request a Quote",
+    terms: "Terms",
     copyright: "© Akos Digital 2026. All Rights Reserved.",
   },
   el: {
@@ -28,6 +29,7 @@ const ui = {
     projects: "Επιλεγμένα Έργα",
     fullCV: "Πλήρες Βιογραφικό",
     requestQuote: "Ζητήστε Προσφορά",
+    terms: "Όροι",
     copyright: "© Akos Digital 2026. Με επιφύλαξη παντός δικαιώματος.",
   },
 };
@@ -282,10 +284,16 @@ export default function Home() {
             </section>
 
             {/* FOOTER */}
-            <footer className="pt-8 border-t border-stone-dark">
+            <footer className="pt-8 border-t border-stone-dark flex items-center justify-between gap-4">
               <p className="text-xs text-stone leading-relaxed">
                 {t.copyright}
               </p>
+              <Link
+                href="/terms"
+                className="shrink-0 text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
+              >
+                {t.terms}
+              </Link>
             </footer>
           </main>
         </div>

@@ -1,55 +1,70 @@
 import crypto from "crypto";
 
 /**
- * One-time passkey store for CRM login.
+ * Cookie-backed one-time passkey.
  *
- * Kept in module memory — fine for a single long-running server (Railway).
- * A fresh 6-digit code is emailed to the owner each time the Obi-Wan page is
- * clicked; it is single-use, expires after 10 minutes, and survives at most a
- * handful of wrong attempts before it is discarded.
+ * The (hashed) code lives in a signed, HTTP-only cookie set on the response
+ * that emails it, so verification is stateless: it works across server
+ * restarts, redeploys, and multiple instances — unlike an in-memory store,
+ * where a code issued by one process is invisible to another.
+ *
+ * Signed with CRM_SESSION_SECRET. If that is unset, no code can be issued or
+ * verified (the CRM stays locked — a secure default).
  */
 
 const TTL_MS = 10 * 60 * 1000;
 const MAX_ATTEMPTS = 5;
-const THROTTLE_MS = 8 * 1000; // ignore re-issues fired faster than this
 
-type Active = { hash: string; expiresAt: number; attempts: number };
+export const OTP_COOKIE = "crm_otp";
+export const OTP_MAX_AGE = TTL_MS / 1000;
 
-let active: Active | null = null;
-let lastIssued = 0;
-
+function key(): string | null {
+  return process.env.CRM_SESSION_SECRET || null;
+}
 function sha256(s: string): string {
   return crypto.createHash("sha256").update(s).digest("hex");
 }
-
-/** Returns a fresh code to email, or null if throttled (caller stays silent). */
-export function issueOtp(): string | null {
-  const now = Date.now();
-  if (now - lastIssued < THROTTLE_MS) return null;
-  lastIssued = now;
-
-  const code = String(crypto.randomInt(0, 1_000_000)).padStart(6, "0");
-  active = { hash: sha256(code), expiresAt: now + TTL_MS, attempts: 0 };
-  return code;
+function sign(payload: string, k: string): string {
+  return crypto.createHmac("sha256", k).update(payload).digest("hex");
+}
+function safeEq(a: string, b: string): boolean {
+  return a.length === b.length && crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b));
 }
 
-export function checkOtp(code: string): boolean {
-  if (!active) return false;
-  if (Date.now() > active.expiresAt) {
-    active = null;
-    return false;
-  }
-  if (active.attempts >= MAX_ATTEMPTS) {
-    active = null;
-    return false;
-  }
-  active.attempts += 1;
+/** Returns the code to email and the signed cookie token to store, or null. */
+export function issueOtp(): { code: string; token: string } | null {
+  const k = key();
+  if (!k) return null;
+  const code = String(crypto.randomInt(0, 1_000_000)).padStart(6, "0");
+  const payload = `${sha256(code)}.${Date.now() + TTL_MS}.0`;
+  return { code, token: `${payload}.${sign(payload, k)}` };
+}
 
-  const candidate = sha256(String(code));
-  const ok =
-    candidate.length === active.hash.length &&
-    crypto.timingSafeEqual(Buffer.from(candidate), Buffer.from(active.hash));
+export type VerifyResult = { ok: boolean; token?: string; clear?: boolean };
 
-  if (ok) active = null; // single use
-  return ok;
+/**
+ * Verify an entered code against the cookie token. On a wrong-but-still-valid
+ * guess it returns a refreshed token (attempt count + 1) to set back on the
+ * cookie; `clear` means the cookie should be removed.
+ */
+export function verifyOtp(code: string, token?: string | null): VerifyResult {
+  const k = key();
+  if (!k || !token) return { ok: false, clear: true };
+
+  const parts = token.split(".");
+  if (parts.length !== 4) return { ok: false, clear: true };
+  const [hash, expStr, attemptsStr, sig] = parts;
+
+  const payload = `${hash}.${expStr}.${attemptsStr}`;
+  if (!safeEq(sig, sign(payload, k))) return { ok: false, clear: true };
+
+  const exp = Number(expStr);
+  const attempts = Number(attemptsStr);
+  if (!Number.isFinite(exp) || exp < Date.now()) return { ok: false, clear: true };
+  if (!Number.isFinite(attempts) || attempts >= MAX_ATTEMPTS) return { ok: false, clear: true };
+
+  if (safeEq(sha256(String(code)), hash)) return { ok: true, clear: true };
+
+  const bumped = `${hash}.${expStr}.${attempts + 1}`;
+  return { ok: false, token: `${bumped}.${sign(bumped, k)}` };
 }
