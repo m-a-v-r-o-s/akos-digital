@@ -75,6 +75,28 @@ export const education = [
 
 export const projects = [
   {
+    title: "Nisos Rentals Concept",
+    description: {
+      en: "Concept booking platform for a Kos-based rental service offering cars, ATVs, buggies and scooters. Real-time availability by dates and pickup point, transparent all-inclusive pricing, and quick online booking with hotel and port delivery.",
+      el: "Concept πλατφόρμα κρατήσεων για υπηρεσία ενοικιάσεων στην Κω, με αυτοκίνητα, ATV, buggies και scooters. Διαθεσιμότητα σε πραγματικό χρόνο ανά ημερομηνία και σημείο παραλαβής, διαφανής τιμολόγηση και γρήγορη online κράτηση με παράδοση σε ξενοδοχείο και λιμάνι.",
+    } as BL,
+    tags: ["Next.js", "TypeScript", "Tailwind", "Booking", "Fleet"],
+    image: "/projects/nisos-web.png",
+    links: [{ label: "Live Demo", href: "https://rentalsweb-production.up.railway.app/" }],
+    year: "",
+  },
+  {
+    title: "Nisos Rentals Admin Concept",
+    description: {
+      en: "Companion admin dashboard and CRM for the Nisos Rentals platform. Manage the fleet, bookings, availability and customers from a single operational panel.",
+      el: "Συνοδευτικό admin dashboard και CRM για την πλατφόρμα Nisos Rentals. Διαχείριση στόλου, κρατήσεων, διαθεσιμότητας και πελατών από ένα ενιαίο λειτουργικό πάνελ.",
+    } as BL,
+    tags: ["Next.js", "TypeScript", "Dashboard", "CRM"],
+    image: "/projects/nisos-admin.png",
+    links: [{ label: "Live Demo", href: "https://rentalsadmin-production.up.railway.app/" }],
+    year: "",
+  },
+  {
     title: "Kyma Villa Concept",
     description: {
       en: "Concept site for a private seafront villa in Paros. Clean, coastal aesthetic with booking integration and immersive photography.",

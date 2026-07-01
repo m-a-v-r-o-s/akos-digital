@@ -10,6 +10,7 @@ import { Icon } from "@/components/Icons";
 import { person, education, projects, services } from "@/lib/data";
 import MobileScrollSections from "@/components/MobileScrollSections";
 import SecretName from "@/components/SecretName";
+import ProjectThumb from "@/components/ProjectThumb";
 
 const ui = {
   en: {
@@ -143,25 +144,7 @@ export default function Home() {
                       />
                     )}
                     <div className="flex gap-5">
-                      <div
-                        className="hidden sm:block w-24 h-16 rounded shrink-0 overflow-hidden"
-                        style={{ border: "1px solid rgba(201,168,76,0.15)" }}
-                      >
-                        {proj.image ? (
-                          <img
-                            src={proj.image}
-                            alt={proj.title}
-                            className="w-full h-full object-cover object-top project-screenshot"
-                          />
-                        ) : (
-                          <div
-                            className="w-full h-full flex items-center justify-center text-gold opacity-40 text-2xl font-display italic"
-                            style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(13,13,13,0.5) 100%)" }}
-                          >
-                            {proj.title.charAt(0)}
-                          </div>
-                        )}
-                      </div>
+                      <ProjectThumb image={proj.image} title={proj.title} />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 mb-1">
                           <h4 className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors leading-snug">
