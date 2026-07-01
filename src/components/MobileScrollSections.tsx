@@ -112,12 +112,19 @@ export default function MobileScrollSections() {
           ))}
         </div>
 
-        <Link href="/request" className="cta-button mt-7">
-          {requestQuote[lang]}
-          <span className="arrow-icon">
-            <Icon name="arrow" size={13} />
-          </span>
-        </Link>
+        <div className="mt-7 flex items-center gap-4">
+          <Link href="/request" className="cta-button">
+            {requestQuote[lang]}
+            <span className="arrow-icon">
+              <Icon name="arrow" size={13} />
+            </span>
+          </Link>
+
+          {/* ESPA funding button */}
+          <Link href="/espa" aria-label="ΕΣΠΑ" className="espa-button w-28 shrink-0">
+            <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" className="w-full h-auto block" />
+          </Link>
+        </div>
       </div>
 
       {/* Tab bar */}

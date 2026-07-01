@@ -5,8 +5,10 @@ import ThetaBackground from "./ThetaBackground";
 
 export default function SpotlightWrapper({
   children,
+  className = "",
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -46,7 +48,7 @@ export default function SpotlightWrapper({
   }, []);
 
   return (
-    <div ref={ref} className="spotlight-bg min-h-screen w-full">
+    <div ref={ref} className={`spotlight-bg min-h-screen w-full ${className}`}>
       <ThetaBackground />
       {children}
     </div>

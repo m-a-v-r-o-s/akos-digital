@@ -81,13 +81,18 @@ export default function Home() {
                 <NavLinks />
               </div>
 
-              {/* Request a quote CTA */}
-              <div className="fade-up fade-up-delay-5 mt-10">
+              {/* Request a quote CTA + ESPA button (stacked) */}
+              <div className="fade-up fade-up-delay-5 mt-10 flex flex-col items-start gap-4">
                 <Link href="/request" className="cta-button">
                   {t.requestQuote}
                   <span className="arrow-icon">
                     <Icon name="arrow" size={13} />
                   </span>
+                </Link>
+
+                {/* ESPA funding button */}
+                <Link href="/espa" aria-label="ΕΣΠΑ" className="espa-button w-40">
+                  <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" className="w-full h-auto block" />
                 </Link>
               </div>
             </div>

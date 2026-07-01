@@ -11,6 +11,7 @@ export type Choice = { value: string; label: BL; hint?: BL };
 
 export const needsOptions: Choice[] = [
   { value: "new_website", label: { en: "A brand-new website", el: "Μια ολοκαίνουργια ιστοσελίδα" }, hint: { en: "A site built from scratch", el: "Ιστότοπος από την αρχή" } },
+  { value: "espa_website", label: { en: "A website funded by ESPA", el: "Ιστοσελίδα μέσω ΕΣΠΑ" }, hint: { en: "State-subsidised — see if you qualify", el: "Επιδοτούμενη — δες αν είσαι επιλέξιμος" } },
   { value: "online_shop", label: { en: "An online shop to sell products", el: "Ένα online κατάστημα για πωλήσεις" }, hint: { en: "E-commerce / payments", el: "E-commerce / πληρωμές" } },
   { value: "bookings", label: { en: "Online bookings or appointments", el: "Online κρατήσεις ή ραντεβού" }, hint: { en: "Let clients book themselves", el: "Οι πελάτες κλείνουν μόνοι τους" } },
   { value: "branding", label: { en: "Logo & visual branding", el: "Λογότυπο & οπτική ταυτότητα" }, hint: { en: "How your brand looks", el: "Η εικόνα της επωνυμίας σου" } },
@@ -93,7 +94,6 @@ export const ui: Record<Lang, {
   errorTitle: string;
   errorBody: string;
   tryAgain: string;
-  espaPrompt: string;
 }> = {
   en: {
     eyebrow: "Start a Project",
@@ -138,7 +138,6 @@ export const ui: Record<Lang, {
     errorTitle: "Hmm, that didn't go through",
     errorBody: "Your request couldn't be sent. Please try again, or email me directly at info@akosds.com.",
     tryAgain: "Try again",
-    espaPrompt: "Did you know a website can be funded by ESPA? Check your eligibility for free →",
   },
   el: {
     eyebrow: "Ξεκίνα ένα Έργο",
@@ -183,7 +182,6 @@ export const ui: Record<Lang, {
     errorTitle: "Χμμ, κάτι δεν πήγε καλά",
     errorBody: "Το αίτημα δεν στάλθηκε. Δοκίμασε ξανά ή στείλε μου email απευθείας στο info@akosds.com.",
     tryAgain: "Δοκίμασε ξανά",
-    espaPrompt: "Ήξερες ότι μια ιστοσελίδα μπορεί να χρηματοδοτηθεί από το ΕΣΠΑ; Έλεγξε δωρεάν αν είσαι επιλέξιμος →",
   },
 };
 

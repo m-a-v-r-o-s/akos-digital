@@ -43,6 +43,7 @@ body {
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  color: #ebdcbe;
   animation: thetaFloat 12s ease-in-out infinite;
 }
 
@@ -281,6 +282,17 @@ a:hover .arrow-icon {
   box-shadow: 0 6px 24px rgba(201, 168, 76, 0.22);
 }
 
+/* ── ESPA image button — subtle lift + glow on hover, like .cta-button ── */
+.espa-button {
+  @apply block overflow-hidden rounded-3xl transition-all duration-300;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+.espa-button:hover {
+  border-color: rgba(201, 168, 76, 0.55);
+  box-shadow: 0 6px 24px rgba(201, 168, 76, 0.22);
+  transform: translateY(-2px);
+}
+
 /* ── Form field (request wizard) ── */
 .field-input {
   @apply w-full rounded-lg px-4 py-3 text-base text-paper transition-all duration-200;
@@ -387,4 +399,73 @@ a:hover .arrow-icon {
 }
 .shake {
   animation: shake 0.4s ease;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ESPA page theme (scoped to .espa-theme) — recolours the whole page
+   into the ΕΣΠΑ palette: deep navy background, cyan primary accent
+   (replacing gold), green highlights, light text, cyan/green theta.
+   Nothing here leaks to the rest of the site.
+   ══════════════════════════════════════════════════════════════════ */
+.espa-theme {
+  --paper: #eaf3fb;
+  --gold: #29abe2;
+  --gold-light: #66c7ee;
+  --gold-dim: rgba(41, 171, 226, 0.15);
+  --stone: #8aa6c6;
+  --stone-light: #b6c9df;
+  --stone-dark: #34517a;
+  --ink: #06213b;
+  color: var(--paper);
+}
+
+/* Navy background + cyan/green cursor spotlight (replaces the gold one) */
+.spotlight-bg.espa-theme {
+  background:
+    radial-gradient(600px circle at var(--spotlight-x) var(--spotlight-y), rgba(41, 171, 226, 0.13) 0%, transparent 80%),
+    radial-gradient(900px circle at var(--trail-x) var(--trail-y), rgba(120, 190, 32, 0.07) 0%, transparent 75%),
+    linear-gradient(165deg, #0b2647 0%, #0a1f39 55%, #0c2b50 100%);
+}
+
+/* Theta logo tinted cyan, its wave stroke green */
+.espa-theme .theta-bg { color: #35b0e6; opacity: 0.08; }
+.espa-theme .theta-wave { stroke: #78be20; }
+
+/* Tailwind colour utilities used directly in the ESPA markup */
+.espa-theme .text-paper { color: #eaf3fb; }
+.espa-theme .text-gold { color: #35b6ea; }
+.espa-theme .text-gold-light { color: #7fd3f0; }
+.espa-theme .hover\:text-gold-light:hover { color: #7fd3f0; }
+.espa-theme .text-stone { color: #8aa6c6; }
+.espa-theme .text-stone-light { color: #b6c9df; }
+.espa-theme .text-stone-dark { color: #5b78a2; }
+.espa-theme .border-stone-dark { border-color: #34517a; }
+.espa-theme .border-gold\/30 { border-color: rgba(41, 171, 226, 0.45); }
+.espa-theme .accent-gold { accent-color: #29abe2; }
+
+/* Custom classes that hardcode gold rgba → cyan/green */
+.espa-theme .deco-rule {
+  width: 56px;
+  background: linear-gradient(90deg, #29abe2 0%, #78be20 100%);
+  opacity: 0.9;
+}
+.espa-theme .cta-button:hover {
+  box-shadow: 0 6px 24px rgba(41, 171, 226, 0.28);
+}
+.espa-theme .field-input:focus {
+  background: rgba(41, 171, 226, 0.05);
+  box-shadow: 0 0 0 3px rgba(41, 171, 226, 0.12);
+}
+.espa-theme .choice-option:hover {
+  border-color: rgba(41, 171, 226, 0.5);
+  background: rgba(41, 171, 226, 0.06);
+}
+.espa-theme .choice-option-selected {
+  background: rgba(41, 171, 226, 0.12);
+  box-shadow: 0 4px 20px rgba(41, 171, 226, 0.1);
+}
+.espa-theme .section-card:hover {
+  background: rgba(41, 171, 226, 0.05);
+  border-color: rgba(41, 171, 226, 0.14);
+  box-shadow: 0 4px 24px rgba(41, 171, 226, 0.08);
 }

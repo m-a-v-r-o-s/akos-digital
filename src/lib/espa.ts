@@ -30,7 +30,7 @@ export const programOptions: Choice[] = [
   { value: "digital_upgrade", label: { en: "Digital upgrade of my business", el: "Ψηφιακή αναβάθμιση της επιχείρησης" } },
   { value: "eshop", label: { en: "Online shop / e-commerce", el: "Ηλεκτρονικό κατάστημα / e-shop" } },
   { value: "extroversion", label: { en: "Exports / reaching foreign markets", el: "Εξωστρέφεια / ξένες αγορές" } },
-  { value: "unsure", label: { en: "Not sure — help me find the right one", el: "Δεν ξέρω — βοήθησέ με να βρω το κατάλληλο" } },
+  { value: "unsure", label: { en: "Not sure, help me find the right one", el: "Δεν ξέρω, βοήθησέ με να βρω το κατάλληλο" } },
 ];
 
 export const espaUi: Record<Lang, {
@@ -82,11 +82,11 @@ export const espaUi: Record<Lang, {
     eyebrow: "ESPA · Funding",
     title: "Build your website with ESPA funding",
     subtitle:
-      "ESPA programs can co-fund your business's website or digital upgrade. Tell me a little about your business and I'll check — for free — whether you might qualify, then handle everything from build to the paperwork the audit needs.",
+      "ESPA programs can co-fund your business's website or digital upgrade. Tell me a little about your business and I'll check for free whether you might qualify, then handle everything from build to the paperwork the audit needs.",
     whatTitle: "What is ESPA?",
     what: [
       "ESPA (ΕΣΠΑ) is the framework through which Greece and the EU co-finance investments in businesses. Different calls open through the year, each with its own budget and rules.",
-      "In several programs — like digital transformation and extroversion — building or upgrading a website is an eligible expense when it's properly documented. That means part of the cost can be covered by the subsidy.",
+      "In several programs, like digital transformation and extroversion, building or upgrading a website is an eligible expense when it's properly documented. That means part of the cost can be covered by the subsidy.",
     ],
     coversTitle: "What it can cover",
     covers: [
@@ -98,17 +98,17 @@ export const espaUi: Record<Lang, {
     stepsTitle: "How it works",
     steps: [
       { title: "Free assessment", body: "Fill in the short form below. I review your details against the current calls and tell you honestly if it's worth pursuing." },
-      { title: "We build", body: "If it fits, I design and build your website to the program's requirements — and to a standard you'd want anyway." },
+      { title: "We build", body: "If it fits, I design and build your website to the program's requirements, and to a standard you'd want anyway." },
       { title: "Audit-ready folder", body: "You receive the technical folder, manuals and documents the managing authority asks for at completion." },
     ],
     disclaimer:
-      "Eligibility always depends on the specific active call and your business details. This assessment is free and carries no obligation — it's not a guarantee of approval.",
+      "Eligibility always depends on the specific active call and your business details. This assessment is free and carries no obligation. It's not a guarantee of approval.",
     formTitle: "Free eligibility check",
     formSubtitle: "A few quick details. I'll reply within 24 hours.",
     fBusiness: "Business name",
     fVat: "VAT number (ΑΦΜ)",
     fKad: "Main activity code (ΚΑΔ)",
-    fKadHint: "If you know it — it helps match programs.",
+    fKadHint: "If you know it, it helps match programs.",
     fRegion: "City / region",
     fCompanyType: "Is the business new or existing?",
     fEmployees: "How many employees?",
@@ -127,7 +127,7 @@ export const espaUi: Record<Lang, {
     vRequired: "Please fill in your name, business and email.",
     vEmail: "Please enter a valid email.",
     vConsent: "Please tick the box so I can get back to you.",
-    successTitle: "Thank you — request received",
+    successTitle: "Thank you, request received",
     successBody:
       "I've got your details and I'll review your ESPA eligibility, then get back to you within 24 hours.",
     errorTitle: "Hmm, that didn't go through",
@@ -139,11 +139,11 @@ export const espaUi: Record<Lang, {
     eyebrow: "ΕΣΠΑ · Χρηματοδότηση",
     title: "Φτιάξε την ιστοσελίδα σου μέσω ΕΣΠΑ",
     subtitle:
-      "Τα προγράμματα ΕΣΠΑ μπορούν να συγχρηματοδοτήσουν την ιστοσελίδα ή την ψηφιακή αναβάθμιση της επιχείρησής σου. Πες μου λίγα για την επιχείρησή σου και θα ελέγξω — δωρεάν — αν ενδέχεται να είσαι επιλέξιμος, και αναλαμβάνω τα πάντα από την κατασκευή ως τα έγγραφα που χρειάζεται ο έλεγχος.",
+      "Τα προγράμματα ΕΣΠΑ μπορούν να συγχρηματοδοτήσουν την ιστοσελίδα ή την ψηφιακή αναβάθμιση της επιχείρησής σου. Πες μου λίγα για την επιχείρησή σου και θα ελέγξω δωρεάν αν ενδέχεται να είσαι επιλέξιμος, και αναλαμβάνω τα πάντα από την κατασκευή ως τα έγγραφα που χρειάζεται ο έλεγχος.",
     whatTitle: "Τι είναι το ΕΣΠΑ;",
     what: [
       "Το ΕΣΠΑ είναι το πλαίσιο μέσω του οποίου η Ελλάδα και η ΕΕ συγχρηματοδοτούν επενδύσεις σε επιχειρήσεις. Μέσα στη χρονιά ανοίγουν διάφορες προσκλήσεις, η καθεμία με δικό της προϋπολογισμό και κανόνες.",
-      "Σε αρκετά προγράμματα — όπως ψηφιακός μετασχηματισμός και εξωστρέφεια — η κατασκευή ή αναβάθμιση ιστοσελίδας είναι επιλέξιμη δαπάνη όταν τεκμηριώνεται σωστά. Δηλαδή μέρος του κόστους μπορεί να καλυφθεί από την επιδότηση.",
+      "Σε αρκετά προγράμματα, όπως ψηφιακός μετασχηματισμός και εξωστρέφεια, η κατασκευή ή αναβάθμιση ιστοσελίδας είναι επιλέξιμη δαπάνη όταν τεκμηριώνεται σωστά. Δηλαδή μέρος του κόστους μπορεί να καλυφθεί από την επιδότηση.",
     ],
     coversTitle: "Τι μπορεί να καλύψει",
     covers: [
@@ -155,17 +155,17 @@ export const espaUi: Record<Lang, {
     stepsTitle: "Πώς λειτουργεί",
     steps: [
       { title: "Δωρεάν αξιολόγηση", body: "Συμπλήρωσε τη σύντομη φόρμα. Ελέγχω τα στοιχεία σου σε σχέση με τις τρέχουσες προσκλήσεις και σου λέω ειλικρινά αν αξίζει." },
-      { title: "Κατασκευή", body: "Αν ταιριάζει, σχεδιάζω και υλοποιώ την ιστοσελίδα σου σύμφωνα με τις απαιτήσεις του προγράμματος — και σε επίπεδο που έτσι κι αλλιώς θα ήθελες." },
+      { title: "Κατασκευή", body: "Αν ταιριάζει, σχεδιάζω και υλοποιώ την ιστοσελίδα σου σύμφωνα με τις απαιτήσεις του προγράμματος, και σε επίπεδο που έτσι κι αλλιώς θα ήθελες." },
       { title: "Φάκελος για τον έλεγχο", body: "Λαμβάνεις τον τεχνικό φάκελο, τα εγχειρίδια και τα έγγραφα που ζητά η διαχειριστική αρχή κατά την ολοκλήρωση." },
     ],
     disclaimer:
-      "Η επιλεξιμότητα εξαρτάται πάντα από τη συγκεκριμένη ενεργή πρόσκληση και τα στοιχεία της επιχείρησής σου. Η αξιολόγηση είναι δωρεάν και χωρίς δέσμευση — δεν αποτελεί εγγύηση έγκρισης.",
+      "Η επιλεξιμότητα εξαρτάται πάντα από τη συγκεκριμένη ενεργή πρόσκληση και τα στοιχεία της επιχείρησής σου. Η αξιολόγηση είναι δωρεάν και χωρίς δέσμευση. Δεν αποτελεί εγγύηση έγκρισης.",
     formTitle: "Δωρεάν έλεγχος επιλεξιμότητας",
     formSubtitle: "Μερικά γρήγορα στοιχεία. Θα απαντήσω εντός 24 ωρών.",
     fBusiness: "Επωνυμία επιχείρησης",
     fVat: "ΑΦΜ",
     fKad: "Κύριος ΚΑΔ (κωδικός δραστηριότητας)",
-    fKadHint: "Αν τον ξέρεις — βοηθά στην αντιστοίχιση προγραμμάτων.",
+    fKadHint: "Αν τον ξέρεις, βοηθά στην αντιστοίχιση προγραμμάτων.",
     fRegion: "Πόλη / Περιφέρεια",
     fCompanyType: "Η επιχείρηση είναι νέα ή υφιστάμενη;",
     fEmployees: "Πόσους εργαζόμενους έχει;",
@@ -184,7 +184,7 @@ export const espaUi: Record<Lang, {
     vRequired: "Συμπλήρωσε όνομα, επιχείρηση και email.",
     vEmail: "Βάλε ένα έγκυρο email.",
     vConsent: "Τσέκαρε το κουτί για να μπορέσω να επικοινωνήσω.",
-    successTitle: "Ευχαριστώ — το αίτημα ελήφθη",
+    successTitle: "Ευχαριστώ, το αίτημα ελήφθη",
     successBody:
       "Έλαβα τα στοιχεία σου, θα ελέγξω την επιλεξιμότητά σου για ΕΣΠΑ και θα επικοινωνήσω εντός 24 ωρών.",
     errorTitle: "Χμμ, κάτι δεν πήγε καλά",

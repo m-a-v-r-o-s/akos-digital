@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/LanguageContext";
+import KeyboardAwareFocus from "@/components/KeyboardAwareFocus";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} antialiased`}
       >
+        <KeyboardAwareFocus />
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

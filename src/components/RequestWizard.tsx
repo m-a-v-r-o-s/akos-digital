@@ -319,17 +319,6 @@ export default function RequestWizard() {
         </div>
       )}
 
-      {/* ESPA funding nudge — appears once a website is among the needs */}
-      {form.needs.includes("new_website") && (
-        <Link
-          href="/espa"
-          className="mt-6 flex items-start gap-2 text-xs text-gold hover:text-gold-light transition-colors leading-relaxed"
-        >
-          <span className="ornament shrink-0">✦</span>
-          <span>{t.espaPrompt}</span>
-        </Link>
-      )}
-
       {/* Controls */}
       <div className="mt-10 flex items-center justify-between gap-4">
         <button
