@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Icon } from "@/components/Icons";
+import { openCookiePreferences } from "@/components/CookieConsent";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services } from "@/lib/data";
@@ -308,12 +309,20 @@ export default function MobileScrollSections() {
         <p className="text-xs text-stone leading-relaxed">
           {copyright[lang]}
         </p>
-        <Link
-          href="/terms"
-          className="shrink-0 text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
-        >
-          {lang === "en" ? "Terms" : "Όροι"}
-        </Link>
+        <div className="flex items-center gap-4 shrink-0">
+          <button
+            onClick={openCookiePreferences}
+            className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
+          >
+            Cookies
+          </button>
+          <Link
+            href="/terms"
+            className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
+          >
+            {lang === "en" ? "Terms" : "Όροι"}
+          </Link>
+        </div>
       </div>
     </div>
   );

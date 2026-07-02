@@ -11,6 +11,7 @@ import { person, education, projects, services } from "@/lib/data";
 import MobileScrollSections from "@/components/MobileScrollSections";
 import SecretName from "@/components/SecretName";
 import ProjectThumb from "@/components/ProjectThumb";
+import { openCookiePreferences } from "@/components/CookieConsent";
 
 const ui = {
   en: {
@@ -21,6 +22,7 @@ const ui = {
     fullCV: "Full CV",
     requestQuote: "Request a Quote",
     terms: "Terms",
+    cookies: "Cookies",
     copyright: "© Akos Digital 2026. All Rights Reserved.",
   },
   el: {
@@ -31,6 +33,7 @@ const ui = {
     fullCV: "Πλήρες Βιογραφικό",
     requestQuote: "Ζητήστε Προσφορά",
     terms: "Όροι",
+    cookies: "Cookies",
     copyright: "© Akos Digital 2026. Με επιφύλαξη παντός δικαιώματος.",
   },
 };
@@ -271,12 +274,20 @@ export default function Home() {
               <p className="text-xs text-stone leading-relaxed">
                 {t.copyright}
               </p>
-              <Link
-                href="/terms"
-                className="shrink-0 text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
-              >
-                {t.terms}
-              </Link>
+              <div className="flex items-center gap-4 shrink-0">
+                <button
+                  onClick={openCookiePreferences}
+                  className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
+                >
+                  {t.cookies}
+                </button>
+                <Link
+                  href="/terms"
+                  className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
+                >
+                  {t.terms}
+                </Link>
+              </div>
             </footer>
           </main>
         </div>
