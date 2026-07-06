@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageContext";
 
 const sectionLabels = {
-  en: { about: "About", services: "Services", education: "Education", projects: "Works" },
-  el: { about: "Σχετικά", services: "Υπηρεσίες", education: "Εκπαίδευση", projects: "Έργα" },
+  en: { about: "About", services: "Services", sectors: "Sectors", education: "Education", projects: "Works" },
+  el: { about: "Σχετικά", services: "Υπηρεσίες", sectors: "Ειδικότητες", education: "Εκπαίδευση", projects: "Έργα" },
 };
 
-const sections = ["projects", "services", "education", "about"] as const;
+const sections = ["projects", "services", "sectors", "education", "about"] as const;
 
 export default function NavLinks() {
   const [active, setActive] = useState("projects");

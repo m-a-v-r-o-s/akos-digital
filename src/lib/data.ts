@@ -232,3 +232,101 @@ export const services = [
     } as BL,
   },
 ];
+
+export const sectors = [
+  {
+    icon: "❖",
+    title: {
+      en: "Restaurants & Cafés",
+      el: "Επιχειρήσεις Εστίασης",
+    } as BL,
+    points: {
+      en: [
+        "A living menu with photography that sells the dishes before a guest arrives, updated in seconds and never reprinted.",
+        "Reservations taken around the clock, so the phone stops ringing in the middle of service.",
+        "Found on Google and maps the moment locals and travellers search for somewhere to eat nearby.",
+      ],
+      el: [
+        "Ένα ζωντανό μενού με φωτογραφία που πουλά τα πιάτα πριν φτάσει ο πελάτης, ενημερώνεται σε δευτερόλεπτα και δεν ξανατυπώνεται.",
+        "Κρατήσεις όλο το εικοσιτετράωρο, ώστε να μη χτυπά το τηλέφωνο μέσα στην υπηρεσία.",
+        "Εμφάνιση στο Google και στους χάρτες τη στιγμή που ντόπιοι και ταξιδιώτες ψάχνουν πού θα φάνε κοντά τους.",
+      ],
+    } as BLA,
+  },
+  {
+    icon: "✦",
+    title: {
+      en: "Artists & Creatives",
+      el: "Καλλιτέχνες",
+    } as BL,
+    points: {
+      en: [
+        "A gallery that shows your work in full quality and on your terms, not squeezed into a social feed.",
+        "Sell prints, commissions, or tickets directly and keep a bigger share of every sale.",
+        "One home for collectors, press, and bookings, plus a mailing list so your audience hears about new work first.",
+      ],
+      el: [
+        "Μια γκαλερί που δείχνει τη δουλειά σου σε πλήρη ποιότητα και με τους δικούς σου όρους, όχι στριμωγμένη σε ένα social feed.",
+        "Πώληση prints, παραγγελιών ή εισιτηρίων απευθείας, κρατώντας μεγαλύτερο μέρος από κάθε πώληση.",
+        "Ένα σπίτι για συλλέκτες, τύπο και κρατήσεις, μαζί με λίστα email ώστε το κοινό σου να μαθαίνει πρώτο τα νέα σου.",
+      ],
+    } as BLA,
+  },
+  {
+    icon: "✚",
+    title: {
+      en: "Health Professionals",
+      el: "Επαγγελματίες Υγείας",
+    } as BL,
+    points: {
+      en: [
+        "Online appointment booking that keeps filling your calendar while you are with patients.",
+        "A calm, professional presence that earns trust from the very first click.",
+        "Clear answers on services, hours, and location, so the phone rings less and the right patients arrive.",
+      ],
+      el: [
+        "Online κράτηση ραντεβού που γεμίζει το πρόγραμμά σου ενώ εσύ είσαι με τους ασθενείς.",
+        "Μια ήρεμη, επαγγελματική παρουσία που κερδίζει την εμπιστοσύνη από το πρώτο κλικ.",
+        "Ξεκάθαρες απαντήσεις για υπηρεσίες, ώρες και τοποθεσία, ώστε να χτυπά λιγότερο το τηλέφωνο και να έρχονται οι σωστοί ασθενείς.",
+      ],
+    } as BLA,
+  },
+  {
+    icon: "◈",
+    title: {
+      en: "Rent-a-Car",
+      el: "Rent-a-Car",
+    } as BL,
+    points: {
+      en: [
+        "Real-time availability and online booking with deposits, instead of endless back-and-forth messages.",
+        "Fleet, pricing, and terms laid out clearly, so customers reserve with confidence.",
+        "Reaches travellers who book before they even land, and offers insurance, seats, and delivery at checkout.",
+      ],
+      el: [
+        "Διαθεσιμότητα σε πραγματικό χρόνο και online κράτηση με προκαταβολή, αντί για ατελείωτα μηνύματα πέρα δώθε.",
+        "Στόλος, τιμές και όροι ξεκάθαρα, ώστε ο πελάτης να κλείνει με σιγουριά.",
+        "Φτάνει σε ταξιδιώτες που κλείνουν πριν καν προσγειωθούν, και προσφέρει ασφάλεια, καθίσματα και παράδοση στο ταμείο.",
+      ],
+    } as BLA,
+  },
+  {
+    icon: "⌂",
+    title: {
+      en: "Hotels & Short Stays",
+      el: "Ξενοδοχεία & Καταλύματα Βραχυπρόθεσμης Διαμονής",
+    } as BL,
+    points: {
+      en: [
+        "Direct bookings that skip platform commissions and keep the guest relationship yours.",
+        "Immersive photography and honest room detail that turn browsers into reservations.",
+        "Multilingual pages and instant enquiries that reach international travellers and answer them fast.",
+      ],
+      el: [
+        "Απευθείας κρατήσεις που παρακάμπτουν τις προμήθειες των πλατφορμών και κρατούν δική σου τη σχέση με τον επισκέπτη.",
+        "Εμβυθιστική φωτογραφία και ειλικρινής λεπτομέρεια δωματίων που μετατρέπουν τους επισκέπτες σε κρατήσεις.",
+        "Πολύγλωσσες σελίδες και άμεσα ερωτήματα που φτάνουν σε ταξιδιώτες από όλο τον κόσμο και τους απαντούν γρήγορα.",
+      ],
+    } as BLA,
+  },
+];

@@ -7,7 +7,7 @@ import NavLinks from "@/components/NavLinks";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
-import { person, education, projects, services } from "@/lib/data";
+import { person, education, projects, services, sectors } from "@/lib/data";
 import MobileScrollSections from "@/components/MobileScrollSections";
 import SecretName from "@/components/SecretName";
 import ProjectThumb from "@/components/ProjectThumb";
@@ -17,6 +17,7 @@ const ui = {
   en: {
     about: "About",
     services: "Services",
+    sectors: "Sectors",
     education: "Education",
     projects: "Selected Works",
     fullCV: "Full CV",
@@ -28,6 +29,7 @@ const ui = {
   el: {
     about: "Σχετικά",
     services: "Υπηρεσίες",
+    sectors: "Ειδικότητες",
     education: "Εκπαίδευση",
     projects: "Επιλεγμένα Έργα",
     fullCV: "Πλήρες Βιογραφικό",
@@ -208,6 +210,34 @@ export default function Home() {
                     <p className="text-xs text-stone leading-relaxed">
                       {svc.description[lang]}
                     </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* SECTORS */}
+            <section id="sectors">
+              <h3 className="section-heading">
+                <span className="ornament mr-2">§</span>
+                {t.sectors}
+              </h3>
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                {sectors.map((sec) => (
+                  <div key={sec.title.en} className="section-card group">
+                    <span className="text-gold text-xl mb-3 block leading-none">
+                      {sec.icon}
+                    </span>
+                    <h4 className="font-display font-semibold text-paper text-base mb-3 group-hover:text-gold-light transition-colors">
+                      {sec.title[lang]}
+                    </h4>
+                    <ul className="space-y-2">
+                      {sec.points[lang].map((p, i) => (
+                        <li key={i} className="flex gap-2.5 text-xs text-stone leading-relaxed">
+                          <span className="text-gold mt-0.5 shrink-0">›</span>
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>

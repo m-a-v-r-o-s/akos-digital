@@ -6,12 +6,12 @@ import { Icon } from "@/components/Icons";
 import { openCookiePreferences } from "@/components/CookieConsent";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
-import { person, education, projects, services } from "@/lib/data";
+import { person, education, projects, services, sectors } from "@/lib/data";
 import SecretName from "@/components/SecretName";
 
 const tabLabels = {
-  en: ["Works", "Services", "Education", "About"],
-  el: ["Έργα", "Υπηρεσίες", "Εκπαίδευση", "Σχετικά"],
+  en: ["Works", "Services", "Sectors", "Education", "About"],
+  el: ["Έργα", "Υπηρεσίες", "Ειδικότητες", "Εκπαίδευση", "Σχετικά"],
 };
 
 const copyright = {
@@ -236,6 +236,33 @@ export default function MobileScrollSections() {
                 <p className="text-xs text-stone leading-relaxed">
                   {svc.description[lang]}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Panel: Sectors ── */}
+        <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
+          <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
+            <span className="text-gold opacity-50 mr-2">§</span>
+          </h3>
+          <div className="space-y-4">
+            {sectors.map((sec) => (
+              <div key={sec.title.en} className="section-card">
+                <span className="text-gold text-xl mb-3 block leading-none">
+                  {sec.icon}
+                </span>
+                <h4 className="font-display font-semibold text-paper text-sm mb-2">
+                  {sec.title[lang]}
+                </h4>
+                <ul className="space-y-1.5">
+                  {sec.points[lang].map((p, i) => (
+                    <li key={i} className="flex gap-2 text-xs text-stone leading-relaxed">
+                      <span className="text-gold mt-0.5 shrink-0">›</span>
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
