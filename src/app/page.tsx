@@ -98,7 +98,7 @@ export default function Home() {
 
                 {/* ESPA funding button */}
                 <Link href="/espa" aria-label="ΕΣΠΑ" className="espa-button w-40">
-                  <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" className="w-full h-auto block" />
+                  <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
                 </Link>
               </div>
             </div>

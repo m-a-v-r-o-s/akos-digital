@@ -138,7 +138,7 @@ export default function EspaPage() {
             {/* Hero */}
             <section className="fade-up pt-2 pb-12">
               <div className="inline-block bg-white rounded-lg p-2.5 mb-7 shadow-lg">
-                <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ 2021-2027" className="h-14 sm:h-16 w-auto block" />
+                <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ 2021-2027" loading="lazy" decoding="async" className="h-14 sm:h-16 w-auto block" />
               </div>
               <p className="font-mono text-xs tracking-[0.2em] uppercase text-stone mb-5">
                 {t.eyebrow}

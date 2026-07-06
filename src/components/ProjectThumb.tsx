@@ -27,6 +27,8 @@ export default function ProjectThumb({
         <img
           src={image}
           alt={title}
+          loading="lazy"
+          decoding="async"
           onError={() => setFailed(true)}
           className="w-full h-full object-cover object-top project-screenshot"
         />
