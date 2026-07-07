@@ -469,3 +469,54 @@ a:hover .arrow-icon {
   border-color: rgba(41, 171, 226, 0.14);
   box-shadow: 0 4px 24px rgba(41, 171, 226, 0.08);
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   Smart-home sector page (scoped to .smarthome-theme) — borrows the
+   Home Assistant palette (HA blue) while keeping the site's dark design.
+   ══════════════════════════════════════════════════════════════════ */
+.smarthome-theme {
+  --paper: #eaf6fd;
+  --gold: #18bcf2;
+  --gold-light: #7fd9f7;
+  --gold-dim: rgba(24, 188, 242, 0.15);
+  --stone: #8aa4b8;
+  --stone-light: #b7ccdb;
+  --stone-dark: #33506a;
+  --ink: #06212f;
+  color: var(--paper);
+}
+.spotlight-bg.smarthome-theme {
+  background:
+    radial-gradient(600px circle at var(--spotlight-x) var(--spotlight-y), rgba(24, 188, 242, 0.14) 0%, transparent 80%),
+    radial-gradient(900px circle at var(--trail-x) var(--trail-y), rgba(24, 188, 242, 0.06) 0%, transparent 75%),
+    linear-gradient(165deg, #0a1f2e 0%, #091723 55%, #0b2739 100%);
+}
+.smarthome-theme .theta-bg { color: #1f9fd6; opacity: 0.08; }
+.smarthome-theme .theta-wave { stroke: #18bcf2; }
+.smarthome-theme .text-paper { color: #eaf6fd; }
+.smarthome-theme .text-gold { color: #2fc0f2; }
+.smarthome-theme .text-gold-light { color: #83d8f7; }
+.smarthome-theme .hover\:text-gold-light:hover { color: #83d8f7; }
+.smarthome-theme .text-stone { color: #8aa4b8; }
+.smarthome-theme .text-stone-light { color: #b7ccdb; }
+.smarthome-theme .text-stone-dark { color: #5d7c97; }
+.smarthome-theme .border-stone-dark { border-color: #33506a; }
+.smarthome-theme .border-gold\/30 { border-color: rgba(24, 188, 242, 0.45); }
+.smarthome-theme .deco-rule {
+  width: 56px;
+  background: linear-gradient(90deg, #18bcf2 0%, #7fd9f7 100%);
+  opacity: 0.9;
+}
+.smarthome-theme .cta-button:hover {
+  box-shadow: 0 6px 24px rgba(24, 188, 242, 0.28);
+}
+.smarthome-theme .section-card:hover {
+  background: rgba(24, 188, 242, 0.05);
+  border-color: rgba(24, 188, 242, 0.14);
+  box-shadow: 0 4px 24px rgba(24, 188, 242, 0.08);
+}
+.smarthome-theme .tag-pill {
+  background: rgba(24, 188, 242, 0.1);
+  color: #2fc0f2;
+  border-color: rgba(24, 188, 242, 0.2);
+}

@@ -62,7 +62,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
   const work = projects.filter((p) => p.sector === slug);
 
   return (
-    <SpotlightWrapper>
+    <SpotlightWrapper className={slug === "smarthome" ? "smarthome-theme" : ""}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
         {/* Header */}
         <header className="flex items-center justify-between py-8">
@@ -78,7 +78,23 @@ export default function SectorDetail({ slug }: { slug: string }) {
 
         {/* Hero */}
         <section className="fade-up pt-2 pb-12">
-          <span className="text-gold text-3xl block mb-5 leading-none">{sec.icon}</span>
+          {slug === "smarthome" ? (
+            <span
+              className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-5 font-mono text-[0.65rem] tracking-widest uppercase"
+              style={{
+                background: "rgba(24,188,242,0.12)",
+                border: "1px solid rgba(24,188,242,0.45)",
+                color: "#18bcf2",
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 3 3 10.5V21h6v-6h6v6h6V10.5z" />
+              </svg>
+              Home Assistant
+            </span>
+          ) : (
+            <span className="text-gold text-3xl block mb-5 leading-none">{sec.icon}</span>
+          )}
           <p className="font-mono text-xs tracking-[0.2em] uppercase text-stone mb-4">
             {t.eyebrow}
           </p>
