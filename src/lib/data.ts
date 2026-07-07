@@ -274,12 +274,14 @@ export const sectors = [
         "Table reservations taken 24/7",
         "Google Maps and local-search setup so you're found nearby",
         "A mobile-first design with gallery and story",
+        "GDPR-compliant by default",
       ],
       el: [
         "Μενού με φωτογραφίες που ενημερώνεις μόνος σου σε δευτερόλεπτα",
         "Κρατήσεις τραπεζιού όλο το εικοσιτετράωρο",
         "Ρύθμιση Google Maps και τοπικής αναζήτησης για να σε βρίσκουν κοντά τους",
         "Σχεδιασμός mobile-first με gallery και ιστορία",
+        "Συμβατό με το GDPR εξ ορισμού",
       ],
     } as BLA,
     faq: [
@@ -326,12 +328,14 @@ export const sectors = [
         "A shop for prints, commissions, or tickets",
         "A mailing list to grow your audience",
         "One hub for press, bookings, and links",
+        "GDPR-compliant by default",
       ],
       el: [
         "Portfolio gallery σε πλήρη ποιότητα",
         "Κατάστημα για prints, παραγγελίες ή εισιτήρια",
         "Λίστα email για να μεγαλώνεις το κοινό σου",
         "Ένα σημείο για τύπο, κρατήσεις και συνδέσμους",
+        "Συμβατό με το GDPR εξ ορισμού",
       ],
     } as BLA,
     faq: [
@@ -430,12 +434,14 @@ export const sectors = [
         "A fleet catalogue with photos and pricing",
         "Deposit or full payment at checkout",
         "An admin panel to manage bookings and fleet",
+        "GDPR-compliant by default",
       ],
       el: [
         "Διαθεσιμότητα σε πραγματικό χρόνο και online κράτηση",
         "Κατάλογος στόλου με φωτογραφίες και τιμές",
         "Προκαταβολή ή πλήρης πληρωμή στο ταμείο",
         "Admin panel για τη διαχείριση κρατήσεων και στόλου",
+        "Συμβατό με το GDPR εξ ορισμού",
       ],
     } as BLA,
     faq: [
@@ -482,12 +488,14 @@ export const sectors = [
         "Availability, enquiries, and direct booking",
         "Immersive photography and layout",
         "Multilingual pages for international guests",
+        "GDPR-compliant by default",
       ],
       el: [
         "Παρουσίαση δωματίων και σουιτών με πραγματική λεπτομέρεια",
         "Διαθεσιμότητα, αιτήματα και απευθείας κράτηση",
         "Καθηλωτική φωτογραφία και διάταξη",
         "Πολύγλωσσες σελίδες για επισκέπτες από το εξωτερικό",
+        "Συμβατό με το GDPR εξ ορισμού",
       ],
     } as BLA,
     faq: [
