@@ -19,6 +19,9 @@ const L = {
       "Every site includes lifetime support for its security and functionality. New features and content changes are quoted separately, and hosting and the domain are separate recurring costs, payable through me or directly to the providers.",
     supportNoteLocal:
       "Every installation includes lifetime support for its security and reliable operation. It runs fully local, with no cloud, no subscriptions, and no data leaving your home; new devices or automations are quoted separately.",
+    aboutHaTitle: "About Home Assistant",
+    aboutHa:
+      "Home Assistant is open-source home automation, stewarded by the non-profit Open Home Foundation. It's built around privacy, local control, and genuine user choice: your data stays in your home, nothing is sold, and there's no lock-in. That ethos is exactly why I build on it.",
     faq: "Common questions",
     ctaTitle: "Ready to start?",
     ctaBody:
@@ -34,6 +37,9 @@ const L = {
       "Κάθε site περιλαμβάνει υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του. Νέες λειτουργίες και αλλαγές περιεχομένου κοστολογούνται ξεχωριστά, ενώ το hosting και το domain είναι ξεχωριστά, επαναλαμβανόμενα κόστη, που πληρώνονται μέσω εμένα ή απευθείας στους παρόχους.",
     supportNoteLocal:
       "Κάθε εγκατάσταση περιλαμβάνει υποστήριξη εφ' όρου ζωής για την ασφάλεια και την αξιόπιστη λειτουργία της. Τρέχει πλήρως τοπικά, χωρίς cloud, χωρίς συνδρομές και χωρίς δεδομένα να φεύγουν από το σπίτι σου· νέες συσκευές ή αυτοματισμοί κοστολογούνται ξεχωριστά.",
+    aboutHaTitle: "Σχετικά με το Home Assistant",
+    aboutHa:
+      "Το Home Assistant είναι λογισμικό αυτοματισμού σπιτιού ανοιχτού κώδικα, υπό την αιγίδα του μη κερδοσκοπικού Open Home Foundation. Είναι χτισμένο γύρω από την ιδιωτικότητα, τον τοπικό έλεγχο και την πραγματική ελευθερία επιλογής: τα δεδομένα σου μένουν στο σπίτι σου, τίποτα δεν πουλιέται και δεν υπάρχει εγκλωβισμός. Ακριβώς γι' αυτό το χτίζω πάνω σε αυτό.",
     faq: "Συχνές ερωτήσεις",
     ctaTitle: "Έτοιμος να ξεκινήσεις;",
     ctaBody:
@@ -114,6 +120,20 @@ export default function SectorDetail({ slug }: { slug: string }) {
             ))}
           </ul>
         </section>
+
+        {/* About Home Assistant (smart-home only) */}
+        {slug === "smarthome" && (
+          <section className="mb-14">
+            <div className="section-card">
+              <h2 className="font-display font-semibold text-paper text-base mb-3">
+                {t.aboutHaTitle}
+              </h2>
+              <p className="text-sm text-stone leading-relaxed max-w-3xl">
+                {t.aboutHa}
+              </p>
+            </div>
+          </section>
+        )}
 
         {/* Selected work */}
         {work.length > 0 && (

@@ -305,19 +305,39 @@ export default function MobileScrollSections() {
             <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
           <div className="space-y-4">
-            {services.map((svc) => (
-              <div key={svc.title.en} className="section-card">
-                <span className="text-gold text-xl mb-3 block leading-none">
-                  {svc.icon}
-                </span>
-                <h4 className="font-display font-semibold text-paper text-sm mb-2">
-                  {svc.title[lang]}
-                </h4>
-                <p className="text-xs text-stone leading-relaxed">
-                  {svc.description[lang]}
-                </p>
-              </div>
-            ))}
+            {services.map((svc) =>
+              svc.href ? (
+                <Link key={svc.title.en} href={svc.href} className="section-card block group">
+                  <span className="text-gold text-xl mb-3 block leading-none">
+                    {svc.icon}
+                  </span>
+                  <h4 className="font-display font-semibold text-paper text-sm mb-2">
+                    {svc.title[lang]}
+                  </h4>
+                  <p className="text-xs text-stone leading-relaxed mb-3">
+                    {svc.description[lang]}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone">
+                    {lang === "en" ? "Explore" : "Περισσότερα"}
+                    <span className="arrow-icon">
+                      <Icon name="arrow" size={11} />
+                    </span>
+                  </span>
+                </Link>
+              ) : (
+                <div key={svc.title.en} className="section-card">
+                  <span className="text-gold text-xl mb-3 block leading-none">
+                    {svc.icon}
+                  </span>
+                  <h4 className="font-display font-semibold text-paper text-sm mb-2">
+                    {svc.title[lang]}
+                  </h4>
+                  <p className="text-xs text-stone leading-relaxed">
+                    {svc.description[lang]}
+                  </p>
+                </div>
+              )
+            )}
           </div>
         </div>
 

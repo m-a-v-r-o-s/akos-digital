@@ -279,19 +279,43 @@ export default function Home() {
                 {t.services}
               </h3>
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                {services.map((svc) => (
-                  <div key={svc.title.en} className="section-card group">
-                    <span className="text-gold text-xl mb-3 block leading-none">
-                      {svc.icon}
-                    </span>
-                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
-                      {svc.title[lang]}
-                    </h4>
-                    <p className="text-xs text-stone leading-relaxed">
-                      {svc.description[lang]}
-                    </p>
-                  </div>
-                ))}
+                {services.map((svc) =>
+                  svc.href ? (
+                    <Link
+                      key={svc.title.en}
+                      href={svc.href}
+                      className="section-card group flex flex-col"
+                    >
+                      <span className="text-gold text-xl mb-3 block leading-none">
+                        {svc.icon}
+                      </span>
+                      <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                        {svc.title[lang]}
+                      </h4>
+                      <p className="text-xs text-stone leading-relaxed mb-4">
+                        {svc.description[lang]}
+                      </p>
+                      <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-gold-light transition-colors">
+                        {t.explore}
+                        <span className="arrow-icon">
+                          <Icon name="arrow" size={11} />
+                        </span>
+                      </span>
+                    </Link>
+                  ) : (
+                    <div key={svc.title.en} className="section-card group">
+                      <span className="text-gold text-xl mb-3 block leading-none">
+                        {svc.icon}
+                      </span>
+                      <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                        {svc.title[lang]}
+                      </h4>
+                      <p className="text-xs text-stone leading-relaxed">
+                        {svc.description[lang]}
+                      </p>
+                    </div>
+                  )
+                )}
               </div>
             </section>
 

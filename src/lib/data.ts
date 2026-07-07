@@ -236,9 +236,10 @@ export const services = [
       el: "Έξυπνο Σπίτι Offline",
     } as BL,
     description: {
-      en: "A fully local AND automated Home Assistant system, no cloud, no subscriptions, no data leaving your space. Lights, climate, security cameras, sensors, and much more unified under one private dashboard accessible ONLY through an encrypted local connection. Every automation runs locally, responds instantly and keeps working even without internet.",
-      el: "Ένα πλήρως τοπικό και αυτοματοποιημένο σύστημα Home Assistant, χωρίς cloud, χωρίς συνδρομές, χωρίς δεδομένα που φεύγουν από το χώρο σου. Φωτισμός, κλιματισμός, κάμερες ασφαλείας, αισθητήρες και πολλά άλλα σε ένα ιδιωτικό dashboard προσβάσιμο ΜΟΝΟ μέσω κρυπτογραφημένης τοπικής σύνδεσης. Κάθε αυτοματισμός τρέχει τοπικά αποκρίνεται άμεσα και συνεχίζει να λειτουργεί ακόμα και χωρίς internet.",
+      en: "A fully local Home Assistant system: lights, climate, cameras, and sensors on one private dashboard, with no cloud and no subscriptions.",
+      el: "Ένα πλήρως τοπικό σύστημα Home Assistant: φωτισμός, κλιματισμός, κάμερες και αισθητήρες σε ένα ιδιωτικό dashboard, χωρίς cloud και χωρίς συνδρομές.",
     } as BL,
+    href: "/sectors/smarthome",
   },
 ];
 
@@ -249,8 +250,8 @@ export const sectors = [
     slug: "food",
     icon: "❖",
     title: {
-      en: "Restaurants & Cafés",
-      el: "Επιχειρήσεις Εστίασης",
+      en: "Website for Restaurants & Cafés",
+      el: "Ιστοσελίδα για Επιχειρήσεις Εστίασης",
     } as BL,
     hook: {
       en: "Self-serve digital menu, online table reservations, a food gallery, and a Google Maps listing.",
@@ -303,8 +304,8 @@ export const sectors = [
     slug: "artists",
     icon: "✦",
     title: {
-      en: "Artists & Creatives",
-      el: "Καλλιτέχνες",
+      en: "Website for Artists & Creatives",
+      el: "Ιστοσελίδα για Καλλιτέχνες",
     } as BL,
     hook: {
       en: "A full-quality portfolio gallery, a shop for prints or tickets, and a mailing list for your audience.",
@@ -357,8 +358,8 @@ export const sectors = [
     slug: "health",
     icon: "✚",
     title: {
-      en: "Health Professionals",
-      el: "Επαγγελματίες Υγείας",
+      en: "Website for Health Professionals",
+      el: "Ιστοσελίδα για Επαγγελματίες Υγείας",
     } as BL,
     hook: {
       en: "Online appointment booking, service and hours pages, and secure GDPR-ready contact forms.",
@@ -409,8 +410,8 @@ export const sectors = [
     slug: "rentacar",
     icon: "◈",
     title: {
-      en: "Rent-a-Car",
-      el: "Rent-a-Car",
+      en: "Website for Rent-a-Car",
+      el: "Ιστοσελίδα για Rent-a-Car",
     } as BL,
     hook: {
       en: "Real-time availability, an online fleet catalogue, bookings with deposits, and an admin panel.",
@@ -463,8 +464,8 @@ export const sectors = [
     slug: "hotels",
     icon: "⌂",
     title: {
-      en: "Hotels & Short Stays",
-      el: "Ξενοδοχεία & Καταλύματα Βραχυπρόθεσμης Διαμονής",
+      en: "Website for Hotels & Short Stays",
+      el: "Ιστοσελίδα για Ξενοδοχεία & Καταλύματα Βραχυπρόθεσμης Διαμονής",
     } as BL,
     hook: {
       en: "Room and suite pages, an availability calendar, direct booking or enquiries, and multilingual content.",
