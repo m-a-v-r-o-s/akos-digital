@@ -284,16 +284,16 @@ export const sectors = [
     } as BLA,
     faq: [
       {
-        q: { en: "Can guests book a table online?", el: "Μπορούν οι πελάτες να κλείνουν τραπέζι online;" } as BL,
-        a: { en: "Yes. You take reservations around the clock, with the details landing straight in your inbox.", el: "Ναι. Δέχεσαι κρατήσεις όλο το εικοσιτετράωρο, με τα στοιχεία να έρχονται κατευθείαν στο inbox σου." } as BL,
+        q: { en: "How long until my site is live?", el: "Σε πόσο καιρό θα είναι online το site μου;" } as BL,
+        a: { en: "Most restaurant and café sites are ready in about 2 to 4 weeks, depending on the content and the number of pages.", el: "Τα περισσότερα sites για εστιατόρια και καφέ είναι έτοιμα σε περίπου 2 με 4 εβδομάδες, ανάλογα με το περιεχόμενο και τον αριθμό των σελίδων." } as BL,
       },
       {
-        q: { en: "Can I change the menu myself?", el: "Μπορώ να αλλάζω μόνος μου το μενού;" } as BL,
-        a: { en: "Absolutely. Prices and dishes update in seconds, with no reprinting and no calling me.", el: "Φυσικά. Τιμές και πιάτα αλλάζουν σε δευτερόλεπτα, χωρίς ανατύπωση και χωρίς να με παίρνεις τηλέφωνο." } as BL,
+        q: { en: "What do you need from me to start?", el: "Τι χρειάζεσαι από μένα για να ξεκινήσουμε;" } as BL,
+        a: { en: "Your logo if you have one, a few photos of the space and the dishes, your menu, and your opening hours. I handle the rest.", el: "Το λογότυπό σου αν έχεις, μερικές φωτογραφίες από τον χώρο και τα πιάτα, το μενού σου και το ωράριο. Τα υπόλοιπα τα αναλαμβάνω εγώ." } as BL,
       },
       {
-        q: { en: "Will people find me on Google?", el: "Θα με βρίσκουν στο Google;" } as BL,
-        a: { en: "That's part of the build: local SEO and Google Maps so nearby searches lead to you.", el: "Είναι μέρος της δουλειάς: τοπικό SEO και Google Maps ώστε οι κοντινές αναζητήσεις να καταλήγουν σε σένα." } as BL,
+        q: { en: "Are hosting and the domain included?", el: "Περιλαμβάνονται το hosting και το domain;" } as BL,
+        a: { en: "No, those are separate from the build price. Hosting and the domain are recurring costs, paid monthly or yearly to the providers. I set everything up for you, then I'm around for changes like a seasonal menu.", el: "Όχι, αυτά είναι ξεχωριστά από την τιμή κατασκευής. Το hosting και το domain είναι επαναλαμβανόμενα κόστη, που πληρώνονται μηνιαίως ή ετησίως στους παρόχους. Τα στήνω όλα για σένα και μετά είμαι διαθέσιμος για αλλαγές, όπως ένα εποχιακό μενού." } as BL,
       },
     ] as FAQ[],
   },
@@ -336,16 +336,16 @@ export const sectors = [
     } as BLA,
     faq: [
       {
-        q: { en: "Can I sell directly from the site?", el: "Μπορώ να πουλάω απευθείας από το site;" } as BL,
-        a: { en: "Yes: prints, commissions, or tickets, so you keep a bigger share than a marketplace leaves you.", el: "Ναι: prints, παραγγελίες ή εισιτήρια, ώστε να κρατάς μεγαλύτερο μέρος απ' ό,τι σου αφήνει ένα marketplace." } as BL,
+        q: { en: "How long does a portfolio site take?", el: "Πόσο χρόνο θέλει ένα portfolio site;" } as BL,
+        a: { en: "Usually 2 to 4 weeks once I have your work and images, a little more if there's a shop to set up.", el: "Συνήθως 2 με 4 εβδομάδες μόλις έχω τα έργα και τις φωτογραφίες σου, λίγο παραπάνω αν στήνουμε και κατάστημα." } as BL,
       },
       {
-        q: { en: "Can I update the gallery myself?", el: "Μπορώ να ανανεώνω μόνος μου τη gallery;" } as BL,
-        a: { en: "Yes, adding new work is quick and doesn't need me.", el: "Ναι, το να προσθέτεις νέα δουλειά είναι γρήγορο και δεν με χρειάζεται." } as BL,
+        q: { en: "How much does it cost?", el: "Πόσο κοστίζει;" } as BL,
+        a: { en: "It depends on the size of the gallery and whether you sell online. After a short chat I send a clear, fixed quote with no surprises.", el: "Εξαρτάται από το μέγεθος της gallery και αν πουλάς online. Μετά από μια σύντομη κουβέντα στέλνω μια ξεκάθαρη, σταθερή προσφορά χωρίς εκπλήξεις." } as BL,
       },
       {
-        q: { en: "Can I collect emails from fans?", el: "Μπορώ να μαζεύω email από το κοινό μου;" } as BL,
-        a: { en: "Yes, a mailing list is built in so your audience hears about new work and shows first.", el: "Ναι, η λίστα email είναι ενσωματωμένη ώστε το κοινό σου να μαθαίνει πρώτο για νέα έργα και εμφανίσεις." } as BL,
+        q: { en: "Is the site mine, and can I keep it updated?", el: "Το site είναι δικό μου και μπορώ να το κρατάω ενημερωμένο;" } as BL,
+        a: { en: "Yes. The site and its content are yours, and adding new work is quick, whether you do it or I do.", el: "Ναι. Το site και το περιεχόμενό του είναι δικά σου, και το να προσθέτεις νέα δουλειά είναι γρήγορο, είτε το κάνεις εσύ είτε εγώ." } as BL,
       },
     ] as FAQ[],
   },
@@ -388,16 +388,16 @@ export const sectors = [
     } as BLA,
     faq: [
       {
-        q: { en: "Can patients book appointments online?", el: "Μπορούν οι ασθενείς να κλείνουν ραντεβού online;" } as BL,
-        a: { en: "Yes, your calendar fills up on its own while you focus on care.", el: "Ναι, το πρόγραμμά σου γεμίζει μόνο του όσο εσύ επικεντρώνεσαι στη φροντίδα." } as BL,
+        q: { en: "How long until it's ready?", el: "Σε πόσο καιρό θα είναι έτοιμο;" } as BL,
+        a: { en: "A practice or clinic site is typically ready in 2 to 4 weeks, depending on the number of services and pages.", el: "Ένα site για ιατρείο ή κλινική είναι συνήθως έτοιμο σε 2 με 4 εβδομάδες, ανάλογα με τον αριθμό των υπηρεσιών και των σελίδων." } as BL,
       },
       {
-        q: { en: "Will it look professional and trustworthy?", el: "Θα δείχνει επαγγελματικό και αξιόπιστο;" } as BL,
-        a: { en: "That's the whole point: a calm, clean design that reassures patients from the first second.", el: "Αυτός είναι όλος ο στόχος: ένας ήρεμος, καθαρός σχεδιασμός που καθησυχάζει τον ασθενή από το πρώτο δευτερόλεπτο." } as BL,
+        q: { en: "What do you need from me?", el: "Τι χρειάζεσαι από μένα;" } as BL,
+        a: { en: "Your services, hours, location, any credentials you want shown, and photos if you have them. I guide you through the rest.", el: "Τις υπηρεσίες σου, το ωράριο, την τοποθεσία, όποια πιστοποιητικά θες να προβληθούν και φωτογραφίες αν έχεις. Σε καθοδηγώ στα υπόλοιπα." } as BL,
       },
       {
-        q: { en: "Is patient data handled safely?", el: "Τα δεδομένα των ασθενών είναι ασφαλή;" } as BL,
-        a: { en: "Yes, forms are set up with privacy and GDPR consent in mind.", el: "Ναι, οι φόρμες στήνονται με γνώμονα την ιδιωτικότητα και τη συγκατάθεση GDPR." } as BL,
+        q: { en: "Do hosting and the domain cost extra?", el: "Το hosting και το domain κοστίζουν επιπλέον;" } as BL,
+        a: { en: "Yes. They're never part of the build price; they're separate recurring costs, billed monthly or yearly to the providers. I set them up for you.", el: "Ναι. Δεν περιλαμβάνονται ποτέ στην τιμή κατασκευής· είναι ξεχωριστά, επαναλαμβανόμενα κόστη, με χρέωση μηνιαία ή ετήσια στους παρόχους. Τα στήνω για σένα." } as BL,
       },
     ] as FAQ[],
   },
@@ -440,16 +440,16 @@ export const sectors = [
     } as BLA,
     faq: [
       {
-        q: { en: "Can customers see availability and book online?", el: "Μπορούν οι πελάτες να βλέπουν διαθεσιμότητα και να κλείνουν online;" } as BL,
-        a: { en: "Yes, real-time availability by dates and pickup point, booked in a couple of minutes.", el: "Ναι, διαθεσιμότητα σε πραγματικό χρόνο ανά ημερομηνία και σημείο παραλαβής, με κράτηση σε δυο λεπτά." } as BL,
+        q: { en: "How long does a rental site take?", el: "Πόσο χρόνο θέλει ένα site ενοικιάσεων;" } as BL,
+        a: { en: "A rental site with availability and an admin panel usually takes about 4 to 6 weeks, since the booking logic needs more care.", el: "Ένα site ενοικιάσεων με διαθεσιμότητα και admin panel θέλει συνήθως 4 με 6 εβδομάδες, καθώς η λογική των κρατήσεων χρειάζεται μεγαλύτερη προσοχή." } as BL,
       },
       {
-        q: { en: "Can I take a deposit or full payment?", el: "Μπορώ να παίρνω προκαταβολή ή ολόκληρο το ποσό;" } as BL,
-        a: { en: "Yes, collect a deposit online or the full amount, whichever you prefer.", el: "Ναι, μπορείς να εισπράττεις προκαταβολή online ή όλο το ποσό, όπως προτιμάς." } as BL,
+        q: { en: "How do online payments and deposits work?", el: "Πώς λειτουργούν οι online πληρωμές και οι προκαταβολές;" } as BL,
+        a: { en: "I connect a payment provider so deposits or full payments land in your account. The transaction fees are the provider's standard rates, not mine.", el: "Συνδέω έναν πάροχο πληρωμών ώστε οι προκαταβολές ή οι πλήρεις πληρωμές να πηγαίνουν στον λογαριασμό σου. Οι χρεώσεις συναλλαγών είναι οι τυπικές του παρόχου, όχι δικές μου." } as BL,
       },
       {
-        q: { en: "Can I manage the fleet and bookings?", el: "Μπορώ να διαχειρίζομαι τον στόλο και τις κρατήσεις;" } as BL,
-        a: { en: "Yes, an admin panel handles vehicles, bookings, and customers in one place, like the Nisos demo.", el: "Ναι, ένα admin panel διαχειρίζεται οχήματα, κρατήσεις και πελάτες σε ένα σημείο, όπως στο demo της Nisos." } as BL,
+        q: { en: "What does it cost to build?", el: "Πόσο κοστίζει η κατασκευή;" } as BL,
+        a: { en: "It depends on fleet size and features. After we talk I send a fixed quote before any work starts.", el: "Εξαρτάται από το μέγεθος του στόλου και τις λειτουργίες. Μετά την κουβέντα μας στέλνω σταθερή προσφορά πριν ξεκινήσει οποιαδήποτε δουλειά." } as BL,
       },
     ] as FAQ[],
   },
@@ -492,16 +492,16 @@ export const sectors = [
     } as BLA,
     faq: [
       {
-        q: { en: "Can I take direct bookings?", el: "Μπορώ να δέχομαι απευθείας κρατήσεις;" } as BL,
-        a: { en: "Yes, guests book straight with you, so you skip the platform commission and own the relationship.", el: "Ναι, οι επισκέπτες κλείνουν κατευθείαν μαζί σου, οπότε γλιτώνεις την προμήθεια της πλατφόρμας και κρατάς δική σου τη σχέση." } as BL,
+        q: { en: "How long until launch?", el: "Σε πόσο καιρό γίνεται το launch;" } as BL,
+        a: { en: "A hotel or short-stay site is usually ready in about 3 to 5 weeks, depending on the number of rooms and languages.", el: "Ένα site για ξενοδοχείο ή κατάλυμα είναι συνήθως έτοιμο σε περίπου 3 με 5 εβδομάδες, ανάλογα με τον αριθμό δωματίων και γλωσσών." } as BL,
       },
       {
-        q: { en: "Can the site be multilingual?", el: "Μπορεί το site να είναι πολύγλωσσο;" } as BL,
-        a: { en: "Yes, pages can speak to international travellers in their own language.", el: "Ναι, οι σελίδες μπορούν να μιλούν στους ταξιδιώτες από το εξωτερικό στη γλώσσα τους." } as BL,
+        q: { en: "What do you need from me to start?", el: "Τι χρειάζεσαι από μένα για να ξεκινήσουμε;" } as BL,
+        a: { en: "Room details and rates, good photos, and the languages you want. I take it from there.", el: "Στοιχεία και τιμές δωματίων, καλές φωτογραφίες και τις γλώσσες που θέλεις. Από εκεί και πέρα το αναλαμβάνω." } as BL,
       },
       {
-        q: { en: "Can I still use Booking or Airbnb too?", el: "Μπορώ να χρησιμοποιώ και Booking ή Airbnb;" } as BL,
-        a: { en: "Of course. It works alongside them and simply wins you the direct, commission-free bookings on top.", el: "Φυσικά. Λειτουργεί παράλληλα μ' αυτά και απλώς σου κερδίζει επιπλέον τις απευθείας κρατήσεις χωρίς προμήθεια." } as BL,
+        q: { en: "Who pays for hosting and the domain?", el: "Ποιος πληρώνει το hosting και το domain;" } as BL,
+        a: { en: "You do, directly to the providers. They're separate from the build, as recurring monthly or yearly costs. I handle the setup for you.", el: "Εσύ, απευθείας στους παρόχους. Είναι ξεχωριστά από την κατασκευή, ως επαναλαμβανόμενα μηνιαία ή ετήσια κόστη. Αναλαμβάνω το στήσιμο για σένα." } as BL,
       },
     ] as FAQ[],
   },

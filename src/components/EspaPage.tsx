@@ -103,7 +103,7 @@ export default function EspaPage() {
 
   return (
     <SpotlightWrapper className="espa-theme">
-      <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-10 min-h-screen pb-24">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
         {/* Header */}
         <header className="flex items-center justify-between py-8">
           <Link
@@ -147,7 +147,7 @@ export default function EspaPage() {
                 {t.title}
               </h1>
               <div className="deco-rule mb-6" />
-              <p className="text-base text-stone-light leading-relaxed max-w-2xl">{t.subtitle}</p>
+              <p className="text-base text-stone-light leading-relaxed max-w-3xl">{t.subtitle}</p>
             </section>
 
             {/* What is ESPA */}
@@ -155,7 +155,7 @@ export default function EspaPage() {
               <h2 className="section-heading !static mb-4">{t.whatTitle}</h2>
               <div className="space-y-4">
                 {t.what.map((p, i) => (
-                  <p key={i} className="text-sm text-stone leading-[1.85] max-w-2xl">
+                  <p key={i} className="text-sm text-stone leading-[1.85] max-w-3xl">
                     {p}
                   </p>
                 ))}
@@ -191,7 +191,7 @@ export default function EspaPage() {
               </div>
             </section>
 
-            <p className="text-xs text-stone leading-relaxed max-w-2xl mb-14 border-l-2 border-gold/30 pl-4">
+            <p className="text-xs text-stone leading-relaxed max-w-3xl mb-14 border-l-2 border-gold/30 pl-4">
               {t.disclaimer}
             </p>
 

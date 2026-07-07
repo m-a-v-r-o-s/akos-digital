@@ -15,6 +15,8 @@ const L = {
     eyebrow: "Sector",
     works: "Selected work in this space",
     included: "What your site includes",
+    supportNote:
+      "Every site includes lifetime support for its security and functionality. New features and content changes are quoted separately, and hosting and the domain are separate recurring costs.",
     faq: "Common questions",
     ctaTitle: "Ready to start?",
     ctaBody:
@@ -26,6 +28,8 @@ const L = {
     eyebrow: "Ειδικότητα",
     works: "Επιλεγμένες δουλειές στον χώρο",
     included: "Τι περιλαμβάνει το site σου",
+    supportNote:
+      "Κάθε site περιλαμβάνει διά βίου υποστήριξη για την ασφάλεια και τη λειτουργία του. Νέες λειτουργίες και αλλαγές περιεχομένου κοστολογούνται ξεχωριστά, ενώ το hosting και το domain είναι ξεχωριστά, επαναλαμβανόμενα κόστη.",
     faq: "Συχνές ερωτήσεις",
     ctaTitle: "Έτοιμος να ξεκινήσεις;",
     ctaBody:
@@ -55,7 +59,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
 
   return (
     <SpotlightWrapper>
-      <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-10 min-h-screen pb-24">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
         {/* Header */}
         <header className="flex items-center justify-between py-8">
           <Link
@@ -78,10 +82,10 @@ export default function SectorDetail({ slug }: { slug: string }) {
             {sec.title[lang]}
           </h1>
           <div className="deco-rule mb-6" />
-          <p className="text-base text-stone-light leading-relaxed max-w-2xl mb-6">
+          <p className="text-base text-stone-light leading-relaxed max-w-3xl mb-6">
             {sec.hook[lang]}
           </p>
-          <ul className="space-y-2 max-w-2xl">
+          <ul className="space-y-2 max-w-3xl">
             {sec.points[lang].map((p, i) => (
               <li key={i} className="flex gap-2.5 text-sm text-stone leading-relaxed">
                 <span className="text-gold mt-0.5 shrink-0">›</span>
@@ -156,12 +160,15 @@ export default function SectorDetail({ slug }: { slug: string }) {
               </div>
             ))}
           </div>
+          <p className="text-xs text-stone leading-relaxed mt-4 border-l-2 border-gold/30 pl-4 max-w-3xl">
+            {t.supportNote}
+          </p>
         </section>
 
         {/* FAQ */}
         <section className="mb-14">
           <h2 className="section-heading !static mb-5">{t.faq}</h2>
-          <div className="space-y-3">
+          <div className="grid sm:grid-cols-2 gap-3">
             {sec.faq.map((f, i) => (
               <div key={i} className="section-card">
                 <p className="font-display font-semibold text-paper text-sm mb-1.5">
