@@ -16,7 +16,7 @@ const L = {
     works: "Selected work in this space",
     included: "What your site includes",
     supportNote:
-      "Every site includes lifetime support for its security and functionality. New features and content changes are quoted separately, and hosting and the domain are separate recurring costs.",
+      "Every site includes lifetime support for its security and functionality. New features and content changes are quoted separately, and hosting and the domain are separate recurring costs, payable through me or directly to the providers.",
     faq: "Common questions",
     ctaTitle: "Ready to start?",
     ctaBody:
@@ -29,7 +29,7 @@ const L = {
     works: "Επιλεγμένες δουλειές στον χώρο",
     included: "Τι περιλαμβάνει το site σου",
     supportNote:
-      "Κάθε site περιλαμβάνει διά βίου υποστήριξη για την ασφάλεια και τη λειτουργία του. Νέες λειτουργίες και αλλαγές περιεχομένου κοστολογούνται ξεχωριστά, ενώ το hosting και το domain είναι ξεχωριστά, επαναλαμβανόμενα κόστη.",
+      "Κάθε site περιλαμβάνει υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του. Νέες λειτουργίες και αλλαγές περιεχομένου κοστολογούνται ξεχωριστά, ενώ το hosting και το domain είναι ξεχωριστά, επαναλαμβανόμενα κόστη, που πληρώνονται μέσω εμένα ή απευθείας στους παρόχους.",
     faq: "Συχνές ερωτήσεις",
     ctaTitle: "Έτοιμος να ξεκινήσεις;",
     ctaBody:

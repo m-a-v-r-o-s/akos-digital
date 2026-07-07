@@ -293,7 +293,7 @@ export const sectors = [
       },
       {
         q: { en: "Are hosting and the domain included?", el: "Περιλαμβάνονται το hosting και το domain;" } as BL,
-        a: { en: "No, those are separate from the build price. Hosting and the domain are recurring costs, paid monthly or yearly to the providers. I set everything up for you, then I'm around for changes like a seasonal menu.", el: "Όχι, αυτά είναι ξεχωριστά από την τιμή κατασκευής. Το hosting και το domain είναι επαναλαμβανόμενα κόστη, που πληρώνονται μηνιαίως ή ετησίως στους παρόχους. Τα στήνω όλα για σένα και μετά είμαι διαθέσιμος για αλλαγές, όπως ένα εποχιακό μενού." } as BL,
+        a: { en: "No, they're always separate from the build price. Hosting and the domain are recurring monthly or yearly costs; you can pay them through me if you prefer, or directly to the providers. Either way I set everything up for you.", el: "Όχι, είναι πάντα ξεχωριστά από την τιμή κατασκευής. Το hosting και το domain είναι επαναλαμβανόμενα μηνιαία ή ετήσια κόστη· μπορείς να τα πληρώνεις μέσω εμένα αν προτιμάς, ή απευθείας στους παρόχους. Σε κάθε περίπτωση, τα στήνω όλα για σένα." } as BL,
       },
     ] as FAQ[],
   },
@@ -397,7 +397,7 @@ export const sectors = [
       },
       {
         q: { en: "Do hosting and the domain cost extra?", el: "Το hosting και το domain κοστίζουν επιπλέον;" } as BL,
-        a: { en: "Yes. They're never part of the build price; they're separate recurring costs, billed monthly or yearly to the providers. I set them up for you.", el: "Ναι. Δεν περιλαμβάνονται ποτέ στην τιμή κατασκευής· είναι ξεχωριστά, επαναλαμβανόμενα κόστη, με χρέωση μηνιαία ή ετήσια στους παρόχους. Τα στήνω για σένα." } as BL,
+        a: { en: "Yes. They're never part of the build price; they're separate recurring monthly or yearly costs. You can pay them through me if you like, or directly to the providers. I set them up for you.", el: "Ναι. Δεν περιλαμβάνονται ποτέ στην τιμή κατασκευής· είναι ξεχωριστά, επαναλαμβανόμενα μηνιαία ή ετήσια κόστη. Μπορείς να τα πληρώνεις μέσω εμένα αν θέλεις, ή απευθείας στους παρόχους. Τα στήνω για σένα." } as BL,
       },
     ] as FAQ[],
   },
@@ -445,7 +445,7 @@ export const sectors = [
       },
       {
         q: { en: "How do online payments and deposits work?", el: "Πώς λειτουργούν οι online πληρωμές και οι προκαταβολές;" } as BL,
-        a: { en: "I connect a payment provider so deposits or full payments land in your account. The transaction fees are the provider's standard rates, not mine.", el: "Συνδέω έναν πάροχο πληρωμών ώστε οι προκαταβολές ή οι πλήρεις πληρωμές να πηγαίνουν στον λογαριασμό σου. Οι χρεώσεις συναλλαγών είναι οι τυπικές του παρόχου, όχι δικές μου." } as BL,
+        a: { en: "I connect a payment provider so deposits or full payments land straight in your account, and the transaction fees are close to zero.", el: "Συνδέω έναν πάροχο πληρωμών ώστε οι προκαταβολές ή οι πλήρεις πληρωμές να πηγαίνουν κατευθείαν στον λογαριασμό σου, και οι χρεώσεις συναλλαγών είναι σχεδόν μηδενικές." } as BL,
       },
       {
         q: { en: "What does it cost to build?", el: "Πόσο κοστίζει η κατασκευή;" } as BL,
@@ -501,7 +501,7 @@ export const sectors = [
       },
       {
         q: { en: "Who pays for hosting and the domain?", el: "Ποιος πληρώνει το hosting και το domain;" } as BL,
-        a: { en: "You do, directly to the providers. They're separate from the build, as recurring monthly or yearly costs. I handle the setup for you.", el: "Εσύ, απευθείας στους παρόχους. Είναι ξεχωριστά από την κατασκευή, ως επαναλαμβανόμενα μηνιαία ή ετήσια κόστη. Αναλαμβάνω το στήσιμο για σένα." } as BL,
+        a: { en: "You do, but you can pay through me if you prefer or directly to the providers. Either way it's a separate, recurring monthly or yearly charge, never part of the build price.", el: "Εσύ, αλλά μπορείς να πληρώνεις μέσω εμένα αν προτιμάς ή απευθείας στους παρόχους. Σε κάθε περίπτωση είναι ξεχωριστή, επαναλαμβανόμενη μηνιαία ή ετήσια χρέωση, ποτέ μέρος της τιμής κατασκευής." } as BL,
       },
     ] as FAQ[],
   },
