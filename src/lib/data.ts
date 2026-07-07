@@ -107,6 +107,7 @@ export const projects = [
     tags: ["Next.js", "TypeScript", "Dashboard", "CRM"],
     image: "/projects/nisos-admin.webp",
     sector: "rentacar",
+    sub: true,
     links: [{ label: "Live Demo", href: "https://rentalsadmin-production.up.railway.app/" }],
     year: "",
   },
@@ -252,8 +253,8 @@ export const sectors = [
       el: "Επιχειρήσεις Εστίασης",
     } as BL,
     hook: {
-      en: "Turn a hungry Google search into a booked table.",
-      el: "Κάνε την πεινασμένη αναζήτηση στο Google κλεισμένο τραπέζι.",
+      en: "Self-serve digital menu, online table reservations, a food gallery, and a Google Maps listing.",
+      el: "Ψηφιακό μενού που ενημερώνεις μόνος σου, online κρατήσεις τραπεζιού, gallery φαγητού και καταχώρηση στο Google Maps.",
     } as BL,
     points: {
       en: [
@@ -304,8 +305,8 @@ export const sectors = [
       el: "Καλλιτέχνες",
     } as BL,
     hook: {
-      en: "Show your work like it deserves, and sell it on your own terms.",
-      el: "Δείξε τη δουλειά σου όπως της αξίζει και πούλησέ την με τους δικούς σου όρους.",
+      en: "A full-quality portfolio gallery, a shop for prints or tickets, and a mailing list for your audience.",
+      el: "Portfolio gallery σε πλήρη ποιότητα, κατάστημα για prints ή εισιτήρια και λίστα email για το κοινό σου.",
     } as BL,
     points: {
       en: [
@@ -356,8 +357,8 @@ export const sectors = [
       el: "Επαγγελματίες Υγείας",
     } as BL,
     hook: {
-      en: "A calm, trusted presence that fills your calendar while you work.",
-      el: "Μια ήρεμη, αξιόπιστη παρουσία που γεμίζει το πρόγραμμά σου όσο εσύ δουλεύεις.",
+      en: "Online appointment booking, service and hours pages, and secure GDPR-ready contact forms.",
+      el: "Online κλείσιμο ραντεβού, σελίδες με υπηρεσίες και ωράριο, και ασφαλείς φόρμες συμβατές με το GDPR.",
     } as BL,
     points: {
       en: [
@@ -408,8 +409,8 @@ export const sectors = [
       el: "Rent-a-Car",
     } as BL,
     hook: {
-      en: "Take real bookings and deposits before travellers even land.",
-      el: "Κλείσε αληθινές κρατήσεις με προκαταβολή, πριν καν προσγειωθεί ο ταξιδιώτης.",
+      en: "Real-time availability, an online fleet catalogue, bookings with deposits, and an admin panel.",
+      el: "Διαθεσιμότητα σε πραγματικό χρόνο, online κατάλογος στόλου, κρατήσεις με προκαταβολή και admin panel.",
     } as BL,
     points: {
       en: [
@@ -460,8 +461,8 @@ export const sectors = [
       el: "Ξενοδοχεία & Καταλύματα Βραχυπρόθεσμης Διαμονής",
     } as BL,
     hook: {
-      en: "Win direct bookings and keep the commission for yourself.",
-      el: "Κέρδισε απευθείας κρατήσεις και κράτα την προμήθεια για σένα.",
+      en: "Room and suite pages, an availability calendar, direct booking or enquiries, and multilingual content.",
+      el: "Σελίδες δωματίων και σουιτών, ημερολόγιο διαθεσιμότητας, απευθείας κράτηση ή αιτήματα και πολύγλωσσο περιεχόμενο.",
     } as BL,
     points: {
       en: [

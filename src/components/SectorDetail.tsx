@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -36,6 +37,17 @@ const L = {
 export default function SectorDetail({ slug }: { slug: string }) {
   const { lang } = useLanguage();
   const t = L[lang];
+
+  // Remember that we came from the Sectors section, so going back (browser
+  // back or the link) returns to it on the homepage instead of the top.
+  useEffect(() => {
+    try {
+      sessionStorage.setItem("akos:return", "sectors");
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
   const sec = sectors.find((s) => s.slug === slug);
   if (!sec) return null;
 

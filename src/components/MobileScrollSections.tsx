@@ -51,7 +51,22 @@ export default function MobileScrollSections() {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    container.scrollLeft = 0;
+    // Returning from a sector page: open the Sectors panel (index 2) and bring
+    // the panels into view; otherwise start on the first panel.
+    if (
+      sessionStorage.getItem("akos:return") === "sectors" &&
+      window.innerWidth < 1024
+    ) {
+      sessionStorage.removeItem("akos:return");
+      const idx = 2; // Works, Services, Sectors, Education, About
+      setActive(idx);
+      requestAnimationFrame(() => {
+        container.scrollLeft = idx * container.offsetWidth;
+        container.scrollIntoView({ block: "start" });
+      });
+    } else {
+      container.scrollLeft = 0;
+    }
   }, []);
 
   useEffect(() => {
@@ -169,7 +184,40 @@ export default function MobileScrollSections() {
             <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
           <ul className="space-y-3">
-            {projects.map((proj) => (
+            {projects.map((proj) =>
+              proj.sub ? (
+              <li key={proj.title} className="-mt-1 ml-6 group relative">
+                {proj.links[0] && (
+                  <a
+                    href={proj.links[0].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={proj.title}
+                    className="absolute inset-0 z-10"
+                  />
+                )}
+                <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 border border-transparent transition-all duration-300 group-hover:border-gold/10">
+                  <span className="text-gold/40 font-mono text-sm shrink-0 leading-none">↳</span>
+                  <h4 className="flex-1 min-w-0 font-display font-medium text-stone-light text-xs leading-snug">
+                    {proj.title}
+                  </h4>
+                  {proj.links.map((lnk) => (
+                    <a
+                      key={lnk.label}
+                      href={lnk.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative z-20 inline-flex items-center gap-1 text-[0.7rem] font-mono text-stone hover:text-gold-light transition-colors shrink-0"
+                    >
+                      {lnk.label}
+                      <span className="arrow-icon">
+                        <Icon name="arrow" size={10} />
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </li>
+              ) : (
               <li key={proj.title} className="section-card relative">
                 {proj.links[0] && (
                   <a
