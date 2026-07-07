@@ -239,29 +239,6 @@ export default function Home() {
               </ul>
             </section>
 
-            {/* SERVICES */}
-            <section id="services">
-              <h3 className="section-heading">
-                <span className="ornament mr-2">§</span>
-                {t.services}
-              </h3>
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                {services.map((svc) => (
-                  <div key={svc.title.en} className="section-card group">
-                    <span className="text-gold text-xl mb-3 block leading-none">
-                      {svc.icon}
-                    </span>
-                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
-                      {svc.title[lang]}
-                    </h4>
-                    <p className="text-xs text-stone leading-relaxed">
-                      {svc.description[lang]}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
             {/* SECTORS */}
             <section id="sectors">
               <h3 className="section-heading">
@@ -291,6 +268,29 @@ export default function Home() {
                       </span>
                     </span>
                   </Link>
+                ))}
+              </div>
+            </section>
+
+            {/* SERVICES */}
+            <section id="services">
+              <h3 className="section-heading">
+                <span className="ornament mr-2">§</span>
+                {t.services}
+              </h3>
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                {services.map((svc) => (
+                  <div key={svc.title.en} className="section-card group">
+                    <span className="text-gold text-xl mb-3 block leading-none">
+                      {svc.icon}
+                    </span>
+                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                      {svc.title[lang]}
+                    </h4>
+                    <p className="text-xs text-stone leading-relaxed">
+                      {svc.description[lang]}
+                    </p>
+                  </div>
                 ))}
               </div>
             </section>

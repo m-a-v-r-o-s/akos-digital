@@ -10,8 +10,8 @@ import { person, education, projects, services, sectors } from "@/lib/data";
 import SecretName from "@/components/SecretName";
 
 const tabLabels = {
-  en: ["Works", "Services", "Sectors", "Education", "About"],
-  el: ["Έργα", "Υπηρεσίες", "Ειδικότητες", "Εκπαίδευση", "Σχετικά"],
+  en: ["Works", "Sectors", "Services", "Education", "About"],
+  el: ["Έργα", "Ειδικότητες", "Υπηρεσίες", "Εκπαίδευση", "Σχετικά"],
 };
 
 const copyright = {
@@ -58,7 +58,7 @@ export default function MobileScrollSections() {
       window.innerWidth < 1024
     ) {
       sessionStorage.removeItem("akos:return");
-      const idx = 2; // Works, Services, Sectors, Education, About
+      const idx = 1; // Works, Sectors, Services, Education, About
       setActive(idx);
       requestAnimationFrame(() => {
         container.scrollLeft = idx * container.offsetWidth;
@@ -267,28 +267,6 @@ export default function MobileScrollSections() {
           </ul>
         </div>
 
-        {/* ── Panel 2: Services ── */}
-        <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
-          <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
-          </h3>
-          <div className="space-y-4">
-            {services.map((svc) => (
-              <div key={svc.title.en} className="section-card">
-                <span className="text-gold text-xl mb-3 block leading-none">
-                  {svc.icon}
-                </span>
-                <h4 className="font-display font-semibold text-paper text-sm mb-2">
-                  {svc.title[lang]}
-                </h4>
-                <p className="text-xs text-stone leading-relaxed">
-                  {svc.description[lang]}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* ── Panel: Sectors ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
@@ -317,6 +295,28 @@ export default function MobileScrollSections() {
                   </span>
                 </span>
               </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Panel: Services ── */}
+        <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
+          <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
+            <span className="text-gold opacity-50 mr-2">§</span>
+          </h3>
+          <div className="space-y-4">
+            {services.map((svc) => (
+              <div key={svc.title.en} className="section-card">
+                <span className="text-gold text-xl mb-3 block leading-none">
+                  {svc.icon}
+                </span>
+                <h4 className="font-display font-semibold text-paper text-sm mb-2">
+                  {svc.title[lang]}
+                </h4>
+                <p className="text-xs text-stone leading-relaxed">
+                  {svc.description[lang]}
+                </p>
+              </div>
             ))}
           </div>
         </div>

@@ -513,4 +513,62 @@ export const sectors = [
       },
     ] as FAQ[],
   },
+  {
+    slug: "smarthome",
+    icon: "⊡",
+    title: {
+      en: "Smart Home & Home Assistant",
+      el: "Έξυπνο Σπίτι με Home Assistant",
+    } as BL,
+    hook: {
+      en: "A fully local Home Assistant setup: lights, climate, cameras, and sensors on one private dashboard, with no cloud and no subscriptions.",
+      el: "Μια πλήρως τοπική εγκατάσταση Home Assistant: φωτισμός, κλιματισμός, κάμερες και αισθητήρες σε ένα ιδιωτικό dashboard, χωρίς cloud και χωρίς συνδρομές.",
+    } as BL,
+    points: {
+      en: [
+        "Everything runs locally on your own hardware, so it responds instantly and keeps working even without internet.",
+        "One private dashboard for lights, climate, security cameras, and sensors, reachable only over an encrypted local connection.",
+        "No cloud, no subscriptions, and no data leaving your home.",
+      ],
+      el: [
+        "Όλα τρέχουν τοπικά στον δικό σου εξοπλισμό, οπότε αποκρίνονται άμεσα και συνεχίζουν να λειτουργούν ακόμη και χωρίς internet.",
+        "Ένα ιδιωτικό dashboard για φωτισμό, κλιματισμό, κάμερες ασφαλείας και αισθητήρες, προσβάσιμο μόνο μέσω κρυπτογραφημένης τοπικής σύνδεσης.",
+        "Χωρίς cloud, χωρίς συνδρομές και χωρίς δεδομένα που φεύγουν από το σπίτι σου.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "A local Home Assistant hub on your own hardware",
+        "Custom automations for lights, climate, and security",
+        "One private, encrypted dashboard for phone and tablet",
+        "Integration of the cameras, sensors, and devices you already own",
+        "Private by design, with no data leaving your home",
+      ],
+      el: [
+        "Ένα τοπικό hub Home Assistant στον δικό σου εξοπλισμό",
+        "Προσαρμοσμένοι αυτοματισμοί για φωτισμό, κλιματισμό και ασφάλεια",
+        "Ένα ιδιωτικό, κρυπτογραφημένο dashboard για κινητό και tablet",
+        "Ενσωμάτωση των καμερών, αισθητήρων και συσκευών που ήδη έχεις",
+        "Ιδιωτικό εξ ορισμού, χωρίς δεδομένα να φεύγουν από το σπίτι σου",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "How long does an installation take?", el: "Πόσο χρόνο θέλει μια εγκατάσταση;" } as BL,
+        a: { en: "It depends on the size of your home and the number of devices, but a typical setup is done within a few days to a couple of weeks.", el: "Εξαρτάται από το μέγεθος του σπιτιού και τον αριθμό των συσκευών, αλλά μια τυπική εγκατάσταση ολοκληρώνεται μέσα σε λίγες μέρες έως δυο εβδομάδες." } as BL,
+      },
+      {
+        q: { en: "What hardware do I need?", el: "Τι εξοπλισμό χρειάζομαι;" } as BL,
+        a: { en: "A small local hub, like a mini PC or a Raspberry Pi, plus whatever smart devices you want to control. For Zigbee devices you also need a Zigbee USB adapter, a small antenna that acts as the coordinator and runs through Zigbee2MQTT. I recommend what fits your home, and the hardware is a separate cost from my work.", el: "Ένα μικρό τοπικό hub, όπως ένα mini PC ή ένα Raspberry Pi, μαζί με όποιες έξυπνες συσκευές θες να ελέγχεις. Για συσκευές Zigbee χρειάζεται επίσης ένας προσαρμογέας Zigbee USB, μια μικρή κεραία που λειτουργεί ως coordinator και τρέχει μέσω Zigbee2MQTT. Προτείνω ό,τι ταιριάζει στο σπίτι σου, και ο εξοπλισμός είναι ξεχωριστό κόστος από τη δουλειά μου." } as BL,
+      },
+      {
+        q: { en: "Do I need an electrician?", el: "Χρειάζομαι ηλεκτρολόγο;" } as BL,
+        a: { en: "In most cases yes, some wiring needs a certified electrician. I can bring my own, or work alongside yours.", el: "Στις περισσότερες περιπτώσεις ναι, κάποιες εργασίες καλωδίωσης θέλουν πιστοποιημένο ηλεκτρολόγο. Μπορώ να φέρω δικό μου ηλεκτρολόγο, ή να συνεργαστώ με τον δικό σου." } as BL,
+      },
+      {
+        q: { en: "Are there any monthly subscriptions?", el: "Υπάρχουν μηνιαίες συνδρομές;" } as BL,
+        a: { en: "No. The system runs fully local, so there are no cloud fees or subscriptions. You own it outright.", el: "Όχι. Το σύστημα τρέχει πλήρως τοπικά, οπότε δεν υπάρχουν χρεώσεις cloud ή συνδρομές. Είναι εξ ολοκλήρου δικό σου." } as BL,
+      },
+    ] as FAQ[],
+  },
 ];

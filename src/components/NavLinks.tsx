@@ -8,7 +8,7 @@ const sectionLabels = {
   el: { about: "Σχετικά", services: "Υπηρεσίες", sectors: "Ειδικότητες", education: "Εκπαίδευση", projects: "Έργα" },
 };
 
-const sections = ["projects", "services", "sectors", "education", "about"] as const;
+const sections = ["projects", "sectors", "services", "education", "about"] as const;
 
 export default function NavLinks() {
   const [active, setActive] = useState("projects");

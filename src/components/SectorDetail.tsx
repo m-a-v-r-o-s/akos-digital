@@ -14,9 +14,11 @@ const L = {
     back: "Back to home",
     eyebrow: "Sector",
     works: "Selected work in this space",
-    included: "What your site includes",
+    included: "What's included",
     supportNote:
       "Every site includes lifetime support for its security and functionality. New features and content changes are quoted separately, and hosting and the domain are separate recurring costs, payable through me or directly to the providers.",
+    supportNoteLocal:
+      "Every installation includes lifetime support for its security and reliable operation. It runs fully local, with no cloud, no subscriptions, and no data leaving your home; new devices or automations are quoted separately.",
     faq: "Common questions",
     ctaTitle: "Ready to start?",
     ctaBody:
@@ -27,9 +29,11 @@ const L = {
     back: "Επιστροφή στην αρχική",
     eyebrow: "Ειδικότητα",
     works: "Επιλεγμένες δουλειές στον χώρο",
-    included: "Τι περιλαμβάνει το site σου",
+    included: "Τι περιλαμβάνεται",
     supportNote:
       "Κάθε site περιλαμβάνει υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του. Νέες λειτουργίες και αλλαγές περιεχομένου κοστολογούνται ξεχωριστά, ενώ το hosting και το domain είναι ξεχωριστά, επαναλαμβανόμενα κόστη, που πληρώνονται μέσω εμένα ή απευθείας στους παρόχους.",
+    supportNoteLocal:
+      "Κάθε εγκατάσταση περιλαμβάνει υποστήριξη εφ' όρου ζωής για την ασφάλεια και την αξιόπιστη λειτουργία της. Τρέχει πλήρως τοπικά, χωρίς cloud, χωρίς συνδρομές και χωρίς δεδομένα να φεύγουν από το σπίτι σου· νέες συσκευές ή αυτοματισμοί κοστολογούνται ξεχωριστά.",
     faq: "Συχνές ερωτήσεις",
     ctaTitle: "Έτοιμος να ξεκινήσεις;",
     ctaBody:
@@ -161,7 +165,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
             ))}
           </div>
           <p className="text-xs text-stone leading-relaxed mt-4 border-l-2 border-gold/30 pl-4 max-w-3xl">
-            {t.supportNote}
+            {slug === "smarthome" ? t.supportNoteLocal : t.supportNote}
           </p>
         </section>
 
