@@ -82,6 +82,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "Booking", "Hospitality"],
     image: "/projects/thalatta.webp",
+    sector: "hotels",
     links: [{ label: "Live Demo", href: "https://thalatta-production.up.railway.app/en" }],
     year: "",
   },
@@ -93,6 +94,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "Booking", "Fleet"],
     image: "/projects/nisos-web.webp",
+    sector: "rentacar",
     links: [{ label: "Live Demo", href: "https://rentalsweb-production.up.railway.app/" }],
     year: "",
   },
@@ -104,6 +106,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Dashboard", "CRM"],
     image: "/projects/nisos-admin.webp",
+    sector: "rentacar",
     links: [{ label: "Live Demo", href: "https://rentalsadmin-production.up.railway.app/" }],
     year: "",
   },
@@ -115,6 +118,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "Booking"],
     image: "/projects/kyma.webp",
+    sector: "hotels",
     links: [{ label: "Live Demo", href: "https://kyma-production-dd16.up.railway.app/" }],
     year: "",
   },
@@ -126,6 +130,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "Booking"],
     image: "/projects/levka.webp",
+    sector: "health",
     links: [{ label: "Live Demo", href: "https://levka-production.up.railway.app/" }],
     year: "",
   },
@@ -137,6 +142,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Interactive Animations", "Tailwind", "HTML"],
     image: "/projects/trf.webp",
+    sector: "artists",
     links: [{ label: "Live Site", href: "https://thoseramblingfools.com/" }],
     year: "",
   },
@@ -148,6 +154,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "E-commerce"],
     image: "/projects/ellietattooer.webp",
+    sector: "artists",
     links: [{ label: "Live Site", href: "https://ellietattooer.com/" }],
     year: "",
   },
@@ -159,6 +166,7 @@ export const projects = [
     } as BL,
     tags: ["React", "JavaScript", "Tailwind", "HTML", "Brand Identity"],
     image: "/projects/blessed.webp",
+    sector: "food",
     links: [{ label: "Live Site", href: "https://blessed.cafe/" }],
     year: "",
   },
@@ -233,12 +241,19 @@ export const services = [
   },
 ];
 
+export type FAQ = { q: BL; a: BL };
+
 export const sectors = [
   {
+    slug: "food",
     icon: "❖",
     title: {
       en: "Restaurants & Cafés",
       el: "Επιχειρήσεις Εστίασης",
+    } as BL,
+    hook: {
+      en: "Turn a hungry Google search into a booked table.",
+      el: "Κάνε την πεινασμένη αναζήτηση στο Google κλεισμένο τραπέζι.",
     } as BL,
     points: {
       en: [
@@ -247,17 +262,50 @@ export const sectors = [
         "Found on Google and maps the moment locals and travellers search for somewhere to eat nearby.",
       ],
       el: [
-        "Ένα ζωντανό μενού με φωτογραφία που πουλά τα πιάτα πριν φτάσει ο πελάτης, ενημερώνεται σε δευτερόλεπτα και δεν ξανατυπώνεται.",
-        "Κρατήσεις όλο το εικοσιτετράωρο, ώστε να μη χτυπά το τηλέφωνο μέσα στην υπηρεσία.",
-        "Εμφάνιση στο Google και στους χάρτες τη στιγμή που ντόπιοι και ταξιδιώτες ψάχνουν πού θα φάνε κοντά τους.",
+        "Ένα ζωντανό μενού με φωτογραφίες που πουλάει τα πιάτα πριν καν φτάσει ο πελάτης, το ενημερώνεις σε δευτερόλεπτα και δεν το ξανατυπώνεις ποτέ.",
+        "Κρατήσεις όλο το εικοσιτετράωρο, για να μη χτυπάει το τηλέφωνο την ώρα του σέρβις.",
+        "Σε βρίσκουν στο Google και στους χάρτες τη στιγμή που ντόπιοι και τουρίστες ψάχνουν πού θα φάνε εδώ κοντά.",
       ],
     } as BLA,
+    included: {
+      en: [
+        "A photo menu you update yourself in seconds",
+        "Table reservations taken 24/7",
+        "Google Maps and local-search setup so you're found nearby",
+        "A mobile-first design with gallery and story",
+      ],
+      el: [
+        "Μενού με φωτογραφίες που ενημερώνεις μόνος σου σε δευτερόλεπτα",
+        "Κρατήσεις τραπεζιού όλο το εικοσιτετράωρο",
+        "Ρύθμιση Google Maps και τοπικής αναζήτησης για να σε βρίσκουν κοντά τους",
+        "Σχεδιασμός mobile-first με gallery και ιστορία",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "Can guests book a table online?", el: "Μπορούν οι πελάτες να κλείνουν τραπέζι online;" } as BL,
+        a: { en: "Yes. You take reservations around the clock, with the details landing straight in your inbox.", el: "Ναι. Δέχεσαι κρατήσεις όλο το εικοσιτετράωρο, με τα στοιχεία να έρχονται κατευθείαν στο inbox σου." } as BL,
+      },
+      {
+        q: { en: "Can I change the menu myself?", el: "Μπορώ να αλλάζω μόνος μου το μενού;" } as BL,
+        a: { en: "Absolutely. Prices and dishes update in seconds, with no reprinting and no calling me.", el: "Φυσικά. Τιμές και πιάτα αλλάζουν σε δευτερόλεπτα, χωρίς ανατύπωση και χωρίς να με παίρνεις τηλέφωνο." } as BL,
+      },
+      {
+        q: { en: "Will people find me on Google?", el: "Θα με βρίσκουν στο Google;" } as BL,
+        a: { en: "That's part of the build: local SEO and Google Maps so nearby searches lead to you.", el: "Είναι μέρος της δουλειάς: τοπικό SEO και Google Maps ώστε οι κοντινές αναζητήσεις να καταλήγουν σε σένα." } as BL,
+      },
+    ] as FAQ[],
   },
   {
+    slug: "artists",
     icon: "✦",
     title: {
       en: "Artists & Creatives",
       el: "Καλλιτέχνες",
+    } as BL,
+    hook: {
+      en: "Show your work like it deserves, and sell it on your own terms.",
+      el: "Δείξε τη δουλειά σου όπως της αξίζει και πούλησέ την με τους δικούς σου όρους.",
     } as BL,
     points: {
       en: [
@@ -266,17 +314,50 @@ export const sectors = [
         "One home for collectors, press, and bookings, plus a mailing list so your audience hears about new work first.",
       ],
       el: [
-        "Μια γκαλερί που δείχνει τη δουλειά σου σε πλήρη ποιότητα και με τους δικούς σου όρους, όχι στριμωγμένη σε ένα social feed.",
-        "Πώληση prints, παραγγελιών ή εισιτηρίων απευθείας, κρατώντας μεγαλύτερο μέρος από κάθε πώληση.",
-        "Ένα σπίτι για συλλέκτες, τύπο και κρατήσεις, μαζί με λίστα email ώστε το κοινό σου να μαθαίνει πρώτο τα νέα σου.",
+        "Μια gallery που δείχνει τη δουλειά σου σε πλήρη ποιότητα και με τους δικούς σου όρους, όχι στριμωγμένη σε ένα social feed.",
+        "Πουλάς prints, παραγγελίες ή εισιτήρια απευθείας και κρατάς μεγαλύτερο κομμάτι από κάθε πώληση.",
+        "Ένα σημείο για συλλέκτες, τον τύπο και κρατήσεις, μαζί με λίστα email ώστε το κοινό σου να μαθαίνει πρώτο τα νέα σου.",
       ],
     } as BLA,
+    included: {
+      en: [
+        "A full-quality portfolio gallery",
+        "A shop for prints, commissions, or tickets",
+        "A mailing list to grow your audience",
+        "One hub for press, bookings, and links",
+      ],
+      el: [
+        "Portfolio gallery σε πλήρη ποιότητα",
+        "Κατάστημα για prints, παραγγελίες ή εισιτήρια",
+        "Λίστα email για να μεγαλώνεις το κοινό σου",
+        "Ένα σημείο για τύπο, κρατήσεις και συνδέσμους",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "Can I sell directly from the site?", el: "Μπορώ να πουλάω απευθείας από το site;" } as BL,
+        a: { en: "Yes: prints, commissions, or tickets, so you keep a bigger share than a marketplace leaves you.", el: "Ναι: prints, παραγγελίες ή εισιτήρια, ώστε να κρατάς μεγαλύτερο μέρος απ' ό,τι σου αφήνει ένα marketplace." } as BL,
+      },
+      {
+        q: { en: "Can I update the gallery myself?", el: "Μπορώ να ανανεώνω μόνος μου τη gallery;" } as BL,
+        a: { en: "Yes, adding new work is quick and doesn't need me.", el: "Ναι, το να προσθέτεις νέα δουλειά είναι γρήγορο και δεν με χρειάζεται." } as BL,
+      },
+      {
+        q: { en: "Can I collect emails from fans?", el: "Μπορώ να μαζεύω email από το κοινό μου;" } as BL,
+        a: { en: "Yes, a mailing list is built in so your audience hears about new work and shows first.", el: "Ναι, η λίστα email είναι ενσωματωμένη ώστε το κοινό σου να μαθαίνει πρώτο για νέα έργα και εμφανίσεις." } as BL,
+      },
+    ] as FAQ[],
   },
   {
+    slug: "health",
     icon: "✚",
     title: {
       en: "Health Professionals",
       el: "Επαγγελματίες Υγείας",
+    } as BL,
+    hook: {
+      en: "A calm, trusted presence that fills your calendar while you work.",
+      el: "Μια ήρεμη, αξιόπιστη παρουσία που γεμίζει το πρόγραμμά σου όσο εσύ δουλεύεις.",
     } as BL,
     points: {
       en: [
@@ -285,17 +366,50 @@ export const sectors = [
         "Clear answers on services, hours, and location, so the phone rings less and the right patients arrive.",
       ],
       el: [
-        "Online κράτηση ραντεβού που γεμίζει το πρόγραμμά σου ενώ εσύ είσαι με τους ασθενείς.",
+        "Online κλείσιμο ραντεβού που γεμίζει το πρόγραμμά σου την ώρα που εσύ είσαι με τους ασθενείς σου.",
         "Μια ήρεμη, επαγγελματική παρουσία που κερδίζει την εμπιστοσύνη από το πρώτο κλικ.",
-        "Ξεκάθαρες απαντήσεις για υπηρεσίες, ώρες και τοποθεσία, ώστε να χτυπά λιγότερο το τηλέφωνο και να έρχονται οι σωστοί ασθενείς.",
+        "Ξεκάθαρες απαντήσεις για υπηρεσίες, ώρες και τοποθεσία, ώστε να χτυπάει λιγότερο το τηλέφωνο και να έρχονται οι σωστοί ασθενείς.",
       ],
     } as BLA,
+    included: {
+      en: [
+        "Online appointment booking",
+        "Clear service, hours and location pages",
+        "A trustworthy, professional design",
+        "GDPR-friendly contact forms",
+      ],
+      el: [
+        "Online κλείσιμο ραντεβού",
+        "Ξεκάθαρες σελίδες για υπηρεσίες, ώρες και τοποθεσία",
+        "Αξιόπιστος, επαγγελματικός σχεδιασμός",
+        "Φόρμες επικοινωνίας φιλικές προς το GDPR",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "Can patients book appointments online?", el: "Μπορούν οι ασθενείς να κλείνουν ραντεβού online;" } as BL,
+        a: { en: "Yes, your calendar fills up on its own while you focus on care.", el: "Ναι, το πρόγραμμά σου γεμίζει μόνο του όσο εσύ επικεντρώνεσαι στη φροντίδα." } as BL,
+      },
+      {
+        q: { en: "Will it look professional and trustworthy?", el: "Θα δείχνει επαγγελματικό και αξιόπιστο;" } as BL,
+        a: { en: "That's the whole point: a calm, clean design that reassures patients from the first second.", el: "Αυτός είναι όλος ο στόχος: ένας ήρεμος, καθαρός σχεδιασμός που καθησυχάζει τον ασθενή από το πρώτο δευτερόλεπτο." } as BL,
+      },
+      {
+        q: { en: "Is patient data handled safely?", el: "Τα δεδομένα των ασθενών είναι ασφαλή;" } as BL,
+        a: { en: "Yes, forms are set up with privacy and GDPR consent in mind.", el: "Ναι, οι φόρμες στήνονται με γνώμονα την ιδιωτικότητα και τη συγκατάθεση GDPR." } as BL,
+      },
+    ] as FAQ[],
   },
   {
+    slug: "rentacar",
     icon: "◈",
     title: {
       en: "Rent-a-Car",
       el: "Rent-a-Car",
+    } as BL,
+    hook: {
+      en: "Take real bookings and deposits before travellers even land.",
+      el: "Κλείσε αληθινές κρατήσεις με προκαταβολή, πριν καν προσγειωθεί ο ταξιδιώτης.",
     } as BL,
     points: {
       en: [
@@ -305,16 +419,49 @@ export const sectors = [
       ],
       el: [
         "Διαθεσιμότητα σε πραγματικό χρόνο και online κράτηση με προκαταβολή, αντί για ατελείωτα μηνύματα πέρα δώθε.",
-        "Στόλος, τιμές και όροι ξεκάθαρα, ώστε ο πελάτης να κλείνει με σιγουριά.",
-        "Φτάνει σε ταξιδιώτες που κλείνουν πριν καν προσγειωθούν, και προσφέρει ασφάλεια, καθίσματα και παράδοση στο ταμείο.",
+        "Στόλος, τιμές και όροι ξεκάθαρα, για να κλείνει ο πελάτης με σιγουριά.",
+        "Φτάνεις σε ταξιδιώτες που κλείνουν πριν καν προσγειωθούν, και προτείνεις ασφάλεια, παιδικά καθίσματα και παράδοση τη στιγμή της πληρωμής.",
       ],
     } as BLA,
+    included: {
+      en: [
+        "Real-time availability and online booking",
+        "A fleet catalogue with photos and pricing",
+        "Deposit or full payment at checkout",
+        "An admin panel to manage bookings and fleet",
+      ],
+      el: [
+        "Διαθεσιμότητα σε πραγματικό χρόνο και online κράτηση",
+        "Κατάλογος στόλου με φωτογραφίες και τιμές",
+        "Προκαταβολή ή πλήρης πληρωμή στο ταμείο",
+        "Admin panel για τη διαχείριση κρατήσεων και στόλου",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "Can customers see availability and book online?", el: "Μπορούν οι πελάτες να βλέπουν διαθεσιμότητα και να κλείνουν online;" } as BL,
+        a: { en: "Yes, real-time availability by dates and pickup point, booked in a couple of minutes.", el: "Ναι, διαθεσιμότητα σε πραγματικό χρόνο ανά ημερομηνία και σημείο παραλαβής, με κράτηση σε δυο λεπτά." } as BL,
+      },
+      {
+        q: { en: "Can I take a deposit or full payment?", el: "Μπορώ να παίρνω προκαταβολή ή ολόκληρο το ποσό;" } as BL,
+        a: { en: "Yes, collect a deposit online or the full amount, whichever you prefer.", el: "Ναι, μπορείς να εισπράττεις προκαταβολή online ή όλο το ποσό, όπως προτιμάς." } as BL,
+      },
+      {
+        q: { en: "Can I manage the fleet and bookings?", el: "Μπορώ να διαχειρίζομαι τον στόλο και τις κρατήσεις;" } as BL,
+        a: { en: "Yes, an admin panel handles vehicles, bookings, and customers in one place, like the Nisos demo.", el: "Ναι, ένα admin panel διαχειρίζεται οχήματα, κρατήσεις και πελάτες σε ένα σημείο, όπως στο demo της Nisos." } as BL,
+      },
+    ] as FAQ[],
   },
   {
+    slug: "hotels",
     icon: "⌂",
     title: {
       en: "Hotels & Short Stays",
       el: "Ξενοδοχεία & Καταλύματα Βραχυπρόθεσμης Διαμονής",
+    } as BL,
+    hook: {
+      en: "Win direct bookings and keep the commission for yourself.",
+      el: "Κέρδισε απευθείας κρατήσεις και κράτα την προμήθεια για σένα.",
     } as BL,
     points: {
       en: [
@@ -324,9 +471,37 @@ export const sectors = [
       ],
       el: [
         "Απευθείας κρατήσεις που παρακάμπτουν τις προμήθειες των πλατφορμών και κρατούν δική σου τη σχέση με τον επισκέπτη.",
-        "Εμβυθιστική φωτογραφία και ειλικρινής λεπτομέρεια δωματίων που μετατρέπουν τους επισκέπτες σε κρατήσεις.",
-        "Πολύγλωσσες σελίδες και άμεσα ερωτήματα που φτάνουν σε ταξιδιώτες από όλο τον κόσμο και τους απαντούν γρήγορα.",
+        "Καθηλωτική φωτογραφία και ειλικρινείς λεπτομέρειες για τα δωμάτια, που μετατρέπουν τους επισκέπτες σε κρατήσεις.",
+        "Πολύγλωσσες σελίδες και άμεσα αιτήματα που φτάνουν σε ταξιδιώτες απ' όλο τον κόσμο και τους απαντούν γρήγορα.",
       ],
     } as BLA,
+    included: {
+      en: [
+        "A room and suite showcase with real detail",
+        "Availability, enquiries, and direct booking",
+        "Immersive photography and layout",
+        "Multilingual pages for international guests",
+      ],
+      el: [
+        "Παρουσίαση δωματίων και σουιτών με πραγματική λεπτομέρεια",
+        "Διαθεσιμότητα, αιτήματα και απευθείας κράτηση",
+        "Καθηλωτική φωτογραφία και διάταξη",
+        "Πολύγλωσσες σελίδες για επισκέπτες από το εξωτερικό",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "Can I take direct bookings?", el: "Μπορώ να δέχομαι απευθείας κρατήσεις;" } as BL,
+        a: { en: "Yes, guests book straight with you, so you skip the platform commission and own the relationship.", el: "Ναι, οι επισκέπτες κλείνουν κατευθείαν μαζί σου, οπότε γλιτώνεις την προμήθεια της πλατφόρμας και κρατάς δική σου τη σχέση." } as BL,
+      },
+      {
+        q: { en: "Can the site be multilingual?", el: "Μπορεί το site να είναι πολύγλωσσο;" } as BL,
+        a: { en: "Yes, pages can speak to international travellers in their own language.", el: "Ναι, οι σελίδες μπορούν να μιλούν στους ταξιδιώτες από το εξωτερικό στη γλώσσα τους." } as BL,
+      },
+      {
+        q: { en: "Can I still use Booking or Airbnb too?", el: "Μπορώ να χρησιμοποιώ και Booking ή Airbnb;" } as BL,
+        a: { en: "Of course. It works alongside them and simply wins you the direct, commission-free bookings on top.", el: "Φυσικά. Λειτουργεί παράλληλα μ' αυτά και απλώς σου κερδίζει επιπλέον τις απευθείας κρατήσεις χωρίς προμήθεια." } as BL,
+      },
+    ] as FAQ[],
   },
 ];

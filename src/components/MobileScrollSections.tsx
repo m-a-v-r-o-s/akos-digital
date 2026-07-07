@@ -130,20 +130,20 @@ export default function MobileScrollSections() {
 
       {/* Tab bar */}
       <div
-        className="flex sticky top-0 z-20 pt-3 transition-all duration-300"
+        className="flex justify-between sticky top-0 z-20 pt-3 px-1 transition-all duration-300"
         style={scrolled ? { backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", backgroundColor: "rgba(13,13,13,0.15)" } : {}}
       >
         {tabs.map((label, i) => (
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className="flex-1 flex items-center justify-center py-3 transition-colors duration-300"
+            className="flex items-center justify-center py-3 px-1 transition-colors duration-300"
           >
             <span
-              className="font-mono tracking-widest uppercase transition-colors duration-300"
+              className="font-mono tracking-wide uppercase whitespace-nowrap transition-colors duration-300"
               style={{
                 color: active === i ? "var(--paper)" : "var(--stone)",
-                fontSize: "clamp(0.55rem, 2.2vw, 0.75rem)",
+                fontSize: "clamp(0.5rem, 2vw, 0.7rem)",
               }}
             >
               {label}
@@ -248,22 +248,27 @@ export default function MobileScrollSections() {
           </h3>
           <div className="space-y-4">
             {sectors.map((sec) => (
-              <div key={sec.title.en} className="section-card">
+              <Link
+                key={sec.slug}
+                href={`/sectors/${sec.slug}`}
+                className="section-card block group"
+              >
                 <span className="text-gold text-xl mb-3 block leading-none">
                   {sec.icon}
                 </span>
                 <h4 className="font-display font-semibold text-paper text-sm mb-2">
                   {sec.title[lang]}
                 </h4>
-                <ul className="space-y-1.5">
-                  {sec.points[lang].map((p, i) => (
-                    <li key={i} className="flex gap-2 text-xs text-stone leading-relaxed">
-                      <span className="text-gold mt-0.5 shrink-0">›</span>
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <p className="text-xs text-stone leading-relaxed mb-3">
+                  {sec.hook[lang]}
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone">
+                  {lang === "en" ? "Explore" : "Περισσότερα"}
+                  <span className="arrow-icon">
+                    <Icon name="arrow" size={11} />
+                  </span>
+                </span>
+              </Link>
             ))}
           </div>
         </div>

@@ -18,6 +18,7 @@ const ui = {
     about: "About",
     services: "Services",
     sectors: "Sectors",
+    explore: "Explore",
     education: "Education",
     projects: "Selected Works",
     fullCV: "Full CV",
@@ -30,6 +31,7 @@ const ui = {
     about: "Σχετικά",
     services: "Υπηρεσίες",
     sectors: "Ειδικότητες",
+    explore: "Περισσότερα",
     education: "Εκπαίδευση",
     projects: "Επιλεγμένα Έργα",
     fullCV: "Πλήρες Βιογραφικό",
@@ -223,22 +225,27 @@ export default function Home() {
               </h3>
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 {sectors.map((sec) => (
-                  <div key={sec.title.en} className="section-card group">
+                  <Link
+                    key={sec.slug}
+                    href={`/sectors/${sec.slug}`}
+                    className="section-card group flex flex-col"
+                  >
                     <span className="text-gold text-xl mb-3 block leading-none">
                       {sec.icon}
                     </span>
-                    <h4 className="font-display font-semibold text-paper text-base mb-3 group-hover:text-gold-light transition-colors">
+                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
                       {sec.title[lang]}
                     </h4>
-                    <ul className="space-y-2">
-                      {sec.points[lang].map((p, i) => (
-                        <li key={i} className="flex gap-2.5 text-xs text-stone leading-relaxed">
-                          <span className="text-gold mt-0.5 shrink-0">›</span>
-                          <span>{p}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <p className="text-xs text-stone leading-relaxed mb-4">
+                      {sec.hook[lang]}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-gold-light transition-colors">
+                      {t.explore}
+                      <span className="arrow-icon">
+                        <Icon name="arrow" size={11} />
+                      </span>
+                    </span>
+                  </Link>
                 ))}
               </div>
             </section>
