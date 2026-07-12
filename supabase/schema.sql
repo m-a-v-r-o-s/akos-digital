@@ -36,3 +36,13 @@ create index if not exists leads_created_at_idx on public.leads (created_at desc
 -- bypasses RLS, so inserts keep working — but the public anon key can neither
 -- read nor write this table. Your leads stay private.
 alter table public.leads enable row level security;
+
+-- ─────────────────────────────────────────────────────────────────────────
+-- Keep-alive table for /api/ping. A scheduled request upserts one row so the
+-- free-tier project keeps seeing database WRITE activity and never pauses.
+-- ─────────────────────────────────────────────────────────────────────────
+create table if not exists public.keepalive (
+  id         smallint primary key,
+  last_ping  timestamptz not null default now()
+);
+alter table public.keepalive enable row level security;
