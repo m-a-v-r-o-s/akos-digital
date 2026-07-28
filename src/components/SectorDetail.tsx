@@ -152,7 +152,12 @@ export default function SectorDetail({ slug }: { slug: string }) {
                     />
                   )}
                   <div className="flex gap-5">
-                    <ProjectThumb image={proj.image} title={proj.title} />
+                    <ProjectThumb
+                      image={proj.image}
+                      imageMobile={proj.imageMobile}
+                      href={proj.links[0]?.href}
+                      title={proj.title}
+                    />
                     <div className="flex-1 min-w-0">
                       <h4 className="font-display font-semibold text-paper text-sm mb-1 group-hover:text-gold-light transition-colors">
                         {proj.title}

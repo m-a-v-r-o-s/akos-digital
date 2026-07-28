@@ -75,6 +75,32 @@ export const education = [
 
 export const projects = [
   {
+    title: "Stefanidis Automotive Concept",
+    description: {
+      en: "Concept site for a Greek car import and dealership business. A showroom of imported vehicles with full specs and pricing, a request flow for sourcing a car to order, and an AI assistant that answers questions on customs, registration and Greek plates.",
+      el: "Concept site για ελληνική επιχείρηση εισαγωγής και εμπορίας αυτοκινήτων. Έκθεση εισαγμένων οχημάτων με πλήρη χαρακτηριστικά και τιμές, ροή αιτήματος για εισαγωγή κατά παραγγελία και AI βοηθός που απαντά σε ερωτήσεις για εκτελωνισμό, ταξινόμηση και ελληνική πινακίδα.",
+    } as BL,
+    tags: ["Next.js", "TypeScript", "Tailwind", "AI Assistant", "Automotive"],
+    image: "/projects/stefanidis.webp",
+    imageMobile: "/projects/stefanidis-mobile.webp",
+    sector: "automotive",
+    links: [{ label: "Live Demo", href: "https://stefanidis.up.railway.app/" }],
+    year: "",
+  },
+  {
+    title: "Nocturne Club Concept",
+    description: {
+      en: "Concept site for a private late-night club on Ios. Age-gated entry, the full summer line-up, table reservations with deposits and a guest list, wrapped in a dark, high-contrast identity built around the floor.",
+      el: "Concept site για ιδιωτικό νυχτερινό club στην Ίο. Έλεγχος ηλικίας στην είσοδο, πλήρες καλοκαιρινό line-up, κρατήσεις τραπεζιών με προκαταβολή και guest list, μέσα σε μια σκοτεινή ταυτότητα υψηλής αντίθεσης χτισμένη γύρω από την πίστα.",
+    } as BL,
+    tags: ["Next.js", "TypeScript", "Tailwind", "3D Object", "Reservations", "Nightlife"],
+    image: "/projects/nocturne.webp",
+    imageMobile: "/projects/nocturne-mobile.webp",
+    sector: "food",
+    links: [{ label: "Live Demo", href: "https://nocturnal.up.railway.app/" }],
+    year: "",
+  },
+  {
     title: "Thalatta Bay Concept",
     description: {
       en: "Concept site for a five-star seafront resort and spa in Elounda, Crete. Minimalist luxury with immersive Aegean photography, five dining venues, a sea-water spa, and booking woven throughout the experience.",
@@ -82,6 +108,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "Booking", "Hospitality"],
     image: "/projects/thalatta.webp",
+    imageMobile: "/projects/thalatta-mobile.webp",
     sector: "hotels",
     links: [{ label: "Live Demo", href: "https://thalatta-production.up.railway.app/en" }],
     year: "",
@@ -94,6 +121,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "Booking", "Fleet"],
     image: "/projects/nisos-web.webp",
+    imageMobile: "/projects/nisos-web-mobile.webp",
     sector: "rentacar",
     links: [{ label: "Live Demo", href: "https://rentalsweb-production.up.railway.app/" }],
     year: "",
@@ -106,6 +134,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Dashboard", "CRM"],
     image: "/projects/nisos-admin.webp",
+    imageMobile: "/projects/nisos-admin-mobile.webp",
     sector: "rentacar",
     sub: true,
     links: [{ label: "Live Demo", href: "https://rentalsadmin-production.up.railway.app/" }],
@@ -119,6 +148,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "Booking"],
     image: "/projects/kyma.webp",
+    imageMobile: "/projects/kyma-mobile.webp",
     sector: "hotels",
     links: [{ label: "Live Demo", href: "https://kyma-production-dd16.up.railway.app/" }],
     year: "",
@@ -131,6 +161,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "Booking"],
     image: "/projects/levka.webp",
+    imageMobile: "/projects/levka-mobile.webp",
     sector: "health",
     links: [{ label: "Live Demo", href: "https://levka-production.up.railway.app/" }],
     year: "",
@@ -143,6 +174,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Interactive Animations", "Tailwind", "HTML"],
     image: "/projects/trf.webp",
+    imageMobile: "/projects/trf-mobile.webp",
     sector: "artists",
     links: [{ label: "Live Site", href: "https://thoseramblingfools.com/" }],
     year: "",
@@ -155,6 +187,7 @@ export const projects = [
     } as BL,
     tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "E-commerce"],
     image: "/projects/ellietattooer.webp",
+    imageMobile: "/projects/ellietattooer-mobile.webp",
     sector: "artists",
     links: [{ label: "Live Site", href: "https://ellietattooer.com/" }],
     year: "",
@@ -167,6 +200,7 @@ export const projects = [
     } as BL,
     tags: ["React", "JavaScript", "Tailwind", "HTML", "Brand Identity"],
     image: "/projects/blessed.webp",
+    imageMobile: "/projects/blessed-mobile.webp",
     sector: "food",
     links: [{ label: "Live Site", href: "https://blessed.cafe/" }],
     year: "",
@@ -250,49 +284,57 @@ export const sectors = [
     slug: "food",
     icon: "❖",
     title: {
-      en: "Website for Restaurants & Cafés",
-      el: "Ιστοσελίδα για Επιχειρήσεις Εστίασης",
+      en: "Website for Restaurants, Cafés, Bars & Clubs",
+      el: "Ιστοσελίδα για Εστίαση, Bar & Club",
     } as BL,
     hook: {
-      en: "Self-serve digital menu, online table reservations, a food gallery, and a Google Maps listing.",
-      el: "Ψηφιακό μενού που ενημερώνεις μόνος σου, online κρατήσεις τραπεζιού, gallery φαγητού και καταχώρηση στο Google Maps.",
+      en: "Self-serve digital menu, online table reservations, a line-up for your nights, and a Google Maps listing.",
+      el: "Ψηφιακό μενού που ενημερώνεις μόνος σου, online κρατήσεις τραπεζιού, πρόγραμμα για τα βράδια σου και καταχώρηση στο Google Maps.",
     } as BL,
     points: {
       en: [
-        "A living menu with photography that sells the dishes before a guest arrives, updated in seconds and never reprinted.",
-        "Reservations taken around the clock, so the phone stops ringing in the middle of service.",
-        "Found on Google and maps the moment locals and travellers search for somewhere to eat nearby.",
+        "A living menu with photography that sells the dishes and the drinks before a guest arrives, updated in seconds and never reprinted.",
+        "Reservations taken around the clock, tables or booths, with a deposit online when the night calls for it.",
+        "Tonight's line-up and the season ahead in one place, updated the moment a night changes.",
+        "Found on Google and maps the moment locals and travellers search for somewhere to eat or drink nearby.",
       ],
       el: [
-        "Ένα ζωντανό μενού με φωτογραφίες που πουλάει τα πιάτα πριν καν φτάσει ο πελάτης, το ενημερώνεις σε δευτερόλεπτα και δεν το ξανατυπώνεις ποτέ.",
-        "Κρατήσεις όλο το εικοσιτετράωρο, για να μη χτυπάει το τηλέφωνο την ώρα του σέρβις.",
-        "Σε βρίσκουν στο Google και στους χάρτες τη στιγμή που ντόπιοι και τουρίστες ψάχνουν πού θα φάνε εδώ κοντά.",
+        "Ένα ζωντανό μενού με φωτογραφίες που πουλάει τα πιάτα και τα ποτά πριν καν φτάσει ο πελάτης, το ενημερώνεις σε δευτερόλεπτα και δεν το ξανατυπώνεις ποτέ.",
+        "Κρατήσεις όλο το εικοσιτετράωρο, σε τραπέζια ή booth, με προκαταβολή online όταν το βράδυ το απαιτεί.",
+        "Το αποψινό line-up και όλη η σεζόν σε ένα σημείο, ενημερωμένα τη στιγμή που αλλάζει κάτι.",
+        "Σε βρίσκουν στο Google και στους χάρτες τη στιγμή που ντόπιοι και τουρίστες ψάχνουν πού θα φάνε ή θα πιουν εδώ κοντά.",
       ],
     } as BLA,
     included: {
       en: [
         "A photo menu you update yourself in seconds",
-        "Table reservations taken 24/7",
+        "Table and booth reservations taken 24/7, with deposits when you want them",
+        "A line-up or events calendar you update yourself",
         "Google Maps and local-search setup so you're found nearby",
-        "A mobile-first design with gallery and story",
+        "An age gate and a door policy page when the venue needs one",
         "GDPR-compliant by default",
       ],
       el: [
         "Μενού με φωτογραφίες που ενημερώνεις μόνος σου σε δευτερόλεπτα",
-        "Κρατήσεις τραπεζιού όλο το εικοσιτετράωρο",
+        "Κρατήσεις τραπεζιών και booth όλο το εικοσιτετράωρο, με προκαταβολή όποτε τη θέλεις",
+        "Ημερολόγιο line-up ή εκδηλώσεων που ενημερώνεις μόνος σου",
         "Ρύθμιση Google Maps και τοπικής αναζήτησης για να σε βρίσκουν κοντά τους",
-        "Σχεδιασμός mobile-first με gallery και ιστορία",
+        "Έλεγχος ηλικίας και σελίδα με την πολιτική πόρτας, όπου χρειάζεται",
         "Συμβατό με το GDPR εξ ορισμού",
       ],
     } as BLA,
     faq: [
       {
         q: { en: "How long until my site is live?", el: "Σε πόσο καιρό θα είναι online το site μου;" } as BL,
-        a: { en: "Most restaurant and café sites are ready in about 2 to 4 weeks, depending on the content and the number of pages.", el: "Τα περισσότερα sites για εστιατόρια και καφέ είναι έτοιμα σε περίπου 2 με 4 εβδομάδες, ανάλογα με το περιεχόμενο και τον αριθμό των σελίδων." } as BL,
+        a: { en: "Most restaurant, café, and bar sites are ready in about 2 to 4 weeks, depending on the content and the number of pages. A club site with a line-up and deposits usually takes a little longer.", el: "Τα περισσότερα sites για εστιατόρια, καφέ και bar είναι έτοιμα σε περίπου 2 με 4 εβδομάδες, ανάλογα με το περιεχόμενο και τον αριθμό των σελίδων. Ένα site για club με line-up και προκαταβολές θέλει συνήθως λίγο παραπάνω." } as BL,
       },
       {
         q: { en: "What do you need from me to start?", el: "Τι χρειάζεσαι από μένα για να ξεκινήσουμε;" } as BL,
-        a: { en: "Your logo if you have one, a few photos of the space and the dishes, your menu, and your opening hours. I handle the rest.", el: "Το λογότυπό σου αν έχεις, μερικές φωτογραφίες από τον χώρο και τα πιάτα, το μενού σου και το ωράριο. Τα υπόλοιπα τα αναλαμβάνω εγώ." } as BL,
+        a: { en: "Your logo if you have one, a few photos of the space and the dishes or drinks, your menu, your opening hours, and the line-up if you run nights. I handle the rest.", el: "Το λογότυπό σου αν έχεις, μερικές φωτογραφίες από τον χώρο και τα πιάτα ή τα ποτά, το μενού σου, το ωράριο και το line-up αν κάνεις βραδιές. Τα υπόλοιπα τα αναλαμβάνω εγώ." } as BL,
+      },
+      {
+        q: { en: "How do deposits work?", el: "Πώς λειτουργούν οι προκαταβολές;" } as BL,
+        a: { en: "I connect a payment provider so deposits land straight in your account, and the transaction fees are close to zero.", el: "Συνδέω έναν πάροχο πληρωμών ώστε οι προκαταβολές να πηγαίνουν κατευθείαν στον λογαριασμό σου, και οι χρεώσεις συναλλαγών είναι σχεδόν μηδενικές." } as BL,
       },
       {
         q: { en: "Are hosting and the domain included?", el: "Περιλαμβάνονται το hosting και το domain;" } as BL,
@@ -511,6 +553,60 @@ export const sectors = [
       {
         q: { en: "Who pays for hosting and the domain?", el: "Ποιος πληρώνει το hosting και το domain;" } as BL,
         a: { en: "You do, but you can pay through me if you prefer or directly to the providers. Either way it's a separate, recurring monthly or yearly charge, never part of the build price.", el: "Εσύ, αλλά μπορείς να πληρώνεις μέσω εμένα αν προτιμάς ή απευθείας στους παρόχους. Σε κάθε περίπτωση είναι ξεχωριστή, επαναλαμβανόμενη μηνιαία ή ετήσια χρέωση, ποτέ μέρος της τιμής κατασκευής." } as BL,
+      },
+    ] as FAQ[],
+  },
+  {
+    slug: "automotive",
+    icon: "◎",
+    title: {
+      en: "Website for Automotive Sales",
+      el: "Ιστοσελίδα για Πωλήσεις Αυτοκινήτων",
+    } as BL,
+    hook: {
+      en: "A stock listing with full specs and pricing, an import-on-order request flow, and enquiries that arrive tied to a specific car.",
+      el: "Κατάλογος οχημάτων με πλήρη χαρακτηριστικά και τιμές, ροή αιτήματος για εισαγωγή κατά παραγγελία και ερωτήματα που φτάνουν συνδεδεμένα με συγκεκριμένο όχημα.",
+    } as BL,
+    points: {
+      en: [
+        "Every car listed with photos, mileage, engine, and price, so buyers arrive already knowing what they came to see.",
+        "An import request form that captures make, model, budget, and equipment, instead of the same questions over the phone every time.",
+        "Stock you update yourself in minutes, so a sold car comes off the site before the next caller asks about it.",
+      ],
+      el: [
+        "Κάθε αυτοκίνητο καταχωρημένο με φωτογραφίες, χιλιόμετρα, κινητήρα και τιμή, ώστε ο αγοραστής να έρχεται ξέροντας ήδη τι ήρθε να δει.",
+        "Φόρμα αιτήματος εισαγωγής που καταγράφει μάρκα, μοντέλο, budget και εξοπλισμό, αντί για τις ίδιες ερωτήσεις στο τηλέφωνο κάθε φορά.",
+        "Στοκ που ενημερώνεις μόνος σου σε λίγα λεπτά, ώστε ένα πουλημένο αυτοκίνητο να φεύγει από το site πριν ρωτήσει ο επόμενος.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "A stock listing with photos, specs, and pricing you update yourself",
+        "An import-on-order request flow with make, model, budget, and equipment",
+        "Enquiries that arrive tied to a specific vehicle",
+        "Customs, registration, and delivery explained step by step",
+        "GDPR-compliant by default",
+      ],
+      el: [
+        "Κατάλογος οχημάτων με φωτογραφίες, χαρακτηριστικά και τιμές που ενημερώνεις μόνος σου",
+        "Ροή αιτήματος για εισαγωγή κατά παραγγελία με μάρκα, μοντέλο, budget και εξοπλισμό",
+        "Ερωτήματα που φτάνουν συνδεδεμένα με συγκεκριμένο όχημα",
+        "Εκτελωνισμός, ταξινόμηση και παράδοση εξηγημένα βήμα βήμα",
+        "Συμβατό με το GDPR εξ ορισμού",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "How long does a dealership site take?", el: "Πόσο χρόνο θέλει ένα site για εμπορία αυτοκινήτων;" } as BL,
+        a: { en: "Usually about 3 to 5 weeks, depending on the size of the stock and whether you want an import request flow on top of the listing.", el: "Συνήθως 3 με 5 εβδομάδες, ανάλογα με το μέγεθος του στοκ και το αν θέλεις και ροή αιτήματος εισαγωγής πέρα από τον κατάλογο." } as BL,
+      },
+      {
+        q: { en: "How do I add or remove cars?", el: "Πώς προσθέτω ή αφαιρώ αυτοκίνητα;" } as BL,
+        a: { en: "From a simple admin panel. You upload the photos, fill in the specs and price, and the car is live. Mark it sold and it comes off the site.", el: "Από ένα απλό admin panel. Ανεβάζεις τις φωτογραφίες, συμπληρώνεις χαρακτηριστικά και τιμή και το αυτοκίνητο μπαίνει online. Το σημειώνεις ως πουλημένο και φεύγει από το site." } as BL,
+      },
+      {
+        q: { en: "Are hosting and the domain included?", el: "Περιλαμβάνονται το hosting και το domain;" } as BL,
+        a: { en: "No, they're always separate from the build price. They're recurring monthly or yearly costs; you can pay them through me if you prefer, or directly to the providers. Either way I set everything up for you.", el: "Όχι, είναι πάντα ξεχωριστά από την τιμή κατασκευής. Είναι επαναλαμβανόμενα μηνιαία ή ετήσια κόστη· μπορείς να τα πληρώνεις μέσω εμένα αν προτιμάς, ή απευθείας στους παρόχους. Σε κάθε περίπτωση, τα στήνω όλα για σένα." } as BL,
       },
     ] as FAQ[],
   },

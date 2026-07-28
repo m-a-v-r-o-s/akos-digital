@@ -196,7 +196,12 @@ export default function Home() {
                       />
                     )}
                     <div className="flex gap-5">
-                      <ProjectThumb image={proj.image} title={proj.title} />
+                      <ProjectThumb
+                        image={proj.image}
+                        imageMobile={proj.imageMobile}
+                        href={proj.links[0]?.href}
+                        title={proj.title}
+                      />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 mb-1">
                           <h4 className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors leading-snug">

@@ -8,6 +8,7 @@ import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services, sectors } from "@/lib/data";
 import SecretName from "@/components/SecretName";
+import ProjectThumb from "@/components/ProjectThumb";
 
 const tabLabels = {
   en: ["Works", "Sectors", "Services", "Education", "About"],
@@ -228,39 +229,48 @@ export default function MobileScrollSections() {
                     className="absolute inset-0 z-10"
                   />
                 )}
-                <div className="flex items-start justify-between gap-2 mb-1">
-                  <h4 className="font-display font-semibold text-paper text-sm leading-snug">
-                    {proj.title}
-                  </h4>
-                  {proj.year && (
-                    <span className="font-mono text-xs text-stone-dark shrink-0">
-                      {proj.year}
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-stone leading-relaxed mb-3">
-                  {proj.description[lang]}
-                </p>
-                <div className="flex flex-wrap items-center gap-2">
-                  {proj.tags.map((tag) => (
-                    <span key={tag} className="tag-pill">
-                      {tag}
-                    </span>
-                  ))}
-                  {proj.links.map((lnk) => (
-                    <a
-                      key={lnk.label}
-                      href={lnk.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
-                    >
-                      {lnk.label}
-                      <span className="arrow-icon">
-                        <Icon name="arrow" size={11} />
-                      </span>
-                    </a>
-                  ))}
+                <div className="flex gap-4">
+                  <ProjectThumb
+                    imageMobile={proj.imageMobile}
+                    title={proj.title}
+                    variant="mobile"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h4 className="font-display font-semibold text-paper text-sm leading-snug">
+                        {proj.title}
+                      </h4>
+                      {proj.year && (
+                        <span className="font-mono text-xs text-stone-dark shrink-0">
+                          {proj.year}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-stone leading-relaxed mb-3">
+                      {proj.description[lang]}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      {proj.tags.map((tag) => (
+                        <span key={tag} className="tag-pill">
+                          {tag}
+                        </span>
+                      ))}
+                      {proj.links.map((lnk) => (
+                        <a
+                          key={lnk.label}
+                          href={lnk.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
+                        >
+                          {lnk.label}
+                          <span className="arrow-icon">
+                            <Icon name="arrow" size={11} />
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </li>
             ))}
