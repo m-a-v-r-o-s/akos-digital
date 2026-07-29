@@ -229,7 +229,7 @@ export default function MobileScrollSections() {
                     className="absolute inset-0 z-10"
                   />
                 )}
-                <div className="flex gap-4">
+                <div className="flex gap-3">
                   <ProjectThumb
                     imageMobile={proj.imageMobile}
                     title={proj.title}

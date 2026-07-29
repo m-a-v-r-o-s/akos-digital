@@ -520,3 +520,139 @@ a:hover .arrow-icon {
   color: #2fc0f2;
   border-color: rgba(24, 188, 242, 0.2);
 }
+
+/* ── Device frames ────────────────────────────────────────────────────────
+   Pure-CSS monitor and phone bezels drawn around the project screenshots:
+   a few divs and two pseudo-elements, no images and no WebGL. Every size is
+   derived from --screen-w / --screen-h, so the same rules serve the small
+   thumbnails and the larger phone-layout ones. */
+
+.device {
+  --bezel-edge: rgba(201, 168, 76, 0.22);
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.device-screen {
+  position: relative;
+  width: var(--screen-w);
+  height: var(--screen-h);
+  overflow: hidden;
+  background: #000;
+}
+
+/* Glass sheen, so the bezel reads as hardware rather than a border. */
+.device-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(158deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 42%);
+  pointer-events: none;
+}
+
+/* ── Monitor ── */
+.device-monitor-body {
+  position: relative;
+  padding: 3px 3px 6px;
+  border-radius: 5px;
+  border: 1px solid var(--bezel-edge);
+  background: linear-gradient(180deg, #232120 0%, #171614 100%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.device-monitor .device-screen {
+  border-radius: 2px;
+}
+
+/* Power LED on the chin. */
+.device-monitor-body::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 1px;
+  border-radius: 1px;
+  background: rgba(201, 168, 76, 0.55);
+}
+
+.device-monitor-stand {
+  width: calc(var(--screen-w) * 0.2);
+  height: 5px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #26231f 0%, #17150f 100%);
+  clip-path: polygon(16% 0, 84% 0, 100% 100%, 0 100%);
+}
+
+.device-monitor-base {
+  width: calc(var(--screen-w) * 0.42);
+  height: 2px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(201, 168, 76, 0.3) 0%,
+    #2a2724 28%,
+    #2a2724 72%,
+    rgba(201, 168, 76, 0.3) 100%
+  );
+}
+
+/* ── Phone ── */
+.device-phone {
+  /* Brushed-metal rim: light/dark/light banding so the 1px edge catches the
+     light like an anodised phone frame instead of reading as a flat line. */
+  --rim-metal: linear-gradient(
+    155deg,
+    #c5cad0 0%,
+    #6a727a 26%,
+    #aeb5bd 50%,
+    #4b5259 72%,
+    #bcc2c9 100%
+  );
+}
+
+.device-phone-body {
+  position: relative;
+  padding: 2px;
+  border-radius: 7px;
+  /* Transparent border + two backgrounds: the dark bezel is clipped to the
+     padding box, the metal gradient to the border box. Keeps the corner
+     radius, which border-image would drop. */
+  border: 1px solid transparent;
+  background:
+    linear-gradient(150deg, #2a2724 0%, #131211 100%) padding-box,
+    var(--rim-metal) border-box;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.device-phone .device-screen {
+  border-radius: 5px;
+}
+
+/* Earpiece slot. */
+.device-phone-body::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32%;
+  height: 1.5px;
+  border-radius: 1px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Side button, in the same metal as the rim. */
+.device-phone-body::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 28%;
+  width: 1px;
+  height: 14%;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #b2b9c0 0%, #636a72 60%, #a1a8b0 100%);
+}
