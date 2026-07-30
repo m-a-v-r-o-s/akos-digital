@@ -75,6 +75,19 @@ export const education = [
 
 export const projects = [
   {
+    title: "SKIÁ Athens",
+    description: {
+      en: "Website for an Athenian atelier producing handcrafted clothing in small runs. Hand-built in HTML, CSS and JavaScript, with an intricate editorial interface, heavy typography and motion worked around light and shadow: a lookbook, a collection index, and a private enquiry flow for acquisitions and fittings.",
+      el: "Ιστοσελίδα για αθηναϊκό atelier που παράγει χειροποίητα ρούχα σε μικρές σειρές. Χτισμένη εξ ολοκλήρου σε HTML, CSS και JavaScript, με σύνθετο editorial interface, βαριά τυπογραφία και κίνηση δουλεμένη γύρω από το φως και τη σκιά: lookbook, ευρετήριο συλλογής και ιδιωτική ροή αιτημάτων για αποκτήσεις και πρόβες.",
+    } as BL,
+    tags: ["HTML", "CSS", "JavaScript", "Interactive Animations", "Brand Identity"],
+    image: "/projects/skia.webp",
+    imageMobile: "/projects/skia-mobile.webp",
+    sector: "fashion",
+    links: [{ label: "Live Site", href: "https://skia.up.railway.app/" }],
+    year: "",
+  },
+  {
     title: "Stefanidis Automotive Concept",
     description: {
       en: "Concept site for a Greek car import and dealership business. A showroom of imported vehicles with full specs and pricing, a request flow for sourcing a car to order, and an AI assistant that answers questions on customs, registration and Greek plates.",
@@ -393,6 +406,74 @@ export const sectors = [
       {
         q: { en: "Is the site mine, and can I keep it updated?", el: "Το site είναι δικό μου και μπορώ να το κρατάω ενημερωμένο;" } as BL,
         a: { en: "Yes. The site and its content are yours, and adding new work is quick, whether you do it or I do.", el: "Ναι. Το site και το περιεχόμενό του είναι δικά σου, και το να προσθέτεις νέα δουλειά είναι γρήγορο, είτε το κάνεις εσύ είτε εγώ." } as BL,
+      },
+    ] as FAQ[],
+  },
+  {
+    slug: "fashion",
+    icon: "◇",
+    title: {
+      en: "Website for Fashion Brands & Boutiques",
+      el: "Ιστοσελίδα για Brands Μόδας & Boutique",
+    } as BL,
+    hook: {
+      en: "An editorial lookbook, an online shop with sizes and stock, and a private enquiry flow for made-to-order and fittings.",
+      el: "Editorial lookbook, online κατάστημα με μεγέθη και απόθεμα, και ιδιωτική ροή αιτημάτων για κατά παραγγελία και πρόβες.",
+    } as BL,
+    points: {
+      en: [
+        "A lookbook that treats your collection like a campaign, full-bleed photography and styling notes, instead of a grid of cut-off thumbnails.",
+        "A shop that handles sizes, colours, and limited runs properly, so a piece sells out cleanly rather than overselling.",
+        "A private enquiry and fitting flow for made-to-order and bespoke work, where the conversation matters more than the cart.",
+        "A mailing list and a drop announcement so your own audience hears about a new collection before the algorithm decides who sees it.",
+      ],
+      el: [
+        "Ένα lookbook που αντιμετωπίζει τη συλλογή σου σαν καμπάνια, φωτογραφία σε πλήρες πλάτος και σημειώσεις styling, αντί για ένα grid με κομμένα thumbnails.",
+        "Ένα κατάστημα που διαχειρίζεται σωστά μεγέθη, χρώματα και περιορισμένες σειρές, ώστε ένα κομμάτι να εξαντλείται καθαρά και να μην πουλιέται παραπάνω από το απόθεμα.",
+        "Ιδιωτική ροή αιτημάτων και προβών για κατά παραγγελία και bespoke δουλειά, όπου η κουβέντα μετράει περισσότερο από το καλάθι.",
+        "Λίστα email και ανακοίνωση drop, ώστε το κοινό σου να μαθαίνει για μια νέα συλλογή πριν αποφασίσει ο αλγόριθμος ποιος θα τη δει.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "A lookbook and collection gallery in full quality",
+        "An online shop with sizes, variants, and stock you control",
+        "A made-to-order and fitting enquiry flow",
+        "A mailing list for drops and new collections",
+        "Size guides, care, shipping, and returns pages",
+        "Google and local-search setup so the boutique is found nearby",
+        "GDPR-compliant by default",
+      ],
+      el: [
+        "Lookbook και gallery συλλογής σε πλήρη ποιότητα",
+        "Online κατάστημα με μεγέθη, παραλλαγές και απόθεμα που ελέγχεις εσύ",
+        "Ροή αιτημάτων για κατά παραγγελία και πρόβες",
+        "Λίστα email για drops και νέες συλλογές",
+        "Σελίδες με οδηγό μεγεθών, φροντίδα, αποστολές και επιστροφές",
+        "Ρύθμιση Google και τοπικής αναζήτησης για να βρίσκουν το boutique κοντά τους",
+        "Συμβατό με το GDPR εξ ορισμού",
+      ],
+    } as BLA,
+    faq: [
+      {
+        q: { en: "How long until my site is live?", el: "Σε πόσο καιρό θα είναι online το site μου;" } as BL,
+        a: { en: "Usually 3 to 5 weeks once I have your photography and the collection details. A lookbook-only site is faster; a full shop with sizes and payments takes a little longer.", el: "Συνήθως 3 με 5 εβδομάδες μόλις έχω τη φωτογραφία και τα στοιχεία της συλλογής. Ένα site μόνο με lookbook είναι πιο γρήγορο· ένα πλήρες κατάστημα με μεγέθη και πληρωμές θέλει λίγο παραπάνω." } as BL,
+      },
+      {
+        q: { en: "What do you need from me to start?", el: "Τι χρειάζεσαι από μένα για να ξεκινήσουμε;" } as BL,
+        a: { en: "Your logo if you have one, the collection photography, the pieces with their sizes and prices, and how you want to handle made-to-order. If the photography isn't ready, I'll tell you what to shoot and how.", el: "Το λογότυπό σου αν έχεις, τη φωτογραφία της συλλογής, τα κομμάτια με τα μεγέθη και τις τιμές τους, και πώς θέλεις να διαχειρίζεσαι τις κατά παραγγελία δουλειές. Αν η φωτογραφία δεν είναι έτοιμη, σου λέω τι να φωτογραφίσεις και πώς." } as BL,
+      },
+      {
+        q: { en: "Can I add new pieces and collections myself?", el: "Μπορώ να προσθέτω μόνος μου νέα κομμάτια και συλλογές;" } as BL,
+        a: { en: "Yes. Adding a piece, changing a price, or marking something sold out takes seconds and needs no developer. A whole new collection is just as easy once the first one is in place.", el: "Ναι. Το να προσθέσεις ένα κομμάτι, να αλλάξεις μια τιμή ή να το σημάνεις εξαντλημένο παίρνει δευτερόλεπτα και δεν χρειάζεται προγραμματιστή. Μια ολόκληρη νέα συλλογή είναι εξίσου εύκολη μόλις μπει η πρώτη." } as BL,
+      },
+      {
+        q: { en: "How do online payments work?", el: "Πώς λειτουργούν οι online πληρωμές;" } as BL,
+        a: { en: "I connect a payment provider so orders land straight in your account, with card and the usual local methods. You keep control of shipping rates and returns.", el: "Συνδέω έναν πάροχο πληρωμών ώστε οι παραγγελίες να πηγαίνουν κατευθείαν στον λογαριασμό σου, με κάρτα και τους συνηθισμένους τοπικούς τρόπους. Τα κόστη αποστολής και οι επιστροφές παραμένουν στον έλεγχό σου." } as BL,
+      },
+      {
+        q: { en: "Are hosting and the domain included?", el: "Περιλαμβάνονται το hosting και το domain;" } as BL,
+        a: { en: "No, they're always separate from the build price. Hosting and the domain are recurring monthly or yearly costs; you can pay them through me if you prefer, or directly to the providers. Either way I set everything up for you.", el: "Όχι, είναι πάντα ξεχωριστά από την τιμή κατασκευής. Το hosting και το domain είναι επαναλαμβανόμενα μηνιαία ή ετήσια κόστη· μπορείς να τα πληρώνεις μέσω εμένα αν προτιμάς, ή απευθείας στους παρόχους. Σε κάθε περίπτωση, τα στήνω όλα για σένα." } as BL,
       },
     ] as FAQ[],
   },
