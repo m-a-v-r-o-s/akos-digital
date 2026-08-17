@@ -23,6 +23,7 @@ export async function generateMetadata({
       description: sec.hook.en,
       locale: "el_GR",
       type: "website",
+      images: [{ url: "/og/cover.jpg", width: 1280, height: 720 }],
     },
   };
 }

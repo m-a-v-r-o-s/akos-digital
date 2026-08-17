@@ -3,6 +3,7 @@ import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/LanguageContext";
 import KeyboardAwareFocus from "@/components/KeyboardAwareFocus";
 import CookieConsent from "@/components/CookieConsent";
+import AnalyticsLoader from "@/components/AnalyticsLoader";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -25,6 +26,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.akosds.com"),
   title: "Akos Digital Services",
   description:
     "Digital strategist & web architect building bespoke digital experiences for ambitious brands across Greece and Europe.",
@@ -37,6 +39,14 @@ export const metadata: Metadata = {
       "Digital strategist & web architect building bespoke digital experiences for ambitious brands.",
     locale: "el_GR",
     type: "website",
+    images: [{ url: "/og/cover.jpg", width: 1280, height: 720 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Akos Digital Services",
+    description:
+      "Digital strategist & web architect building bespoke digital experiences for ambitious brands.",
+    images: ["/og/cover.jpg"],
   },
 };
 
@@ -54,6 +64,7 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
           <CookieConsent />
+          <AnalyticsLoader />
         </LanguageProvider>
       </body>
     </html>

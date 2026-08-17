@@ -11,6 +11,7 @@ export const metadata: Metadata = {
       "Build or upgrade your website with ESPA funding. Free eligibility assessment within 24 hours.",
     locale: "el_GR",
     type: "website",
+    images: [{ url: "/og/cover.jpg", width: 1280, height: 720 }],
   },
 };
 

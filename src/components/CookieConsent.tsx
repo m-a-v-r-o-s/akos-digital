@@ -116,7 +116,7 @@ export default function CookieConsent() {
           <>
             <p className="text-sm text-stone leading-relaxed mb-4">
               {t.body}{" "}
-              <Link href="/terms" className="gold-link">
+              <Link href="/privacy" className="gold-link">
                 {t.learnMore}
               </Link>
             </p>

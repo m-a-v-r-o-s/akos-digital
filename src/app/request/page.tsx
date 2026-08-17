@@ -11,6 +11,7 @@ export const metadata: Metadata = {
       "Tell me about your project in a few quick questions and I'll get back to you within 24 hours.",
     locale: "el_GR",
     type: "website",
+    images: [{ url: "/og/cover.jpg", width: 1280, height: 720 }],
   },
 };
 

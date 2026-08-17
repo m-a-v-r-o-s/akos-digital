@@ -20,6 +20,11 @@ const copyright = {
   el: "© Akos Digital 2026. Με επιφύλαξη παντός δικαιώματος.",
 };
 
+const address = {
+  en: "Epidamnou 21, 11254, Athens, Greece",
+  el: "Επιδάμνου 21, 11254, Αθήνα, Ελλάδα",
+};
+
 const requestQuote = {
   en: "Request a Quote",
   el: "Ζητήστε Προσφορά",
@@ -418,6 +423,9 @@ export default function MobileScrollSections() {
       <div className="flex items-center justify-between gap-4 pb-8 border-t border-stone-dark pt-4">
         <p className="text-xs text-stone leading-relaxed">
           {copyright[lang]}
+          <span className="block text-[0.65rem] text-stone-dark/70 mt-0.5">
+            {address[lang]}
+          </span>
         </p>
         <div className="flex items-center gap-4 shrink-0">
           <button
@@ -426,6 +434,12 @@ export default function MobileScrollSections() {
           >
             Cookies
           </button>
+          <Link
+            href="/privacy"
+            className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
+          >
+            {lang === "en" ? "Privacy" : "Απόρρητο"}
+          </Link>
           <Link
             href="/terms"
             className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
