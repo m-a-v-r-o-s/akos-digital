@@ -27,7 +27,6 @@ const ui = {
     privacy: "Privacy",
     cookies: "Cookies",
     copyright: "© Akos Digital 2026. All Rights Reserved.",
-    address: "Epidamnou 21, 11254, Athens, Greece",
   },
   el: {
     about: "Σχετικά",
@@ -42,7 +41,6 @@ const ui = {
     privacy: "Απόρρητο",
     cookies: "Cookies",
     copyright: "© Akos Digital 2026. Με επιφύλαξη παντός δικαιώματος.",
-    address: "Επιδάμνου 21, 11254, Αθήνα, Ελλάδα",
   },
 };
 
@@ -388,9 +386,6 @@ export default function Home() {
             <footer className="pt-8 border-t border-stone-dark flex items-center justify-between gap-4">
               <p className="text-xs text-stone leading-relaxed">
                 {t.copyright}
-                <span className="block text-[0.65rem] text-stone-dark/70 mt-0.5">
-                  {t.address}
-                </span>
               </p>
               <div className="flex items-center gap-4 shrink-0">
                 <button
