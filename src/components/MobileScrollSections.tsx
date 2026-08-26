@@ -8,6 +8,7 @@ import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services, sectors } from "@/lib/data";
 import SecretName from "@/components/SecretName";
+import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import ProjectThumb from "@/components/ProjectThumb";
 
 const tabLabels = {
@@ -106,10 +107,10 @@ export default function MobileScrollSections() {
         </h1>
         <div className="deco-rule mb-4" />
         <h2 className="font-body text-base font-light text-stone-light tracking-wide mb-4">
-          {person.role[lang]}
+          <Bilingual el={person.role.el} en={person.role.en} />
         </h2>
         <p className="text-sm text-stone leading-relaxed mb-6">
-          {person.tagline[lang]}
+          <Bilingual el={person.tagline.el} en={person.tagline.en} />
         </p>
         <div className="flex gap-4">
           {person.socials.map((s) => (
@@ -247,7 +248,7 @@ export default function MobileScrollSections() {
                       )}
                     </div>
                     <p className="text-xs text-stone leading-relaxed mb-3">
-                      {proj.description[lang]}
+                      <Bilingual el={proj.description.el} en={proj.description.en} />
                     </p>
                     <div className="flex flex-wrap items-center gap-2">
                       {proj.tags.map((tag) => (
@@ -293,10 +294,10 @@ export default function MobileScrollSections() {
                   {sec.icon}
                 </span>
                 <h4 className="font-display font-semibold text-paper text-sm mb-2">
-                  {sec.title[lang]}
+                  <Bilingual el={sec.title.el} en={sec.title.en} />
                 </h4>
                 <p className="text-xs text-stone leading-relaxed mb-3">
-                  {sec.hook[lang]}
+                  <Bilingual el={sec.hook.el} en={sec.hook.en} />
                 </p>
                 <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone">
                   {lang === "en" ? "Explore" : "Περισσότερα"}
@@ -322,10 +323,10 @@ export default function MobileScrollSections() {
                     {svc.icon}
                   </span>
                   <h4 className="font-display font-semibold text-paper text-sm mb-2">
-                    {svc.title[lang]}
+                    <Bilingual el={svc.title.el} en={svc.title.en} />
                   </h4>
                   <p className="text-xs text-stone leading-relaxed mb-3">
-                    {svc.description[lang]}
+                    <Bilingual el={svc.description.el} en={svc.description.en} />
                   </p>
                   <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone">
                     {lang === "en" ? "Explore" : "Περισσότερα"}
@@ -340,10 +341,10 @@ export default function MobileScrollSections() {
                     {svc.icon}
                   </span>
                   <h4 className="font-display font-semibold text-paper text-sm mb-2">
-                    {svc.title[lang]}
+                    <Bilingual el={svc.title.el} en={svc.title.en} />
                   </h4>
                   <p className="text-xs text-stone leading-relaxed">
-                    {svc.description[lang]}
+                    <Bilingual el={svc.description.el} en={svc.description.en} />
                   </p>
                 </div>
               )
@@ -361,12 +362,14 @@ export default function MobileScrollSections() {
               <li key={edu.degree.en} className="section-card">
                 <p className="exp-date mb-1">{edu.period}</p>
                 <h4 className="font-display font-semibold text-paper text-sm mb-0.5 leading-snug">
-                  {edu.degree[lang]}
+                  <Bilingual el={edu.degree.el} en={edu.degree.en} />
                   <span className="text-stone mx-1">·</span>
-                  <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="gold-link">{edu.institution[lang]}</a>
+                  <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="gold-link">
+                    <Bilingual el={edu.institution.el} en={edu.institution.en} />
+                  </a>
                 </h4>
                 <p className="text-xs text-stone leading-relaxed mt-2 mb-3">
-                  {edu.description[lang]}
+                  <Bilingual el={edu.description.el} en={edu.description.en} />
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {edu.tags.map((tag) => (
@@ -386,11 +389,13 @@ export default function MobileScrollSections() {
             <span className="text-gold opacity-50 mr-2">§</span>
           </h3>
           <div className="space-y-4">
-            {person.about[lang].map((para, i) => (
-              <p
-                key={i}
+            {person.about.el.map((para, i) => (
+              <BilingualHtml
+                key={`el-${i}`}
+                as="p"
                 className="text-sm text-stone leading-[1.85]"
-                dangerouslySetInnerHTML={{ __html: para }}
+                el={para}
+                en={person.about.en[i]}
               />
             ))}
             <br /><br /><br />

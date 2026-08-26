@@ -5,6 +5,7 @@ import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import NavLinks from "@/components/NavLinks";
 import LanguageToggle from "@/components/LanguageToggle";
+import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
 import { person, education, projects, services, sectors } from "@/lib/data";
@@ -92,12 +93,11 @@ export default function Home() {
               <div className="fade-up fade-up-delay-3 deco-rule mb-6" />
 
               <h2 className="fade-up fade-up-delay-3 font-body text-lg font-light text-stone-light tracking-wide mb-4">
-                {person.role[lang]}
+                <Bilingual el={person.role.el} en={person.role.en} />
               </h2>
 
               <p className="fade-up fade-up-delay-4 text-sm text-stone leading-relaxed max-w-xs">
-                {person.tagline[lang]}
-                {lang === "en" && <><br /><br /></>}
+                <Bilingual el={person.tagline.el} en={<>{person.tagline.en}<br /><br /></>} />
               </p>
 
               {/* Desktop nav */}
@@ -216,7 +216,7 @@ export default function Home() {
                           )}
                         </div>
                         <p className="text-xs text-stone leading-relaxed mb-3">
-                          {proj.description[lang]}
+                          <Bilingual el={proj.description.el} en={proj.description.en} />
                         </p>
                         <div className="flex flex-wrap items-center gap-2">
                           {proj.tags.map((tag) => (
@@ -263,10 +263,10 @@ export default function Home() {
                       {sec.icon}
                     </span>
                     <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
-                      {sec.title[lang]}
+                      <Bilingual el={sec.title.el} en={sec.title.en} />
                     </h4>
                     <p className="text-xs text-stone leading-relaxed mb-4">
-                      {sec.hook[lang]}
+                      <Bilingual el={sec.hook.el} en={sec.hook.en} />
                     </p>
                     <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-gold-light transition-colors">
                       {t.explore}
@@ -297,10 +297,10 @@ export default function Home() {
                         {svc.icon}
                       </span>
                       <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
-                        {svc.title[lang]}
+                        <Bilingual el={svc.title.el} en={svc.title.en} />
                       </h4>
                       <p className="text-xs text-stone leading-relaxed mb-4">
-                        {svc.description[lang]}
+                        <Bilingual el={svc.description.el} en={svc.description.en} />
                       </p>
                       <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-gold-light transition-colors">
                         {t.explore}
@@ -315,10 +315,10 @@ export default function Home() {
                         {svc.icon}
                       </span>
                       <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
-                        {svc.title[lang]}
+                        <Bilingual el={svc.title.el} en={svc.title.en} />
                       </h4>
                       <p className="text-xs text-stone leading-relaxed">
-                        {svc.description[lang]}
+                        <Bilingual el={svc.description.el} en={svc.description.en} />
                       </p>
                     </div>
                   )
@@ -341,14 +341,14 @@ export default function Home() {
                       </p>
                       <div className="flex-1">
                         <h4 className="font-display font-semibold text-paper text-sm mb-0.5 group-hover:text-gold-light transition-colors leading-snug">
-                          {edu.degree[lang]}
+                          <Bilingual el={edu.degree.el} en={edu.degree.en} />
                           <span className="text-stone mx-2">·</span>
                           <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="gold-link">
-                            {edu.institution[lang]}
+                            <Bilingual el={edu.institution.el} en={edu.institution.en} />
                           </a>
                         </h4>
                         <p className="text-xs text-stone leading-relaxed mt-2 mb-3">
-                          {edu.description[lang]}
+                          <Bilingual el={edu.description.el} en={edu.description.en} />
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {edu.tags.map((tag) => (
@@ -371,11 +371,13 @@ export default function Home() {
                 {t.about}
               </h3>
               <div className="space-y-4">
-                {person.about[lang].map((para, i) => (
-                  <p
-                    key={i}
+                {person.about.el.map((para, i) => (
+                  <BilingualHtml
+                    key={`el-${i}`}
+                    as="p"
                     className="text-sm text-stone leading-[1.85] max-w-prose"
-                    dangerouslySetInnerHTML={{ __html: para }}
+                    el={para}
+                    en={person.about.en[i]}
                   />
                 ))}
               <br /><br /><br />
