@@ -128,6 +128,14 @@ speeches and tenders too, so from those only a programme-specific term counts
 (voucher, επιταγ, ψηφιακά εργαλεία, ηλεκτρονική τιμολόγηση, mydata, ...).
 espa.gr and antagonistikotita.gr publish no feed and are not covered.
 
+mindigital.gr answers 403 to Railway's egress IP while serving the same feed
+fine from a Greek connection, so in practice the watch runs on three of the
+four sources. It is a `broad` source (only a programme-specific term qualifies
+an item from it), and the calls themselves land on digitalsme.gov.gr and the
+Ελλάδα 2.0 feed, so the loss is recall at the edges rather than a missed
+programme. A failing source is warned about per run and only turns into an
+email if all four die.
+
 ```bash
 npm run funding-watch -- --dry   # print what would be sent
 npm run funding-watch            # send it
@@ -141,17 +149,40 @@ means "nothing new" and never "the watch is dead".
 
 ### Railway setup
 
-The watch is a second service in the same Railway project, not part of the
-web service:
+The watch is a second service in the same Railway project (`funding-watch`),
+not part of the web service. It is live; this is what it took, and what to
+repeat if it ever has to be rebuilt:
 
-1. **New** → **GitHub Repo** → this repo, in the project that already runs the site.
+1. **New** → **GitHub Repo** → this repo, in the project that already runs the
+   site. Railway builds from GitHub, so the commit has to be on `origin/master`
+   first: a local commit alone gets you a build of the previous master.
 2. Settings → **Start Command**: `npm run funding-watch`
-3. Settings → **Cron Schedule**: `0 7 * * 1` (Mondays, 10:00 Athens in summer).
-4. Settings → **Serverless / restart policy**: never restart. A cron service is
-   expected to exit after each run.
-5. Variables: `RESEND_API_KEY` and `LEAD_MAIL_FROM` (same values as the web
-   service). Optionally `WATCH_ALERT_EMAIL` to send somewhere other than
-   `digitalaakos@gmail.com`, and `WATCH_WINDOW_DAYS` if the schedule changes.
+3. Settings → **Cron Schedule**: `0 7 * * 1`. Railway cron is UTC, so that is
+   10:00 Athens in summer and 09:00 in winter.
+4. Settings → **Restart Policy**: `Never`. A cron service is expected to exit
+   after each run, and the script exits 0 on success, 1 on failure. No
+   healthcheck, no public domain.
+5. Settings → **Build Command**: something trivial such as
+   `echo "cron service: no build, the script runs from source"`. Railpack still
+   runs `npm install` in its own install phase, so this only skips the
+   `next build` the cron would never serve. The script itself imports nothing
+   outside `node:` and `src/lib/email.ts`, so it needs no dependencies at all.
+6. Variables: `RESEND_API_KEY` and `LEAD_MAIL_FROM`. Set these as Railway
+   references to the web service, `${{akos-digital.RESEND_API_KEY}}` and
+   `${{akos-digital.LEAD_MAIL_FROM}}`, rather than pasting the values: one key
+   in one place, and rotating it on the web service carries over. Optionally
+   `WATCH_ALERT_EMAIL` to send somewhere other than `digitalaakos@gmail.com`,
+   and `WATCH_WINDOW_DAYS` if the schedule changes.
+
+Node comes from `engines` (`>=22`), which Railpack resolves to a 22.x release.
+That matters: `--experimental-strip-types` is what runs the `.ts` file, and it
+does not exist before Node 22.
+
+**Deploying does not run the job.** A cron service builds and then waits for
+its next tick, so a fresh deploy produces an empty deploy log rather than a
+run. To force a run, point the schedule at a time a few minutes out, redeploy,
+and put `0 7 * * 1` back afterwards. Railway is also loose about the minute:
+a tick set for 14:20 UTC fired at 14:23.
 
 Changing the schedule means changing the window: keep `WATCH_WINDOW_DAYS`
 a day or two longer than the gap between runs.
