@@ -54,13 +54,46 @@ for (const title of [
 }
 
 // ── Matching: noise we must not forward ──────────────────────────────────
+// Every headline below is one that really did reach the inbox on 9 Sep 2026.
 for (const title of [
   "Βραβεία Ψηφιακής Διακυβέρνησης: Διακρίσεις σε στελέχη και ομάδες",
   "Τάκης Θεοδωρικάκος: «Σταθερή πολιτική μας η μείωση των φόρων»",
   "Πρόσκληση υποβολής αιτήσεων χρηματοδότησης για το Πρόγραμμα Ημιαυτόνομης διαβίωσης ατόμων",
+  "Προγράμματα αναβάθμισης δεξιοτήτων και επανακατάρτισης με έμφαση σε δεξιότητες ψηφιακές και πράσινες",
+  "Πρόσκληση Εκδήλωσης Ενδιαφέροντος για την υποβολή αίτησης συμμετοχής ωφελουμένων στους Κόμβους Ψηφιακής Ενδυνάμωσης Ηλικιωμένων",
+  "Πρόσκληση Εκδήλωσης Ενδιαφέροντος για την υποβολή αίτησης συμμετοχής ωφελουμένων στους Κόμβους Ψηφιακής Ενδυνάμωσης Ατόμων με Αναπηρία",
+  "Πρόσκληση υποβολής αιτήσεων συμμετοχής στο πρόγραμμα «Πρώιμης Παιδικής Παρέμβασης για παιδιά ηλικίας 0 έως 6 ετών»",
+  "Πρόσκληση συμμετοχής σε Πρόγραμμα Επιμόρφωσης στη διαδικασία διαμεσολάβησης 12.000 ωφελούμενων",
 ]) {
   assert.equal(matches({ title, summary: "" }), false, `must not match: ${title}`);
 }
+
+// ── Terms match at a word start, not anywhere ────────────────────────────
+// The bug this replaces: «ΜμΕ» matched inside «συμμετοχής», a word in every
+// Greek call for applications, so the audience test passed on almost
+// anything and six of thirteen items in the first real mail were training
+// and social programmes.
+assert.equal(
+  matches({ title: "Πρόσκληση υποβολής αιτήσεων συμμετοχής στο πρόγραμμα", summary: "" }),
+  false,
+  "«συμμετοχής» must not satisfy the ΜμΕ audience term"
+);
+assert.equal(
+  matches({ title: "Πρόσκληση χρηματοδότησης για ΜμΕ", summary: "" }),
+  true,
+  "ΜμΕ as its own word must still qualify"
+);
+
+// An exclusion must never outrank a programme-specific term: a real voucher
+// round stays in even when a training word appears in the same sentence.
+assert.equal(
+  matches({
+    title: "Πρόγραμμα Ψηφιακά Εργαλεία για ΜμΕ",
+    summary: "περιλαμβάνει και κατάρτιση προσωπικού στις νέες δεξιότητες",
+  }),
+  true,
+  "a STRONG term must survive an excluded word in the summary"
+);
 
 // Accented and unaccented spellings are the same word.
 assert.equal(matches({ title: "ΨΗΦΙΑΚΕΣ ΣΥΝΑΛΛΑΓΕΣ Γ'", summary: "" }), true, "caps must fold");

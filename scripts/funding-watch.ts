@@ -100,6 +100,19 @@ function fold(s: string): string {
     .toLowerCase();
 }
 
+/**
+ * A term matches only at the start of a word. Substring matching looks
+ * harmless until «ΜμΕ» matches inside «συμμετοχής», which appears in every
+ * Greek call for applications ever written: the audience test then means
+ * "any call at all", and the mail fills with reskilling and social
+ * programmes. Greek needs a lookbehind here, JS `\b` is ASCII-only.
+ *
+ * The terms are literals defined below, so none needs regex escaping.
+ */
+function term(s: string): RegExp {
+  return new RegExp(`(?<!\\p{L})${fold(s)}`, "u");
+}
+
 /** Terms that qualify an item on their own. */
 const STRONG = [
   "voucher",
@@ -114,11 +127,38 @@ const STRONG = [
   "παροχου ηλεκτρονικης",
   "παροχων ηλεκτρονικης",
   "mydata",
-].map(fold);
+].map(term);
 
 /** Otherwise it takes one word from each list: a funding act, aimed at firms. */
-const FUNDING = ["χρηματοδοτ", "επιδοτ", "ενισχυσ", "προσκλησ", "δρασ", "προγραμμα", "κυκλο"].map(fold);
-const AUDIENCE = ["επιχειρησ", "επιχειρησε", "μικρομεσαι", "μμε", "εσπα", "ψηφιακ", "τιμολογ", "ταμειακ", "pos"].map(fold);
+const FUNDING = ["χρηματοδοτ", "επιδοτ", "ενισχυσ", "προσκλησ", "δρασ", "προγραμμα", "κυκλο"].map(term);
+const AUDIENCE = ["επιχειρησ", "επιχειρησε", "μικρομεσαι", "μμε", "εσπα", "ψηφιακ", "τιμολογ", "ταμειακ", "pos"].map(
+  term
+);
+
+/**
+ * Programmes for individuals rather than for a firm buying digital work:
+ * training, reskilling, and social inclusion. «Πρόγραμμα» plus «ψηφιακές
+ * δεξιότητες» satisfies the pair rule perfectly while being no use to us, so
+ * upskilling the workforce and digital-empowerment hubs for the elderly are
+ * what the mail fills with once nothing stops them.
+ *
+ * This only filters the weak pair rule, never a STRONG term: a real voucher
+ * round stays in even if the word «κατάρτιση» shows up somewhere in its
+ * summary. Excluding is the more dangerous direction, so it gets the
+ * narrower power.
+ */
+const EXCLUDE = [
+  "καταρτισ",
+  "επιμορφωσ",
+  "δεξιοτητ",
+  "ανεργ",
+  "μαθητ",
+  "φοιτητ",
+  "ηλικιωμεν",
+  "αναπηρι",
+  "παιδι",
+  "διαμεσολαβ",
+].map(term);
 
 /**
  * True when an item is worth a line in the weekly mail. On a `broad` source
@@ -131,9 +171,10 @@ const AUDIENCE = ["επιχειρησ", "επιχειρησε", "μικρομε�
  */
 export function matches(item: Pick<Item, "title" | "summary">, broad = false): boolean {
   const text = fold(`${item.title} ${item.summary}`);
-  if (STRONG.some((k) => text.includes(k))) return true;
+  if (STRONG.some((re) => re.test(text))) return true;
   if (broad) return false;
-  return FUNDING.some((k) => text.includes(k)) && AUDIENCE.some((k) => text.includes(k));
+  if (EXCLUDE.some((re) => re.test(text))) return false;
+  return FUNDING.some((re) => re.test(text)) && AUDIENCE.some((re) => re.test(text));
 }
 
 export function withinWindow(item: Item, now: Date, days = WINDOW_DAYS): boolean {

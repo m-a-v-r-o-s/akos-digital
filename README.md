@@ -128,6 +128,13 @@ speeches and tenders too, so from those only a programme-specific term counts
 (voucher, επιταγ, ψηφιακά εργαλεία, ηλεκτρονική τιμολόγηση, mydata, ...).
 espa.gr and antagonistikotita.gr publish no feed and are not covered.
 
+Programmes for individuals rather than for a firm buying digital work are
+dropped: κατάρτιση, επιμόρφωση, δεξιότητες, and the social ones (ηλικιωμένοι,
+ΑμεΑ, παιδιά, διαμεσολάβηση). Those clear the generic pair rule easily,
+«πρόγραμμα» plus «ψηφιακές δεξιότητες» being the usual shape. The exclusion
+applies only to that weak rule, never to a programme-specific term, so a real
+voucher round is never dropped because «κατάρτιση» appears in its summary.
+
 mindigital.gr answers 403 to Railway's egress IP while serving the same feed
 fine from a Greek connection, so in practice the watch runs on three of the
 four sources. It is a `broad` source (only a programme-specific term qualifies
