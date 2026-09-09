@@ -28,6 +28,7 @@ const L = {
     ctaBody:
       "Tell me about your project and I'll get back to you within 24 hours, with ideas and a clear, no-obligation quote.",
     cta: "Request a quote",
+    others: "Other sectors I build for",
   },
   el: {
     back: "Επιστροφή στην αρχική",
@@ -46,6 +47,7 @@ const L = {
     ctaBody:
       "Πες μου για το έργο σου και θα επικοινωνήσω εντός 24 ωρών, με ιδέες και μια ξεκάθαρη προσφορά χωρίς δέσμευση.",
     cta: "Ζήτησε προσφορά",
+    others: "Άλλες ειδικότητες που καλύπτω",
   },
 };
 
@@ -282,6 +284,33 @@ export default function SectorDetail({ slug }: { slug: string }) {
             </span>
           </Link>
         </section>
+
+        {/* Sibling sectors: gives every sector page inbound links from its
+            seven siblings instead of relying on the single homepage link. */}
+        <nav aria-label={t.others} className="border-t border-stone-dark pt-10">
+          <h2 className="font-display text-2xl sm:text-3xl font-semibold text-paper mb-5">
+            {t.others}
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {sectors
+              .filter((s) => s.slug !== sec.slug)
+              .map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/sectors/${s.slug}`}
+                    className="section-card group flex items-center gap-3"
+                  >
+                    <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      {s.icon}
+                    </span>
+                    <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <Bilingual el={s.title.el} en={s.title.en} />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </nav>
       </div>
       </SpotlightWrapper>
     </>
