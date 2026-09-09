@@ -7,6 +7,7 @@ import LanguageToggle from "@/components/LanguageToggle";
 import ProjectThumb from "@/components/ProjectThumb";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
+import Bilingual from "@/components/Bilingual";
 import { sectors, projects } from "@/lib/data";
 
 const L = {
@@ -67,8 +68,32 @@ export default function SectorDetail({ slug }: { slug: string }) {
 
   const work = projects.filter((p) => p.sector === slug);
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: sec.faq.flatMap((f) => [
+      {
+        "@type": "Question",
+        name: f.q.el,
+        inLanguage: "el",
+        acceptedAnswer: { "@type": "Answer", text: f.a.el },
+      },
+      {
+        "@type": "Question",
+        name: f.q.en,
+        inLanguage: "en",
+        acceptedAnswer: { "@type": "Answer", text: f.a.en },
+      },
+    ]),
+  };
+
   return (
-    <SpotlightWrapper className={slug === "smarthome" ? "smarthome-theme" : ""}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <SpotlightWrapper className={slug === "smarthome" ? "smarthome-theme" : ""}>
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
         {/* Header */}
         <header className="flex items-center justify-between py-8">
@@ -105,15 +130,21 @@ export default function SectorDetail({ slug }: { slug: string }) {
             {t.eyebrow}
           </p>
           <h1 className="font-display text-4xl sm:text-5xl font-bold leading-tight text-paper mb-5">
-            {sec.title[lang]}
+            <Bilingual el={sec.title.el} en={sec.title.en} />
           </h1>
           <div className="deco-rule mb-6" />
           <p className="text-base text-stone-light leading-relaxed max-w-3xl mb-6">
-            {sec.hook[lang]}
+            <Bilingual el={sec.hook.el} en={sec.hook.en} />
           </p>
           <ul className="space-y-2 max-w-3xl">
-            {sec.points[lang].map((p, i) => (
-              <li key={i} className="flex gap-2.5 text-sm text-stone leading-relaxed">
+            {sec.points.el.map((p, i) => (
+              <li key={`el-${i}`} lang="el" hidden={lang !== "el"} className="flex gap-2.5 text-sm text-stone leading-relaxed">
+                <span className="text-gold mt-0.5 shrink-0">›</span>
+                <span>{p}</span>
+              </li>
+            ))}
+            {sec.points.en.map((p, i) => (
+              <li key={`en-${i}`} lang="en" hidden={lang !== "en"} className="flex gap-2.5 text-sm text-stone leading-relaxed">
                 <span className="text-gold mt-0.5 shrink-0">›</span>
                 <span>{p}</span>
               </li>
@@ -126,10 +157,10 @@ export default function SectorDetail({ slug }: { slug: string }) {
           <section className="mb-14">
             <div className="section-card">
               <h2 className="font-display font-semibold text-paper text-base mb-3">
-                {t.aboutHaTitle}
+                <Bilingual el={L.el.aboutHaTitle} en={L.en.aboutHaTitle} />
               </h2>
               <p className="text-sm text-stone leading-relaxed max-w-3xl">
-                {t.aboutHa}
+                <Bilingual el={L.el.aboutHa} en={L.en.aboutHa} />
               </p>
             </div>
           </section>
@@ -163,7 +194,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
                         {proj.title}
                       </h4>
                       <p className="text-xs text-stone leading-relaxed mb-3">
-                        {proj.description[lang]}
+                        <Bilingual el={proj.description.el} en={proj.description.en} />
                       </p>
                       <div className="flex flex-wrap items-center gap-2">
                         {proj.tags.map((tag) => (
@@ -198,15 +229,24 @@ export default function SectorDetail({ slug }: { slug: string }) {
         <section className="mb-14">
           <h2 className="section-heading !static mb-5">{t.included}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            {sec.included[lang].map((item, i) => (
-              <div key={i} className="section-card flex gap-3" style={{ padding: "1rem" }}>
+            {sec.included.el.map((item, i) => (
+              <div key={`el-${i}`} lang="el" hidden={lang !== "el"} className="section-card flex gap-3" style={{ padding: "1rem" }}>
+                <span className="text-gold mt-0.5 shrink-0">✦</span>
+                <span className="text-sm text-stone-light leading-snug">{item}</span>
+              </div>
+            ))}
+            {sec.included.en.map((item, i) => (
+              <div key={`en-${i}`} lang="en" hidden={lang !== "en"} className="section-card flex gap-3" style={{ padding: "1rem" }}>
                 <span className="text-gold mt-0.5 shrink-0">✦</span>
                 <span className="text-sm text-stone-light leading-snug">{item}</span>
               </div>
             ))}
           </div>
           <p className="text-xs text-stone leading-relaxed mt-4 border-l-2 border-gold/30 pl-4 max-w-3xl">
-            {slug === "smarthome" ? t.supportNoteLocal : t.supportNote}
+            <Bilingual
+              el={slug === "smarthome" ? L.el.supportNoteLocal : L.el.supportNote}
+              en={slug === "smarthome" ? L.en.supportNoteLocal : L.en.supportNote}
+            />
           </p>
         </section>
 
@@ -215,11 +255,15 @@ export default function SectorDetail({ slug }: { slug: string }) {
           <h2 className="section-heading !static mb-5">{t.faq}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {sec.faq.map((f, i) => (
-              <div key={i} className="section-card">
-                <p className="font-display font-semibold text-paper text-sm mb-1.5">
-                  {f.q[lang]}
-                </p>
-                <p className="text-sm text-stone leading-relaxed">{f.a[lang]}</p>
+              <div key={`el-${i}`} lang="el" hidden={lang !== "el"} className="section-card">
+                <p className="font-display font-semibold text-paper text-sm mb-1.5">{f.q.el}</p>
+                <p className="text-sm text-stone leading-relaxed">{f.a.el}</p>
+              </div>
+            ))}
+            {sec.faq.map((f, i) => (
+              <div key={`en-${i}`} lang="en" hidden={lang !== "en"} className="section-card">
+                <p className="font-display font-semibold text-paper text-sm mb-1.5">{f.q.en}</p>
+                <p className="text-sm text-stone leading-relaxed">{f.a.en}</p>
               </div>
             ))}
           </div>
@@ -239,6 +283,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
           </Link>
         </section>
       </div>
-    </SpotlightWrapper>
+      </SpotlightWrapper>
+    </>
   );
 }

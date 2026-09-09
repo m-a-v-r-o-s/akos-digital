@@ -15,13 +15,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const sec = sectors.find((s) => s.slug === slug);
   if (!sec) return {};
+  const title = `${sec.title.en} | ${sec.title.el} · Akos Digital Services`;
+  const description = `${sec.hook.en} // ${sec.hook.el}`;
   return {
-    title: `${sec.title.en} · Akos Digital Services`,
-    description: sec.hook.en,
+    title,
+    description,
     openGraph: {
-      title: `${sec.title.en} · Akos Digital Services`,
-      description: sec.hook.en,
+      title,
+      description,
       locale: "el_GR",
+      alternateLocale: ["en_US"],
       type: "website",
       images: [{ url: "/og/cover.jpg", width: 1280, height: 720 }],
     },
