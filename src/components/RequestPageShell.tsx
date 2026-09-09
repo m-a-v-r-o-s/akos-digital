@@ -20,7 +20,7 @@ export default function RequestPageShell() {
             <div>
               <div className="flex items-center justify-between mb-10">
                 <Link
-                  href="/"
+                  href={`/${lang}`}
                   className="fade-up fade-up-delay-1 inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
                 >
                   <span className="ornament">←</span>

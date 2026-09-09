@@ -70,23 +70,17 @@ export default function SectorDetail({ slug }: { slug: string }) {
 
   const work = projects.filter((p) => p.sector === slug);
 
+  // Only this locale's questions: the page is one language, and a FAQPage
+  // listing each question twice would not match the text Google can see.
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: sec.faq.flatMap((f) => [
-      {
-        "@type": "Question",
-        name: f.q.el,
-        inLanguage: "el",
-        acceptedAnswer: { "@type": "Answer", text: f.a.el },
-      },
-      {
-        "@type": "Question",
-        name: f.q.en,
-        inLanguage: "en",
-        acceptedAnswer: { "@type": "Answer", text: f.a.en },
-      },
-    ]),
+    inLanguage: lang,
+    mainEntity: sec.faq.map((f) => ({
+      "@type": "Question",
+      name: f.q[lang],
+      acceptedAnswer: { "@type": "Answer", text: f.a[lang] },
+    })),
   };
 
   return (
@@ -100,7 +94,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
         {/* Header */}
         <header className="flex items-center justify-between py-8">
           <Link
-            href="/"
+            href={`/${lang}`}
             className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
           >
             <span className="ornament">←</span>
@@ -139,14 +133,8 @@ export default function SectorDetail({ slug }: { slug: string }) {
             <Bilingual el={sec.hook.el} en={sec.hook.en} />
           </p>
           <ul className="space-y-2 max-w-3xl">
-            {sec.points.el.map((p, i) => (
-              <li key={`el-${i}`} lang="el" hidden={lang !== "el"} className="flex gap-2.5 text-sm text-stone leading-relaxed">
-                <span className="text-gold mt-0.5 shrink-0">›</span>
-                <span>{p}</span>
-              </li>
-            ))}
-            {sec.points.en.map((p, i) => (
-              <li key={`en-${i}`} lang="en" hidden={lang !== "en"} className="flex gap-2.5 text-sm text-stone leading-relaxed">
+            {sec.points[lang].map((p, i) => (
+              <li key={i} className="flex gap-2.5 text-sm text-stone leading-relaxed">
                 <span className="text-gold mt-0.5 shrink-0">›</span>
                 <span>{p}</span>
               </li>
@@ -231,14 +219,8 @@ export default function SectorDetail({ slug }: { slug: string }) {
         <section className="mb-14">
           <h2 className="section-heading !static mb-5">{t.included}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            {sec.included.el.map((item, i) => (
-              <div key={`el-${i}`} lang="el" hidden={lang !== "el"} className="section-card flex gap-3" style={{ padding: "1rem" }}>
-                <span className="text-gold mt-0.5 shrink-0">✦</span>
-                <span className="text-sm text-stone-light leading-snug">{item}</span>
-              </div>
-            ))}
-            {sec.included.en.map((item, i) => (
-              <div key={`en-${i}`} lang="en" hidden={lang !== "en"} className="section-card flex gap-3" style={{ padding: "1rem" }}>
+            {sec.included[lang].map((item, i) => (
+              <div key={i} className="section-card flex gap-3" style={{ padding: "1rem" }}>
                 <span className="text-gold mt-0.5 shrink-0">✦</span>
                 <span className="text-sm text-stone-light leading-snug">{item}</span>
               </div>
@@ -257,15 +239,9 @@ export default function SectorDetail({ slug }: { slug: string }) {
           <h2 className="section-heading !static mb-5">{t.faq}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {sec.faq.map((f, i) => (
-              <div key={`el-${i}`} lang="el" hidden={lang !== "el"} className="section-card">
-                <p className="font-display font-semibold text-paper text-sm mb-1.5">{f.q.el}</p>
-                <p className="text-sm text-stone leading-relaxed">{f.a.el}</p>
-              </div>
-            ))}
-            {sec.faq.map((f, i) => (
-              <div key={`en-${i}`} lang="en" hidden={lang !== "en"} className="section-card">
-                <p className="font-display font-semibold text-paper text-sm mb-1.5">{f.q.en}</p>
-                <p className="text-sm text-stone leading-relaxed">{f.a.en}</p>
+              <div key={i} className="section-card">
+                <p className="font-display font-semibold text-paper text-sm mb-1.5">{f.q[lang]}</p>
+                <p className="text-sm text-stone leading-relaxed">{f.a[lang]}</p>
               </div>
             ))}
           </div>
@@ -277,7 +253,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
             {t.ctaTitle}
           </h2>
           <p className="text-sm text-stone leading-relaxed mb-6 max-w-xl">{t.ctaBody}</p>
-          <Link href="/request" className="cta-button inline-flex">
+          <Link href={`/${lang}/request`} className="cta-button inline-flex">
             {t.cta}
             <span className="arrow-icon">
               <Icon name="arrow" size={13} />
@@ -297,7 +273,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
               .map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/sectors/${s.slug}`}
+                    href={`/${lang}/sectors/${s.slug}`}
                     className="section-card group flex items-center gap-3"
                   >
                     <span className="text-gold text-lg leading-none" aria-hidden="true">

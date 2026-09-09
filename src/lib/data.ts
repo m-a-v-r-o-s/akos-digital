@@ -295,6 +295,10 @@ export type FAQ = { q: BL; a: BL };
 export const sectors = [
   {
     slug: "food",
+    seoTitle: {
+      en: "Website for Restaurants & Bars",
+      el: "Ιστοσελίδα για Εστίαση & Bar",
+    } as BL,
     icon: "❖",
     title: {
       en: "Website for Restaurants, Cafés, Bars & Clubs",
@@ -357,6 +361,10 @@ export const sectors = [
   },
   {
     slug: "artists",
+    seoTitle: {
+      en: "Website for Artists",
+      el: "Ιστοσελίδα για Καλλιτέχνες",
+    } as BL,
     icon: "✦",
     title: {
       en: "Website for Artists & Creatives",
@@ -411,6 +419,10 @@ export const sectors = [
   },
   {
     slug: "fashion",
+    seoTitle: {
+      en: "Website for Fashion Brands",
+      el: "Ιστοσελίδα για Brands Μόδας",
+    } as BL,
     icon: "◇",
     title: {
       en: "Website for Fashion Brands & Boutiques",
@@ -479,6 +491,10 @@ export const sectors = [
   },
   {
     slug: "health",
+    seoTitle: {
+      en: "Website for Health Professionals",
+      el: "Ιστοσελίδα για Επαγγελματίες Υγείας",
+    } as BL,
     icon: "✚",
     title: {
       en: "Website for Health Professionals",
@@ -531,6 +547,10 @@ export const sectors = [
   },
   {
     slug: "rentacar",
+    seoTitle: {
+      en: "Website for Rent-a-Car",
+      el: "Ιστοσελίδα για Rent-a-Car",
+    } as BL,
     icon: "◈",
     title: {
       en: "Website for Rent-a-Car",
@@ -585,6 +605,10 @@ export const sectors = [
   },
   {
     slug: "hotels",
+    seoTitle: {
+      en: "Website for Hotels",
+      el: "Ιστοσελίδα για Ξενοδοχεία",
+    } as BL,
     icon: "⌂",
     title: {
       en: "Website for Hotels & Short Stays",
@@ -639,6 +663,10 @@ export const sectors = [
   },
   {
     slug: "automotive",
+    seoTitle: {
+      en: "Website for Car Dealerships",
+      el: "Ιστοσελίδα για Πωλήσεις Αυτοκινήτων",
+    } as BL,
     icon: "◎",
     title: {
       en: "Website for Automotive Sales",
@@ -693,6 +721,10 @@ export const sectors = [
   },
   {
     slug: "smarthome",
+    seoTitle: {
+      en: "Smart Home with Home Assistant",
+      el: "Έξυπνο Σπίτι με Home Assistant",
+    } as BL,
     icon: "⊡",
     title: {
       en: "Smart Home & Home Assistant",

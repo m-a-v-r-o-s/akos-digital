@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/LanguageContext";
+import { LANGS, isLang } from "@/lib/i18n";
 import KeyboardAwareFocus from "@/components/KeyboardAwareFocus";
 import CookieConsent from "@/components/CookieConsent";
 import AnalyticsLoader from "@/components/AnalyticsLoader";
 import { person, services } from "@/lib/data";
-import "./globals.css";
-
-const SITE_URL = "https://www.akosds.com";
+import { SITE_URL, staticPageMetadata } from "@/lib/seo";
+import "../globals.css";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -92,53 +93,67 @@ const dmMono = DM_Mono({
   weight: ["300", "400"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  alternates: { canonical: "./" },
-  title: "Web Developer & App Builder in Greece | Κατασκευή Ιστοσελίδων – Akos Digital Services",
-  description:
-    "Custom websites, web apps, booking/CRM systems, e-commerce and AI automations for businesses across Greece — built and supported in Greek and English. // Κατασκευή ιστοσελίδων, εφαρμογών, συστημάτων κρατήσεων/CRM και αυτοματισμών AI για επιχειρήσεις σε όλη την Ελλάδα, στα ελληνικά και στα αγγλικά.",
-  keywords: [
-    "web developer Greece",
-    "website builder Greece",
-    "app developer Athens",
-    "English speaking web developer Greece",
-    "website for business in Greece",
-    "κατασκευή ιστοσελίδων",
-    "κατασκευαστής ιστοσελίδων Αθήνα",
-    "προγραμματιστής ιστοσελίδων",
-    "φτιάξιμο ιστοσελίδας",
-    "ιστοσελίδα για επιχείρηση",
-    "κατασκευή εφαρμογών",
-  ],
-  icons: {
-    icon: "/projects/favicon.ico",
-  },
-  openGraph: {
-    title: "Web Developer & App Builder in Greece | Κατασκευή Ιστοσελίδων – Akos Digital Services",
-    description:
-      "Custom websites, web apps, booking/CRM systems and AI automations for businesses across Greece — Greek and English spoken.",
-    locale: "el_GR",
-    alternateLocale: ["en_US"],
-    type: "website",
-    images: [{ url: "/og/cover.jpg", width: 1280, height: 720 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Web Developer & App Builder in Greece – Akos Digital Services",
-    description:
-      "Custom websites, web apps, booking/CRM systems and AI automations for businesses across Greece — Greek and English spoken.",
-    images: ["/og/cover.jpg"],
-  },
-};
+export function generateStaticParams() {
+  return LANGS.map((lang) => ({ lang }));
+}
 
-export default function RootLayout({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await params;
+  if (!isLang(lang)) return {};
+  return {
+    metadataBase: new URL(SITE_URL),
+    ...staticPageMetadata("home", lang),
+    keywords:
+      lang === "el"
+        ? [
+            "κατασκευή ιστοσελίδων",
+            "κατασκευή ιστοσελίδων Αθήνα",
+            "κατασκευή eshop",
+            "προγραμματιστής ιστοσελίδων",
+            "ιστοσελίδα για επιχείρηση",
+            "κατασκευή εφαρμογών",
+            "SEO Ελλάδα",
+          ]
+        : [
+            "web developer Greece",
+            "website builder Greece",
+            "app developer Athens",
+            "English speaking web developer Greece",
+            "website for business in Greece",
+            "e-shop development Greece",
+          ],
+    icons: { icon: "/projects/favicon.ico" },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        lang === "el"
+          ? "Κατασκευή Ιστοσελίδων στην Ελλάδα · Akos Digital Services"
+          : "Web Developer in Greece · Akos Digital Services",
+      description:
+        lang === "el"
+          ? "Κατασκευή ιστοσελίδων, e-shop, συστημάτων κρατήσεων και αυτοματισμών AI για επιχειρήσεις σε όλη την Ελλάδα."
+          : "Custom websites, e-shops, booking systems and AI automations for businesses across Greece.",
+      images: ["/og/cover.jpg"],
+    },
+  };
+}
+
+export default async function LangLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
+  const { lang } = await params;
+  if (!isLang(lang)) notFound();
+
   return (
-    <html lang="el" className="scroll-smooth">
+    <html lang={lang} className="scroll-smooth">
       <body
         className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} antialiased`}
       >
@@ -147,7 +162,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <KeyboardAwareFocus />
-        <LanguageProvider>
+        <LanguageProvider lang={lang}>
           {children}
           <CookieConsent />
           <AnalyticsLoader />

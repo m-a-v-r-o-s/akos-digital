@@ -13,7 +13,7 @@ export default function TermsPage() {
     <div className="min-h-screen max-w-2xl mx-auto px-6 sm:px-10 py-10">
       <header className="flex items-center justify-between mb-12">
         <Link
-          href="/"
+          href={`/${lang}`}
           className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
         >
           <span className="ornament">←</span>

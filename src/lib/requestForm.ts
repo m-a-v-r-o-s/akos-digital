@@ -1,4 +1,4 @@
-import type { Lang } from "@/components/LanguageContext";
+import type { Lang } from "@/lib/i18n";
 
 export type BL = { en: string; el: string };
 export type Choice = { value: string; label: BL; hint?: BL };

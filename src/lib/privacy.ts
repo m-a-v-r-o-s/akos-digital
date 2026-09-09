@@ -1,4 +1,4 @@
-import type { Lang } from "@/components/LanguageContext";
+import type { Lang } from "@/lib/i18n";
 import type { TermsSection, TermsContent } from "@/lib/terms";
 
 export type { TermsSection, TermsContent };

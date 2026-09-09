@@ -106,7 +106,7 @@ export default function Home() {
 
               {/* Request a quote CTA + ESPA button (stacked) */}
               <div className="fade-up fade-up-delay-5 mt-10 flex flex-col items-start gap-4">
-                <Link href="/request" className="cta-button">
+                <Link href={`/${lang}/request`} className="cta-button">
                   {t.requestQuote}
                   <span className="arrow-icon">
                     <Icon name="arrow" size={13} />
@@ -114,7 +114,7 @@ export default function Home() {
                 </Link>
 
                 {/* ESPA funding button */}
-                <Link href="/espa" aria-label="ΕΣΠΑ" className="espa-button w-40">
+                <Link href={`/${lang}/espa`} aria-label="ΕΣΠΑ" className="espa-button w-40">
                   <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
                 </Link>
               </div>
@@ -255,7 +255,7 @@ export default function Home() {
                 {sectors.map((sec) => (
                   <Link
                     key={sec.slug}
-                    href={`/sectors/${sec.slug}`}
+                    href={`/${lang}/sectors/${sec.slug}`}
                     className="section-card group flex flex-col"
                   >
                     <span className="text-gold text-xl mb-3 block leading-none">
@@ -289,7 +289,7 @@ export default function Home() {
                   svc.href ? (
                     <Link
                       key={svc.title.en}
-                      href={svc.href}
+                      href={`/${lang}${svc.href}`}
                       className="section-card group flex flex-col"
                     >
                       <span className="text-gold text-xl mb-3 block leading-none">
@@ -396,13 +396,13 @@ export default function Home() {
                   {t.cookies}
                 </button>
                 <Link
-                  href="/privacy"
+                  href={`/${lang}/privacy`}
                   className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
                 >
                   {t.privacy}
                 </Link>
                 <Link
-                  href="/terms"
+                  href={`/${lang}/terms`}
                   className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
                 >
                   {t.terms}

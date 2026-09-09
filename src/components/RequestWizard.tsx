@@ -528,7 +528,7 @@ function SuccessScreen() {
       <p className="text-base text-stone-light leading-relaxed mb-10 max-w-md mx-auto sm:mx-0">
         {t.successBody}
       </p>
-      <Link href="/" className="cta-button inline-flex">
+      <Link href={`/${lang}`} className="cta-button inline-flex">
         {t.backHome}
         <span className="arrow-icon">
           <Icon name="arrow" size={13} />

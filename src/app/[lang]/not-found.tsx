@@ -32,7 +32,7 @@ export default function NotFound() {
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
         <header className="flex items-center justify-between py-8">
           <Link
-            href="/"
+            href={`/${lang}`}
             className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
           >
             <span className="ornament">←</span>
@@ -52,7 +52,7 @@ export default function NotFound() {
           <p className="text-base text-stone-light leading-relaxed mb-10 max-w-md">
             {copy.body}
           </p>
-          <Link href="/" className="cta-button inline-flex">
+          <Link href={`/${lang}`} className="cta-button inline-flex">
             {copy.cta}
             <span className="arrow-icon">
               <Icon name="arrow" size={13} />

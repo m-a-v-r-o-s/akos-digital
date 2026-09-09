@@ -130,7 +130,7 @@ export default function MobileScrollSections() {
         </div>
 
         <div className="mt-7 flex items-center gap-4">
-          <Link href="/request" className="cta-button">
+          <Link href={`/${lang}/request`} className="cta-button">
             {requestQuote[lang]}
             <span className="arrow-icon">
               <Icon name="arrow" size={13} />
@@ -138,7 +138,7 @@ export default function MobileScrollSections() {
           </Link>
 
           {/* ESPA funding button */}
-          <Link href="/espa" aria-label="ΕΣΠΑ" className="espa-button w-28 shrink-0">
+          <Link href={`/${lang}/espa`} aria-label="ΕΣΠΑ" className="espa-button w-28 shrink-0">
             <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
           </Link>
         </div>
@@ -286,7 +286,7 @@ export default function MobileScrollSections() {
             {sectors.map((sec) => (
               <Link
                 key={sec.slug}
-                href={`/sectors/${sec.slug}`}
+                href={`/${lang}/sectors/${sec.slug}`}
                 className="section-card block group"
               >
                 <span className="text-gold text-xl mb-3 block leading-none">
@@ -317,7 +317,7 @@ export default function MobileScrollSections() {
           <div className="space-y-4">
             {services.map((svc) =>
               svc.href ? (
-                <Link key={svc.title.en} href={svc.href} className="section-card block group">
+                <Link key={svc.title.en} href={`/${lang}${svc.href}`} className="section-card block group">
                   <span className="text-gold text-xl mb-3 block leading-none">
                     {svc.icon}
                   </span>
@@ -431,13 +431,13 @@ export default function MobileScrollSections() {
             Cookies
           </button>
           <Link
-            href="/privacy"
+            href={`/${lang}/privacy`}
             className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
           >
             {lang === "en" ? "Privacy" : "Απόρρητο"}
           </Link>
           <Link
-            href="/terms"
+            href={`/${lang}/terms`}
             className="text-xs font-mono tracking-wider text-stone-dark hover:text-stone transition-colors"
           >
             {lang === "en" ? "Terms" : "Όροι"}
