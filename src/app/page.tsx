@@ -10,7 +10,6 @@ import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
 import { person, education, projects, services, sectors } from "@/lib/data";
 import MobileScrollSections from "@/components/MobileScrollSections";
-import ThetaMark from "@/components/ThetaMark";
 import ProjectThumb from "@/components/ProjectThumb";
 import { openCookiePreferences } from "@/components/CookieConsent";
 
@@ -81,8 +80,8 @@ export default function Home() {
             {/* Top: identity */}
             <div>
               {/* Studio badge */}
-              <p className="fade-up fade-up-delay-1 flex items-center gap-2.5 font-mono text-xs tracking-[0.2em] uppercase text-gold mb-5">
-                <ThetaMark size={24} className="shrink-0" />
+              <p className="fade-up fade-up-delay-1 font-mono text-xs tracking-[0.2em] uppercase text-gold mb-5">
+                <span className="ornament">— </span>
                 {person.company}
               </p>
 

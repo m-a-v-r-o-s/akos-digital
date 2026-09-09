@@ -9,7 +9,6 @@ import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services, sectors } from "@/lib/data";
 import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import ProjectThumb from "@/components/ProjectThumb";
-import ThetaMark from "@/components/ThetaMark";
 
 const tabLabels = {
   en: ["Works", "Sectors", "Services", "Education", "About"],
@@ -97,8 +96,7 @@ export default function MobileScrollSections() {
       {/* Mobile header */}
       <div className="pt-10 pb-6">
         <div className="flex items-center justify-between mb-3">
-          <p className="flex items-center gap-2.5 font-mono text-xs tracking-[0.2em] uppercase text-gold">
-            <ThetaMark size={24} className="shrink-0" />
+          <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold">
             {person.company}
           </p>
           <LanguageToggle />
