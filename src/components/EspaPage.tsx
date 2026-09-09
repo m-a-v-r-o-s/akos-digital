@@ -14,6 +14,8 @@ import {
   programOptions,
 } from "@/lib/espa";
 import type { Choice } from "@/lib/requestForm";
+import Honeypot from "@/components/Honeypot";
+import { HONEYPOT_FIELD } from "@/lib/leadGuard";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -55,6 +57,7 @@ export default function EspaPage() {
 
   const [form, setForm] = useState<Form>(empty);
   const [error, setError] = useState("");
+  const [hp, setHp] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setForm((f) => ({ ...f, [k]: v }));
@@ -82,6 +85,7 @@ export default function EspaPage() {
           businessName: form.businessName,
           details: form.goal,
           contactMethod: "email",
+          [HONEYPOT_FIELD]: hp,
           extra: {
             vat: form.vat,
             kad: form.kad,
@@ -254,6 +258,8 @@ export default function EspaPage() {
                     <span className="block text-xs text-stone mt-1">{t.consentNote}</span>
                   </span>
                 </label>
+
+                <Honeypot value={hp} onChange={setHp} />
 
                 {error && <p className="text-sm text-rust font-medium">{error}</p>}
                 {status === "error" && (

@@ -14,6 +14,8 @@ import {
   TOTAL_STEPS,
   type Choice,
 } from "@/lib/requestForm";
+import Honeypot from "@/components/Honeypot";
+import { HONEYPOT_FIELD } from "@/lib/leadGuard";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -54,6 +56,7 @@ export default function RequestWizard() {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<Form>(emptyForm);
   const [error, setError] = useState("");
+  const [hp, setHp] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const set = <K extends keyof Form>(key: K, value: Form[K]) =>
@@ -127,7 +130,7 @@ export default function RequestWizard() {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, lang }),
+        body: JSON.stringify({ ...form, lang, [HONEYPOT_FIELD]: hp }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("success");
@@ -303,6 +306,8 @@ export default function RequestWizard() {
                   <span className="block text-xs text-stone mt-1">{t.consentNote}</span>
                 </span>
               </label>
+
+              <Honeypot value={hp} onChange={setHp} />
             </div>
           </Question>
         )}
