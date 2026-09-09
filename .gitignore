@@ -7,3 +7,4 @@ node_modules/
 # local env files (keep .env.example tracked)
 .env
 .env*.local
+__pycache__/

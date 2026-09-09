@@ -112,6 +112,7 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: "/projects/favicon.ico",
+    apple: "/icons/apple-icon.png",
   },
   openGraph: {
     title: "Web Developer & App Builder in Greece | Κατασκευή Ιστοσελίδων – Akos Digital Services",
