@@ -26,6 +26,7 @@ export const privacy: Record<Lang, TermsContent> = {
         heading: "What data I collect",
         body: [
           "When you submit the quote request form or the ESPA eligibility form, I collect the details you provide: your name, email, phone number, and any project or business information you enter.",
+          "Alongside a submission I also record your IP address and browser user-agent. These are used solely to rate-limit the form against automated abuse and spam, on the basis of my legitimate interest in keeping the site working.",
           "The site's cookie banner stores a single technical preference (accepted or rejected, and which categories) so it doesn't ask again on your next visit.",
           "I don't collect payment details on this site, and I don't require an account to browse it.",
         ],
@@ -47,8 +48,8 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Who else sees it",
         body: [
-          "Form submissions are stored in a Supabase database and are only accessible to me, behind an authenticated, password- and one-time-passkey-protected dashboard.",
-          "Sending that one-time passkey (for the CRM login) is handled by Resend, a transactional email provider, which processes the recipient address and message content needed to deliver that email.",
+          "Form submissions are not stored in a database. They are delivered straight to my own inbox as an email and live only there, where only I can read them.",
+          "Delivering that email is handled by Resend, a transactional email provider, which processes the recipient address and the message content needed to send it.",
           "The site itself is hosted by a cloud hosting provider that processes standard server logs (IP address, request time, requested URL) as part of running the infrastructure.",
           "None of these providers are permitted to use your data for their own purposes, and I never sell or rent personal data to anyone.",
         ],
@@ -109,6 +110,7 @@ export const privacy: Record<Lang, TermsContent> = {
         heading: "Ποια δεδομένα συλλέγω",
         body: [
           "Όταν υποβάλλετε τη φόρμα αιτήματος προσφοράς ή τη φόρμα επιλεξιμότητας ΕΣΠΑ, συλλέγω τα στοιχεία που παρέχετε: όνομα, email, τηλέφωνο και κάθε πληροφορία έργου ή επιχείρησης που καταχωρείτε.",
+          "Μαζί με την υποβολή καταγράφονται επίσης η διεύθυνση IP και ο user-agent του προγράμματος περιήγησής σας. Χρησιμοποιούνται αποκλειστικά για τον περιορισμό ρυθμού υποβολών, ώστε η φόρμα να προστατεύεται από αυτοματοποιημένη κατάχρηση και spam, με βάση το έννομο συμφέρον μου να διατηρώ τον ιστότοπο λειτουργικό.",
           "Το banner cookies του ιστότοπου αποθηκεύει μία τεχνική προτίμηση (αποδοχή ή απόρριψη, και ποιες κατηγορίες) ώστε να μην ερωτηθείτε ξανά στην επόμενη επίσκεψή σας.",
           "Δεν συλλέγω στοιχεία πληρωμής σε αυτόν τον ιστότοπο, ούτε απαιτείται λογαριασμός για την περιήγηση.",
         ],
@@ -130,8 +132,8 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Ποιος άλλος τα βλέπει",
         body: [
-          "Οι υποβολές φορμών αποθηκεύονται σε βάση δεδομένων Supabase και είναι προσβάσιμες μόνο σε εμένα, πίσω από πίνακα ελέγχου προστατευμένο με έλεγχο ταυτότητας και μοναδικό κωδικό πρόσβασης μίας χρήσης.",
-          "Η αποστολή αυτού του κωδικού μίας χρήσης (για είσοδο στο CRM) γίνεται μέσω της Resend, πάροχου συναλλακτικών email, ο οποίος επεξεργάζεται τη διεύθυνση παραλήπτη και το περιεχόμενο που απαιτείται για την αποστολή του email.",
+          "Οι υποβολές φορμών δεν αποθηκεύονται σε βάση δεδομένων. Παραδίδονται απευθείας στο δικό μου email και παραμένουν μόνο εκεί, όπου μόνο εγώ μπορώ να τις διαβάσω.",
+          "Η αποστολή αυτού του email γίνεται μέσω της Resend, πάροχου συναλλακτικών email, ο οποίος επεξεργάζεται τη διεύθυνση παραλήπτη και το περιεχόμενο που απαιτείται για την αποστολή του.",
           "Ο ίδιος ο ιστότοπος φιλοξενείται από πάροχο cloud hosting, ο οποίος επεξεργάζεται τυπικά αρχεία καταγραφής διακομιστή (διεύθυνση IP, ώρα αιτήματος, ζητούμενο URL) στο πλαίσιο λειτουργίας της υποδομής.",
           "Κανένας από αυτούς τους παρόχους δεν επιτρέπεται να χρησιμοποιεί τα δεδομένα σας για δικούς του σκοπούς, και ποτέ δεν πωλώ ή ενοικιάζω προσωπικά δεδομένα σε κανέναν.",
         ],

@@ -1,16 +1,18 @@
 /**
- * Tiny email sender used for the CRM passkey (and reusable for lead alerts).
+ * Tiny email sender. Lead submissions (/api/lead) are delivered as email —
+ * there is no database, so a failed send means a lost lead and the caller
+ * must surface the failure rather than swallow it.
  *
  * Uses the Resend HTTP API directly (no SDK, no extra dependency). If
- * RESEND_API_KEY is not set, it logs the message server-side instead of
- * sending — handy during setup so the owner can still read the code from logs.
+ * RESEND_API_KEY is not set, it logs the message server-side and reports
+ * failure.
  */
 
-type Mail = { to: string; subject: string; text: string };
+type Mail = { to: string; subject: string; text: string; replyTo?: string };
 
-export async function sendMail({ to, subject, text }: Mail): Promise<boolean> {
+export async function sendMail({ to, subject, text, replyTo }: Mail): Promise<boolean> {
   const key = process.env.RESEND_API_KEY;
-  const from = process.env.CRM_MAIL_FROM || "onboarding@resend.dev";
+  const from = process.env.LEAD_MAIL_FROM || "onboarding@resend.dev";
 
   if (!key) {
     console.warn(
@@ -26,7 +28,8 @@ export async function sendMail({ to, subject, text }: Mail): Promise<boolean> {
         Authorization: `Bearer ${key}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ from, to, subject, text }),
+      // reply_to lets the owner hit Reply and answer the lead directly.
+      body: JSON.stringify({ from, to, subject, text, ...(replyTo && { reply_to: replyTo }) }),
     });
     if (!res.ok) {
       console.error("[email] send failed:", res.status, await res.text());

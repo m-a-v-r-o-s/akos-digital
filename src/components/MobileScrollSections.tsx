@@ -7,7 +7,6 @@ import { openCookiePreferences } from "@/components/CookieConsent";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services, sectors } from "@/lib/data";
-import SecretName from "@/components/SecretName";
 import ProjectThumb from "@/components/ProjectThumb";
 
 const tabLabels = {
@@ -102,7 +101,7 @@ export default function MobileScrollSections() {
           <LanguageToggle />
         </div>
         <h1 className="font-display text-3xl font-bold text-paper mb-4">
-          <SecretName name={person.name[lang]} />
+          {person.name[lang]}
         </h1>
         <div className="deco-rule mb-4" />
         <h2 className="font-body text-base font-light text-stone-light tracking-wide mb-4">

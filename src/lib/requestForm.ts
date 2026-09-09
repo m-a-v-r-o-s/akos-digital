@@ -6,7 +6,7 @@ export type Choice = { value: string; label: BL; hint?: BL };
 /**
  * Content for the multi-step "Request a Quote" wizard.
  * Choice `value`s are stable, language-independent keys — those are what gets
- * stored in Supabase, so leads stay clean no matter which language was used.
+ * sent in the lead email, so leads stay clean no matter which language was used.
  */
 
 export const needsOptions: Choice[] = [

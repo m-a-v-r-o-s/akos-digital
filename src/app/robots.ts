@@ -5,7 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/crm", "/hello"],
     },
     sitemap: "https://www.akosds.com/sitemap.xml",
   };

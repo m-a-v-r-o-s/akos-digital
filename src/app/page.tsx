@@ -9,7 +9,6 @@ import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
 import { person, education, projects, services, sectors } from "@/lib/data";
 import MobileScrollSections from "@/components/MobileScrollSections";
-import SecretName from "@/components/SecretName";
 import ProjectThumb from "@/components/ProjectThumb";
 import { openCookiePreferences } from "@/components/CookieConsent";
 
@@ -86,7 +85,7 @@ export default function Home() {
               </p>
 
               <h1 className="fade-up fade-up-delay-2 font-display text-4xl xl:text-5xl font-bold leading-tight text-paper mb-6">
-                <SecretName name={person.name[lang]} inlineKeypad />
+                {person.name[lang]}
               </h1>
 
               <div className="fade-up fade-up-delay-3 deco-rule mb-6" />
