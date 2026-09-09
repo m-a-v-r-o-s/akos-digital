@@ -94,6 +94,7 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "./" },
   title: "Web Developer & App Builder in Greece | Κατασκευή Ιστοσελίδων – Akos Digital Services",
   description:
     "Custom websites, web apps, booking/CRM systems, e-commerce and AI automations for businesses across Greece — built and supported in Greek and English. // Κατασκευή ιστοσελίδων, εφαρμογών, συστημάτων κρατήσεων/CRM και αυτοματισμών AI για επιχειρήσεις σε όλη την Ελλάδα, στα ελληνικά και στα αγγλικά.",
