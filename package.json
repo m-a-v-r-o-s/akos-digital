@@ -2,12 +2,16 @@
   "name": "akos-digital",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check": "node --experimental-strip-types scripts/check-lead-route.ts"
+    "check": "node --experimental-strip-types scripts/check-lead-route.ts && node --experimental-strip-types scripts/check-funding-watch.ts",
+    "funding-watch": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/funding-watch.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

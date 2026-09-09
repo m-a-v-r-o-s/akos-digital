@@ -109,6 +109,53 @@ The `/hello` page looks for an image at `public/hello-there.jpg` (the Obi-Wan "H
 
 The keypad checks a SHA-256 hash so the code never appears in the shipped JavaScript. To change it from `1289`, run `node -e "console.log(require('crypto').createHash('sha256').update('NEWCODE').digest('hex'))"` and paste the result into `CODE_HASH` in `src/components/Keypad.tsx`.
 
+## Funding watch (weekly email)
+
+`scripts/funding-watch.ts` reads the RSS feeds where Greek SME funding
+programmes are announced, keeps only what could turn into work or a
+subsidised sale, and emails a digest. Nothing new means no email.
+
+Why: the €300 e-invoicing voucher (Ψηφιακές Συναλλαγές Β') closed to
+applications on 30 Sep 2025, and supplier registration closed even earlier.
+Programmes like that are only useful if you hear about them in the week they
+open.
+
+Sources: [digitalsme.gov.gr](https://digitalsme.gov.gr/feed/) (the voucher
+programmes themselves), [Ελλάδα 2.0 calls](https://greece20.gov.gr/feed/?post_type=calls),
+[mindigital.gr](https://www.mindigital.gr/feed) and
+[mindev.gov.gr](https://mindev.gov.gr/feed/). The two ministries publish
+speeches and tenders too, so from those only a programme-specific term counts
+(voucher, επιταγ, ψηφιακά εργαλεία, ηλεκτρονική τιμολόγηση, mydata, ...).
+espa.gr and antagonistikotita.gr publish no feed and are not covered.
+
+```bash
+npm run funding-watch -- --dry   # print what would be sent
+npm run funding-watch            # send it
+```
+
+There is no database: each run looks back `WATCH_WINDOW_DAYS` (default 9, a
+week plus slack) so a skipped run cannot create a blind week. An item can
+therefore appear in two consecutive mails, which is the cheap side of the
+trade. If every source fails it emails about that instead, so silence always
+means "nothing new" and never "the watch is dead".
+
+### Railway setup
+
+The watch is a second service in the same Railway project, not part of the
+web service:
+
+1. **New** → **GitHub Repo** → this repo, in the project that already runs the site.
+2. Settings → **Start Command**: `npm run funding-watch`
+3. Settings → **Cron Schedule**: `0 7 * * 1` (Mondays, 10:00 Athens in summer).
+4. Settings → **Serverless / restart policy**: never restart. A cron service is
+   expected to exit after each run.
+5. Variables: `RESEND_API_KEY` and `LEAD_MAIL_FROM` (same values as the web
+   service). Optionally `WATCH_ALERT_EMAIL` to send somewhere other than
+   `digitalaakos@gmail.com`, and `WATCH_WINDOW_DAYS` if the schedule changes.
+
+Changing the schedule means changing the window: keep `WATCH_WINDOW_DAYS`
+a day or two longer than the gap between runs.
+
 ## Deploy
 
 ```bash
