@@ -1146,3 +1146,177 @@ export const servicePages = [
     ] as FAQ[],
   },
 ];
+
+/**
+ * Case studies for the three live client sites. Deliberately no invented
+ * business metrics: every claim here is something verifiable by opening the
+ * site or reading its HTML, because a fabricated conversion figure is worth
+ * less than nothing the moment a prospect checks it.
+ */
+export const caseStudies = [
+  {
+    slug: "blessed-coffee",
+    client: "Blessed Coffee & Spirits",
+    projectTitle: "Blessed Coffee & Spirits",
+    seoTitle: {
+      en: "Blessed Coffee, Cafe Website",
+      el: "Blessed Coffee, Καφετέρια Αθήνα",
+    } as BL,
+    title: {
+      en: "A neighbourhood cafe that had to be findable in two languages",
+      el: "Μια καφετέρια της γειτονιάς που έπρεπε να βρίσκεται σε δύο γλώσσες",
+    } as BL,
+    sector: "food",
+    service: "websites",
+    live: "https://blessed.cafe/",
+    summary: {
+      en: "A specialty coffee and cocktail bar in Kato Patisia, Athens, serving a Greek-speaking neighbourhood and English-speaking visitors from the same address.",
+      el: "Μπαρ specialty καφέ και cocktails στα Κάτω Πατήσια, που εξυπηρετεί μια ελληνόφωνη γειτονιά και αγγλόφωνους επισκέπτες από την ίδια διεύθυνση.",
+    } as BL,
+    challenge: {
+      en: "The site is a React single-page app, which means the content only exists after JavaScript runs. Most AI answer engines and a good share of crawlers never run it, so to them the page was effectively blank. On top of that, the business is genuinely bilingual, and the delivery platforms it depends on each wanted a link.",
+      el: "Το site είναι React single-page app, που σημαίνει ότι το περιεχόμενο υπάρχει μόνο αφού τρέξει η JavaScript. Οι περισσότερες μηχανές απαντήσεων AI και αρκετοί crawlers δεν την τρέχουν ποτέ, οπότε γι' αυτούς η σελίδα ήταν ουσιαστικά κενή. Επιπλέον, η επιχείρηση είναι πραγματικά δίγλωσση, και οι πλατφόρμες delivery από τις οποίες εξαρτάται ήθελε η καθεμία τον σύνδεσμό της.",
+    } as BL,
+    approach: {
+      en: [
+        "A crawlable fallback written directly into index.html, carrying the address, phone numbers, opening hours and menu summary in both Greek and English. React replaces it on mount, so visitors never see it and crawlers always do.",
+        "The fallback is deliberately limited to facts that do not change. Prices live in one place in the app and are not duplicated into the HTML, because a stale price is worse than no price.",
+        "CafeOrCoffeeShop schema with real opening hours, geo coordinates and a postal address, so a search engine knows what the business is rather than guessing from the words on the page.",
+        "It is styled to the brand's black and cream palette rather than left unstyled, since it is on screen for the moment before React mounts and a white flash would read as a broken page.",
+        "Ordering links to e-food, Wolt and Box sit in the crawlable layer too, so the routes that actually take orders are never behind JavaScript.",
+      ],
+      el: [
+        "Ένα crawlable fallback γραμμένο απευθείας στο index.html, με τη διεύθυνση, τα τηλέφωνα, το ωράριο και μια σύνοψη του μενού στα ελληνικά και στα αγγλικά. Το React το αντικαθιστά κατά τη φόρτωση, οπότε οι επισκέπτες δεν το βλέπουν ποτέ και οι crawlers πάντα.",
+        "Το fallback περιορίζεται σκόπιμα σε στοιχεία που δεν αλλάζουν. Οι τιμές βρίσκονται σε ένα σημείο μέσα στην εφαρμογή και δεν αντιγράφονται στο HTML, γιατί μια ξεπερασμένη τιμή είναι χειρότερη από καμία τιμή.",
+        "Schema CafeOrCoffeeShop με πραγματικό ωράριο, γεωγραφικές συντεταγμένες και ταχυδρομική διεύθυνση, ώστε η μηχανή αναζήτησης να ξέρει τι είναι η επιχείρηση αντί να το μαντεύει από τις λέξεις της σελίδας.",
+        "Είναι στιλιζαρισμένο στη μαύρη και κρεμ παλέτα της επωνυμίας αντί να μείνει άστυλο, αφού είναι στην οθόνη για τη στιγμή πριν φορτώσει το React και ένα λευκό φλας θα έμοιαζε με χαλασμένη σελίδα.",
+        "Οι σύνδεσμοι παραγγελίας προς e-food, Wolt και Box βρίσκονται και αυτοί στο crawlable στρώμα, ώστε οι δρόμοι που όντως φέρνουν παραγγελίες να μην είναι ποτέ πίσω από JavaScript.",
+      ],
+    } as BLA,
+    outcome: {
+      en: [
+        "Both languages are in the served HTML, verifiable by fetching the page with JavaScript disabled.",
+        "The business details a local search needs, address, hours, phone, are machine-readable rather than baked into an image or a script.",
+        "Legal pages are real, separately addressable URLs rather than modal dialogs, so they can be indexed and linked.",
+      ],
+      el: [
+        "Και οι δύο γλώσσες βρίσκονται στο HTML που σερβίρεται, κάτι επαληθεύσιμο ζητώντας τη σελίδα με απενεργοποιημένη JavaScript.",
+        "Τα στοιχεία που χρειάζεται μια τοπική αναζήτηση, διεύθυνση, ωράριο, τηλέφωνο, είναι αναγνώσιμα από μηχανή αντί να είναι ψημένα σε εικόνα ή σε script.",
+        "Οι νομικές σελίδες είναι πραγματικά, ξεχωριστά URL και όχι αναδυόμενα παράθυρα, οπότε μπορούν να ευρετηριαστούν και να συνδεθούν.",
+      ],
+    } as BLA,
+    stack: ["React", "Vite", "JavaScript", "Tailwind", "Schema.org", "Bilingual"],
+    image: "/projects/blessed.webp",
+    imageMobile: "/projects/blessed-mobile.webp",
+  },
+  {
+    slug: "ellie-tattooer",
+    client: "Ellie Tattooer",
+    projectTitle: "Ellie Tattooer",
+    seoTitle: {
+      en: "Ellie Tattooer, Portfolio and Shop",
+      el: "Ellie Tattooer, Portfolio",
+    } as BL,
+    title: {
+      en: "A tattoo portfolio that also had to sell",
+      el: "Ένα portfolio τατουάζ που έπρεπε και να πουλάει",
+    } as BL,
+    sector: "artists",
+    service: "eshop",
+    live: "https://ellietattooer.com/",
+    summary: {
+      en: "An American Traditional tattoo artist working out of Ritual Tattoo in Athens, whose work was living entirely inside a social feed that crops it and reorders it.",
+      el: "Καλλιτέχνις τατουάζ American Traditional που εργάζεται στο Ritual Tattoo στην Αθήνα, με τη δουλειά της να ζει εξ ολοκλήρου μέσα σε ένα social feed που την κόβει και την αναδιατάσσει.",
+    } as BL,
+    challenge: {
+      en: "A tattoo artist's portfolio is the sales pitch, and a social platform decides how much of it anyone sees. The work needed to be shown at full quality, in an order she controls, alongside a way to sell flash and prints without handing a cut of each sale to a marketplace. The visual identity is strong and specific, so a generic gallery template would have undercut the thing being sold.",
+      el: "Το portfolio μιας καλλιτέχνιδας τατουάζ είναι η ίδια η πρόταση πώλησης, και μια πλατφόρμα social αποφασίζει πόσο από αυτό βλέπει ο καθένας. Η δουλειά έπρεπε να παρουσιάζεται σε πλήρη ποιότητα, με σειρά που ορίζει η ίδια, μαζί με έναν τρόπο να πουλάει flash και prints χωρίς να δίνει ποσοστό κάθε πώλησης σε μια αγορά τρίτων. Η οπτική ταυτότητα είναι έντονη και συγκεκριμένη, οπότε ένα γενικό template γκαλερί θα υπονόμευε αυτό ακριβώς που πουλιέται.",
+    } as BL,
+    approach: {
+      en: [
+        "A gallery built around full-quality imagery rather than thumbnails, with the ordering under her control instead of a feed algorithm's.",
+        "A shop for flash and prints on the same domain as the portfolio, so the work and the way to buy it are never a link apart.",
+        "The interface is styled to her existing identity rather than to a template, because for an artist the site is part of the portfolio, not a container for it.",
+        "TattooParlor schema with the studio's real address, so a search for a tattoo artist in Athens can match the business rather than only the name.",
+        "Privacy and terms as real routes, which a shop taking payments needs to have and to be able to show.",
+      ],
+      el: [
+        "Γκαλερί χτισμένη γύρω από εικόνα πλήρους ποιότητας αντί για μικρογραφίες, με τη σειρά να την ελέγχει η ίδια και όχι ο αλγόριθμος ενός feed.",
+        "Κατάστημα για flash και prints στο ίδιο domain με το portfolio, ώστε η δουλειά και ο τρόπος αγοράς της να μην απέχουν ποτέ έναν σύνδεσμο.",
+        "Η διεπαφή είναι στιλιζαρισμένη στη δική της ταυτότητα και όχι σε template, γιατί για μια καλλιτέχνιδα το site είναι μέρος του portfolio, όχι απλώς το δοχείο του.",
+        "Schema TattooParlor με την πραγματική διεύθυνση του στούντιο, ώστε μια αναζήτηση για καλλιτέχνη τατουάζ στην Αθήνα να μπορεί να ταιριάξει την επιχείρηση και όχι μόνο το όνομα.",
+        "Πολιτική απορρήτου και όροι ως πραγματικές διαδρομές, κάτι που ένα κατάστημα που δέχεται πληρωμές πρέπει να έχει και να μπορεί να δείξει.",
+      ],
+    } as BLA,
+    outcome: {
+      en: [
+        "The portfolio lives on a domain she owns, so no platform decides who sees it.",
+        "The page title targets what a customer actually searches, the style and the city, rather than only the artist's name.",
+        "The site links back here without a nofollow, which is how a small studio's reputation compounds honestly.",
+      ],
+      el: [
+        "Το portfolio ζει σε domain που της ανήκει, οπότε καμία πλατφόρμα δεν αποφασίζει ποιος το βλέπει.",
+        "Ο τίτλος της σελίδας στοχεύει σε αυτό που όντως αναζητά ένας πελάτης, το στιλ και την πόλη, και όχι μόνο στο όνομα της καλλιτέχνιδας.",
+        "Το site συνδέει πίσω σε εμάς χωρίς nofollow, που είναι ο τίμιος τρόπος να χτίζεται η φήμη ενός μικρού στούντιο.",
+      ],
+    } as BLA,
+    stack: ["Next.js", "TypeScript", "Tailwind", "E-commerce", "Schema.org"],
+    image: "/projects/ellietattooer.webp",
+    imageMobile: "/projects/ellietattooer-mobile.webp",
+  },
+  {
+    slug: "those-rambling-fools",
+    client: "Those Rambling Fools",
+    projectTitle: "Those Rambling Fools Band",
+    seoTitle: {
+      en: "Those Rambling Fools, Band Site",
+      el: "Those Rambling Fools, Συγκρότημα",
+    } as BL,
+    title: {
+      en: "A band site where the record player actually plays",
+      el: "Ένα site συγκροτήματος όπου το πικάπ όντως παίζει",
+    } as BL,
+    sector: "artists",
+    service: "websites",
+    live: "https://thoseramblingfools.com/",
+    summary: {
+      en: "A band writing original music from Kos, needing somewhere to be heard that is not a streaming profile identical to every other streaming profile.",
+      el: "Ένα συγκρότημα που γράφει δική του μουσική από την Κω, με ανάγκη για ένα σημείο όπου να ακούγεται, που να μην είναι ένα προφίλ streaming ίδιο με κάθε άλλο προφίλ streaming.",
+    } as BL,
+    challenge: {
+      en: "Every band has the same links to the same platforms, so the site itself has to be the thing worth visiting. It also has to be a real site underneath the interaction: gigs people can find, a story worth reading, and enough structure for a search engine to understand that this is a music group with releases rather than a page of animation.",
+      el: "Κάθε συγκρότημα έχει τους ίδιους συνδέσμους προς τις ίδιες πλατφόρμες, οπότε το ίδιο το site πρέπει να είναι αυτό που αξίζει την επίσκεψη. Πρέπει επίσης να είναι πραγματικό site από κάτω: εμφανίσεις που βρίσκει ο κόσμος, μια ιστορία που αξίζει να διαβαστεί, και αρκετή δομή ώστε μια μηχανή αναζήτησης να καταλάβει ότι πρόκειται για μουσικό σχήμα με κυκλοφορίες και όχι για μια σελίδα με animation.",
+    } as BL,
+    approach: {
+      en: [
+        "A working vinyl record player as the centre of the page: the interaction is the point, not decoration bolted onto a template.",
+        "Separate routes for the story and for upcoming gigs, so each is its own indexable page that can be linked and shared on its own.",
+        "MusicGroup and MusicAlbum schema naming the members and the releases, which is what lets a search engine present the band as an entity rather than a string of text.",
+        "The heavy interaction is kept off the critical path, so the content is present in the served HTML rather than waiting on the animation to finish.",
+        "Privacy and terms as real routes, because a site collecting anything at all needs them and they cost nothing to do properly.",
+      ],
+      el: [
+        "Ένα λειτουργικό πικάπ βινυλίου στο κέντρο της σελίδας: η αλληλεπίδραση είναι το ζητούμενο, όχι διακόσμηση βιδωμένη πάνω σε template.",
+        "Ξεχωριστές διαδρομές για την ιστορία και για τις επερχόμενες εμφανίσεις, ώστε καθεμία να είναι δική της ευρετηριάσιμη σελίδα που μπορεί να συνδεθεί και να μοιραστεί αυτόνομα.",
+        "Schema MusicGroup και MusicAlbum που ονοματίζει τα μέλη και τις κυκλοφορίες, κάτι που επιτρέπει σε μια μηχανή αναζήτησης να παρουσιάσει το συγκρότημα ως οντότητα και όχι ως μια σειρά χαρακτήρων.",
+        "Η βαριά αλληλεπίδραση μένει εκτός της κρίσιμης διαδρομής, ώστε το περιεχόμενο να υπάρχει στο HTML που σερβίρεται αντί να περιμένει να τελειώσει το animation.",
+        "Πολιτική απορρήτου και όροι ως πραγματικές διαδρομές, γιατί ένα site που συλλέγει οτιδήποτε τις χρειάζεται και δεν κοστίζει τίποτα να γίνουν σωστά.",
+      ],
+    } as BLA,
+    outcome: {
+      en: [
+        "Four indexable routes rather than one long scroll, so gigs and the band's story can rank and be shared separately.",
+        "The band is described in structured data as a music group with named members and releases.",
+        "The site links back here without a nofollow.",
+      ],
+      el: [
+        "Τέσσερις ευρετηριάσιμες διαδρομές αντί για ένα μακρύ scroll, ώστε οι εμφανίσεις και η ιστορία του συγκροτήματος να μπορούν να καταταγούν και να μοιραστούν ξεχωριστά.",
+        "Το συγκρότημα περιγράφεται στα structured data ως μουσικό σχήμα με ονοματισμένα μέλη και κυκλοφορίες.",
+        "Το site συνδέει πίσω σε εμάς χωρίς nofollow.",
+      ],
+    } as BLA,
+    stack: ["Next.js", "TypeScript", "Tailwind", "Interactive Animations", "Schema.org"],
+    image: "/projects/trf.webp",
+    imageMobile: "/projects/trf-mobile.webp",
+  },
+];

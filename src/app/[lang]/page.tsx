@@ -22,6 +22,7 @@ const ui = {
     explore: "Explore",
     education: "Education",
     projects: "Selected Works",
+    allWork: "All case studies",
     fullCV: "Full CV",
     requestQuote: "Request a Quote",
     terms: "Terms",
@@ -37,6 +38,7 @@ const ui = {
     explore: "Περισσότερα",
     education: "Εκπαίδευση",
     projects: "Επιλεγμένα Έργα",
+    allWork: "Όλες οι μελέτες",
     fullCV: "Πλήρες Βιογραφικό",
     requestQuote: "Ζητήστε Προσφορά",
     terms: "Όροι",
@@ -245,6 +247,15 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <Link
+                href={`/${lang}/work`}
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gold hover:text-gold-light transition-colors"
+              >
+                {t.allWork}
+                <span className="arrow-icon">
+                  <Icon name="arrow" size={11} />
+                </span>
+              </Link>
             </section>
 
             {/* SECTORS */}

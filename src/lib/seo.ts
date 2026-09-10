@@ -84,6 +84,14 @@ export const pageSeo: Record<
       en: "Website and e-shop development, SEO, booking systems and AI automations for businesses in Greece, from a solo studio in Athens.",
     },
   },
+  work: {
+    path: "/work",
+    name: { el: "Έργα", en: "Work" },
+    description: {
+      el: "Ζωντανά sites πελατών που έχτισα και υποστηρίζω: καφετέρια στην Αθήνα, καλλιτέχνις τατουάζ και συγκρότημα από την Κω, με το τι χρειάστηκε το καθένα.",
+      en: "Live client sites I built and support: a cafe in Athens, a tattoo artist and a band from Kos, with what each one actually needed.",
+    },
+  },
   request: {
     path: "/request",
     name: { el: "Ζητήστε Προσφορά", en: "Request a Quote" },
