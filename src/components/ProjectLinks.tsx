@@ -3,39 +3,32 @@
 import Link from "next/link";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
-import type { Project, ProjectLink } from "@/lib/data";
+import type { Project } from "@/lib/data";
+import { externalProps, localeHref } from "@/lib/links";
 
 /**
- * The two link surfaces on a project card, shared by the desktop and mobile
- * renderings so a project cannot lead one place on a phone and another on a
- * laptop.
- *
- * A link whose href starts with "/" is a route on this site and gets the
- * locale segment; anything else is external and opens in a new tab. That is
- * what lets a project with nothing public to open, such as an internal tool,
- * still have a card that leads somewhere.
+ * The three link surfaces on a project card, shared by the homepage, the
+ * mobile panel and the sector pages so a project cannot lead one place on one
+ * of them and somewhere else on another.
  */
-const isInternal = (href: string) => href.startsWith("/");
 
-function useHref() {
-  const { lang } = useLanguage();
-  return (href: string) => (isInternal(href) ? `/${lang}${href}` : href);
-}
-
-function linkProps(href: string) {
-  return isInternal(href) ? {} : { target: "_blank", rel: "noopener noreferrer" };
-}
-
-/** The invisible link covering the whole card. */
+/**
+ * The invisible link covering the whole card.
+ *
+ * It goes to the case study where there is one, because that is the fuller
+ * answer to "what is this". The thumbnail and the labelled link beside it
+ * still go to the live site, so one card reaches both. A project with no case
+ * study falls back to wherever its first link points.
+ */
 export function CardOverlay({ project }: { project: Project }) {
-  const href = useHref();
-  const first: ProjectLink | undefined = project.links[0];
-  if (!first) return null;
+  const { lang } = useLanguage();
+  const target = project.caseStudy ?? project.links[0]?.href;
+  if (!target) return null;
 
   return (
     <Link
-      href={href(first.href)}
-      {...linkProps(first.href)}
+      href={localeHref(target, lang)}
+      {...externalProps(target)}
       aria-label={project.title}
       className="absolute inset-0 z-10"
     />
@@ -50,15 +43,15 @@ export function CardLinks({
   project: Project;
   size?: number;
 }) {
-  const href = useHref();
+  const { lang } = useLanguage();
 
   return (
     <>
       {project.links.map((lnk) => (
         <Link
           key={lnk.label}
-          href={href(lnk.href)}
-          {...linkProps(lnk.href)}
+          href={localeHref(lnk.href, lang)}
+          {...externalProps(lnk.href)}
           className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
         >
           {lnk.label}

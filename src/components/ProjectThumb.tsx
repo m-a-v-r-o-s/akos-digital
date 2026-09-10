@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useLanguage } from "./LanguageContext";
+import { isInternalHref, localeHref } from "@/lib/links";
 
 /**
  * Monitor frame is hidden for now — the phone is the only thumbnail shown,
@@ -140,7 +142,7 @@ export default function ProjectThumb({
    * clicks (new tab, new window) are left to the browser.
    */
   const openPhoneView = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!href || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (!href || isInternalHref(href) || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
     e.stopPropagation();
 
@@ -172,17 +174,27 @@ export default function ProjectThumb({
       {SHOW_MONITOR && <Monitor image={image} title={title} />}
       {imageMobile &&
         (href ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={openPhoneView}
-            title={phoneLabel[lang]}
-            aria-label={`${title} — ${phoneLabel[lang]}`}
-            className="relative z-20 block rounded-lg transition-opacity hover:opacity-80"
-          >
-            {phone}
-          </a>
+          isInternalHref(href) ? (
+            <Link
+              href={localeHref(href, lang)}
+              aria-label={title}
+              className="relative z-20 block rounded-lg transition-opacity hover:opacity-80"
+            >
+              {phone}
+            </Link>
+          ) : (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={openPhoneView}
+              title={phoneLabel[lang]}
+              aria-label={`${title}, ${phoneLabel[lang]}`}
+              className="relative z-20 block rounded-lg transition-opacity hover:opacity-80"
+            >
+              {phone}
+            </a>
+          )
         ) : (
           phone
         ))}

@@ -92,6 +92,12 @@ export type Project = {
   sub?: boolean;
   /** Set only while a project is unfinished, and shown as a badge. */
   status?: BL;
+  /**
+   * The case study this project has, if it has one. Clicking the body of the
+   * card goes here; the thumbnail and the labelled link still go to the live
+   * site, so both routes stay reachable from one card.
+   */
+  caseStudy?: string;
   links: ProjectLink[];
   year: string;
 };
@@ -108,6 +114,7 @@ export const projects: Project[] = [
     imageMobile: "/projects/international-mobile.webp",
     sector: "rentacar",
     status: { en: "In development", el: "Σε εξέλιξη" } as BL,
+    caseStudy: "/work/international-rentals",
     links: [{ label: "Case study", href: "/work/international-rentals" }],
     year: "",
   },
@@ -226,6 +233,7 @@ export const projects: Project[] = [
     image: "/projects/trf.webp",
     imageMobile: "/projects/trf-mobile.webp",
     sector: "artists",
+    caseStudy: "/work/those-rambling-fools",
     links: [{ label: "Live Site", href: "https://thoseramblingfools.com/" }],
     year: "",
   },
@@ -239,6 +247,7 @@ export const projects: Project[] = [
     image: "/projects/ellietattooer.webp",
     imageMobile: "/projects/ellietattooer-mobile.webp",
     sector: "artists",
+    caseStudy: "/work/ellie-tattooer",
     links: [{ label: "Live Site", href: "https://ellietattooer.com/" }],
     year: "",
   },
@@ -252,6 +261,7 @@ export const projects: Project[] = [
     image: "/projects/blessed.webp",
     imageMobile: "/projects/blessed-mobile.webp",
     sector: "food",
+    caseStudy: "/work/blessed-coffee",
     links: [{ label: "Live Site", href: "https://blessed.cafe/" }],
     year: "",
   },

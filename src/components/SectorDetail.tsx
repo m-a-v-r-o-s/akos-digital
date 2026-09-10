@@ -5,6 +5,7 @@ import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import LanguageToggle from "@/components/LanguageToggle";
 import ProjectThumb from "@/components/ProjectThumb";
+import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
 import Bilingual from "@/components/Bilingual";
@@ -163,15 +164,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
             <ul className="space-y-2">
               {work.map((proj) => (
                 <li key={proj.title} className="section-card group relative">
-                  {proj.links[0] && (
-                    <a
-                      href={proj.links[0].href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={proj.title}
-                      className="absolute inset-0 z-10"
-                    />
-                  )}
+                  <CardOverlay project={proj} />
                   <div className="flex gap-5">
                     <ProjectThumb
                       image={proj.image}
@@ -192,20 +185,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
                             {tag}
                           </span>
                         ))}
-                        {proj.links.map((lnk) => (
-                          <a
-                            key={lnk.label}
-                            href={lnk.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
-                          >
-                            {lnk.label}
-                            <span className="arrow-icon">
-                              <Icon name="arrow" size={11} />
-                            </span>
-                          </a>
-                        ))}
+                        <CardLinks project={proj} />
                       </div>
                     </div>
                   </div>
