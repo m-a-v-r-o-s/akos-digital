@@ -125,6 +125,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                 imageMobile={cs.imageMobile}
                 href={cs.live}
                 title={cs.client}
+                variant="pair"
               />
             </section>
 

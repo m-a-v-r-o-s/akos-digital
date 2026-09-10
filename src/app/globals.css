@@ -152,6 +152,108 @@ body {
   border: 1px solid rgba(201, 168, 76, 0.2);
 }
 
+/* ── Device pair ──
+   The desktop and phone renderings of one site, side by side, for the case
+   study pages. The bezels elsewhere are drawn at thumbnail scale in fixed
+   pixels, which at this size would read as a sliver of trim around a large
+   screen, so everything inside the pair is expressed as a fraction of its own
+   screen width. Scoped to .device-pair: the card thumbnails keep their own
+   values untouched.
+
+   One variable drives the whole lockup. The monitor is 16:10 and the phone is
+   390:844, which are the aspect ratios the screenshots are actually taken at,
+   so neither is cropped. */
+.device-pair {
+  /* Below sm there is no room for two devices, so the monitor drops out and
+     the variable is set purely to give the phone a readable size on its own.
+     The case study showed nothing at all here before. */
+  --mon-w: 44rem;
+}
+
+.device-pair .device-monitor {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .device-pair {
+    --mon-w: 25rem;
+  }
+
+  .device-pair .device-monitor {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .device-pair {
+    --mon-w: 35rem;
+  }
+}
+
+.device-pair .device-monitor {
+  --screen-w: var(--mon-w);
+  --screen-h: calc(var(--mon-w) * 0.625);
+}
+
+.device-pair .device-phone {
+  --screen-h: calc(var(--mon-w) * 0.62);
+  --screen-w: calc(var(--mon-w) * 0.62 * 0.462);
+}
+
+.device-pair .device-monitor-body {
+  padding: calc(var(--screen-w) * 0.018) calc(var(--screen-w) * 0.018)
+    calc(var(--screen-w) * 0.042);
+  border-radius: calc(var(--screen-w) * 0.02);
+}
+
+.device-pair .device-monitor .device-screen {
+  border-radius: calc(var(--screen-w) * 0.006);
+}
+
+.device-pair .device-monitor-body::after {
+  bottom: calc(var(--screen-w) * 0.014);
+  width: calc(var(--screen-w) * 0.03);
+  height: calc(var(--screen-w) * 0.005);
+}
+
+.device-pair .device-monitor-stand {
+  height: calc(var(--screen-w) * 0.052);
+}
+
+.device-pair .device-monitor-base {
+  height: calc(var(--screen-w) * 0.021);
+  background: linear-gradient(
+    90deg,
+    rgba(201, 168, 76, 0.3) 0%,
+    #2a2724 9%,
+    #2a2724 91%,
+    rgba(201, 168, 76, 0.3) 100%
+  );
+}
+
+.device-pair .device-phone-body {
+  padding: calc(var(--screen-w) * 0.037);
+  border-radius: calc(var(--screen-w) * 0.13);
+}
+
+.device-pair .device-phone .device-screen {
+  border-radius: calc(var(--screen-w) * 0.095);
+}
+
+.device-pair .device-phone-body::before {
+  top: calc(var(--screen-w) * 0.074);
+  height: calc(var(--screen-w) * 0.028);
+  border-radius: calc(var(--screen-w) * 0.02);
+}
+
+/* The side button's top and height are already percentages of the screen, so
+   only its thickness needs scaling. */
+.device-pair .device-phone-body::after {
+  right: calc(var(--screen-w) * -0.018);
+  width: calc(var(--screen-w) * 0.018);
+  border-radius: calc(var(--screen-w) * 0.01);
+}
+
 /* ── Client logo ──
    Four marks of very different shapes: two wide wordmarks, a round badge and a
    small illustration. Capping height and width together lets each keep its own

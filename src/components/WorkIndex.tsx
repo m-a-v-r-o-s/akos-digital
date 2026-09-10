@@ -14,7 +14,7 @@ const L = {
     eyebrow: "Work",
     title: "Client work",
     intro:
-      "Three businesses running on sites I built and still support, and one operations platform still being built. Each case study says what the problem actually was and what was done about it. There are no invented conversion figures here: every claim is either something you can check by opening the site, or a mechanism described plainly enough to be argued with.",
+      "Three businesses running on sites I built and still support, and one operations platform still being built. Each case study says what the problem actually was and what was done about it. There are no invented conversion figures here: every claim is something you can check by opening the site.",
     read: "Read the case study",
     ctaTitle: "Want yours here?",
     ctaBody:
@@ -26,7 +26,7 @@ const L = {
     eyebrow: "Έργα",
     title: "Έργα πελατών",
     intro:
-      "Τρεις επιχειρήσεις που λειτουργούν πάνω σε sites που έχτισα και συνεχίζω να υποστηρίζω, και μία πλατφόρμα διαχείρισης που χτίζεται ακόμη. Κάθε μελέτη περίπτωσης λέει ποιο ήταν πραγματικά το πρόβλημα και τι έγινε γι' αυτό. Δεν υπάρχουν επινοημένα ποσοστά μετατροπής εδώ: κάθε ισχυρισμός είναι είτε κάτι που μπορείς να ελέγξεις ανοίγοντας το site, είτε ένας μηχανισμός περιγραμμένος αρκετά καθαρά ώστε να αμφισβητηθεί.",
+      "Τρεις επιχειρήσεις που λειτουργούν πάνω σε sites που έχτισα και συνεχίζω να υποστηρίζω, και μία πλατφόρμα διαχείρισης που χτίζεται ακόμη. Κάθε μελέτη περίπτωσης λέει ποιο ήταν πραγματικά το πρόβλημα και τι έγινε γι' αυτό. Δεν υπάρχουν επινοημένα ποσοστά μετατροπής εδώ: κάθε ισχυρισμός είναι κάτι που μπορείς να ελέγξεις ανοίγοντας το site.",
     read: "Διάβασε τη μελέτη",
     ctaTitle: "Θέλεις το δικό σου εδώ;",
     ctaBody:

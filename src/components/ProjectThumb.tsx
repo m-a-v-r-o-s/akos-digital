@@ -28,7 +28,8 @@ const phoneLabel = {
   el: "Άνοιγμα σε προβολή κινητού",
 };
 
-function screenVars(size: { w: number; h: number }) {
+function screenVars(size?: { w: number; h: number }) {
+  if (!size) return undefined;
   return {
     "--screen-w": `${size.w}px`,
     "--screen-h": `${size.h}px`,
@@ -71,9 +72,17 @@ function Screen({ image, title }: { image?: string; title: string }) {
 }
 
 /** Desktop screenshot in a CSS monitor bezel, on a stand. */
-function Monitor({ image, title }: { image?: string; title: string }) {
+function Monitor({
+  image,
+  title,
+  size,
+}: {
+  image?: string;
+  title: string;
+  size?: { w: number; h: number };
+}) {
   return (
-    <div className="device device-monitor" style={screenVars(SCREEN.monitor)}>
+    <div className="device device-monitor" style={screenVars(size)}>
       <div className="device-monitor-body">
         <div className="device-screen">
           <Screen image={image} title={title} />
@@ -93,7 +102,7 @@ function Phone({
 }: {
   image?: string;
   title: string;
-  size: { w: number; h: number };
+  size?: { w: number; h: number };
 }) {
   return (
     <div className="device device-phone" style={screenVars(size)}>
@@ -118,10 +127,13 @@ export default function ProjectThumb({
   href?: string;
   title: string;
   /**
-   * "stack" — monitor with the phone beneath it, from `sm` up.
-   * "mobile" — the phone alone, for the phone layout.
+   * "stack"  monitor with the phone beneath it, from `sm` up.
+   * "mobile" the phone alone, for the phone layout.
+   * "pair"   the desktop and phone renderings side by side, at the size a
+   *          case study page can give them. Sized entirely from CSS, so it
+   *          can be responsive without this component knowing a pixel.
    */
-  variant?: "stack" | "mobile";
+  variant?: "stack" | "mobile" | "pair";
 }) {
   const { lang } = useLanguage();
 
@@ -130,7 +142,7 @@ export default function ProjectThumb({
     return (
       <Phone
         image={imageMobile}
-        title={`${title} — mobile`}
+        title={`${title}, mobile`}
         size={SCREEN.phoneLarge}
       />
     );
@@ -159,19 +171,59 @@ export default function ProjectThumb({
     else window.open(href, "_blank", "noopener,noreferrer");
   };
 
+  if (variant === "pair") {
+    const desktop = <Monitor image={image} title={title} />;
+    const handset = <Phone image={imageMobile} title={`${title}, mobile`} />;
+
+    return (
+      <div className="device-pair flex items-end justify-center gap-5 lg:gap-7">
+        {image &&
+          (href ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={title}
+              className="block rounded transition-opacity hover:opacity-90"
+            >
+              {desktop}
+            </a>
+          ) : (
+            desktop
+          ))}
+        {imageMobile &&
+          (href ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={openPhoneView}
+              title={phoneLabel[lang]}
+              aria-label={`${title}, ${phoneLabel[lang]}`}
+              className="block rounded-lg transition-opacity hover:opacity-90"
+            >
+              {handset}
+            </a>
+          ) : (
+            handset
+          ))}
+      </div>
+    );
+  }
+
   /* With the monitor hidden the phone carries the card on its own, so it gets
      the larger of the two sizes. */
   const phone = (
     <Phone
       image={imageMobile}
-      title={`${title} — mobile`}
+      title={`${title}, mobile`}
       size={SHOW_MONITOR ? SCREEN.phoneSmall : SCREEN.phoneLarge}
     />
   );
 
   return (
     <div className="hidden sm:flex flex-col items-center gap-2 shrink-0">
-      {SHOW_MONITOR && <Monitor image={image} title={title} />}
+      {SHOW_MONITOR && <Monitor image={image} title={title} size={SCREEN.monitor} />}
       {imageMobile &&
         (href ? (
           isInternalHref(href) ? (
