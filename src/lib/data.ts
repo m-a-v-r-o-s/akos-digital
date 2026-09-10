@@ -1204,6 +1204,8 @@ export type CaseStudy = {
   status?: BL;
   /** Rendered by its own component instead of the standard case study layout. */
   bespoke?: boolean;
+  /** The client's own mark, trimmed to its alpha bounding box. */
+  logo?: string;
   summary: BL;
   challenge?: BL;
   approach?: BLA;
@@ -1234,6 +1236,7 @@ export const caseStudies: CaseStudy[] = [
       en: "A Greek rent-a-car company runs roughly 100 cars through reps stationed at hotel desks. Availability, prices, contracts and cash all live on paper and in phone calls. This is the operations platform replacing that, end to end.",
       el: "Ελληνική εταιρεία rent-a-car κινεί περίπου 100 αυτοκίνητα μέσα από αντιπροσώπους σε ξενοδοχεία. Η διαθεσιμότητα, οι τιμές, τα συμφωνητικά και τα μετρητά ζουν σε χαρτί και σε τηλεφωνήματα. Αυτή είναι η πλατφόρμα που τα αντικαθιστά, από άκρη σε άκρη.",
     } as BL,
+    logo: "/logos/international.webp",
     stack: ["Next.js", "TypeScript", "Postgres RLS", "Android TWA", "Bilingual"],
     image: "/projects/international.webp",
     imageMobile: "/projects/international-mobile.webp",
@@ -1289,6 +1292,7 @@ export const caseStudies: CaseStudy[] = [
         "Οι νομικές σελίδες είναι πραγματικά, ξεχωριστά URL και όχι αναδυόμενα παράθυρα, οπότε μπορούν να ευρετηριαστούν και να συνδεθούν.",
       ],
     } as BLA,
+    logo: "/logos/blessed.webp",
     stack: ["React", "Vite", "JavaScript", "Tailwind", "Schema.org", "Bilingual"],
     image: "/projects/blessed.webp",
     imageMobile: "/projects/blessed-mobile.webp",
@@ -1344,6 +1348,7 @@ export const caseStudies: CaseStudy[] = [
         "Το site συνδέει πίσω σε εμάς χωρίς nofollow, που είναι ο τίμιος τρόπος να χτίζεται η φήμη ενός μικρού στούντιο.",
       ],
     } as BLA,
+    logo: "/logos/ellietattooer.webp",
     stack: ["Next.js", "TypeScript", "Tailwind", "E-commerce", "Schema.org"],
     image: "/projects/ellietattooer.webp",
     imageMobile: "/projects/ellietattooer-mobile.webp",
@@ -1399,6 +1404,7 @@ export const caseStudies: CaseStudy[] = [
         "Το site συνδέει πίσω σε εμάς χωρίς nofollow.",
       ],
     } as BLA,
+    logo: "/logos/trf.webp",
     stack: ["Next.js", "TypeScript", "Tailwind", "Interactive Animations", "Schema.org"],
     image: "/projects/trf.webp",
     imageMobile: "/projects/trf-mobile.webp",

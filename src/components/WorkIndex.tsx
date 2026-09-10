@@ -88,6 +88,16 @@ export default function WorkIndex() {
                 {caseStudies.map((c) => (
                   <li key={c.slug}>
                     <Link href={`/${lang}/work/${c.slug}`} className="section-card group block">
+                      {c.logo && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={c.logo}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="client-logo mb-3"
+                        />
+                      )}
                       <p className="flex flex-wrap items-center gap-2.5 font-mono text-xs tracking-[0.2em] uppercase text-stone mb-2">
                         {c.client}
                         {c.status && <span className="status-badge">{c.status[lang]}</span>}

@@ -86,6 +86,14 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
 
           <main>
             <section className="fade-up pt-2 pb-12">
+              {cs.logo && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={cs.logo}
+                  alt=""
+                  className="client-logo client-logo-lg mb-5"
+                />
+              )}
               <p className="font-mono text-xs tracking-[0.2em] uppercase text-stone mb-4">
                 {t.eyebrow} · {cs.client}
               </p>

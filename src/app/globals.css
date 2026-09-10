@@ -152,6 +152,29 @@ body {
   border: 1px solid rgba(201, 168, 76, 0.2);
 }
 
+/* ── Client logo ──
+   Four marks of very different shapes: two wide wordmarks, a round badge and a
+   small illustration. Capping height and width together lets each keep its own
+   proportions while none of them swamps the row it sits in. They are trimmed to
+   their alpha bounding box at export, so the cap is the mark itself rather than
+   whatever empty canvas the original file carried. */
+.client-logo {
+  display: block;
+  width: auto;
+  /* The height cap governs the compact marks and the width cap governs the
+     wordmarks, which is why they are set so far apart: a round badge wants to
+     be taller than a wordmark to carry the same weight beside it. */
+  height: 3rem;
+  max-width: 9.5rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.client-logo-lg {
+  height: 4.5rem;
+  max-width: 13rem;
+}
+
 /* ── Code block ──
    Used where the mechanism is the claim, so the reader can check it rather
    than take the sentence on trust. Scrolls on its own at phone width instead

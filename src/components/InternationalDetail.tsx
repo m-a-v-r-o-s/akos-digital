@@ -101,6 +101,14 @@ export default function InternationalDetail() {
           <main>
             {/* ── Hero ── */}
             <section className="fade-up pt-2 pb-10">
+              {cs.logo && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={cs.logo}
+                  alt=""
+                  className="client-logo client-logo-lg mb-5"
+                />
+              )}
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <p className="font-mono text-xs tracking-[0.2em] uppercase text-stone-light">
                   {t.eyebrow} · {cs.client}
