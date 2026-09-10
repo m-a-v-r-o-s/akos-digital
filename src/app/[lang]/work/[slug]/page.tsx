@@ -4,6 +4,7 @@ import { caseStudies } from "@/lib/data";
 import { LANGS, isLang } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import CaseStudyDetail from "@/components/CaseStudyDetail";
+import InternationalDetail from "@/components/InternationalDetail";
 
 export function generateStaticParams() {
   return LANGS.flatMap((lang) =>
@@ -33,6 +34,9 @@ export default async function CaseStudyPage({
   params: Promise<{ lang: string; slug: string }>;
 }) {
   const { lang, slug } = await params;
-  if (!isLang(lang) || !caseStudies.some((c) => c.slug === slug)) notFound();
-  return <CaseStudyDetail slug={slug} />;
+  const cs = caseStudies.find((c) => c.slug === slug);
+  if (!isLang(lang) || !cs) notFound();
+  // One study is a build with no live site to open, so it carries its own
+  // layout instead of the challenge/approach/outcome shape.
+  return cs.bespoke ? <InternationalDetail /> : <CaseStudyDetail slug={slug} />;
 }

@@ -61,7 +61,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
     inLanguage: lang,
     url: `${SITE_URL}/${lang}/work/${cs.slug}`,
     creator: { "@id": `${SITE_URL}/#organization` },
-    about: { "@type": "Organization", name: cs.client, url: cs.live },
+    about: { "@type": "Organization", name: cs.client, ...(cs.live ? { url: cs.live } : {}) },
     keywords: cs.stack.join(", "),
   };
 
@@ -96,17 +96,19 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
               <p className="text-base text-stone-light leading-relaxed max-w-3xl mb-6">
                 {cs.summary[lang]}
               </p>
-              <a
-                href={cs.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="cta-button inline-flex"
-              >
-                {t.visit}
-                <span className="arrow-icon">
-                  <Icon name="arrow" size={13} />
-                </span>
-              </a>
+              {cs.live && (
+                <a
+                  href={cs.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cta-button inline-flex"
+                >
+                  {t.visit}
+                  <span className="arrow-icon">
+                    <Icon name="arrow" size={13} />
+                  </span>
+                </a>
+              )}
             </section>
 
             <section className="mb-14">
@@ -118,36 +120,42 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
               />
             </section>
 
-            <section className="mb-14">
-              <h2 className="section-heading !static mb-5">{t.challenge}</h2>
-              <p className="text-sm text-stone-light leading-relaxed max-w-3xl">
-                {cs.challenge[lang]}
-              </p>
-            </section>
+            {cs.challenge && (
+              <section className="mb-14">
+                <h2 className="section-heading !static mb-5">{t.challenge}</h2>
+                <p className="text-sm text-stone-light leading-relaxed max-w-3xl">
+                  {cs.challenge[lang]}
+                </p>
+              </section>
+            )}
 
-            <section className="mb-14">
-              <h2 className="section-heading !static mb-5">{t.approach}</h2>
-              <ul className="space-y-3 max-w-3xl">
-                {cs.approach[lang].map((p, i) => (
-                  <li key={i} className="flex gap-2.5 text-sm text-stone-light leading-relaxed">
-                    <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">›</span>
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
+            {cs.approach && (
+              <section className="mb-14">
+                <h2 className="section-heading !static mb-5">{t.approach}</h2>
+                <ul className="space-y-3 max-w-3xl">
+                  {cs.approach[lang].map((p, i) => (
+                    <li key={i} className="flex gap-2.5 text-sm text-stone-light leading-relaxed">
+                      <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">›</span>
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
-            <section className="mb-14">
-              <h2 className="section-heading !static mb-5">{t.outcome}</h2>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {cs.outcome[lang].map((o, i) => (
-                  <div key={i} className="section-card flex gap-3" style={{ padding: "1rem" }}>
-                    <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">✦</span>
-                    <span className="text-sm text-stone-light leading-snug">{o}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
+            {cs.outcome && (
+              <section className="mb-14">
+                <h2 className="section-heading !static mb-5">{t.outcome}</h2>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {cs.outcome[lang].map((o, i) => (
+                    <div key={i} className="section-card flex gap-3" style={{ padding: "1rem" }}>
+                      <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">✦</span>
+                      <span className="text-sm text-stone-light leading-snug">{o}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="mb-14">
               <h2 className="section-heading !static mb-5">{t.stack}</h2>
@@ -231,6 +239,9 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                     >
                       <h3 className="font-display font-semibold text-paper text-sm mb-1.5 group-hover:text-gold-light transition-colors">
                         {c.client}
+                        {c.status && (
+                          <span className="status-badge ml-2 align-middle">{c.status[lang]}</span>
+                        )}
                       </h3>
                       <p className="text-xs text-stone leading-relaxed">{c.title[lang]}</p>
                     </Link>

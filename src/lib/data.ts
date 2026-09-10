@@ -73,7 +73,44 @@ export const education = [
   },
 ];
 
-export const projects = [
+/**
+ * A link on a project card. An href starting with "/" is a route on this site
+ * and is prefixed with the locale at render time; anything else is external
+ * and opens in a new tab. That is how a project with no public URL, such as an
+ * internal tool, still has somewhere for the card to lead.
+ */
+export type ProjectLink = { label: string; href: string };
+
+export type Project = {
+  title: string;
+  description: BL;
+  tags: string[];
+  image: string;
+  imageMobile: string;
+  sector: string;
+  /** Nested under the project above it, for companion apps. */
+  sub?: boolean;
+  /** Set only while a project is unfinished, and shown as a badge. */
+  status?: BL;
+  links: ProjectLink[];
+  year: string;
+};
+
+export const projects: Project[] = [
+  {
+    title: "International Rentals",
+    description: {
+      en: "Fleet operations platform for a Greek rent-a-car company running ~100 cars through reps stationed at hotel desks. One bilingual app for two very different users: the rep on a phone at a hotel, and the manager on a desktop. Availability and pricing are computed server-side only, and double-booking is refused by the database itself.",
+      el: "Πλατφόρμα διαχείρισης στόλου για ελληνική εταιρεία rent-a-car με ~100 αυτοκίνητα και αντιπροσώπους σε ξενοδοχεία. Μία δίγλωσση εφαρμογή για δύο πολύ διαφορετικούς χρήστες: τον αντιπρόσωπο στο κινητό και τον ιδιοκτήτη σε desktop. Η διαθεσιμότητα και η τιμολόγηση υπολογίζονται αποκλειστικά server-side, και η διπλή κράτηση απορρίπτεται από την ίδια τη βάση.",
+    } as BL,
+    tags: ["Next.js", "TypeScript", "Supabase", "Postgres RLS", "Android TWA", "Bilingual"],
+    image: "/projects/international.webp",
+    imageMobile: "/projects/international-mobile.webp",
+    sector: "rentacar",
+    status: { en: "In development", el: "Σε εξέλιξη" } as BL,
+    links: [{ label: "Case study", href: "/work/international-rentals" }],
+    year: "",
+  },
   {
     title: "SKIÁ Athens",
     description: {
@@ -1153,7 +1190,54 @@ export const servicePages = [
  * site or reading its HTML, because a fabricated conversion figure is worth
  * less than nothing the moment a prospect checks it.
  */
-export const caseStudies = [
+export type CaseStudy = {
+  slug: string;
+  client: string;
+  projectTitle: string;
+  seoTitle: BL;
+  title: BL;
+  sector: string;
+  service: string;
+  /** Absent for a build with nothing public to open. */
+  live?: string;
+  /** Set only while a build is unfinished, and shown as a badge. */
+  status?: BL;
+  /** Rendered by its own component instead of the standard case study layout. */
+  bespoke?: boolean;
+  summary: BL;
+  challenge?: BL;
+  approach?: BLA;
+  outcome?: BLA;
+  stack: string[];
+  image: string;
+  imageMobile: string;
+};
+
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: "international-rentals",
+    client: "International Rentals",
+    projectTitle: "International Rentals Fleet Operations",
+    seoTitle: {
+      en: "International Rentals, Fleet Operations App",
+      el: "International Rentals, Εφαρμογή Διαχείρισης Στόλου",
+    } as BL,
+    title: {
+      en: "A hundred cars, ten hotel desks, and a paper day sheet",
+      el: "Εκατό αυτοκίνητα, δέκα ξενοδοχεία και ένα χάρτινο φύλλο ημέρας",
+    } as BL,
+    sector: "rentacar",
+    service: "booking-systems",
+    status: { en: "In development", el: "Σε εξέλιξη" } as BL,
+    bespoke: true,
+    summary: {
+      en: "A Greek rent-a-car company runs roughly 100 cars through reps stationed at hotel desks. Availability, prices, contracts and cash all live on paper and in phone calls. This is the operations platform replacing that, end to end.",
+      el: "Ελληνική εταιρεία rent-a-car κινεί περίπου 100 αυτοκίνητα μέσα από αντιπροσώπους σε ξενοδοχεία. Η διαθεσιμότητα, οι τιμές, τα συμφωνητικά και τα μετρητά ζουν σε χαρτί και σε τηλεφωνήματα. Αυτή είναι η πλατφόρμα που τα αντικαθιστά, από άκρη σε άκρη.",
+    } as BL,
+    stack: ["Next.js", "TypeScript", "Supabase", "Postgres RLS", "Android TWA", "Bilingual"],
+    image: "/projects/international.webp",
+    imageMobile: "/projects/international-mobile.webp",
+  },
   {
     slug: "blessed-coffee",
     client: "Blessed Coffee & Spirits",

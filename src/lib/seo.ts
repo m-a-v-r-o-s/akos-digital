@@ -88,8 +88,8 @@ export const pageSeo: Record<
     path: "/work",
     name: { el: "Έργα", en: "Work" },
     description: {
-      el: "Ζωντανά sites πελατών που έχτισα και υποστηρίζω: καφετέρια στην Αθήνα, καλλιτέχνις τατουάζ και συγκρότημα από την Κω, με το τι χρειάστηκε το καθένα.",
-      en: "Live client sites I built and support: a cafe in Athens, a tattoo artist and a band from Kos, with what each one actually needed.",
+      el: "Έργα πελατών που έχτισα και υποστηρίζω: καφετέρια στην Αθήνα, καλλιτέχνις τατουάζ, συγκρότημα από την Κω, και πλατφόρμα διαχείρισης στόλου για εταιρεία rent-a-car.",
+      en: "Client work I built and support: a cafe in Athens, a tattoo artist and a band from Kos, and a fleet operations platform for a rent-a-car company.",
     },
   },
   request: {

@@ -152,6 +152,47 @@ body {
   border: 1px solid rgba(201, 168, 76, 0.2);
 }
 
+/* ── Code block ──
+   Used where the mechanism is the claim, so the reader can check it rather
+   than take the sentence on trust. Scrolls on its own at phone width instead
+   of widening the page. */
+.code-block {
+  @apply rounded-xl p-5 overflow-x-auto text-xs leading-relaxed font-mono;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--stone-dark);
+  color: #ded6c6;
+}
+
+/* ── Board frame ──
+   The thin gold rule keeps a bright 16:9 render from floating on the dark
+   page with no edge to it. */
+.board-frame {
+  @apply rounded-xl overflow-hidden;
+  border: 1px solid rgba(201, 168, 76, 0.22);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+}
+
+/* ── Status badge ──
+   For work that is real but not finished. Deliberately quieter than .tag-pill:
+   it labels a state, it is not one of the things the project is made of. The
+   dot carries the meaning at a glance, so the word is never the only signal. */
+.status-badge {
+  @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[0.65rem] font-mono tracking-wide uppercase;
+  background: rgba(139, 58, 42, 0.14);
+  color: #d99277;
+  border: 1px solid rgba(139, 58, 42, 0.4);
+  white-space: nowrap;
+}
+
+.status-badge::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+
 /* ── Gold link ── */
 .gold-link {
   @apply relative font-medium;

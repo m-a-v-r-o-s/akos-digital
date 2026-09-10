@@ -9,6 +9,7 @@ import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services, sectors } from "@/lib/data";
 import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import ProjectThumb from "@/components/ProjectThumb";
+import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
 
 const tabLabels = {
   en: ["Works", "Sectors", "Services", "Education", "About"],
@@ -188,47 +189,18 @@ export default function MobileScrollSections() {
             {projects.map((proj) =>
               proj.sub ? (
               <li key={proj.title} className="-mt-1 ml-6 group relative">
-                {proj.links[0] && (
-                  <a
-                    href={proj.links[0].href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={proj.title}
-                    className="absolute inset-0 z-10"
-                  />
-                )}
+                <CardOverlay project={proj} />
                 <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 border border-transparent transition-all duration-300 group-hover:border-gold/10">
                   <span className="text-gold/40 font-mono text-sm shrink-0 leading-none">↳</span>
                   <h4 className="flex-1 min-w-0 font-display font-medium text-stone-light text-xs leading-snug">
                     {proj.title}
                   </h4>
-                  {proj.links.map((lnk) => (
-                    <a
-                      key={lnk.label}
-                      href={lnk.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="relative z-20 inline-flex items-center gap-1 text-[0.7rem] font-mono text-stone hover:text-gold-light transition-colors shrink-0"
-                    >
-                      {lnk.label}
-                      <span className="arrow-icon">
-                        <Icon name="arrow" size={10} />
-                      </span>
-                    </a>
-                  ))}
+                  <CardLinks project={proj} size={10} />
                 </div>
               </li>
               ) : (
               <li key={proj.title} className="section-card relative">
-                {proj.links[0] && (
-                  <a
-                    href={proj.links[0].href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={proj.title}
-                    className="absolute inset-0 z-10"
-                  />
-                )}
+                <CardOverlay project={proj} />
                 <div className="flex gap-3">
                   <ProjectThumb
                     imageMobile={proj.imageMobile}
@@ -240,10 +212,14 @@ export default function MobileScrollSections() {
                       <h4 className="font-display font-semibold text-paper text-sm leading-snug">
                         {proj.title}
                       </h4>
-                      {proj.year && (
-                        <span className="font-mono text-xs text-stone-dark shrink-0">
-                          {proj.year}
-                        </span>
+                      {proj.status ? (
+                        <span className="status-badge shrink-0">{proj.status[lang]}</span>
+                      ) : (
+                        proj.year && (
+                          <span className="font-mono text-xs text-stone-dark shrink-0">
+                            {proj.year}
+                          </span>
+                        )
                       )}
                     </div>
                     <p className="text-xs text-stone leading-relaxed mb-3">
@@ -255,20 +231,7 @@ export default function MobileScrollSections() {
                           {tag}
                         </span>
                       ))}
-                      {proj.links.map((lnk) => (
-                        <a
-                          key={lnk.label}
-                          href={lnk.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
-                        >
-                          {lnk.label}
-                          <span className="arrow-icon">
-                            <Icon name="arrow" size={11} />
-                          </span>
-                        </a>
-                      ))}
+                      <CardLinks project={proj} />
                     </div>
                   </div>
                 </div>
