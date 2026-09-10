@@ -275,7 +275,7 @@ export const international = {
     },
     {
       group: { en: "Data and auth", el: "Δεδομένα και πρόσβαση" } as BL,
-      items: ["Supabase", "Postgres", "Row Level Security", "Zod"],
+      items: ["Postgres", "Row Level Security", "Zod"],
     },
     {
       group: { en: "Documents and vision", el: "Έγγραφα και όραση" } as BL,
