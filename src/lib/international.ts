@@ -22,20 +22,9 @@ export type Chapter = {
 };
 
 export const international = {
+  /** The caseStudies entry this page belongs to carries the rest: client,
+      title, summary and status are read from there rather than repeated. */
   slug: "international-rentals",
-  client: "International Rentals",
-
-  status: { en: "In development", el: "Σε εξέλιξη" } as BL,
-
-  title: {
-    en: "A hundred cars, ten hotel desks, and a paper day sheet",
-    el: "Εκατό αυτοκίνητα, δέκα ξενοδοχεία και ένα χάρτινο φύλλο ημέρας",
-  } as BL,
-
-  summary: {
-    en: "A Greek rent-a-car company runs roughly 100 cars through reps stationed at hotel desks. Availability, prices, contracts and cash all live on paper and in phone calls. This is the operations platform replacing that, end to end.",
-    el: "Ελληνική εταιρεία rent-a-car κινεί περίπου 100 αυτοκίνητα μέσα από αντιπροσώπους σε ξενοδοχεία. Η διαθεσιμότητα, οι τιμές, τα συμφωνητικά και τα μετρητά ζουν σε χαρτί και σε τηλεφωνήματα. Αυτή είναι η πλατφόρμα που τα αντικαθιστά, από άκρη σε άκρη.",
-  } as BL,
 
   /** Why this entry has no link when every other one does. */
   noLink: {

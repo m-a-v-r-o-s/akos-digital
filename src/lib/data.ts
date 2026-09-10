@@ -1223,8 +1223,8 @@ export const caseStudies: CaseStudy[] = [
       el: "International Rentals, Εφαρμογή Διαχείρισης Στόλου",
     } as BL,
     title: {
-      en: "A hundred cars, ten hotel desks, and a paper day sheet",
-      el: "Εκατό αυτοκίνητα, δέκα ξενοδοχεία και ένα χάρτινο φύλλο ημέρας",
+      en: "Fleet operations, off paper",
+      el: "Διαχείριση στόλου, χωρίς χαρτί",
     } as BL,
     sector: "rentacar",
     service: "booking-systems",
@@ -1247,8 +1247,8 @@ export const caseStudies: CaseStudy[] = [
       el: "Blessed Coffee, Καφετέρια Αθήνα",
     } as BL,
     title: {
-      en: "A neighbourhood cafe that had to be findable in two languages",
-      el: "Μια καφετέρια της γειτονιάς που έπρεπε να βρίσκεται σε δύο γλώσσες",
+      en: "A cafe in two languages",
+      el: "Μια καφετέρια σε δύο γλώσσες",
     } as BL,
     sector: "food",
     service: "websites",
@@ -1302,8 +1302,8 @@ export const caseStudies: CaseStudy[] = [
       el: "Ellie Tattooer, Portfolio",
     } as BL,
     title: {
-      en: "A tattoo portfolio that also had to sell",
-      el: "Ένα portfolio τατουάζ που έπρεπε και να πουλάει",
+      en: "A tattoo portfolio that sells",
+      el: "Ένα portfolio τατουάζ που πουλάει",
     } as BL,
     sector: "artists",
     service: "eshop",
@@ -1357,8 +1357,8 @@ export const caseStudies: CaseStudy[] = [
       el: "Those Rambling Fools, Συγκρότημα",
     } as BL,
     title: {
-      en: "A band site where the record player actually plays",
-      el: "Ένα site συγκροτήματος όπου το πικάπ όντως παίζει",
+      en: "A band site that plays",
+      el: "Ένα site συγκροτήματος που παίζει",
     } as BL,
     sector: "artists",
     service: "websites",

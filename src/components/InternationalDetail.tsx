@@ -58,21 +58,24 @@ export default function InternationalDetail() {
   const { lang } = useLanguage();
   const t = L[lang];
   const p = international;
+  const cs = caseStudies.find((c) => c.slug === p.slug);
 
   const sector = sectors.find((s) => s.slug === "rentacar");
   const service = servicePages.find((s) => s.slug === "booking-systems");
 
+  if (!cs) return null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    name: p.client,
-    headline: p.title[lang],
-    description: p.summary[lang],
+    name: cs.client,
+    headline: cs.title[lang],
+    description: cs.summary[lang],
     inLanguage: lang,
     url: `${SITE_URL}/${lang}/work/${p.slug}`,
     creator: { "@id": `${SITE_URL}/#organization` },
-    about: { "@type": "Organization", name: p.client },
-    creativeWorkStatus: p.status.en,
+    about: { "@type": "Organization", name: cs.client },
+    creativeWorkStatus: cs.status?.en,
     keywords: p.stack.flatMap((g) => g.items).join(", "),
   };
 
@@ -100,16 +103,16 @@ export default function InternationalDetail() {
             <section className="fade-up pt-2 pb-10">
               <div className="flex flex-wrap items-center gap-3 mb-4">
                 <p className="font-mono text-xs tracking-[0.2em] uppercase text-stone-light">
-                  {t.eyebrow} · {p.client}
+                  {t.eyebrow} · {cs.client}
                 </p>
-                <span className="status-badge">{p.status[lang]}</span>
+                {cs.status && <span className="status-badge">{cs.status[lang]}</span>}
               </div>
               <h1 className="font-display text-4xl sm:text-5xl font-bold leading-tight text-paper mb-5">
-                {p.title[lang]}
+                {cs.title[lang]}
               </h1>
               <div className="deco-rule mb-6" />
               <p className="text-base text-stone-light leading-relaxed max-w-3xl">
-                {p.summary[lang]}
+                {cs.summary[lang]}
               </p>
             </section>
 
