@@ -1247,8 +1247,8 @@ export const caseStudies: CaseStudy[] = [
       el: "Blessed Coffee, Καφετέρια Αθήνα",
     } as BL,
     title: {
-      en: "A cafe in two languages",
-      el: "Μια καφετέρια σε δύο γλώσσες",
+      en: "A cafe you can find",
+      el: "Μια καφετέρια που τη βρίσκεις",
     } as BL,
     sector: "food",
     service: "websites",
