@@ -17,6 +17,7 @@ const ui = {
   en: {
     about: "About",
     services: "Services",
+    allServices: "All services",
     sectors: "Sectors",
     explore: "Explore",
     education: "Education",
@@ -31,6 +32,7 @@ const ui = {
   el: {
     about: "Σχετικά",
     services: "Υπηρεσίες",
+    allServices: "Όλες οι υπηρεσίες",
     sectors: "Ειδικότητες",
     explore: "Περισσότερα",
     education: "Εκπαίδευση",
@@ -323,6 +325,15 @@ export default function Home() {
                   )
                 )}
               </div>
+              <Link
+                href={`/${lang}/services`}
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gold hover:text-gold-light transition-colors"
+              >
+                {t.allServices}
+                <span className="arrow-icon">
+                  <Icon name="arrow" size={11} />
+                </span>
+              </Link>
             </section>
 
             {/* EDUCATION */}

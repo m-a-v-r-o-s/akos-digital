@@ -76,6 +76,14 @@ export const pageSeo: Record<
       en: "Custom websites, e-shops, booking and CRM systems and AI automations for businesses across Greece. A solo studio: you work directly with the developer.",
     },
   },
+  services: {
+    path: "/services",
+    name: { el: "Υπηρεσίες", en: "Services" },
+    description: {
+      el: "Κατασκευή ιστοσελίδων, e-shop, SEO, συστήματα κρατήσεων και αυτοματισμοί AI για επιχειρήσεις στην Ελλάδα, από ένα μονομελές στούντιο στην Αθήνα.",
+      en: "Website and e-shop development, SEO, booking systems and AI automations for businesses in Greece, from a solo studio in Athens.",
+    },
+  },
   request: {
     path: "/request",
     name: { el: "Ζητήστε Προσφορά", en: "Request a Quote" },

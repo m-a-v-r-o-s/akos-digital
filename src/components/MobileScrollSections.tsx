@@ -349,6 +349,15 @@ export default function MobileScrollSections() {
               )
             )}
           </div>
+          <Link
+            href={`/${lang}/services`}
+            className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gold"
+          >
+            {lang === "en" ? "All services" : "Όλες οι υπηρεσίες"}
+            <span className="arrow-icon">
+              <Icon name="arrow" size={11} />
+            </span>
+          </Link>
         </div>
 
         {/* ── Panel 3: Education ── */}

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { sectors } from "@/lib/data";
+import { sectors, servicePages } from "@/lib/data";
 import { LANGS } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/seo";
 
@@ -8,6 +8,12 @@ const PATHS: { path: string; priority: number; changeFrequency: "weekly" | "mont
   { path: "", priority: 1, changeFrequency: "weekly" },
   { path: "/request", priority: 0.9, changeFrequency: "monthly" },
   { path: "/espa", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services", priority: 0.9, changeFrequency: "monthly" },
+  ...servicePages.map((s) => ({
+    path: `/services/${s.slug}`,
+    priority: 0.8,
+    changeFrequency: "monthly" as const,
+  })),
   ...sectors.map((s) => ({
     path: `/sectors/${s.slug}`,
     priority: 0.6,

@@ -782,3 +782,367 @@ export const sectors = [
     ] as FAQ[],
   },
 ];
+
+/**
+ * Service pages: what the studio sells, as opposed to the sector pages,
+ * which describe who the client is. These carry the commercial-intent
+ * queries ("κατασκευή ιστοσελίδων", "κατασκευή e-shop", "SEO"), which no
+ * sector page targets.
+ */
+export const servicePages = [
+  {
+    slug: "websites",
+    icon: "✦",
+    seoTitle: {
+      en: "Website Development",
+      el: "Κατασκευή Ιστοσελίδων",
+    } as BL,
+    title: {
+      en: "Website Development for Businesses in Greece",
+      el: "Κατασκευή Ιστοσελίδων για Επιχειρήσεις στην Ελλάδα",
+    } as BL,
+    hook: {
+      en: "A site built from scratch around your business, fast enough to rank, readable by search and AI engines, and yours to keep.",
+      el: "Ιστοσελίδα χτισμένη από το μηδέν γύρω από την επιχείρησή σου, αρκετά γρήγορη για να ανέβει, αναγνώσιμη από μηχανές αναζήτησης και AI, και δική σου.",
+    } as BL,
+    points: {
+      en: [
+        "Built for your business rather than assembled from a theme, so nothing on the page is there because a template needed filling.",
+        "Server-rendered HTML, so search crawlers and AI answer engines read your content without running a line of JavaScript.",
+        "Greek and English on separate URLs when you serve both markets, each one indexable on its own instead of hidden behind a toggle.",
+        "You own the code and the domain outright. No licence, no platform that can raise its rent, no rebuild needed to leave.",
+      ],
+      el: [
+        "Χτισμένη για την επιχείρησή σου, όχι συναρμολογημένη από θέμα, ώστε τίποτα στη σελίδα να μην υπάρχει επειδή έπρεπε να γεμίσει ένα template.",
+        "HTML που παράγεται στον server, ώστε οι crawlers και οι μηχανές απαντήσεων AI να διαβάζουν το περιεχόμενό σου χωρίς να εκτελέσουν JavaScript.",
+        "Ελληνικά και αγγλικά σε ξεχωριστά URL όταν απευθύνεσαι και στις δύο αγορές, το καθένα ευρετηριάσιμο από μόνο του και όχι κρυμμένο πίσω από ένα κουμπί.",
+        "Ο κώδικας και το domain είναι δικά σου. Χωρίς άδεια χρήσης, χωρίς πλατφόρμα που μπορεί να ανεβάσει το ενοίκιο, χωρίς ανακατασκευή για να φύγεις.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "A design made for your brand, mobile-first and tested down to phone width",
+        "Greek and English versions on their own URLs, with hreflang, when you need both",
+        "Sitemap, robots.txt and structured data set up from the first day",
+        "A contact or quote form with spam and rate-limit protection",
+        "GDPR cookie consent and a privacy policy that matches what the site actually does",
+        "Google Search Console set up and the sitemap submitted",
+        "WCAG 2.1 AA accessibility as a baseline, not an extra",
+        "Lifetime support for the site's security and functionality",
+      ],
+      el: [
+        "Σχεδιασμός φτιαγμένος για τη δική σου επωνυμία, mobile-first και δοκιμασμένος μέχρι το πλάτος κινητού",
+        "Ελληνική και αγγλική έκδοση σε δικά τους URL, με hreflang, όπου χρειάζεται",
+        "Sitemap, robots.txt και structured data από την πρώτη μέρα",
+        "Φόρμα επικοινωνίας ή προσφοράς με προστασία από spam και rate limiting",
+        "Συγκατάθεση cookies κατά GDPR και πολιτική απορρήτου που αντιστοιχεί σε όσα πραγματικά κάνει το site",
+        "Ρύθμιση Google Search Console και υποβολή του sitemap",
+        "Προσβασιμότητα WCAG 2.1 AA ως βάση, όχι ως έξτρα",
+        "Υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του site",
+      ],
+    } as BLA,
+    relatedSectors: ["food", "health", "hotels", "artists"],
+    faq: [
+      {
+        q: { en: "How long does a website take?", el: "Πόσο καιρό παίρνει μια ιστοσελίδα;" } as BL,
+        a: { en: "Most business sites are ready in 2 to 4 weeks once I have your content. A larger site with a shop, a booking flow or two languages usually runs 4 to 8 weeks. The slow part is almost never the code, it's waiting on text and photos.", el: "Τα περισσότερα εταιρικά sites είναι έτοιμα σε 2 με 4 εβδομάδες μόλις έχω το περιεχόμενό σου. Ένα μεγαλύτερο site με κατάστημα, ροή κρατήσεων ή δύο γλώσσες θέλει συνήθως 4 με 8 εβδομάδες. Το αργό κομμάτι σχεδόν ποτέ δεν είναι ο κώδικας, είναι η αναμονή για κείμενα και φωτογραφίες." } as BL,
+      },
+      {
+        q: { en: "Do I own the site when it's done?", el: "Μου ανήκει το site όταν ολοκληρωθεί;" } as BL,
+        a: { en: "Yes. The code and the domain are yours, and you can take both anywhere. Nothing is licensed to you and nothing stops working if we part ways.", el: "Ναι. Ο κώδικας και το domain είναι δικά σου και μπορείς να τα πάρεις οπουδήποτε. Τίποτα δεν σου παραχωρείται με άδεια και τίποτα δεν σταματά να λειτουργεί αν χωρίσουν οι δρόμοι μας." } as BL,
+      },
+      {
+        q: { en: "Is WordPress an option?", el: "Είναι επιλογή το WordPress;" } as BL,
+        a: { en: "I don't build on it. It carries plugin and update risk that a small business ends up paying for in maintenance, and it is slower out of the box than a site that ships plain HTML. If you already have a WordPress site, I can rebuild it and keep your URLs so you don't lose rankings.", el: "Δεν χτίζω πάνω σε αυτό. Κουβαλά ρίσκο από plugins και ενημερώσεις που μια μικρή επιχείρηση τελικά το πληρώνει σε συντήρηση, και είναι πιο αργό εξ ορισμού από ένα site που στέλνει σκέτο HTML. Αν έχεις ήδη WordPress, μπορώ να το ξαναχτίσω κρατώντας τα URL σου ώστε να μη χάσεις θέσεις." } as BL,
+      },
+      {
+        q: { en: "Are hosting and the domain included?", el: "Περιλαμβάνονται το hosting και το domain;" } as BL,
+        a: { en: "No, they're always separate from the build price, because they're recurring costs rather than one-off ones. You can pay them through me or directly to the providers. Either way I set everything up.", el: "Όχι, είναι πάντα ξεχωριστά από την τιμή κατασκευής, γιατί είναι επαναλαμβανόμενα και όχι εφάπαξ κόστη. Μπορείς να τα πληρώνεις μέσω εμένα ή απευθείας στους παρόχους. Σε κάθε περίπτωση τα στήνω εγώ." } as BL,
+      },
+    ] as FAQ[],
+  },
+  {
+    slug: "eshop",
+    icon: "◉",
+    seoTitle: {
+      en: "E-shop Development",
+      el: "Κατασκευή E-shop",
+    } as BL,
+    title: {
+      en: "E-shop and Online Store Development",
+      el: "Κατασκευή E-shop και Ηλεκτρονικού Καταστήματος",
+    } as BL,
+    hook: {
+      en: "An online shop that takes card payments, works out shipping, and keeps every euro of the sale except the card fee.",
+      el: "Ηλεκτρονικό κατάστημα που δέχεται πληρωμές με κάρτα, υπολογίζει τα μεταφορικά και κρατά κάθε ευρώ της πώλησης εκτός από την προμήθεια της κάρτας.",
+    } as BL,
+    points: {
+      en: [
+        "No commission per sale. You pay your payment provider's card fee and nothing to a platform on top of it.",
+        "Shipping cost worked out from weight and destination at checkout, instead of a flat guess that loses money on half the orders.",
+        "Prices set on the server, so a total can't be tampered with on the way to checkout.",
+        "Stock that updates as orders come in, so you stop selling what you no longer have.",
+      ],
+      el: [
+        "Καμία προμήθεια ανά πώληση. Πληρώνεις τη χρέωση κάρτας του παρόχου πληρωμών και τίποτα επιπλέον σε πλατφόρμα.",
+        "Κόστος αποστολής υπολογισμένο από βάρος και προορισμό στο ταμείο, αντί για μια σταθερή εκτίμηση που χάνει χρήματα στις μισές παραγγελίες.",
+        "Οι τιμές ορίζονται στον server, ώστε ένα σύνολο να μην μπορεί να αλλοιωθεί στον δρόμο προς το ταμείο.",
+        "Απόθεμα που ενημερώνεται καθώς έρχονται παραγγελίες, ώστε να σταματάς να πουλάς ό,τι δεν έχεις πια.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "A product catalogue you update yourself, with variants and photos",
+        "Cart and checkout with card payments through a provider that pays you directly",
+        "Shipping rules by weight, destination and free-shipping threshold",
+        "Order confirmation emails to you and to the customer",
+        "Stock tracking that stops overselling",
+        "Verified payment webhooks, so an order is only marked paid when the bank says so",
+        "GDPR-compliant checkout and cookie consent",
+        "Lifetime support for the shop's security and functionality",
+      ],
+      el: [
+        "Κατάλογος προϊόντων που ενημερώνεις μόνος σου, με παραλλαγές και φωτογραφίες",
+        "Καλάθι και ταμείο με πληρωμές κάρτας μέσω παρόχου που σε πληρώνει απευθείας",
+        "Κανόνες αποστολής ανά βάρος, προορισμό και όριο δωρεάν μεταφορικών",
+        "Email επιβεβαίωσης παραγγελίας σε εσένα και στον πελάτη",
+        "Παρακολούθηση αποθέματος που σταματά τις υπερπωλήσεις",
+        "Επαληθευμένα webhooks πληρωμών, ώστε μια παραγγελία να μαρκάρεται πληρωμένη μόνο όταν το πει η τράπεζα",
+        "Ταμείο και συγκατάθεση cookies συμβατά με GDPR",
+        "Υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του καταστήματος",
+      ],
+    } as BLA,
+    relatedSectors: ["fashion", "artists", "food", "automotive"],
+    faq: [
+      {
+        q: { en: "Why not Shopify or WooCommerce?", el: "Γιατί όχι Shopify ή WooCommerce;" } as BL,
+        a: { en: "Both work, and for some shops they're the right answer. The tradeoff is a monthly fee plus, on some plans, a cut of every sale, and a checkout you can only change as far as the platform allows. A custom shop costs more up front and nothing per sale after that. If your volume is low and you want to start tomorrow, I'll tell you to use a platform.", el: "Και τα δύο δουλεύουν, και για κάποια καταστήματα είναι η σωστή απάντηση. Το αντίτιμο είναι μια μηνιαία χρέωση συν, σε ορισμένα πακέτα, ένα ποσοστό κάθε πώλησης, και ένα ταμείο που αλλάζεις μόνο όσο επιτρέπει η πλατφόρμα. Ένα custom κατάστημα κοστίζει περισσότερο στην αρχή και τίποτα ανά πώληση μετά. Αν ο τζίρος σου είναι μικρός και θες να ξεκινήσεις αύριο, θα σου πω να πας σε πλατφόρμα." } as BL,
+      },
+      {
+        q: { en: "How do payments work in Greece?", el: "Πώς λειτουργούν οι πληρωμές στην Ελλάδα;" } as BL,
+        a: { en: "I connect a payment provider so card payments land straight in your business account. You keep the merchant relationship and I never touch the money. Cash on delivery and bank transfer can sit alongside cards if your customers expect them.", el: "Συνδέω πάροχο πληρωμών ώστε οι πληρωμές με κάρτα να πηγαίνουν κατευθείαν στον επαγγελματικό σου λογαριασμό. Η σχέση με τον πάροχο είναι δική σου και εγώ δεν αγγίζω ποτέ τα χρήματα. Η αντικαταβολή και η τραπεζική κατάθεση μπορούν να συνυπάρχουν με τις κάρτες αν το περιμένουν οι πελάτες σου." } as BL,
+      },
+      {
+        q: { en: "Can I move my existing shop over?", el: "Μπορώ να μεταφέρω το υπάρχον κατάστημά μου;" } as BL,
+        a: { en: "Yes. Products and customers can be imported, and the old product URLs get redirected to the new ones so the rankings and links you've already earned follow you across.", el: "Ναι. Τα προϊόντα και οι πελάτες μπορούν να εισαχθούν, και τα παλιά URL προϊόντων ανακατευθύνονται στα νέα ώστε οι θέσεις και οι σύνδεσμοι που έχεις ήδη κερδίσει να σε ακολουθήσουν." } as BL,
+      },
+      {
+        q: { en: "Is it hard to add products myself?", el: "Είναι δύσκολο να προσθέτω προϊόντα μόνος μου;" } as BL,
+        a: { en: "No. You get an admin area where adding a product is a form: name, price, photos, stock. If you can post to Instagram you can run the shop.", el: "Όχι. Έχεις περιοχή διαχείρισης όπου η προσθήκη προϊόντος είναι μια φόρμα: όνομα, τιμή, φωτογραφίες, απόθεμα. Αν μπορείς να ανεβάσεις κάτι στο Instagram, μπορείς να διαχειριστείς το κατάστημα." } as BL,
+      },
+    ] as FAQ[],
+  },
+  {
+    slug: "seo",
+    icon: "◈",
+    seoTitle: {
+      en: "SEO and Local Search",
+      el: "SEO και Τοπική Αναζήτηση",
+    } as BL,
+    title: {
+      en: "SEO, Local Search and AI Answer Engines",
+      el: "SEO, Τοπική Αναζήτηση και Μηχανές Απαντήσεων AI",
+    } as BL,
+    hook: {
+      en: "Getting found by Google and by the AI assistants people now ask instead, which mostly read raw HTML and structured data.",
+      el: "Να σε βρίσκουν το Google και οι βοηθοί AI που πλέον ρωτούν οι άνθρωποι, οι οποίοι κυρίως διαβάζουν σκέτο HTML και structured data.",
+    } as BL,
+    points: {
+      en: [
+        "Most AI crawlers do not execute JavaScript. If your content only appears after the page loads, they never see it.",
+        "Structured data tells a search engine what your business is, not just what words are on the page.",
+        "A bilingual site needs each language on its own URL with hreflang, or one of them is effectively invisible.",
+        "Local intent is won with an accurate Google Business Profile and consistent details, not with keywords stuffed into a page.",
+      ],
+      el: [
+        "Οι περισσότεροι crawlers AI δεν εκτελούν JavaScript. Αν το περιεχόμενό σου εμφανίζεται μόνο αφού φορτώσει η σελίδα, δεν το βλέπουν ποτέ.",
+        "Τα structured data λένε στη μηχανή αναζήτησης τι είναι η επιχείρησή σου, όχι απλώς ποιες λέξεις υπάρχουν στη σελίδα.",
+        "Ένα δίγλωσσο site χρειάζεται κάθε γλώσσα σε δικό της URL με hreflang, αλλιώς η μία είναι ουσιαστικά αόρατη.",
+        "Η τοπική πρόθεση κερδίζεται με σωστό προφίλ Google Business και συνεπή στοιχεία, όχι με λέξεις-κλειδιά στοιβαγμένες σε μια σελίδα.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "An audit of what is actually indexed today, read from Search Console rather than guessed",
+        "Structured data for your business type, plus FAQ schema where you have real questions",
+        "Per-page titles and descriptions written for search intent in your market's language",
+        "Sitemap, robots.txt, canonical tags and hreflang where the site is bilingual",
+        "Core Web Vitals brought into the green, measured on the production build",
+        "Internal linking so your weakest pages have more than one way in",
+        "Google Business Profile guidance for local search",
+        "A written report of what changed and what is worth watching",
+      ],
+      el: [
+        "Έλεγχος του τι είναι πραγματικά ευρετηριασμένο σήμερα, διαβασμένος από το Search Console και όχι υποθετικός",
+        "Structured data για τον τύπο της επιχείρησής σου, συν FAQ schema όπου υπάρχουν πραγματικές ερωτήσεις",
+        "Τίτλοι και περιγραφές ανά σελίδα, γραμμένοι για την πρόθεση αναζήτησης στη γλώσσα της αγοράς σου",
+        "Sitemap, robots.txt, canonical tags και hreflang όπου το site είναι δίγλωσσο",
+        "Core Web Vitals στο πράσινο, μετρημένα στο production build",
+        "Εσωτερική διασύνδεση ώστε οι πιο αδύναμες σελίδες σου να έχουν πάνω από έναν δρόμο προς τα μέσα",
+        "Καθοδήγηση για το προφίλ Google Business και την τοπική αναζήτηση",
+        "Γραπτή αναφορά για το τι άλλαξε και τι αξίζει να παρακολουθείς",
+      ],
+    } as BLA,
+    relatedSectors: ["rentacar", "hotels", "health", "food"],
+    faq: [
+      {
+        q: { en: "How long until I see results?", el: "Σε πόσο καιρό θα δω αποτελέσματα;" } as BL,
+        a: { en: "Technical fixes show up in weeks. Ranking for competitive terms takes months, and on a new domain it takes longer still, because age and links matter and neither can be bought honestly. Anyone promising page one by a date is guessing.", el: "Οι τεχνικές διορθώσεις φαίνονται σε εβδομάδες. Η κατάταξη σε ανταγωνιστικούς όρους θέλει μήνες, και σε νέο domain θέλει ακόμη περισσότερο, γιατί μετράνε η ηλικία και οι σύνδεσμοι και κανένα από τα δύο δεν αγοράζεται τίμια. Όποιος υπόσχεται πρώτη σελίδα σε συγκεκριμένη ημερομηνία μαντεύει." } as BL,
+      },
+      {
+        q: { en: "Can you guarantee first place?", el: "Μπορείς να εγγυηθείς την πρώτη θέση;" } as BL,
+        a: { en: "No, and nobody can. Google's ranking is not something a developer controls. What I can do is make sure nothing on your side is blocking you, and that everything a search engine needs is present and correct.", el: "Όχι, και κανείς δεν μπορεί. Η κατάταξη του Google δεν είναι κάτι που ελέγχει ένας προγραμματιστής. Αυτό που μπορώ να κάνω είναι να βεβαιωθώ ότι τίποτα από τη δική σου πλευρά δεν σε εμποδίζει και ότι ό,τι χρειάζεται μια μηχανή αναζήτησης υπάρχει και είναι σωστό." } as BL,
+      },
+      {
+        q: { en: "Can you audit a site you didn't build?", el: "Μπορείς να ελέγξεις site που δεν έφτιαξες εσύ;" } as BL,
+        a: { en: "Yes, and it's often the most useful thing I do. I read your real Search Console data, check which pages are indexed and which are not, and report the gaps before changing anything.", el: "Ναι, και συχνά είναι το πιο χρήσιμο πράγμα που κάνω. Διαβάζω τα πραγματικά δεδομένα του Search Console σου, ελέγχω ποιες σελίδες είναι ευρετηριασμένες και ποιες όχι, και αναφέρω τα κενά πριν αλλάξω οτιδήποτε." } as BL,
+      },
+      {
+        q: { en: "Do I need to keep paying monthly?", el: "Χρειάζεται να πληρώνω κάθε μήνα;" } as BL,
+        a: { en: "Not for the technical work: that's done once and stays done. A monthly arrangement only makes sense if you want ongoing content and reporting, and I'll say so plainly rather than sell you a retainer you don't need.", el: "Όχι για την τεχνική δουλειά: γίνεται μία φορά και μένει. Μηνιαία συνεργασία έχει νόημα μόνο αν θέλεις συνεχή παραγωγή περιεχομένου και αναφορές, και θα στο πω ευθέως αντί να σου πουλήσω πάγιο που δεν χρειάζεσαι." } as BL,
+      },
+    ] as FAQ[],
+  },
+  {
+    slug: "booking-systems",
+    icon: "◈",
+    seoTitle: {
+      en: "Booking and CRM Systems",
+      el: "Συστήματα Κρατήσεων και CRM",
+    } as BL,
+    title: {
+      en: "Booking, Reservation and CRM Systems",
+      el: "Συστήματα Κρατήσεων, Ραντεβού και CRM",
+    } as BL,
+    hook: {
+      en: "Take bookings around the clock, with deposits when you want them, and pay no commission on a single one.",
+      el: "Δέξου κρατήσεις όλο το εικοσιτετράωρο, με προκαταβολή όποτε τη θέλεις, χωρίς προμήθεια σε καμία από αυτές.",
+    } as BL,
+    points: {
+      en: [
+        "No commission per booking. The portals take a cut of every reservation; your own system takes none.",
+        "Deposits collected online when a no-show actually costs you something.",
+        "Availability that reflects how you really work: turnaround times, staff, seasons, minimum stays.",
+        "Every booking checked on the server, so nobody can book a slot that isn't free by editing the request.",
+      ],
+      el: [
+        "Καμία προμήθεια ανά κράτηση. Οι πλατφόρμες κρατούν ποσοστό από κάθε κράτηση· το δικό σου σύστημα δεν κρατά τίποτα.",
+        "Προκαταβολές online όταν μια ακύρωση σου κοστίζει πραγματικά.",
+        "Διαθεσιμότητα που αντικατοπτρίζει το πώς δουλεύεις στ' αλήθεια: χρόνοι προετοιμασίας, προσωπικό, σεζόν, ελάχιστες διανυκτερεύσεις.",
+        "Κάθε κράτηση ελέγχεται στον server, ώστε κανείς να μην μπορεί να κλείσει θέση που δεν είναι ελεύθερη αλλάζοντας το αίτημα.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "A booking flow shaped around your actual availability rules",
+        "Online deposits or full prepayment, paid straight into your account",
+        "Confirmation and reminder emails to the customer and to you",
+        "An admin view of what's booked, with the ability to block dates and edit bookings",
+        "Double-booking prevented in the database, not just in the interface",
+        "Customer records kept so repeat guests don't retype everything",
+        "GDPR-compliant data handling with access locked to your account",
+        "Lifetime support for the system's security and functionality",
+      ],
+      el: [
+        "Ροή κρατήσεων διαμορφωμένη γύρω από τους πραγματικούς σου κανόνες διαθεσιμότητας",
+        "Προκαταβολές ή πλήρης προπληρωμή online, κατευθείαν στον λογαριασμό σου",
+        "Email επιβεβαίωσης και υπενθύμισης στον πελάτη και σε εσένα",
+        "Περιβάλλον διαχείρισης με ό,τι έχει κλειστεί, δυνατότητα κλειδώματος ημερομηνιών και επεξεργασίας κρατήσεων",
+        "Αποτροπή διπλοκράτησης στη βάση δεδομένων, όχι μόνο στη διεπαφή",
+        "Καρτέλες πελατών ώστε οι επαναλαμβανόμενοι επισκέπτες να μην ξαναγράφουν τα πάντα",
+        "Διαχείριση δεδομένων κατά GDPR με πρόσβαση κλειδωμένη στον λογαριασμό σου",
+        "Υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του συστήματος",
+      ],
+    } as BLA,
+    relatedSectors: ["rentacar", "hotels", "health", "food"],
+    faq: [
+      {
+        q: { en: "Will this replace Booking.com or the portals?", el: "Θα αντικαταστήσει το Booking.com ή τις πλατφόρμες;" } as BL,
+        a: { en: "Not straight away, and I wouldn't advise cutting them off. The point is to shift the guests who already know you onto a direct booking that costs you no commission, while the portals keep bringing new ones.", el: "Όχι αμέσως, και δεν θα σου πρότεινα να τις κόψεις. Το ζητούμενο είναι να μετακινήσεις τους επισκέπτες που ήδη σε ξέρουν σε απευθείας κράτηση που δεν σου κοστίζει προμήθεια, ενώ οι πλατφόρμες συνεχίζουν να φέρνουν καινούργιους." } as BL,
+      },
+      {
+        q: { en: "Can it sync with a calendar I already use?", el: "Μπορεί να συγχρονιστεί με ημερολόγιο που ήδη χρησιμοποιώ;" } as BL,
+        a: { en: "Usually yes. Most calendars and channel managers speak a common format, so dates blocked in one place can show as blocked in the other. I'll check yours specifically before promising it.", el: "Συνήθως ναι. Τα περισσότερα ημερολόγια και channel managers μιλούν μια κοινή μορφή, οπότε ημερομηνίες κλειδωμένες στο ένα μπορούν να εμφανίζονται κλειδωμένες και στο άλλο. Θα ελέγξω το δικό σου συγκεκριμένα πριν το υποσχεθώ." } as BL,
+      },
+      {
+        q: { en: "What happens with cancellations?", el: "Τι γίνεται με τις ακυρώσεις;" } as BL,
+        a: { en: "You set the policy and the system enforces it: a window in which a deposit is refundable, and what happens after it. The customer sees the terms before paying, which is both fairer and required.", el: "Ορίζεις εσύ την πολιτική και το σύστημα την εφαρμόζει: ένα διάστημα στο οποίο η προκαταβολή επιστρέφεται και τι ισχύει μετά. Ο πελάτης βλέπει τους όρους πριν πληρώσει, κάτι που είναι και δικαιότερο και υποχρεωτικό." } as BL,
+      },
+      {
+        q: { en: "Can staff use it without training?", el: "Μπορεί το προσωπικό να το χρησιμοποιεί χωρίς εκπαίδευση;" } as BL,
+        a: { en: "That's the intent. The admin side is built around the few things you do every day, not around every option that could exist. I walk you through it once at handover and stay reachable after.", el: "Αυτός είναι ο σκοπός. Η πλευρά διαχείρισης χτίζεται γύρω από τα λίγα πράγματα που κάνεις κάθε μέρα, όχι γύρω από κάθε πιθανή επιλογή. Σου το δείχνω μία φορά στην παράδοση και παραμένω διαθέσιμος μετά." } as BL,
+      },
+    ] as FAQ[],
+  },
+  {
+    slug: "ai-automation",
+    icon: "⊡",
+    seoTitle: {
+      en: "AI Automations",
+      el: "Αυτοματισμοί AI",
+    } as BL,
+    title: {
+      en: "AI Receptionists and Business Automations",
+      el: "AI Ρεσεψιονίστ και Αυτοματισμοί Επιχείρησης",
+    } as BL,
+    hook: {
+      en: "An assistant that answers the same twenty questions at midnight, in Greek or English, and hands over a booking when the answer is yes.",
+      el: "Ένας βοηθός που απαντά στις ίδιες είκοσι ερωτήσεις τα μεσάνυχτα, στα ελληνικά ή στα αγγλικά, και παραδίδει την κράτηση όταν η απάντηση είναι ναι.",
+    } as BL,
+    points: {
+      en: [
+        "Most enquiries are the same handful of questions. Answering them automatically buys back the hours you spend retyping them.",
+        "Grounded in your real information, so it quotes your hours, your prices and your policies rather than inventing them.",
+        "Hands off to a human or a booking form the moment it is out of its depth, instead of guessing.",
+        "Spend is capped per user and per session, so an abusive loop cannot turn into a runaway bill.",
+      ],
+      el: [
+        "Τα περισσότερα ερωτήματα είναι οι ίδιες λίγες ερωτήσεις. Η αυτόματη απάντησή τους σου επιστρέφει τις ώρες που ξαναγράφεις τα ίδια.",
+        "Στηρίζεται στις πραγματικές σου πληροφορίες, ώστε να λέει το ωράριό σου, τις τιμές σου και τους όρους σου αντί να τα επινοεί.",
+        "Παραδίδει σε άνθρωπο ή σε φόρμα κράτησης μόλις ξεπεραστεί, αντί να μαντέψει.",
+        "Η δαπάνη έχει όριο ανά χρήστη και ανά συνεδρία, ώστε ένας κακόβουλος βρόχος να μη γίνει ανεξέλεγκτος λογαριασμός.",
+      ],
+    } as BLA,
+    included: {
+      en: [
+        "An assistant grounded in your hours, prices, policies and services",
+        "Greek and English, switching to whichever the visitor writes in",
+        "Handover to a booking flow, a form or a phone number when it can't finish the job",
+        "Per-user and per-session usage caps so costs stay predictable",
+        "User input treated as untrusted, so a visitor can't talk it into ignoring its instructions",
+        "A log of what was asked and answered, so you can see what customers actually want",
+        "No customer data used to train anyone's model",
+        "Lifetime support for the automation's security and functionality",
+      ],
+      el: [
+        "Βοηθός βασισμένος στο ωράριο, τις τιμές, τους όρους και τις υπηρεσίες σου",
+        "Ελληνικά και αγγλικά, με εναλλαγή σε όποια γλώσσα γράφει ο επισκέπτης",
+        "Παράδοση σε ροή κράτησης, φόρμα ή τηλέφωνο όταν δεν μπορεί να ολοκληρώσει",
+        "Όρια χρήσης ανά χρήστη και ανά συνεδρία ώστε το κόστος να παραμένει προβλέψιμο",
+        "Η είσοδος του χρήστη αντιμετωπίζεται ως μη έμπιστη, ώστε ένας επισκέπτης να μην μπορεί να το πείσει να αγνοήσει τις οδηγίες του",
+        "Καταγραφή του τι ρωτήθηκε και τι απαντήθηκε, ώστε να βλέπεις τι θέλουν πραγματικά οι πελάτες",
+        "Κανένα δεδομένο πελάτη δεν χρησιμοποιείται για εκπαίδευση μοντέλου",
+        "Υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του αυτοματισμού",
+      ],
+    } as BLA,
+    relatedSectors: ["rentacar", "hotels", "health", "automotive"],
+    faq: [
+      {
+        q: { en: "What stops it from making things up?", el: "Τι το εμποδίζει να λέει ανακρίβειες;" } as BL,
+        a: { en: "It answers from your own information rather than from general knowledge, and it is built to say it doesn't know and pass you the enquiry instead of filling the gap. No system is perfect at this, which is why the handover matters more than the cleverness.", el: "Απαντά από τις δικές σου πληροφορίες και όχι από γενική γνώση, και είναι φτιαγμένο να λέει ότι δεν ξέρει και να σου προωθεί το ερώτημα αντί να καλύψει το κενό. Κανένα σύστημα δεν είναι τέλειο σε αυτό, γι' αυτό η παράδοση μετράει περισσότερο από την ευφυΐα." } as BL,
+      },
+      {
+        q: { en: "Could it cost me a fortune in usage?", el: "Μπορεί να μου κοστίσει μια περιουσία σε χρήση;" } as BL,
+        a: { en: "Not without you deciding to raise the ceiling. Usage is capped per visitor and per session, so the worst case is that the assistant stops answering, not that you get an unexpected invoice.", el: "Όχι χωρίς να αποφασίσεις εσύ να ανεβάσεις το όριο. Η χρήση έχει πλαφόν ανά επισκέπτη και ανά συνεδρία, οπότε η χειρότερη περίπτωση είναι να σταματήσει να απαντά ο βοηθός, όχι να σου έρθει απρόσμενος λογαριασμός." } as BL,
+      },
+      {
+        q: { en: "Does it replace answering the phone?", el: "Αντικαθιστά το να σηκώνω το τηλέφωνο;" } as BL,
+        a: { en: "It replaces the repetitive part of it. The calls worth your voice still reach you, and the assistant absorbs the ones asking whether you're open on Sunday.", el: "Αντικαθιστά το επαναλαμβανόμενο κομμάτι του. Οι κλήσεις που αξίζουν τη φωνή σου φτάνουν ακόμη σε εσένα, και ο βοηθός απορροφά εκείνες που ρωτούν αν είσαι ανοιχτά την Κυριακή." } as BL,
+      },
+      {
+        q: { en: "Where does the conversation data go?", el: "Πού πηγαίνουν τα δεδομένα των συνομιλιών;" } as BL,
+        a: { en: "Into your own logs, so you can read them. It isn't used to train a model, and the privacy policy on your site says so in plain terms, which GDPR requires you to be able to show.", el: "Στα δικά σου αρχεία καταγραφής, ώστε να μπορείς να τα διαβάσεις. Δεν χρησιμοποιούνται για εκπαίδευση μοντέλου, και η πολιτική απορρήτου στο site σου το λέει καθαρά, κάτι που ο GDPR απαιτεί να μπορείς να αποδείξεις." } as BL,
+      },
+    ] as FAQ[],
+  },
+];
