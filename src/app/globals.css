@@ -224,10 +224,10 @@ body {
   height: calc(var(--screen-w) * 0.021);
   background: linear-gradient(
     90deg,
-    rgba(201, 168, 76, 0.3) 0%,
+    var(--rim-flat) 0%,
     #2a2724 9%,
     #2a2724 91%,
-    rgba(201, 168, 76, 0.3) 100%
+    var(--rim-flat) 100%
   );
 }
 
@@ -637,7 +637,19 @@ a:hover .arrow-icon {
    thumbnails and the larger phone-layout ones. */
 
 .device {
-  --bezel-edge: rgba(201, 168, 76, 0.22);
+  /* Brushed-metal rim: light/dark/light banding so a 1px edge catches the
+     light like an anodised frame instead of reading as a flat line. Shared by
+     both devices, so a monitor and a phone side by side are the same hardware
+     rather than two different finishes. */
+  --rim-metal: linear-gradient(
+    155deg,
+    #c5cad0 0%,
+    #6a727a 26%,
+    #aeb5bd 50%,
+    #4b5259 72%,
+    #bcc2c9 100%
+  );
+  --rim-flat: rgba(197, 202, 208, 0.5);
   flex-shrink: 0;
   line-height: 0;
 }
@@ -664,8 +676,12 @@ a:hover .arrow-icon {
   position: relative;
   padding: 3px 3px 6px;
   border-radius: 5px;
-  border: 1px solid var(--bezel-edge);
-  background: linear-gradient(180deg, #232120 0%, #171614 100%);
+  /* Same two-background trick as the phone: dark bezel clipped to the padding
+     box, metal gradient to the border box, so the corner radius survives. */
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, #232120 0%, #171614 100%) padding-box,
+    var(--rim-metal) border-box;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
@@ -683,7 +699,7 @@ a:hover .arrow-icon {
   width: 5px;
   height: 1px;
   border-radius: 1px;
-  background: rgba(201, 168, 76, 0.55);
+  background: var(--rim-flat);
 }
 
 .device-monitor-stand {
@@ -701,27 +717,14 @@ a:hover .arrow-icon {
   border-radius: 2px;
   background: linear-gradient(
     90deg,
-    rgba(201, 168, 76, 0.3) 0%,
+    var(--rim-flat) 0%,
     #2a2724 28%,
     #2a2724 72%,
-    rgba(201, 168, 76, 0.3) 100%
+    var(--rim-flat) 100%
   );
 }
 
 /* ── Phone ── */
-.device-phone {
-  /* Brushed-metal rim: light/dark/light banding so the 1px edge catches the
-     light like an anodised phone frame instead of reading as a flat line. */
-  --rim-metal: linear-gradient(
-    155deg,
-    #c5cad0 0%,
-    #6a727a 26%,
-    #aeb5bd 50%,
-    #4b5259 72%,
-    #bcc2c9 100%
-  );
-}
-
 .device-phone-body {
   position: relative;
   padding: 2px;
