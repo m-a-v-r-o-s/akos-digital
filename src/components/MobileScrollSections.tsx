@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Icon } from "@/components/Icons";
 import { openCookiePreferences } from "@/components/CookieConsent";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services, sectors } from "@/lib/data";
 import Bilingual, { BilingualHtml } from "@/components/Bilingual";
@@ -100,7 +100,7 @@ export default function MobileScrollSections() {
           <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent">
             {person.company}
           </p>
-          <LanguageToggle />
+          <HeaderControls />
         </div>
         <h1 className="font-display text-3xl font-bold text-paper mb-4">
           {person.name[lang]}

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import RequestWizard from "@/components/RequestWizard";
 import { useLanguage } from "@/components/LanguageContext";
 import { ui } from "@/lib/requestForm";
@@ -27,7 +27,7 @@ export default function RequestPageShell() {
                   {t.backHome}
                 </Link>
                 <div className="lg:hidden">
-                  <LanguageToggle />
+                  <HeaderControls />
                 </div>
               </div>
 
@@ -53,7 +53,7 @@ export default function RequestPageShell() {
                 info@AkosDS.com
               </span>
               <div className="ml-auto">
-                <LanguageToggle />
+                <HeaderControls />
               </div>
             </div>
           </aside>

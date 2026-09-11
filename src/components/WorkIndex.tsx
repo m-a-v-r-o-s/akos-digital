@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
 import { caseStudies } from "@/lib/data";
@@ -68,7 +68,7 @@ export default function WorkIndex() {
               <span className="ornament">←</span>
               {t.back}
             </Link>
-            <LanguageToggle />
+            <HeaderControls />
           </header>
 
           <main>

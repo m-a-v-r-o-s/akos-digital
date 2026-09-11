@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import NavLinks from "@/components/NavLinks";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
@@ -143,7 +143,7 @@ export default function Home() {
                 info@AkosDS.com
               </span>
               <div className="ml-auto">
-                <LanguageToggle />
+                <HeaderControls />
               </div>
             </div>
           </aside>

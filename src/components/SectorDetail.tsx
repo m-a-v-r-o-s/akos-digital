@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import ProjectThumb from "@/components/ProjectThumb";
 import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
 import { Icon } from "@/components/Icons";
@@ -101,7 +101,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
             <span className="ornament">←</span>
             {t.back}
           </Link>
-          <LanguageToggle />
+          <HeaderControls />
         </header>
 
         {/* Hero */}

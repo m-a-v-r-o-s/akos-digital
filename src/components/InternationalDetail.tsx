@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
 import { caseStudies, sectors, servicePages } from "@/lib/data";
@@ -95,7 +95,7 @@ export default function InternationalDetail() {
               <span className="ornament">←</span>
               {t.back}
             </Link>
-            <LanguageToggle />
+            <HeaderControls />
           </header>
 
           <main>

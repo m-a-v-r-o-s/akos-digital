@@ -8,6 +8,8 @@ import type { Lang } from "@/lib/i18n";
  * client state, so the server renders exactly one language per URL and each
  * locale is its own crawlable page. The provider only carries the value
  * down; switching language is a navigation, handled by LanguageToggle.
+ * That toggle is mounted through HeaderControls, alongside the accent
+ * switcher, so every page header carries both.
  */
 const LanguageContext = createContext<Lang>("el");
 

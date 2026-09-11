@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import ProjectThumb from "@/components/ProjectThumb";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
@@ -81,7 +81,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
               <span className="ornament">←</span>
               {t.back}
             </Link>
-            <LanguageToggle />
+            <HeaderControls />
           </header>
 
           <main>

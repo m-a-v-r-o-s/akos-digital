@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import { useLanguage } from "@/components/LanguageContext";
 import { terms } from "@/lib/terms";
 
@@ -19,7 +19,7 @@ export default function TermsPage() {
           <span className="ornament">←</span>
           {t.back}
         </Link>
-        <LanguageToggle />
+        <HeaderControls />
       </header>
 
       <h1 className="font-display text-3xl sm:text-4xl font-bold text-paper mb-2">

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
-import LanguageToggle from "@/components/LanguageToggle";
+import HeaderControls from "@/components/HeaderControls";
 import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
 
@@ -38,7 +38,7 @@ export default function NotFound() {
             <span className="ornament">←</span>
             {copy.back}
           </Link>
-          <LanguageToggle />
+          <HeaderControls />
         </header>
 
         <div className="fade-up flex flex-col items-start justify-center min-h-[60vh]">
