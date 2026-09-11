@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useLanguage } from "@/components/LanguageContext";
 import { accents, accentKeys, DEFAULT_ACCENT } from "@/lib/accents";
 
 const STORAGE_KEY = "accent";
+
+// Swatches per row. The grid tracks and the arrow keys both read this, so the
+// keyboard keeps matching what is on screen if the shape ever changes.
+const COLS = 4;
 
 // The panel is only ever measured on the client, but the hook itself still runs
 // during the server render, where useLayoutEffect warns.
@@ -31,7 +36,7 @@ export default function AccentSwitcher() {
   const { lang } = useLanguage();
   const t = T[lang];
   const [open, setOpen] = useState(false);
-  const [up, setUp] = useState(false);
+  const [at, setAt] = useState<{ top: number; left: number } | null>(null);
   const [current, setCurrent] = useState(DEFAULT_ACCENT);
   const panelId = useId(); // two instances can be mounted on one page
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -60,25 +65,57 @@ export default function AccentSwitcher() {
     if (returnFocus) triggerRef.current?.focus();
   };
 
-  // Move focus into the panel on open, onto the selected swatch.
+  // Move focus into the panel on open, onto the selected swatch. Waits for the
+  // measurement below, so focus lands on a panel that is already where the
+  // visitor can see it. preventScroll because it is fixed: there is nothing to
+  // scroll it into view, and trying would move the page underneath.
   useEffect(() => {
-    if (!open) return;
+    if (!open || !at) return;
     panelRef.current
       ?.querySelector<HTMLElement>('[aria-checked="true"]')
-      ?.focus();
-  }, [open]);
+      ?.focus({ preventScroll: true });
+  }, [open, at]);
 
-  // Ten rows is taller than the gap below the trigger in the headers that sit
-  // at the foot of a sidebar, and those panels have nothing to scroll inside,
-  // so the last swatches would simply be unreachable. Measure live rather than
-  // assuming a height: the panel is text, and the Greek labels are longer.
+  /**
+   * The panel is portalled to the body and positioned in viewport coordinates.
+   *
+   * It has to be: every header sits inside a .fade-up, whose animation fills
+   * forwards and so leaves a transform in effect on the element. That makes a
+   * stacking context, which traps any z-index set inside it, and the panel was
+   * rendering underneath the cookie banner. No z-index on the panel can fix
+   * that from within, and the end keyframe cannot either: a filled transform
+   * animation resolves to an identity matrix rather than none, which still
+   * makes the context. Leaving the subtree is the fix.
+   *
+   * Both axes are measured rather than assumed: the headers at the foot of a
+   * sidebar have no room below them and nothing to scroll inside, and the
+   * right-hand ones would otherwise run off the edge on a phone.
+   */
   useMeasure(() => {
     if (!open) return;
     const trigger = triggerRef.current;
     const panel = panelRef.current;
     if (!trigger || !panel) return;
-    const below = window.innerHeight - trigger.getBoundingClientRect().bottom;
-    setUp(below < panel.offsetHeight + 16);
+    const t = trigger.getBoundingClientRect();
+    const { offsetWidth: pw, offsetHeight: ph } = panel;
+    const gap = 8;
+    const below = window.innerHeight - t.bottom;
+    setAt({
+      top: below < ph + gap ? Math.max(gap, t.top - ph - gap) : t.bottom + gap,
+      left: Math.min(Math.max(gap, t.right - pw), window.innerWidth - pw - gap),
+    });
+  }, [open]);
+
+  // A fixed panel does not follow its trigger, so close rather than drift.
+  useEffect(() => {
+    if (!open) return;
+    const onScroll = () => close(false);
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll, { capture: true });
+      window.removeEventListener("resize", onScroll);
+    };
   }, [open]);
 
   useEffect(() => {
@@ -105,7 +142,8 @@ export default function AccentSwitcher() {
       e.preventDefault();
       return;
     }
-    const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+    // The swatches are laid out as a grid, so up and down move a whole row.
+    const step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: COLS, ArrowUp: -COLS }[e.key];
     const jump = e.key === "Home" ? 0 : e.key === "End" ? accents.length - 1 : null;
     if (step === undefined && jump === null) return;
     e.preventDefault();
@@ -137,15 +175,19 @@ export default function AccentSwitcher() {
         <span className="h-2.5 w-2.5 rounded-full bg-accent" />
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
           ref={panelRef}
           id={panelId}
           onKeyDown={onPanelKeyDown}
-          className={`absolute right-0 z-[140] w-44 rounded-xl p-1.5 ${
-            up ? "bottom-7" : "top-7"
-          }`}
+          className="fixed z-[140] rounded-xl p-1.5"
           style={{
+            // Parked off screen for the one frame between mounting and being
+            // measured, rather than flashing in the top left corner. Off screen
+            // rather than visibility:hidden, because a hidden element cannot
+            // take focus and the keyboard path opens by focusing a swatch.
+            top: at?.top ?? -9999,
+            left: at?.left ?? -9999,
             background: "rgba(13,13,13,0.96)",
             border: "1px solid rgb(var(--accent-rgb) / 0.25)",
             backdropFilter: "blur(10px)",
@@ -153,7 +195,12 @@ export default function AccentSwitcher() {
             boxShadow: "0 12px 40px rgba(0,0,0,0.5)",
           }}
         >
-          <div role="radiogroup" aria-label={t.open}>
+          <div
+            role="radiogroup"
+            aria-label={t.open}
+            className="grid gap-1"
+            style={{ gridTemplateColumns: `repeat(${COLS}, auto)` }}
+          >
             {accents.map((a) => {
               const on = a.key === current;
               return (
@@ -163,33 +210,39 @@ export default function AccentSwitcher() {
                   role="radio"
                   aria-checked={on}
                   tabIndex={on ? 0 : -1}
+                  // The swatches carry no visible text, so the name lives here
+                  // for a screen reader and in the title for a pointer.
+                  aria-label={a.label[lang]}
+                  title={a.label[lang]}
                   onClick={() => {
                     choose(a.key);
                     close();
                   }}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-2 py-1.5 text-left font-mono text-[0.7rem] tracking-wide transition-colors duration-150 hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent"
-                  style={{ color: on ? `rgb(${a.rgb})` : undefined }}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-150 hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent"
                 >
                   <span
                     aria-hidden="true"
-                    className="h-3 w-3 shrink-0 rounded-full"
+                    className="flex h-5 w-5 items-center justify-center rounded-full text-[0.7rem] font-bold leading-none"
                     style={{
                       background: `rgb(${a.rgb})`,
-                      // The ring is what marks the choice for anyone who cannot
-                      // tell these ten apart by colour; the tick below is the
-                      // other half of that.
-                      boxShadow: on ? `0 0 0 2px rgba(13,13,13,1), 0 0 0 3.5px rgb(${a.rgb})` : undefined,
+                      color: "var(--ink)",
+                      // The tick is what marks the choice for anyone who cannot
+                      // tell these ten apart by colour. Without it the selected
+                      // swatch would differ from the rest only in being the
+                      // bright one, which is no signal at all.
+                      boxShadow: on
+                        ? `0 0 0 2px rgba(13,13,13,1), 0 0 0 3.5px rgb(${a.rgb})`
+                        : undefined,
                     }}
-                  />
-                  <span className={on ? "" : "text-stone-light"}>{a.label[lang]}</span>
-                  <span aria-hidden="true" className="ml-auto text-[0.8rem] leading-none">
+                  >
                     {on ? "✓" : ""}
                   </span>
                 </button>
               );
             })}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

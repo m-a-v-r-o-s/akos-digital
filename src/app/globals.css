@@ -13,8 +13,8 @@
      property is substituted where it is declared, so such a shorthand would
      freeze at whatever :root resolved and a scoped theme redefining only the
      channels below would not move it. Every consumer reads the channels. */
-  --accent-rgb: 201 168 76;
-  --accent-light-rgb: 232 213 163;
+  --accent-rgb: 232 163 60;
+  --accent-light-rgb: 243 206 143;
   --rust: #8b3a2a;
   --stone: #6b6560;
   --stone-light: #b5afa8;

@@ -37,13 +37,13 @@ const over = (fg: readonly number[], bg: readonly number[], alpha: number) =>
   fg.map((v, i) => alpha * v + (1 - alpha) * bg[i]);
 
 // ── the palette itself ───────────────────────────────────────────────────
-assert.equal(accents.length, 10, "the set is ten colours; adding an eleventh is a decision, not a tweak");
-assert.equal(new Set(accentKeys).size, 10, "accent keys must be unique: they index the CSS and localStorage");
+assert.equal(accents.length, 8, "the set is eight colours; adding a ninth is a decision, not a tweak");
+assert.equal(new Set(accentKeys).size, accents.length, "accent keys must be unique: they index the CSS and localStorage");
 assert.ok(accentKeys.includes(DEFAULT_ACCENT), "the default must be in the set");
 assert.equal(
-  accents.find((a) => a.key === "gold")?.rgb,
-  "201 168 76",
-  "gold is the current brand and must not drift"
+  accents.find((a) => a.key === DEFAULT_ACCENT)?.rgb,
+  "232 163 60",
+  "marigold is the current brand and must not drift"
 );
 for (const a of accents) {
   assert.match(a.key, /^[a-z]+$/, `"${a.key}" must be a plain lowercase key: it goes in a DOM attribute`);
@@ -115,6 +115,15 @@ for (const theme of ["espa", "smarthome"]) {
       "is the whole lock that keeps a visitor from recolouring it"
   );
 }
+
+const rootBlock = css.match(/:root \{[^}]*\}/)?.[0] ?? "";
+const def = accents.find((a) => a.key === DEFAULT_ACCENT)!;
+assert.ok(
+  rootBlock.includes(`--accent-rgb: ${def.rgb}`) &&
+    rootBlock.includes(`--accent-light-rgb: ${def.lightRgb}`),
+  `:root must carry ${DEFAULT_ACCENT}: it is the no-attribute default, so the ` +
+    "layout emits no rule for it and a first-time visitor gets whatever :root says"
+);
 
 const tw = read("../tailwind.config.ts");
 assert.ok(
