@@ -88,3 +88,65 @@ for (const a of accents) {
 
 assert.deepEqual(failures, [], "\n  " + failures.join("\n  ") + "\n");
 console.log(`\n✓ all ${accents.length} accents clear WCAG AA (${AA}:1) in all ${checks.length} places`);
+
+// ── the wiring, which fails silently rather than loudly ──────────────────
+// A contrast table proves nothing if the palette stopped reaching the page.
+import { readFileSync } from "node:fs";
+const read = (p: string) => readFileSync(new URL(p, import.meta.url), "utf8");
+
+// Comments explain these rules, so they would otherwise trip the checks for them.
+const css = read("../src/app/globals.css").replace(/\/\*[\s\S]*?\*\//g, "");
+assert.ok(
+  !/rgba\(201,\s*168,\s*76/.test(css),
+  "a hardcoded gold literal is back in globals.css: it would stay gold at every accent"
+);
+assert.ok(
+  !/--accent(-light)?:\s*rgb\(var\(/.test(css),
+  "a --accent: rgb(var(--accent-rgb)) shorthand is back. A custom property is " +
+    "substituted where it is declared, so it would freeze at :root and the two " +
+    "scoped themes would stop overriding it. Consumers must read the channels."
+);
+for (const theme of ["espa", "smarthome"]) {
+  const block = css.match(new RegExp(`\\.${theme}-theme \\{[^}]*\\}`))?.[0] ?? "";
+  assert.match(
+    block,
+    /--accent-rgb:/,
+    `.${theme}-theme must redefine --accent-rgb on a descendant: that redefinition ` +
+      "is the whole lock that keeps a visitor from recolouring it"
+  );
+}
+
+const tw = read("../tailwind.config.ts");
+assert.ok(
+  tw.includes("rgb(var(--accent-rgb) / <alpha-value>)"),
+  "Tailwind's accent must stay in the channel form: <alpha-value> cannot be " +
+    "applied to a hex variable, so border-accent/30 would silently go opaque"
+);
+assert.ok(!/gold/i.test(tw), "no gold left in the Tailwind palette");
+
+const layout = read("../src/app/[lang]/layout.tsx");
+assert.ok(
+  layout.includes("accents") && layout.includes("[data-accent="),
+  "the layout must generate the per-accent rules from the array, not by hand"
+);
+assert.ok(
+  layout.includes("accentKeys") && layout.includes("localStorage"),
+  "the boot script must validate the stored key against the known list before " +
+    "putting it in a DOM attribute"
+);
+assert.ok(
+  layout.indexOf("<body") < layout.indexOf("accentBoot"),
+  "the boot script must render inside the body, ahead of the page, or a visitor " +
+    "who picked teal sees a frame of gold"
+);
+
+const controls = read("../src/components/HeaderControls.tsx");
+for (const locked of ["espa", "smarthome"]) {
+  assert.ok(
+    controls.includes(locked),
+    `HeaderControls must still hide the switcher on ${locked}: the cascade makes ` +
+      "it inert there, and an inert control reads as a bug"
+  );
+}
+
+console.log("✓ accent wiring intact");

@@ -571,7 +571,6 @@ a:hover .arrow-icon {
   box-shadow: 0 0 0 3px rgba(41, 171, 226, 0.12);
 }
 .espa-theme .choice-option:hover {
-  border-color: rgba(41, 171, 226, 0.5);
   background: rgba(41, 171, 226, 0.06);
 }
 .espa-theme .choice-option-selected {
@@ -628,10 +627,10 @@ a:hover .arrow-icon {
   border-color: rgba(24, 188, 242, 0.14);
   box-shadow: 0 4px 24px rgba(24, 188, 242, 0.08);
 }
+/* Only the text lift: .tag-pill's own background and border already resolve
+   to this theme's accent through --accent-rgb. */
 .smarthome-theme .tag-pill {
-  background: rgba(24, 188, 242, 0.1);
   color: #2fc0f2;
-  border-color: rgba(24, 188, 242, 0.2);
 }
 
 /* ── Device frames ────────────────────────────────────────────────────────
