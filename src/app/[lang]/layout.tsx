@@ -8,6 +8,7 @@ import CookieConsent from "@/components/CookieConsent";
 import AnalyticsLoader from "@/components/AnalyticsLoader";
 import { person, services } from "@/lib/data";
 import { SITE_URL, staticPageMetadata } from "@/lib/seo";
+import { accents, accentKeys, DEFAULT_ACCENT } from "@/lib/accents";
 import "../globals.css";
 
 const jsonLd = {
@@ -73,6 +74,35 @@ const jsonLd = {
     },
   ],
 };
+
+/**
+ * One rule per accent, generated from the array so the palette is never
+ * restated by hand. :root already carries the default, so a first time
+ * visitor's HTML is unchanged and no attribute is needed for gold.
+ *
+ * This is a server component, so the block is static in the shipped HTML.
+ */
+const accentCss = accents
+  .filter((a) => a.key !== DEFAULT_ACCENT)
+  .map((a) => `[data-accent="${a.key}"]{--accent-rgb:${a.rgb};--accent-light-rgb:${a.lightRgb}}`)
+  .join("");
+
+/**
+ * Runs as the first child of <body>, before anything paints, so a visitor who
+ * picked teal never sees a frame of gold. Parser blocking on purpose and kept
+ * to a few lines for that reason.
+ *
+ * The stored value is matched against the known keys before it goes anywhere
+ * near a DOM attribute: never write an arbitrary localStorage string into the
+ * document. localStorage rather than a cookie, and outside the consent gate,
+ * because it is a functional preference the visitor set themselves.
+ *
+ * The default is set as an attribute like any other even though it has no
+ * rule of its own, so nothing here depends on where gold sits in the array.
+ */
+const accentBoot = `try{var a=localStorage.getItem("accent");if(${JSON.stringify(
+  accentKeys
+)}.indexOf(a)>=0)document.documentElement.dataset.accent=a}catch(e){}`;
 
 const playfair = Playfair_Display({
   variable: "--font-display",
@@ -153,10 +183,15 @@ export default async function LangLayout({
   if (!isLang(lang)) notFound();
 
   return (
-    <html lang={lang} className="scroll-smooth">
+    // The boot script below sets data-accent on <html> before React hydrates.
+    <html lang={lang} className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: accentCss }} />
+      </head>
       <body
         className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} antialiased`}
       >
+        <script dangerouslySetInnerHTML={{ __html: accentBoot }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
