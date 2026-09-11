@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check": "node --experimental-strip-types scripts/check-lead-route.ts && node --experimental-strip-types scripts/check-funding-watch.ts && node --experimental-strip-types scripts/check-locale-routing.ts && node --experimental-strip-types scripts/check-accent-contrast.ts",
+    "check": "node --experimental-strip-types scripts/check-lead-route.ts && node --experimental-strip-types scripts/check-funding-watch.ts && node --experimental-strip-types scripts/check-locale-routing.ts && node --experimental-strip-types scripts/check-accent-contrast.ts && node --experimental-strip-types scripts/check-liquid-glass.ts",
     "funding-watch": "node --env-file-if-exists=.env.local --experimental-strip-types scripts/funding-watch.ts"
   },
   "dependencies": {

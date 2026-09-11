@@ -10,6 +10,7 @@ import { person, education, projects, services, sectors } from "@/lib/data";
 import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import ProjectThumb from "@/components/ProjectThumb";
 import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
+import LiquidGlass from "@/components/LiquidGlass";
 
 const tabLabels = {
   en: ["Works", "Sectors", "Services", "Education", "About"],
@@ -131,43 +132,53 @@ export default function MobileScrollSections() {
         </div>
 
         <div className="mt-7 flex items-center gap-4">
-          <Link href={`/${lang}/request`} className="cta-button">
-            {requestQuote[lang]}
-            <span className="arrow-icon">
-              <Icon name="arrow" size={13} />
-            </span>
-          </Link>
+          <LiquidGlass elasticity={0.12} padding="6px" className="inline-block">
+            <Link href={`/${lang}/request`} className="cta-button">
+              {requestQuote[lang]}
+              <span className="arrow-icon">
+                <Icon name="arrow" size={13} />
+              </span>
+            </Link>
+          </LiquidGlass>
 
           {/* ESPA funding button */}
           <Link href={`/${lang}/espa`} aria-label="ΕΣΠΑ" className="espa-button w-28 shrink-0">
-            <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
+            <LiquidGlass padding="0" cornerRadius={24} elasticity={0}>
+              <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
+            </LiquidGlass>
           </Link>
         </div>
       </div>
 
       {/* Tab bar */}
-      <div
-        className="flex justify-between sticky top-0 z-20 pt-3 px-1 transition-all duration-300"
-        style={scrolled ? { backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", backgroundColor: "rgba(13,13,13,0.15)" } : {}}
+      <LiquidGlass
+        elasticity={0}
+        cornerRadius={0}
+        padding="0"
+        active={scrolled}
+        className="sticky top-0 z-20"
+        style={{ position: "sticky" }}
       >
-        {tabs.map((label, i) => (
-          <button
-            key={i}
-            onClick={() => scrollTo(i)}
-            className="flex items-center justify-center py-3 px-1 transition-colors duration-300"
-          >
-            <span
-              className="font-mono tracking-wide uppercase whitespace-nowrap transition-colors duration-300"
-              style={{
-                color: active === i ? "var(--paper)" : "var(--stone)",
-                fontSize: "clamp(0.5rem, 2vw, 0.7rem)",
-              }}
+        <div className="flex justify-between pt-3 px-1">
+          {tabs.map((label, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              className="flex items-center justify-center py-3 px-1 transition-colors duration-300"
             >
-              {label}
-            </span>
-          </button>
-        ))}
-      </div>
+              <span
+                className="font-mono tracking-wide uppercase whitespace-nowrap transition-colors duration-300"
+                style={{
+                  color: active === i ? "var(--paper)" : "var(--stone)",
+                  fontSize: "clamp(0.5rem, 2vw, 0.7rem)",
+                }}
+              >
+                {label}
+              </span>
+            </button>
+          ))}
+        </div>
+      </LiquidGlass>
 
       {/* Horizontal scroll panels */}
       <div

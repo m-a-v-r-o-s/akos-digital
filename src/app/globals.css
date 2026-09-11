@@ -151,12 +151,26 @@ body {
   }
 }
 
-/* ── Tag pill ── */
+/* ── Tag pill ──
+   73 of these render on the homepage in one pass, so they get a CSS-only
+   glass look rather than the LiquidGlass component: that many mousemove
+   listeners recomputing an SVG filter on every pointer move is an INP
+   catastrophe. backdrop-filter without url() is fully supported in Safari
+   and Firefox, unlike the displacement filter LiquidGlass uses. */
 .tag-pill {
   @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-mono tracking-wide;
   background: rgb(var(--accent-rgb) / 0.1);
   color: rgb(var(--accent-rgb));
   border: 1px solid rgb(var(--accent-rgb) / 0.2);
+  backdrop-filter: blur(6px) saturate(140%);
+  -webkit-backdrop-filter: blur(6px) saturate(140%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.08), inset 0 -1px 0 rgb(0 0 0 / 0.2);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .tag-pill {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 /* ── Device pair ──
@@ -466,6 +480,38 @@ a:hover .arrow-icon {
   border-color: rgb(var(--accent-rgb) / 0.55);
   box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
   transform: translateY(-2px);
+}
+
+/* ── Liquid glass (LiquidGlass.tsx) ──
+   The component's own backdrop-filter and SVG displacement filter give the
+   frosted look, so .liquid-glass-surface stays transparent by default. It
+   only takes a background where that layering isn't there to see through:
+   browsers with no backdrop-filter support, and reduced-transparency/
+   reduced-motion below, so the fallback is a plain legible panel rather
+   than a fully see-through one. */
+.liquid-glass-surface {
+  background: rgba(13, 13, 13, 0.55);
+}
+.liquid-glass-backdrop,
+.liquid-glass-rim {
+  transition: opacity 300ms ease;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .liquid-glass-surface {
+    background: transparent;
+  }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-reduced-motion: reduce) {
+  .liquid-glass-surface {
+    background: rgba(13, 13, 13, 0.55) !important;
+  }
+  .liquid-glass-backdrop,
+  .liquid-glass-rim {
+    display: none !important;
+  }
+  .liquid-glass {
+    transform: none !important;
+  }
 }
 
 /* ── Form field (request wizard) ── */
