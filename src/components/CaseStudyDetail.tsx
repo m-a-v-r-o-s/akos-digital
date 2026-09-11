@@ -4,6 +4,7 @@ import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import HeaderControls from "@/components/HeaderControls";
 import ProjectThumb from "@/components/ProjectThumb";
+import LiquidGlass from "@/components/LiquidGlass";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
 import { caseStudies, sectors, servicePages } from "@/lib/data";
@@ -120,13 +121,38 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
             </section>
 
             <section className="mb-14">
-              <ProjectThumb
-                image={cs.image}
-                imageMobile={cs.imageMobile}
-                href={cs.live}
-                title={cs.client}
-                variant="pair"
-              />
+              {/* The glass panel sits directly on the screenshots, not below
+                  them: that's what gives it something worth refracting, per
+                  LIQUID_GLASS_PLAN.md §0.5. Below sm only the phone renders
+                  (see .device-pair in globals.css) and six-plus tags wrap to
+                  two rows at that width, tall enough to cover the site's own
+                  buttons rather than just its chrome, so the overlay is
+                  sm-and-up only. Below sm the same panel renders in normal
+                  flow underneath the phone instead: same glass, no overlap. */}
+              <div className="relative">
+                <ProjectThumb
+                  image={cs.image}
+                  imageMobile={cs.imageMobile}
+                  href={cs.live}
+                  title={cs.client}
+                  variant="pair"
+                />
+                <div className="mt-3 flex justify-center px-3 sm:mt-0 sm:absolute sm:inset-x-0 sm:bottom-0 sm:pb-2 md:pb-4 sm:pointer-events-none">
+                  <LiquidGlass padding="8px 14px" cornerRadius={16} className="inline-block max-w-full sm:pointer-events-auto">
+                    <div className="flex flex-wrap items-center justify-center gap-2">
+                      <span className="font-mono text-[0.65rem] uppercase tracking-widest text-stone-light shrink-0">
+                        {t.stack}
+                      </span>
+                      {cs.status && <span className="status-badge">{cs.status[lang]}</span>}
+                      {cs.stack.map((s) => (
+                        <span key={s} className="tag-pill">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </LiquidGlass>
+                </div>
+              </div>
             </section>
 
             {cs.challenge && (
@@ -165,20 +191,6 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                 </div>
               </section>
             )}
-
-            <section className="mb-14">
-              <h2 className="section-heading !static mb-5">{t.stack}</h2>
-              <ul className="flex flex-wrap gap-2">
-                {cs.stack.map((s) => (
-                  <li
-                    key={s}
-                    className="font-mono text-xs tracking-wide text-stone-light border border-stone-dark rounded-full px-3 py-1"
-                  >
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </section>
 
             {/* Ties each case study into the service that sells it and the
                 sector it belongs to, so the commercial pages gain inbound

@@ -132,7 +132,7 @@ export default function MobileScrollSections() {
         </div>
 
         <div className="mt-7 flex items-center gap-4">
-          <LiquidGlass elasticity={0.12} padding="6px" className="inline-block">
+          <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
             <Link href={`/${lang}/request`} className="cta-button">
               {requestQuote[lang]}
               <span className="arrow-icon">
@@ -150,16 +150,19 @@ export default function MobileScrollSections() {
         </div>
       </div>
 
-      {/* Tab bar */}
+      {/* Tab bar. -mx-6 cancels the page's own px-6 so the glass spans the
+          full viewport edge to edge; px-6 on the inner row puts the tab
+          labels back where they'd sit without the breakout. */}
       <LiquidGlass
         elasticity={0}
         cornerRadius={0}
         padding="0"
+        blurAmount={0.75}
         active={scrolled}
-        className="sticky top-0 z-20"
+        className="sticky top-0 z-20 -mx-6"
         style={{ position: "sticky" }}
       >
-        <div className="flex justify-between pt-3 px-1">
+        <div className="flex justify-between pt-3 px-6">
           {tabs.map((label, i) => (
             <button
               key={i}

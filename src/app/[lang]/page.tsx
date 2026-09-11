@@ -112,7 +112,7 @@ export default function Home() {
 
               {/* Request a quote CTA + ESPA button (stacked) */}
               <div className="fade-up fade-up-delay-5 mt-10 flex flex-col items-start gap-4">
-                <LiquidGlass elasticity={0.12} padding="6px" className="inline-block">
+                <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
                   <Link href={`/${lang}/request`} className="cta-button">
                     {t.requestQuote}
                     <span className="arrow-icon">
