@@ -150,38 +150,29 @@ export default function MobileScrollSections() {
         </div>
       </div>
 
-      {/* Tab bar. -mx-6 cancels the page's own px-6 so the glass spans the
-          full viewport edge to edge; px-6 on the inner row puts the tab
-          labels back where they'd sit without the breakout. */}
-      <LiquidGlass
-        elasticity={0}
-        cornerRadius={0}
-        padding="0"
-        blurAmount={0.75}
-        active={scrolled}
-        className="sticky top-0 z-20 -mx-6"
-        style={{ position: "sticky" }}
+      {/* Tab bar */}
+      <div
+        className="flex justify-between sticky top-0 z-20 pt-3 px-1 transition-all duration-300"
+        style={scrolled ? { backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", backgroundColor: "rgba(13,13,13,0.15)" } : {}}
       >
-        <div className="flex justify-between pt-3 px-6">
-          {tabs.map((label, i) => (
-            <button
-              key={i}
-              onClick={() => scrollTo(i)}
-              className="flex items-center justify-center py-3 px-1 transition-colors duration-300"
+        {tabs.map((label, i) => (
+          <button
+            key={i}
+            onClick={() => scrollTo(i)}
+            className="flex items-center justify-center py-3 px-1 transition-colors duration-300"
+          >
+            <span
+              className="font-mono tracking-wide uppercase whitespace-nowrap transition-colors duration-300"
+              style={{
+                color: active === i ? "var(--paper)" : "var(--stone)",
+                fontSize: "clamp(0.5rem, 2vw, 0.7rem)",
+              }}
             >
-              <span
-                className="font-mono tracking-wide uppercase whitespace-nowrap transition-colors duration-300"
-                style={{
-                  color: active === i ? "var(--paper)" : "var(--stone)",
-                  fontSize: "clamp(0.5rem, 2vw, 0.7rem)",
-                }}
-              >
-                {label}
-              </span>
-            </button>
-          ))}
-        </div>
-      </LiquidGlass>
+              {label}
+            </span>
+          </button>
+        ))}
+      </div>
 
       {/* Horizontal scroll panels */}
       <div
