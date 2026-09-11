@@ -5,6 +5,7 @@ import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import HeaderControls from "@/components/HeaderControls";
 import ProjectThumb from "@/components/ProjectThumb";
+import LiquidGlass from "@/components/LiquidGlass";
 import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
 import { Icon } from "@/components/Icons";
 import { useLanguage } from "@/components/LanguageContext";
@@ -233,12 +234,14 @@ export default function SectorDetail({ slug }: { slug: string }) {
             {t.ctaTitle}
           </h2>
           <p className="text-sm text-stone leading-relaxed mb-6 max-w-xl">{t.ctaBody}</p>
-          <Link href={`/${lang}/request`} className="cta-button inline-flex">
-            {t.cta}
-            <span className="arrow-icon">
-              <Icon name="arrow" size={13} />
-            </span>
-          </Link>
+          <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
+            <Link href={`/${lang}/request`} className="cta-button inline-flex">
+              {t.cta}
+              <span className="arrow-icon">
+                <Icon name="arrow" size={13} />
+              </span>
+            </Link>
+          </LiquidGlass>
         </section>
 
         {/* Sibling sectors: gives every sector page inbound links from its

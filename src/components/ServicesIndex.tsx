@@ -4,6 +4,7 @@ import Link from "next/link";
 import SpotlightWrapper from "@/components/SpotlightWrapper";
 import HeaderControls from "@/components/HeaderControls";
 import { Icon } from "@/components/Icons";
+import LiquidGlass from "@/components/LiquidGlass";
 import { useLanguage } from "@/components/LanguageContext";
 import { servicePages, sectors } from "@/lib/data";
 import { SITE_URL } from "@/lib/seo";
@@ -132,12 +133,14 @@ export default function ServicesIndex() {
                 {t.ctaTitle}
               </h2>
               <p className="text-sm text-stone leading-relaxed mb-6 max-w-xl">{t.ctaBody}</p>
-              <Link href={`/${lang}/request`} className="cta-button inline-flex">
-                {t.cta}
-                <span className="arrow-icon">
-                  <Icon name="arrow" size={13} />
-                </span>
-              </Link>
+              <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
+                <Link href={`/${lang}/request`} className="cta-button inline-flex">
+                  {t.cta}
+                  <span className="arrow-icon">
+                    <Icon name="arrow" size={13} />
+                  </span>
+                </Link>
+              </LiquidGlass>
             </section>
           </main>
         </div>
