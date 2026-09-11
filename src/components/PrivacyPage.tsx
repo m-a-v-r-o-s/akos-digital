@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       <header className="flex items-center justify-between mb-12">
         <Link
           href={`/${lang}`}
-          className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+          className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
         >
           <span className="ornament">←</span>
           {t.back}
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         {t.sections.map((s, i) => (
           <section key={i}>
             <h2 className="font-display font-semibold text-paper text-lg mb-3 flex gap-2.5">
-              <span className="font-mono text-sm text-gold shrink-0 pt-0.5">
+              <span className="font-mono text-sm text-accent shrink-0 pt-0.5">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span>{s.heading}</span>

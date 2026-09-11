@@ -101,13 +101,13 @@ export default function CookieConsent() {
         className="pointer-events-auto w-full sm:max-w-md rounded-xl p-5 fade-up"
         style={{
           background: "rgba(13,13,13,0.92)",
-          border: "1px solid rgba(201,168,76,0.25)",
+          border: "1px solid rgb(var(--accent-rgb) / 0.25)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
           boxShadow: "0 12px 40px rgba(0,0,0,0.5)",
         }}
       >
-        <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold mb-3">
+        <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-3">
           <span className="ornament">— </span>
           {t.title}
         </p>
@@ -116,7 +116,7 @@ export default function CookieConsent() {
           <>
             <p className="text-sm text-stone leading-relaxed mb-4">
               {t.body}{" "}
-              <Link href={`/${lang}/privacy`} className="gold-link">
+              <Link href={`/${lang}/privacy`} className="accent-link">
                 {t.learnMore}
               </Link>
             </p>
@@ -126,13 +126,13 @@ export default function CookieConsent() {
               </button>
               <button
                 onClick={() => persist(false)}
-                className="inline-flex items-center rounded-full px-6 py-3 font-mono text-xs tracking-widest uppercase text-paper border border-stone-dark hover:border-gold-light transition-colors"
+                className="inline-flex items-center rounded-full px-6 py-3 font-mono text-xs tracking-widest uppercase text-paper border border-stone-dark hover:border-accent-light transition-colors"
               >
                 {t.rejectAll}
               </button>
               <button
                 onClick={() => setShowPrefs(true)}
-                className="font-mono text-xs tracking-widest uppercase text-stone hover:text-gold-light transition-colors"
+                className="font-mono text-xs tracking-widest uppercase text-stone hover:text-accent-light transition-colors"
               >
                 {t.manage}
               </button>
@@ -143,7 +143,7 @@ export default function CookieConsent() {
             <div className="space-y-4 mb-5">
               {/* Necessary — locked on */}
               <div className="flex items-start gap-3">
-                <input type="checkbox" checked disabled className="mt-1 h-4 w-4 accent-gold opacity-60" />
+                <input type="checkbox" checked disabled className="mt-1 h-4 w-4 [accent-color:rgb(var(--accent-rgb))] opacity-60" />
                 <div className="min-w-0">
                   <p className="text-sm text-paper font-medium">
                     {t.necessary}
@@ -160,7 +160,7 @@ export default function CookieConsent() {
                   type="checkbox"
                   checked={analytics}
                   onChange={(e) => setAnalytics(e.target.checked)}
-                  className="mt-1 h-4 w-4 accent-gold cursor-pointer"
+                  className="mt-1 h-4 w-4 [accent-color:rgb(var(--accent-rgb))] cursor-pointer"
                 />
                 <div className="min-w-0">
                   <p className="text-sm text-paper font-medium">{t.analytics}</p>
@@ -174,7 +174,7 @@ export default function CookieConsent() {
               </button>
               <button
                 onClick={() => persist(true)}
-                className="font-mono text-xs tracking-widest uppercase text-stone hover:text-gold-light transition-colors"
+                className="font-mono text-xs tracking-widest uppercase text-stone hover:text-accent-light transition-colors"
               >
                 {t.acceptAll}
               </button>

@@ -63,7 +63,7 @@ export default function WorkIndex() {
           <header className="flex items-center justify-between py-8">
             <Link
               href={`/${lang}`}
-              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
             >
               <span className="ornament">←</span>
               {t.back}
@@ -102,7 +102,7 @@ export default function WorkIndex() {
                         {c.client}
                         {c.status && <span className="status-badge">{c.status[lang]}</span>}
                       </p>
-                      <h2 className="font-display font-semibold text-paper text-lg mb-2 group-hover:text-gold-light transition-colors">
+                      <h2 className="font-display font-semibold text-paper text-lg mb-2 group-hover:text-accent-light transition-colors">
                         {c.title[lang]}
                       </h2>
                       <p className="text-sm text-stone leading-relaxed mb-4 max-w-3xl">
@@ -118,7 +118,7 @@ export default function WorkIndex() {
                           </li>
                         ))}
                       </ul>
-                      <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-gold-light transition-colors">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-accent-light transition-colors">
                         {t.read}
                         <span className="arrow-icon">
                           <Icon name="arrow" size={11} />

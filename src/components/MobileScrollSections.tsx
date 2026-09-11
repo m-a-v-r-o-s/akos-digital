@@ -97,7 +97,7 @@ export default function MobileScrollSections() {
       {/* Mobile header */}
       <div className="pt-10 pb-6">
         <div className="flex items-center justify-between mb-3">
-          <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold">
+          <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent">
             {person.company}
           </p>
           <LanguageToggle />
@@ -120,7 +120,7 @@ export default function MobileScrollSections() {
               aria-label={s.label}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone hover:text-gold-light transition-colors"
+              className="text-stone hover:text-accent-light transition-colors"
             >
               <Icon
                 name={s.icon as "linkedin" | "github" | "behance" | "email" | "phone" | "whatsapp" | "telegram" | "instagram"}
@@ -183,15 +183,15 @@ export default function MobileScrollSections() {
         {/* ── Panel 1: Projects ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
+            <span className="text-accent opacity-50 mr-2">§</span>
           </h3>
           <ul className="space-y-3">
             {projects.map((proj) =>
               proj.sub ? (
               <li key={proj.title} className="-mt-1 ml-6 group relative">
                 <CardOverlay project={proj} />
-                <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 border border-transparent transition-all duration-300 group-hover:border-gold/10">
-                  <span className="text-gold/40 font-mono text-sm shrink-0 leading-none">↳</span>
+                <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 border border-transparent transition-all duration-300 group-hover:border-accent/10">
+                  <span className="text-accent/40 font-mono text-sm shrink-0 leading-none">↳</span>
                   <h4 className="flex-1 min-w-0 font-display font-medium text-stone-light text-xs leading-snug">
                     {proj.title}
                   </h4>
@@ -240,7 +240,7 @@ export default function MobileScrollSections() {
           </ul>
           <Link
             href={`/${lang}/work`}
-            className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gold"
+            className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-accent"
           >
             {lang === "en" ? "All case studies" : "Όλες οι μελέτες"}
             <span className="arrow-icon">
@@ -252,7 +252,7 @@ export default function MobileScrollSections() {
         {/* ── Panel: Sectors ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
+            <span className="text-accent opacity-50 mr-2">§</span>
           </h3>
           <div className="space-y-4">
             {sectors.map((sec) => (
@@ -261,7 +261,7 @@ export default function MobileScrollSections() {
                 href={`/${lang}/sectors/${sec.slug}`}
                 className="section-card block group"
               >
-                <span className="text-gold text-xl mb-3 block leading-none">
+                <span className="text-accent text-xl mb-3 block leading-none">
                   {sec.icon}
                 </span>
                 <h4 className="font-display font-semibold text-paper text-sm mb-2">
@@ -284,13 +284,13 @@ export default function MobileScrollSections() {
         {/* ── Panel: Services ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
+            <span className="text-accent opacity-50 mr-2">§</span>
           </h3>
           <div className="space-y-4">
             {services.map((svc) =>
               svc.href ? (
                 <Link key={svc.title.en} href={`/${lang}${svc.href}`} className="section-card block group">
-                  <span className="text-gold text-xl mb-3 block leading-none">
+                  <span className="text-accent text-xl mb-3 block leading-none">
                     {svc.icon}
                   </span>
                   <h4 className="font-display font-semibold text-paper text-sm mb-2">
@@ -308,7 +308,7 @@ export default function MobileScrollSections() {
                 </Link>
               ) : (
                 <div key={svc.title.en} className="section-card">
-                  <span className="text-gold text-xl mb-3 block leading-none">
+                  <span className="text-accent text-xl mb-3 block leading-none">
                     {svc.icon}
                   </span>
                   <h4 className="font-display font-semibold text-paper text-sm mb-2">
@@ -323,7 +323,7 @@ export default function MobileScrollSections() {
           </div>
           <Link
             href={`/${lang}/services`}
-            className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gold"
+            className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-accent"
           >
             {lang === "en" ? "All services" : "Όλες οι υπηρεσίες"}
             <span className="arrow-icon">
@@ -335,7 +335,7 @@ export default function MobileScrollSections() {
         {/* ── Panel 3: Education ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
+            <span className="text-accent opacity-50 mr-2">§</span>
           </h3>
           <ol className="space-y-2">
             {education.map((edu) => (
@@ -344,7 +344,7 @@ export default function MobileScrollSections() {
                 <h4 className="font-display font-semibold text-paper text-sm mb-0.5 leading-snug">
                   <Bilingual el={edu.degree.el} en={edu.degree.en} />
                   <span className="text-stone mx-1">·</span>
-                  <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="gold-link">
+                  <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="accent-link">
                     <Bilingual el={edu.institution.el} en={edu.institution.en} />
                   </a>
                 </h4>
@@ -366,7 +366,7 @@ export default function MobileScrollSections() {
         {/* ── Panel 4: About ── */}
         <div className="flex-none w-full py-8 pb-20" style={{ scrollSnapAlign: "start" }}>
           <h3 className="font-mono text-xs tracking-widest uppercase text-stone-light mb-5">
-            <span className="text-gold opacity-50 mr-2">§</span>
+            <span className="text-accent opacity-50 mr-2">§</span>
           </h3>
           <div className="space-y-4">
             {person.about.el.map((para, i) => (
@@ -391,7 +391,7 @@ export default function MobileScrollSections() {
             onClick={() => scrollTo(i)}
             className={`rounded-full transition-all duration-300 ${
               active === i
-                ? "w-5 h-1.5 bg-gold"
+                ? "w-5 h-1.5 bg-accent"
                 : "w-1.5 h-1.5 bg-stone-dark"
             }`}
             aria-label={`Go to section ${i + 1}`}

@@ -5,9 +5,16 @@
 :root {
   --ink: #0d0d0d;
   --paper: #f5f0e8;
-  --gold: #c9a84c;
-  --gold-light: #e8d5a3;
-  --gold-dim: rgba(201, 168, 76, 0.15);
+  /* The accent is the one colour a visitor can change. Space separated
+     channels, because that is the form Tailwind's <alpha-value> needs, and
+     because it lets any alpha be mixed in at the point of use.
+
+     Deliberately no --accent: rgb(var(--accent-rgb)) shorthand. A custom
+     property is substituted where it is declared, so such a shorthand would
+     freeze at whatever :root resolved and a scoped theme redefining only the
+     channels below would not move it. Every consumer reads the channels. */
+  --accent-rgb: 201 168 76;
+  --accent-light-rgb: 232 213 163;
   --rust: #8b3a2a;
   --stone: #6b6560;
   --stone-light: #b5afa8;
@@ -45,7 +52,7 @@ body {
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  color: #ebdcbe;
+  color: rgb(var(--accent-light-rgb));
   animation: thetaFloat 12s ease-in-out infinite;
 }
 
@@ -82,12 +89,12 @@ body {
   background:
     radial-gradient(
       600px circle at var(--spotlight-x) var(--spotlight-y),
-      rgba(201, 168, 76, 0.1) 0%,
+      rgb(var(--accent-rgb) / 0.1) 0%,
       transparent 80%
     ),
     radial-gradient(
       900px circle at var(--trail-x) var(--trail-y),
-      rgba(201, 168, 76, 0.04) 0%,
+      rgb(var(--accent-rgb) / 0.04) 0%,
       transparent 75%
     );
 }
@@ -106,8 +113,8 @@ body {
 
 /* ── Selection ── */
 ::selection {
-  background: var(--gold-dim);
-  color: var(--gold-light);
+  background: rgb(var(--accent-rgb) / 0.15);
+  color: rgb(var(--accent-light-rgb));
 }
 
 /* ── Nav links ── */
@@ -138,18 +145,18 @@ body {
 }
 @media (hover: hover) {
   .section-card:hover {
-    background: rgba(201, 168, 76, 0.04);
-    border-color: rgba(201, 168, 76, 0.12);
-    box-shadow: 0 4px 24px rgba(201, 168, 76, 0.06);
+    background: rgb(var(--accent-rgb) / 0.04);
+    border-color: rgb(var(--accent-rgb) / 0.12);
+    box-shadow: 0 4px 24px rgb(var(--accent-rgb) / 0.06);
   }
 }
 
 /* ── Tag pill ── */
 .tag-pill {
   @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-mono tracking-wide;
-  background: rgba(201, 168, 76, 0.1);
-  color: var(--gold);
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  background: rgb(var(--accent-rgb) / 0.1);
+  color: rgb(var(--accent-rgb));
+  border: 1px solid rgb(var(--accent-rgb) / 0.2);
 }
 
 /* ── Device pair ──
@@ -289,11 +296,11 @@ body {
 }
 
 /* ── Board frame ──
-   The thin gold rule keeps a bright 16:9 render from floating on the dark
+   The thin accent rule keeps a bright 16:9 render from floating on the dark
    page with no edge to it. */
 .board-frame {
   @apply rounded-xl overflow-hidden;
-  border: 1px solid rgba(201, 168, 76, 0.22);
+  border: 1px solid rgb(var(--accent-rgb) / 0.22);
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
 }
 
@@ -318,27 +325,27 @@ body {
   flex: none;
 }
 
-/* ── Gold link ── */
-.gold-link {
+/* ── Accent link ── */
+.accent-link {
   @apply relative font-medium;
   color: var(--stone-light);
   text-decoration: none;
   transition: color 0.2s;
 }
-.gold-link::after {
+.accent-link::after {
   content: "";
   position: absolute;
   bottom: -1px;
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--gold);
+  background: rgb(var(--accent-rgb));
   transition: width 0.3s ease;
 }
-.gold-link:hover {
-  color: var(--gold-light);
+.accent-link:hover {
+  color: rgb(var(--accent-light-rgb));
 }
-.gold-link:hover::after {
+.accent-link:hover::after {
   width: 100%;
 }
 
@@ -346,7 +353,7 @@ body {
 .deco-rule {
   width: 40px;
   height: 1px;
-  background: var(--gold);
+  background: rgb(var(--accent-rgb));
   opacity: 0.5;
 }
 
@@ -395,7 +402,7 @@ body {
 
 /* ── Ornamental bracket ── */
 .ornament {
-  color: var(--gold);
+  color: rgb(var(--accent-rgb));
   opacity: 0.4;
   font-family: var(--font-display);
   font-style: italic;
@@ -428,7 +435,7 @@ a:hover .arrow-icon {
 
 /* ── Mobile tab indicator ── */
 .mobile-tab-active {
-  background: var(--gold);
+  background: rgb(var(--accent-rgb));
   opacity: 1;
 }
 .mobile-tab-inactive {
@@ -440,24 +447,24 @@ a:hover .arrow-icon {
 .cta-button {
   @apply inline-flex items-center gap-2 rounded-full px-6 py-3 font-mono text-xs tracking-widest uppercase transition-all duration-300;
   color: var(--ink);
-  background: var(--gold);
-  border: 1px solid var(--gold);
+  background: rgb(var(--accent-rgb));
+  border: 1px solid rgb(var(--accent-rgb));
   cursor: pointer;
 }
 .cta-button:hover {
-  background: var(--gold-light);
-  border-color: var(--gold-light);
-  box-shadow: 0 6px 24px rgba(201, 168, 76, 0.22);
+  background: rgb(var(--accent-light-rgb));
+  border-color: rgb(var(--accent-light-rgb));
+  box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
 }
 
 /* ── ESPA image button — subtle lift + glow on hover, like .cta-button ── */
 .espa-button {
   @apply block overflow-hidden rounded-3xl transition-all duration-300;
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  border: 1px solid rgb(var(--accent-rgb) / 0.2);
 }
 .espa-button:hover {
-  border-color: rgba(201, 168, 76, 0.55);
-  box-shadow: 0 6px 24px rgba(201, 168, 76, 0.22);
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
   transform: translateY(-2px);
 }
 
@@ -472,9 +479,9 @@ a:hover .arrow-icon {
   color: var(--stone-dark);
 }
 .field-input:focus {
-  border-color: var(--gold);
-  background: rgba(201, 168, 76, 0.04);
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.08);
+  border-color: rgb(var(--accent-rgb));
+  background: rgb(var(--accent-rgb) / 0.04);
+  box-shadow: 0 0 0 3px rgb(var(--accent-rgb) / 0.08);
 }
 
 /* ── Choice option (wizard answers) ── */
@@ -486,14 +493,14 @@ a:hover .arrow-icon {
 }
 @media (hover: hover) {
   .choice-option:hover {
-    border-color: rgba(201, 168, 76, 0.5);
-    background: rgba(201, 168, 76, 0.04);
+    border-color: rgb(var(--accent-rgb) / 0.5);
+    background: rgb(var(--accent-rgb) / 0.04);
   }
 }
 .choice-option-selected {
-  border-color: var(--gold);
-  background: rgba(201, 168, 76, 0.1);
-  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.08);
+  border-color: rgb(var(--accent-rgb));
+  background: rgb(var(--accent-rgb) / 0.1);
+  box-shadow: 0 4px 20px rgb(var(--accent-rgb) / 0.08);
 }
 .choice-option-compact {
   @apply px-4 py-2;
@@ -506,21 +513,20 @@ a:hover .arrow-icon {
   color: var(--ink);
 }
 .choice-check-on {
-  background: var(--gold);
-  border-color: var(--gold);
+  background: rgb(var(--accent-rgb));
+  border-color: rgb(var(--accent-rgb));
 }
 
 /* ══════════════════════════════════════════════════════════════════
    ESPA page theme (scoped to .espa-theme) — recolours the whole page
-   into the ΕΣΠΑ palette: deep navy background, cyan primary accent
-   (replacing gold), green highlights, light text, cyan/green theta.
+   into the ΕΣΠΑ palette: deep navy background, cyan accent, green
+   highlights, light text, cyan/green theta.
    Nothing here leaks to the rest of the site.
    ══════════════════════════════════════════════════════════════════ */
 .espa-theme {
   --paper: #eaf3fb;
-  --gold: #29abe2;
-  --gold-light: #66c7ee;
-  --gold-dim: rgba(41, 171, 226, 0.15);
+  --accent-rgb: 41 171 226;
+  --accent-light-rgb: 102 199 238;
   --stone: #8aa6c6;
   --stone-light: #b6c9df;
   --stone-dark: #34517a;
@@ -528,7 +534,7 @@ a:hover .arrow-icon {
   color: var(--paper);
 }
 
-/* Navy background + cyan/green cursor spotlight (replaces the gold one) */
+/* Navy background + cyan/green cursor spotlight */
 .spotlight-bg.espa-theme {
   background:
     radial-gradient(600px circle at var(--spotlight-x) var(--spotlight-y), rgba(41, 171, 226, 0.13) 0%, transparent 80%),
@@ -542,17 +548,16 @@ a:hover .arrow-icon {
 
 /* Tailwind colour utilities used directly in the ESPA markup */
 .espa-theme .text-paper { color: #eaf3fb; }
-.espa-theme .text-gold { color: #35b6ea; }
-.espa-theme .text-gold-light { color: #7fd3f0; }
-.espa-theme .hover\:text-gold-light:hover { color: #7fd3f0; }
+.espa-theme .text-accent { color: #35b6ea; }
+.espa-theme .text-accent-light { color: #7fd3f0; }
+.espa-theme .hover\:text-accent-light:hover { color: #7fd3f0; }
 .espa-theme .text-stone { color: #8aa6c6; }
 .espa-theme .text-stone-light { color: #b6c9df; }
 .espa-theme .text-stone-dark { color: #5b78a2; }
 .espa-theme .border-stone-dark { border-color: #34517a; }
-.espa-theme .border-gold\/30 { border-color: rgba(41, 171, 226, 0.45); }
-.espa-theme .accent-gold { accent-color: #29abe2; }
+.espa-theme .border-accent\/30 { border-color: rgba(41, 171, 226, 0.45); }
 
-/* Custom classes that hardcode gold rgba → cyan/green */
+/* Custom classes that need the ΕΣΠΑ green, not just the cyan accent */
 .espa-theme .deco-rule {
   width: 56px;
   background: linear-gradient(90deg, #29abe2 0%, #78be20 100%);
@@ -585,9 +590,8 @@ a:hover .arrow-icon {
    ══════════════════════════════════════════════════════════════════ */
 .smarthome-theme {
   --paper: #eaf6fd;
-  --gold: #18bcf2;
-  --gold-light: #7fd9f7;
-  --gold-dim: rgba(24, 188, 242, 0.15);
+  --accent-rgb: 24 188 242;
+  --accent-light-rgb: 127 217 247;
   --stone: #8aa4b8;
   --stone-light: #b7ccdb;
   --stone-dark: #33506a;
@@ -603,14 +607,14 @@ a:hover .arrow-icon {
 .smarthome-theme .theta-bg { color: #1f9fd6; opacity: 0.1; }
 .smarthome-theme .theta-wave { fill: #18bcf2; }
 .smarthome-theme .text-paper { color: #eaf6fd; }
-.smarthome-theme .text-gold { color: #2fc0f2; }
-.smarthome-theme .text-gold-light { color: #83d8f7; }
-.smarthome-theme .hover\:text-gold-light:hover { color: #83d8f7; }
+.smarthome-theme .text-accent { color: #2fc0f2; }
+.smarthome-theme .text-accent-light { color: #83d8f7; }
+.smarthome-theme .hover\:text-accent-light:hover { color: #83d8f7; }
 .smarthome-theme .text-stone { color: #8aa4b8; }
 .smarthome-theme .text-stone-light { color: #b7ccdb; }
 .smarthome-theme .text-stone-dark { color: #5d7c97; }
 .smarthome-theme .border-stone-dark { border-color: #33506a; }
-.smarthome-theme .border-gold\/30 { border-color: rgba(24, 188, 242, 0.45); }
+.smarthome-theme .border-accent\/30 { border-color: rgba(24, 188, 242, 0.45); }
 .smarthome-theme .deco-rule {
   width: 56px;
   background: linear-gradient(90deg, #18bcf2 0%, #7fd9f7 100%);

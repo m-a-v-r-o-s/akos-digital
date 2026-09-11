@@ -150,7 +150,7 @@ export default function RequestWizard() {
       {/* Progress */}
       <div className="mb-10">
         <div className="flex items-center justify-between mb-3">
-          <span className="font-mono text-xs tracking-widest uppercase text-gold">
+          <span className="font-mono text-xs tracking-widest uppercase text-accent">
             {t.step} {step + 1} <span className="text-stone-dark">{t.of}</span> {TOTAL_STEPS}
           </span>
           {optionalStep && (
@@ -161,7 +161,7 @@ export default function RequestWizard() {
         </div>
         <div className="h-px w-full bg-stone-dark/60 overflow-hidden">
           <div
-            className="h-full bg-gold transition-all duration-500 ease-out"
+            className="h-full bg-accent transition-all duration-500 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -299,7 +299,7 @@ export default function RequestWizard() {
                     set("consent", e.target.checked);
                     setError("");
                   }}
-                  className="mt-1 h-4 w-4 shrink-0 accent-gold cursor-pointer"
+                  className="mt-1 h-4 w-4 shrink-0 [accent-color:rgb(var(--accent-rgb))] cursor-pointer"
                 />
                 <span className="text-sm text-stone-light leading-relaxed">
                   {t.consent}
@@ -521,7 +521,7 @@ function SuccessScreen() {
   return (
     <div className="w-full max-w-xl fade-up text-center sm:text-left">
       <div className="deco-rule mb-6 mx-auto sm:mx-0" />
-      <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold mb-4">✦</p>
+      <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">✦</p>
       <h2 className="font-display text-3xl sm:text-4xl font-semibold text-paper leading-tight mb-4">
         {t.successTitle}
       </h2>

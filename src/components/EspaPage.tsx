@@ -112,7 +112,7 @@ export default function EspaPage() {
         <header className="flex items-center justify-between py-8">
           <Link
             href={`/${lang}`}
-            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
           >
             <span className="ornament">←</span>
             {t.back}
@@ -123,7 +123,7 @@ export default function EspaPage() {
         {status === "success" ? (
           <div className="fade-up py-16">
             <div className="deco-rule mb-6" />
-            <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold mb-4">✦</p>
+            <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">✦</p>
             <h1 className="font-display text-3xl sm:text-4xl font-semibold text-paper leading-tight mb-4">
               {t.successTitle}
             </h1>
@@ -173,7 +173,7 @@ export default function EspaPage() {
                 <ul className="space-y-2.5">
                   {t.covers.map((c, i) => (
                     <li key={i} className="flex gap-3 text-sm text-stone leading-snug">
-                      <span className="text-gold mt-0.5">✦</span>
+                      <span className="text-accent mt-0.5">✦</span>
                       <span>{c}</span>
                     </li>
                   ))}
@@ -184,7 +184,7 @@ export default function EspaPage() {
                 <ol className="space-y-4">
                   {t.steps.map((s, i) => (
                     <li key={i} className="flex gap-3">
-                      <span className="font-mono text-xs text-gold shrink-0 mt-0.5">0{i + 1}</span>
+                      <span className="font-mono text-xs text-accent shrink-0 mt-0.5">0{i + 1}</span>
                       <div>
                         <p className="text-sm text-paper font-medium leading-snug">{s.title}</p>
                         <p className="text-xs text-stone leading-relaxed mt-0.5">{s.body}</p>
@@ -195,7 +195,7 @@ export default function EspaPage() {
               </div>
             </section>
 
-            <p className="text-xs text-stone leading-relaxed max-w-3xl mb-14 border-l-2 border-gold/30 pl-4">
+            <p className="text-xs text-stone leading-relaxed max-w-3xl mb-14 border-l-2 border-accent/30 pl-4">
               {t.disclaimer}
             </p>
 
@@ -251,7 +251,7 @@ export default function EspaPage() {
                       set("consent", e.target.checked);
                       setError("");
                     }}
-                    className="mt-1 h-4 w-4 shrink-0 accent-gold cursor-pointer"
+                    className="mt-1 h-4 w-4 shrink-0 [accent-color:rgb(var(--accent-rgb))] cursor-pointer"
                   />
                   <span className="text-sm text-stone-light leading-relaxed">
                     {t.consent}

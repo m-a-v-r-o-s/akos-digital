@@ -18,7 +18,7 @@ export default function LanguageToggle() {
     <Link
       href={swapLocale(pathname ?? `/${lang}`, other)}
       hrefLang={other}
-      className="font-mono text-xs tracking-widest uppercase transition-colors duration-200 text-stone hover:text-gold-light"
+      className="font-mono text-xs tracking-widest uppercase transition-colors duration-200 text-stone hover:text-accent-light"
       aria-label={
         other === "el" ? "Αλλαγή γλώσσας στα Ελληνικά" : "Switch language to English"
       }

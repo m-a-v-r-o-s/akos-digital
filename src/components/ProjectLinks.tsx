@@ -52,7 +52,7 @@ export function CardLinks({
           key={lnk.label}
           href={localeHref(lnk.href, lang)}
           {...externalProps(lnk.href)}
-          className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-gold-light transition-colors ml-1"
+          className="relative z-20 inline-flex items-center gap-1 text-xs font-mono text-stone hover:text-accent-light transition-colors ml-1"
         >
           {lnk.label}
           <span className="arrow-icon">

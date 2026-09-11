@@ -33,7 +33,7 @@ export default function NotFound() {
         <header className="flex items-center justify-between py-8">
           <Link
             href={`/${lang}`}
-            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
           >
             <span className="ornament">←</span>
             {copy.back}
@@ -43,7 +43,7 @@ export default function NotFound() {
 
         <div className="fade-up flex flex-col items-start justify-center min-h-[60vh]">
           <div className="deco-rule mb-6" />
-          <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold mb-4">
+          <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-4">
             {copy.eyebrow}
           </p>
           <h1 className="font-display text-3xl sm:text-4xl font-semibold text-paper leading-tight mb-4">

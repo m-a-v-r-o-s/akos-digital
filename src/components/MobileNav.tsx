@@ -38,7 +38,7 @@ export default function MobileNav() {
             onClick={() => scrollTo(i)}
             className={`flex-1 py-2.5 text-xs font-mono tracking-widest uppercase transition-colors duration-200 ${
               active === i
-                ? "text-gold border-b-2 border-gold -mb-px"
+                ? "text-accent border-b-2 border-accent -mb-px"
                 : "text-stone"
             }`}
           >

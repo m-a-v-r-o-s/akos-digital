@@ -76,7 +76,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
           <header className="flex items-center justify-between py-8">
             <Link
               href={`/${lang}/work`}
-              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
             >
               <span className="ornament">←</span>
               {t.back}
@@ -144,7 +144,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                 <ul className="space-y-3 max-w-3xl">
                   {cs.approach[lang].map((p, i) => (
                     <li key={i} className="flex gap-2.5 text-sm text-stone-light leading-relaxed">
-                      <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">›</span>
+                      <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">›</span>
                       <span>{p}</span>
                     </li>
                   ))}
@@ -158,7 +158,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                 <div className="grid sm:grid-cols-2 gap-3">
                   {cs.outcome[lang].map((o, i) => (
                     <div key={i} className="section-card flex gap-3" style={{ padding: "1rem" }}>
-                      <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">✦</span>
+                      <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">✦</span>
                       <span className="text-sm text-stone-light leading-snug">{o}</span>
                     </div>
                   ))}
@@ -192,10 +192,10 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                       href={`/${lang}/services/${service.slug}`}
                       className="section-card group flex items-center gap-3"
                     >
-                      <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      <span className="text-accent text-lg leading-none" aria-hidden="true">
                         {service.icon}
                       </span>
-                      <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                         {service.seoTitle[lang]}
                       </span>
                     </Link>
@@ -207,10 +207,10 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                       href={`/${lang}/sectors/${sector.slug}`}
                       className="section-card group flex items-center gap-3"
                     >
-                      <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      <span className="text-accent text-lg leading-none" aria-hidden="true">
                         {sector.icon}
                       </span>
-                      <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                         {sector.title[lang]}
                       </span>
                     </Link>
@@ -246,7 +246,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                       href={`/${lang}/work/${c.slug}`}
                       className="section-card group block"
                     >
-                      <h3 className="font-display font-semibold text-paper text-sm mb-1.5 group-hover:text-gold-light transition-colors">
+                      <h3 className="font-display font-semibold text-paper text-sm mb-1.5 group-hover:text-accent-light transition-colors">
                         {c.client}
                         {c.status && (
                           <span className="status-badge ml-2 align-middle">{c.status[lang]}</span>

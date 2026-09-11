@@ -65,7 +65,7 @@ export default function ServicesIndex() {
           <header className="flex items-center justify-between py-8">
             <Link
               href={`/${lang}`}
-              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
             >
               <span className="ornament">←</span>
               {t.back}
@@ -93,10 +93,10 @@ export default function ServicesIndex() {
                       href={`/${lang}/services/${s.slug}`}
                       className="section-card group block h-full"
                     >
-                      <span className="text-gold text-2xl block mb-3 leading-none" aria-hidden="true">
+                      <span className="text-accent text-2xl block mb-3 leading-none" aria-hidden="true">
                         {s.icon}
                       </span>
-                      <h2 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                      <h2 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-accent-light transition-colors">
                         {s.seoTitle[lang]}
                       </h2>
                       <p className="text-sm text-stone leading-relaxed">{s.hook[lang]}</p>
@@ -115,10 +115,10 @@ export default function ServicesIndex() {
                       href={`/${lang}/sectors/${s.slug}`}
                       className="section-card group flex items-center gap-3"
                     >
-                      <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      <span className="text-accent text-lg leading-none" aria-hidden="true">
                         {s.icon}
                       </span>
-                      <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                         {s.title[lang]}
                       </span>
                     </Link>

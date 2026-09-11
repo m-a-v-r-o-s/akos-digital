@@ -85,7 +85,7 @@ export default function Home() {
             {/* Top: identity */}
             <div>
               {/* Studio badge */}
-              <p className="fade-up fade-up-delay-1 font-mono text-xs tracking-[0.2em] uppercase text-gold mb-5">
+              <p className="fade-up fade-up-delay-1 font-mono text-xs tracking-[0.2em] uppercase text-accent mb-5">
                 <span className="ornament">— </span>
                 {person.company}
               </p>
@@ -134,7 +134,7 @@ export default function Home() {
                   aria-label={s.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-stone hover:text-gold-light transition-colors duration-200"
+                  className="text-stone hover:text-accent-light transition-colors duration-200"
                 >
                   <Icon name={s.icon as "linkedin" | "github" | "behance" | "email" | "phone" | "whatsapp" | "telegram" | "instagram"} size={18} />
                 </a>
@@ -161,9 +161,9 @@ export default function Home() {
                   proj.sub ? (
                     <li key={proj.title} className="-mt-1 ml-8 group relative">
                       <CardOverlay project={proj} />
-                      <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 border border-transparent transition-all duration-300 group-hover:border-gold/10 group-hover:bg-gold/[0.03]">
-                        <span className="text-gold/40 font-mono text-sm shrink-0 leading-none">↳</span>
-                        <h4 className="flex-1 min-w-0 font-display font-medium text-stone-light text-xs leading-snug group-hover:text-gold-light transition-colors">
+                      <div className="flex items-center gap-3 rounded-lg px-4 py-2.5 border border-transparent transition-all duration-300 group-hover:border-accent/10 group-hover:bg-accent/[0.03]">
+                        <span className="text-accent/40 font-mono text-sm shrink-0 leading-none">↳</span>
+                        <h4 className="flex-1 min-w-0 font-display font-medium text-stone-light text-xs leading-snug group-hover:text-accent-light transition-colors">
                           {proj.title}
                         </h4>
                         <CardLinks project={proj} size={10} />
@@ -181,7 +181,7 @@ export default function Home() {
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 mb-1">
-                          <h4 className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors leading-snug">
+                          <h4 className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors leading-snug">
                             {proj.title}
                           </h4>
                           {proj.status ? (
@@ -212,7 +212,7 @@ export default function Home() {
               </ul>
               <Link
                 href={`/${lang}/work`}
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gold hover:text-gold-light transition-colors"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-accent hover:text-accent-light transition-colors"
               >
                 {t.allWork}
                 <span className="arrow-icon">
@@ -234,16 +234,16 @@ export default function Home() {
                     href={`/${lang}/sectors/${sec.slug}`}
                     className="section-card group flex flex-col"
                   >
-                    <span className="text-gold text-xl mb-3 block leading-none">
+                    <span className="text-accent text-xl mb-3 block leading-none">
                       {sec.icon}
                     </span>
-                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                    <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-accent-light transition-colors">
                       <Bilingual el={sec.title.el} en={sec.title.en} />
                     </h4>
                     <p className="text-xs text-stone leading-relaxed mb-4">
                       <Bilingual el={sec.hook.el} en={sec.hook.en} />
                     </p>
-                    <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-gold-light transition-colors">
+                    <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-accent-light transition-colors">
                       {t.explore}
                       <span className="arrow-icon">
                         <Icon name="arrow" size={11} />
@@ -268,16 +268,16 @@ export default function Home() {
                       href={`/${lang}${svc.href}`}
                       className="section-card group flex flex-col"
                     >
-                      <span className="text-gold text-xl mb-3 block leading-none">
+                      <span className="text-accent text-xl mb-3 block leading-none">
                         {svc.icon}
                       </span>
-                      <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                      <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-accent-light transition-colors">
                         <Bilingual el={svc.title.el} en={svc.title.en} />
                       </h4>
                       <p className="text-xs text-stone leading-relaxed mb-4">
                         <Bilingual el={svc.description.el} en={svc.description.en} />
                       </p>
-                      <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-gold-light transition-colors">
+                      <span className="mt-auto inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-stone group-hover:text-accent-light transition-colors">
                         {t.explore}
                         <span className="arrow-icon">
                           <Icon name="arrow" size={11} />
@@ -286,10 +286,10 @@ export default function Home() {
                     </Link>
                   ) : (
                     <div key={svc.title.en} className="section-card group">
-                      <span className="text-gold text-xl mb-3 block leading-none">
+                      <span className="text-accent text-xl mb-3 block leading-none">
                         {svc.icon}
                       </span>
-                      <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-gold-light transition-colors">
+                      <h4 className="font-display font-semibold text-paper text-base mb-2 group-hover:text-accent-light transition-colors">
                         <Bilingual el={svc.title.el} en={svc.title.en} />
                       </h4>
                       <p className="text-xs text-stone leading-relaxed">
@@ -301,7 +301,7 @@ export default function Home() {
               </div>
               <Link
                 href={`/${lang}/services`}
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-gold hover:text-gold-light transition-colors"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-accent hover:text-accent-light transition-colors"
               >
                 {t.allServices}
                 <span className="arrow-icon">
@@ -324,10 +324,10 @@ export default function Home() {
                         {edu.period}
                       </p>
                       <div className="flex-1">
-                        <h4 className="font-display font-semibold text-paper text-sm mb-0.5 group-hover:text-gold-light transition-colors leading-snug">
+                        <h4 className="font-display font-semibold text-paper text-sm mb-0.5 group-hover:text-accent-light transition-colors leading-snug">
                           <Bilingual el={edu.degree.el} en={edu.degree.en} />
                           <span className="text-stone mx-2">·</span>
-                          <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="gold-link">
+                          <a href={edu.institutionUrl} target="_blank" rel="noopener noreferrer" className="accent-link">
                             <Bilingual el={edu.institution.el} en={edu.institution.en} />
                           </a>
                         </h4>

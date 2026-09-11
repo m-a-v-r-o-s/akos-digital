@@ -86,7 +86,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
           <header className="flex items-center justify-between py-8">
             <Link
               href={`/${lang}`}
-              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
             >
               <span className="ornament">←</span>
               {t.back}
@@ -97,7 +97,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
           <main>
             {/* Hero */}
             <section className="fade-up pt-2 pb-12">
-              <span className="text-gold text-3xl block mb-5 leading-none" aria-hidden="true">
+              <span className="text-accent text-3xl block mb-5 leading-none" aria-hidden="true">
                 {svc.icon}
               </span>
               <p className="font-mono text-xs tracking-[0.2em] uppercase text-stone mb-4">
@@ -113,7 +113,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
               <ul className="space-y-2 max-w-3xl">
                 {svc.points[lang].map((p, i) => (
                   <li key={i} className="flex gap-2.5 text-sm text-stone leading-relaxed">
-                    <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">›</span>
+                    <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">›</span>
                     <span>{p}</span>
                   </li>
                 ))}
@@ -126,19 +126,19 @@ export default function ServiceDetail({ slug }: { slug: string }) {
               <div className="grid sm:grid-cols-2 gap-3">
                 {svc.included[lang].map((item, i) => (
                   <div key={i} className="section-card flex gap-3" style={{ padding: "1rem" }}>
-                    <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">✦</span>
+                    <span className="text-accent mt-0.5 shrink-0" aria-hidden="true">✦</span>
                     <span className="text-sm text-stone-light leading-snug">{item}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-stone leading-relaxed mt-4 border-l-2 border-gold/30 pl-4 max-w-3xl">
+              <p className="text-xs text-stone leading-relaxed mt-4 border-l-2 border-accent/30 pl-4 max-w-3xl">
                 {t.espaNote}{" "}
-                {/* Underlined rather than .gold-link: that class sets
+                {/* Underlined rather than .accent-link: that class sets
                     text-decoration:none, which leaves an inline link with
                     colour as its only cue and fails WCAG 1.4.1. */}
                 <Link
                   href={`/${lang}/espa`}
-                  className="font-medium text-stone-light underline underline-offset-2 hover:text-gold-light transition-colors"
+                  className="font-medium text-stone-light underline underline-offset-2 hover:text-accent-light transition-colors"
                 >
                   {t.espaLink}
                 </Link>
@@ -156,10 +156,10 @@ export default function ServiceDetail({ slug }: { slug: string }) {
                       href={`/${lang}/sectors/${s.slug}`}
                       className="section-card group flex items-center gap-3"
                     >
-                      <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      <span className="text-accent text-lg leading-none" aria-hidden="true">
                         {s.icon}
                       </span>
-                      <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                         {s.title[lang]}
                       </span>
                     </Link>
@@ -212,10 +212,10 @@ export default function ServiceDetail({ slug }: { slug: string }) {
                       href={`/${lang}/services/${s.slug}`}
                       className="section-card group flex items-center gap-3"
                     >
-                      <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      <span className="text-accent text-lg leading-none" aria-hidden="true">
                         {s.icon}
                       </span>
-                      <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                         {s.seoTitle[lang]}
                       </span>
                     </Link>

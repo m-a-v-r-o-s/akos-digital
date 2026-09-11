@@ -96,7 +96,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
         <header className="flex items-center justify-between py-8">
           <Link
             href={`/${lang}`}
-            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
           >
             <span className="ornament">←</span>
             {t.back}
@@ -121,7 +121,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
               Home Assistant
             </span>
           ) : (
-            <span className="text-gold text-3xl block mb-5 leading-none">{sec.icon}</span>
+            <span className="text-accent text-3xl block mb-5 leading-none">{sec.icon}</span>
           )}
           <p className="font-mono text-xs tracking-[0.2em] uppercase text-stone mb-4">
             {t.eyebrow}
@@ -136,7 +136,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
           <ul className="space-y-2 max-w-3xl">
             {sec.points[lang].map((p, i) => (
               <li key={i} className="flex gap-2.5 text-sm text-stone leading-relaxed">
-                <span className="text-gold mt-0.5 shrink-0">›</span>
+                <span className="text-accent mt-0.5 shrink-0">›</span>
                 <span>{p}</span>
               </li>
             ))}
@@ -173,7 +173,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
                       title={proj.title}
                     />
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-display font-semibold text-paper text-sm mb-1 group-hover:text-gold-light transition-colors">
+                      <h4 className="font-display font-semibold text-paper text-sm mb-1 group-hover:text-accent-light transition-colors">
                         {proj.title}
                       </h4>
                       <p className="text-xs text-stone leading-relaxed mb-3">
@@ -201,12 +201,12 @@ export default function SectorDetail({ slug }: { slug: string }) {
           <div className="grid sm:grid-cols-2 gap-3">
             {sec.included[lang].map((item, i) => (
               <div key={i} className="section-card flex gap-3" style={{ padding: "1rem" }}>
-                <span className="text-gold mt-0.5 shrink-0">✦</span>
+                <span className="text-accent mt-0.5 shrink-0">✦</span>
                 <span className="text-sm text-stone-light leading-snug">{item}</span>
               </div>
             ))}
           </div>
-          <p className="text-xs text-stone leading-relaxed mt-4 border-l-2 border-gold/30 pl-4 max-w-3xl">
+          <p className="text-xs text-stone leading-relaxed mt-4 border-l-2 border-accent/30 pl-4 max-w-3xl">
             <Bilingual
               el={slug === "smarthome" ? L.el.supportNoteLocal : L.el.supportNote}
               en={slug === "smarthome" ? L.en.supportNoteLocal : L.en.supportNote}
@@ -256,10 +256,10 @@ export default function SectorDetail({ slug }: { slug: string }) {
                     href={`/${lang}/sectors/${s.slug}`}
                     className="section-card group flex items-center gap-3"
                   >
-                    <span className="text-gold text-lg leading-none" aria-hidden="true">
+                    <span className="text-accent text-lg leading-none" aria-hidden="true">
                       {s.icon}
                     </span>
-                    <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                    <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                       <Bilingual el={s.title.el} en={s.title.en} />
                     </span>
                   </Link>

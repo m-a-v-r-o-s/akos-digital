@@ -90,7 +90,7 @@ export default function InternationalDetail() {
           <header className="flex items-center justify-between py-8">
             <Link
               href={`/${lang}/work`}
-              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-gold hover:text-gold-light transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
             >
               <span className="ornament">←</span>
               {t.back}
@@ -127,7 +127,7 @@ export default function InternationalDetail() {
             {/* ── The one thing this page has to explain up front ── */}
             <section className="fade-up fade-up-delay-1 mb-14">
               <div className="section-card">
-                <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-gold mb-3">
+                <h2 className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-3">
                   {t.noLinkTitle}
                 </h2>
                 <p className="text-sm text-stone-light leading-relaxed max-w-3xl">
@@ -140,7 +140,7 @@ export default function InternationalDetail() {
             <section className="mb-16" aria-label={t.factsTitle}>
               <ul className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
                 {p.facts.map((f) => (
-                  <li key={f.n.en} className="border-l-2 border-gold/50 pl-4">
+                  <li key={f.n.en} className="border-l-2 border-accent/50 pl-4">
                     <p className="font-display text-3xl sm:text-4xl font-bold text-paper leading-none mb-2 tabular-nums">
                       {f.n[lang]}
                     </p>
@@ -153,7 +153,7 @@ export default function InternationalDetail() {
             {/* ── Chapters ── */}
             {p.chapters.map((c) => (
               <section key={c.eyebrow.en} className="mb-16">
-                <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold mb-3">
+                <p className="font-mono text-xs tracking-[0.2em] uppercase text-accent mb-3">
                   {c.eyebrow[lang]}
                 </p>
                 <h2 className="font-display text-2xl sm:text-3xl font-semibold text-paper leading-snug mb-5 max-w-3xl">
@@ -202,7 +202,7 @@ export default function InternationalDetail() {
                         href={c.image}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-mono text-[0.65rem] uppercase tracking-widest text-gold hover:text-gold-light transition-colors shrink-0"
+                        className="inline-flex items-center gap-1 font-mono text-[0.65rem] uppercase tracking-widest text-accent hover:text-accent-light transition-colors shrink-0"
                       >
                         {t.fullSize}
                         <span className="arrow-icon">
@@ -225,7 +225,7 @@ export default function InternationalDetail() {
                       <span
                         className={`mt-1.5 w-3 h-3 rounded-full border ${
                           step.done
-                            ? "bg-gold border-gold"
+                            ? "bg-accent border-accent"
                             : "bg-transparent border-stone-dark"
                         }`}
                         aria-hidden="true"
@@ -285,10 +285,10 @@ export default function InternationalDetail() {
                       href={`/${lang}/services/${service.slug}`}
                       className="section-card group flex items-center gap-3"
                     >
-                      <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      <span className="text-accent text-lg leading-none" aria-hidden="true">
                         {service.icon}
                       </span>
-                      <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                         {service.seoTitle[lang]}
                       </span>
                     </Link>
@@ -300,10 +300,10 @@ export default function InternationalDetail() {
                       href={`/${lang}/sectors/${sector.slug}`}
                       className="section-card group flex items-center gap-3"
                     >
-                      <span className="text-gold text-lg leading-none" aria-hidden="true">
+                      <span className="text-accent text-lg leading-none" aria-hidden="true">
                         {sector.icon}
                       </span>
-                      <span className="font-display font-semibold text-paper text-sm group-hover:text-gold-light transition-colors">
+                      <span className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors">
                         {sector.title[lang]}
                       </span>
                     </Link>
@@ -336,7 +336,7 @@ export default function InternationalDetail() {
                 .map((c) => (
                   <li key={c.slug}>
                     <Link href={`/${lang}/work/${c.slug}`} className="section-card group block">
-                      <h3 className="font-display font-semibold text-paper text-sm mb-1.5 group-hover:text-gold-light transition-colors">
+                      <h3 className="font-display font-semibold text-paper text-sm mb-1.5 group-hover:text-accent-light transition-colors">
                         {c.client}
                       </h3>
                       <p className="text-xs text-stone-light leading-relaxed">{c.title[lang]}</p>

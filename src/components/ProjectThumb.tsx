@@ -60,10 +60,10 @@ function Screen({ image, title }: { image?: string; title: string }) {
 
   return (
     <div
-      className="w-full h-full flex items-center justify-center text-gold opacity-40 text-xl font-display italic"
+      className="w-full h-full flex items-center justify-center text-accent opacity-40 text-xl font-display italic"
       style={{
         background:
-          "linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(13,13,13,0.5) 100%)",
+          "linear-gradient(135deg, rgb(var(--accent-rgb) / 0.15) 0%, rgba(13,13,13,0.5) 100%)",
       }}
     >
       {title.charAt(0)}

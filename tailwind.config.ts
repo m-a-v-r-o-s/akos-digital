@@ -16,9 +16,8 @@ const config: Config = {
       colors: {
         ink: "#0D0D0D",
         paper: "#F5F0E8",
-        gold: "#C9A84C",
-        "gold-light": "#E8D5A3",
-        "gold-dark": "#8B6914",
+        accent: "rgb(var(--accent-rgb) / <alpha-value>)",
+        "accent-light": "rgb(var(--accent-light-rgb) / <alpha-value>)",
         rust: "#8B3A2A",
         stone: "#6B6560",
         "stone-light": "#B5AFA8",
