@@ -485,7 +485,6 @@ a:hover .arrow-icon {
 .espa-button:hover {
   border-color: rgb(var(--accent-rgb) / 0.55);
   box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
-  transform: translateY(-2px);
 }
 
 /* ── Liquid glass (LiquidGlass.tsx) ──
