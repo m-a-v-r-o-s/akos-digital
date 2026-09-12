@@ -9,12 +9,11 @@ import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
 import { person, education, projects, services, sectors } from "@/lib/data";
-import { SEVENMERO_URL } from "@/lib/links";
 import MobileScrollSections from "@/components/MobileScrollSections";
 import ProjectThumb from "@/components/ProjectThumb";
 import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
 import { openCookiePreferences } from "@/components/CookieConsent";
-import LiquidGlass from "@/components/LiquidGlass";
+import CtaStack from "@/components/CtaStack";
 
 const ui = {
   en: {
@@ -27,7 +26,6 @@ const ui = {
     projects: "Selected Works",
     allWork: "All case studies",
     fullCV: "Full CV",
-    requestQuote: "Request a Quote",
     terms: "Terms",
     privacy: "Privacy",
     cookies: "Cookies",
@@ -43,7 +41,6 @@ const ui = {
     projects: "Επιλεγμένα Έργα",
     allWork: "Όλες οι μελέτες",
     fullCV: "Πλήρες Βιογραφικό",
-    requestQuote: "Ζητήστε Προσφορά",
     terms: "Όροι",
     privacy: "Απόρρητο",
     cookies: "Cookies",
@@ -83,9 +80,9 @@ export default function Home() {
         {/* ── Desktop: 2-column layout ── */}
         <div className="lg:flex lg:gap-16 xl:gap-24">
           {/* ── LEFT COLUMN — sticky ── */}
-          <aside className="hidden lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:h-screen lg:w-[42%] xl:w-[40%] lg:py-20 lg:flex-shrink-0">
+          <aside className="aside-col hidden lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:h-screen lg:w-[42%] xl:w-[40%] lg:pt-10 lg:pb-6 lg:flex-shrink-0">
             {/* Top: identity */}
-            <div>
+            <div className="aside-identity">
               {/* Studio badge */}
               <p className="fade-up fade-up-delay-1 font-mono text-xs tracking-[0.2em] uppercase text-accent mb-5">
                 <span className="ornament">— </span>
@@ -111,47 +108,12 @@ export default function Home() {
                 <NavLinks />
               </div>
 
-              {/* Request a quote CTA + ESPA button (stacked) */}
-              <div className="fade-up fade-up-delay-5 mt-10 flex flex-col items-start gap-4">
-                <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
-                  <Link href={`/${lang}/request`} className="cta-button">
-                    {t.requestQuote}
-                    <span className="arrow-icon">
-                      <Icon name="arrow" size={13} />
-                    </span>
-                  </Link>
-                </LiquidGlass>
-
-                {/* ESPA and 7μερο sit side by side, not stacked. This column is
-                    h-screen with justify-between, so it cannot scroll: stacking
-                    a third badge put the content at 827px and pushed 7μερο out
-                    of sight entirely on any viewport under ~830px tall, which
-                    is an ordinary laptop. A row costs no height at all. */}
-                <div className="flex items-center gap-4">
-                  <Link href={`/${lang}/espa`} aria-label="ΕΣΠΑ" className="espa-button w-36 shrink-0">
-                    <LiquidGlass padding="0" cornerRadius={24} elasticity={0}>
-                      <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
-                    </LiquidGlass>
-                  </Link>
-
-                  {/* The fixed-price route, for a small business that would
-                      otherwise stall on a custom quote. */}
-                  <a
-                    href={SEVENMERO_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={
-                      lang === "en"
-                        ? "7μερο.com, a small-business website in 7 days for a flat €399 plus VAT (opens in a new tab)"
-                        : "7μερο.com, ιστοσελίδα για μικρή επιχείρηση σε 7 μέρες με σταθερή τιμή 399€ συν ΦΠΑ (ανοίγει σε νέα καρτέλα)"
-                    }
-                    className="sevenmero-button w-36 shrink-0"
-                  >
-                    <LiquidGlass padding="0" cornerRadius={16} elasticity={0}>
-                      <img src="/7mero.svg" alt="" loading="lazy" decoding="async" className="w-full h-auto block" />
-                    </LiquidGlass>
-                  </a>
-                </div>
+              {/* All three CTAs, one set — see CtaStack.tsx. mt-6 rather
+                  than mt-10: this column is h-screen and cannot scroll, so
+                  the stack's height is paid for out of the aside's own
+                  padding and this margin. */}
+              <div className="fade-up fade-up-delay-5 mt-6">
+                <CtaStack layout="stack" />
               </div>
             </div>
 

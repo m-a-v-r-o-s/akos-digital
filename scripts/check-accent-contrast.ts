@@ -4,14 +4,15 @@
  *
  * The palette is curated precisely so no choice in it can produce an
  * unreadable page, which is only true for as long as something enforces it.
- * WCAG 2.1 AA (4.5:1) is the floor, checked on the four places the accent
- * actually carries text.
+ * WCAG 2.1 AA (4.5:1) is the floor, checked on every place the accent
+ * actually carries text, or sits behind text as a tint.
  */
 import assert from "node:assert/strict";
 import { accents, accentKeys, DEFAULT_ACCENT } from "../src/lib/accents.ts";
 
 const AA = 4.5;
 const INK = [13, 13, 13] as const; // --ink, the page ground and the CTA's text
+const PAPER = [245, 240, 232] as const; // --paper, the label on the glass CTA
 
 const parse = (s: string) => {
   const c = s.split(" ").map(Number);
@@ -50,17 +51,23 @@ for (const a of accents) {
   assert.ok(a.label.en.trim() && a.label.el.trim(), `${a.key} needs both labels: colour is never the only signal`);
 }
 
-// ── contrast, in the four places the accent carries text ─────────────────
+// ── contrast, everywhere the accent carries or backs text ────────────────
 const checks: [string, (a: (typeof accents)[number]) => number][] = [
   // text-accent on the page ground
   ["on ink", (a) => ratio(parse(a.rgb), INK)],
   // the CTA: ink text on a solid accent fill
   ["CTA fill", (a) => ratio(INK, parse(a.rgb))],
   // the tag pill is the accent at 10% over ink, so the text sits on the blend,
-  // not on pure ink. This is the tightest of the four.
+  // not on pure ink.
   ["tag pill", (a) => ratio(parse(a.rgb), over(parse(a.rgb), INK, 0.1))],
   // the hover states
   ["light on ink", (a) => ratio(parse(a.lightRgb), INK)],
+  // The sidebar's primary (.cta-face-primary) is not a solid fill: it is the
+  // accent at 32% over ink, 46% on hover, carrying --paper rather than ink,
+  // so that the glass behind it stays visible. A lighter accent lifts that
+  // tint toward the label, so hover is the tight end, not rest.
+  ["glass CTA", (a) => ratio(PAPER, over(parse(a.rgb), INK, 0.32))],
+  ["glass CTA hover", (a) => ratio(PAPER, over(parse(a.rgb), INK, 0.46))],
 ];
 
 const pad = (s: string, n: number) => s.padEnd(n);

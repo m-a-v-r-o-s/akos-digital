@@ -477,26 +477,256 @@ a:hover .arrow-icon {
   box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
 }
 
-/* ── ESPA image button — subtle lift + glow on hover, like .cta-button ── */
-.espa-button {
-  @apply block overflow-hidden rounded-3xl transition-all duration-300;
-  border: 1px solid rgb(var(--accent-rgb) / 0.2);
+/* ── The sidebar CTA set (CtaStack.tsx): quote / 7μερο / ΕΣΠΑ ──────────
+   One frame for all three, so they read as a set rather than three badges
+   that happened to land together. Every size is a custom property on the
+   set, which is what makes the short-viewport compaction below four
+   numbers instead of a parallel copy of every rule.
+
+   Why it compacts at all: the desktop aside is h-screen with
+   justify-between, so it cannot scroll and the stack has a hard height
+   budget. At 280px wide the ΕΣΠΑ badge alone is 175px tall, which does not
+   fit under the identity block on a 768px-tall laptop. Below the threshold
+   the badge letterboxes inside its card; above it, it opens out to near
+   full-bleed. Keyed to viewport height, not width, because height is the
+   constraint. ── */
+.cta-set {
+  --cta-w: 264px;
+  --cta-pill-h: 42px;
+  --cta-gap: 7px;
+  --cta-espa-w: 172px; /* the plate inside its card, not the card itself */
+  --cta-espa-pad: 9px;
+  --cta-radius: 18px;
 }
-.espa-button:hover {
-  border-color: rgb(var(--accent-rgb) / 0.55);
-  box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
+@media (min-height: 850px) {
+  .cta-set {
+    --cta-w: 280px;
+    --cta-pill-h: 56px;
+    --cta-gap: 14px;
+    --cta-espa-w: 248px;
+    --cta-espa-pad: 14px;
+  }
 }
 
-/* ── 7μερο sister-site button, same frame as .espa-button, tighter radius.
-   The ESPA artwork is a 1.6:1 block where a 24px corner reads as rounded; this
-   one is a ~2.5:1 wordmark strip, where the same corner reads as a pill. ── */
-.sevenmero-button {
-  @apply block overflow-hidden rounded-2xl transition-all duration-300;
-  border: 1px solid rgb(var(--accent-rgb) / 0.2);
+.cta-set-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--cta-gap);
+  width: var(--cta-w);
+  max-width: 100%;
 }
-.sevenmero-button:hover {
+
+/* Mobile: three equal columns. Stretched to one height rather than left to
+   their own, because at a third of a 360px phone the ΕΣΠΑ badge is only
+   ~50px tall, and a short third column beside two tall ones reads as a bug
+   rather than as a deliberately taller badge. */
+.cta-set-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  --cta-pill-h: 78px;
+  --cta-espa-w: 100%;
+  --cta-espa-pad: 8px;
+}
+
+/* Short laptops get a tighter identity rhythm, for the same reason the CTA
+   set compacts above: the aside is h-screen with justify-between, cannot
+   scroll, and the stack's height has to come from somewhere. Same 850px
+   threshold on purpose — the two are one budget, so changing either means
+   re-checking the aside against a 1366x768 window. Selected by element
+   rather than by five more class names; the block's shape is fixed. */
+@media (max-height: 849px) {
+  /* The page has no header, so the top padding is the cheapest space here. */
+  .aside-col { padding-top: 24px; }
+  .aside-identity > p:first-child { margin-bottom: 12px; }
+  .aside-identity > h1 { margin-bottom: 14px; }
+  .aside-identity > .deco-rule { margin-bottom: 14px; }
+  .aside-identity > h2 { margin-bottom: 8px; }
+  .aside-identity nav { margin-top: 20px; gap: 14px; }
+}
+
+/* The glass wrapper carries the ring and the hover, so the accent edge and
+   LiquidGlass's own specular rim sit on the same curve. Its surface is one
+   pixel in from that ring (cornerRadius 17 against this 18), or the blurred
+   corner would ride over it. */
+.cta-glass {
+  display: block;
+  border: 1px solid rgb(var(--accent-rgb) / 0.22);
+  border-radius: var(--cta-radius);
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+}
+.cta-glass:hover {
   border-color: rgb(var(--accent-rgb) / 0.55);
-  box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
+  box-shadow: 0 8px 28px rgb(var(--accent-rgb) / 0.18);
+}
+/* LiquidGlass nests surface > children-wrapper; both have to pass a
+   stretched height through to the face for the row layout to equalise. */
+.cta-glass > .liquid-glass-surface,
+.cta-glass > .liquid-glass-surface > div {
+  height: 100%;
+}
+
+.cta-face {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
+  border-radius: calc(var(--cta-radius) - 1px);
+}
+/* Drawn inside the face, not around it: the link sits within LiquidGlass's
+   overflow:hidden surface, so a default outline (or any positive offset)
+   gets clipped away and the card takes keyboard focus invisibly. */
+.cta-face:focus-visible {
+  outline: 2px solid rgb(var(--accent-light-rgb));
+  outline-offset: -3px;
+}
+.cta-set-row .cta-glass {
+  min-height: var(--cta-pill-h);
+}
+.cta-set-row .cta-face {
+  height: 100%;
+}
+
+/* Primary. Accent-tinted glass instead of the solid accent fill that
+   .cta-button uses elsewhere: a solid fill is opaque, and it would hide the
+   blur and rim that make the other two read as glass. The label is --paper,
+   which clears AA against this tint over ink by a wide margin (~9:1), so
+   going translucent costs no contrast — scripts/check-accent-contrast.ts
+   still covers the solid fills that do carry ink text. */
+.cta-face-primary {
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: var(--cta-pill-h);
+  padding: 0 18px;
+  background: rgb(var(--accent-rgb) / 0.32);
+  color: var(--paper);
+  transition: background-color 300ms ease;
+}
+/* The primary carries a brighter ring at rest than the other two, which is
+   the hierarchy the old solid fill used to carry on its own. --paper on the
+   hover tint is still ~6:1, so the loudest state is also the tightest. */
+.cta-glass-primary {
+  border-color: rgb(var(--accent-rgb) / 0.5);
+}
+.cta-glass-primary:hover .cta-face-primary {
+  background: rgb(var(--accent-rgb) / 0.46);
+}
+.cta-face-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.cta-face-arrow {
+  color: rgb(var(--accent-light-rgb));
+  flex: none;
+}
+
+/* 7μερο. The price is the reason to click, so it sits on the face rather
+   than only in the accessible name. */
+.cta-face-sevenmero {
+  align-items: center;
+  gap: 12px;
+  height: var(--cta-pill-h);
+  padding: 0 14px;
+}
+.sevenmero-lockup {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+.sevenmero-tile {
+  display: block;
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+.sevenmero-word {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.sevenmero-tld {
+  font-weight: 400;
+  color: var(--stone-light);
+}
+.cta-price {
+  margin-left: auto;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: rgb(var(--accent-light-rgb));
+  white-space: nowrap;
+}
+
+/* ΕΣΠΑ. The artwork is a co-funding compliance mark and is reproduced
+   unaltered, so the glass is the frame around it; the white plate keeps the
+   badge's own hard edge off the rim instead of letting a white rectangle
+   run into it. */
+.cta-face-espa {
+  align-items: center;
+  justify-content: center;
+  padding: var(--cta-espa-pad);
+}
+.espa-plate {
+  display: block;
+  width: var(--cta-espa-w);
+  max-width: 100%;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #fff;
+  padding: 7px 9px;
+  line-height: 0;
+}
+.espa-plate img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Three columns at 360px leaves ~98px a card: the lockup goes vertical and
+   drops the .com, which is the only part of it that is not load bearing. */
+.cta-set-row .cta-face-primary {
+  justify-content: center;
+  text-align: center;
+  padding: 0 6px;
+  gap: 6px;
+}
+.cta-set-row .cta-face-label {
+  font-size: 0.5625rem;
+  letter-spacing: 0.06em;
+}
+/* The label wraps to two lines in a 98px column, and a trailing arrow on the
+   end of the second line reads as a stray glyph. It is decorative. */
+.cta-set-row .cta-face-arrow {
+  display: none;
+}
+.cta-set-row .cta-face-sevenmero {
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 6px;
+}
+.cta-set-row .sevenmero-tile {
+  width: 20px;
+  height: 20px;
+}
+.cta-set-row .sevenmero-word {
+  font-size: 0.8125rem;
+}
+.cta-set-row .sevenmero-tld {
+  display: none;
+}
+.cta-set-row .cta-price {
+  margin-left: 0;
+  font-size: 0.625rem;
 }
 
 /* ── Liquid glass (LiquidGlass.tsx) ──
