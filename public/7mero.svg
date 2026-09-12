@@ -1,11 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 7 283 96" width="283" height="96" role="img" aria-label="7μερο.com · by Akos Digital Services">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 7 257 96" width="257" height="96" role="img" aria-label="7μερο.com">
   <!-- Dark-background variant of the 7μερο.com lockup. The sister site ships a
        light one (its own public/logo.svg) with a near-black flap card and an
        orange 7; that inverts here, because a #14181C card on this site's #0d0d0d
        ground would disappear. Orange as a fill with near-black ink on top is the
        sister site's own documented rule for its accent token, so this is the
-       variant its
-       brand notes describe, not a new treatment.
+       variant its brand notes describe, not a new treatment.
+
+       No "by Akos Digital Services" line here. The sister site carries it
+       because it has to say whose it is; on akosds that is the site you are
+       already standing on.
 
        Text is left as <text> rather than outlined, matching the sister repo's
        logo.svg. Loaded through <img> the page's webfonts do not apply, so the
@@ -16,5 +19,4 @@
     <rect x="0" y="54.4" width="56" height="1.4" fill="#000" opacity="0.25"/>
   </g>
   <text x="70" y="60" font-family="'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="700" fill="#f5f0e8" letter-spacing="-0.5">μερο<tspan fill="#9a938b" font-weight="400">.com</tspan></text>
-  <text x="71" y="79" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="500" fill="#9a938b" letter-spacing="0.6">by Akos Digital Services</text>
 </svg>
