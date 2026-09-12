@@ -148,7 +148,7 @@ export default function LiquidGlass({
   padding = "0",
   cornerRadius = 999,
   displacementScale = 70,
-  blurAmount = 0.0625,
+  blurAmount = 0.625,
   saturation = 140,
   aberrationIntensity = 2,
   elasticity = 0,
