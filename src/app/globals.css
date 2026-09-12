@@ -729,10 +729,11 @@ a:hover .arrow-icon {
   font-size: 0.5625rem;
   letter-spacing: 0.06em;
 }
-/* The label wraps to two lines in a 98px column, and a trailing arrow on the
-   end of the second line reads as a stray glyph. It is decorative. */
+/* Sat beside the label as one centered group, same as the desktop face.
+   Safe now that the label is a deliberate two-line break rather than a
+   wrap that could land the arrow after any word. */
 .cta-set-row .cta-face-arrow {
-  display: none;
+  flex: none;
 }
 .cta-set-row .cta-face-sevenmero {
   flex-direction: column;
