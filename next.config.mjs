@@ -12,6 +12,12 @@ const LEGACY_PATHS = [
 ];
 
 const nextConfig = {
+  // The 7μερο offer is a static Astro build copied into public/7mero (see that
+  // repo's `npm run deploy`). Next serves files from public/ by exact path, so
+  // the directory index needs saying out loud, otherwise /7mero is a 404.
+  async rewrites() {
+    return [{ source: "/7mero", destination: "/7mero/index.html" }];
+  },
   async redirects() {
     return [
       // Apex to www first, so a request to the apex is not redirected twice.

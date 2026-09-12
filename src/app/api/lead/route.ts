@@ -14,15 +14,16 @@ function str(v: unknown, max = 2000): string {
 const SOURCES = ["request-wizard", "espa-assessment", "7mero-order"] as const;
 
 /**
- * Origins allowed to POST here cross-site. 7μερο.com is a static Astro build
- * with no server of its own, so its order form submits to this endpoint rather
- * than duplicating the Resend wiring, the honeypot and the rate limiter.
+ * Origins allowed to POST here cross-site.
+ *
+ * 7μερο is currently served from this same origin at /7mero, so its order form
+ * needs none of this: a same-origin POST sends no Origin the list has to match.
+ * The punycode hosts stay for the day it moves to its own domain, since that is
+ * a static Astro build with no server and would still post here rather than
+ * duplicate the Resend wiring, the honeypot and the rate limiter.
  *
  * An explicit list, never a wildcard: this route sends mail, so anything that
- * can reach it can spend the sending quota. Both hosts are the punycode form,
- * which is what a browser actually puts in the Origin header for an IDN.
- *
- * The 7μερο domain is not registered yet, so these currently match nothing.
+ * can reach it can spend the sending quota.
  */
 const ALLOWED_ORIGINS = new Set([
   "https://xn--7-7lbunj.com",

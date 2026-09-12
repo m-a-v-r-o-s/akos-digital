@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Every URL carries the full hreflang set, so a crawler that reaches one
   // locale from the sitemap alone still learns the other exists.
-  return LANGS.flatMap((lang) =>
+  const pages = LANGS.flatMap((lang) =>
     PATHS.map(({ path, priority, changeFrequency }) => ({
       url: `${SITE_URL}/${lang}${path}`,
       lastModified,
@@ -48,4 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     }))
   );
+
+  // The 7μερο offer is a static build served from public/7mero. It sits outside
+  // the locale tree and renders both languages on the one URL, so it is listed
+  // once, with no hreflang alternates.
+  return [
+    ...pages,
+    { url: `${SITE_URL}/7mero`, lastModified, changeFrequency: "monthly" as const, priority: 0.8 },
+  ];
 }

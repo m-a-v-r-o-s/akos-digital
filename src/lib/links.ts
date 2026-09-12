@@ -19,11 +19,11 @@ export const externalProps = (href: string) =>
 /**
  * The sister site: the fixed-price, 7-day small-business offer.
  *
- * Display name is the Greek IDN 7μερο.com, but every machine-readable use
- * needs the punycode, which is what a browser and a crawler actually resolve.
+ * It has no domain of its own for now, so it is served from this site: its
+ * Astro build is copied into public/7mero and a rewrite in next.config.mjs
+ * maps /7mero to that directory's index.html.
  *
- * NOTE: the domain is not registered yet, so this link does not resolve. It is
- * deliberately the one line to change, point it at whatever host the offer is
- * actually served from before shipping the buttons that use it.
+ * Still the one line to change if it graduates to 7μερο.com (punycode
+ * xn--7-7lbunj.com), together with the `base`/`site` in the sister repo.
  */
-export const SEVENMERO_URL = "https://xn--7-7lbunj.com";
+export const SEVENMERO_URL = "/7mero";
