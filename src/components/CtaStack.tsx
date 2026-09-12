@@ -25,16 +25,16 @@ import { SEVENMERO_URL } from "@/lib/links";
 const copy = {
   en: {
     quote: "Request a Quote",
-    sevenmeroPrice: "€399 website",
-    sevenmeroPriceShort: "€399",
+    sevenmeroPrice: "A €399 website in one",
+    sevenmeroPriceShort: "€399 in one",
     sevenmeroLabel:
       "7μερο.com, €399 websites for small businesses, live in 7 days (opens in a new tab)",
     espaLabel: "ΕΣΠΑ 2021-2027 funding — how we can help you apply",
   },
   el: {
     quote: "Ζητήστε Προσφορά",
-    sevenmeroPrice: "Ιστοσελίδα 399€",
-    sevenmeroPriceShort: "399€",
+    sevenmeroPrice: "Ιστοσελίδα 399€ σε ένα",
+    sevenmeroPriceShort: "399€ σε ένα",
     sevenmeroLabel:
       "7μερο.com, ιστοσελίδες 399€ για μικρές επιχειρήσεις, έτοιμες σε 7 μέρες (ανοίγει σε νέα καρτέλα)",
     espaLabel: "ΕΣΠΑ 2021-2027 — χρηματοδότηση και πώς μπορούμε να βοηθήσουμε",
@@ -47,14 +47,20 @@ const copy = {
  * page's webfonts never apply and the wordmark falls back to a system
  * grotesque; inline, it renders in the site's own body font and the mark
  * can be sized independently of the wordmark, which is what lets the pill
- * hold a price line next to it. Colours are the sister site's documented
- * dark-ground rule: orange fill, near-black ink on top.
+ * hold a price line above it.
+ *
+ * The tile takes the page's live accent rather than the sister site's fixed
+ * orange: it sits inside this site's CTA set, and a colour that ignores the
+ * accent switcher is the one element on the page that stays put while
+ * everything around it moves. The near-black glyph on top is unchanged, and
+ * every accent in the set already clears AA as an ink-on-fill pair
+ * (scripts/check-accent-contrast.ts, "CTA fill").
  */
 function SevenmeroMark() {
   return (
     <span className="sevenmero-lockup" aria-hidden="true">
       <svg viewBox="0 0 56 56" className="sevenmero-tile" role="presentation" focusable="false">
-        <rect width="56" height="56" rx="12" fill="#E8590C" />
+        <rect width="56" height="56" rx="12" fill="currentColor" />
         <path d="M16,13 H42 V19 L30,46 H21 L33,19 H16 Z" fill="#0d0d0d" />
         <rect y="27.4" width="56" height="1.4" fill="#000" opacity="0.25" />
       </svg>
@@ -94,7 +100,9 @@ export default function CtaStack({ layout }: { layout: "stack" | "row" }) {
 
       {/* The fixed-price route, for a small business that would otherwise
           stall on a custom quote. The price is the whole point of the link,
-          so it sits on the face, not only in the accessible name. */}
+          so it sits on the face, not only in the accessible name — and it
+          reads as one sentence ending in the logo rather than as a price
+          tag parked beside it. */}
       <LiquidGlass padding="0" cornerRadius={17} elasticity={0} className="cta-glass">
         <a
           href={SEVENMERO_URL}
@@ -103,12 +111,14 @@ export default function CtaStack({ layout }: { layout: "stack" | "row" }) {
           aria-label={t.sevenmeroLabel}
           className="cta-face cta-face-sevenmero"
         >
-          <SevenmeroMark />
-          {/* Three columns on a phone cannot hold "Ιστοσελίδα 399€"; the
-              number is the part that has to survive the cut. */}
+          {/* The line runs into the lockup below it: "a €399 website in one
+              7μερο". Three columns on a phone cannot hold the full opener,
+              so the row layout drops everything but the number and "in one",
+              which is the part the logo has to land on. */}
           <span className="cta-price">
             {layout === "row" ? t.sevenmeroPriceShort : t.sevenmeroPrice}
           </span>
+          <SevenmeroMark />
         </a>
       </LiquidGlass>
 

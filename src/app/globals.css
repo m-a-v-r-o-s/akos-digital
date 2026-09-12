@@ -626,29 +626,47 @@ a:hover .arrow-icon {
 }
 
 /* 7μερο. The price is the reason to click, so it sits on the face rather
-   than only in the accessible name. */
+   than only in the accessible name — and it reads down into the lockup as
+   one sentence ("Ιστοσελίδα 399€ σε ένα / 7μερο"), which is why the two
+   lines stack instead of sitting either side of the pill. Centred, because
+   the opener and the lockup are different widths and a left rag between
+   two lines of different type reads as a misalignment. */
 .cta-face-sevenmero {
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 3px;
   height: var(--cta-pill-h);
-  padding: 0 14px;
+  padding: 0 10px;
 }
 .sevenmero-lockup {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   min-width: 0;
 }
+/* The tile follows the accent switcher instead of the sister site's fixed
+   orange (fill="currentColor" in CtaStack.tsx). Transitioned on the same
+   300ms as every other accent-bearing rule here, so a switch moves the
+   whole page at once rather than snapping this one square. */
 .sevenmero-tile {
   display: block;
   flex: none;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  color: rgb(var(--accent-rgb));
+  transition: color 300ms ease;
+}
+@media (min-height: 850px) {
+  .sevenmero-tile {
+    width: 24px;
+    height: 24px;
+  }
 }
 .sevenmero-word {
   font-family: var(--font-body), sans-serif;
   font-weight: 700;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   letter-spacing: -0.01em;
   color: var(--paper);
   white-space: nowrap;
@@ -658,12 +676,21 @@ a:hover .arrow-icon {
   color: var(--stone-light);
 }
 .cta-price {
-  margin-left: auto;
   font-family: var(--font-mono), monospace;
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
+  line-height: 1;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: rgb(var(--accent-light-rgb));
   white-space: nowrap;
+}
+@media (min-height: 850px) {
+  .cta-price {
+    font-size: 0.6875rem;
+  }
+  .sevenmero-word {
+    font-size: 0.9375rem;
+  }
 }
 
 /* ΕΣΠΑ. The artwork is a co-funding compliance mark and is reproduced
@@ -709,8 +736,6 @@ a:hover .arrow-icon {
   display: none;
 }
 .cta-set-row .cta-face-sevenmero {
-  flex-direction: column;
-  justify-content: center;
   gap: 5px;
   padding: 6px;
 }
@@ -724,9 +749,13 @@ a:hover .arrow-icon {
 .cta-set-row .sevenmero-tld {
   display: none;
 }
+/* ~98px a column at 360px: the opener wraps rather than overflowing, which
+   is what the 1.15 line-height is for. */
 .cta-set-row .cta-price {
-  margin-left: 0;
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
+  line-height: 1.15;
+  white-space: normal;
+  text-align: center;
 }
 
 /* ── Liquid glass (LiquidGlass.tsx) ──
