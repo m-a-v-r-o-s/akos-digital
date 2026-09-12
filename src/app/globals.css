@@ -487,6 +487,18 @@ a:hover .arrow-icon {
   box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
 }
 
+/* ── 7μερο sister-site button, same frame as .espa-button, tighter radius.
+   The ESPA artwork is a 1.6:1 block where a 24px corner reads as rounded; this
+   one is a ~2.5:1 wordmark strip, where the same corner reads as a pill. ── */
+.sevenmero-button {
+  @apply block overflow-hidden rounded-2xl transition-all duration-300;
+  border: 1px solid rgb(var(--accent-rgb) / 0.2);
+}
+.sevenmero-button:hover {
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
+}
+
 /* ── Liquid glass (LiquidGlass.tsx) ──
    The component's own backdrop-filter and SVG displacement filter give the
    frosted look, so .liquid-glass-surface stays transparent by default. It

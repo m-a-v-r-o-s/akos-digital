@@ -7,6 +7,7 @@ import { openCookiePreferences } from "@/components/CookieConsent";
 import HeaderControls from "@/components/HeaderControls";
 import { useLanguage } from "@/components/LanguageContext";
 import { person, education, projects, services, sectors } from "@/lib/data";
+import { SEVENMERO_URL } from "@/lib/links";
 import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import ProjectThumb from "@/components/ProjectThumb";
 import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
@@ -131,7 +132,8 @@ export default function MobileScrollSections() {
           ))}
         </div>
 
-        <div className="mt-7 flex items-center gap-4">
+        {/* Wraps: a third button no longer fits on one line at 360px. */}
+        <div className="mt-7 flex flex-wrap items-center gap-4">
           <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
             <Link href={`/${lang}/request`} className="cta-button">
               {requestQuote[lang]}
@@ -147,6 +149,23 @@ export default function MobileScrollSections() {
               <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
             </LiquidGlass>
           </Link>
+
+          {/* 7μερο sister site */}
+          <a
+            href={SEVENMERO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={
+              lang === "en"
+                ? "7μερο.com, a small-business website in 7 days for a flat €399 plus VAT (opens in a new tab)"
+                : "7μερο.com, ιστοσελίδα για μικρή επιχείρηση σε 7 μέρες με σταθερή τιμή 399€ συν ΦΠΑ (ανοίγει σε νέα καρτέλα)"
+            }
+            className="sevenmero-button w-36 shrink-0"
+          >
+            <LiquidGlass padding="0" cornerRadius={16} elasticity={0}>
+              <img src="/7mero.svg" alt="" loading="lazy" decoding="async" className="w-full h-auto block" />
+            </LiquidGlass>
+          </a>
         </div>
       </div>
 

@@ -88,6 +88,12 @@ export const ui: Record<Lang, {
   vPickAtLeastOne: string;
   vEmail: string;
   vConsent: string;
+  // 7mero nudge
+  nudgeEyebrow: string;
+  nudgeTitle: string;
+  nudgeBody: string;
+  nudgeGo: string;
+  nudgeStay: string;
   // success / error
   successTitle: string;
   successBody: string;
@@ -133,6 +139,12 @@ export const ui: Record<Lang, {
     vPickAtLeastOne: "Please select at least one.",
     vEmail: "Please enter a valid email.",
     vConsent: "Please tick the box so I can get back to you.",
+    nudgeEyebrow: "There may be a faster route",
+    nudgeTitle: "This sounds like a job for 7μερο",
+    nudgeBody:
+      "A flat €399 + VAT, live in 7 days: one page, two languages, two years of hosting. Same hands, no quote to wait for. If that is closer to what you need, start there instead.",
+    nudgeGo: "Take a look at 7μερο",
+    nudgeStay: "Carry on with a custom quote",
     successTitle: "Thank you — request received",
     successBody: "I've got your details and I'll be in touch within 24 hours. Talk soon.",
     errorTitle: "Hmm, that didn't go through",
@@ -177,6 +189,12 @@ export const ui: Record<Lang, {
     vPickAtLeastOne: "Διάλεξε τουλάχιστον μία.",
     vEmail: "Βάλε ένα έγκυρο email.",
     vConsent: "Τσέκαρε το κουτί για να μπορέσω να επικοινωνήσω.",
+    nudgeEyebrow: "Υπάρχει ίσως πιο γρήγορος δρόμος",
+    nudgeTitle: "Αυτό μοιάζει για το 7μερο",
+    nudgeBody:
+      "Σταθερή τιμή 399€ + ΦΠΑ, παράδοση σε 7 μέρες: μονοσέλιδο, δίγλωσσο, με 2 χρόνια hosting. Τα ίδια χέρια, χωρίς να περιμένεις προσφορά. Αν σου ταιριάζει περισσότερο, ξεκίνα από εκεί.",
+    nudgeGo: "Δες το 7μερο",
+    nudgeStay: "Συνέχεια με προσφορά",
     successTitle: "Ευχαριστώ — το αίτημα ελήφθη",
     successBody: "Έλαβα τα στοιχεία σου και θα επικοινωνήσω εντός 24 ωρών. Τα λέμε σύντομα.",
     errorTitle: "Χμμ, κάτι δεν πήγε καλά",

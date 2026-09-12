@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 110" width="270" height="110" role="img" aria-label="7μερο.com · by Akos Digital Services">
+  <!-- Dark-background variant of the 7μερο.com lockup. The sister site ships a
+       light one (its own public/logo.svg) with a near-black flap card and an
+       orange 7; that inverts here, because a #14181C card on this site's #0d0d0d
+       ground would disappear. Orange as a fill with near-black ink on top is the
+       sister site's own documented rule for --accent, so this is the variant its
+       brand notes describe, not a new treatment.
+
+       Text is left as <text> rather than outlined, matching the sister repo's
+       logo.svg. Loaded through <img> the page's webfonts do not apply, so the
+       wordmark falls back to a system grotesque. -->
+  <g>
+    <rect x="0" y="27" width="56" height="56" rx="10" fill="#E8590C"/>
+    <path d="M16,40 H42 V46 L30,73 H21 L33,46 H16 Z" fill="#0d0d0d"/>
+    <rect x="0" y="54.4" width="56" height="1.4" fill="#000" opacity="0.25"/>
+  </g>
+  <text x="70" y="60" font-family="'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="700" fill="#f5f0e8" letter-spacing="-0.5">μερο<tspan fill="#9a938b" font-weight="400">.com</tspan></text>
+  <text x="71" y="79" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="500" fill="#9a938b" letter-spacing="0.6">by Akos Digital Services</text>
+</svg>

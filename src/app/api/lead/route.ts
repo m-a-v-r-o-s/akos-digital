@@ -11,7 +11,50 @@ function str(v: unknown, max = 2000): string {
   return typeof v === "string" ? v.trim().slice(0, max) : "";
 }
 
-const SOURCES = ["request-wizard", "espa-assessment"] as const;
+const SOURCES = ["request-wizard", "espa-assessment", "7mero-order"] as const;
+
+/**
+ * Origins allowed to POST here cross-site. 7μερο.com is a static Astro build
+ * with no server of its own, so its order form submits to this endpoint rather
+ * than duplicating the Resend wiring, the honeypot and the rate limiter.
+ *
+ * An explicit list, never a wildcard: this route sends mail, so anything that
+ * can reach it can spend the sending quota. Both hosts are the punycode form,
+ * which is what a browser actually puts in the Origin header for an IDN.
+ *
+ * The 7μερο domain is not registered yet, so these currently match nothing.
+ */
+const ALLOWED_ORIGINS = new Set([
+  "https://xn--7-7lbunj.com",
+  "https://www.xn--7-7lbunj.com",
+  // Astro's dev and preview servers, so the form can be tested against a local
+  // akosds. Dropped from the set entirely in production.
+  ...(process.env.NODE_ENV === "production"
+    ? []
+    : ["http://localhost:4321", "http://localhost:3001"]),
+]);
+
+/**
+ * CORS headers for an allowed origin, none for anyone else. Vary matters: the
+ * response differs per origin, and without it a shared cache could hand one
+ * origin's headers to another.
+ */
+function corsHeaders(req: Request): Record<string, string> {
+  const origin = req.headers.get("origin");
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) return { Vary: "Origin" };
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+    Vary: "Origin",
+  };
+}
+
+/** A JSON POST from another origin is preflighted, so this has to answer. */
+export async function OPTIONS(req: Request) {
+  return new Response(null, { status: 204, headers: corsHeaders(req) });
+}
 
 /** Sanitise an arbitrary `extra` object into a flat record of capped strings. */
 function cleanExtra(v: unknown): Record<string, string> {
@@ -44,7 +87,9 @@ function format(lead: Record<string, string | string[]>, extra: Record<string, s
   add("Timeline", lead.timeline);
 
   if (Object.keys(extra).length) {
-    lines.push("", "— ESPA assessment —");
+    // The wizard now sends `extra` too (the declined 7μερο offer), so the
+    // heading follows the source instead of always claiming to be ESPA.
+    lines.push("", lead.source === "espa-assessment" ? "— ESPA assessment —" : "— Extra —");
     for (const [k, v] of Object.entries(extra)) add(k.replace(/_/g, " "), v);
   }
 
@@ -66,16 +111,19 @@ function format(lead: Record<string, string | string[]>, extra: Record<string, s
 
 export async function POST(req: Request) {
   const ip = clientIp(req);
+  // Every response needs these, not just the happy one: without them the
+  // browser will not let the 7μερο page read its own error either.
+  const cors = corsHeaders(req);
 
   if (rateLimited(ip)) {
-    return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+    return NextResponse.json({ error: "rate_limited" }, { status: 429, headers: cors });
   }
 
   let body: Record<string, unknown>;
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ error: "bad_request" }, { status: 400 });
+    return NextResponse.json({ error: "bad_request" }, { status: 400, headers: cors });
   }
 
   // Drop bots BEFORE validating, so a spam run learns nothing from the
@@ -83,26 +131,42 @@ export async function POST(req: Request) {
   // gave it away, and it just clears that one and retries.
   if (str(body[HONEYPOT_FIELD], 200)) {
     console.warn("[lead] honeypot tripped from", ip);
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true }, { headers: cors });
   }
+
+  const requestedSource = str(body.source, 40);
+  const source = (SOURCES as readonly string[]).includes(requestedSource)
+    ? requestedSource
+    : "request-wizard";
 
   const name = str(body.name, 120);
   const needs = Array.isArray(body.needs)
     ? body.needs.filter((n): n is string => typeof n === "string").slice(0, 12)
     : [];
   const email = str(body.email, 200);
+  const phone = str(body.phone, 60);
   const consent = body.consent === true;
 
-  // Mirror the wizard's client-side validation on the server.
-  if (!name) return NextResponse.json({ error: "name_required" }, { status: 422 });
-  if (needs.length === 0) return NextResponse.json({ error: "needs_required" }, { status: 422 });
-  if (!EMAIL_RE.test(email)) return NextResponse.json({ error: "email_invalid" }, { status: 422 });
-  if (!consent) return NextResponse.json({ error: "consent_required" }, { status: 422 });
+  /**
+   * The 7μερο order form is deliberately three fields: name, phone, and what
+   * the business does. Its whole pitch is that there is nothing to fill in, so
+   * it cannot be held to the wizard's needs-and-email shape. Phone carries the
+   * callback instead, and an email is accepted but never demanded.
+   */
+  const phoneOnly = source === "7mero-order";
+  const fail = (error: string) =>
+    NextResponse.json({ error }, { status: 422, headers: cors });
 
-  const requestedSource = str(body.source, 40);
-  const source = (SOURCES as readonly string[]).includes(requestedSource)
-    ? requestedSource
-    : "request-wizard";
+  // Mirror each form's client-side validation on the server.
+  if (!name) return fail("name_required");
+  if (!phoneOnly && needs.length === 0) return fail("needs_required");
+  if (phoneOnly && !phone) return fail("phone_required");
+  // Required for the wizard and ESPA, optional but still checked for 7μερο:
+  // a typo'd address is worth rejecting, an absent one is not.
+  if (phoneOnly ? email && !EMAIL_RE.test(email) : !EMAIL_RE.test(email)) {
+    return fail("email_invalid");
+  }
+  if (!consent) return fail("consent_required");
 
   const extra = cleanExtra(body.extra);
   const lead = {
@@ -115,7 +179,7 @@ export async function POST(req: Request) {
     timeline: str(body.timeline, 60),
     details: str(body.details, 2000),
     email,
-    phone: str(body.phone, 60),
+    phone,
     contact_method: str(body.contactMethod, 60),
     lang: str(body.lang, 5) || "el",
     source,
@@ -123,20 +187,22 @@ export async function POST(req: Request) {
     user_agent: str(req.headers.get("user-agent"), 400),
   };
 
-  const label = source === "espa-assessment" ? "ESPA" : "Request";
+  const label =
+    source === "espa-assessment" ? "ESPA" : source === "7mero-order" ? "7μερο" : "Request";
   const sent = await sendMail({
     to: process.env.LEAD_ALERT_EMAIL || "info@akosds.com",
-    replyTo: email,
+    // A 7μερο lead may have no email at all, and Resend rejects an empty one.
+    ...(email && { replyTo: email }),
     subject: `${label} · ${name}${lead.business_name ? ` (${lead.business_name})` : ""}`,
     text: format(lead, extra),
   });
 
   if (!sent) {
-    // Email is the only sink now — a silent failure would lose the lead, so
+    // Email is the only sink now, a silent failure would lose the lead, so
     // surface it and let the visitor retry.
-    console.error("[lead] send failed for", email);
-    return NextResponse.json({ error: "send_failed" }, { status: 502 });
+    console.error("[lead] send failed for", email || phone);
+    return NextResponse.json({ error: "send_failed" }, { status: 502, headers: cors });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true }, { headers: cors });
 }

@@ -16,6 +16,8 @@ import {
 } from "@/lib/requestForm";
 import Honeypot from "@/components/Honeypot";
 import { HONEYPOT_FIELD } from "@/lib/leadGuard";
+import { SEVENMERO_URL } from "@/lib/links";
+import type { Lang } from "@/lib/i18n";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -56,6 +58,7 @@ export default function RequestWizard() {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<Form>(emptyForm);
   const [error, setError] = useState("");
+  const [nudge, setNudge] = useState<"none" | "open" | "dismissed">("none");
   const [hp, setHp] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -76,6 +79,24 @@ export default function RequestWizard() {
     set(key, value);
     setError("");
     setTimeout(goNext, 280);
+  };
+
+  /**
+   * Budget is the one honest signal for "this is a 7μερο job, not a quote".
+   * Under €1,000 nothing bespoke fits, so instead of gliding on to the next
+   * step the wizard stops once and offers the fixed-price route. Only once:
+   * re-picking the same answer after dismissing it should not nag.
+   */
+  const pickBudget = (value: string) => {
+    set("budget", value);
+    setError("");
+    if (value === "under_1k" && nudge === "none") setNudge("open");
+    else setTimeout(goNext, 280);
+  };
+
+  const dismissNudge = () => {
+    setNudge("dismissed");
+    goNext();
   };
 
   const toggleNeed = (value: string) => {
@@ -130,7 +151,14 @@ export default function RequestWizard() {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, lang, [HONEYPOT_FIELD]: hp }),
+        body: JSON.stringify({
+          ...form,
+          lang,
+          // Only set when the 7μερο card was shown and waved off, so the
+          // email says "this one saw the cheap route and still wanted a quote".
+          ...(nudge === "dismissed" && { extra: { sevenmero_offer: "declined" } }),
+          [HONEYPOT_FIELD]: hp,
+        }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("success");
@@ -233,8 +261,9 @@ export default function RequestWizard() {
               options={budgetOptions}
               lang={lang}
               isSelected={(v) => form.budget === v}
-              onSelect={(v) => pickSingle("budget", v)}
+              onSelect={pickBudget}
             />
+            {nudge === "open" && <SevenMeroNudge t={t} onStay={dismissNudge} />}
           </Question>
         )}
 
@@ -534,6 +563,55 @@ function SuccessScreen() {
           <Icon name="arrow" size={13} />
         </span>
       </Link>
+    </div>
+  );
+}
+
+/**
+ * Shown once, in place, when the budget answer says the bespoke route does not
+ * fit. It offers the sister site without hijacking the wizard: the visitor can
+ * carry on to a real quote with one click, and that refusal is what gets
+ * recorded, so the nudge can be judged on whether it actually helps anyone.
+ *
+ * Price and delivery live on 7μερο.com. They are repeated here only because a
+ * nudge with no number is not a nudge; if they change there, change them here.
+ */
+function SevenMeroNudge({
+  t,
+  onStay,
+}: {
+  t: (typeof ui)[Lang];
+  onStay: () => void;
+}) {
+  return (
+    <div className="fade-up mt-8 rounded-2xl border border-accent/25 bg-accent/[0.04] p-5 sm:p-6">
+      <p className="font-mono text-[0.65rem] tracking-widest uppercase text-accent mb-2">
+        {t.nudgeEyebrow}
+      </p>
+      <h3 className="font-display text-xl font-semibold text-paper mb-2">
+        {t.nudgeTitle}
+      </h3>
+      <p className="text-sm text-stone-light leading-relaxed mb-5">{t.nudgeBody}</p>
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+        <a
+          href={SEVENMERO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cta-button"
+        >
+          {t.nudgeGo}
+          <span className="arrow-icon">
+            <Icon name="arrow" size={13} />
+          </span>
+        </a>
+        <button
+          type="button"
+          onClick={onStay}
+          className="font-mono text-xs tracking-widest uppercase text-stone hover:text-accent-light transition-colors duration-200 underline underline-offset-4"
+        >
+          {t.nudgeStay}
+        </button>
+      </div>
     </div>
   );
 }

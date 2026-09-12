@@ -66,4 +66,35 @@ const branch = route.slice(
 assert.ok(branch.includes("{ ok: true }"), "honeypot branch must return ok:true");
 assert.ok(!branch.includes("status:"), "honeypot branch must not return a status code");
 
+// -- CORS allowlist -------------------------------------------------------
+// This route sends mail, so whoever can reach it cross-site can spend the
+// sending quota. A wildcard here is the failure worth catching in CI.
+assert.ok(
+  !/Access-Control-Allow-Origin["']?\s*[:,]\s*["']\*/.test(route),
+  "lead route must never answer Access-Control-Allow-Origin: *"
+);
+assert.match(
+  route,
+  /export async function OPTIONS/,
+  "a cross-origin JSON POST is preflighted, so OPTIONS must be handled"
+);
+assert.match(
+  route,
+  /https:\/\/xn--7-7lbunj\.com/,
+  "7mero must be allowlisted by its punycode host, which is what the browser sends as Origin"
+);
+assert.match(
+  route,
+  /NODE_ENV === "production"\s*\?\s*\[\]/,
+  "localhost origins must be dropped in production, not merely unused"
+);
+assert.match(route, /Vary: "Origin"/, "per-origin responses must not be cached across origins");
+
+// -- 7mero accepts a phone instead of an email ----------------------------
+// Its whole pitch is three fields. If this branch goes, the order form starts
+// 422-ing every lead that did not type an email address.
+assert.match(route, /"7mero-order"/, "7mero-order must be an accepted source");
+assert.match(route, /phone_required/, "7mero must require a phone in place of the email");
+
+
 console.log("✓ lead route guards OK");

@@ -9,6 +9,7 @@ import Bilingual, { BilingualHtml } from "@/components/Bilingual";
 import { useLanguage } from "@/components/LanguageContext";
 import { Icon } from "@/components/Icons";
 import { person, education, projects, services, sectors } from "@/lib/data";
+import { SEVENMERO_URL } from "@/lib/links";
 import MobileScrollSections from "@/components/MobileScrollSections";
 import ProjectThumb from "@/components/ProjectThumb";
 import { CardOverlay, CardLinks } from "@/components/ProjectLinks";
@@ -127,6 +128,24 @@ export default function Home() {
                     <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
                   </LiquidGlass>
                 </Link>
+
+                {/* 7μερο sister site: the fixed-price route for a small
+                    business that would stall on a custom quote. */}
+                <a
+                  href={SEVENMERO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={
+                    lang === "en"
+                      ? "7μερο.com, a small-business website in 7 days for a flat €399 plus VAT (opens in a new tab)"
+                      : "7μερο.com, ιστοσελίδα για μικρή επιχείρηση σε 7 μέρες με σταθερή τιμή 399€ συν ΦΠΑ (ανοίγει σε νέα καρτέλα)"
+                  }
+                  className="sevenmero-button w-40"
+                >
+                  <LiquidGlass padding="0" cornerRadius={16} elasticity={0}>
+                    <img src="/7mero.svg" alt="" loading="lazy" decoding="async" className="w-full h-auto block" />
+                  </LiquidGlass>
+                </a>
               </div>
             </div>
 
