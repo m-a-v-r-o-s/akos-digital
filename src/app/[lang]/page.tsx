@@ -122,30 +122,36 @@ export default function Home() {
                   </Link>
                 </LiquidGlass>
 
-                {/* ESPA funding button */}
-                <Link href={`/${lang}/espa`} aria-label="ΕΣΠΑ" className="espa-button w-40">
-                  <LiquidGlass padding="0" cornerRadius={24} elasticity={0}>
-                    <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
-                  </LiquidGlass>
-                </Link>
+                {/* ESPA and 7μερο sit side by side, not stacked. This column is
+                    h-screen with justify-between, so it cannot scroll: stacking
+                    a third badge put the content at 827px and pushed 7μερο out
+                    of sight entirely on any viewport under ~830px tall, which
+                    is an ordinary laptop. A row costs no height at all. */}
+                <div className="flex items-center gap-4">
+                  <Link href={`/${lang}/espa`} aria-label="ΕΣΠΑ" className="espa-button w-36 shrink-0">
+                    <LiquidGlass padding="0" cornerRadius={24} elasticity={0}>
+                      <img src="/1915943-2048448176.jpg" alt="ΕΣΠΑ" loading="lazy" decoding="async" className="w-full h-auto block" />
+                    </LiquidGlass>
+                  </Link>
 
-                {/* 7μερο sister site: the fixed-price route for a small
-                    business that would stall on a custom quote. */}
-                <a
-                  href={SEVENMERO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={
-                    lang === "en"
-                      ? "7μερο.com, a small-business website in 7 days for a flat €399 plus VAT (opens in a new tab)"
-                      : "7μερο.com, ιστοσελίδα για μικρή επιχείρηση σε 7 μέρες με σταθερή τιμή 399€ συν ΦΠΑ (ανοίγει σε νέα καρτέλα)"
-                  }
-                  className="sevenmero-button w-40"
-                >
-                  <LiquidGlass padding="0" cornerRadius={16} elasticity={0}>
-                    <img src="/7mero.svg" alt="" loading="lazy" decoding="async" className="w-full h-auto block" />
-                  </LiquidGlass>
-                </a>
+                  {/* The fixed-price route, for a small business that would
+                      otherwise stall on a custom quote. */}
+                  <a
+                    href={SEVENMERO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={
+                      lang === "en"
+                        ? "7μερο.com, a small-business website in 7 days for a flat €399 plus VAT (opens in a new tab)"
+                        : "7μερο.com, ιστοσελίδα για μικρή επιχείρηση σε 7 μέρες με σταθερή τιμή 399€ συν ΦΠΑ (ανοίγει σε νέα καρτέλα)"
+                    }
+                    className="sevenmero-button w-36 shrink-0"
+                  >
+                    <LiquidGlass padding="0" cornerRadius={16} elasticity={0}>
+                      <img src="/7mero.svg" alt="" loading="lazy" decoding="async" className="w-full h-auto block" />
+                    </LiquidGlass>
+                  </a>
+                </div>
               </div>
             </div>
 
