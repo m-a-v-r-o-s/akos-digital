@@ -75,6 +75,14 @@ export default function CtaStack({ layout }: { layout: "stack" | "row" }) {
   const { lang } = useLanguage();
   const t = copy[lang];
 
+  // Row (mobile) is a third of a 360px phone, too narrow for "Ζητήστε
+  // Προσφορά"/"Request a Quote" on one line without shrinking the label
+  // past legibility. Break it at the natural word boundary instead of
+  // leaving the wrap to chance.
+  const quoteWords = t.quote.split(" ");
+  const quoteLine1 = quoteWords.slice(0, -1).join(" ");
+  const quoteLine2 = quoteWords[quoteWords.length - 1];
+
   return (
     <div className={`cta-set ${layout === "row" ? "cta-set-row" : "cta-set-stack"}`}>
       {/* Primary. Accent-tinted glass rather than the solid accent fill of
@@ -89,7 +97,17 @@ export default function CtaStack({ layout }: { layout: "stack" | "row" }) {
         className="cta-glass cta-glass-primary"
       >
         <Link href={`/${lang}/request`} className="cta-face cta-face-primary">
-          <span className="cta-face-label">{t.quote}</span>
+          <span className="cta-face-label">
+            {layout === "row" ? (
+              <>
+                {quoteLine1}
+                <br />
+                {quoteLine2}
+              </>
+            ) : (
+              t.quote
+            )}
+          </span>
           <span className="arrow-icon cta-face-arrow">
             <Icon name="arrow" size={13} />
           </span>

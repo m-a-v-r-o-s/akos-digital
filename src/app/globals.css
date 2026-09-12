@@ -746,8 +746,12 @@ a:hover .arrow-icon {
 .cta-set-row .sevenmero-word {
   font-size: 0.8125rem;
 }
-.cta-set-row .sevenmero-tld {
-  display: none;
+/* Stretched to the same width as .cta-price above it, ".ai" included, so the
+   two lines read as one deliberate block instead of a wide line over a
+   narrower, off-center one. */
+.cta-set-row .sevenmero-lockup {
+  width: 100%;
+  justify-content: center;
 }
 /* ~98px a column at 360px, so the opener is a size smaller here. It stays on
    one line in both languages ("Site", not "website"/"ιστοσελίδα"): a wrapped
