@@ -749,12 +749,11 @@ a:hover .arrow-icon {
 .cta-set-row .sevenmero-tld {
   display: none;
 }
-/* ~98px a column at 360px: the opener wraps rather than overflowing, which
-   is what the 1.15 line-height is for. */
+/* ~98px a column at 360px, so the opener is a size smaller here. It stays on
+   one line in both languages ("Site", not "website"/"ιστοσελίδα"): a wrapped
+   opener pushes the lockup off the bottom of a stretched row card. */
 .cta-set-row .cta-price {
-  font-size: 0.5625rem;
-  line-height: 1.15;
-  white-space: normal;
+  font-size: 0.5rem;
   text-align: center;
 }
 

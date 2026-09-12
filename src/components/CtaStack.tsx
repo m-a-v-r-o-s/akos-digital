@@ -25,16 +25,14 @@ import { SEVENMERO_URL } from "@/lib/links";
 const copy = {
   en: {
     quote: "Request a Quote",
-    sevenmeroPrice: "A €399 website in one",
-    sevenmeroPriceShort: "€399 in one",
+    sevenmeroPrice: "Site €399 in one",
     sevenmeroLabel:
       "7μερο.com, €399 websites for small businesses, live in 7 days (opens in a new tab)",
     espaLabel: "ΕΣΠΑ 2021-2027 funding — how we can help you apply",
   },
   el: {
     quote: "Ζητήστε Προσφορά",
-    sevenmeroPrice: "Ιστοσελίδα 399€ σε ένα",
-    sevenmeroPriceShort: "399€ σε ένα",
+    sevenmeroPrice: "Site 399€ σε ένα",
     sevenmeroLabel:
       "7μερο.com, ιστοσελίδες 399€ για μικρές επιχειρήσεις, έτοιμες σε 7 μέρες (ανοίγει σε νέα καρτέλα)",
     espaLabel: "ΕΣΠΑ 2021-2027 — χρηματοδότηση και πώς μπορούμε να βοηθήσουμε",
@@ -111,13 +109,10 @@ export default function CtaStack({ layout }: { layout: "stack" | "row" }) {
           aria-label={t.sevenmeroLabel}
           className="cta-face cta-face-sevenmero"
         >
-          {/* The line runs into the lockup below it: "a €399 website in one
-              7μερο". Three columns on a phone cannot hold the full opener,
-              so the row layout drops everything but the number and "in one",
-              which is the part the logo has to land on. */}
-          <span className="cta-price">
-            {layout === "row" ? t.sevenmeroPriceShort : t.sevenmeroPrice}
-          </span>
+          {/* The line runs into the lockup below it: "site €399 in one
+              7μερο". "Site" over "website"/"ιστοσελίδα" is what keeps it to
+              one line in both languages, including the three-column row. */}
+          <span className="cta-price">{t.sevenmeroPrice}</span>
           <SevenmeroMark />
         </a>
       </LiquidGlass>
