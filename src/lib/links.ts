@@ -23,7 +23,7 @@ export const externalProps = (href: string) =>
  * Astro build is copied into public/7mero and a rewrite in next.config.mjs
  * maps /7mero to that directory's index.html.
  *
- * Still the one line to change if it graduates to 7μερο.com (punycode
- * xn--7-7lbunj.com), together with the `base`/`site` in the sister repo.
+ * Still the one line to change if it graduates to 7μερο.ai (punycode
+ * xn--7-7lbunj.ai), together with the `base`/`site` in the sister repo.
  */
 export const SEVENMERO_URL = "/7mero";

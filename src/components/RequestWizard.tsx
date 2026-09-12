@@ -573,7 +573,7 @@ function SuccessScreen() {
  * carry on to a real quote with one click, and that refusal is what gets
  * recorded, so the nudge can be judged on whether it actually helps anyone.
  *
- * Price and delivery live on 7μερο.com. They are repeated here only because a
+ * Price and delivery live on 7μερο.ai. They are repeated here only because a
  * nudge with no number is not a nudge; if they change there, change them here.
  */
 function SevenMeroNudge({

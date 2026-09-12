@@ -626,18 +626,17 @@ a:hover .arrow-icon {
 }
 
 /* 7μερο. The price is the reason to click, so it sits on the face rather
-   than only in the accessible name — and it reads down into the lockup as
-   one sentence ("Ιστοσελίδα 399€ σε ένα / 7μερο"), which is why the two
-   lines stack instead of sitting either side of the pill. Centred, because
-   the opener and the lockup are different widths and a left rag between
-   two lines of different type reads as a misalignment. */
+   than only in the accessible name — and it runs straight into the lockup
+   as one sentence ("Site 399€ σε ένα 7μερο"), on one line, which only fits
+   because the opener says "Site" rather than "Ιστοσελίδα"/"website". The
+   three-column row on a phone is the one place it cannot: ~98px a card
+   stacks the two halves instead (.cta-set-row below). */
 .cta-face-sevenmero {
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 6px;
   height: var(--cta-pill-h);
-  padding: 0 10px;
+  padding: 0 8px;
 }
 .sevenmero-lockup {
   display: flex;
@@ -736,6 +735,7 @@ a:hover .arrow-icon {
   display: none;
 }
 .cta-set-row .cta-face-sevenmero {
+  flex-direction: column;
   gap: 5px;
   padding: 6px;
 }
