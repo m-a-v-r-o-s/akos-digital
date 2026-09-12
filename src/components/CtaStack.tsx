@@ -5,15 +5,13 @@
  *
  * They used to be written out twice (desktop aside in page.tsx, mobile
  * header in MobileScrollSections.tsx) and had already drifted: ΕΣΠΑ was
- * w-36 on one and w-28 on the other. One component, two layouts.
- *
- * Shape rules, which the CSS in globals.css (.cta-set*) enforces:
- *   - all three share a width, always
- *   - the quote and 7μερο pills share a height
- *   - stacked (desktop), ΕΣΠΑ is the tall one: its badge is a 1.6:1 block
- *     and has to be reproduced as-is, so it cannot be a pill
- *   - in a row (mobile), all three stretch to one height instead, because
- *     a short third column beside two tall ones reads as a mistake
+ * w-36 on one and w-28 on the other. One component, two arrangements of
+ * the same three tiles:
+ *   - desktop ("stack"): all three stacked full-width in the sidebar.
+ *   - mobile ("row"): quote + 7μερο stacked in a narrow left column, in
+ *     the same single-line pill shape as desktop (just narrower); ΕΣΠΑ
+ *     sits beside them, sized by .cta-set-row in globals.css to land at
+ *     roughly that column's combined height.
  */
 
 import Link from "next/link";
@@ -75,83 +73,86 @@ export default function CtaStack({ layout }: { layout: "stack" | "row" }) {
   const { lang } = useLanguage();
   const t = copy[lang];
 
-  // Row (mobile) is a third of a 360px phone, too narrow for "Ζητήστε
-  // Προσφορά"/"Request a Quote" on one line without shrinking the label
-  // past legibility. Break it at the natural word boundary instead of
-  // leaving the wrap to chance.
-  const quoteWords = t.quote.split(" ");
-  const quoteLine1 = quoteWords.slice(0, -1).join(" ");
-  const quoteLine2 = quoteWords[quoteWords.length - 1];
+  // Primary. Accent-tinted glass rather than the solid accent fill of
+  // .cta-button elsewhere: a solid fill is opaque, so it hides the very
+  // blur and rim that makes the other two read as glass. The label stays
+  // --paper, which clears AA against the tint over ink by a wide margin
+  // (~9:1), so going translucent costs no contrast.
+  const primary = (
+    <LiquidGlass
+      elasticity={0.12}
+      padding="0"
+      cornerRadius={17}
+      className="cta-glass cta-glass-primary"
+    >
+      <Link href={`/${lang}/request`} className="cta-face cta-face-primary">
+        <span className="cta-face-label">{t.quote}</span>
+        <span className="arrow-icon cta-face-arrow">
+          <Icon name="arrow" size={13} />
+        </span>
+      </Link>
+    </LiquidGlass>
+  );
+
+  // The fixed-price route, for a small business that would otherwise stall
+  // on a custom quote. The price is the whole point of the link, so it sits
+  // on the face, not only in the accessible name — and it reads as one
+  // sentence ending in the logo rather than as a price tag parked beside it.
+  const sevenmero = (
+    <LiquidGlass padding="0" cornerRadius={17} elasticity={0} className="cta-glass">
+      <a
+        href={SEVENMERO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={t.sevenmeroLabel}
+        className="cta-face cta-face-sevenmero"
+      >
+        {/* The line runs into the lockup beside it: "site €399 in one
+            7μερο". "Site" over "website"/"ιστοσελίδα" is what buys the
+            width to keep the whole sentence on one line. */}
+        <span className="cta-price">{t.sevenmeroPrice}</span>
+        <SevenmeroMark />
+      </a>
+    </LiquidGlass>
+  );
+
+  // Co-funding badge. The artwork is reproduced unaltered — it is a
+  // compliance mark, not a logo to restyle — so the glass is the frame
+  // around it and the white plate keeps its own edge off the rim.
+  const espa = (
+    <LiquidGlass padding="0" cornerRadius={17} elasticity={0} className="cta-glass">
+      <Link href={`/${lang}/espa`} aria-label={t.espaLabel} className="cta-face cta-face-espa">
+        <span className="espa-plate">
+          <img
+            src="/espa-2021-2027.webp"
+            alt="ΕΣΠΑ 2021-2027"
+            loading="lazy"
+            decoding="async"
+            width={977}
+            height={591}
+          />
+        </span>
+      </Link>
+    </LiquidGlass>
+  );
+
+  if (layout === "row") {
+    return (
+      <div className="cta-set cta-set-row">
+        <div className="cta-set-row-left">
+          {primary}
+          {sevenmero}
+        </div>
+        {espa}
+      </div>
+    );
+  }
 
   return (
-    <div className={`cta-set ${layout === "row" ? "cta-set-row" : "cta-set-stack"}`}>
-      {/* Primary. Accent-tinted glass rather than the solid accent fill of
-          .cta-button elsewhere: a solid fill is opaque, so it hides the very
-          blur and rim that makes the other two read as glass. The label stays
-          --paper, which clears AA against the tint over ink by a wide margin
-          (~9:1), so going translucent costs no contrast. */}
-      <LiquidGlass
-        elasticity={0.12}
-        padding="0"
-        cornerRadius={17}
-        className="cta-glass cta-glass-primary"
-      >
-        <Link href={`/${lang}/request`} className="cta-face cta-face-primary">
-          <span className="cta-face-label">
-            {layout === "row" ? (
-              <>
-                {quoteLine1}
-                <br />
-                {quoteLine2}
-              </>
-            ) : (
-              t.quote
-            )}
-          </span>
-          <span className="arrow-icon cta-face-arrow">
-            <Icon name="arrow" size={13} />
-          </span>
-        </Link>
-      </LiquidGlass>
-
-      {/* The fixed-price route, for a small business that would otherwise
-          stall on a custom quote. The price is the whole point of the link,
-          so it sits on the face, not only in the accessible name — and it
-          reads as one sentence ending in the logo rather than as a price
-          tag parked beside it. */}
-      <LiquidGlass padding="0" cornerRadius={17} elasticity={0} className="cta-glass">
-        <a
-          href={SEVENMERO_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={t.sevenmeroLabel}
-          className="cta-face cta-face-sevenmero"
-        >
-          {/* The line runs into the lockup beside it: "site €399 in one
-              7μερο". "Site" over "website"/"ιστοσελίδα" is what buys the
-              width to keep the whole sentence on one line. */}
-          <span className="cta-price">{t.sevenmeroPrice}</span>
-          <SevenmeroMark />
-        </a>
-      </LiquidGlass>
-
-      {/* Co-funding badge. The artwork is reproduced unaltered — it is a
-          compliance mark, not a logo to restyle — so the glass is the frame
-          around it and the white plate keeps its own edge off the rim. */}
-      <LiquidGlass padding="0" cornerRadius={17} elasticity={0} className="cta-glass">
-        <Link href={`/${lang}/espa`} aria-label={t.espaLabel} className="cta-face cta-face-espa">
-          <span className="espa-plate">
-            <img
-              src="/espa-2021-2027.webp"
-              alt="ΕΣΠΑ 2021-2027"
-              loading="lazy"
-              decoding="async"
-              width={977}
-              height={591}
-            />
-          </span>
-        </Link>
-      </LiquidGlass>
+    <div className="cta-set cta-set-stack">
+      {primary}
+      {sevenmero}
+      {espa}
     </div>
   );
 }

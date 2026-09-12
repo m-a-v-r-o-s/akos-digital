@@ -517,18 +517,39 @@ a:hover .arrow-icon {
   max-width: 100%;
 }
 
-/* Mobile: three equal columns. Stretched to one height rather than left to
-   their own, because at a third of a 360px phone the ΕΣΠΑ badge is only
-   ~50px tall, and a short third column beside two tall ones reads as a bug
-   rather than as a deliberately taller badge. */
+/* Mobile: quote + 7μερο stacked in a narrow left column, in the same
+   single-line pill shape as the desktop stack (just narrower), with ΕΣΠΑ
+   beside them. --cta-espa-w is picked so the badge's own aspect ratio lands
+   it at roughly the stack's combined height, rather than stretching the
+   plate to an arbitrary box: the badge follows the stack's height, not the
+   other way round. */
 .cta-set-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
   align-items: stretch;
   gap: 10px;
-  --cta-pill-h: 78px;
-  --cta-espa-w: 100%;
-  --cta-espa-pad: 8px;
+  --cta-espa-w: 116px;
+}
+@media (min-height: 850px) {
+  .cta-set-row {
+    --cta-espa-w: 157px;
+  }
+}
+.cta-set-row-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--cta-gap);
+  flex: 1 1 0;
+  min-width: 0;
+}
+/* Locked to its content width (the plate at --cta-espa-w) rather than
+   growing or shrinking with the row, and stretched to match the left
+   column's height, which is usually the taller of the two. */
+.cta-set-row > .cta-glass {
+  flex: none;
+}
+.cta-set-row .cta-face-espa {
+  height: 100%;
 }
 
 /* Short laptops get a tighter identity rhythm, for the same reason the CTA
@@ -581,13 +602,6 @@ a:hover .arrow-icon {
   outline: 2px solid rgb(var(--accent-light-rgb));
   outline-offset: -3px;
 }
-.cta-set-row .cta-glass {
-  min-height: var(--cta-pill-h);
-}
-.cta-set-row .cta-face {
-  height: 100%;
-}
-
 /* Primary. Accent-tinted glass instead of the solid accent fill that
    .cta-button uses elsewhere: a solid fill is opaque, and it would hide the
    blur and rim that make the other two read as glass. The label is --paper,
@@ -628,9 +642,7 @@ a:hover .arrow-icon {
 /* 7μερο. The price is the reason to click, so it sits on the face rather
    than only in the accessible name — and it runs straight into the lockup
    as one sentence ("Site 399€ σε ένα 7μερο"), on one line, which only fits
-   because the opener says "Site" rather than "Ιστοσελίδα"/"website". The
-   three-column row on a phone is the one place it cannot: ~98px a card
-   stacks the two halves instead (.cta-set-row below). */
+   because the opener says "Site" rather than "Ιστοσελίδα"/"website". */
 .cta-face-sevenmero {
   align-items: center;
   justify-content: center;
@@ -691,6 +703,23 @@ a:hover .arrow-icon {
     font-size: 0.9375rem;
   }
 }
+/* The mobile left column is narrower than a full desktop pill, so the
+   sentence needs a little less room than at 264-280px: tighter padding and
+   gaps first, a slightly smaller price/wordmark only if that alone doesn't
+   clear it. */
+.cta-set-row .cta-face-sevenmero {
+  padding: 0 6px;
+  gap: 4px;
+}
+.cta-set-row .sevenmero-lockup {
+  gap: 4px;
+}
+.cta-set-row .cta-price {
+  font-size: 0.5625rem;
+}
+.cta-set-row .sevenmero-word {
+  font-size: 0.8125rem;
+}
 
 /* ΕΣΠΑ. The artwork is a co-funding compliance mark and is reproduced
    unaltered, so the glass is the frame around it; the white plate keeps the
@@ -715,51 +744,6 @@ a:hover .arrow-icon {
   display: block;
   width: 100%;
   height: auto;
-}
-
-/* Three columns at 360px leaves ~98px a card: the lockup goes vertical and
-   drops the .com, which is the only part of it that is not load bearing. */
-.cta-set-row .cta-face-primary {
-  justify-content: center;
-  text-align: center;
-  padding: 0 6px;
-  gap: 6px;
-}
-.cta-set-row .cta-face-label {
-  font-size: 0.5625rem;
-  letter-spacing: 0.06em;
-}
-/* Sat beside the label as one centered group, same as the desktop face.
-   Safe now that the label is a deliberate two-line break rather than a
-   wrap that could land the arrow after any word. */
-.cta-set-row .cta-face-arrow {
-  flex: none;
-}
-.cta-set-row .cta-face-sevenmero {
-  flex-direction: column;
-  gap: 5px;
-  padding: 6px;
-}
-.cta-set-row .sevenmero-tile {
-  width: 20px;
-  height: 20px;
-}
-.cta-set-row .sevenmero-word {
-  font-size: 0.8125rem;
-}
-/* Stretched to the same width as .cta-price above it, ".ai" included, so the
-   two lines read as one deliberate block instead of a wide line over a
-   narrower, off-center one. */
-.cta-set-row .sevenmero-lockup {
-  width: 100%;
-  justify-content: center;
-}
-/* ~98px a column at 360px, so the opener is a size smaller here. It stays on
-   one line in both languages ("Site", not "website"/"ιστοσελίδα"): a wrapped
-   opener pushes the lockup off the bottom of a stretched row card. */
-.cta-set-row .cta-price {
-  font-size: 0.5rem;
-  text-align: center;
 }
 
 /* ── Liquid glass (LiquidGlass.tsx) ──

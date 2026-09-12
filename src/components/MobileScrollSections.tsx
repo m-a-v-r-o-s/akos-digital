@@ -119,14 +119,14 @@ export default function MobileScrollSections() {
               className="text-stone hover:text-accent-light transition-colors"
             >
               <Icon
-                name={s.icon as "linkedin" | "github" | "behance" | "email" | "phone" | "whatsapp" | "telegram" | "instagram"}
+                name={s.icon as "linkedin" | "github" | "behance" | "partnely" | "email" | "phone" | "whatsapp" | "telegram" | "instagram"}
                 size={17}
               />
             </a>
           ))}
         </div>
 
-        {/* Three across, one height — see CtaStack.tsx. */}
+        {/* Quote + 7μερο stacked left, ΕΣΠΑ beside them — see CtaStack.tsx. */}
         <div className="mt-7">
           <CtaStack layout="row" />
         </div>
