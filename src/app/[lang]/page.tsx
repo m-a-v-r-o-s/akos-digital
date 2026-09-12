@@ -141,7 +141,7 @@ export default function Home() {
           </aside>
 
           {/* ── RIGHT COLUMN — scrollable on desktop ── */}
-          <main className="hidden lg:block flex-1 py-20 space-y-32">
+          <main className="hidden lg:block flex-1 pt-20 pb-6 space-y-32">
             {/* PROJECTS */}
             <section id="projects">
               <h3 className="section-heading">
