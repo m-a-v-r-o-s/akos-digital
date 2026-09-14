@@ -430,7 +430,7 @@ body {
 
 /* ── Section heading ── */
 .section-heading {
-  @apply sticky top-0 z-10 mb-6 py-3 text-xs font-mono uppercase tracking-widest;
+  @apply mb-6 py-3 text-xs font-mono uppercase tracking-widest;
   color: var(--stone-light);
 }
 
@@ -475,6 +475,26 @@ a:hover .arrow-icon {
   background: rgb(var(--accent-light-rgb));
   border-color: rgb(var(--accent-light-rgb));
   box-shadow: 0 6px 24px rgb(var(--accent-rgb) / 0.22);
+}
+
+/* Modifier: the sidebar's primary "Request a Quote" build (CtaStack.tsx
+   .cta-face-primary) — accent-tinted glass instead of an opaque fill, so the
+   LiquidGlass blur/rim it already sits inside actually shows through. Layered
+   onto .cta-button rather than a parallel class, so shape/padding/font stay
+   identical; only fill, ring and label colour change. Used on every "Request
+   a quote" / "view the live site" CTA outside the sidebar itself. */
+.cta-button-glass {
+  background: rgb(var(--accent-rgb) / 0.32);
+  border-color: rgb(var(--accent-rgb) / 0.5);
+  color: var(--paper);
+}
+.cta-button-glass:hover {
+  background: rgb(var(--accent-rgb) / 0.46);
+  border-color: rgb(var(--accent-rgb) / 0.55);
+  box-shadow: 0 8px 28px rgb(var(--accent-rgb) / 0.18);
+}
+.cta-button-glass .arrow-icon {
+  color: rgb(var(--accent-light-rgb));
 }
 
 /* ── The sidebar CTA set (CtaStack.tsx): quote / 7μερο / ΕΣΠΑ ──────────
@@ -692,7 +712,10 @@ a:hover .arrow-icon {
   line-height: 1;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: rgb(var(--accent-light-rgb));
+  /* Fixed white, not --accent-light: the price line reads on the sevenmero
+     glass regardless of which accent theme is active, so it must not shift
+     color with the switcher the way the rest of this set does. */
+  color: #fff;
   white-space: nowrap;
 }
 @media (min-height: 850px) {

@@ -99,7 +99,7 @@ export default function CtaStack({ layout }: { layout: "stack" | "row" }) {
   // on the face, not only in the accessible name — and it reads as one
   // sentence ending in the logo rather than as a price tag parked beside it.
   const sevenmero = (
-    <LiquidGlass padding="0" cornerRadius={17} elasticity={0} className="cta-glass">
+    <LiquidGlass elasticity={0.12} padding="0" cornerRadius={17} className="cta-glass cta-glass-primary">
       <a
         href={SEVENMERO_URL}
         target="_blank"

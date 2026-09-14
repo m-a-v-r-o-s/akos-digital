@@ -111,7 +111,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
                     href={cs.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cta-button inline-flex"
+                    className="cta-button cta-button-glass inline-flex"
                   >
                     {t.visit}
                     <span className="arrow-icon">
@@ -229,7 +229,7 @@ export default function CaseStudyDetail({ slug }: { slug: string }) {
               </h2>
               <p className="text-sm text-stone leading-relaxed mb-6 max-w-xl">{t.ctaBody}</p>
               <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
-                <Link href={`/${lang}/request`} className="cta-button inline-flex">
+                <Link href={`/${lang}/request`} className="cta-button cta-button-glass inline-flex">
                   {t.cta}
                   <span className="arrow-icon">
                     <Icon name="arrow" size={13} />

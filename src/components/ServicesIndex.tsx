@@ -134,7 +134,7 @@ export default function ServicesIndex() {
               </h2>
               <p className="text-sm text-stone leading-relaxed mb-6 max-w-xl">{t.ctaBody}</p>
               <LiquidGlass elasticity={0.12} padding="0" className="inline-block">
-                <Link href={`/${lang}/request`} className="cta-button inline-flex">
+                <Link href={`/${lang}/request`} className="cta-button cta-button-glass inline-flex">
                   {t.cta}
                   <span className="arrow-icon">
                     <Icon name="arrow" size={13} />
