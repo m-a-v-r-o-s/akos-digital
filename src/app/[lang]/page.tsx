@@ -128,7 +128,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-stone hover:text-accent-light transition-colors duration-200"
                 >
-                  <Icon name={s.icon as "linkedin" | "github" | "behance" | "email" | "phone" | "whatsapp" | "telegram" | "instagram"} size={18} />
+                  <Icon name={s.icon as "linkedin" | "github" | "behance" | "partnely" | "email" | "phone" | "whatsapp" | "telegram" | "instagram"} size={18} />
                 </a>
               ))}
               <span className="ml-2 text-xs font-mono text-stone-dark tracking-wider">

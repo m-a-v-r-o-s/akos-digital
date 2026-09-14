@@ -1,4 +1,4 @@
-type IconName = "linkedin" | "github" | "behance" | "email" | "phone" | "whatsapp" | "telegram" | "instagram" | "arrow";
+type IconName = "linkedin" | "github" | "behance" | "partnely" | "email" | "phone" | "whatsapp" | "telegram" | "instagram" | "arrow";
 
 export function Icon({
   name,
@@ -25,6 +25,14 @@ export function Icon({
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
           <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.726zm-7.726-3h3.543c-.139-1.327-1.021-2-1.77-2-.77 0-1.637.578-1.773 2zM10.516 14c-.073 2.645-2.153 3.308-3.975 3.308H0V5.75h6.203c1.689 0 3.157.886 3.157 2.861 0 1.06-.43 1.962-1.208 2.485C9.123 11.55 10.551 12.294 10.516 14zm-7.018-2.57h2.523c.802 0 1.479-.263 1.479-1.165 0-.803-.677-1.166-1.479-1.166H3.498v2.331zm0 3.831h2.762c.846 0 1.604-.336 1.604-1.298 0-.926-.758-1.298-1.604-1.298H3.498v2.596z" />
+        </svg>
+      );
+    case "partnely":
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6.4" y="3" width="3.4" height="18" rx="1.7" />
+          <path d="M9.8 4.5a5.5 5.5 0 1 1 0 10.6" fill="none" stroke="currentColor" strokeWidth="3.4" />
+          <rect x="15.4" y="16.6" width="4" height="4" rx="1.4" />
         </svg>
       );
     case "email":

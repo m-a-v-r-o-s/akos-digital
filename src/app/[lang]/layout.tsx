@@ -36,6 +36,7 @@ const jsonLd = {
       sameAs: [
         "https://github.com/m-a-v-r-o-s",
         "https://www.behance.net/akosdigital",
+        "https://partnely.com/partners/theodoros-mayros-akos-digital-services",
         "https://www.instagram.com/akosdigitalservices",
       ],
       makesOffer: services.map((s) => ({
@@ -61,6 +62,7 @@ const jsonLd = {
       sameAs: [
         "https://github.com/m-a-v-r-o-s",
         "https://www.behance.net/akosdigital",
+        "https://partnely.com/partners/theodoros-mayros-akos-digital-services",
         "https://www.instagram.com/akosdigitalservices",
       ],
     },
