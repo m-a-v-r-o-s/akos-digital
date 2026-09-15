@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Playfair_Display, DM_Sans, DM_Mono } from "next/font/google";
+import { Playfair_Display, DM_Sans, DM_Mono, Noto_Sans_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/LanguageContext";
 import { LANGS, isLang } from "@/lib/i18n";
 import KeyboardAwareFocus from "@/components/KeyboardAwareFocus";
@@ -119,11 +119,27 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500"],
 });
 
+/*
+ * DM Mono has no Greek glyphs. Its generated fallback face is local(Arial)
+ * at size-adjust 134%, so on any device that has Arial (every iPhone) Greek
+ * mono text rendered as oversized Arial and wrapped the CTA pills. Noto Sans
+ * Mono's Greek subset fills in those glyphs.
+ *
+ * --font-mono is assembled here rather than via `variable`, because the
+ * stack has to skip DM Mono's Arial fallback (adjustFontFallback: false is
+ * ignored by this Next/Turbopack version): "DM Mono", "Noto Sans Mono",
+ * "Noto Sans Mono Fallback".
+ */
 const dmMono = DM_Mono({
-  variable: "--font-mono",
   subsets: ["latin"],
   weight: ["300", "400"],
 });
+
+const greekMono = Noto_Sans_Mono({
+  subsets: ["greek"],
+});
+
+const monoStack = `${dmMono.style.fontFamily.split(",")[0]}, ${greekMono.style.fontFamily}`;
 
 export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }));
@@ -191,7 +207,8 @@ export default async function LangLayout({
         <style dangerouslySetInnerHTML={{ __html: accentCss }} />
       </head>
       <body
-        className={`${playfair.variable} ${dmSans.variable} ${dmMono.variable} antialiased`}
+        className={`${playfair.variable} ${dmSans.variable} antialiased`}
+        style={{ "--font-mono": monoStack } as React.CSSProperties}
       >
         <script dangerouslySetInnerHTML={{ __html: accentBoot }} />
         <script

@@ -743,6 +743,16 @@ a:hover .arrow-icon {
 .cta-set-row .sevenmero-word {
   font-size: 0.8125rem;
 }
+/* ~181px column at 375px wide: desktop's 12px/0.1em label wraps to two
+   lines there. This keeps "Ζητήστε Προσφορά" on one line; a narrower phone
+   still wraps rather than clipping. */
+.cta-set-row .cta-face-primary {
+  padding: 0 14px;
+}
+.cta-set-row .cta-face-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+}
 
 /* ΕΣΠΑ. The artwork is a co-funding compliance mark and is reproduced
    unaltered, so the glass is the frame around it; the white plate keeps the
