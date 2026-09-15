@@ -12,11 +12,11 @@ const LEGACY_PATHS = [
 ];
 
 const nextConfig = {
-  // The 7μερο offer is a static Astro build copied into public/7mero (see that
+  // The 7μερο offer is a static Astro build copied into public/7mero.ai (see that
   // repo's `npm run deploy`). Next serves files from public/ by exact path, so
-  // the directory index needs saying out loud, otherwise /7mero is a 404.
+  // the directory index needs saying out loud, otherwise /7mero.ai is a 404.
   async rewrites() {
-    return [{ source: "/7mero", destination: "/7mero/index.html" }];
+    return [{ source: "/7mero.ai", destination: "/7mero.ai/index.html" }];
   },
   async redirects() {
     return [
@@ -25,6 +25,13 @@ const nextConfig = {
         source: "/:path*",
         has: [{ type: "host", value: "akosds.com" }],
         destination: "https://www.akosds.com/:path*",
+        permanent: true,
+      },
+      // The offer moved from /7mero to /7mero.ai. :path* also matches the
+      // bare /7mero, so old links and the indexed URL keep their history.
+      {
+        source: "/7mero/:path*",
+        destination: "/7mero.ai/:path*",
         permanent: true,
       },
       // Bare root to the default locale. Greece is the primary market, so

@@ -16,7 +16,7 @@ const SOURCES = ["request-wizard", "espa-assessment", "7mero-order"] as const;
 /**
  * Origins allowed to POST here cross-site.
  *
- * 7μερο is currently served from this same origin at /7mero, so its order form
+ * 7μερο is currently served from this same origin at /7mero.ai, so its order form
  * needs none of this: a same-origin POST sends no Origin the list has to match.
  * The punycode hosts stay for the day it moves to its own domain, since that is
  * a static Astro build with no server and would still post here rather than

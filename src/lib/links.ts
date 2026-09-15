@@ -20,10 +20,10 @@ export const externalProps = (href: string) =>
  * The sister site: the fixed-price, 7-day small-business offer.
  *
  * It has no domain of its own for now, so it is served from this site: its
- * Astro build is copied into public/7mero and a rewrite in next.config.mjs
- * maps /7mero to that directory's index.html.
+ * Astro build is copied into public/7mero.ai and a rewrite in next.config.mjs
+ * maps /7mero.ai to that directory's index.html.
  *
  * Still the one line to change if it graduates to 7μερο.ai (punycode
  * xn--7-7lbunj.ai), together with the `base`/`site` in the sister repo.
  */
-export const SEVENMERO_URL = "/7mero";
+export const SEVENMERO_URL = "/7mero.ai";
