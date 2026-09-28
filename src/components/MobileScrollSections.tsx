@@ -195,6 +195,16 @@ export default function MobileScrollSections() {
                     variant="mobile"
                   />
                   <div className="flex-1 min-w-0">
+                    {proj.logo && (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={proj.logo}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        className="client-logo client-logo-sm mb-2"
+                      />
+                    )}
                     <div className="flex items-start justify-between gap-2 mb-1">
                       <h4 className="font-display font-semibold text-paper text-sm leading-snug">
                         {proj.title}
@@ -225,15 +235,6 @@ export default function MobileScrollSections() {
               </li>
             ))}
           </ul>
-          <Link
-            href={`/${lang}/work`}
-            className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-accent"
-          >
-            {lang === "en" ? "All case studies" : "Όλες οι μελέτες"}
-            <span className="arrow-icon">
-              <Icon name="arrow" size={11} />
-            </span>
-          </Link>
         </div>
 
         {/* ── Panel: Sectors ── */}

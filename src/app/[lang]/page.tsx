@@ -24,7 +24,6 @@ const ui = {
     explore: "Explore",
     education: "Education",
     projects: "Selected Works",
-    allWork: "All case studies",
     fullCV: "Full CV",
     terms: "Terms",
     privacy: "Privacy",
@@ -39,7 +38,6 @@ const ui = {
     explore: "Περισσότερα",
     education: "Εκπαίδευση",
     projects: "Επιλεγμένα Έργα",
-    allWork: "Όλες οι μελέτες",
     fullCV: "Πλήρες Βιογραφικό",
     terms: "Όροι",
     privacy: "Απόρρητο",
@@ -172,6 +170,16 @@ export default function Home() {
                         title={proj.title}
                       />
                       <div className="flex-1 min-w-0">
+                        {proj.logo && (
+                          /* eslint-disable-next-line @next/next/no-img-element */
+                          <img
+                            src={proj.logo}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                            className="client-logo client-logo-sm mb-2"
+                          />
+                        )}
                         <div className="flex items-start justify-between gap-2 mb-1">
                           <h4 className="font-display font-semibold text-paper text-sm group-hover:text-accent-light transition-colors leading-snug">
                             {proj.title}
@@ -202,15 +210,6 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href={`/${lang}/work`}
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-accent hover:text-accent-light transition-colors"
-              >
-                {t.allWork}
-                <span className="arrow-icon">
-                  <Icon name="arrow" size={11} />
-                </span>
-              </Link>
             </section>
 
             {/* SECTORS */}

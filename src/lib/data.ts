@@ -99,6 +99,8 @@ export type Project = {
    * site, so both routes stay reachable from one card.
    */
   caseStudy?: string;
+  /** The client's mark, same file as its case study's logo. */
+  logo?: string;
   links: ProjectLink[];
   year: string;
 };
@@ -116,6 +118,7 @@ export const projects: Project[] = [
     sector: "rentacar",
     status: { en: "In development", el: "Σε εξέλιξη" } as BL,
     caseStudy: "/work/international-rentals",
+    logo: "/logos/international.webp",
     links: [{ label: "Case study", href: "/work/international-rentals" }],
     year: "",
   },
@@ -235,7 +238,8 @@ export const projects: Project[] = [
     imageMobile: "/projects/mastichari-mobile.webp",
     sector: "health",
     caseStudy: "/work/mastichari-massage",
-    links: [{ label: "Live Site", href: "https://www.mastichari-massage.gr/" }],
+    logo: "/logos/mastichari.webp",
+    links: [{ label: "Live Site", href: "https://www.mastichari-massage.gr/" }, { label: "Case study", href: "/work/mastichari-massage" }],
     year: "",
   },
   {
@@ -249,7 +253,8 @@ export const projects: Project[] = [
     imageMobile: "/projects/trf-mobile.webp",
     sector: "artists",
     caseStudy: "/work/those-rambling-fools",
-    links: [{ label: "Live Site", href: "https://thoseramblingfools.com/" }],
+    logo: "/logos/trf.webp",
+    links: [{ label: "Live Site", href: "https://thoseramblingfools.com/" }, { label: "Case study", href: "/work/those-rambling-fools" }],
     year: "",
   },
   {
@@ -263,7 +268,8 @@ export const projects: Project[] = [
     imageMobile: "/projects/ellietattooer-mobile.webp",
     sector: "artists",
     caseStudy: "/work/ellie-tattooer",
-    links: [{ label: "Live Site", href: "https://ellietattooer.com/" }],
+    logo: "/logos/ellietattooer.webp",
+    links: [{ label: "Live Site", href: "https://ellietattooer.com/" }, { label: "Case study", href: "/work/ellie-tattooer" }],
     year: "",
   },
   {
@@ -277,7 +283,8 @@ export const projects: Project[] = [
     imageMobile: "/projects/blessed-mobile.webp",
     sector: "food",
     caseStudy: "/work/blessed-coffee",
-    links: [{ label: "Live Site", href: "https://blessed.cafe/" }],
+    logo: "/logos/blessed.webp",
+    links: [{ label: "Live Site", href: "https://blessed.cafe/" }, { label: "Case study", href: "/work/blessed-coffee" }],
     year: "",
   },
 ];

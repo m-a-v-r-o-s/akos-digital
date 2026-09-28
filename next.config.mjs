@@ -38,6 +38,14 @@ const nextConfig = {
       // Greek is the default rather than negotiating on Accept-Language,
       // which would make the entry page uncacheable and vary per visitor.
       { source: "/", destination: "/el", permanent: true },
+      // The work index merged into the homepage's projects list. The old URL
+      // was sent to clients, so it lands on that section instead of a 404.
+      // Case studies under /work/:slug are untouched.
+      {
+        source: "/:lang(el|en)/work",
+        destination: "/:lang#projects",
+        permanent: true,
+      },
       ...LEGACY_PATHS.map((source) => ({
         source,
         destination: `/el${source}`,

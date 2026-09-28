@@ -304,6 +304,13 @@ body {
   max-width: 13rem;
 }
 
+/* The compact size for the homepage project cards, where the mark sits over a
+   small title rather than heading a page. */
+.client-logo-sm {
+  height: 2rem;
+  max-width: 7rem;
+}
+
 /* ── Code block ──
    Used where the mechanism is the claim, so the reader can check it rather
    than take the sentence on trust. Scrolls on its own at phone width instead

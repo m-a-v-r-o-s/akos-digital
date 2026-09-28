@@ -90,7 +90,7 @@ export default function InternationalDetail() {
         <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
           <header className="flex items-center justify-between py-8">
             <Link
-              href={`/${lang}/work`}
+              href={`/${lang}#projects`}
               className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.2em] uppercase text-accent hover:text-accent-light transition-colors"
             >
               <span className="ornament">←</span>

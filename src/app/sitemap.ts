@@ -9,7 +9,6 @@ const PATHS: { path: string; priority: number; changeFrequency: "weekly" | "mont
   { path: "/request", priority: 0.9, changeFrequency: "monthly" },
   { path: "/espa", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/work", priority: 0.8, changeFrequency: "monthly" },
   ...caseStudies.map((c) => ({
     path: `/work/${c.slug}`,
     priority: 0.7,
