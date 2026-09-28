@@ -225,6 +225,20 @@ export const projects: Project[] = [
     year: "",
   },
   {
+    title: "Mastichari Massage",
+    description: {
+      en: "Website for a certified massage therapist in Mastichari, Kos, delivered as a 7μερο package. 171 pages in 10 languages for a clientele of tourists, one-tap WhatsApp booking, and SEO built in from day one: sitemap, Search Console and structured data.",
+      el: "Ιστοσελίδα για πιστοποιημένο θεραπευτή μασάζ στο Μαστιχάρι της Κω, παραδομένη ως πακέτο 7μερο. 171 σελίδες σε 10 γλώσσες για πελατεία τουριστών, κράτηση με ένα πάτημα στο WhatsApp, και SEO από την πρώτη μέρα: sitemap, Search Console και δομημένα δεδομένα.",
+    } as BL,
+    tags: ["Eleventy", "JavaScript", "10 languages", "Schema.org", "7μερο"],
+    image: "/projects/mastichari.webp",
+    imageMobile: "/projects/mastichari-mobile.webp",
+    sector: "health",
+    caseStudy: "/work/mastichari-massage",
+    links: [{ label: "Live Site", href: "https://www.mastichari-massage.gr/" }],
+    year: "",
+  },
+  {
     title: "Those Rambling Fools Band",
     description: {
       en: "Web app featuring a working vinyl record player, highly interactive and stylized to the bands aesthetic and vision.",
@@ -1196,7 +1210,7 @@ export const servicePages = [
 ];
 
 /**
- * Case studies for the three live client sites. Deliberately no invented
+ * Case studies for the live client sites. Deliberately no invented
  * business metrics: every claim here is something verifiable by opening the
  * site or reading its HTML, because a fabricated conversion figure is worth
  * less than nothing the moment a prospect checks it.
@@ -1363,6 +1377,64 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Next.js", "TypeScript", "Tailwind", "E-commerce", "Schema.org"],
     image: "/projects/ellietattooer.webp",
     imageMobile: "/projects/ellietattooer-mobile.webp",
+  },
+  {
+    slug: "mastichari-massage",
+    client: "Mastichari Massage",
+    projectTitle: "Mastichari Massage",
+    seoTitle: {
+      en: "Mastichari Massage, 10-Language Website",
+      el: "Mastichari Massage, Site σε 10 Γλώσσες",
+    } as BL,
+    title: {
+      en: "A massage studio that speaks ten languages",
+      el: "Ένα στούντιο μασάζ που μιλάει δέκα γλώσσες",
+    } as BL,
+    sector: "health",
+    service: "websites",
+    live: "https://www.mastichari-massage.gr/",
+    summary: {
+      en: "Konstantinos Fessaras has been a certified massage therapist in Mastichari, Kos, since 2011. Most of his clients are tourists from across Europe, so the site had to meet them in their own language. Delivered as a 7μερο package.",
+      el: "Ο Κωνσταντίνος Φεσσάρας είναι πιστοποιημένος θεραπευτής μασάζ στο Μαστιχάρι της Κω από το 2011. Οι περισσότεροι πελάτες του είναι τουρίστες από όλη την Ευρώπη, οπότε το site έπρεπε να τους συναντά στη γλώσσα τους. Παραδόθηκε ως πακέτο 7μερο.",
+    } as BL,
+    challenge: {
+      en: "A tourist looking for a massage on Kos searches in German, Italian or Russian, often from a phone on the beach, and books with whoever answers first. The old WordPress site was Greek-first, its reviews were scattered, and years of inbound links pointed at URLs that were about to disappear. The business also works on request rather than on a price list, so nothing could quote a price.",
+      el: "Ένας τουρίστας που ψάχνει μασάζ στην Κω ψάχνει στα γερμανικά, στα ιταλικά ή στα ρωσικά, συχνά από το κινητό στην παραλία, και κλείνει με όποιον απαντήσει πρώτος. Το παλιό site σε WordPress ήταν πρώτα ελληνικό, οι κριτικές του ήταν σκόρπιες, και χρόνια εισερχόμενων συνδέσμων έδειχναν σε URL που θα εξαφανίζονταν. Επιπλέον η επιχείρηση δουλεύει κατόπιν επικοινωνίας και όχι με τιμοκατάλογο, οπότε τίποτα δεν έπρεπε να αναφέρει τιμή.",
+    } as BL,
+    approach: {
+      en: [
+        "Real locale routing, /en/, /de/, /ru/ and seven more, with a full hreflang cluster and x-default on every page, so Google sends a German visitor to the German page.",
+        "A hand-written title and description for every page in every language, 144 pairs, each within search result limits, rather than one machine-translated template.",
+        "A fixed WhatsApp and call bar at the bottom of every page on mobile. No booking form, so nothing to fill in and nothing to spam.",
+        "HealthAndBeautyBusiness, Person, Service and FAQPage schema, with his certificates listed by their real dates and protocol numbers, read off the scans. The Person's knowsLanguage lists only the six languages he actually speaks, not the ten the site is written in.",
+        "41 client comments in 7 languages recovered from the old site and kept in the language they were written in, each marked with its own lang attribute for screen readers.",
+        "A 301 map for every legacy URL, so old inbound links land on the right new page instead of a 404.",
+      ],
+      el: [
+        "Πραγματικό locale routing, /en/, /de/, /ru/ και άλλες επτά, με πλήρες σύνολο hreflang και x-default σε κάθε σελίδα, ώστε η Google να στέλνει τον Γερμανό επισκέπτη στη γερμανική σελίδα.",
+        "Τίτλος και περιγραφή γραμμένα με το χέρι για κάθε σελίδα σε κάθε γλώσσα, 144 ζεύγη, όλα μέσα στα όρια των αποτελεσμάτων αναζήτησης, αντί για ένα μηχανικά μεταφρασμένο template.",
+        "Σταθερή μπάρα WhatsApp και κλήσης στο κάτω μέρος κάθε σελίδας στο κινητό. Καμία φόρμα κράτησης, οπότε τίποτα για συμπλήρωση και τίποτα για spam.",
+        "Schema HealthAndBeautyBusiness, Person, Service και FAQPage, με τα πιστοποιητικά του καταχωρημένα με τις πραγματικές ημερομηνίες και αριθμούς πρωτοκόλλου, όπως διαβάζονται στα σαρωμένα έγγραφα. Το knowsLanguage του Person αναφέρει μόνο τις έξι γλώσσες που μιλάει πραγματικά, όχι τις δέκα στις οποίες είναι γραμμένο το site.",
+        "41 σχόλια πελατών σε 7 γλώσσες ανακτήθηκαν από το παλιό site και μένουν στη γλώσσα που γράφτηκαν, το καθένα με το δικό του lang attribute για τους αναγνώστες οθόνης.",
+        "Χάρτης ανακατευθύνσεων 301 για κάθε παλιό URL, ώστε οι παλιοί εισερχόμενοι σύνδεσμοι να καταλήγουν στη σωστή νέα σελίδα αντί για 404.",
+      ],
+    } as BLA,
+    outcome: {
+      en: [
+        "Sitemap, robots.txt and a verified Search Console property from launch, with AI crawlers explicitly welcome in robots.txt.",
+        "Static HTML with no framework: Lighthouse mobile shows CLS 0, TBT 0ms on the home page and a 1.9s LCP on the contact page.",
+        "The site links back here without a nofollow.",
+      ],
+      el: [
+        "Sitemap, robots.txt και επαληθευμένο Search Console από την πρώτη μέρα, με τους AI crawlers ρητά ευπρόσδεκτους στο robots.txt.",
+        "Στατικό HTML χωρίς framework: το Lighthouse στο κινητό δείχνει CLS 0, TBT 0ms στην αρχική και LCP 1,9s στη σελίδα επικοινωνίας.",
+        "Το site συνδέει πίσω σε εμάς χωρίς nofollow.",
+      ],
+    } as BLA,
+    logo: "/logos/mastichari.webp",
+    stack: ["Eleventy", "Fastify", "JavaScript", "10 languages", "Schema.org"],
+    image: "/projects/mastichari.webp",
+    imageMobile: "/projects/mastichari-mobile.webp",
   },
   {
     slug: "those-rambling-fools",
