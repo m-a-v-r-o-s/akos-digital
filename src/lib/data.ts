@@ -143,7 +143,7 @@ export const projects: Project[] = [
       en: "Website for a certified massage therapist in Mastichari, Kos, delivered as a 7μερο package. 171 pages in 10 languages for a clientele of tourists, one-tap WhatsApp booking, and SEO built in from day one: sitemap, Search Console and structured data.",
       el: "Ιστοσελίδα για πιστοποιημένο θεραπευτή μασάζ στο Μαστιχάρι της Κω, παραδομένη ως πακέτο 7μερο. 171 σελίδες σε 10 γλώσσες για πελατεία τουριστών, κράτηση με ένα πάτημα στο WhatsApp, και SEO από την πρώτη μέρα: sitemap, Search Console και δομημένα δεδομένα.",
     } as BL,
-    tags: ["Eleventy", "JavaScript", "10 languages", "Schema.org", "7μερο"],
+    tags: ["Eleventy", "JavaScript", "10 languages", "Schema.org", "7μερο.ai"],
     image: "/projects/mastichari.webp",
     imageMobile: "/projects/mastichari-mobile.webp",
     sector: "health",
