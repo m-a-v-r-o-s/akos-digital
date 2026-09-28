@@ -1372,12 +1372,10 @@ export const caseStudies: CaseStudy[] = [
       en: [
         "The portfolio lives on a domain she owns, so no platform decides who sees it.",
         "The page title targets what a customer actually searches, the style and the city, rather than only the artist's name.",
-        "The site links back here without a nofollow, which is how a small studio's reputation compounds honestly.",
       ],
       el: [
         "Το portfolio ζει σε domain που της ανήκει, οπότε καμία πλατφόρμα δεν αποφασίζει ποιος το βλέπει.",
         "Ο τίτλος της σελίδας στοχεύει σε αυτό που όντως αναζητά ένας πελάτης, το στιλ και την πόλη, και όχι μόνο στο όνομα της καλλιτέχνιδας.",
-        "Το site συνδέει πίσω σε εμάς χωρίς nofollow, που είναι ο τίμιος τρόπος να χτίζεται η φήμη ενός μικρού στούντιο.",
       ],
     } as BLA,
     logo: "/logos/ellietattooer.webp",
@@ -1430,12 +1428,10 @@ export const caseStudies: CaseStudy[] = [
       en: [
         "Sitemap, robots.txt and a verified Search Console property from launch, with AI crawlers explicitly welcome in robots.txt.",
         "Static HTML with no framework: Lighthouse mobile shows CLS 0, TBT 0ms on the home page and a 1.9s LCP on the contact page.",
-        "The site links back here without a nofollow.",
       ],
       el: [
         "Sitemap, robots.txt και επαληθευμένο Search Console από την πρώτη μέρα, με τους AI crawlers ρητά ευπρόσδεκτους στο robots.txt.",
         "Στατικό HTML χωρίς framework: το Lighthouse στο κινητό δείχνει CLS 0, TBT 0ms στην αρχική και LCP 1,9s στη σελίδα επικοινωνίας.",
-        "Το site συνδέει πίσω σε εμάς χωρίς nofollow.",
       ],
     } as BLA,
     logo: "/logos/mastichari.webp",
@@ -1486,12 +1482,10 @@ export const caseStudies: CaseStudy[] = [
       en: [
         "Four indexable routes rather than one long scroll, so gigs and the band's story can rank and be shared separately.",
         "The band is described in structured data as a music group with named members and releases.",
-        "The site links back here without a nofollow.",
       ],
       el: [
         "Τέσσερις ευρετηριάσιμες διαδρομές αντί για ένα μακρύ scroll, ώστε οι εμφανίσεις και η ιστορία του συγκροτήματος να μπορούν να καταταγούν και να μοιραστούν ξεχωριστά.",
         "Το συγκρότημα περιγράφεται στα structured data ως μουσικό σχήμα με ονοματισμένα μέλη και κυκλοφορίες.",
-        "Το site συνδέει πίσω σε εμάς χωρίς nofollow.",
       ],
     } as BLA,
     logo: "/logos/trf.webp",
