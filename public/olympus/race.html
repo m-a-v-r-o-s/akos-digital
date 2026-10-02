@@ -257,6 +257,9 @@ html.menu-lock{overflow:hidden}
 html.menu-lock .themes{opacity:0;pointer-events:none;visibility:hidden}
 .panel__r .pl--a{stroke:rgba(20,23,43,.16)}
 .panel__r .pl{display:none}
+
+/* the tagline cell always keeps the Greek height, so nothing below it moves when the language changes */
+.tags .g{grid-area:1/1;margin:0;visibility:hidden;pointer-events:none;user-select:none}
 .hero--short .hero__in{padding-top:116px}
 @media(min-width:900px){.hero--short .hero__in{padding-top:134px}}
 .hero--short .hero__text{max-width:1000px}

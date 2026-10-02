@@ -257,6 +257,9 @@ html.menu-lock{overflow:hidden}
 html.menu-lock .themes{opacity:0;pointer-events:none;visibility:hidden}
 .panel__r .pl--a{stroke:rgba(20,23,43,.16)}
 .panel__r .pl{display:none}
+
+/* the tagline cell always keeps the Greek height, so nothing below it moves when the language changes */
+.tags .g{grid-area:1/1;margin:0;visibility:hidden;pointer-events:none;user-select:none}
 .hm{display:none!important}
 @media(min-width:900px){.hm{display:inline!important}}
 .next{position:relative;margin-top:auto;padding-top:16px;max-width:760px}
@@ -441,7 +444,7 @@ html.menu-lock .themes{opacity:0;pointer-events:none;visibility:hidden}
 <div class="wrap hero__in"><div class="hero__text">
 <p class="eyebrow"><span data-el="ΛΙΤΟΧΩΡΟ · ΒΟΥΝΟ ΟΛΥΜΠΟΣ" data-en="LITOCHORO · MOUNT OLYMPUS">ΛΙΤΟΧΩΡΟ · ΒΟΥΝΟ ΟΛΥΜΠΟΣ</span></p>
 <h1 id="h1" class="display">Olympus Marathon</h1>
-<div class="hero__tag tags" id="tags"><p class="on"><span data-el="Από τη θάλασσα στην κορυφή των θεών" data-en="From the sea to the summit of the gods">Από τη θάλασσα στην κορυφή των θεών</span></p><p aria-hidden="true"><span data-el="Τρέχοντας με τους θεούς" data-en="Running with the gods">Τρέχοντας με τους θεούς</span></p><p aria-hidden="true"><span data-el="Στα ίχνη των αρχαίων προσκυνητών" data-en="In the footsteps of the ancient pilgrims">Στα ίχνη των αρχαίων προσκυνητών</span></p></div>
+<div class="hero__tag tags" id="tags"><p class="on"><span data-el="Από τη θάλασσα στην κορυφή των θεών" data-en="From the sea to the summit of the gods">Από τη θάλασσα στην κορυφή των θεών</span></p><p aria-hidden="true"><span data-el="Τρέχοντας με τους θεούς" data-en="Running with the gods">Τρέχοντας με τους θεούς</span></p><p aria-hidden="true"><span data-el="Στα ίχνη των αρχαίων προσκυνητών" data-en="In the footsteps of the ancient pilgrims">Στα ίχνη των αρχαίων προσκυνητών</span></p><span class="g" aria-hidden="true">Από τη θάλασσα στην κορυφή των θεών</span><span class="g" aria-hidden="true">Τρέχοντας με τους θεούς</span><span class="g" aria-hidden="true">Στα ίχνη των αρχαίων προσκυνητών</span></div>
 <a class="chip" href="#sierre-zinal" data-el-label="Σε συνεργασία με το Sierre-Zinal" data-en-label="In cooperation with Sierre-Zinal" aria-label="Σε συνεργασία με το Sierre-Zinal"><span data-el="Σε συνεργασία με" data-en="In cooperation with">Σε συνεργασία με</span> <img src="/olympus/assets/coop/sierre-zinal-h.svg" alt="Sierre-Zinal" width="1388" height="185"></a>
 <div class="hero__cta"><a class="btn btn--p" href="#winter"><span data-el="ΕΓΓΡΑΦΗ" data-en="REGISTER">ΕΓΓΡΑΦΗ</span> <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn--s" href="#races"><span data-el="Οι αγώνες" data-en="The races">Οι αγώνες</span></a></div></div>
 <div class="next"><div class="next__card"><div class="next__info">
@@ -641,7 +644,7 @@ tick();setInterval(tick,1000)})();
 
 
 (function(){
-var box=document.getElementById('tags');if(!box)return;var ps=[].slice.call(box.children),i=0,t=0,hold=false,vis=true,hero=document.querySelector('.hero'),text=document.querySelector('.hero__text'),rm=matchMedia('(prefers-reduced-motion: reduce)');
+var box=document.getElementById('tags');if(!box)return;var ps=[].slice.call(box.querySelectorAll('p')),i=0,t=0,hold=false,vis=true,hero=document.querySelector('.hero'),text=document.querySelector('.hero__text'),rm=matchMedia('(prefers-reduced-motion: reduce)');
 function show(n){var o=ps[i];o.classList.remove('on');o.classList.add('out');o.setAttribute('aria-hidden','true');setTimeout(function(){o.classList.remove('out')},750);i=n;ps[i].classList.add('on');ps[i].removeAttribute('aria-hidden')}
 function stop(){clearInterval(t);t=0}
 function go(){stop();if(rm.matches||hold||!vis)return;t=setInterval(function(){show((i+1)%ps.length)},10000)}
