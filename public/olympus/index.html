@@ -238,7 +238,7 @@ html.menu-lock{overflow:hidden}
  background:linear-gradient(180deg,var(--ridge-6) 0%,var(--ridge-5) 42%,color-mix(in srgb,var(--accent) 34%,var(--ridge-5)) 100%)}
 .panel.open{display:flex;flex-direction:column}
 .panel__r{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;z-index:1;pointer-events:none}
-.panel__r .pr--a{fill:var(--ridge-3)}.panel__r .pr--b{fill:var(--ridge-4)}.panel__r .pr--c{fill:var(--ridge-6)}
+.panel__r .pr--a{fill:var(--c-w)}.panel__r .pr--b{fill:var(--ridge-4)}.panel__r .pr--c{fill:var(--ridge-6)}
 .panel__r .pl{stroke:rgba(255,255,255,.22);stroke-width:1.5;vector-effect:non-scaling-stroke}
 .panel__r .pl--c{stroke:color-mix(in srgb,var(--accent) 70%,#fff);stroke-opacity:.55}
 .panel__in{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;gap:4px;overflow-y:auto;padding:calc(104px + env(safe-area-inset-top)) var(--pad) 28px}
@@ -255,6 +255,7 @@ html.menu-lock{overflow:hidden}
 @keyframes pin{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes prise{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 html.menu-lock .themes{opacity:0;pointer-events:none;visibility:hidden}
+.panel__r .pl--a{stroke:rgba(20,23,43,.16)}
 .hm{display:none!important}
 @media(min-width:900px){.hm{display:inline!important}}
 .next{position:relative;margin-top:auto;padding-top:16px;max-width:760px}
