@@ -5,6 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: "/olympus",
     },
     sitemap: "https://www.akosds.com/sitemap.xml",
   };

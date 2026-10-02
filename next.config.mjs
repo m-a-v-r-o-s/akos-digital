@@ -16,7 +16,22 @@ const nextConfig = {
   // repo's `npm run deploy`). Next serves files from public/ by exact path, so
   // the directory index needs saying out loud, otherwise /7mero.ai is a 404.
   async rewrites() {
-    return [{ source: "/7mero.ai", destination: "/7mero.ai/index.html" }];
+    return [
+      { source: "/7mero.ai", destination: "/7mero.ai/index.html" },
+      // The Olympus Marathon redesign mockup (static pages in public/olympus,
+      // built from ~/olympus/mockup-src with `node deploy.mjs`). Two pages.
+      { source: "/olympus", destination: "/olympus/index.html" },
+      { source: "/olympus/race", destination: "/olympus/race.html" },
+    ];
+  },
+  // A client pitch, not public content: keep it out of search results.
+  async headers() {
+    return [
+      {
+        source: "/olympus/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
   },
   async redirects() {
     return [
