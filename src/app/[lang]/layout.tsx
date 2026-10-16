@@ -20,6 +20,7 @@ const jsonLd = {
       name: person.company,
       url: SITE_URL,
       email: "info@akosds.com",
+      identifier: { "@type": "PropertyValue", name: "GEMI", value: "196793203000" },
       telephone: "+30-699-535-8972",
       image: `${SITE_URL}/og/cover.jpg`,
       description:

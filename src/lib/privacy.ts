@@ -19,7 +19,7 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Who is responsible for your data",
         body: [
-          "Akos Digital Services is a solo studio based in Athens, Greece, and the data controller for the personal data described in this policy. Correspondence address: Epidamnou 21, 11254, Athens, Greece. All enquiries can be sent to info@akosds.com.",
+          "Akos Digital Services is a solo studio based in Athens, Greece, and the data controller for the personal data described in this policy. Correspondence address: Epidamnou 21, 11254, Athens, Greece. GEMI (Greek business registry) No.: 196793203000. All enquiries can be sent to info@akosds.com.",
         ],
       },
       {
@@ -88,7 +88,7 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Contact",
         body: [
-          "Questions about this policy, or requests about your data, can be sent to info@akosds.com, or by post to Epidamnou 21, 11254, Athens, Greece.",
+          "Questions about this policy, or requests about your data, can be sent to info@akosds.com, or by post to Epidamnou 21, 11254, Athens, Greece. GEMI (Greek business registry) No.: 196793203000.",
         ],
       },
     ],
@@ -103,7 +103,7 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Ποιος είναι υπεύθυνος για τα δεδομένα σας",
         body: [
-          "Η Akos Digital Services είναι μονομελές studio με έδρα την Αθήνα και υπεύθυνος επεξεργασίας για τα προσωπικά δεδομένα που περιγράφονται σε αυτή την πολιτική. Διεύθυνση αλληλογραφίας: Επιδάμνου 21, 11254, Αθήνα, Ελλάδα. Για κάθε επικοινωνία: info@akosds.com.",
+          "Η Akos Digital Services είναι μονομελές studio με έδρα την Αθήνα και υπεύθυνος επεξεργασίας για τα προσωπικά δεδομένα που περιγράφονται σε αυτή την πολιτική. Διεύθυνση αλληλογραφίας: Επιδάμνου 21, 11254, Αθήνα, Ελλάδα. Αρ. ΓΕΜΗ: 196793203000. Για κάθε επικοινωνία: info@akosds.com.",
         ],
       },
       {
@@ -172,7 +172,7 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Επικοινωνία",
         body: [
-          "Ερωτήσεις σχετικά με αυτή την πολιτική, ή αιτήματα σχετικά με τα δεδομένα σας, μπορούν να σταλούν στο info@akosds.com ή ταχυδρομικά στη διεύθυνση Επιδάμνου 21, 11254, Αθήνα, Ελλάδα.",
+          "Ερωτήσεις σχετικά με αυτή την πολιτική, ή αιτήματα σχετικά με τα δεδομένα σας, μπορούν να σταλούν στο info@akosds.com ή ταχυδρομικά στη διεύθυνση Επιδάμνου 21, 11254, Αθήνα, Ελλάδα. Αρ. ΓΕΜΗ: 196793203000.",
         ],
       },
     ],
