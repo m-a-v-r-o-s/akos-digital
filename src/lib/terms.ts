@@ -33,7 +33,7 @@ export const terms: Record<Lang, TermsContent> = {
       {
         heading: "Who I am",
         body: [
-          "Akos Digital Services is a solo studio based in Athens, Greece. Correspondence address: Epidamnou 21, 11254, Athens, Greece. GEMI (Greek business registry) No.: 196793203000. All enquiries can be sent to info@akosds.com.",
+          "Akos Digital Services is a solo studio based in Athens, Greece. Correspondence address: Epidamnou 21, 11254, Athens, Greece. Registered business name: AKOS DS. GEMI (Greek business registry) No.: 196793203000. All enquiries can be sent to info@akosds.com.",
         ],
       },
       {
@@ -143,7 +143,7 @@ export const terms: Record<Lang, TermsContent> = {
       {
         heading: "Contact",
         body: [
-          "Questions about these terms can be sent to info@akosds.com, or by post to Epidamnou 21, 11254, Athens, Greece. GEMI (Greek business registry) No.: 196793203000.",
+          "Questions about these terms can be sent to info@akosds.com, or by post to Epidamnou 21, 11254, Athens, Greece. Registered business name: AKOS DS. GEMI (Greek business registry) No.: 196793203000.",
         ],
       },
     ],
@@ -165,7 +165,7 @@ export const terms: Record<Lang, TermsContent> = {
       {
         heading: "Ποιος είμαι",
         body: [
-          "Η Akos Digital Services είναι μονομελές studio με έδρα την Αθήνα. Διεύθυνση αλληλογραφίας: Επιδάμνου 21, 11254, Αθήνα, Ελλάδα. Αρ. ΓΕΜΗ: 196793203000. Για κάθε επικοινωνία: info@akosds.com.",
+          "Η Akos Digital Services είναι μονομελές studio με έδρα την Αθήνα. Διεύθυνση αλληλογραφίας: Επιδάμνου 21, 11254, Αθήνα, Ελλάδα. Επωνυμία: AKOS DS. Αρ. ΓΕΜΗ: 196793203000. Για κάθε επικοινωνία: info@akosds.com.",
         ],
       },
       {
@@ -275,7 +275,7 @@ export const terms: Record<Lang, TermsContent> = {
       {
         heading: "Επικοινωνία",
         body: [
-          "Ερωτήσεις σχετικά με τους παρόντες όρους μπορούν να σταλούν στο info@akosds.com ή ταχυδρομικά στη διεύθυνση Επιδάμνου 21, 11254, Αθήνα, Ελλάδα. Αρ. ΓΕΜΗ: 196793203000.",
+          "Ερωτήσεις σχετικά με τους παρόντες όρους μπορούν να σταλούν στο info@akosds.com ή ταχυδρομικά στη διεύθυνση Επιδάμνου 21, 11254, Αθήνα, Ελλάδα. Επωνυμία: AKOS DS. Αρ. ΓΕΜΗ: 196793203000.",
         ],
       },
     ],
