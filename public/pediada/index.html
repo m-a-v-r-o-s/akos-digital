@@ -256,6 +256,9 @@ footer.site .wrap{padding-top:34px;padding-bottom:26px}
 }
 @media print{.nav,.ad,.news,.bar{display:none}}
 picture{display:block}
+/* top bar, masthead and nav span the full width on wide screens */
+.bar .wrap,.mast .wrap,.nav .wrap{max-width:none}
+@media (min-width:1024px){.bar .wrap,.mast .wrap{padding-inline:clamp(24px,3vw,48px)}.nav .scroller{padding-inline:clamp(24px,3vw,48px)}.units.scroller{padding-left:calc(clamp(24px,3vw,48px) - 12px)}}
 </style>
 </head>
 <body>
