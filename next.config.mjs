@@ -22,6 +22,11 @@ const nextConfig = {
       // built from ~/olympus/mockup-src with `node deploy.mjs`). Two pages.
       { source: "/olympus", destination: "/olympus/index.html" },
       { source: "/olympus/race", destination: "/olympus/race.html" },
+      // Partnely pitch mockups (static pages staged from ~/offers-2026-10 with
+      // `node deploy.mjs`). One page each.
+      { source: "/elaiotriveio", destination: "/elaiotriveio/index.html" },
+      { source: "/3d-eshop", destination: "/3d-eshop/index.html" },
+      { source: "/pediada", destination: "/pediada/index.html" },
     ];
   },
   // A client pitch, not public content: keep it out of search results.
@@ -29,6 +34,18 @@ const nextConfig = {
     return [
       {
         source: "/olympus/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/elaiotriveio/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/3d-eshop/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/pediada/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];

@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>[Επωνυμία] 3D · Τρισδιάστατες εκτυπώσεις και e-shop</title>
+<meta name="description" content="Έτοιμα αντικείμενα από 3D εκτυπωτή και εκτύπωση από το δικό σας αρχείο STL με τιμή σε 24 ώρες. Αποστολή με BoxNow, ACS και ΕΛΤΑ. Ενδεικτικό σχέδιο αρχικής σελίδας.">
+<meta name="theme-color" content="#121316">
+<meta property="og:type" content="website">
+<meta property="og:title" content="[Επωνυμία] 3D · Τρισδιάστατες εκτυπώσεις">
+<meta property="og:description" content="Ένα 3DBenchy τυπώνεται στρώση στρώση στην αρχική σελίδα. Πρώτο σχέδιο από την Akos Digital Services.">
+<meta property="og:image" content="/3d-eshop/assets/og.jpg">
+<link rel="icon" href="/3d-eshop/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/3d-eshop/assets/fonts/commissioner-greek.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/avif" href="/3d-eshop/assets/poster-720.avif" imagesrcset="/3d-eshop/assets/poster-720.avif 720w, /3d-eshop/assets/poster-1400.avif 1400w" imagesizes="(min-width: 960px) 54vw, calc(100vw - 32px)" fetchpriority="high">
+<style>
+@font-face{font-family:"Commissioner";src:url(/3d-eshop/assets/fonts/commissioner-greek.woff2) format("woff2");font-weight:300 800;font-display:swap;unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+@font-face{font-family:"Commissioner";src:url(/3d-eshop/assets/fonts/commissioner-latin.woff2) format("woff2");font-weight:300 800;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"JetBrains Mono";src:url(/3d-eshop/assets/fonts/jbmono-greek.woff2) format("woff2");font-weight:400 600;font-display:swap;unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+@font-face{font-family:"JetBrains Mono";src:url(/3d-eshop/assets/fonts/jbmono-latin.woff2) format("woff2");font-weight:400 600;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --graphite:#121316;--graphite-2:#191b1f;--graphite-3:#24272d;--line-dark:#33373e;
+  --on-dark:#eef0f3;--on-dark-2:#a9afb9;
+  --alu:#e8eaeb;--paper:#f8f8f7;--text:#15171a;--muted:#555b64;--line:#d2d5d9;
+  --cobalt:#2b50cf;--cobalt-ink:#1c3796;--cobalt-2:#3a5fe0;--on-cobalt-2:#d9e1ff;
+  --hot:#ffb15a;--ok:#7fd49b;--err:#b3261e;
+  --font:"Commissioner",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --g:16px;--max:1280px;--r:6px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:72px}
+body{margin:0;background:var(--alu);color:var(--text);font:400 1rem/1.6 var(--font);font-variation-settings:"FLAR" 0,"VOLM" 0}
+img,picture{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--cobalt-2);outline-offset:3px;border-radius:2px}
+.on-dark :focus-visible,.band :focus-visible{outline-color:var(--hot)}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:var(--g);top:-60px;z-index:100;background:var(--paper);color:var(--text);padding:10px 14px;border-radius:var(--r);font-weight:600}
+.skip:focus{top:10px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--g)}
+@media (min-width:760px){:root{--g:32px}}
+h1,h2,h3{margin:0;line-height:1.08;text-wrap:balance;font-variation-settings:"FLAR" 100,"VOLM" 40;letter-spacing:-.02em}
+h2{font-size:clamp(1.85rem,3.6vw,3rem);font-weight:720}
+h3{font-size:1.15rem;font-weight:650;letter-spacing:-.01em;line-height:1.25}
+p{margin:0}
+.lede{color:var(--muted);font-size:1.075rem;max-width:58ch}
+.mono{font-family:var(--mono);font-size:.8125rem;letter-spacing:0;font-variant-numeric:tabular-nums}
+.icon{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 20px;border-radius:var(--r);border:1px solid transparent;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s,transform .2s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--cobalt);color:#fff}
+.btn-primary:hover{background:var(--cobalt-ink)}
+.on-dark .btn-primary{background:var(--cobalt-2)}
+.on-dark .btn-primary:hover{background:#4d6ff0}
+.btn-ghost{border-color:var(--line-dark);color:var(--on-dark);background:transparent}
+.btn-ghost:hover{border-color:var(--on-dark-2);background:var(--graphite-3)}
+.btn-line{border-color:var(--text);color:var(--text);background:transparent}
+.btn-line:hover{background:var(--text);color:var(--paper)}
+
+/* header */
+.on-dark{background:var(--graphite);color:var(--on-dark)}
+.top{position:sticky;top:0;z-index:40;background:rgba(18,19,22,.94);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line-dark);color:var(--on-dark)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:750;font-size:1.1rem;letter-spacing:-.02em;font-variation-settings:"FLAR" 100,"VOLM" 40}
+.brand svg{width:26px;height:26px}
+.brand .slot{border:1.5px dashed var(--on-dark-2);border-radius:4px;padding:1px 7px;font-weight:500;color:var(--on-dark-2);font-size:.95rem}
+.nav{display:none;gap:4px;margin-left:12px}
+.nav a{padding:8px 12px;border-radius:var(--r);text-decoration:none;color:var(--on-dark-2);font-weight:500;font-size:.95rem}
+.nav a:hover{color:var(--on-dark);background:var(--graphite-3)}
+.tools{margin-left:auto;display:flex;gap:4px;align-items:center}
+.tool{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r);border:0;background:transparent;color:var(--on-dark);cursor:pointer}
+.tool:hover{background:var(--graphite-3)}
+.badge{position:absolute;top:5px;right:4px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--hot);color:#1a1205;font:600 11px/18px var(--mono);text-align:center}
+.badge[data-n="0"]{display:none}
+.search{display:none;border-top:1px solid var(--line-dark)}
+.search.open{display:block}
+.search .wrap{display:flex;gap:8px;padding-block:10px}
+.search input{flex:1;min-height:44px;padding:8px 14px;border-radius:var(--r);border:1px solid var(--line-dark);background:var(--graphite-2);color:var(--on-dark)}
+.search input::placeholder{color:var(--on-dark-2)}
+.menu{display:none;border-top:1px solid var(--line-dark)}
+.menu.open{display:block}
+.menu ul{list-style:none;margin:0;padding:8px var(--g) 16px}
+.menu a{display:block;padding:12px 0;text-decoration:none;font-weight:600;font-size:1.1rem;border-bottom:1px solid var(--line-dark)}
+@media (min-width:960px){.nav{display:flex}.menu-btn{display:none!important}.menu{display:none!important}}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--graphite) 0%,#16181c 100%);overflow:hidden}
+.hero .wrap{display:grid;gap:22px;padding-block:24px 40px;grid-template-areas:"a" "s" "b"}
+.hero-a{grid-area:a}.hero-b{grid-area:b;display:flex;flex-direction:column}.stage-col{grid-area:s}
+.hero-b .ctas{order:-1;margin-top:0}.hero-b .lede{margin-top:22px}
+.hero h1{font-size:clamp(2rem,7.9vw,4.4rem);font-weight:740;letter-spacing:-.03em;line-height:1.02;max-width:14ch}
+.hero .lede{color:var(--on-dark-2);margin-top:18px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;list-style:none;color:var(--on-dark)}
+.chips li{display:inline-flex;align-items:center;gap:8px;font-size:.92rem}
+.chips .icon{color:var(--hot);width:18px;height:18px}
+.stage-col{min-width:0}
+.stage{position:relative;aspect-ratio:1/1;width:100%;max-width:760px;margin-inline:auto;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#17191d 0%,#1c1f24 100%);isolation:isolate}
+.stage .poster,.stage .poster img{position:absolute;inset:0;width:100%;height:100%}
+.stage .poster img{object-fit:cover;transition:opacity .8s var(--ease)}
+.stage [data-gl]{position:absolute;inset:0;opacity:0;transition:opacity .8s var(--ease);cursor:grab}
+.stage [data-gl]:active{cursor:grabbing}
+.stage [data-gl] canvas{width:100%!important;height:100%!important;display:block}
+.stage.is-live [data-gl]{opacity:1}
+.stage.is-live .poster img{opacity:0}
+.hud{position:absolute;left:14px;bottom:12px;right:14px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;color:var(--on-dark);pointer-events:none;font-size:.75rem}
+.hud .state{display:inline-flex;align-items:center;gap:8px;color:var(--on-dark)}
+.hud .state::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.stage.is-printing .hud .state::before{background:var(--hot);animation:blink 1s steps(2,end) infinite}
+@keyframes blink{50%{opacity:.35}}
+.hud .layer{color:var(--on-dark-2)}
+.spec{position:absolute;right:14px;top:12px;color:var(--on-dark-2);font-size:.75rem;pointer-events:none;text-align:right}
+.ruler{--rx:11.61%;--y0:59.38%;--y1:8.93%;position:absolute;left:var(--rx);top:var(--y1);height:calc(var(--y0) - var(--y1));width:0;border-left:1px solid #4a4f58;pointer-events:none}
+.ruler::before,.ruler::after{content:"";position:absolute;left:-5px;width:9px;border-top:1px solid #6a707a}
+.ruler::before{top:0}.ruler::after{bottom:0}
+.ruler .tick{position:absolute;right:8px;transform:translateY(-50%);font-size:.6875rem;color:#8e95a0;white-space:nowrap}
+.ruler .t48{top:0}.ruler .t0{top:100%}.ruler .t24{top:50%}
+.ruler .mark{--p:1;font-style:normal;position:absolute;left:-1px;top:calc((1 - var(--p)) * 100%);width:20px;border-top:2px solid var(--hot);transform:translateY(-1px)}
+.ruler .mark span{position:absolute;left:24px;top:-9px;color:var(--hot);font-size:.6875rem;white-space:nowrap}
+.stage:not(.is-printing) .ruler .mark{border-color:var(--ok)}
+.stage:not(.is-printing) .ruler .mark span{color:var(--ok)}
+.under{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;max-width:760px;margin:14px auto 0}
+.under p{color:var(--on-dark-2);font-size:.875rem;max-width:44ch}
+.swatches{display:flex;align-items:center;gap:10px;border:0;margin:0;padding:0}
+.swatches legend{float:left;margin-right:6px;color:var(--on-dark-2);font-size:.875rem}
+.swatches button{width:32px;height:32px;border-radius:50%;border:2px solid var(--graphite);box-shadow:0 0 0 1px var(--line-dark);background:var(--c);cursor:pointer;padding:0}
+.swatches button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--on-dark)}
+.replay{display:none;align-items:center;gap:8px;min-height:44px;padding:8px 12px;border-radius:var(--r);border:1px solid var(--line-dark);background:transparent;color:var(--on-dark);cursor:pointer;font-size:.875rem}
+.replay:hover{background:var(--graphite-3)}
+.stage-col.has-3d .replay{display:inline-flex}
+.stage-col:not(.has-3d) .swatches{display:none}
+.under-tools{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+@media (max-width:959px){
+  .under{margin-top:10px;gap:10px 14px}
+  .under p{font-size:.8125rem;flex:1 1 100%}
+  .swatches button{width:30px;height:30px}
+  .replay{padding:8px 10px}
+  .replay .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+@media (min-width:960px){
+  .hero .wrap{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"a s" "b s";grid-template-rows:1fr 1fr;column-gap:48px;row-gap:0;padding-block:36px 48px}
+  .hero-a{align-self:end}.hero-b{align-self:start;padding-top:2px}
+  .hero-b .ctas{order:0;margin-top:28px}.hero-b .lede{margin-top:18px}
+  .stage{max-width:min(760px,calc(100svh - 240px))}
+  .under{max-width:min(760px,calc(100svh - 240px))}
+  .hero h1{font-size:clamp(3rem,4.6vw,4.6rem)}
+}
+
+/* sections */
+section{scroll-margin-top:64px}
+.sec{padding-block:72px}
+.sec-head{display:grid;gap:14px;margin-bottom:32px}
+@media (min-width:960px){.sec{padding-block:104px}.sec-head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end;gap:40px;margin-bottom:44px}.sec-head .lede{justify-self:end}}
+
+/* categories */
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;list-style:none;margin:0;padding:0}
+.cat a{position:relative;display:block;height:100%;border-radius:var(--r);overflow:hidden;text-decoration:none;background:#cfd3d6}
+.cat picture,.cat img{width:100%;height:100%}
+.cat img{object-fit:cover;transition:transform .7s var(--ease)}
+.cat a:hover img{transform:scale(1.035)}
+.cat .label{position:absolute;left:10px;bottom:10px;right:10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;background:var(--paper);border-radius:4px;padding:9px 12px}
+.cat .label b{font-weight:650;font-size:.98rem;line-height:1.2}
+.cat .label span{color:var(--muted);font-size:.75rem;white-space:nowrap}
+.c-decor{grid-column:span 2;aspect-ratio:3/2}
+.c-light{grid-row:span 2}
+.c-planter,.c-desk{aspect-ratio:1/1}
+.c-desk img{object-position:50% 85%}
+.c-parts,.c-custom{grid-column:span 2;aspect-ratio:2/1}
+.c-custom a{background:var(--graphite)}
+@media (min-width:960px){
+  .cats{grid-template-columns:repeat(4,1fr);grid-auto-rows:250px;gap:14px}
+  .c-decor{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .c-light{grid-row:span 2}
+  .c-planter,.c-desk{aspect-ratio:auto}
+  .c-parts,.c-custom{grid-column:span 2;aspect-ratio:auto}
+}
+
+/* products */
+.products{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--g) 8px;margin:0 calc(var(--g) * -1);list-style:none;scrollbar-width:thin}
+.product{scroll-snap-align:start;display:flex;flex-direction:column;background:var(--paper);border-radius:var(--r);overflow:hidden}
+.product .ph{position:relative;aspect-ratio:4/5;background:#d8dbde}
+.product .ph img{width:100%;height:100%;object-fit:cover}
+.product .tag{position:absolute;left:10px;top:10px;background:var(--graphite);color:var(--on-dark);font-size:.75rem;padding:4px 8px;border-radius:4px}
+.product .body{display:flex;flex-direction:column;gap:8px;padding:16px 16px 18px;flex:1}
+.product .meta{color:var(--muted);font-size:.875rem}
+.product .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:8px}
+.price{font-weight:700;font-size:1.2rem;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.colors{border:0;margin:0;padding:0;display:flex;align-items:center;gap:8px}
+.colors legend{float:left;margin-right:4px;font-size:.8125rem;color:var(--muted)}
+.colors label{position:relative;width:28px;height:28px;cursor:pointer}
+.colors input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.colors .dot{display:block;width:28px;height:28px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.colors input:checked+.dot{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--text)}
+.colors input:focus-visible+.dot{outline:3px solid var(--cobalt-2);outline-offset:4px}
+.colors output{font-size:.8125rem;color:var(--muted);margin-left:2px}
+.add{min-height:44px;padding:10px 14px}
+@media (min-width:960px){.products{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;padding:0;margin:0;gap:18px}}
+
+/* process */
+.proc{background:var(--paper)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:28px;counter-reset:s}
+.step{display:grid;gap:14px;align-content:start}
+.step .media{aspect-ratio:5/4;border-radius:var(--r);overflow:hidden;background:var(--graphite)}
+.step .media img{width:100%;height:100%;object-fit:cover}
+.readout{height:100%;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--on-dark);background:var(--graphite)}
+.readout dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}
+.readout dt{color:var(--on-dark-2)}
+.readout dd{margin:0;text-align:right}
+.readout .bar{height:6px;border-radius:3px;background:var(--graphite-3);overflow:hidden}
+.readout .bar i{display:block;height:100%;width:var(--w);background:var(--hot)}
+.readout .layers{display:flex;flex-direction:column-reverse;gap:2px}
+.readout .layers i{height:3px;border-radius:2px;background:var(--cobalt-2);opacity:.85}
+.step .n{font-family:var(--mono);font-size:.8125rem;color:var(--muted)}
+.step p{color:var(--muted);font-size:.95rem}
+@media (max-width:759px){.step .media{aspect-ratio:16/10}}
+@media (min-width:760px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.steps{grid-template-columns:repeat(4,1fr);gap:22px}}
+
+/* quote band */
+.band{background:var(--cobalt);color:#fff}
+.band .wrap{display:grid;gap:32px;padding-block:72px}
+.band h2{font-size:clamp(2.1rem,5vw,3.6rem)}
+.band .lede{color:var(--on-cobalt-2);margin-top:16px}
+.facts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:10px}
+.facts li{display:flex;gap:10px;align-items:flex-start}
+.facts .icon{margin-top:3px}
+.sample{margin-top:32px;background:var(--cobalt-ink);border-radius:10px;padding:18px 20px;color:#fff;max-width:440px}
+.sample p{color:var(--on-cobalt-2);font-size:.875rem;margin-bottom:10px}
+.sample dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
+.sample dt{color:var(--on-cobalt-2)}
+.sample dd{margin:0;text-align:right}
+.sample .total{border-top:1px solid #4a63c4;padding-top:8px;margin-top:4px;font-weight:600}
+.quote{background:var(--paper);color:var(--text);border-radius:10px;padding:20px;display:grid;gap:16px}
+.drop{position:relative;display:grid;place-items:center;gap:8px;text-align:center;padding:28px 16px;border:2px dashed #8f97a6;border-radius:8px;background:#eef1f8;transition:background-color .2s,border-color .2s}
+.drop.over{border-color:var(--cobalt);background:#e1e8ff}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.drop .icon{width:30px;height:30px;color:var(--cobalt)}
+.drop b{font-weight:650}
+.drop small{color:var(--muted);font-size:.8125rem}
+.drop:focus-within{outline:3px solid var(--cobalt-2);outline-offset:3px}
+.file{display:none;align-items:center;gap:12px;padding:12px 14px;border-radius:8px;background:var(--graphite);color:var(--on-dark)}
+.file.show{display:flex}
+.file .icon{color:var(--hot)}
+.file .fn{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.file .fs{color:var(--on-dark-2)}
+.file button{margin-left:auto;background:transparent;border:0;color:var(--on-dark);width:40px;height:40px;border-radius:var(--r);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.file button:hover{background:var(--graphite-3)}
+.field{display:grid;gap:6px}
+.field label{font-weight:600;font-size:.9rem}
+.field input,.field select,.field textarea{width:100%;min-height:46px;padding:10px 12px;border:1px solid #9aa1ab;border-radius:var(--r);background:#fff}
+.field textarea{min-height:84px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--cobalt)}
+.field [aria-invalid="true"]{border-color:var(--err)}
+.err{color:var(--err);font-size:.875rem;min-height:0}
+.err:empty{display:none}
+.two{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+.fine{color:var(--muted);font-size:.8125rem}
+.ok-msg{display:none;padding:14px;border-radius:8px;background:#e6f4ea;color:#14532d;font-weight:500}
+.ok-msg.show{display:block}
+@media (min-width:960px){.band .wrap{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;padding-block:104px;align-items:start}.quote{padding:28px}}
+
+/* materials */
+.mat-grid{display:grid;gap:28px}
+.mtable{width:100%;border-collapse:collapse;font-size:.95rem}
+.mtable caption{text-align:left;color:var(--muted);font-size:.875rem;padding-bottom:10px}
+.mtable th,.mtable td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.mtable thead th{font-size:.8125rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--text)}
+.mtable tbody th{font-weight:700;white-space:nowrap}
+.mtable .mono{font-size:.875rem}
+@media (max-width:759px){
+  .mtable thead{display:none}
+  .mtable caption{display:block;padding-bottom:4px}
+  .mtable,.mtable tbody,.mtable tr,.mtable th,.mtable td{display:block}
+  .mtable tr{padding:14px 0;border-bottom:1px solid var(--line)}
+  .mtable th,.mtable td{border:0;padding:3px 0}
+  .mtable tbody th{font-size:1.1rem;padding-bottom:6px}
+  .mtable td{display:grid;grid-template-columns:9.5em 1fr;gap:10px}
+  .mtable td::before{content:attr(data-label);color:var(--muted);font-size:.875rem}
+}
+.lib h3{margin-bottom:14px}
+.spools{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px}
+.spools li{display:flex;align-items:center;gap:10px;font-size:.92rem}
+.spools i{width:26px;height:26px;border-radius:50%;flex:none;background:radial-gradient(circle at 50% 50%,var(--alu) 0 28%,transparent 29%),var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.spools small{color:var(--muted);font-size:.75rem;margin-left:auto;font-family:var(--mono)}
+.lib [data-print]{margin-top:24px;border-radius:var(--r);overflow:hidden}
+@media (min-width:960px){.mat-grid{grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:56px}.spools{grid-template-columns:1fr 1fr}}
+
+/* shipping & payments */
+.ship{background:var(--graphite);color:var(--on-dark)}
+.ship .lede{color:var(--on-dark-2)}
+.ship-grid{display:grid;gap:36px}
+.ship h3{font-size:1rem;font-weight:600;color:var(--on-dark-2);margin-bottom:6px;letter-spacing:0}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 16px;padding:16px 0;border-bottom:1px solid var(--line-dark)}
+.rows b{font-weight:650;font-size:1.05rem}
+.rows .mono{color:var(--on-dark);text-align:right;font-size:.875rem}
+.rows small{grid-column:1/-1;color:var(--on-dark-2);font-size:.875rem}
+.free{margin-top:20px;display:flex;gap:10px;align-items:center;color:var(--on-dark)}
+.free .icon{color:var(--hot)}
+@media (min-width:960px){.ship-grid{grid-template-columns:1fr 1fr;gap:64px}}
+
+/* faq */
+.faq-grid{display:grid;gap:28px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:650;font-size:1.08rem;line-height:1.35}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .icon{transition:transform .3s var(--ease);flex:none}
+.faq details[open] summary .icon{transform:rotate(45deg)}
+.faq details p{padding:0 0 20px;color:var(--muted);max-width:66ch}
+@media (min-width:960px){.faq-grid{grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px}}
+
+/* newsletter */
+.news{background:var(--paper);border-top:1px solid var(--line)}
+.news .wrap{display:grid;gap:18px;padding-block:56px}
+.news form{display:flex;flex-wrap:wrap;gap:10px}
+.news input{flex:1 1 220px;min-height:48px;padding:10px 14px;border:1px solid #9aa1ab;border-radius:var(--r);background:#fff}
+.news h2{font-size:clamp(1.5rem,3vw,2.1rem)}
+@media (min-width:960px){.news .wrap{grid-template-columns:1fr 1fr;align-items:center;gap:56px}}
+
+/* footer */
+.foot{background:var(--graphite);color:var(--on-dark-2);font-size:.92rem}
+.foot .wrap{padding-block:56px 110px;display:grid;gap:32px}
+.foot h2{font-size:.875rem;font-weight:600;color:var(--on-dark);letter-spacing:0;margin-bottom:10px;font-variation-settings:normal}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--on-dark);text-decoration:underline}
+.foot .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.foot .cols>div:last-child{grid-column:1/-1}
+.foot .legal{border-top:1px solid var(--line-dark);padding-top:22px;display:grid;gap:8px;font-size:.8125rem}
+.foot .legal a{text-decoration:underline}
+.foot .credit a{color:var(--on-dark);font-weight:600}
+@media (min-width:960px){.foot .wrap{grid-template-columns:minmax(0,4fr) minmax(0,8fr);padding-bottom:56px}.foot .cols{grid-template-columns:repeat(3,1fr)}.foot .cols>div:last-child{grid-column:auto}.foot .legal{grid-column:1/-1}}
+
+/* sticky mobile CTA */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:45;display:flex;gap:8px;padding:10px var(--g) calc(10px + env(safe-area-inset-bottom));background:rgba(18,19,22,.96);border-top:1px solid var(--line-dark);transform:translateY(110%);transition:transform .35s var(--ease)}
+.dock.show{transform:none}
+.dock .btn{flex:1;min-height:46px;padding:10px 12px;font-size:.95rem}
+@media (min-width:960px){.dock{display:none}}
+
+/* toast */
+.toast{position:fixed;right:var(--g);left:var(--g);bottom:84px;z-index:50;max-width:380px;margin-left:auto;background:var(--graphite);color:var(--on-dark);border-radius:8px;padding:14px 16px;box-shadow:0 12px 32px rgba(0,0,0,.28);opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .25s,transform .35s var(--ease)}
+.toast.show{opacity:1;transform:none}
+.toast .bar{margin-top:10px;height:6px;border-radius:3px;background:var(--graphite-3);overflow:hidden}
+.toast .bar i{display:block;height:100%;width:100%;background:var(--hot);transform-origin:left;transform:scaleX(var(--s,0));transition:transform .6s var(--ease)}
+@media (min-width:960px){.toast{bottom:24px}}
+
+/* print reveal: a cover lifts off each photo bottom to top in stepped layers, with the hot line riding its edge.
+   (a cover, not clip-path on the image, because a fully clipped lazy image never starts loading) */
+.js [data-print]{position:relative}
+.js [data-print]::before{content:"";position:absolute;inset:0;z-index:1;background:var(--cover,#d8dbde);border-radius:var(--r);transform-origin:top;pointer-events:none}
+.js [data-print].printed::before{transform:scaleY(0);transition:transform 1.2s steps(16,end)}
+.js [data-print]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--hot);opacity:0;pointer-events:none;z-index:2}
+.js [data-print].printed::after{animation:ride 1.2s steps(16,end) forwards}
+@keyframes ride{0%{bottom:0;opacity:1}99%{bottom:100%;opacity:1}100%{bottom:100%;opacity:0}}
+.cat .label,.product .tag{z-index:3}
+.step .media[data-print]{--cover:var(--graphite)}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .js [data-print]::before,.js [data-print]::after{display:none}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Store","name":"[Επωνυμία] 3D","description":"Κατάστημα με αντικείμενα από 3D εκτυπωτή και υπηρεσία εκτύπωσης από αρχείο πελάτη.","areaServed":"GR","paymentAccepted":"Κάρτα, Apple Pay, Google Pay, IRIS, Αντικαταβολή, Τραπεζική κατάθεση","currenciesAccepted":"EUR","knowsLanguage":"el"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Πόσο κοστίζει μια εκτύπωση από δικό μου αρχείο;","acceptedAnswer":{"@type":"Answer","text":"Η τιμή βγαίνει από τον όγκο του υλικού, τον χρόνο εκτύπωσης και το φινίρισμα. Μικρά κομμάτια ξεκινούν από περίπου 8 €. Ανεβάστε το αρχείο και θα έχετε γραπτή τιμή μέσα σε 24 ώρες."}},
+{"@type":"Question","name":"Σε πόσες μέρες θα το παραλάβω;","acceptedAnswer":{"@type":"Answer","text":"Τα έτοιμα προϊόντα φεύγουν σε 1 έως 3 εργάσιμες. Ό,τι τυπώνεται κατά παραγγελία θέλει 2 έως 5 εργάσιμες συν την αποστολή."}},
+{"@type":"Question","name":"Το PLA αντέχει στον ήλιο ή μέσα στο αυτοκίνητο;","acceptedAnswer":{"@type":"Answer","text":"Όχι. Το PLA μαλακώνει γύρω στους 55 °C. Για μπαλκόνι, αυτοκίνητο ή κουζίνα προτείνουμε PETG."}},
+{"@type":"Question","name":"Μπορώ να ζητήσω χρώμα που δεν βλέπω στο προϊόν;","acceptedAnswer":{"@type":"Answer","text":"Ναι. Διαλέξτε από τη βιβλιοθήκη χρωμάτων και γράψτε το στις σημειώσεις της παραγγελίας. Αν δεν το έχουμε, θα σας προτείνουμε το πιο κοντινό."}},
+{"@type":"Question","name":"Τι αρχεία δέχεστε;","acceptedAnswer":{"@type":"Answer","text":"STL, 3MF, OBJ και STEP έως 50 MB. Αν δεν έχετε αρχείο, στείλτε σκίτσο με διαστάσεις και σας δίνουμε τιμή για τον σχεδιασμό."}},
+{"@type":"Question","name":"Μπορώ να επιστρέψω ένα προϊόν;","acceptedAnswer":{"@type":"Answer","text":"Τα έτοιμα προϊόντα επιστρέφονται μέσα σε 14 ημέρες. Οι εκτυπώσεις από δικό σας αρχείο δεν επιστρέφονται, εκτός αν έχουν ελάττωμα."}}
+]}]}
+</script>
+</head>
+<body>
+<!--
+THESIS: The shop proves its craft by printing in front of you. A real 3DBenchy builds layer by layer in the first viewport, and the same stepped-layer reveal carries through every photo. Refuses the category default of a looping product video and a hidden price list.
+OWN-WORLD: Graphite print chamber (#121316) for hero, shipping and footer; brushed-aluminium light ground (#e8eaeb) with off-white product plates; one committed cobalt PLA (#2b50cf) that owns the quote band and every primary action; hot-end amber (#ffb15a) only for "printing now" signals. Commissioner with flared display terminals, JetBrains Mono only for measurements.
+STORY: A visitor sees a print happening, understands this shop both sells objects and prints their file, sees prices, carriers and turnaround up front, and either adds a product or uploads a file for a 24 h quote.
+FIRST VIEWPORT: Mobile: H1 top, two CTAs, chips, then the square stage. Desktop: 5/7 split, H1 and CTAs left, square stage right with HUD, Z ruler and filament swatches.
+FORM: Slicer-preview stage over a shop-first catalogue, position 1 of my list (brief-pinned direction, no roll).
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m21 21-4.6-4.6"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M4 17h16M6 13h12M8 9h8M10 5h4"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#main">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="19" width="20" height="3.2" rx="1" fill="#2b50cf"/><rect x="5" y="14" width="16" height="3.2" rx="1" fill="#3a5fe0"/><rect x="7" y="9" width="12" height="3.2" rx="1" fill="#5c7cf0"/><rect x="9" y="4" width="8" height="3.2" rx="1" fill="#ffb15a"/></svg>
+      <span class="slot">Επωνυμία</span><span>3D</span>
+    </a>
+    <nav class="nav" aria-label="Κύριο μενού">
+      <a href="#proionta">Προϊόντα</a>
+      <a href="#prosfora">Εκτύπωση από αρχείο</a>
+      <a href="#ylika">Υλικά</a>
+      <a href="#apostoli">Αποστολή</a>
+      <a href="#faq">Ερωτήσεις</a>
+    </nav>
+    <div class="tools">
+      <button class="tool" type="button" aria-expanded="false" aria-controls="search" data-toggle="search"><svg class="icon"><use href="#i-search"/></svg><span class="sr-only">Αναζήτηση</span></button>
+      <button class="tool" type="button" id="cart-btn"><svg class="icon"><use href="#i-bag"/></svg><span class="sr-only">Καλάθι, <span data-cart-sr>0</span> προϊόντα</span><span class="badge" data-cart-n data-n="0" aria-hidden="true">0</span></button>
+      <button class="tool menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-toggle="menu"><svg class="icon"><use href="#i-menu"/></svg><span class="sr-only">Μενού</span></button>
+    </div>
+  </div>
+  <form class="search" id="search" role="search" onsubmit="return false">
+    <div class="wrap">
+      <label class="sr-only" for="q">Αναζήτηση προϊόντων</label>
+      <input id="q" type="search" placeholder="Αναζήτηση: βάζο, φωτιστικό, βάση κινητού" autocomplete="off">
+      <button class="btn btn-primary" type="submit">Αναζήτηση</button>
+    </div>
+  </form>
+  <nav class="menu" id="menu" aria-label="Μενού κινητού">
+    <ul>
+      <li><a href="#proionta">Προϊόντα</a></li>
+      <li><a href="#prosfora">Εκτύπωση από αρχείο</a></li>
+      <li><a href="#ylika">Υλικά και χρώματα</a></li>
+      <li><a href="#apostoli">Αποστολή και πληρωμή</a></li>
+      <li><a href="#faq">Συχνές ερωτήσεις</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero on-dark" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="hero-a">
+        <h1 id="h1">Τρισδιάστατες εκτυπώσεις, έτοιμες ή από το δικό σας αρχείο.</h1>
+      </div>
+      <div class="hero-b">
+        <p class="lede">Φωτιστικά, βάζα και χρηστικά αντικείμενα από PLA και PETG, τυπωμένα στο εργαστήριό μας σε στρώσεις των 0,2 mm. Έχετε δικό σας σχέδιο; Ανεβάστε το και παίρνετε τιμή μέσα σε 24 ώρες.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#proionta">Δείτε τα προϊόντα</a>
+          <a class="btn btn-ghost" href="#prosfora"><svg class="icon"><use href="#i-upload"/></svg>Ανεβάστε το αρχείο σας</a>
+        </div>
+        <ul class="chips">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg>Δωρεάν αποστολή από 50 €</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg>BoxNow από 1,90 €, σε 1 έως 2 εργάσιμες</li>
+        </ul>
+      </div>
+
+      <div class="stage-col" id="stage-col">
+        <div class="stage" id="stage">
+          <picture class="poster">
+            <source type="image/avif" srcset="/3d-eshop/assets/poster-720.avif 720w, /3d-eshop/assets/poster-1400.avif 1400w" sizes="(min-width: 960px) 54vw, calc(100vw - 32px)">
+            <source type="image/webp" srcset="/3d-eshop/assets/poster-720.webp 720w, /3d-eshop/assets/poster-1400.webp 1400w" sizes="(min-width: 960px) 54vw, calc(100vw - 32px)">
+            <img src="/3d-eshop/assets/poster-720.webp" width="720" height="720" fetchpriority="high" alt="Ένα μπλε 3DBenchy, το καραβάκι δοκιμής των 3D εκτυπωτών, τυπωμένο πάνω στην πλάκα του εκτυπωτή.">
+          </picture>
+          <div data-gl aria-hidden="true"></div>
+          <div class="hud mono" aria-hidden="true"><span class="state" data-hud="state">Ολοκληρώθηκε</span><span class="layer" data-hud="layer">LAYER 240 / 240 · 0.2 mm</span></div>
+          <div class="ruler mono" data-ruler aria-hidden="true"><span class="tick t48">48</span><span class="tick t24">24</span><span class="tick t0">0</span><i class="mark" data-ruler-mark><span data-hud="z">Z 48.00 mm</span></i></div>
+          <div class="spec mono" aria-hidden="true">PLA <span data-color-name>Κοβάλτιο</span> · 215 °C<br>ακροφύσιο 0,4 mm</div>
+        </div>
+        <div class="under">
+          <p>3DBenchy, το καραβάκι που τυπώνει κάθε κατασκευαστής για να δοκιμάσει τον εκτυπωτή του. Σύρετε για να το γυρίσετε.</p>
+          <div class="under-tools">
+            <fieldset class="swatches">
+              <legend>Νήμα</legend>
+              <button type="button" style="--c:#2b50cf" aria-pressed="true" data-hex="#2b50cf" data-name="Κοβάλτιο"><span class="sr-only">Κοβάλτιο</span></button>
+              <button type="button" style="--c:#e9e7e1" aria-pressed="false" data-hex="#e6e4dc" data-name="Λευκό ματ"><span class="sr-only">Λευκό ματ</span></button>
+              <button type="button" style="--c:#d8402f" aria-pressed="false" data-hex="#d23a2a" data-name="Κόκκινο"><span class="sr-only">Κόκκινο</span></button>
+              <button type="button" style="--c:#9cc53e" aria-pressed="false" data-hex="#8fbf32" data-name="Λάιμ"><span class="sr-only">Λάιμ</span></button>
+            </fieldset>
+            <button class="replay" type="button" id="replay"><svg class="icon" aria-hidden="true"><use href="#i-replay"/></svg><span class="lbl">Ξανά από την αρχή</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="kathgories" aria-labelledby="h-cats">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-cats">Τι τυπώνουμε</h2>
+        <p class="lede">Έξι κατηγορίες, όλες τυπωμένες εδώ. Ό,τι δεν βρίσκετε, το τυπώνουμε από το δικό σας αρχείο.</p>
+      </div>
+      <ul class="cats">
+        <li class="cat c-decor" data-print><a href="#proionta"><picture><source type="image/avif" srcset="/3d-eshop/photos/cat-decor-480.avif 480w, /3d-eshop/photos/cat-decor-800.avif 800w" sizes="(min-width: 960px) 620px, 100vw"><source type="image/webp" srcset="/3d-eshop/photos/cat-decor-480.webp 480w, /3d-eshop/photos/cat-decor-800.webp 800w" sizes="(min-width: 960px) 620px, 100vw"><img src="/3d-eshop/photos/cat-decor-480.jpg" width="480" height="480" alt="Λευκό βάζο με κάθετες πτυχώσεις, τυπωμένο σε 3D εκτυπωτή" loading="lazy" decoding="async"></picture><span class="label"><b>Διακόσμηση</b><span>34 προϊόντα</span></span></a></li>
+        <li class="cat c-light" data-print><a href="#proionta"><picture><source type="image/avif" srcset="/3d-eshop/photos/cat-light-420.avif 420w, /3d-eshop/photos/cat-light-640.avif 640w" sizes="(min-width: 960px) 300px, 50vw"><source type="image/webp" srcset="/3d-eshop/photos/cat-light-420.webp 420w, /3d-eshop/photos/cat-light-640.webp 640w" sizes="(min-width: 960px) 300px, 50vw"><img src="/3d-eshop/photos/cat-light-420.jpg" width="420" height="677" alt="Αναμμένο φωτιστικό με σπειροειδείς πτυχώσεις σε σκοτεινό δωμάτιο" loading="lazy" decoding="async"></picture><span class="label"><b>Φωτιστικά</b><span>12</span></span></a></li>
+        <li class="cat c-planter" data-print><a href="#proionta"><picture><source type="image/avif" srcset="/3d-eshop/photos/cat-planter-420.avif 420w, /3d-eshop/photos/cat-planter-640.avif 640w" sizes="(min-width: 960px) 300px, 50vw"><source type="image/webp" srcset="/3d-eshop/photos/cat-planter-420.webp 420w, /3d-eshop/photos/cat-planter-640.webp 640w" sizes="(min-width: 960px) 300px, 50vw"><img src="/3d-eshop/photos/cat-planter-420.jpg" width="420" height="420" alt="Πορτοκαλί γλάστρα σε σχήμα κολοκύθας με παχύφυτο" loading="lazy" decoding="async"></picture><span class="label"><b>Γλάστρες</b><span>9</span></span></a></li>
+        <li class="cat c-desk" data-print><a href="#proionta"><picture><source type="image/avif" srcset="/3d-eshop/photos/cat-desk-420.avif 420w, /3d-eshop/photos/cat-desk-640.avif 640w" sizes="(min-width: 960px) 300px, 50vw"><source type="image/webp" srcset="/3d-eshop/photos/cat-desk-420.webp 420w, /3d-eshop/photos/cat-desk-640.webp 640w" sizes="(min-width: 960px) 300px, 50vw"><img src="/3d-eshop/photos/cat-desk-420.jpg" width="420" height="420" alt="Κίτρινη βάση κινητού σε σχήμα λαγουδάκι με ένα κινητό πάνω της" loading="lazy" decoding="async"></picture><span class="label"><b>Γραφείο και κινητό</b><span>21</span></span></a></li>
+        <li class="cat c-parts" data-print><a href="#proionta"><picture><source type="image/avif" srcset="/3d-eshop/photos/cat-parts-640.avif 640w, /3d-eshop/photos/cat-parts-1000.avif 1000w" sizes="(min-width: 960px) 620px, 100vw"><source type="image/webp" srcset="/3d-eshop/photos/cat-parts-640.webp 640w, /3d-eshop/photos/cat-parts-1000.webp 1000w" sizes="(min-width: 960px) 620px, 100vw"><img src="/3d-eshop/photos/cat-parts-640.jpg" width="640" height="320" alt="Κοντινό σε λευκό τεχνικό εξάρτημα από 3D εκτυπωτή με κανάλια" loading="lazy" decoding="async"></picture><span class="label"><b>Τεχνικά ανταλλακτικά</b><span>16</span></span></a></li>
+        <li class="cat c-custom" data-print><a href="#prosfora"><picture><source type="image/avif" srcset="/3d-eshop/photos/cat-custom-640.avif 640w, /3d-eshop/photos/cat-custom-1000.avif 1000w" sizes="(min-width: 960px) 620px, 100vw"><source type="image/webp" srcset="/3d-eshop/photos/cat-custom-640.webp 640w, /3d-eshop/photos/cat-custom-1000.webp 1000w" sizes="(min-width: 960px) 620px, 100vw"><img src="/3d-eshop/photos/cat-custom-640.jpg" width="640" height="320" alt="Ακροφύσιο 3D εκτυπωτή την ώρα που τυπώνει ένα κίτρινο κομμάτι" loading="lazy" decoding="async"></picture><span class="label"><b>Από το δικό σας αρχείο</b><span>τιμή σε 24 ώρες</span></span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="proionta" aria-labelledby="h-best" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-best">Τα πιο αγαπημένα</h2>
+        <p class="lede">Τυπώνονται σε παρτίδες κάθε εβδομάδα. Διαλέξτε χρώμα και τα στέλνουμε σε 1 έως 3 εργάσιμες.</p>
+      </div>
+      <ul class="products">
+        <li class="product">
+          <div class="ph" data-print><picture><source type="image/avif" srcset="/3d-eshop/photos/p-lamp-400.avif 400w, /3d-eshop/photos/p-lamp-640.avif 640w" sizes="(min-width: 960px) 300px, 78vw"><source type="image/webp" srcset="/3d-eshop/photos/p-lamp-400.webp 400w, /3d-eshop/photos/p-lamp-640.webp 640w" sizes="(min-width: 960px) 300px, 78vw"><img src="/3d-eshop/photos/p-lamp-400.jpg" width="400" height="500" alt="Αναμμένο λευκό φωτιστικό με κυματιστές πτυχώσεις πάνω σε τραπέζι" loading="lazy" decoding="async"></picture><span class="tag">Έτοιμο για αποστολή</span></div>
+          <div class="body">
+            <h3>Φωτιστικό «Κύμα»</h3>
+            <p class="meta">PLA, Ø 14 × 21 cm, ντουί E14 για λάμπα LED</p>
+            <fieldset class="colors"><legend>Χρώμα</legend>
+              <label><input type="radio" name="c1" value="Λευκό" checked><span class="dot" style="--c:#f1efe9"></span><span class="sr-only">Λευκό</span></label>
+              <label><input type="radio" name="c1" value="Άμμος"><span class="dot" style="--c:#d9c7a7"></span><span class="sr-only">Άμμος</span></label>
+              <label><input type="radio" name="c1" value="Γραφίτης"><span class="dot" style="--c:#3a3d43"></span><span class="sr-only">Γραφίτης</span></label>
+              <output>Λευκό</output>
+            </fieldset>
+            <div class="row"><span class="price">42,00 €</span><button class="btn btn-line add" type="button" data-add="42">Στο καλάθι</button></div>
+          </div>
+        </li>
+        <li class="product">
+          <div class="ph" data-print><picture><source type="image/avif" srcset="/3d-eshop/photos/p-vase-400.avif 400w, /3d-eshop/photos/p-vase-640.avif 640w" sizes="(min-width: 960px) 300px, 78vw"><source type="image/webp" srcset="/3d-eshop/photos/p-vase-400.webp 400w, /3d-eshop/photos/p-vase-640.webp 640w" sizes="(min-width: 960px) 300px, 78vw"><img src="/3d-eshop/photos/p-vase-400.jpg" width="400" height="500" alt="Δίχρωμο βάζο σε μωβ και ασημί με σπειροειδείς ραβδώσεις" loading="lazy" decoding="async"></picture></div>
+          <div class="body">
+            <h3>Βάζο «Σπείρα»</h3>
+            <p class="meta">Silk PLA δίχρωμο, ύψος 18 cm, για ξερά άνθη</p>
+            <fieldset class="colors"><legend>Χρώμα</legend>
+              <label><input type="radio" name="c2" value="Μωβ και ασημί" checked><span class="dot" style="--c:linear-gradient(135deg,#6a4fb3 50%,#c9ccd4 50%)"></span><span class="sr-only">Μωβ και ασημί</span></label>
+              <label><input type="radio" name="c2" value="Χρυσό και χαλκός"><span class="dot" style="--c:linear-gradient(135deg,#d2a640 50%,#b4643a 50%)"></span><span class="sr-only">Χρυσό και χαλκός</span></label>
+              <label><input type="radio" name="c2" value="Μπλε και πράσινο"><span class="dot" style="--c:linear-gradient(135deg,#2b50cf 50%,#2f9c6b 50%)"></span><span class="sr-only">Μπλε και πράσινο</span></label>
+              <output>Μωβ και ασημί</output>
+            </fieldset>
+            <div class="row"><span class="price">19,50 €</span><button class="btn btn-line add" type="button" data-add="19.5">Στο καλάθι</button></div>
+          </div>
+        </li>
+        <li class="product">
+          <div class="ph" data-print><picture><source type="image/avif" srcset="/3d-eshop/photos/p-cat-400.avif 400w, /3d-eshop/photos/p-cat-640.avif 640w" sizes="(min-width: 960px) 300px, 78vw"><source type="image/webp" srcset="/3d-eshop/photos/p-cat-400.webp 400w, /3d-eshop/photos/p-cat-640.webp 640w" sizes="(min-width: 960px) 300px, 78vw"><img src="/3d-eshop/photos/p-cat-400.jpg" width="400" height="500" alt="Γάτα σε low-poly σχέδιο τυπωμένη σε ανθρακί PLA" loading="lazy" decoding="async"></picture><span class="tag">Νέο</span></div>
+          <div class="body">
+            <h3>Γάτα low-poly</h3>
+            <p class="meta">PLA ματ, ύψος 16 cm, βαρύ γέμισμα για σταθερότητα</p>
+            <fieldset class="colors"><legend>Χρώμα</legend>
+              <label><input type="radio" name="c3" value="Ανθρακί" checked><span class="dot" style="--c:#3a3d43"></span><span class="sr-only">Ανθρακί</span></label>
+              <label><input type="radio" name="c3" value="Λευκό"><span class="dot" style="--c:#f1efe9"></span><span class="sr-only">Λευκό</span></label>
+              <label><input type="radio" name="c3" value="Κοβάλτιο"><span class="dot" style="--c:#2b50cf"></span><span class="sr-only">Κοβάλτιο</span></label>
+              <output>Ανθρακί</output>
+            </fieldset>
+            <div class="row"><span class="price">14,90 €</span><button class="btn btn-line add" type="button" data-add="14.9">Στο καλάθι</button></div>
+          </div>
+        </li>
+        <li class="product">
+          <div class="ph" data-print><picture><source type="image/avif" srcset="/3d-eshop/photos/p-stand-400.avif 400w, /3d-eshop/photos/p-stand-640.avif 640w" sizes="(min-width: 960px) 300px, 78vw"><source type="image/webp" srcset="/3d-eshop/photos/p-stand-400.webp 400w, /3d-eshop/photos/p-stand-640.webp 640w" sizes="(min-width: 960px) 300px, 78vw"><img src="/3d-eshop/photos/p-stand-400.jpg" width="400" height="500" alt="Δύο βάσεις κινητού σε σχήμα αρκουδάκι, μία κίτρινη και μία ροζ μωβ" loading="lazy" decoding="async"></picture></div>
+          <div class="body">
+            <h3>Βάση κινητού «Αρκουδάκι»</h3>
+            <p class="meta">PLA, χωράει κάθε κινητό με θήκη έως 12 mm</p>
+            <fieldset class="colors"><legend>Χρώμα</legend>
+              <label><input type="radio" name="c4" value="Κίτρινο" checked><span class="dot" style="--c:#f2cf5b"></span><span class="sr-only">Κίτρινο</span></label>
+              <label><input type="radio" name="c4" value="Ροζ και μωβ"><span class="dot" style="--c:linear-gradient(135deg,#d9488f 50%,#6a4fb3 50%)"></span><span class="sr-only">Ροζ και μωβ</span></label>
+              <label><input type="radio" name="c4" value="Λευκό"><span class="dot" style="--c:#f1efe9"></span><span class="sr-only">Λευκό</span></label>
+              <output>Κίτρινο</output>
+            </fieldset>
+            <div class="row"><span class="price">9,90 €</span><button class="btn btn-line add" type="button" data-add="9.9">Στο καλάθι</button></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec proc" id="diadikasia" aria-labelledby="h-proc">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-proc">Από το αρχείο στο κουτί σας, στρώση στρώση</h2>
+        <p class="lede">Το ίδιο κάνουμε για ένα βάζο του καταλόγου και για το δικό σας σχέδιο. Οι αριθμοί παρακάτω είναι του καραβακιού που τυπώνεται στην αρχή της σελίδας.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="media"><div class="readout mono">
+            <dl><dt>αρχείο</dt><dd>3DBenchy.stl</dd><dt>μέγεθος</dt><dd>11,3 MB</dd><dt>τρίγωνα</dt><dd>225.706</dd><dt>διαστάσεις</dt><dd>60 × 31 × 48 mm</dd><dt>κλειστό σχήμα</dt><dd>ναι</dd></dl>
+            <div class="bar" style="--w:100%"><i></i></div>
+          </div></div>
+          <span class="n">Βήμα 1</span>
+          <h3>Έλεγχος αρχείου</h3>
+          <p>Πριν δώσουμε τιμή κοιτάμε κλίμακα, πάχος τοιχωμάτων και αν το σχήμα κλείνει. Αν κάτι δεν θα τυπωθεί σωστά, σας το λέμε από την αρχή.</p>
+        </li>
+        <li class="step">
+          <div class="media"><div class="readout mono">
+            <div class="layers" aria-hidden="true"><i style="width:100%"></i><i style="width:96%"></i><i style="width:92%"></i><i style="width:84%"></i><i style="width:80%"></i><i style="width:58%;margin-left:12%"></i><i style="width:56%;margin-left:13%"></i><i style="width:54%;margin-left:14%"></i><i style="width:22%;margin-left:30%"></i></div>
+            <dl><dt>στρώσεις</dt><dd>240 × 0,2 mm</dd><dt>γέμισμα</dt><dd>15 %</dd><dt>τοιχώματα</dt><dd>2</dd><dt>χρόνος</dt><dd>1 ώρα 42 λεπτά</dd><dt>υλικό</dt><dd>14 g PLA</dd></dl>
+          </div></div>
+          <span class="n">Βήμα 2</span>
+          <h3>Slicing</h3>
+          <p>Ορίζουμε ύψος στρώσης, γέμισμα και στηρίγματα ανάλογα με τη χρήση. Ένα διακοσμητικό θέλει λεπτές στρώσεις, ένα στήριγμα ραφιού θέλει αντοχή.</p>
+        </li>
+        <li class="step">
+          <div class="media" data-print><picture><source type="image/avif" srcset="/3d-eshop/photos/s-print-480.avif 480w, /3d-eshop/photos/s-print-720.avif 720w" sizes="(min-width: 1100px) 300px, (min-width: 760px) 45vw, 100vw"><source type="image/webp" srcset="/3d-eshop/photos/s-print-480.webp 480w, /3d-eshop/photos/s-print-720.webp 720w" sizes="(min-width: 1100px) 300px, (min-width: 760px) 45vw, 100vw"><img src="/3d-eshop/photos/s-print-480.jpg" width="480" height="384" alt="Εκτυπωτής FDM με πορτοκαλί πλαίσιο την ώρα που τυπώνει" loading="lazy" decoding="async"></picture></div>
+          <span class="n">Βήμα 3</span>
+          <h3>Εκτύπωση</h3>
+          <p>Κάθε κομμάτι τυπώνεται εδώ, στο εργαστήριο. Ένα βάζο θέλει 3 έως 6 ώρες, ένα φωτιστικό έως 14.</p>
+        </li>
+        <li class="step">
+          <div class="media" data-print><picture><source type="image/avif" srcset="/3d-eshop/photos/s-parts-480.avif 480w, /3d-eshop/photos/s-parts-720.avif 720w" sizes="(min-width: 1100px) 300px, (min-width: 760px) 45vw, 100vw"><source type="image/webp" srcset="/3d-eshop/photos/s-parts-480.webp 480w, /3d-eshop/photos/s-parts-720.webp 720w" sizes="(min-width: 1100px) 300px, (min-width: 760px) 45vw, 100vw"><img src="/3d-eshop/photos/s-parts-480.jpg" width="480" height="384" alt="Πορτοκαλί κομμάτια που μόλις τυπώθηκαν πάνω στην πλάκα του εκτυπωτή" loading="lazy" decoding="async"></picture></div>
+          <span class="n">Βήμα 4</span>
+          <h3>Φινίρισμα και αποστολή</h3>
+          <p>Αφαιρούμε τα στηρίγματα, ελέγχουμε τις διαστάσεις και το συσκευάζουμε σε χαρτί, χωρίς πλαστικό αφρό.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band" id="prosfora" aria-labelledby="h-quote">
+    <div class="wrap">
+      <div>
+        <h2 id="h-quote">Έχεις δικό σου σχέδιο;</h2>
+        <p class="lede">Ανεβάστε το αρχείο σας και σας στέλνουμε τιμή, υλικό και χρόνο παράδοσης μέσα σε 24 ώρες, χωρίς καμία δέσμευση.</p>
+        <ul class="facts">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>Γραπτή τιμή σε 24 ώρες, τις εργάσιμες</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span>Από 1 τεμάχιο έως μικρές παρτίδες των 500</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><span>Το αρχείο σας μένει σε εμάς και δεν το τυπώνουμε για κανέναν άλλο</span></li>
+        </ul>
+        <div class="sample">
+          <p>Έτσι μοιάζει μια προσφορά που λαμβάνετε:</p>
+          <dl class="mono"><dt>αρχείο</dt><dd>thiki-aisthitira.stl</dd><dt>υλικό</dt><dd>PETG μαύρο, 0,2 mm</dd><dt>τεμάχια</dt><dd>4</dd><dt>έτοιμο σε</dt><dd>2 εργάσιμες</dd><dt class="total">σύνολο</dt><dd class="total">34,00 € με ΦΠΑ</dd></dl>
+        </div>
+      </div>
+      <form class="quote" id="quote" novalidate>
+        <div class="drop" id="drop">
+          <svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>
+          <b id="drop-label">Σύρετε το αρχείο εδώ ή πατήστε για επιλογή</b>
+          <small id="drop-hint">STL, 3MF, OBJ, STEP · έως 50 MB</small>
+          <input id="file" name="file" type="file" accept=".stl,.3mf,.obj,.step,.stp" aria-labelledby="drop-label" aria-describedby="drop-hint file-err">
+        </div>
+        <p class="err" id="file-err" role="alert"></p>
+        <div class="file" id="file-card"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg><div style="min-width:0"><div class="fn" id="file-name"></div><div class="fs mono" id="file-size"></div></div><button type="button" id="file-clear"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg><span class="sr-only">Αφαίρεση αρχείου</span></button></div>
+        <div class="field"><label for="email">Email για την προσφορά</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-err"><p class="err" id="email-err"></p></div>
+        <div class="two">
+          <div class="field"><label for="mat">Υλικό</label><select id="mat" name="mat"><option>Δεν ξέρω, προτείνετε</option><option>PLA</option><option>Silk PLA</option><option>PETG</option><option>TPU, εύκαμπτο</option></select></div>
+          <div class="field"><label for="qty">Τεμάχια</label><input id="qty" name="qty" type="number" inputmode="numeric" min="1" max="500" value="1" aria-describedby="qty-err"><p class="err" id="qty-err"></p></div>
+        </div>
+        <div class="field"><label for="notes">Σημειώσεις <span style="font-weight:400;color:var(--muted)">(προαιρετικό)</span></label><textarea id="notes" name="notes" maxlength="1000" placeholder="π.χ. χρώμα, πού θα χρησιμοποιηθεί, αν πρέπει να αντέχει νερό"></textarea></div>
+        <button class="btn btn-primary" type="submit">Ζητήστε τιμή</button>
+        <p class="ok-msg" id="ok" role="status" tabindex="-1"></p>
+        <p class="fine">Ανεβάζοντας αρχείο δηλώνετε ότι έχετε δικαίωμα να το τυπώσετε. Δεν τυπώνουμε όπλα ή αντίγραφα προστατευμένων σχεδίων.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec" id="ylika" aria-labelledby="h-mat">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-mat">Υλικά και χρώματα</h2>
+        <p class="lede">Το σωστό υλικό κρίνει αν ένα κομμάτι θα κρατήσει χρόνια. Αυτά χρησιμοποιούμε και γι' αυτό.</p>
+      </div>
+      <div class="mat-grid">
+        <table class="mtable">
+          <caption>Τα τέσσερα νήματα που τυπώνουμε</caption>
+          <thead><tr><th scope="col">Υλικό</th><th scope="col">Ιδανικό για</th><th scope="col">Αντέχει έως</th><th scope="col">Για έξω</th><th scope="col">Όψη</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">PLA</th><td data-label="Ιδανικό για">Διακόσμηση, δώρα, φωτιστικά με λάμπα LED</td><td data-label="Αντέχει έως" class="mono">55 °C</td><td data-label="Για έξω">Όχι στον ήλιο</td><td data-label="Όψη">Ματ ή γυαλιστερό</td></tr>
+            <tr><th scope="row">Silk PLA</th><td data-label="Ιδανικό για">Βάζα και διακοσμητικά με λάμψη</td><td data-label="Αντέχει έως" class="mono">55 °C</td><td data-label="Για έξω">Όχι</td><td data-label="Όψη">Μεταλλική γυαλάδα, δίχρωμο</td></tr>
+            <tr><th scope="row">PETG</th><td data-label="Ιδανικό για">Χρηστικά, κουζίνα, μπαλκόνι, αυτοκίνητο</td><td data-label="Αντέχει έως" class="mono">75 °C</td><td data-label="Για έξω">Ναι</td><td data-label="Όψη">Ημιγυαλιστερό</td></tr>
+            <tr><th scope="row">TPU</th><td data-label="Ιδανικό για">Θήκες, λάστιχα, αντικραδασμικά πόδια</td><td data-label="Αντέχει έως" class="mono">60 °C</td><td data-label="Για έξω">Ναι</td><td data-label="Όψη">Εύκαμπτο, σαν λάστιχο</td></tr>
+          </tbody>
+        </table>
+        <div class="lib">
+          <h3>Βιβλιοθήκη χρωμάτων</h3>
+          <ul class="spools">
+            <li><i style="--c:#f1efe9"></i>Λευκό<small>PLA PETG</small></li>
+            <li><i style="--c:#d9c7a7"></i>Άμμος<small>PLA</small></li>
+            <li><i style="--c:#3a3d43"></i>Γραφίτης<small>PLA PETG</small></li>
+            <li><i style="--c:#141414"></i>Μαύρο<small>όλα</small></li>
+            <li><i style="--c:#2b50cf"></i>Κοβάλτιο<small>PLA PETG</small></li>
+            <li><i style="--c:#7fb6e6"></i>Ουρανί<small>PLA</small></li>
+            <li><i style="--c:#8fbf32"></i>Λάιμ<small>PLA</small></li>
+            <li><i style="--c:#d23a2a"></i>Κόκκινο<small>PLA PETG</small></li>
+            <li><i style="--c:#ee7a2b"></i>Πορτοκαλί<small>PLA</small></li>
+            <li><i style="--c:#d9a62e"></i>Μουσταρδί<small>PLA</small></li>
+            <li><i style="--c:#d9488f"></i>Ροζ<small>PLA</small></li>
+            <li><i style="--c:linear-gradient(135deg,#6a4fb3 50%,#c9ccd4 50%)"></i>Μωβ ασημί<small>Silk</small></li>
+          </ul>
+          <div data-print><picture><source type="image/avif" srcset="/3d-eshop/photos/m-spools-560.avif 560w, /3d-eshop/photos/m-spools-900.avif 900w" sizes="(min-width: 960px) 420px, 100vw"><source type="image/webp" srcset="/3d-eshop/photos/m-spools-560.webp 560w, /3d-eshop/photos/m-spools-900.webp 900w" sizes="(min-width: 960px) 420px, 100vw"><img src="/3d-eshop/photos/m-spools-560.jpg" width="560" height="373" alt="Καρούλια με πράσινο και πορτοκαλί νήμα για 3D εκτυπωτή" loading="lazy" decoding="async"></picture></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec ship" id="apostoli" aria-labelledby="h-ship">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-ship">Αποστολή και πληρωμή, με τις τιμές μπροστά σας</h2>
+        <p class="lede">Το κόστος αποστολής το βλέπετε πριν το καλάθι. Καμία χρέωση δεν εμφανίζεται στο τελευταίο βήμα.</p>
+      </div>
+      <div class="ship-grid">
+        <div>
+          <h3>Αποστολή</h3>
+          <ul class="rows">
+            <li><b>BoxNow, σε locker</b><span class="mono">1,90 €</span><small>1 έως 2 εργάσιμες, παραλαβή όποια ώρα θέλετε</small></li>
+            <li><b>ACS, στην πόρτα σας</b><span class="mono">3,50 €</span><small>1 έως 2 εργάσιμες στην ηπειρωτική Ελλάδα</small></li>
+            <li><b>ΕΛΤΑ Courier</b><span class="mono">3,20 €</span><small>2 έως 4 εργάσιμες, και στα νησιά</small></li>
+            <li><b>Παραλαβή από το εργαστήριο</b><span class="mono">0,00 €</span><small>Σας ειδοποιούμε όταν είναι έτοιμο</small></li>
+          </ul>
+          <p class="free"><svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg>Δωρεάν αποστολή για παραγγελίες από 50 €.</p>
+        </div>
+        <div>
+          <h3>Πληρωμή</h3>
+          <ul class="rows">
+            <li><b>Κάρτα</b><span class="mono">Visa, Mastercard</span><small>Ασφαλής πληρωμή μέσω του παρόχου που θα επιλέξετε</small></li>
+            <li><b>Apple Pay, Google Pay</b><span class="mono">με ένα άγγιγμα</span><small>Χωρίς να πληκτρολογήσετε στοιχεία κάρτας</small></li>
+            <li><b>IRIS</b><span class="mono">από την τράπεζά σας</span><small>Μεταφορά με το κινητό, χωρίς κάρτα</small></li>
+            <li><b>Αντικαταβολή</b><span class="mono">+2,00 €</span><small>Πληρώνετε στον courier, όχι για BoxNow</small></li>
+            <li><b>Τραπεζική κατάθεση</b><span class="mono">0,00 €</span><small>Η παραγγελία ξεκινά με την πίστωση</small></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec faq" id="faq" aria-labelledby="h-faq">
+    <div class="wrap faq-grid">
+      <div>
+        <h2 id="h-faq">Συχνές ερωτήσεις</h2>
+        <p class="lede" style="margin-top:14px">Δεν βρίσκετε την απάντηση; Στείλτε μας email και απαντάμε την ίδια μέρα.</p>
+      </div>
+      <div>
+        <details><summary>Πόσο κοστίζει μια εκτύπωση από δικό μου αρχείο;<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Η τιμή βγαίνει από τον όγκο του υλικού, τον χρόνο εκτύπωσης και το φινίρισμα. Μικρά κομμάτια ξεκινούν από περίπου 8 €. Ανεβάστε το αρχείο και θα έχετε γραπτή τιμή μέσα σε 24 ώρες.</p></details>
+        <details><summary>Σε πόσες μέρες θα το παραλάβω;<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Τα έτοιμα προϊόντα φεύγουν σε 1 έως 3 εργάσιμες. Ό,τι τυπώνεται κατά παραγγελία θέλει 2 έως 5 εργάσιμες συν την αποστολή.</p></details>
+        <details><summary>Το PLA αντέχει στον ήλιο ή μέσα στο αυτοκίνητο;<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Όχι. Το PLA μαλακώνει γύρω στους 55 °C. Για μπαλκόνι, αυτοκίνητο ή κουζίνα προτείνουμε PETG.</p></details>
+        <details><summary>Μπορώ να ζητήσω χρώμα που δεν βλέπω στο προϊόν;<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Ναι. Διαλέξτε από τη βιβλιοθήκη χρωμάτων και γράψτε το στις σημειώσεις της παραγγελίας. Αν δεν το έχουμε, θα σας προτείνουμε το πιο κοντινό.</p></details>
+        <details><summary>Τι αρχεία δέχεστε;<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>STL, 3MF, OBJ και STEP έως 50 MB. Αν δεν έχετε αρχείο, στείλτε σκίτσο με διαστάσεις και σας δίνουμε τιμή για τον σχεδιασμό.</p></details>
+        <details><summary>Μπορώ να επιστρέψω ένα προϊόν;<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Τα έτοιμα προϊόντα επιστρέφονται μέσα σε 14 ημέρες. Οι εκτυπώσεις από δικό σας αρχείο δεν επιστρέφονται, εκτός αν έχουν ελάττωμα.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="news" aria-labelledby="h-news">
+    <div class="wrap">
+      <div>
+        <h2 id="h-news">Ένα email τον μήνα με τα νέα σχέδια</h2>
+        <p class="lede" style="margin-top:10px">Πρώτοι βλέπετε τις νέες παρτίδες και τα χρώματα. Διαγραφή με ένα κλικ.</p>
+      </div>
+      <form id="news" novalidate>
+        <label class="sr-only" for="nemail">Το email σας</label>
+        <input id="nemail" type="email" autocomplete="email" placeholder="Το email σας" required aria-describedby="nemail-err">
+        <button class="btn btn-primary" type="submit">Εγγραφή</button>
+        <p class="err" id="nemail-err" role="status" style="flex-basis:100%"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top" style="color:var(--on-dark)"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="19" width="20" height="3.2" rx="1" fill="#2b50cf"/><rect x="5" y="14" width="16" height="3.2" rx="1" fill="#3a5fe0"/><rect x="7" y="9" width="12" height="3.2" rx="1" fill="#5c7cf0"/><rect x="9" y="4" width="8" height="3.2" rx="1" fill="#ffb15a"/></svg><span class="slot">Επωνυμία</span><span>3D</span></a>
+      <p style="margin-top:14px;max-width:36ch">Εργαστήριο τρισδιάστατης εκτύπωσης και κατάστημα. Τυπώνουμε τα δικά μας σχέδια και τα δικά σας αρχεία.</p>
+    </div>
+    <div class="cols">
+      <div><h2>Κατάστημα</h2><ul><li><a href="#proionta">Προϊόντα</a></li><li><a href="#kathgories">Κατηγορίες</a></li><li><a href="#prosfora">Εκτύπωση από αρχείο</a></li><li><a href="#ylika">Υλικά και χρώματα</a></li></ul></div>
+      <div><h2>Εξυπηρέτηση</h2><ul><li><a href="#apostoli">Αποστολή και πληρωμή</a></li><li><a href="#faq">Επιστροφές</a></li><li><a href="#faq">Συχνές ερωτήσεις</a></li><li><a href="#top">Όροι χρήσης</a></li><li><a href="#top">Πολιτική απορρήτου</a></li></ul></div>
+      <div><h2>Επικοινωνία</h2><ul><li>info@[επωνυμία].gr</li><li>Εργαστήριο: [διεύθυνση], [πόλη]</li><li>Δευτέρα έως Παρασκευή, 10:00 έως 18:00</li></ul></div>
+    </div>
+    <div class="legal">
+      <p>© 2026 [Επωνυμία] 3D · ΑΦΜ [συμπληρώνεται] · ΓΕΜΗ [συμπληρώνεται]</p>
+      <p>Ενδεικτικό σχέδιο αρχικής σελίδας: τιμές, χρόνοι και κείμενα είναι παραδείγματα για συζήτηση.</p>
+      <p>Ενδεικτικές φωτογραφίες από το <a href="https://unsplash.com/" rel="noopener">Unsplash</a>: Alexey Demidov, EProjets Lab, Vertex Designs, Snapmaker 3D Printer, Spencer Liao, Osman Talha Dikyar, David Clode, Jakub Żerdzicki. Μοντέλο 3D: #3DBenchy από το <a href="https://www.3dbenchy.com/" rel="noopener">3DBenchy.com</a>, Public Domain (CC0 1.0). Εικονίδια σε στυλ Lucide (ISC).</p>
+      <p class="credit">Σχεδιασμός &amp; ανάπτυξη: <a href="https://www.akosds.com">Akos Digital Services</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="dock" id="dock" aria-label="Γρήγορες ενέργειες">
+  <a class="btn btn-ghost" href="#proionta">Προϊόντα</a>
+  <a class="btn btn-primary" href="#prosfora"><svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>Τιμή για το αρχείο σας</a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-text"></span><div class="bar" aria-hidden="true"><i></i></div></div>
+
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  // header toggles
+  $$('[data-toggle]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = document.getElementById(b.getAttribute('data-toggle'));
+      var open = !t.classList.contains('open');
+      t.classList.toggle('open', open);
+      b.setAttribute('aria-expanded', open);
+      if (open && t.id === 'search') $('#q').focus();
+    });
+  });
+  $$('#menu a').forEach(function (a) { a.addEventListener('click', function () { $('#menu').classList.remove('open'); $('[data-toggle="menu"]').setAttribute('aria-expanded', 'false'); }); });
+
+  // colour radios show their name
+  $$('.colors').forEach(function (f) {
+    f.addEventListener('change', function (e) { $('output', f).textContent = e.target.value; });
+  });
+
+  // cart with free-shipping progress (front-end only)
+  var total = 0, count = 0, FREE = 50, toastT;
+  function eur(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+  $$('[data-add]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      total += parseFloat(b.getAttribute('data-add')); count += 1;
+      var badge = $('[data-cart-n]'); badge.textContent = count; badge.setAttribute('data-n', count);
+      $('[data-cart-sr]').textContent = count;
+      var name = b.closest('.product').querySelector('h3').textContent;
+      var left = FREE - total;
+      $('#toast-text').textContent = 'Προστέθηκε: ' + name + '. ' + (left > 0 ? 'Λείπουν ' + eur(left) + ' για δωρεάν αποστολή.' : 'Έχετε δωρεάν αποστολή.');
+      $('#toast .bar i').style.setProperty('--s', Math.min(1, total / FREE));
+      var t = $('#toast'); t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('show'); }, 4200);
+    });
+  });
+
+  // quote dropzone: type and size are checked here for UX only; the server re-checks both
+  var OK = ['stl', '3mf', 'obj', 'step', 'stp'], MAX = 50 * 1024 * 1024;
+  var input = $('#file'), drop = $('#drop'), ferr = $('#file-err'), card = $('#file-card'), chosen = null;
+  function fmt(b) { return b > 1048576 ? (b / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB'; }
+  function take(f) {
+    ferr.textContent = '';
+    var ext = (f.name.split('.').pop() || '').toLowerCase();
+    if (OK.indexOf(ext) < 0) { chosen = null; card.classList.remove('show'); ferr.textContent = 'Το αρχείο «' + f.name + '» δεν είναι STL, 3MF, OBJ ή STEP. Επιλέξτε ένα από αυτά.'; return; }
+    if (f.size > MAX) { chosen = null; card.classList.remove('show'); ferr.textContent = 'Το αρχείο είναι ' + fmt(f.size) + ', πάνω από το όριο των 50 MB. Στείλτε το συμπιεσμένο ή γράψτε μας για σύνδεσμο.'; return; }
+    chosen = f; $('#file-name').textContent = f.name; $('#file-size').textContent = fmt(f.size) + ' · ' + ext.toUpperCase(); card.classList.add('show');
+  }
+  input.addEventListener('change', function () { if (input.files[0]) take(input.files[0]); });
+  ['dragenter', 'dragover'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (e) { e.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function (e) { var f = e.dataTransfer && e.dataTransfer.files[0]; if (f) take(f); });
+  $('#file-clear').addEventListener('click', function () { chosen = null; input.value = ''; card.classList.remove('show'); input.focus(); });
+
+  function check(el, errEl, msg) { var bad = !!msg; el.setAttribute('aria-invalid', bad); errEl.textContent = msg || ''; return !bad; }
+  $('#quote').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = $('#email'), q = $('#qty'), ok = true, first = null;
+    if (!chosen) { ferr.textContent = 'Επιλέξτε το αρχείο που θέλετε να τυπώσουμε.'; ok = false; first = first || input; }
+    if (!check(em, $('#email-err'), em.validity.valid && em.value ? '' : 'Γράψτε ένα email για να σας στείλουμε την τιμή, π.χ. onoma@gmail.com.')) { ok = false; first = first || em; }
+    var n = Number(q.value);
+    if (!check(q, $('#qty-err'), Number.isInteger(n) && n >= 1 && n <= 500 ? '' : 'Από 1 έως 500 τεμάχια.')) { ok = false; first = first || q; }
+    if (!ok) { first.focus(); return; }
+    var m = $('#ok'); m.textContent = 'Λάβαμε το «' + chosen.name + '». Θα έχετε τιμή στο ' + em.value + ' μέσα σε 24 ώρες. (Στο ενδεικτικό σχέδιο δεν αποστέλλεται τίποτα.)';
+    m.classList.add('show'); m.focus();
+  });
+  $('#news').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = $('#nemail');
+    $('#nemail-err').style.color = '';
+    if (!check(em, $('#nemail-err'), em.validity.valid && em.value ? '' : 'Γράψτε ένα έγκυρο email.')) { em.focus(); return; }
+    $('#nemail-err').style.color = 'var(--text)'; $('#nemail-err').textContent = 'Ευχαριστούμε. Θα λάβετε ένα email επιβεβαίωσης. (Ενδεικτικό: δεν αποστέλλεται τίποτα.)';
+  });
+
+  // print reveal for photos, sticky mobile dock
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('printed'); io.unobserve(x.target); } }); }, { rootMargin: '0px 0px -12% 0px' });
+    $$('[data-print]').forEach(function (el) { if (reduce) el.classList.add('printed'); else io.observe(el); });
+    var dock = $('#dock'), heroOut = false, bandIn = false;
+    function sync() { dock.classList.toggle('show', heroOut && !bandIn); }
+    new IntersectionObserver(function (en) { heroOut = !en[0].isIntersecting; sync(); }).observe($('.ctas'));
+    new IntersectionObserver(function (en) { bandIn = en[0].isIntersecting; sync(); }).observe($('#quote'));
+  } else { $$('[data-print]').forEach(function (el) { el.classList.add('printed'); }); }
+})();
+</script>
+<script type="module">
+// The 3D hero loads after first paint and only when the stage is near the viewport. The poster stays if WebGL is missing.
+const stage = document.getElementById('stage'), col = document.getElementById('stage-col');
+const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+const save = navigator.connection && navigator.connection.saveData;
+const qs = new URLSearchParams(location.search), poster = qs.has('poster');
+function go() {
+  import('/3d-eshop/assets/hero.js').then(async ({ start }) => {
+    const hero = await start(stage, { glb: '/3d-eshop/assets/benchy.glb', poster, onReady(canvas) { stage.classList.add('is-live'); window.__heroCanvas = canvas; } });
+    window.__hero = hero;
+    if (poster) return;
+    col.classList.add('has-3d');
+    const watch = () => stage.classList.toggle('is-printing', stage.querySelector('[data-hud="state"]').textContent === 'Εκτυπώνεται');
+    new MutationObserver(watch).observe(stage.querySelector('[data-hud="state"]'), { childList: true }); watch();
+    document.getElementById('replay').addEventListener('click', () => hero.replay());
+    document.querySelectorAll('.swatches button').forEach((b) => b.addEventListener('click', () => {
+      document.querySelectorAll('.swatches button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+      hero.setColor(b.dataset.hex);
+      document.querySelector('[data-color-name]').textContent = b.dataset.name;
+    }));
+  }).catch(() => {});
+}
+if (gl && !save && !qs.has('no3d')) {
+  if (poster) go();
+  else addEventListener('load', () => (window.requestIdleCallback || setTimeout)(() => {
+    new IntersectionObserver((en, o) => { if (en[0].isIntersecting) { o.disconnect(); go(); } }, { rootMargin: '200px' }).observe(stage);
+  }, { timeout: 1500 }));
+}
+</script>
+</body>
+</html>
