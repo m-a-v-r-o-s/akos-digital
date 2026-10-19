@@ -222,9 +222,11 @@ html:has(.menu[open]){overflow:hidden}
 .menu-x:hover svg{transform:rotate(90deg)}
 .menu .chip{align-self:flex-start}
 .menu-links{list-style:none;padding:0;display:grid;border-top:1px solid rgba(245,241,230,.14)}
-.menu-links a{display:flex;align-items:baseline;gap:18px;padding:14px 0;border-bottom:1px solid rgba(245,241,230,.14);text-decoration:none;font:500 clamp(2rem,8.5vw,3rem)/1.05 var(--serif);letter-spacing:-.01em;transition:color .25s,padding .35s cubic-bezier(.2,.7,.2,1)}
+.menu-links a{display:flex;align-items:baseline;gap:18px;padding:14px 0;border-bottom:1px solid rgba(245,241,230,.14);text-decoration:none;font:500 clamp(2rem,8.5vw,3rem)/1.05 var(--serif);letter-spacing:-.01em;transition:color .25s}
+.menu-links a span[data-t]{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .menu-links small{font:700 .72rem/1 var(--sans);letter-spacing:.16em;color:var(--gold);transform:translateY(-.9em)}
-.menu-links a:hover,.menu-links a:focus-visible{color:var(--gold);font-style:italic;padding-left:8px}
+.menu-links a:hover,.menu-links a:focus-visible{color:var(--gold);font-style:italic}
+.menu-links a:hover span[data-t],.menu-links a:focus-visible span[data-t]{transform:translateX(8px)}
 .menu-foot{margin-top:auto;display:grid;gap:18px}
 .menu-foot .btn{justify-content:center}
 .menu-ct{display:grid;grid-template-columns:1fr 1fr;gap:10px}
