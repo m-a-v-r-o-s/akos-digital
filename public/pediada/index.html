@@ -259,6 +259,42 @@ picture{display:block}
 /* top bar, masthead and nav span the full width on wide screens */
 .bar .wrap,.mast .wrap,.nav .wrap{max-width:none}
 @media (min-width:1024px){.bar .wrap,.mast .wrap{padding-inline:clamp(24px,3vw,48px)}.nav .scroller{padding-inline:clamp(24px,3vw,48px)}.units.scroller{padding-left:calc(clamp(24px,3vw,48px) - 12px)}}
+
+/* mobile menu */
+.burger{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;padding:0 10px;margin-right:-10px;background:none;border:0;color:var(--ink);cursor:pointer}
+.burger span{display:block;height:2px;background:currentColor;border-radius:2px}
+.burger span:nth-child(2){width:70%}
+@media(max-width:1023px){.mast .wrap{grid-template-columns:1fr auto;align-items:center}.mast .tools{display:none}}
+@media(min-width:1024px){.burger{display:none}}
+html:has(.menu[open]){overflow:hidden}
+.menu{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:var(--paper);color:var(--ink);overflow:auto;overscroll-behavior:contain}
+.menu::backdrop{background:transparent}
+.menu-in{min-height:100%;display:flex;flex-direction:column;gap:24px;padding:max(14px,env(safe-area-inset-top)) var(--g) max(24px,env(safe-area-inset-bottom));max-width:640px;margin-inline:auto}
+.menu-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:3px double var(--ink)}
+.menu-wm{font-family:var(--serif);font-weight:800;font-size:1.9rem;line-height:1;letter-spacing:-.025em}
+.menu-wm i{font-style:normal;font-weight:400;font-size:.52em;margin-right:.18em;color:var(--accent)}
+.menu-x{width:44px;height:44px;margin-right:-10px;display:grid;place-items:center;background:none;border:0;color:var(--ink);cursor:pointer}
+.menu-date{font-size:.8125rem;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:-10px}
+.menu-date span{font-weight:600;color:var(--ink)}
+.menu-h{font:600 .75rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.menu .search{flex:none}
+main [id]{scroll-margin-top:100px}
+.menu-units{display:grid}
+.menu-units a{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,8vw,2.4rem);line-height:1.1;letter-spacing:-.02em}
+.menu-units a::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--c);flex:none}
+.menu-units a:hover,.menu-units a:focus-visible{color:var(--c)}
+.menu-topics{display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+.menu-topics a{display:block;padding:11px 0;border-bottom:1px solid var(--line);font-weight:600;font-size:.9375rem}
+.menu-topics a:hover{text-decoration:underline}
+.menu-foot{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.menu-foot .btn{min-height:48px}
+.btn-o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-o:hover{background:var(--ink);color:var(--paper)}
+.menu[open]{animation:mn-in .3s ease-out}
+.menu[open] .menu-units li{animation:mn-up .45s ease-out both;animation-delay:calc(.08s + var(--i) * .05s)}
+@keyframes mn-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes mn-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.menu[open],.menu[open] li{animation:none}}
 </style>
 </head>
 <body>
@@ -290,8 +326,48 @@ picture{display:block}
         <button type="submit" aria-label="Αναζήτηση"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></button>
       </form>
     </div>
+    <button class="burger" id="menu-open" type="button" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false"><span></span><span></span><span></span><b class="sr">Μενού</b></button>
   </div>
 </header>
+
+<dialog class="menu" id="menu" aria-label="Μενού">
+  <div class="menu-in">
+    <div class="menu-top">
+      <a class="menu-wm" href="#top" data-go><i>Η</i>Πεδιάδα</a>
+      <button class="menu-x" type="button" data-close><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><b class="sr">Κλείσιμο μενού</b></button>
+    </div>
+    <p class="menu-date">Δευτέρα 19 Οκτωβρίου 2026 <span>21°C Μαραθώνας, αίθριος</span></p>
+    <form class="search" role="search" onsubmit="return false">
+      <label class="sr" for="mq">Αναζήτηση στην Πεδιάδα</label>
+      <input id="mq" type="search" placeholder="Αναζήτηση ειδήσεων" autocomplete="off">
+      <button type="submit" aria-label="Αναζήτηση"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    </form>
+    <section aria-labelledby="mu-h">
+      <h2 class="menu-h" id="mu-h">Ενότητες</h2>
+      <ul class="menu-units">
+        <li class="nm" style="--i:0"><a href="#nea-makri" data-go>Νέα Μάκρη</a></li>
+        <li class="mar" style="--i:1"><a href="#marathonas" data-go>Μαραθώνας</a></li>
+        <li class="var" style="--i:2"><a href="#varnavas" data-go>Βαρνάβας</a></li>
+        <li class="gr" style="--i:3"><a href="#grammatiko" data-go>Γραμματικό</a></li>
+      </ul>
+    </section>
+    <section aria-labelledby="mt-h">
+      <h2 class="menu-h" id="mt-h">Θέματα</h2>
+      <ul class="menu-topics">
+        <li><a href="#dimos" data-go>Ανακοινώσεις Δήμου</a></li>
+        <li><a href="#koinonia" data-go>Κοινωνία</a></li>
+        <li><a href="#politismos" data-go>Πολιτισμός</a></li>
+        <li><a href="#athlitismos" data-go>Αθλητισμός</a></li>
+        <li><a href="#agora" data-go>Επιχειρήσεις</a></li>
+        <li><a href="#xrisima" data-go>Χρήσιμα</a></li>
+      </ul>
+    </section>
+    <div class="menu-foot">
+      <a class="btn" href="#tip" data-go>Στείλτε είδηση</a>
+      <a class="btn btn-o" href="#nl" data-go>Newsletter</a>
+    </div>
+  </div>
+</dialog>
 
 <nav class="nav" aria-label="Κύρια πλοήγηση">
   <div class="wrap">
@@ -591,6 +667,14 @@ picture{display:block}
   function sel(a,b,pa,pb){a.setAttribute('aria-selected','true');a.tabIndex=0;b.setAttribute('aria-selected','false');b.tabIndex=-1;pa.hidden=false;pb.hidden=true}
   t24.onclick=function(){sel(t24,t7,p24,p7)};t7.onclick=function(){sel(t7,t24,p7,p24)};
   [t24,t7].forEach(function(b){b.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var o=b===t24?t7:t24;o.click();o.focus()}})});
+  var menu=document.getElementById('menu'),mo=document.getElementById('menu-open'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  mo.onclick=function(){menu.showModal();mo.setAttribute('aria-expanded','true')};
+  menu.addEventListener('close',function(){mo.setAttribute('aria-expanded','false')});
+  menu.querySelector('[data-close]').onclick=function(){menu.close()};
+  [].forEach.call(menu.querySelectorAll('[data-go]'),function(a){a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();menu.close();
+    t.scrollIntoView({behavior:reduce?'auto':'smooth'});history.replaceState(history.state,'',a.getAttribute('href'))})});
+  addEventListener('resize',function(){if(innerWidth>=1024&&menu.open)menu.close()});
   var f=document.getElementById('nl'),m=document.getElementById('nlm'),i=document.getElementById('em');
   f.addEventListener('submit',function(e){e.preventDefault();
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(i.value.trim())||i.value.length>120){i.setAttribute('aria-invalid','true');m.textContent='Γράψτε μια έγκυρη διεύθυνση email, π.χ. onoma@example.gr.';i.focus();return}

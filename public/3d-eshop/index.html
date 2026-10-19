@@ -83,11 +83,40 @@ p{margin:0}
 .search .wrap{display:flex;gap:8px;padding-block:10px}
 .search input{flex:1;min-height:44px;padding:8px 14px;border-radius:var(--r);border:1px solid var(--line-dark);background:var(--graphite-2);color:var(--on-dark)}
 .search input::placeholder{color:var(--on-dark-2)}
-.menu{display:none;border-top:1px solid var(--line-dark)}
-.menu.open{display:block}
-.menu ul{list-style:none;margin:0;padding:8px var(--g) 16px}
-.menu a{display:block;padding:12px 0;text-decoration:none;font-weight:600;font-size:1.1rem;border-bottom:1px solid var(--line-dark)}
-@media (min-width:960px){.nav{display:flex}.menu-btn{display:none!important}.menu{display:none!important}}
+@media (min-width:960px){.nav{display:flex}.menu-btn{display:none!important}}
+/* mobile menu */
+html:has(.menu[open]){overflow:hidden}
+.menu{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:var(--graphite);color:var(--on-dark);overflow:auto;overscroll-behavior:contain}
+.menu::backdrop{background:transparent}
+.menu-in{min-height:100%;display:flex;flex-direction:column;gap:22px;padding:0 var(--g) max(24px,env(safe-area-inset-bottom))}
+.menu-top{display:flex;align-items:center;justify-content:space-between;height:60px;margin-top:env(safe-area-inset-top);margin-right:-10px}
+.menu-print{display:block;height:2px;margin:-22px calc(var(--g) * -1) 0;background:linear-gradient(90deg,var(--cobalt-2),var(--hot));transform-origin:left}
+.menu-search{display:flex;align-items:center;gap:10px;min-height:50px;padding:0 14px;border:1px solid var(--line-dark);border-radius:var(--r);background:var(--graphite-2)}
+.menu-search:focus-within{border-color:var(--cobalt-2)}
+.menu-search .icon{color:var(--on-dark-2);flex:none}
+.menu-search input{flex:1;min-width:0;border:0;background:transparent;color:var(--on-dark);padding:12px 0;outline:0}
+.menu-search input::placeholder{color:var(--on-dark-2)}
+.menu-links{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-dark)}
+.menu-links a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-dark);text-decoration:none;font-weight:750;font-size:clamp(1.6rem,7vw,2.2rem);line-height:1.1;letter-spacing:-.02em;font-variation-settings:"FLAR" 100,"VOLM" 40;transition:color .2s}
+.menu-links .icon{flex:none;color:var(--on-dark-2);transition:transform .3s var(--ease),color .2s}
+.menu-links a:hover,.menu-links a:focus-visible{color:#fff}
+.menu-links a:hover .icon,.menu-links a:focus-visible .icon{transform:translateX(4px);color:var(--hot)}
+.menu-cats p,.menu-foot p{margin:0 0 10px;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-2)}
+.menu-cats ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.menu-cats a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line-dark);border-radius:99px;text-decoration:none;font-size:.9rem;font-weight:600}
+.menu-cats a span{font-size:.75rem;color:var(--hot)}
+.menu-cats a:hover{border-color:var(--on-dark-2);background:var(--graphite-3)}
+.menu-foot{margin-top:auto;display:grid;gap:12px}
+.menu-foot .btn{justify-content:center;min-height:52px}
+.menu-foot p{margin:0;text-align:center;text-transform:none;letter-spacing:0}
+.menu[open]{animation:mn-in .35s var(--ease)}
+.menu[open] .menu-print{animation:mn-print 1s .1s var(--ease) both}
+.menu[open] .menu-links li{animation:mn-layer .5s var(--ease) both;animation-delay:calc(.12s + var(--i) * .06s)}
+.menu[open] .menu-cats,.menu[open] .menu-foot,.menu[open] .menu-search{animation:mn-layer .5s .45s var(--ease) both}
+@keyframes mn-in{from{opacity:0}to{opacity:1}}
+@keyframes mn-print{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes mn-layer{from{opacity:0;clip-path:inset(100% 0 0 0);transform:translateY(10px)}to{opacity:1;clip-path:inset(0);transform:none}}
+@media (prefers-reduced-motion:reduce){.menu[open],.menu[open] *{animation:none!important}}
 
 /* hero */
 .hero{background:linear-gradient(180deg,var(--graphite) 0%,#16181c 100%);overflow:hidden}
@@ -401,6 +430,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
@@ -424,7 +454,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="tools">
       <button class="tool" type="button" aria-expanded="false" aria-controls="search" data-toggle="search"><svg class="icon"><use href="#i-search"/></svg><span class="sr-only">Αναζήτηση</span></button>
       <button class="tool" type="button" id="cart-btn"><svg class="icon"><use href="#i-bag"/></svg><span class="sr-only">Καλάθι, <span data-cart-sr>0</span> προϊόντα</span><span class="badge" data-cart-n data-n="0" aria-hidden="true">0</span></button>
-      <button class="tool menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-toggle="menu"><svg class="icon"><use href="#i-menu"/></svg><span class="sr-only">Μενού</span></button>
+      <button class="tool menu-btn" id="menu-open" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu"><svg class="icon"><use href="#i-menu"/></svg><span class="sr-only">Μενού</span></button>
     </div>
   </div>
   <form class="search" id="search" role="search" onsubmit="return false">
@@ -434,16 +464,46 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <button class="btn btn-primary" type="submit">Αναζήτηση</button>
     </div>
   </form>
-  <nav class="menu" id="menu" aria-label="Μενού κινητού">
-    <ul>
-      <li><a href="#proionta">Προϊόντα</a></li>
-      <li><a href="#prosfora">Εκτύπωση από αρχείο</a></li>
-      <li><a href="#ylika">Υλικά και χρώματα</a></li>
-      <li><a href="#apostoli">Αποστολή και πληρωμή</a></li>
-      <li><a href="#faq">Συχνές ερωτήσεις</a></li>
-    </ul>
-  </nav>
 </header>
+
+<dialog class="menu" id="menu" aria-label="Μενού">
+  <div class="menu-in">
+    <div class="menu-top">
+      <a class="brand" href="#top" data-go>
+      <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="19" width="20" height="3.2" rx="1" fill="#2b50cf"/><rect x="5" y="14" width="16" height="3.2" rx="1" fill="#3a5fe0"/><rect x="7" y="9" width="12" height="3.2" rx="1" fill="#5c7cf0"/><rect x="9" y="4" width="8" height="3.2" rx="1" fill="#ffb15a"/></svg>
+      <span class="slot">Επωνυμία</span><span>3D</span>
+    </a>
+      <button class="tool" type="button" data-close><svg class="icon"><use href="#i-x"/></svg><span class="sr-only">Κλείσιμο μενού</span></button>
+    </div>
+    <i class="menu-print" aria-hidden="true"></i>
+    <form class="menu-search" role="search" onsubmit="return false">
+      <label class="sr-only" for="mq">Αναζήτηση προϊόντων</label>
+      <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+      <input id="mq" type="search" placeholder="Βάζο, φωτιστικό, βάση κινητού" autocomplete="off">
+    </form>
+    <ul class="menu-links">
+      <li style="--i:4"><a href="#proionta" data-go><span>Προϊόντα</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li style="--i:3"><a href="#prosfora" data-go><span>Εκτύπωση από αρχείο</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li style="--i:2"><a href="#ylika" data-go><span>Υλικά και χρώματα</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li style="--i:1"><a href="#apostoli" data-go><span>Αποστολή και πληρωμή</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li style="--i:0"><a href="#faq" data-go><span>Συχνές ερωτήσεις</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+    </ul>
+    <div class="menu-cats">
+      <p class="mono">Κατηγορίες</p>
+      <ul>
+        <li><a href="#kathgories" data-go>Διακόσμηση<span class="mono">34</span></a></li>
+        <li><a href="#kathgories" data-go>Φωτιστικά<span class="mono">12</span></a></li>
+        <li><a href="#kathgories" data-go>Γλάστρες<span class="mono">9</span></a></li>
+        <li><a href="#kathgories" data-go>Γραφείο και κινητό<span class="mono">21</span></a></li>
+        <li><a href="#kathgories" data-go>Τεχνικά ανταλλακτικά<span class="mono">16</span></a></li>
+      </ul>
+    </div>
+    <div class="menu-foot">
+      <a class="btn btn-primary" href="#prosfora" data-go><svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg>Ανεβάστε το αρχείο σας</a>
+      <p class="mono">BoxNow από 1,90 € · Δωρεάν αποστολή από 50 €</p>
+    </div>
+  </div>
+</dialog>
 
 <main id="main">
   <section class="hero on-dark" aria-labelledby="h1">
@@ -799,7 +859,20 @@ document.documentElement.classList.add('js');
       if (open && t.id === 'search') $('#q').focus();
     });
   });
-  $$('#menu a').forEach(function (a) { a.addEventListener('click', function () { $('#menu').classList.remove('open'); $('[data-toggle="menu"]').setAttribute('aria-expanded', 'false'); }); });
+  // full-screen mobile menu: native modal dialog (focus trap, Esc)
+  var menu = $('#menu'), mo = $('#menu-open'), mreduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  mo.addEventListener('click', function () { menu.showModal(); mo.setAttribute('aria-expanded', 'true'); });
+  menu.addEventListener('close', function () { mo.setAttribute('aria-expanded', 'false'); });
+  $$('[data-close]', menu).forEach(function (b) { b.addEventListener('click', function () { menu.close(); }); });
+  $$('[data-go]', menu).forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = $(a.getAttribute('href')); if (!t) return;
+      e.preventDefault(); menu.close();
+      t.scrollIntoView({ behavior: mreduce ? 'auto' : 'smooth' });
+      history.replaceState(history.state, '', a.getAttribute('href'));
+    });
+  });
+  addEventListener('resize', function () { if (innerWidth >= 960 && menu.open) menu.close(); });
 
   // colour radios show their name
   $$('.colors').forEach(function (f) {
