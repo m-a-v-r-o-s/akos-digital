@@ -377,7 +377,7 @@ export default function MobileScrollSections() {
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className={`rounded-full transition-all duration-300 ${
+            className={`snap-dot rounded-full ${
               active === i
                 ? "w-5 h-1.5 bg-accent"
                 : "w-1.5 h-1.5 bg-stone-dark"

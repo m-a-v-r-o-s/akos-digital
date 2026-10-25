@@ -490,7 +490,7 @@ body {
   }
 }
 .fade-up {
-  animation: fadeUp 0.6s ease forwards;
+  animation: fadeUp 0.7s var(--spring-smooth) forwards;
 }
 .fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
 .fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
@@ -1215,4 +1215,15 @@ a:hover .arrow-icon {
   height: 14%;
   border-radius: 1px;
   background: linear-gradient(180deg, #b2b9c0 0%, #636a72 60%, #a1a8b0 100%);
+}
+
+/* ── Springs on state transitions (CSS transitions reverse from the live value) ── */
+button.snap-dot:not(:disabled) {
+  transition: width var(--spring-snappy-ms) var(--spring-snappy), background-color 200ms ease, scale var(--press-ms) var(--ease-out);
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  html, .scroll-smooth { scroll-behavior: auto !important; }
+  .fade-up { animation-name: fadeIn; animation-duration: 200ms; animation-timing-function: ease; }
 }
