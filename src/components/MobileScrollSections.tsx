@@ -160,7 +160,7 @@ export default function MobileScrollSections() {
       <div
         ref={containerRef}
         onScroll={onScroll}
-        className="flex overflow-x-auto scroll-smooth"
+        className="snap-gallery flex overflow-x-auto scroll-smooth"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",

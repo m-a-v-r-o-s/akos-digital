@@ -92,7 +92,7 @@ export default function SectorDetail({ slug }: { slug: string }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <SpotlightWrapper className={slug === "smarthome" ? "smarthome-theme" : ""}>
-      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-svh pb-24">
         {/* Header */}
         <header className="flex items-center justify-between py-8">
           <Link

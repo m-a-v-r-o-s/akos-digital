@@ -92,7 +92,7 @@ export default function CookieConsent() {
 
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-[130] flex justify-center sm:justify-start p-4 sm:p-6 pointer-events-none"
+      className="fixed inset-x-0 bottom-0 z-[130] flex justify-center sm:justify-start p-4 sm:p-6 pb-[max(1rem,env(safe-area-inset-bottom))] pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] pointer-events-none"
       role="dialog"
       aria-label={t.title}
       aria-live="polite"

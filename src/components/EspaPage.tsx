@@ -107,7 +107,7 @@ export default function EspaPage() {
 
   return (
     <SpotlightWrapper className="espa-theme">
-      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-svh pb-24">
         {/* Header */}
         <header className="flex items-center justify-between py-8">
           <Link
@@ -233,13 +233,13 @@ export default function EspaPage() {
 
                 <div className="grid sm:grid-cols-3 gap-5 pt-2 border-t border-stone-dark">
                   <Field label={t.fName}>
-                    <input className="field-input" value={form.name} onChange={(e) => set("name", e.target.value)} />
+                    <input className="field-input" autoComplete="name" value={form.name} onChange={(e) => set("name", e.target.value)} />
                   </Field>
                   <Field label={t.fEmail}>
-                    <input className="field-input" type="email" value={form.email} onChange={(e) => set("email", e.target.value)} />
+                    <input className="field-input" type="email" autoComplete="email" autoCapitalize="none" value={form.email} onChange={(e) => set("email", e.target.value)} />
                   </Field>
                   <Field label={t.fPhone} optional={t.optional}>
-                    <input className="field-input" type="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} />
+                    <input className="field-input" type="tel" autoComplete="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} />
                   </Field>
                 </div>
 

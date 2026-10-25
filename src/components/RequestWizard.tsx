@@ -204,6 +204,7 @@ export default function RequestWizard() {
               onChange={(v) => set("name", v)}
               placeholder={lang === "en" ? "Your name" : "Το όνομά σου"}
               onEnter={handleNext}
+              autoComplete="name"
               autoFocus
             />
           </Question>
@@ -229,6 +230,7 @@ export default function RequestWizard() {
                   value={form.businessName}
                   onChange={(v) => set("businessName", v)}
                   placeholder={lang === "en" ? "e.g. Kyma Villa" : "π.χ. Kyma Villa"}
+                  autoComplete="organization"
                   autoFocus
                 />
               </LabeledField>
@@ -445,6 +447,7 @@ function TextField({
   type = "text",
   autoFocus,
   onEnter,
+  autoComplete,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -452,10 +455,15 @@ function TextField({
   type?: string;
   autoFocus?: boolean;
   onEnter?: () => void;
+  autoComplete?: string;
 }) {
   return (
     <input
       type={type}
+      autoComplete={autoComplete ?? (type === "email" ? "email" : type === "tel" ? "tel" : undefined)}
+      inputMode={type === "email" ? "email" : type === "tel" ? "tel" : undefined}
+      enterKeyHint={onEnter ? "next" : undefined}
+      autoCapitalize={type === "email" ? "none" : undefined}
       value={value}
       autoFocus={autoFocus}
       onChange={(e) => onChange(e.target.value)}

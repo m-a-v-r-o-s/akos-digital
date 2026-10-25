@@ -62,7 +62,7 @@ export default function ServicesIndex() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <SpotlightWrapper>
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-svh pb-24">
           <header className="flex items-center justify-between py-8">
             <Link
               href={`/${lang}`}

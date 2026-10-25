@@ -1,6 +1,15 @@
+import type { Viewport } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icons";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  colorScheme: "dark",
+  themeColor: "#0d0d0d",
+};
 
 /**
  * Every notFound() under [lang] (an invalid /xx segment, or a bad dynamic
@@ -17,7 +26,7 @@ export default function RootNotFound() {
   return (
     <html lang="el">
       <body className="antialiased bg-ink text-paper">
-        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-screen pb-24">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 lg:px-12 min-h-svh pb-24">
           <header className="py-8">
             <Link
               href="/el"

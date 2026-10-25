@@ -13,7 +13,7 @@ export default function RequestPageShell() {
 
   return (
     <SpotlightWrapper>
-      <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-16 xl:px-24 min-h-screen">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-16 xl:px-24 min-h-svh">
         <div className="lg:flex lg:gap-16 xl:gap-24">
           {/* ── LEFT — sticky intro ── */}
           <aside className="lg:sticky lg:top-0 lg:flex lg:flex-col lg:justify-between lg:h-screen lg:w-[42%] xl:w-[40%] lg:py-20 lg:flex-shrink-0 pt-10 pb-4">

@@ -48,7 +48,7 @@ export default function SpotlightWrapper({
   }, []);
 
   return (
-    <div ref={ref} className={`spotlight-bg min-h-screen w-full ${className}`}>
+    <div ref={ref} className={`spotlight-bg min-h-svh w-full ${className}`}>
       <ThetaBackground />
       {children}
     </div>

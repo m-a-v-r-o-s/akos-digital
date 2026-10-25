@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Playfair_Display, DM_Sans, DM_Mono, Noto_Sans_Mono } from "next/font/google";
 import { LanguageProvider } from "@/components/LanguageContext";
@@ -142,6 +142,19 @@ const greekMono = Noto_Sans_Mono({
 });
 
 const monoStack = `${dmMono.style.fontFamily.split(",")[0]}, ${greekMono.style.fontFamily}`;
+
+// Header/page top colour is --ink in both schemes (the site is dark only).
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
+  ],
+};
 
 export function generateStaticParams() {
   return LANGS.map((lang) => ({ lang }));

@@ -10,7 +10,7 @@ export default function TermsPage() {
   const t = terms[lang];
 
   return (
-    <div className="min-h-screen max-w-2xl mx-auto px-6 sm:px-10 py-10">
+    <div className="min-h-svh max-w-2xl mx-auto px-6 sm:px-10 py-10">
       <header className="flex items-center justify-between mb-12">
         <Link
           href={`/${lang}`}

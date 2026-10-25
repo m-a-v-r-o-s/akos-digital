@@ -74,7 +74,7 @@ export default function Home() {
 
   return (
     <SpotlightWrapper>
-      <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-16 xl:px-24 min-h-screen">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-16 xl:px-24 min-h-svh">
         {/* ── Desktop: 2-column layout ── */}
         <div className="lg:flex lg:gap-16 xl:gap-24">
           {/* ── LEFT COLUMN — sticky ── */}
