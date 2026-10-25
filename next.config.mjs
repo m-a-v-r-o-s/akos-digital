@@ -11,6 +11,39 @@ const LEGACY_PATHS = [
   "/sectors/:slug",
 ];
 
+// Allowlist CSP built from what the pages load: Next self-hosts next/font and
+// needs inline scripts for hydration (a nonce would force dynamic rendering),
+// the 7mero.ai build posts to /api/lead, and the Olympus mockup loads Google
+// Fonts and calls open-meteo, the 3d-eshop mockup instantiates WebAssembly
+// ('wasm-unsafe-eval'). No JS eval anywhere.
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "img-src 'self' data: blob:",
+  "media-src 'self' blob:",
+  "connect-src 'self' https://api.open-meteo.com",
+  "frame-src 'none'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+].join("; ");
+
+const SECURITY_HEADERS = [
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value:
+      "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+  },
+  { key: "Content-Security-Policy", value: CSP },
+];
+
 const nextConfig = {
   // The 7μερο offer is a static Astro build copied into public/7mero.ai (see that
   // repo's `npm run deploy`). Next serves files from public/ by exact path, so
@@ -32,6 +65,7 @@ const nextConfig = {
   // A client pitch, not public content: keep it out of search results.
   async headers() {
     return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
       {
         source: "/olympus/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],

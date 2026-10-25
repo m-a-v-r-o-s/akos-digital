@@ -20,18 +20,30 @@ import {
 const req = (headers: Record<string, string>) => new Request("https://x/", { headers });
 
 // ── IP extraction ────────────────────────────────────────────────────────
-assert.equal(clientIp(req({ "x-forwarded-for": "203.0.113.5" })), "203.0.113.5");
-
-// A spoofed leading entry must lose to the address the proxy appended.
-assert.equal(
-  clientIp(req({ "x-forwarded-for": "8.8.8.8, 203.0.113.5" })),
-  "203.0.113.5",
-  "rightmost XFF entry must win, or spoofing defeats the rate limit"
-);
-
 assert.equal(clientIp(req({ "x-real-ip": "198.51.100.1" })), "198.51.100.1");
+// Behind Cloudflare (x-real-ip is an edge range) the visitor is cf-connecting-ip.
+assert.equal(
+  clientIp(req({ "x-real-ip": "104.16.5.5", "cf-connecting-ip": "9.9.9.9" })),
+  "9.9.9.9"
+);
+assert.equal(
+  clientIp(req({ "x-real-ip": "2606:4700::1", "cf-connecting-ip": "9.9.9.9" })),
+  "9.9.9.9"
+);
+// A client-supplied cf-connecting-ip or XFF must not win over a non-CF x-real-ip.
+assert.equal(
+  clientIp(
+    req({ "x-real-ip": "8.8.8.8", "cf-connecting-ip": "9.9.9.9", "x-forwarded-for": "1.1.1.1" })
+  ),
+  "8.8.8.8"
+);
+// Just outside 104.16.0.0/13.
+assert.equal(
+  clientIp(req({ "x-real-ip": "104.15.255.255", "cf-connecting-ip": "9.9.9.9" })),
+  "104.15.255.255"
+);
+assert.equal(clientIp(req({ "x-forwarded-for": "203.0.113.5" })), "unknown");
 assert.equal(clientIp(req({})), "unknown");
-assert.equal(clientIp(req({ "x-forwarded-for": " , " })), "unknown");
 
 // ── Rate limiting ────────────────────────────────────────────────────────
 resetRateLimit();
