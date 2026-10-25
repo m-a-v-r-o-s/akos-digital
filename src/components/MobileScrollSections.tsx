@@ -73,12 +73,76 @@ export default function MobileScrollSections() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Panels differ wildly in height (Works is long, Education short). Each panel keeps its own
+  // vertical scroll spot, like native iOS tabs. While swiping, every panel is shifted so it shows
+  // at its remembered spot and the track height blends between neighbours with the finger; once
+  // a panel lands, the page scroll is swapped to match in the same frame, so nothing jumps.
+  const tabBarRef = useRef<HTMLDivElement>(null);
+  const frame = useRef(0); // panel whose coordinates the page scroll is currently in
+  const saved = useRef<number[]>([]); // per panel: how far below the tab bar the viewport sat
+  const touching = useRef(false);
+
+  const layout = () => {
+    const c = containerRef.current;
+    if (!c || !c.offsetWidth) return;
+    const panels = Array.from(c.children) as HTMLElement[];
+    const heights = panels.map((p) => p.offsetHeight);
+    const tabH = tabBarRef.current?.offsetHeight ?? 0;
+    const top = c.getBoundingClientRect().top + window.scrollY;
+    const anchor = top - tabH;
+    const below = document.documentElement.scrollHeight - (top + c.offsetHeight);
+    const inside = window.scrollY >= anchor - 1; // tab bar is stuck: viewport is within the panels
+    const a = frame.current;
+    // the remembered spot, clamped to what the page can actually scroll to
+    const spot = (i: number) =>
+      Math.min(saved.current[i] ?? 0, Math.max(0, heights[i] + below + tabH - window.innerHeight));
+
+    const pos = c.scrollLeft / c.offsetWidth;
+    const idx = Math.round(pos);
+    if (Math.abs(pos - idx) < 0.002 && idx !== a && !touching.current) {
+      // landed on another panel: switch the page scroll into its coordinates
+      frame.current = idx;
+      panels.forEach((p) => (p.style.transform = ""));
+      c.style.height = `${heights[idx]}px`;
+      if (inside) window.scrollTo({ top: anchor + spot(idx), behavior: "instant" });
+      return;
+    }
+
+    const oa = inside ? window.scrollY - anchor : 0;
+    if (inside && Math.abs(pos - a) < 0.002) saved.current[a] = oa;
+    const shift = panels.map((_, i) => (i === a || !inside ? 0 : oa - spot(i)));
+    panels.forEach((p, i) => (p.style.transform = shift[i] ? `translateY(${shift[i]}px)` : ""));
+    const lo = Math.max(0, Math.min(panels.length - 1, Math.floor(pos)));
+    const hi = Math.min(panels.length - 1, lo + 1);
+    const t = Math.min(1, Math.max(0, pos - lo));
+    const lowH = heights[lo] + shift[lo];
+    c.style.height = `${lowH + (heights[hi] + shift[hi] - lowH) * t}px`;
+  };
+
+  useEffect(() => {
+    const c = containerRef.current;
+    if (!c) return;
+    frame.current = Math.round(c.scrollLeft / (c.offsetWidth || 1));
+    const ro = new ResizeObserver(() => layout());
+    Array.from(c.children).forEach((p) => ro.observe(p));
+    window.addEventListener("scroll", layout, { passive: true });
+    window.addEventListener("resize", layout);
+    layout();
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("scroll", layout);
+      window.removeEventListener("resize", layout);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const scrollTo = (idx: number) => {
     setActive(idx);
     const container = containerRef.current;
     if (!container) return;
     const panelWidth = container.offsetWidth;
-    container.scrollTo({ left: idx * panelWidth, behavior: "smooth" });
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    container.scrollTo({ left: idx * panelWidth, behavior: reduce ? "auto" : "smooth" });
   };
 
   const onScroll = () => {
@@ -86,6 +150,7 @@ export default function MobileScrollSections() {
     if (!container) return;
     const idx = Math.round(container.scrollLeft / container.offsetWidth);
     if (idx !== active) setActive(idx);
+    layout();
   };
 
   return (
@@ -134,6 +199,7 @@ export default function MobileScrollSections() {
 
       {/* Tab bar */}
       <div
+        ref={tabBarRef}
         className="flex justify-between sticky top-0 z-20 pt-3 px-1 transition-all duration-300"
         style={scrolled ? { backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", backgroundColor: "rgba(13,13,13,0.15)" } : {}}
       >
@@ -160,7 +226,13 @@ export default function MobileScrollSections() {
       <div
         ref={containerRef}
         onScroll={onScroll}
-        className="snap-gallery flex overflow-x-auto scroll-smooth"
+        onTouchStart={() => (touching.current = true)}
+        onTouchEnd={() => {
+          touching.current = false;
+          requestAnimationFrame(layout);
+        }}
+        onTouchCancel={() => (touching.current = false)}
+        className="snap-gallery flex items-start overflow-x-auto overflow-y-hidden scroll-smooth"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
