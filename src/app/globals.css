@@ -58,6 +58,9 @@ button:not(:disabled):active,
 /* Panels snap one at a time and never chain the scroll to the page. */
 .snap-gallery {
   overscroll-behavior-x: contain;
+}
+/* snap-stop only works on the snap children, not the container: a hard flick moves one panel */
+.snap-gallery > * {
   scroll-snap-stop: always;
 }
 

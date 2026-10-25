@@ -145,12 +145,26 @@ export default function MobileScrollSections() {
     container.scrollTo({ left: idx * panelWidth, behavior: reduce ? "auto" : "smooth" });
   };
 
+  // Safety net: WebKit can drop a snap when the track's height changes mid-swipe, and a slow
+  // release fires no scroll event at all. Once the track rests between panels, finish the snap.
+  const settleTimer = useRef(0);
+  const settleLater = () => {
+    clearTimeout(settleTimer.current);
+    settleTimer.current = window.setTimeout(() => {
+      const c = containerRef.current;
+      if (!c || !c.offsetWidth || touching.current) return;
+      const pos = c.scrollLeft / c.offsetWidth;
+      if (Math.abs(pos - Math.round(pos)) > 0.002) scrollTo(Math.round(pos));
+    }, 150);
+  };
+
   const onScroll = () => {
     const container = containerRef.current;
     if (!container) return;
     const idx = Math.round(container.scrollLeft / container.offsetWidth);
     if (idx !== active) setActive(idx);
     layout();
+    settleLater();
   };
 
   return (
@@ -230,8 +244,12 @@ export default function MobileScrollSections() {
         onTouchEnd={() => {
           touching.current = false;
           requestAnimationFrame(layout);
+          settleLater();
         }}
-        onTouchCancel={() => (touching.current = false)}
+        onTouchCancel={() => {
+          touching.current = false;
+          settleLater();
+        }}
         className="snap-gallery flex items-start overflow-x-auto overflow-y-hidden scroll-smooth"
         style={{
           scrollSnapType: "x mandatory",
