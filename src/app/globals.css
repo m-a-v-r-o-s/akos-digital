@@ -1219,7 +1219,10 @@ a:hover .arrow-icon {
 
 /* ── Springs on state transitions (CSS transitions reverse from the live value) ── */
 button.snap-dot:not(:disabled) {
-  transition: width var(--spring-snappy-ms) var(--spring-snappy), background-color 200ms ease, scale var(--press-ms) var(--ease-out);
+  transition: scale var(--press-ms) var(--ease-out);
+}
+.snap-pip {
+  transition: width var(--spring-snappy-ms) var(--spring-snappy), background-color 200ms ease;
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

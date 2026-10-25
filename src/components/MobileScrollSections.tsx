@@ -372,18 +372,22 @@ export default function MobileScrollSections() {
       </div>
 
       {/* Scroll progress dots */}
-      <div className="flex justify-center gap-1.5 py-4">
+      {/* Each button is a 24x24 hit area (WCAG 2.2 target size); the visible dot sits inside */}
+      <div className="flex justify-center py-[7px]">
         {tabs.map((_, i) => (
           <button
             key={i}
             onClick={() => scrollTo(i)}
-            className={`snap-dot rounded-full ${
-              active === i
-                ? "w-5 h-1.5 bg-accent"
-                : "w-1.5 h-1.5 bg-stone-dark"
-            }`}
+            className="snap-dot grid place-items-center w-6 h-6"
             aria-label={`Go to section ${i + 1}`}
-          />
+            aria-current={active === i ? "true" : undefined}
+          >
+            <span
+              className={`snap-pip rounded-full h-1.5 ${
+                active === i ? "w-5 bg-accent" : "w-1.5 bg-stone-dark"
+              }`}
+            />
+          </button>
         ))}
       </div>
 
