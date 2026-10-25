@@ -80,7 +80,6 @@ export default function MobileScrollSections() {
   const tabBarRef = useRef<HTMLDivElement>(null);
   const frame = useRef(0); // panel whose coordinates the page scroll is currently in
   const saved = useRef<number[]>([]); // per panel: how far below the tab bar the viewport sat
-  const touching = useRef(false);
 
   const layout = () => {
     const c = containerRef.current;
@@ -99,7 +98,7 @@ export default function MobileScrollSections() {
 
     const pos = c.scrollLeft / c.offsetWidth;
     const idx = Math.round(pos);
-    if (Math.abs(pos - idx) < 0.002 && idx !== a && !touching.current) {
+    if (Math.abs(pos - idx) < 0.002 && idx !== a) {
       // landed on another panel: switch the page scroll into its coordinates
       frame.current = idx;
       panels.forEach((p) => (p.style.transform = ""));
@@ -145,27 +144,17 @@ export default function MobileScrollSections() {
     container.scrollTo({ left: idx * panelWidth, behavior: reduce ? "auto" : "smooth" });
   };
 
-  // Safety net: WebKit can drop a snap when the track's height changes mid-swipe, and a slow
-  // release fires no scroll event at all. Once the track rests between panels, finish the snap.
-  const settleTimer = useRef(0);
-  const settleLater = () => {
-    clearTimeout(settleTimer.current);
-    settleTimer.current = window.setTimeout(() => {
-      const c = containerRef.current;
-      if (!c || !c.offsetWidth || touching.current) return;
-      const pos = c.scrollLeft / c.offsetWidth;
-      if (Math.abs(pos - Math.round(pos)) > 0.002) scrollTo(Math.round(pos));
-    }, 150);
-  };
-
-  const onScroll = () => {
-    const container = containerRef.current;
-    if (!container) return;
-    const idx = Math.round(container.scrollLeft / container.offsetWidth);
-    if (idx !== active) setActive(idx);
-    layout();
-    settleLater();
-  };
+  // Quick tap on a screen edge strip steps one section; a hold or a scroll doesn't count.
+  const tap = useRef({ t: 0, x: 0, y: 0 });
+  const edgeTap = (step: number) => ({
+    onPointerDown: (e: React.PointerEvent) => (tap.current = { t: e.timeStamp, x: e.clientX, y: e.clientY }),
+    onPointerUp: (e: React.PointerEvent) => {
+      const { t, x, y } = tap.current;
+      if (e.timeStamp - t > 300 || Math.hypot(e.clientX - x, e.clientY - y) > 10) return;
+      const next = active + step;
+      if (next >= 0 && next < tabs.length) scrollTo(next);
+    },
+  });
 
   return (
     <div className="lg:hidden">
@@ -236,26 +225,15 @@ export default function MobileScrollSections() {
         ))}
       </div>
 
-      {/* Horizontal scroll panels */}
+      {/* Panels: no swipe; the tabs, the dots and the edge tap strips move between them */}
+      <div className="relative">
+      <div aria-hidden className="absolute inset-y-0 -left-6 w-[14vw] z-[15] touch-manipulation" {...edgeTap(-1)} />
+      <div aria-hidden className="absolute inset-y-0 -right-6 w-[14vw] z-[15] touch-manipulation" {...edgeTap(1)} />
       <div
         ref={containerRef}
-        onScroll={onScroll}
-        onTouchStart={() => (touching.current = true)}
-        onTouchEnd={() => {
-          touching.current = false;
-          requestAnimationFrame(layout);
-          settleLater();
-        }}
-        onTouchCancel={() => {
-          touching.current = false;
-          settleLater();
-        }}
-        className="snap-gallery flex items-start overflow-x-auto overflow-y-hidden scroll-smooth"
-        style={{
-          scrollSnapType: "x mandatory",
-          WebkitOverflowScrolling: "touch",
-          scrollbarWidth: "none",
-        }}
+        onScroll={layout}
+        className="flex items-start overflow-hidden"
+        style={{ scrollSnapType: "x mandatory" }}
       >
         {/* ── Panel 1: Projects ── */}
         <div className="flex-none w-full py-8" style={{ scrollSnapAlign: "start" }}>
@@ -459,6 +437,7 @@ export default function MobileScrollSections() {
             <br /><br /><br />
           </div>
         </div>
+      </div>
       </div>
 
       {/* Scroll progress dots */}
