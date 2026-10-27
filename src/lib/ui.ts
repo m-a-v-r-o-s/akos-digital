@@ -47,6 +47,7 @@ export const ui = {
     terms: "Terms",
     copyright: "© Akos Digital 2026. All Rights Reserved.",
     madeBy: "Designed and built by",
+    gemh: "GEMH No.",
   },
   el: {
     skip: "Μετάβαση στο περιεχόμενο",
@@ -93,5 +94,6 @@ export const ui = {
     terms: "Όροι",
     copyright: "© Akos Digital 2026. Με επιφύλαξη παντός δικαιώματος.",
     madeBy: "Σχεδιασμός και κατασκευή",
+    gemh: "Αρ. ΓΕΜΗ",
   },
 } satisfies Record<Lang, Record<string, string | string[]>>;
