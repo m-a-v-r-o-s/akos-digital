@@ -59,6 +59,14 @@ if (!reduced) {
   schedule(s, d, 9000 + Math.random() * 5000);
 }
 
+/* ── Header mark: the handheld opens once on load (CSS); hovering the brand replays it ── */
+const mark = $(".brand .ds");
+if (mark && finePointer && !reduced) {
+  mark.closest(".brand")!.addEventListener("pointerenter", () => {
+    mark.getAnimations({ subtree: true }).forEach((a) => { a.cancel(); a.play(); });
+  });
+}
+
 /* ── Magnetic round buttons (fine pointers only) ── */
 if (finePointer && !reduced) {
   for (const el of $$<HTMLElement>("[data-magnet]")) {
