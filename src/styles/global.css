@@ -185,10 +185,12 @@ ul, ol { margin: 0; padding: 0; }
 .ds .abxy { right: 4%; background: radial-gradient(circle at 30% 70%, var(--mark) 1px, transparent 1.3px), radial-gradient(circle at 70% 30%, var(--mark) 1px, transparent 1.3px); }
 @media (prefers-reduced-motion: no-preference) {
   .ds .top { animation: lidOpen .9s var(--spring-snappy) both; }
-  .ds .glow { animation: boot .7s steps(1, end) .55s both; }
-  .ds .bot .glow { animation-delay: .65s; }
+  /* after the boot, each screen gives a brief flicker every 9s, out of step with the other */
+  .ds .glow { animation: boot .7s steps(1, end) .55s both, flicker 9s steps(1, end) 3s infinite; }
+  .ds .bot .glow { animation-delay: .65s, 7.5s; }
 }
 @keyframes lidOpen { from { transform: rotateX(-180deg); } to { transform: rotateX(0); } }
+@keyframes flicker { 95% { opacity: .55; } 96% { opacity: 1; } 97% { opacity: .75; } 98% { opacity: 1; } }
 @keyframes boot { 0% { opacity: 0; } 20% { opacity: 1; background: #fff; } 40% { opacity: .25; } 60% { opacity: 1; } }
 @media (max-width: 899px) { .brand .ds { --w: 28px; --h: 15px; } }
 .nav { display: flex; align-items: center; gap: 4px 26px; flex-wrap: wrap; }
