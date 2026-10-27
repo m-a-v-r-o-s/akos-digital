@@ -320,9 +320,10 @@ dialog.menu[open]::backdrop { background: rgb(20 18 16 / 0.45); }
 
 /* ── Footer ── */
 .site-footer { padding-top: clamp(96px, 12vw, 160px); }
-.site-footer .lets { display: flex; align-items: center; gap: clamp(16px, 3vw, 32px); }
-.site-footer .lets .mark { flex: none; width: clamp(64px, 8vw, 104px); height: clamp(64px, 8vw, 104px); border-radius: 50%; background: var(--night-2); display: grid; place-items: center; }
-.site-footer .lets .mark svg { width: 56%; }
+.site-footer .lets { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(20px, 3vw, 40px); }
+/* The θ is a 48px pixel grid: kept large enough that every pixel stays crisp. */
+.site-footer .lets .mark { flex: none; width: clamp(112px, 12vw, 176px); height: clamp(112px, 12vw, 176px); border-radius: 50%; background: var(--night-2); display: grid; place-items: center; }
+.site-footer .lets .mark svg { width: 70%; }
 .site-footer .lets h2 { font-size: clamp(48px, 8vw, 128px); letter-spacing: -0.045em; line-height: 0.95; }
 .site-footer .rule { position: relative; height: 1px; background: var(--night-line); margin-block: clamp(110px, 9vw, 120px) clamp(110px, 9vw, 130px); }
 .site-footer .rule .round { position: absolute; right: 8%; top: 50%; translate: 0 -50%; --size: clamp(140px, 15vw, 200px); }
