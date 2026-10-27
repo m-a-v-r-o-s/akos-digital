@@ -20,6 +20,9 @@ export type Accent = {
 /** Marigold is the brand: the first colour, and the only one under reduced motion. */
 export const DEFAULT_ACCENT = "marigold";
 
+/** The S in the header's "DS" starts here and walks the same set, never sharing a colour with the D. */
+export const SECOND_ACCENT = "teal";
+
 export const accents: Accent[] = [
   { key: "marigold",   rgb: "232 163 60" },
   { key: "copper",     rgb: "217 122 78" },

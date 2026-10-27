@@ -57,7 +57,10 @@ button, [role="button"], summary { -webkit-user-select: none; user-select: none;
    <color> so each change is a slow cross-fade rather than a jump; marigold stays
    put for reduced motion. */
 @property --accent { syntax: "<color>"; inherits: true; initial-value: rgb(232 163 60); }
-:root { transition: --accent 5s ease-in-out; }
+:root { transition: --accent 5s ease-in-out, --accent-2 5s ease-in-out; }
+/* The S of the header's "DS" walks the set on its own, always apart from --accent (site.ts). */
+@property --accent-2 { syntax: "<color>"; inherits: true; initial-value: rgb(79 196 176); }
+:root { --accent-2: rgb(79 196 176); }
 
 *, *::before, *::after { box-sizing: border-box; }
 /* Component display rules must never un-hide something the markup hides. */
@@ -152,6 +155,11 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 17px; }
+/* On paper the accents are too light for text, so D and S take them 45% into ink (≥ 5.1:1 through every fade). */
+.brand .d { color: color-mix(in srgb, var(--accent) 45%, var(--ink)); }
+.brand .s { color: color-mix(in srgb, var(--accent-2) 45%, var(--ink)); }
+.dark .brand .d { color: var(--accent); }
+.dark .brand .s { color: var(--accent-2); }
 .nav { display: flex; align-items: center; gap: 4px 26px; flex-wrap: wrap; }
 .nav a { text-decoration: none; font-size: 17px; position: relative; padding-block: 6px; }
 .nav a::after { content: ""; position: absolute; left: 50%; bottom: -2px; width: 5px; height: 5px; border-radius: 50%; background: currentColor; transform: translateX(-50%) scale(0); transition: transform 300ms var(--spring-snappy); }

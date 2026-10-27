@@ -5,7 +5,7 @@
  * under prefers-reduced-motion. Gestures always have a button or key twin.
  */
 import { springTo, rubberband, project, velocityTracker, prefersReducedMotion } from "../lib/spring.js";
-import { accents, DEFAULT_ACCENT } from "../lib/accents.ts";
+import { accents, DEFAULT_ACCENT, SECOND_ACCENT } from "../lib/accents.ts";
 
 const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
 const reduced = prefersReducedMotion();
@@ -30,25 +30,33 @@ if (header && menuBtn) {
 /* ── Accent: drifts through the curated set, calmly and never in the same order twice ──
    Each change is a 5s cross-fade (the CSS transition on --accent); the next colour is
    picked at random from those that are neither the current nor the previous one, and
-   held for a random 7 to 14 seconds. Reduced motion keeps the brand's marigold. */
+   held for a random 7 to 14 seconds. Reduced motion keeps the brand's marigold.
+   --accent-2 (the S in the header's "DS") walks the same way, and each walker also skips
+   the other's current and previous colour, so the two never match, not even mid-fade. */
 if (!reduced) {
   const root = document.documentElement;
-  let now = DEFAULT_ACCENT, before = DEFAULT_ACCENT, timer = 0;
-  const next = () => {
-    const pool = accents.filter((a) => a.key !== now && a.key !== before);
+  type Walker = { prop: string; now: string; before: string; timer: number };
+  const d: Walker = { prop: "--accent", now: DEFAULT_ACCENT, before: DEFAULT_ACCENT, timer: 0 };
+  const s: Walker = { prop: "--accent-2", now: SECOND_ACCENT, before: SECOND_ACCENT, timer: 0 };
+  const next = (w: Walker, o: Walker) => {
+    const pool = accents.filter((a) => ![w.now, w.before, o.now, o.before].includes(a.key));
     const pick = pool[Math.floor(Math.random() * pool.length)];
-    before = now;
-    now = pick.key;
-    root.style.setProperty("--accent", `rgb(${pick.rgb})`);
-    schedule();
+    w.before = w.now;
+    w.now = pick.key;
+    root.style.setProperty(w.prop, `rgb(${pick.rgb})`);
+    schedule(w, o);
   };
-  const schedule = () => { timer = window.setTimeout(next, 5000 + 7000 + Math.random() * 7000); };
+  const schedule = (w: Walker, o: Walker, ms = 5000 + 7000 + Math.random() * 7000) => {
+    w.timer = window.setTimeout(() => next(w, o), ms);
+  };
   // Background tabs don't drift; the walk picks up where it left off.
   document.addEventListener("visibilitychange", () => {
-    clearTimeout(timer);
-    if (!document.hidden) schedule();
+    clearTimeout(d.timer);
+    clearTimeout(s.timer);
+    if (!document.hidden) { schedule(d, s); schedule(s, d); }
   });
-  timer = window.setTimeout(next, 4000 + Math.random() * 4000);
+  schedule(d, s, 4000 + Math.random() * 4000);
+  schedule(s, d, 9000 + Math.random() * 5000);
 }
 
 /* ── Magnetic round buttons (fine pointers only) ── */
