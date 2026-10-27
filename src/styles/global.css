@@ -154,7 +154,7 @@ ul, ol { margin: 0; padding: 0; }
 /* ── Header ── */
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 21px; letter-spacing: -0.01em; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; }
 /* On paper the accents are too light for text, so D and S take them 45% into ink (≥ 5.1:1 through every fade). */
 .brand .d { color: color-mix(in srgb, var(--accent) 45%, var(--ink)); }
 .brand .s { color: color-mix(in srgb, var(--accent-2) 45%, var(--ink)); }
@@ -185,7 +185,7 @@ ul, ol { margin: 0; padding: 0; }
 .burger i { display: block; width: 22px; height: 1.5px; background: currentColor; }
 @media (min-width: 900px) { .menu-btn:not(.shown) { --s: 0; pointer-events: none; } }
 /* Phones: the button is always there, so the header keeps its corner free for it. */
-@media (max-width: 899px) { .site-header .bar { padding-right: calc(var(--gutter) + 72px); flex-wrap: nowrap; column-gap: 12px; } .brand { font-size: 18px; min-width: 0; } .menu-btn { top: max(12px, env(safe-area-inset-top, 0px)); } }
+@media (max-width: 899px) { .site-header .bar { padding-right: calc(var(--gutter) + 72px); flex-wrap: nowrap; column-gap: 12px; } .brand { font-size: 20px; min-width: 0; } .menu-btn { top: max(12px, env(safe-area-inset-top, 0px)); } }
 
 dialog.menu {
   position: fixed; inset: 0 0 0 auto; margin: 0; width: min(560px, 100vw); max-width: none; height: 100dvh; max-height: none;
