@@ -96,8 +96,11 @@ export type Project = {
   caseStudy?: string;
   /** The client's mark, same file as its case study's logo. */
   logo?: string;
-  /** A video on the card instead of the screenshot (muted, plays while on screen), also openable full size: public<src>.webm/.mp4, poster <src>.webp. */
-  video?: { src: string; width: number; height: number };
+  /**
+   * A video on the card instead of the screenshot (muted, loops while on screen):
+   * public<src>.webm/.mp4, poster <src>.webp. `walkthrough` adds a button that opens it full size with controls.
+   */
+  video?: { src: string; width: number; height: number; walkthrough?: boolean };
   links: ProjectLink[];
 };
 
@@ -131,7 +134,7 @@ export const projects: Project[] = [
       el: "Η νέα ιστοσελίδα και πλατφόρμα εγγραφών του Olympus Marathon, επτά ορεινοί αγώνες στο Λιτόχωρο. Εγγραφές και πληρωμές με δέσμευση θέσης και τιμές που υπολογίζονται στη βάση, διαχείριση για τη γραμματεία, αποτελέσματα και μητρώο αθλητών από το 2004, και πιστοποιητικά τερματισμού. Ελληνικά πρώτα, αγγλικά δίπλα.",
     },
     tags: ["Astro", "Supabase Postgres", "Piraeus e-POS", "myDATA", "Bilingual"],
-    shot: "olympus",
+    shot: "olympus-app",
     status: { en: "In development", el: "Σε εξέλιξη" },
     caseStudy: "/work/olympus-marathon",
     links: [{ label: L.caseStudy, href: "/work/olympus-marathon" }],
@@ -193,16 +196,17 @@ export const projects: Project[] = [
     links: [{ label: L.live, href: "https://www.thoseramblingfools.com/" }, { label: L.caseStudy, href: "/work/those-rambling-fools" }],
   },
   {
-    title: "SKIÁ Athens",
-    kind: { en: "Fashion atelier, editorial site", el: "Atelier μόδας, editorial site" },
+    title: "SKIÁ Athens Concept",
+    kind: { en: "Fashion atelier concept", el: "Concept για atelier μόδας" },
     description: {
-      en: "Website for an Athenian atelier producing handcrafted clothing in small runs. Hand-built in HTML, CSS and JavaScript, with an intricate editorial interface, heavy typography and motion worked around light and shadow: a lookbook, a collection index, and a private enquiry flow for acquisitions and fittings.",
-      el: "Ιστοσελίδα για αθηναϊκό atelier που παράγει χειροποίητα ρούχα σε μικρές σειρές. Χτισμένη εξ ολοκλήρου σε HTML, CSS και JavaScript, με σύνθετο editorial interface, βαριά τυπογραφία και κίνηση δουλεμένη γύρω από το φως και τη σκιά: lookbook, ευρετήριο συλλογής και ιδιωτική ροή αιτημάτων για αποκτήσεις και πρόβες.",
+      en: "Concept site for an Athenian atelier producing handcrafted clothing in small runs. Hand-built in HTML, CSS and JavaScript, with an intricate editorial interface, heavy typography and motion worked around light and shadow: a lookbook, a collection index, and a private enquiry flow for acquisitions and fittings.",
+      el: "Concept site για αθηναϊκό atelier που παράγει χειροποίητα ρούχα σε μικρές σειρές. Χτισμένη εξ ολοκλήρου σε HTML, CSS και JavaScript, με σύνθετο editorial interface, βαριά τυπογραφία και κίνηση δουλεμένη γύρω από το φως και τη σκιά: lookbook, ευρετήριο συλλογής και ιδιωτική ροή αιτημάτων για αποκτήσεις και πρόβες.",
     },
     tags: ["HTML", "CSS", "JavaScript", "Interactive Animations", "Brand Identity"],
     shot: "skia",
     sector: "fashion",
-    links: [{ label: L.live, href: "https://skia.up.railway.app/" }],
+    video: { src: "/work/skia-loop", width: 1280, height: 800 },
+    links: [{ label: L.demo, href: "https://skia.up.railway.app/" }],
   },
   {
     title: "Smile Design Dental Clinic",
@@ -212,10 +216,10 @@ export const projects: Project[] = [
       el: "Φόρμες ασθενών για οδοντιατρική κλινική στη Λεμεσό. Οι ασθενείς διαβάζουν και υπογράφουν το ιατρικό ιστορικό και τη συναίνεση για φωτογραφίες σε iPad στην υποδοχή, στα αγγλικά, ελληνικά ή ρωσικά, και η κλινική βλέπει κάθε υπογεγραμμένη φόρμα να φτάνει ζωντανά σε ένα dashboard. Οι απαντήσεις και οι υπογραφές αποθηκεύονται κρυπτογραφημένες.",
     },
     tags: ["React", "Node", "Postgres", "iPad kiosk", "3 languages"],
-    shot: "smiledesign",
+    shot: "smiledesign-forms",
     sector: "health",
     status: { en: "Pending", el: "Σε αναμονή" },
-    video: { src: "/work/smiledesign-walkthrough", width: 1280, height: 720 },
+    video: { src: "/work/smiledesign-walkthrough", width: 1280, height: 720, walkthrough: true },
     links: [],
   },
   {
@@ -226,7 +230,7 @@ export const projects: Project[] = [
       el: "Concept site για ιδιωτικό νυχτερινό club στην Ίο. Έλεγχος ηλικίας στην είσοδο, πλήρες καλοκαιρινό line-up, κρατήσεις τραπεζιών με προκαταβολή και guest list, μέσα σε μια σκοτεινή ταυτότητα υψηλής αντίθεσης χτισμένη γύρω από την πίστα.",
     },
     tags: ["Next.js", "TypeScript", "3D Object", "Reservations", "Nightlife"],
-    shot: "nocturne",
+    shot: "nocturne-club",
     sector: "food",
     links: [{ label: L.demo, href: "https://nocturnal.up.railway.app/" }],
   },
@@ -1266,7 +1270,7 @@ export const caseStudies: CaseStudy[] = [
       el: "Το Olympus Marathon διοργανώνει επτά ορεινούς αγώνες στο Λιτόχωρο, στους πρόποδες του Ολύμπου. Αυτή είναι η νέα ιστοσελίδα και πλατφόρμα εγγραφών που αντικαθιστά την παλιά: δηλώσεις και πληρωμές, η διαχείριση της γραμματείας, αποτελέσματα, μητρώο αθλητών από το 2004 και πιστοποιητικά τερματισμού, ελληνικά πρώτα και αγγλικά δίπλα.",
     } as BL,
     stack: ["Astro", "Supabase Postgres", "Piraeus e-POS", "myDATA", "Bilingual"],
-    image: "olympus",
+    image: "olympus-app",
   },
   {
     slug: "blessed-coffee",

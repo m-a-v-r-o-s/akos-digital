@@ -141,12 +141,12 @@ const stripTags = (html: string) => html.replace(/<[^>]+>/g, "");
                   {p.links.map((l) => (
                     <a href={localeHref(l.href, lang)} {...ext(l.href)}>{l.label[lang]} <Icon name="arrow" size={12} /></a>
                   ))}
-                  {p.video && (
+                  {p.video?.walkthrough && (
                     <button type="button" data-lightbox-open={`lb-${p.shot}`}>{t.watch} <Icon name="arrow" size={12} /></button>
                   )}
                 </span>
               </div>
-              {p.video && (
+              {p.video?.walkthrough && (
                 <dialog class="lightbox" id={`lb-${p.shot}`} aria-label={`${p.title}, ${t.watch}`}>
                   <div class="sheet">
                     <button class="close" type="button" data-lightbox-close aria-label={t.close}>✕</button>

@@ -152,7 +152,6 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 17px; }
-.brand svg { width: 28px; height: 28px; }
 .nav { display: flex; align-items: center; gap: 4px 26px; flex-wrap: wrap; }
 .nav a { text-decoration: none; font-size: 17px; position: relative; padding-block: 6px; }
 .nav a::after { content: ""; position: absolute; left: 50%; bottom: -2px; width: 5px; height: 5px; border-radius: 50%; background: currentColor; transform: translateX(-50%) scale(0); transition: transform 300ms var(--spring-snappy); }
