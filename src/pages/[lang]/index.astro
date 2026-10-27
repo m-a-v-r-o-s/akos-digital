@@ -68,13 +68,25 @@ const stripTags = (html: string) => html.replace(/<[^>]+>/g, "");
         <span>{t.quote}<span class="sub" style="color:inherit;opacity:.75">{t.quoteSub}</span></span>
         <Icon name="arrow" size={32} />
       </a>
-      <a class="cta" href={SEVENMERO_URL} target="_blank" rel="noopener">
-        <span class="seven" aria-hidden="true">7</span>
-        <span>{t.sevenmero}<span class="sub">{t.sevenmeroSub}</span></span>
+      <a class="cta cta-ticket" href={SEVENMERO_URL} target="_blank" rel="noopener">
+        <span class="stub"><b>{t.sevenmeroPrice}</b><small>{t.sevenmeroVat}</small></span>
+        <span class="body">
+          <span>{t.sevenmero}<span class="sub">{t.sevenmeroSub}</span></span>
+          <Icon name="arrow" size={22} />
+        </span>
       </a>
-      <a class="cta" href={`/${lang}/espa`}>
-        <img src="/espa-2021-2027.webp" alt="" width="99" height="60" />
+      <a class="cta cta-stamp" href={`/${lang}/espa`}>
         <span>{t.espa}<span class="sub">{t.espaSub}</span></span>
+        <span class="stamp" aria-hidden="true">
+          <svg class="ring" viewBox="0 0 100 100">
+            <path id="stamp-ring" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" fill="none"></path>
+            <text><textPath href="#stamp-ring" textLength="226" lengthAdjust="spacing">ΕΣΠΑ 2021-2027 • ΕΣΠΑ 2021-2027 •</textPath></text>
+          </svg>
+          <span class="core">
+            <Icon name="arrow" size={20} />
+            <svg class="tick" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"></path></svg>
+          </span>
+        </span>
       </a>
     </div>
   </section>

@@ -246,17 +246,56 @@ dialog.menu[open]::backdrop { background: rgb(20 18 16 / 0.45); }
 .intro .round { justify-self: end; margin-top: 16px; }
 @media (max-width: 899px) { .intro .round { --size: 132px; } }
 .ctas { display: grid; gap: 14px; }
-@media (min-width: 760px) { .ctas { grid-template-columns: 2fr 1fr 1fr; } }
+@media (min-width: 760px) { .ctas { grid-template-columns: 1.6fr 1fr 1fr; } }
 .cta {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   min-height: 112px; padding: 0 clamp(24px, 3vw, 40px); border-radius: 999px; text-decoration: none;
   border: 1.5px solid var(--ink); font-size: 19px; font-weight: 500;
 }
 .cta-main { background: var(--accent); border-color: var(--accent); font-size: clamp(24px, 2.4vw, 32px); }
-.cta .seven { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; background: var(--ink); color: var(--accent); font-weight: 700; font-size: 26px; flex: none; }
-.cta img { height: 60px; width: auto; border-radius: 8px; background: #fff; }
 .cta .sub { display: block; font-size: 14px; font-weight: 400; color: var(--muted); }
-@media (hover: hover) and (pointer: fine) { .cta:not(.cta-main):hover { background: var(--ink); color: var(--paper); } .cta:not(.cta-main):hover .sub { color: var(--on-night-muted); } .cta-main:hover { filter: brightness(1.06); } }
+@media (hover: hover) and (pointer: fine) { .cta-main:hover { filter: brightness(1.06); } }
+
+/* 7μερο: a ticket. The orange stub (7μερο's own flap colour) is the price you tear off;
+   both halves carry their own notch mask so the stub can tilt away on hover. */
+.cta-ticket { padding: 0; gap: 0; border: 0; border-radius: 0; align-items: stretch; justify-content: stretch; }
+.cta-ticket:focus-visible { border-radius: 24px; }
+.cta-ticket .stub, .cta-ticket .body { --notch: radial-gradient(circle 9px at var(--x) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle 9px at var(--x) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat; -webkit-mask: var(--notch); mask: var(--notch); }
+.cta-ticket .stub {
+  --x: 100%; flex: none; width: 84px; display: grid; place-content: center; text-align: center; gap: 2px;
+  background: #e8590c; color: #0d0d0d; border-radius: 24px 0 0 24px; transform-origin: 100% 100%;
+  transition: transform var(--spring-snappy-ms) var(--spring-snappy);
+}
+.cta-ticket .stub b { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+.cta-ticket .stub small { font-size: 12px; font-weight: 500; opacity: .8; }
+.cta-ticket .body {
+  --x: 0; position: relative; flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 0 clamp(18px, 2vw, 26px) 0 18px; background: var(--ink); color: var(--paper); border-radius: 0 24px 24px 0; line-height: 1.25;
+}
+.cta-ticket .body::before { content: ""; position: absolute; left: 0; top: 16px; bottom: 16px; border-left: 2px dashed rgb(245 240 232 / .3); }
+.cta-ticket .sub { color: var(--on-night-muted); }
+.cta-ticket svg { flex: none; transition: transform var(--spring-snappy-ms) var(--spring-snappy), color .3s; }
+
+/* ΕΣΠΑ: a slowly turning stamp; on hover the arrow slips out and a check draws in. */
+.cta-stamp { line-height: 1.25; transition: background .4s var(--ease-out); }
+.stamp { flex: none; position: relative; width: 86px; height: 86px; margin-right: -14px; display: grid; place-items: center; }
+.stamp .ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stamp text { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; fill: currentColor; }
+@media (prefers-reduced-motion: no-preference) { .stamp .ring { animation: spin 16s linear infinite; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.stamp .core { position: relative; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: var(--ink); overflow: hidden; transition: transform var(--spring-snappy-ms) var(--spring-snappy); }
+.stamp .core svg { grid-area: 1 / 1; transition: transform var(--spring-snappy-ms) var(--spring-snappy), opacity .25s; }
+.stamp .tick { width: 22px; height: 22px; }
+.stamp .tick path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 20; stroke-dashoffset: 20; transition: stroke-dashoffset .45s var(--ease-out); }
+
+@media (hover: hover) and (pointer: fine) {
+  .cta-ticket:hover .stub { transform: translate(-5px, -2px) rotate(-6deg); }
+  .cta-ticket:hover .body svg { transform: translate(3px, -3px); color: var(--accent); }
+  .cta-stamp:hover { background: var(--paper-2); }
+  .cta-stamp:hover .core { transform: scale(1.08); }
+  .cta-stamp:hover .core > svg:first-child { transform: translate(16px, -16px); opacity: 0; }
+  .cta-stamp:hover .tick path { stroke-dashoffset: 0; transition-delay: .15s; }
+}
 
 /* ── Work rows (case studies) + hover preview ── */
 .rows { border-top: 1px solid var(--line); }
