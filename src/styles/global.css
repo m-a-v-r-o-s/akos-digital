@@ -164,7 +164,7 @@ ul, ol { margin: 0; padding: 0; }
 /* Header mark: a silver dual-screen handheld drawn in CSS. The lid springs open on load
    (and again on hover, site.ts), then the screens boot in the D and S colours.
    Inner parts are placed in % so the whole thing scales from --w and --h. */
-.brand .ds { --w: 42px; --h: 22px; --silver: linear-gradient(180deg, #f1f2f4 0%, #cfd2d6 55%, #a9adb2 100%); --bezel: #1b1c1e; --mark: #2b2c2e;
+.brand .ds { --w: 34px; --h: 18px; --silver: linear-gradient(180deg, #f1f2f4 0%, #cfd2d6 55%, #a9adb2 100%); --bezel: #1b1c1e; --mark: #2b2c2e;
   position: relative; flex: none; width: var(--w); height: calc(var(--h) * 2 + 2px); perspective: 160px; transform-style: preserve-3d; }
 .ds .top, .ds .bot { position: absolute; left: 0; width: 100%; height: var(--h); }
 .ds .top { top: 0; transform-origin: 50% calc(100% + 1px); transform-style: preserve-3d; }
@@ -178,7 +178,7 @@ ul, ol { margin: 0; padding: 0; }
 .ds .glow { display: block; width: 100%; height: 100%; border-radius: 1px; }
 .ds .top .glow { background: var(--accent); }
 .ds .bot .glow { background: var(--accent-2); }
-.ds .hinge { position: absolute; left: 22%; right: 22%; top: -2px; height: 4px; border-radius: 2px; background: linear-gradient(180deg, #8d9196, #dcdfe2 45%, #8d9196); }
+.ds .hinge { position: absolute; left: 22%; right: 22%; top: -1.5px; height: 3px; border-radius: 1.5px; background: linear-gradient(180deg, #8d9196, #dcdfe2 45%, #8d9196); }
 /* generic controls: one round pad left, two round buttons right */
 .ds .pad, .ds .abxy { position: absolute; top: 50%; width: 11%; aspect-ratio: 1; transform: translateY(-50%); }
 .ds .pad { left: 4%; border-radius: 50%; background: var(--mark); }
@@ -190,7 +190,7 @@ ul, ol { margin: 0; padding: 0; }
 }
 @keyframes lidOpen { from { transform: rotateX(-180deg); } to { transform: rotateX(0); } }
 @keyframes boot { 0% { opacity: 0; } 20% { opacity: 1; background: #fff; } 40% { opacity: .25; } 60% { opacity: 1; } }
-@media (max-width: 899px) { .brand .ds { --w: 34px; --h: 18px; } }
+@media (max-width: 899px) { .brand .ds { --w: 28px; --h: 15px; } }
 .nav { display: flex; align-items: center; gap: 4px 26px; flex-wrap: wrap; }
 .nav a { text-decoration: none; font-size: 17px; position: relative; padding-block: 6px; }
 .nav a::after { content: ""; position: absolute; left: 50%; bottom: -2px; width: 5px; height: 5px; border-radius: 50%; background: currentColor; transform: translateX(-50%) scale(0); transition: transform 300ms var(--spring-snappy); }
