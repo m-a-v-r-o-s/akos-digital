@@ -1,0 +1,127 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Icon from "../../../components/Icon.astro";
+import Shot from "../../../components/Shot.astro";
+import EndCta from "../../../components/EndCta.astro";
+import { sectors, projects } from "../../../lib/data.ts";
+import { LANGS, type Lang } from "../../../lib/i18n.ts";
+import { buildMeta } from "../../../lib/seo.ts";
+import { localeHref, isInternalHref } from "../../../lib/links.ts";
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => sectors.map((s) => ({ params: { lang, slug: s.slug } })));
+}
+const lang = Astro.params.lang as Lang;
+const sec = sectors.find((s) => s.slug === Astro.params.slug)!;
+const L = {
+  en: {
+    back: "All sectors",
+    eyebrow: "Sector",
+    works: "Selected work in this space",
+    included: "What's included",
+    supportNote:
+      "Every site includes lifetime support for its security and functionality. New features and content changes are quoted separately, and hosting and the domain are separate recurring costs, payable through me or directly to the providers.",
+    supportNoteLocal:
+      "Every installation includes lifetime support for its security and reliable operation. It runs fully local, with no cloud, no subscriptions, and no data leaving your home; new devices or automations are quoted separately.",
+    aboutHaTitle: "About Home Assistant",
+    aboutHa:
+      "Home Assistant is open-source home automation, stewarded by the non-profit Open Home Foundation. It's built around privacy, local control, and genuine user choice: your data stays in your home, nothing is sold, and there's no lock-in. That ethos is exactly why I build on it.",
+    faq: "Common questions",
+    ctaTitle: "Ready to start?",
+    ctaBody: "Tell me about your project and I'll get back to you within 24 hours, with ideas and a clear, no-obligation quote.",
+    cta: "Request a quote",
+    others: "Other sectors I build for",
+  },
+  el: {
+    back: "Όλες οι ειδικότητες",
+    eyebrow: "Ειδικότητα",
+    works: "Επιλεγμένες δουλειές στον χώρο",
+    included: "Τι περιλαμβάνεται",
+    supportNote:
+      "Κάθε site περιλαμβάνει υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του. Νέες λειτουργίες και αλλαγές περιεχομένου κοστολογούνται ξεχωριστά, ενώ το hosting και το domain είναι ξεχωριστά, επαναλαμβανόμενα κόστη, που πληρώνονται μέσω εμένα ή απευθείας στους παρόχους.",
+    supportNoteLocal:
+      "Κάθε εγκατάσταση περιλαμβάνει υποστήριξη εφ' όρου ζωής για την ασφάλεια και την αξιόπιστη λειτουργία της. Τρέχει πλήρως τοπικά, χωρίς cloud, χωρίς συνδρομές και χωρίς δεδομένα να φεύγουν από το σπίτι σου· νέες συσκευές ή αυτοματισμοί κοστολογούνται ξεχωριστά.",
+    aboutHaTitle: "Σχετικά με το Home Assistant",
+    aboutHa:
+      "Το Home Assistant είναι λογισμικό αυτοματισμού σπιτιού ανοιχτού κώδικα, υπό την αιγίδα του μη κερδοσκοπικού Open Home Foundation. Είναι χτισμένο γύρω από την ιδιωτικότητα, τον τοπικό έλεγχο και την πραγματική ελευθερία επιλογής: τα δεδομένα σου μένουν στο σπίτι σου, τίποτα δεν πουλιέται και δεν υπάρχει εγκλωβισμός. Ακριβώς γι' αυτό το χτίζω πάνω σε αυτό.",
+    faq: "Συχνές ερωτήσεις",
+    ctaTitle: "Έτοιμος να ξεκινήσεις;",
+    ctaBody: "Πες μου για το έργο σου και θα επικοινωνήσω εντός 24 ωρών, με ιδέες και μια ξεκάθαρη προσφορά χωρίς δέσμευση.",
+    cta: "Ζήτησε προσφορά",
+    others: "Άλλες ειδικότητες που καλύπτω",
+  },
+};
+const t = L[lang];
+const ha = sec.slug === "smarthome";
+const work = projects.filter((p) => p.sector === sec.slug);
+// Only this locale's questions: the page is one language, and a FAQPage that
+// listed each question twice would not match the text Google can see.
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  inLanguage: lang,
+  mainEntity: sec.faq.map((f) => ({ "@type": "Question", name: f.q[lang], acceptedAnswer: { "@type": "Answer", text: f.a[lang] } })),
+};
+const ext = (href: string) => (isInternalHref(href) ? {} : { target: "_blank", rel: "noopener noreferrer" });
+---
+<Base meta={buildMeta({ lang, path: `/sectors/${sec.slug}`, name: sec.seoTitle, description: sec.hook })} jsonLd={[faqLd]}>
+  <div class:list={["wrap page-hero", { "theme-ha": ha }]}>
+    <a class="back" href={`/${lang}#sectors`}>← {t.back}</a>
+    <p class="eyebrow">{ha ? "Home Assistant" : t.eyebrow}</p>
+    <h1>{sec.title[lang]}</h1>
+    <p class="lede">{sec.hook[lang]}</p>
+  </div>
+  <div class:list={["wrap", { "theme-ha": ha }]}>
+    <div class="block">
+      <ul class="points" style="max-width:76ch">{sec.points[lang].map((p) => <li>{p}</li>)}</ul>
+    </div>
+    {ha && (
+      <section class="block split">
+        <h2>{t.aboutHaTitle}</h2>
+        <p class="lede" style="font-size:18px;max-width:70ch">{t.aboutHa}</p>
+      </section>
+    )}
+    {work.length > 0 && (
+      <section class="block">
+        <h2>{t.works}</h2>
+        <ul class="cards list-plain">
+          {work.map((p) => {
+            const href = p.caseStudy ?? p.links[0]?.href;
+            return (
+              <li class="card">
+                <span class="frame"><Shot src={`work/${p.shot}`} alt="" sizes="(min-width: 900px) 33vw, 100vw" /></span>
+                <h3 class="t">
+                  {href ? <a href={localeHref(href, lang)} {...ext(href)} style="text-decoration:none">{p.title}</a> : p.title}
+                  {p.status && <span class="badge">{p.status[lang]}</span>}
+                </h3>
+                <p class="desc">{p.description[lang]}</p>
+                <div class="foot">
+                  <span>{p.tags.slice(0, 3).join(" · ")}</span>
+                  <span class="links">{p.links.map((l) => <a href={localeHref(l.href, lang)} {...ext(l.href)}>{l.label[lang]} <Icon name="arrow" size={12} /></a>)}</span>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )}
+    <section class="block">
+      <h2>{t.included}</h2>
+      <ul class="included">{sec.included[lang].map((i) => <li>{i}</li>)}</ul>
+      <p class="note">{ha ? t.supportNoteLocal : t.supportNote}</p>
+    </section>
+    <section class="block">
+      <h2>{t.faq}</h2>
+      <div class="faq">{sec.faq.map((f) => <details><summary>{f.q[lang]}</summary><p>{f.a[lang]}</p></details>)}</div>
+    </section>
+  </div>
+  <EndCta title={t.ctaTitle} body={t.ctaBody} cta={t.cta} href={`/${lang}/request`} />
+  <div class="wrap">
+    <nav class="block" aria-labelledby="others-h" style="padding-bottom:clamp(64px,8vw,112px)">
+      <h2 id="others-h">{t.others}</h2>
+      <ul class="linkgrid">
+        {sectors.filter((s) => s.slug !== sec.slug).map((s) => <li><a href={`/${lang}/sectors/${s.slug}`}>{s.title[lang]} <Icon name="arrow" size={14} /></a></li>)}
+      </ul>
+    </nav>
+  </div>
+</Base>

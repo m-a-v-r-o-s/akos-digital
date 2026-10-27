@@ -1,0 +1,10 @@
+---
+import Icon from "./Icon.astro";
+interface Props { title: string; body: string; cta: string; href: string }
+const { title, body, cta, href } = Astro.props;
+---
+<section class="endcta wrap" style="border-top:1px solid var(--line)">
+  <h2>{title}</h2>
+  <p class="lede">{body}</p>
+  <a class="btn btn-accent" href={href}>{cta} <Icon name="arrow" size={16} /></a>
+</section>

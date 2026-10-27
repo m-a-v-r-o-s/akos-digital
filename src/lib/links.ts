@@ -1,4 +1,4 @@
-import type { Lang } from "@/lib/i18n";
+import type { Lang } from "./i18n.ts";
 
 /**
  * One rule for every link that comes out of the projects data, so a card

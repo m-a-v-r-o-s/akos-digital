@@ -1,0 +1,189 @@
+---
+import type { ImageMetadata } from "astro";
+import Base from "../../../layouts/Base.astro";
+import Icon from "../../../components/Icon.astro";
+import Shot from "../../../components/Shot.astro";
+import EndCta from "../../../components/EndCta.astro";
+import { caseStudies, sectors, servicePages } from "../../../lib/data.ts";
+import { international, type LongStudy } from "../../../lib/international.ts";
+import { olympus } from "../../../lib/olympus.ts";
+import { LANGS, type Lang } from "../../../lib/i18n.ts";
+import { buildMeta, SITE_URL } from "../../../lib/seo.ts";
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => caseStudies.map((c) => ({ params: { lang, slug: c.slug } })));
+}
+const lang = Astro.params.lang as Lang;
+const cs = caseStudies.find((c) => c.slug === Astro.params.slug)!;
+// Builds with nothing public to open carry the whole story on the page instead.
+const long: LongStudy | undefined = ({ "international-rentals": international, "olympus-marathon": olympus } as Record<string, LongStudy>)[cs.slug];
+const assets = import.meta.glob<{ default: ImageMetadata }>("../../../assets/studies/**/*.{jpg,png,webp}", { eager: true });
+const fullSize = (path: string) => Object.entries(assets).find(([k]) => k.includes(`/studies/${path}.`))?.[1].default.src;
+
+const L = {
+  en: {
+    back: "All work", eyebrow: "Case study", challenge: "The problem", approach: "What I built", outcome: "Where it stands",
+    stack: "Built with", visit: "Visit the live site", related: "Related", others: "Other work",
+    ctaTitle: "Want something like this?", ctaBody: "Tell me what your business needs to do online and I'll come back within 24 hours with a clear, no-obligation quote.",
+    longCtaTitle: "Building something this size?", longCtaBody: "Tell me what your business needs to run on and I'll come back within 24 hours with a clear, no-obligation quote.",
+    cta: "Request a quote", noLinkTitle: "Why there is no link", timeline: "Where it stands", shipped: "Built", ahead: "Ahead", fullSize: "Open full size",
+  },
+  el: {
+    back: "Όλα τα έργα", eyebrow: "Μελέτη περίπτωσης", challenge: "Το πρόβλημα", approach: "Τι έχτισα", outcome: "Πού βρίσκεται",
+    stack: "Χτισμένο με", visit: "Δες το live site", related: "Σχετικά", others: "Άλλα έργα",
+    ctaTitle: "Θέλεις κάτι αντίστοιχο;", ctaBody: "Πες μου τι χρειάζεται να κάνει online η επιχείρησή σου και θα επανέλθω εντός 24 ωρών με ξεκάθαρη προσφορά χωρίς δέσμευση.",
+    longCtaTitle: "Χτίζεις κάτι αυτού του μεγέθους;", longCtaBody: "Πες μου πάνω σε τι χρειάζεται να τρέχει η επιχείρησή σου και θα επανέλθω εντός 24 ωρών με ξεκάθαρη προσφορά χωρίς δέσμευση.",
+    cta: "Ζήτησε προσφορά", noLinkTitle: "Γιατί δεν υπάρχει σύνδεσμος", timeline: "Πού βρίσκεται", shipped: "Έγινε", ahead: "Μπροστά", fullSize: "Άνοιγμα σε πλήρες μέγεθος",
+  },
+};
+const t = L[lang];
+const sector = sectors.find((s) => s.slug === cs.sector);
+const service = servicePages.find((s) => s.slug === cs.service);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: cs.client,
+  headline: cs.title[lang],
+  description: cs.summary[lang],
+  inLanguage: lang,
+  url: `${SITE_URL}/${lang}/work/${cs.slug}`,
+  creator: { "@id": `${SITE_URL}/#organization` },
+  about: { "@type": "Organization", name: cs.client, ...(cs.live ? { url: cs.live } : {}) },
+  ...(cs.status ? { creativeWorkStatus: cs.status.en } : {}),
+  keywords: (long ? long.stack.flatMap((g) => g.items) : cs.stack).join(", "),
+};
+---
+<Base meta={buildMeta({ lang, path: `/work/${cs.slug}`, name: cs.seoTitle, description: cs.summary })} jsonLd={[jsonLd]}>
+  <div class="wrap page-hero">
+    <a class="back" href={`/${lang}#work`}>← {t.back}</a>
+    {cs.logo && <img class="logo-chip" src={cs.logo} alt="" height="64" />}
+    <p class="eyebrow" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+      {t.eyebrow} · {cs.client} {cs.status && <span class="badge" style="text-transform:none;letter-spacing:.02em">{cs.status[lang]}</span>}
+    </p>
+    <h1>{cs.title[lang]}</h1>
+    <p class="lede">{cs.summary[lang]}</p>
+    {cs.live && <a class="btn btn-accent" href={cs.live} target="_blank" rel="noopener noreferrer" style="justify-self:start">{t.visit} <Icon name="arrow" size={16} /></a>}
+  </div>
+
+  <div class="wrap">
+    <div class="shots" style="margin-bottom:clamp(48px,6vw,80px)">
+      <div class="desk">
+        {cs.clip ? (
+          <video
+            data-inview
+            data-once={cs.clip.once ? "" : undefined}
+            muted
+            playsinline
+            loop={!cs.clip.once}
+            preload="auto"
+            poster={`${cs.clip.src}.webp`}
+            width={cs.clip.width}
+            height={cs.clip.height}
+            aria-label={cs.client}
+          >
+            <source src={`${cs.clip.src}.webm`} type="video/webm" />
+            <source src={`${cs.clip.src}.mp4`} type="video/mp4" />
+          </video>
+        ) : (
+          <Shot src={`work/${cs.image}`} alt={cs.client} sizes="(min-width: 900px) 70vw, 100vw" eager />
+        )}
+      </div>
+      <div class="phone"><Shot src={`work/${cs.image}-mobile`} alt="" sizes="(min-width: 760px) 22vw, 100vw" /></div>
+    </div>
+    {!long && (
+      <p class="tags" style="margin-bottom:24px"><strong style="color:var(--ink);font-weight:500">{t.stack}:</strong> {cs.stack.join(" · ")}</p>
+    )}
+
+    {long ? (
+      <>
+        <section class="block split">
+          <h2>{t.noLinkTitle}</h2>
+          <p class="lede" style="font-size:18px;max-width:70ch">{long.noLink[lang]}</p>
+        </section>
+        <div class="block"><ul class="facts">{long.facts.map((f) => <li><span class="n">{f.n[lang]}</span><span class="k">{f.k[lang]}</span></li>)}</ul></div>
+        {long.chapters.map((c) => (
+          <section class="chapter">
+            <p class="eyebrow">{c.eyebrow[lang]}</p>
+            <h2>{c.title[lang]}</h2>
+            <div class="body">{c.body[lang].map((p) => <p>{p}</p>)}</div>
+            {c.code && (
+              <figure style="margin:0;display:grid;gap:8px">
+                <figcaption class="label-sm">{c.code.label[lang]}</figcaption>
+                <pre class="code"><code>{c.code.lines.join("\n")}</code></pre>
+              </figure>
+            )}
+            {c.image && c.alt && (
+              <figure>
+                <a href={fullSize(c.image)} target="_blank" rel="noopener" aria-label={`${c.alt[lang]}, ${t.fullSize}`}>
+                  <Shot src={`studies/${c.image}`} alt={c.alt[lang]} sizes="(min-width: 1400px) 1300px, 100vw" />
+                </a>
+                {c.caption && <figcaption><span>{c.caption[lang]}</span></figcaption>}
+              </figure>
+            )}
+          </section>
+        ))}
+        <section class="block split">
+          <h2>{t.timeline}</h2>
+          <ol class="timeline">
+            {long.timeline.map((s) => (
+              <li class:list={{ done: s.done }}>
+                <div>
+                  <p class="when">{s.when[lang]} <span class="state">{s.done ? t.shipped : t.ahead}</span></p>
+                  <p class="muted">{s.what[lang]}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <section class="block split">
+          <h2>{t.stack}</h2>
+          <div class="stackgroups">
+            {long.stack.map((g) => <div><p class="label-sm">{g.group[lang]}</p><ul>{g.items.map((i) => <li>{i}</li>)}</ul></div>)}
+          </div>
+        </section>
+      </>
+    ) : (
+      <>
+        {cs.challenge && (
+          <section class="block split">
+            <h2>{t.challenge}</h2>
+            <p class="lede" style="font-size:18px;max-width:70ch">{cs.challenge[lang]}</p>
+          </section>
+        )}
+        {cs.approach && (
+          <section class="block split">
+            <h2>{t.approach}</h2>
+            <ul class="points">{cs.approach[lang].map((p) => <li>{p}</li>)}</ul>
+          </section>
+        )}
+        {cs.outcome && (
+          <section class="block split">
+            <h2>{t.outcome}</h2>
+            <ul class="included">{cs.outcome[lang].map((o) => <li>{o}</li>)}</ul>
+          </section>
+        )}
+      </>
+    )}
+
+    {(service || sector) && (
+      <nav class="block" aria-labelledby="rel-h">
+        <h2 id="rel-h">{t.related}</h2>
+        <ul class="linkgrid">
+          {service && <li><a href={`/${lang}/services/${service.slug}`}>{service.seoTitle[lang]} <Icon name="arrow" size={14} /></a></li>}
+          {sector && <li><a href={`/${lang}/sectors/${sector.slug}`}>{sector.title[lang]} <Icon name="arrow" size={14} /></a></li>}
+        </ul>
+      </nav>
+    )}
+  </div>
+
+  <EndCta title={long ? t.longCtaTitle : t.ctaTitle} body={long ? t.longCtaBody : t.ctaBody} cta={t.cta} href={`/${lang}/request`} />
+
+  <div class="wrap">
+    <nav class="block" aria-labelledby="others-h" style="padding-bottom:clamp(64px,8vw,112px)">
+      <h2 id="others-h">{t.others}</h2>
+      <ul class="linkgrid">
+        {caseStudies.filter((c) => c.slug !== cs.slug).map((c) => <li><a href={`/${lang}/work/${c.slug}`}><span>{c.client}<span class="muted" style="display:block;font-weight:400;font-size:15px">{c.title[lang]}</span></span> <Icon name="arrow" size={14} /></a></li>)}
+      </ul>
+    </nav>
+  </div>
+</Base>

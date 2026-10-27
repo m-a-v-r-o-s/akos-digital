@@ -1,7 +1,7 @@
 /**
  * Abuse guards for the public lead form. Pure and dependency-free, so the
  * server route, the client component, and scripts/check-lead-route.ts can all
- * share them — in particular HONEYPOT_FIELD, which must be identical in the
+ * share them, in particular HONEYPOT_FIELD, which must be identical in the
  * rendered input and the server check or the honeypot silently does nothing.
  */
 

@@ -1,0 +1,10 @@
+---
+/** The flat θ mark (filled pixel ring and wave), for the header, the footer and the menu. */
+import { THETA_RING, THETA_WAVE, THETA_GRID } from "../lib/thetaPath.ts";
+interface Props { class?: string; wave?: string }
+const { class: cls, wave = "var(--accent)" } = Astro.props;
+---
+<svg class={cls} viewBox={`0 0 ${THETA_GRID} ${THETA_GRID}`} aria-hidden="true" focusable="false" shape-rendering="crispEdges">
+  <path d={THETA_RING} fill="currentColor" />
+  <path d={THETA_WAVE} fill={wave} />
+</svg>

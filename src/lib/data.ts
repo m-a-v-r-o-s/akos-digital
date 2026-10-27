@@ -49,6 +49,7 @@ export const education = [
       el: "42 Heilbronn",
     } as BL,
     institutionUrl: "https://www.42heilbronn.de/en/",
+    logo: { src: "/logos/42-heilbronn.svg", width: 589, height: 200 },
     description: {
       en: "Attended the full month-long Piscine at 42 Heilbronn, an intensive peer-to-peer coding immersion.",
       el: "Συμμετοχή στο πλήρες μηνιαίο Piscine της 42 Heilbronn, μία εντατική peer-to-peer εμβάθυνση στον προγραμματισμό.",
@@ -66,6 +67,7 @@ export const education = [
       el: "Χαροκόπειο Πανεπιστήμιο Αθηνών",
     } as BL,
     institutionUrl: "https://www.hua.gr/",
+    logo: { src: "/logos/harokopio.webp", width: 300, height: 300 },
     description: {
       en: "Studied at the Department of Informatics and Telematics.",
       el: "Φοίτηση στο Τμήμα Πληροφορικής και Τηλεματικής.",
@@ -77,215 +79,186 @@ export const education = [
 /**
  * A link on a project card. An href starting with "/" is a route on this site
  * and is prefixed with the locale at render time; anything else is external
- * and opens in a new tab. That is how a project with no public URL, such as an
- * internal tool, still has somewhere for the card to lead.
+ * and opens in a new tab.
  */
-export type ProjectLink = { label: string; href: string };
+export type ProjectLink = { label: BL; href: string };
 
 export type Project = {
   title: string;
+  /** One line under the title in the work list: what it is, not how. */
+  kind: BL;
   description: BL;
   tags: string[];
-  image: string;
-  imageMobile: string;
-  sector: string;
-  /** Nested under the project above it, for companion apps. */
-  sub?: boolean;
-  /** Set only while a project is unfinished, and shown as a badge. */
+  /** Base name of the screenshots in src/assets/work: `<shot>.webp` and `<shot>-mobile.webp`. */
+  shot: string;
+  sector?: string;
+  /** Set only while a project is unfinished or unsigned, and shown as a badge. */
   status?: BL;
-  /**
-   * The case study this project has, if it has one. Clicking the body of the
-   * card goes here; the thumbnail and the labelled link still go to the live
-   * site, so both routes stay reachable from one card.
-   */
+  /** The case study this project has, if it has one. The card leads there first. */
   caseStudy?: string;
   /** The client's mark, same file as its case study's logo. */
   logo?: string;
+  /** A muted loop shown on the card instead of the screenshot, plus a longer walkthrough with sound. */
+  video?: { loop: string; walkthrough: string; poster: string };
   links: ProjectLink[];
-  year: string;
+};
+
+const L = {
+  caseStudy: { en: "Case study", el: "Μελέτη περίπτωσης" } as BL,
+  live: { en: "Live site", el: "Live site" } as BL,
+  demo: { en: "Live demo", el: "Live demo" } as BL,
 };
 
 export const projects: Project[] = [
   {
     title: "International Rentals",
+    kind: { en: "Fleet operations platform", el: "Πλατφόρμα διαχείρισης στόλου" },
     description: {
       en: "Fleet operations platform for a Greek rent-a-car company running ~100 cars through reps stationed at hotel desks. One bilingual app for two very different users: the rep on a phone at a hotel, and the manager on a desktop. Availability and pricing are computed server-side only, and double-booking is refused by the database itself.",
       el: "Πλατφόρμα διαχείρισης στόλου για ελληνική εταιρεία rent-a-car με ~100 αυτοκίνητα και αντιπροσώπους σε ξενοδοχεία. Μία δίγλωσση εφαρμογή για δύο πολύ διαφορετικούς χρήστες: τον αντιπρόσωπο στο κινητό και τον ιδιοκτήτη σε desktop. Η διαθεσιμότητα και η τιμολόγηση υπολογίζονται αποκλειστικά server-side, και η διπλή κράτηση απορρίπτεται από την ίδια τη βάση.",
-    } as BL,
+    },
     tags: ["Next.js", "TypeScript", "Postgres RLS", "Android TWA", "Bilingual"],
-    image: "/projects/international.webp",
-    imageMobile: "/projects/international-mobile.webp",
+    shot: "international",
     sector: "rentacar",
-    status: { en: "In development", el: "Σε εξέλιξη" } as BL,
+    status: { en: "In development", el: "Σε εξέλιξη" },
     caseStudy: "/work/international-rentals",
     logo: "/logos/international.webp",
-    links: [{ label: "Case study", href: "/work/international-rentals" }],
-    year: "",
+    links: [{ label: L.caseStudy, href: "/work/international-rentals" }],
   },
   {
-    title: "Blessed Coffee & Spirits",
+    title: "Olympus Marathon",
+    kind: { en: "Race registration platform", el: "Πλατφόρμα εγγραφών αγώνων" },
     description: {
-      en: "Web presence for Blessed Coffee & Spirits, an establishment merging specialty coffee, craft cocktails with a neighborly spirit.",
-      el: "Web παρουσία για το Blessed Coffee & Spirits, ένα κατάστημα που συνδυάζει specialty καφέ, craft cocktails με μια γειτονική ατμόσφαιρα.",
-    } as BL,
-    tags: ["React", "JavaScript", "Tailwind", "HTML", "Brand Identity"],
-    image: "/projects/blessed.webp",
-    imageMobile: "/projects/blessed-mobile.webp",
+      en: "The new site and registration platform for the Olympus Marathon, seven mountain races in Litochoro. Registration and payment with capacity holds and prices computed in SQL, a secretariat admin, results and an athlete registry going back to 2004, and finisher certificates. Greek first, English alongside.",
+      el: "Η νέα ιστοσελίδα και πλατφόρμα εγγραφών του Olympus Marathon, επτά ορεινοί αγώνες στο Λιτόχωρο. Εγγραφές και πληρωμές με δέσμευση θέσης και τιμές που υπολογίζονται στη βάση, διαχείριση για τη γραμματεία, αποτελέσματα και μητρώο αθλητών από το 2004, και πιστοποιητικά τερματισμού. Ελληνικά πρώτα, αγγλικά δίπλα.",
+    },
+    tags: ["Astro", "Supabase Postgres", "Piraeus e-POS", "myDATA", "Bilingual"],
+    shot: "olympus",
+    status: { en: "In development", el: "Σε εξέλιξη" },
+    caseStudy: "/work/olympus-marathon",
+    links: [{ label: L.caseStudy, href: "/work/olympus-marathon" }],
+  },
+  {
+    title: "Blessed Coffee",
+    kind: { en: "Two coffee shops, site and automation", el: "Δύο καφέ, site και αυτοματισμοί" },
+    description: {
+      en: "Website and marketing automation for Blessed Coffee, two neighbourhood coffee shops in Athens. A static, bilingual site with a page per shop, a 3D cup and a logo coin that turns toward the pointer, and one facts file that also feeds AI-drafted replies to Google reviews and Instagram posts rendered from code.",
+      el: "Ιστοσελίδα και αυτοματοποιημένο marketing για το Blessed Coffee, δύο καφέ γειτονιάς στην Αθήνα. Στατικό, δίγλωσσο site με σελίδα για κάθε κατάστημα, τρισδιάστατο ποτήρι και ένα λογότυπο-νόμισμα που γυρίζει προς τον δείκτη, και ένα αρχείο στοιχείων που τροφοδοτεί επίσης απαντήσεις σε κριτικές Google με AI και αναρτήσεις Instagram φτιαγμένες από κώδικα.",
+    },
+    tags: ["Astro", "three.js", "Bilingual", "AI review replies", "Instagram automation"],
+    shot: "blessed",
     sector: "food",
     caseStudy: "/work/blessed-coffee",
     logo: "/logos/blessed.webp",
-    links: [{ label: "Live Site", href: "https://blessed.cafe/" }, { label: "Case study", href: "/work/blessed-coffee" }],
-    year: "",
+    links: [{ label: L.live, href: "https://www.blessed.cafe/" }, { label: L.caseStudy, href: "/work/blessed-coffee" }],
   },
   {
     title: "Mastichari Massage",
+    kind: { en: "10-language site, a 7μερο package", el: "Site σε 10 γλώσσες, πακέτο 7μερο" },
     description: {
       en: "Website for a certified massage therapist in Mastichari, Kos, delivered as a 7μερο package. 171 pages in 10 languages for a clientele of tourists, one-tap WhatsApp booking, and SEO built in from day one: sitemap, Search Console and structured data.",
       el: "Ιστοσελίδα για πιστοποιημένο θεραπευτή μασάζ στο Μαστιχάρι της Κω, παραδομένη ως πακέτο 7μερο. 171 σελίδες σε 10 γλώσσες για πελατεία τουριστών, κράτηση με ένα πάτημα στο WhatsApp, και SEO από την πρώτη μέρα: sitemap, Search Console και δομημένα δεδομένα.",
-    } as BL,
+    },
     tags: ["Eleventy", "JavaScript", "10 languages", "Schema.org", "7μερο.ai"],
-    image: "/projects/mastichari.webp",
-    imageMobile: "/projects/mastichari-mobile.webp",
+    shot: "mastichari",
     sector: "health",
     caseStudy: "/work/mastichari-massage",
     logo: "/logos/mastichari.webp",
-    links: [{ label: "Live Site", href: "https://www.mastichari-massage.gr/" }, { label: "Case study", href: "/work/mastichari-massage" }],
-    year: "",
+    links: [{ label: L.live, href: "https://www.mastichari-massage.gr/" }, { label: L.caseStudy, href: "/work/mastichari-massage" }],
   },
   {
     title: "Ellie Tattooer",
+    kind: { en: "Tattoo portfolio and shop", el: "Portfolio τατουάζ και κατάστημα" },
     description: {
-      en: "Gallery and e-commerce platform for Ellie Tattooer, resident at Ritual Tattoo Athens. Highly stylized to match her vision and brand identity.",
-      el: "Γκαλερί και e-commerce πλατφόρμα για την Ellie Tattooer, από το Ritual Tattoo Athens. Στιλιζαρισμένο για να ταιριάζει με το όραμά της και την ταυτότητα της.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "E-commerce"],
-    image: "/projects/ellietattooer.webp",
-    imageMobile: "/projects/ellietattooer-mobile.webp",
+      en: "Portfolio and shop for Ellie Tattooer, American Traditional tattooing at Ritual Tattoo Athens. A sticker-sheet design you can drag around, a flash wall of her work at full quality, and a shop with in-page Stripe checkout that prices shipping from the real address and keeps the print's limited stock in Stripe itself.",
+      el: "Portfolio και κατάστημα για την Ellie Tattooer, American Traditional τατουάζ στο Ritual Tattoo Athens. Σχεδιασμός σαν φύλλο με αυτοκόλλητα που σέρνεις με το δάχτυλο, ένας τοίχος με τα flash της σε πλήρη ποιότητα, και κατάστημα με πληρωμή Stripe μέσα στη σελίδα, που κοστολογεί τα μεταφορικά από την πραγματική διεύθυνση και κρατά το περιορισμένο απόθεμα του print στο ίδιο το Stripe.",
+    },
+    tags: ["Astro", "React islands", "Stripe", "E-commerce", "Spring physics"],
+    shot: "ellie",
     sector: "artists",
     caseStudy: "/work/ellie-tattooer",
     logo: "/logos/ellietattooer.webp",
-    links: [{ label: "Live Site", href: "https://ellietattooer.com/" }, { label: "Case study", href: "/work/ellie-tattooer" }],
-    year: "",
+    links: [{ label: L.live, href: "https://www.ellietattooer.com/" }, { label: L.caseStudy, href: "/work/ellie-tattooer" }],
   },
   {
-    title: "Those Rambling Fools Band",
+    title: "Those Rambling Fools",
+    kind: { en: "Band site with a working turntable", el: "Site συγκροτήματος με λειτουργικό πικάπ" },
     description: {
-      en: "Web app featuring a working vinyl record player, highly interactive and stylized to the bands aesthetic and vision.",
-      el: "Web app με λειτουργικό πικάπ βινυλίου, εξαιρετικά διαδραστικό και στιλιζαρισμένο σύμφωνα με την αισθητική και το όραμα του συγκροτήματος.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Interactive Animations", "Tailwind", "HTML"],
-    image: "/projects/trf.webp",
-    imageMobile: "/projects/trf-mobile.webp",
+      en: "Band site for Those Rambling Fools from Kos, built around a working turntable: the tonearm tracks the record, LPs spin at 33⅓ and the Mule singles at 45, and the music keeps playing as you move between pages. Gigs and the band's story are edited by the band from their own admin.",
+      el: "Site για τους Those Rambling Fools από την Κω, χτισμένο γύρω από ένα λειτουργικό πικάπ: ο βραχίονας ακολουθεί τον δίσκο, τα LP γυρίζουν στις 33⅓ και τα singles των Mule στις 45, και η μουσική συνεχίζει να παίζει καθώς αλλάζεις σελίδα. Τις εμφανίσεις και την ιστορία τις ενημερώνει το ίδιο το συγκρότημα από το δικό του admin.",
+    },
+    tags: ["Astro", "React islands", "Web Audio", "View Transitions", "Schema.org"],
+    shot: "trf",
     sector: "artists",
     caseStudy: "/work/those-rambling-fools",
     logo: "/logos/trf.webp",
-    links: [{ label: "Live Site", href: "https://thoseramblingfools.com/" }, { label: "Case study", href: "/work/those-rambling-fools" }],
-    year: "",
+    links: [{ label: L.live, href: "https://www.thoseramblingfools.com/" }, { label: L.caseStudy, href: "/work/those-rambling-fools" }],
   },
   {
     title: "SKIÁ Athens",
+    kind: { en: "Fashion atelier, editorial site", el: "Atelier μόδας, editorial site" },
     description: {
       en: "Website for an Athenian atelier producing handcrafted clothing in small runs. Hand-built in HTML, CSS and JavaScript, with an intricate editorial interface, heavy typography and motion worked around light and shadow: a lookbook, a collection index, and a private enquiry flow for acquisitions and fittings.",
       el: "Ιστοσελίδα για αθηναϊκό atelier που παράγει χειροποίητα ρούχα σε μικρές σειρές. Χτισμένη εξ ολοκλήρου σε HTML, CSS και JavaScript, με σύνθετο editorial interface, βαριά τυπογραφία και κίνηση δουλεμένη γύρω από το φως και τη σκιά: lookbook, ευρετήριο συλλογής και ιδιωτική ροή αιτημάτων για αποκτήσεις και πρόβες.",
-    } as BL,
+    },
     tags: ["HTML", "CSS", "JavaScript", "Interactive Animations", "Brand Identity"],
-    image: "/projects/skia.webp",
-    imageMobile: "/projects/skia-mobile.webp",
+    shot: "skia",
     sector: "fashion",
-    links: [{ label: "Live Site", href: "https://skia.up.railway.app/" }],
-    year: "",
+    links: [{ label: L.live, href: "https://skia.up.railway.app/" }],
   },
   {
-    title: "Stefanidis Automotive Concept",
+    title: "Smile Design Dental Clinic",
+    kind: { en: "iPad patient forms and live dashboard", el: "Φόρμες ασθενών σε iPad και ζωντανό dashboard" },
     description: {
-      en: "Concept site for a Greek car import and dealership business. A showroom of imported vehicles with full specs and pricing, a request flow for sourcing a car to order, and an AI assistant that answers questions on customs, registration and Greek plates.",
-      el: "Concept site για ελληνική επιχείρηση εισαγωγής και εμπορίας αυτοκινήτων. Έκθεση εισαγμένων οχημάτων με πλήρη χαρακτηριστικά και τιμές, ροή αιτήματος για εισαγωγή κατά παραγγελία και AI βοηθός που απαντά σε ερωτήσεις για εκτελωνισμό, ταξινόμηση και ελληνική πινακίδα.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Tailwind", "AI Assistant", "Automotive"],
-    image: "/projects/stefanidis.webp",
-    imageMobile: "/projects/stefanidis-mobile.webp",
-    sector: "automotive",
-    links: [{ label: "Live Demo", href: "https://stefanidis.up.railway.app/" }],
-    year: "",
+      en: "Patient forms for a dental clinic in Limassol. Patients read and sign the medical and media-consent forms on an iPad at the front desk, in English, Greek or Russian, and the clinic sees every signed form arrive live on a desktop dashboard. Answers and signatures are encrypted at rest.",
+      el: "Φόρμες ασθενών για οδοντιατρική κλινική στη Λεμεσό. Οι ασθενείς διαβάζουν και υπογράφουν το ιατρικό ιστορικό και τη συναίνεση για φωτογραφίες σε iPad στην υποδοχή, στα αγγλικά, ελληνικά ή ρωσικά, και η κλινική βλέπει κάθε υπογεγραμμένη φόρμα να φτάνει ζωντανά σε ένα dashboard. Οι απαντήσεις και οι υπογραφές αποθηκεύονται κρυπτογραφημένες.",
+    },
+    tags: ["React", "Node", "Postgres", "iPad kiosk", "3 languages"],
+    shot: "smiledesign",
+    sector: "health",
+    status: { en: "Pending", el: "Σε αναμονή" },
+    video: {
+      loop: "/work/smiledesign-clinic",
+      walkthrough: "/work/smiledesign-walkthrough",
+      poster: "/work/smiledesign-clinic.webp",
+    },
+    links: [],
   },
   {
     title: "Nocturne Club Concept",
+    kind: { en: "Nightclub concept", el: "Concept για club" },
     description: {
       en: "Concept site for a private late-night club on Ios. Age-gated entry, the full summer line-up, table reservations with deposits and a guest list, wrapped in a dark, high-contrast identity built around the floor.",
       el: "Concept site για ιδιωτικό νυχτερινό club στην Ίο. Έλεγχος ηλικίας στην είσοδο, πλήρες καλοκαιρινό line-up, κρατήσεις τραπεζιών με προκαταβολή και guest list, μέσα σε μια σκοτεινή ταυτότητα υψηλής αντίθεσης χτισμένη γύρω από την πίστα.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Tailwind", "3D Object", "Reservations", "Nightlife"],
-    image: "/projects/nocturne.webp",
-    imageMobile: "/projects/nocturne-mobile.webp",
+    },
+    tags: ["Next.js", "TypeScript", "3D Object", "Reservations", "Nightlife"],
+    shot: "nocturne",
     sector: "food",
-    links: [{ label: "Live Demo", href: "https://nocturnal.up.railway.app/" }],
-    year: "",
+    links: [{ label: L.demo, href: "https://nocturnal.up.railway.app/" }],
   },
   {
     title: "Thalatta Bay Concept",
+    kind: { en: "Resort and spa concept", el: "Concept για θέρετρο και spa" },
     description: {
       en: "Concept site for a five-star seafront resort and spa in Elounda, Crete. Minimalist luxury with immersive Aegean photography, five dining venues, a sea-water spa, and booking woven throughout the experience.",
       el: "Concept site για πολυτελές θέρετρο και spa πέντε αστέρων στην Ελούντα της Κρήτης. Μινιμαλιστική πολυτέλεια με εμβυθιστική αιγαιοπελαγίτικη φωτογραφία, πέντε χώρους εστίασης, spa θαλασσοθεραπείας και κρατήσεις ενσωματωμένες στην εμπειρία.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Tailwind", "Booking", "Hospitality"],
-    image: "/projects/thalatta.webp",
-    imageMobile: "/projects/thalatta-mobile.webp",
+    },
+    tags: ["Next.js", "TypeScript", "Booking", "Hospitality"],
+    shot: "thalatta",
     sector: "hotels",
-    links: [{ label: "Live Demo", href: "https://thalatta-production.up.railway.app/en" }],
-    year: "",
-  },
-  {
-    title: "Nisos Rentals Concept",
-    description: {
-      en: "Concept booking platform for a Kos-based rental service offering cars, ATVs, buggies and scooters. Real-time availability by dates and pickup point, transparent all-inclusive pricing, and quick online booking with hotel and port delivery.",
-      el: "Concept πλατφόρμα κρατήσεων για υπηρεσία ενοικιάσεων στην Κω, με αυτοκίνητα, ATV, buggies και scooters. Διαθεσιμότητα σε πραγματικό χρόνο ανά ημερομηνία και σημείο παραλαβής, διαφανής τιμολόγηση και γρήγορη online κράτηση με παράδοση σε ξενοδοχείο και λιμάνι.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Tailwind", "Booking", "Fleet"],
-    image: "/projects/nisos-web.webp",
-    imageMobile: "/projects/nisos-web-mobile.webp",
-    sector: "rentacar",
-    links: [{ label: "Live Demo", href: "https://rentalsweb-production.up.railway.app/" }],
-    year: "",
-  },
-  {
-    title: "Nisos Rentals Admin Concept",
-    description: {
-      en: "Companion admin dashboard and CRM for the Nisos Rentals platform. Manage the fleet, bookings, availability and customers from a single operational panel.",
-      el: "Συνοδευτικό admin dashboard και CRM για την πλατφόρμα Nisos Rentals. Διαχείριση στόλου, κρατήσεων, διαθεσιμότητας και πελατών από ένα ενιαίο λειτουργικό πάνελ.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Dashboard", "CRM"],
-    image: "/projects/nisos-admin.webp",
-    imageMobile: "/projects/nisos-admin-mobile.webp",
-    sector: "rentacar",
-    sub: true,
-    links: [{ label: "Live Demo", href: "https://rentalsadmin-production.up.railway.app/" }],
-    year: "",
-  },
-  {
-    title: "Kyma Villa Concept",
-    description: {
-      en: "Concept site for a private seafront villa in Paros. Clean, coastal aesthetic with booking integration and immersive photography.",
-      el: "Concept site για ιδιωτική παραθαλάσσια βίλα στην Πάρο. Καθαρή, παράκτια αισθητική με ενσωμάτωση κρατήσεων και εμβυθιστική φωτογραφία.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "Booking"],
-    image: "/projects/kyma.webp",
-    imageMobile: "/projects/kyma-mobile.webp",
-    sector: "hotels",
-    links: [{ label: "Live Demo", href: "https://kyma-production-dd16.up.railway.app/" }],
-    year: "",
+    links: [{ label: L.demo, href: "https://thalatta-production.up.railway.app/en" }],
   },
   {
     title: "Levká Dental Concept",
+    kind: { en: "Dental clinic concept", el: "Concept για οδοντιατρείο" },
     description: {
       en: "Concept site for a modern dental clinic. Professional and approachable design with online appointment booking and a focus on patient trust.",
       el: "Concept site για σύγχρονη οδοντιατρική κλινική. Επαγγελματικός και προσιτός σχεδιασμός με online ραντεβού και έμφαση στην εμπιστοσύνη του ασθενή.",
-    } as BL,
-    tags: ["Next.js", "TypeScript", "Tailwind", "HTML", "Booking"],
-    image: "/projects/levka.webp",
-    imageMobile: "/projects/levka-mobile.webp",
+    },
+    tags: ["Next.js", "TypeScript", "Booking"],
+    shot: "levka",
     sector: "health",
-    links: [{ label: "Live Demo", href: "https://levka-production.up.railway.app/" }],
-    year: "",
+    links: [{ label: L.demo, href: "https://levka-production.up.railway.app/" }],
   },
 ];
 
@@ -297,8 +270,8 @@ export const services = [
       el: "Αρχιτεκτονική & Ανάπτυξη Web",
     } as BL,
     description: {
-      en: "Custom-built platforms using modern stacks, Next.js, TypeScript, headless CMS, engineered for performance, scalability, and longevity.",
-      el: "Custom πλατφόρμες με σύγχρονα stacks, Next.js, TypeScript, headless CMS, σχεδιασμένες για απόδοση, κλιμακωσιμότητα και μακροβιότητα.",
+      en: "Custom-built platforms on modern stacks, Astro, Next.js, TypeScript, Postgres, engineered for performance, scalability, and longevity.",
+      el: "Custom πλατφόρμες με σύγχρονα stacks, Astro, Next.js, TypeScript, Postgres, σχεδιασμένες για απόδοση, κλιμακωσιμότητα και μακροβιότητα.",
     } as BL,
   },
   {
@@ -896,7 +869,7 @@ export const servicePages = [
         "A contact or quote form with spam and rate-limit protection",
         "GDPR cookie consent and a privacy policy that matches what the site actually does",
         "Google Search Console set up and the sitemap submitted",
-        "WCAG 2.1 AA accessibility as a baseline, not an extra",
+        "WCAG 2.2 AA accessibility as a baseline, not an extra",
         "Lifetime support for the site's security and functionality",
       ],
       el: [
@@ -906,7 +879,7 @@ export const servicePages = [
         "Φόρμα επικοινωνίας ή προσφοράς με προστασία από spam και rate limiting",
         "Συγκατάθεση cookies κατά GDPR και πολιτική απορρήτου που αντιστοιχεί σε όσα πραγματικά κάνει το site",
         "Ρύθμιση Google Search Console και υποβολή του sitemap",
-        "Προσβασιμότητα WCAG 2.1 AA ως βάση, όχι ως έξτρα",
+        "Προσβασιμότητα WCAG 2.2 AA ως βάση, όχι ως έξτρα",
         "Υποστήριξη εφ' όρου ζωής για την ασφάλεια και τη λειτουργία του site",
       ],
     } as BLA,
@@ -1228,7 +1201,8 @@ export type CaseStudy = {
   projectTitle: string;
   seoTitle: BL;
   title: BL;
-  sector: string;
+  /** Absent for work outside the eight sectors. */
+  sector?: string;
   service: string;
   /** Absent for a build with nothing public to open. */
   live?: string;
@@ -1243,8 +1217,13 @@ export type CaseStudy = {
   approach?: BLA;
   outcome?: BLA;
   stack: string[];
+  /** Base name of the screenshots in src/assets/work. */
   image: string;
-  imageMobile: string;
+  /**
+   * A clip of the live site in place of the desktop screenshot: public/work/<src>.webm/.mp4,
+   * with <src>.webp as the poster. `once` plays a single time and rests on its last frame.
+   */
+  clip?: { src: string; width: number; height: number; once?: boolean };
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -1270,64 +1249,87 @@ export const caseStudies: CaseStudy[] = [
     } as BL,
     logo: "/logos/international.webp",
     stack: ["Next.js", "TypeScript", "Postgres RLS", "Android TWA", "Bilingual"],
-    image: "/projects/international.webp",
-    imageMobile: "/projects/international-mobile.webp",
+    image: "international",
+  },
+  {
+    slug: "olympus-marathon",
+    client: "Olympus Marathon",
+    projectTitle: "Olympus Marathon Registration Platform",
+    seoTitle: {
+      en: "Olympus Marathon, Race Registration Platform",
+      el: "Olympus Marathon, Πλατφόρμα Εγγραφών",
+    } as BL,
+    title: {
+      en: "Seven races, one place to enter them",
+      el: "Επτά αγώνες, ένα σημείο για να δηλώσεις",
+    } as BL,
+    service: "booking-systems",
+    status: { en: "In development", el: "Σε εξέλιξη" } as BL,
+    bespoke: true,
+    summary: {
+      en: "The Olympus Marathon organises seven mountain races in Litochoro, at the foot of Mount Olympus. This is the new site and registration platform replacing the old one: entries and payment, the secretariat's admin, results, an athlete registry going back to 2004 and finisher certificates, Greek first with English alongside.",
+      el: "Το Olympus Marathon διοργανώνει επτά ορεινούς αγώνες στο Λιτόχωρο, στους πρόποδες του Ολύμπου. Αυτή είναι η νέα ιστοσελίδα και πλατφόρμα εγγραφών που αντικαθιστά την παλιά: δηλώσεις και πληρωμές, η διαχείριση της γραμματείας, αποτελέσματα, μητρώο αθλητών από το 2004 και πιστοποιητικά τερματισμού, ελληνικά πρώτα και αγγλικά δίπλα.",
+    } as BL,
+    stack: ["Astro", "Supabase Postgres", "Piraeus e-POS", "myDATA", "Bilingual"],
+    image: "olympus",
   },
   {
     slug: "blessed-coffee",
-    client: "Blessed Coffee & Spirits",
-    projectTitle: "Blessed Coffee & Spirits",
+    client: "Blessed Coffee",
+    projectTitle: "Blessed Coffee",
     seoTitle: {
-      en: "Blessed Coffee, Cafe Website",
-      el: "Blessed Coffee, Καφετέρια Αθήνα",
+      en: "Blessed Coffee, Coffee Shop Website",
+      el: "Blessed Coffee, Ιστοσελίδα Καφέ Αθήνα",
     } as BL,
     title: {
-      en: "A cafe you can find",
-      el: "Μια καφετέρια που τη βρίσκεις",
+      en: "Two coffee shops, one source of truth",
+      el: "Δύο καφέ, μία πηγή αλήθειας",
     } as BL,
     sector: "food",
     service: "websites",
-    live: "https://blessed.cafe/",
+    live: "https://www.blessed.cafe/",
     summary: {
-      en: "A specialty coffee and cocktail bar in Kato Patisia, Athens, serving a Greek-speaking neighbourhood and English-speaking visitors from the same address.",
-      el: "Μπαρ specialty καφέ και cocktails στα Κάτω Πατήσια, που εξυπηρετεί μια ελληνόφωνη γειτονιά και αγγλόφωνους επισκέπτες από την ίδια διεύθυνση.",
+      en: "Blessed Coffee runs two neighbourhood coffee shops in Athens, the original in Kato Patisia and a new one in Kamatero, serving a Greek-speaking neighbourhood and English-speaking visitors.",
+      el: "Το Blessed Coffee έχει δύο καφέ γειτονιάς στην Αθήνα, το πρώτο στα Κάτω Πατήσια και ένα καινούριο στο Καματερό, για μια ελληνόφωνη γειτονιά και αγγλόφωνους επισκέπτες.",
     } as BL,
     challenge: {
-      en: "The site is a React single-page app, which means the content only exists after JavaScript runs. Most AI answer engines and a good share of crawlers never run it, so to them the page was effectively blank. On top of that, the business is genuinely bilingual, and the delivery platforms it depends on each wanted a link.",
-      el: "Το site είναι React single-page app, που σημαίνει ότι το περιεχόμενο υπάρχει μόνο αφού τρέξει η JavaScript. Οι περισσότερες μηχανές απαντήσεων AI και αρκετοί crawlers δεν την τρέχουν ποτέ, οπότε γι' αυτούς η σελίδα ήταν ουσιαστικά κενή. Επιπλέον, η επιχείρηση είναι πραγματικά δίγλωσση, και οι πλατφόρμες delivery από τις οποίες εξαρτάται ήθελε η καθεμία τον σύνδεσμό της.",
+      en: "The first site was a React single-page app, so crawlers and AI answer engines that never run JavaScript saw an empty page, and it only knew about one shop. Then a second shop opened. The menu and the hours had to be right in two languages for both, and the same facts were being typed again by hand into replies to Google reviews and into Instagram posts.",
+      el: "Το πρώτο site ήταν React single-page app, οπότε οι crawlers και οι μηχανές απαντήσεων AI που δεν τρέχουν ποτέ JavaScript έβλεπαν μια άδεια σελίδα, και ήξερε μόνο ένα κατάστημα. Μετά άνοιξε και δεύτερο. Το μενού και το ωράριο έπρεπε να είναι σωστά και στις δύο γλώσσες για τα δύο καταστήματα, και τα ίδια στοιχεία πληκτρολογούνταν ξανά με το χέρι σε απαντήσεις σε κριτικές Google και σε αναρτήσεις στο Instagram.",
     } as BL,
     approach: {
       en: [
-        "A crawlable fallback written directly into index.html, carrying the address, phone numbers, opening hours and menu summary in both Greek and English. React replaces it on mount, so visitors never see it and crawlers always do.",
-        "The fallback is deliberately limited to facts that do not change. Prices live in one place in the app and are not duplicated into the HTML, because a stale price is worse than no price.",
-        "CafeOrCoffeeShop schema with real opening hours, geo coordinates and a postal address, so a search engine knows what the business is rather than guessing from the words on the page.",
-        "It is styled to the brand's black and cream palette rather than left unstyled, since it is on screen for the moment before React mounts and a white flash would read as a broken page.",
-        "Ordering links to e-food, Wolt and Box sit in the crawlable layer too, so the routes that actually take orders are never behind JavaScript.",
+        "Rebuilt as a static Astro site, Greek at the root and English under /en, so every page is complete HTML before a single script runs.",
+        "Shops, menu, prices, hours, reviews and jobs live in one facts file. The site, the review replies and the Instagram content all read from it, so a price changes in one place.",
+        "One page per shop, and the shop a visitor picks drives the order and call buttons on every page.",
+        "The shop's own painted shutter is the hero, the logo is a thick 3D coin that turns toward the pointer, and the 3D cup loads with three.js only when it scrolls into view.",
+        "New Google reviews get a short owner reply drafted by Claude in the reviewer's language. A code check stops any draft with a link, a phone number or a promise before it is posted, and leaves that review to be answered by hand.",
+        "Instagram feed cards, stories and reels are rendered from code with real photos only, and every price in them comes from the same facts file.",
       ],
       el: [
-        "Ένα crawlable fallback γραμμένο απευθείας στο index.html, με τη διεύθυνση, τα τηλέφωνα, το ωράριο και μια σύνοψη του μενού στα ελληνικά και στα αγγλικά. Το React το αντικαθιστά κατά τη φόρτωση, οπότε οι επισκέπτες δεν το βλέπουν ποτέ και οι crawlers πάντα.",
-        "Το fallback περιορίζεται σκόπιμα σε στοιχεία που δεν αλλάζουν. Οι τιμές βρίσκονται σε ένα σημείο μέσα στην εφαρμογή και δεν αντιγράφονται στο HTML, γιατί μια ξεπερασμένη τιμή είναι χειρότερη από καμία τιμή.",
-        "Schema CafeOrCoffeeShop με πραγματικό ωράριο, γεωγραφικές συντεταγμένες και ταχυδρομική διεύθυνση, ώστε η μηχανή αναζήτησης να ξέρει τι είναι η επιχείρηση αντί να το μαντεύει από τις λέξεις της σελίδας.",
-        "Είναι στιλιζαρισμένο στη μαύρη και κρεμ παλέτα της επωνυμίας αντί να μείνει άστυλο, αφού είναι στην οθόνη για τη στιγμή πριν φορτώσει το React και ένα λευκό φλας θα έμοιαζε με χαλασμένη σελίδα.",
-        "Οι σύνδεσμοι παραγγελίας προς e-food, Wolt και Box βρίσκονται και αυτοί στο crawlable στρώμα, ώστε οι δρόμοι που όντως φέρνουν παραγγελίες να μην είναι ποτέ πίσω από JavaScript.",
+        "Ξαναχτίστηκε ως στατικό site σε Astro, ελληνικά στη ρίζα και αγγλικά κάτω από το /en, ώστε κάθε σελίδα να είναι πλήρες HTML πριν τρέξει οποιοδήποτε script.",
+        "Καταστήματα, μενού, τιμές, ωράρια, κριτικές και θέσεις εργασίας βρίσκονται σε ένα αρχείο στοιχείων. Το site, οι απαντήσεις στις κριτικές και το περιεχόμενο του Instagram διαβάζουν όλα από εκεί, οπότε μια τιμή αλλάζει σε ένα σημείο.",
+        "Μία σελίδα για κάθε κατάστημα, και το κατάστημα που διαλέγει ο επισκέπτης ορίζει τα κουμπιά παραγγελίας και κλήσης σε κάθε σελίδα.",
+        "Το ζωγραφισμένο ρολό του καταστήματος είναι το hero, το λογότυπο είναι ένα παχύ τρισδιάστατο νόμισμα που γυρίζει προς τον δείκτη, και το τρισδιάστατο ποτήρι φορτώνει με three.js μόνο όταν φτάσει στην οθόνη.",
+        "Οι νέες κριτικές στο Google παίρνουν μια σύντομη απάντηση από τον ιδιοκτήτη, που τη συντάσσει το Claude στη γλώσσα του κριτή. Ένας έλεγχος στον κώδικα σταματά κάθε προσχέδιο με σύνδεσμο, τηλέφωνο ή υπόσχεση πριν δημοσιευτεί, και αφήνει την κριτική να απαντηθεί με το χέρι.",
+        "Οι κάρτες, τα stories και τα reels του Instagram παράγονται από κώδικα μόνο με πραγματικές φωτογραφίες, και κάθε τιμή σε αυτά έρχεται από το ίδιο αρχείο στοιχείων.",
       ],
     } as BLA,
     outcome: {
       en: [
-        "Both languages are in the served HTML, verifiable by fetching the page with JavaScript disabled.",
-        "The business details a local search needs, address, hours, phone, are machine-readable rather than baked into an image or a script.",
-        "Legal pages are real, separately addressable URLs rather than modal dialogs, so they can be indexed and linked.",
+        "In a Lighthouse run on mobile: 96 for performance on the home page and 100 on the menu and shop pages, 100 for accessibility, no layout shift.",
+        "A strict content security policy, with the one inline script allowed by its hash.",
+        "Both shops, the menu and the hours are in the served HTML in both languages, readable with JavaScript turned off.",
       ],
       el: [
-        "Και οι δύο γλώσσες βρίσκονται στο HTML που σερβίρεται, κάτι επαληθεύσιμο ζητώντας τη σελίδα με απενεργοποιημένη JavaScript.",
-        "Τα στοιχεία που χρειάζεται μια τοπική αναζήτηση, διεύθυνση, ωράριο, τηλέφωνο, είναι αναγνώσιμα από μηχανή αντί να είναι ψημένα σε εικόνα ή σε script.",
-        "Οι νομικές σελίδες είναι πραγματικά, ξεχωριστά URL και όχι αναδυόμενα παράθυρα, οπότε μπορούν να ευρετηριαστούν και να συνδεθούν.",
+        "Σε μέτρηση Lighthouse σε κινητό: 96 στην απόδοση της αρχικής και 100 στις σελίδες μενού και καταστημάτων, 100 στην προσβασιμότητα, καμία μετατόπιση διάταξης.",
+        "Αυστηρή πολιτική ασφάλειας περιεχομένου (CSP), με το μοναδικό inline script να επιτρέπεται μέσω του hash του.",
+        "Και τα δύο καταστήματα, το μενού και το ωράριο βρίσκονται στο HTML που σερβίρεται και στις δύο γλώσσες, αναγνώσιμα με απενεργοποιημένη JavaScript.",
       ],
     } as BLA,
     logo: "/logos/blessed.webp",
-    stack: ["React", "Vite", "JavaScript", "Tailwind", "Schema.org", "Bilingual"],
-    image: "/projects/blessed.webp",
-    imageMobile: "/projects/blessed-mobile.webp",
+    stack: ["Astro", "three.js", "Claude API", "Instagram API", "Schema.org", "Bilingual"],
+    image: "blessed",
+    clip: { src: "/work/blessed-shutter", width: 1280, height: 800, once: true },
   },
   {
     slug: "ellie-tattooer",
@@ -1335,7 +1337,7 @@ export const caseStudies: CaseStudy[] = [
     projectTitle: "Ellie Tattooer",
     seoTitle: {
       en: "Ellie Tattooer, Portfolio and Shop",
-      el: "Ellie Tattooer, Portfolio",
+      el: "Ellie Tattooer, Portfolio και Κατάστημα",
     } as BL,
     title: {
       en: "A tattoo portfolio that sells",
@@ -1343,45 +1345,46 @@ export const caseStudies: CaseStudy[] = [
     } as BL,
     sector: "artists",
     service: "eshop",
-    live: "https://ellietattooer.com/",
+    live: "https://www.ellietattooer.com/",
     summary: {
       en: "An American Traditional tattoo artist working out of Ritual Tattoo in Athens, whose work was living entirely inside a social feed that crops it and reorders it.",
       el: "Καλλιτέχνις τατουάζ American Traditional που εργάζεται στο Ritual Tattoo στην Αθήνα, με τη δουλειά της να ζει εξ ολοκλήρου μέσα σε ένα social feed που την κόβει και την αναδιατάσσει.",
     } as BL,
     challenge: {
-      en: "A tattoo artist's portfolio is the sales pitch, and a social platform decides how much of it anyone sees. The work needed to be shown at full quality, in an order she controls, alongside a way to sell flash and prints without handing a cut of each sale to a marketplace. The visual identity is strong and specific, so a generic gallery template would have undercut the thing being sold.",
-      el: "Το portfolio μιας καλλιτέχνιδας τατουάζ είναι η ίδια η πρόταση πώλησης, και μια πλατφόρμα social αποφασίζει πόσο από αυτό βλέπει ο καθένας. Η δουλειά έπρεπε να παρουσιάζεται σε πλήρη ποιότητα, με σειρά που ορίζει η ίδια, μαζί με έναν τρόπο να πουλάει flash και prints χωρίς να δίνει ποσοστό κάθε πώλησης σε μια αγορά τρίτων. Η οπτική ταυτότητα είναι έντονη και συγκεκριμένη, οπότε ένα γενικό template γκαλερί θα υπονόμευε αυτό ακριβώς που πουλιέται.",
+      en: "A tattoo artist's portfolio is the sales pitch, and a social platform decides how much of it anyone sees. The work needed to be shown at full quality, in an order she controls, next to a way to sell prints and merch without handing a cut of each sale to a marketplace. Her identity is loud and specific, so the site had to look like her flash, not like a shop template.",
+      el: "Το portfolio μιας καλλιτέχνιδας τατουάζ είναι η ίδια η πρόταση πώλησης, και μια πλατφόρμα social αποφασίζει πόσο από αυτό βλέπει ο καθένας. Η δουλειά έπρεπε να παρουσιάζεται σε πλήρη ποιότητα, με σειρά που ορίζει η ίδια, δίπλα σε έναν τρόπο να πουλάει prints και merch χωρίς να δίνει ποσοστό κάθε πώλησης σε μια αγορά τρίτων. Η ταυτότητά της είναι έντονη και συγκεκριμένη, οπότε το site έπρεπε να μοιάζει με τα flash της, όχι με template καταστήματος.",
     } as BL,
     approach: {
       en: [
-        "A gallery built around full-quality imagery rather than thumbnails, with the ordering under her control instead of a feed algorithm's.",
-        "A shop for flash and prints on the same domain as the portfolio, so the work and the way to buy it are never a link apart.",
-        "The interface is styled to her existing identity rather than to a template, because for an artist the site is part of the portfolio, not a container for it.",
-        "TattooParlor schema with the studio's real address, so a search for a tattoo artist in Athens can match the business rather than only the name.",
-        "Privacy and terms as real routes, which a shop taking payments needs to have and to be able to show.",
+        "A sticker-sheet design taken from her own flash: the stickers on the home page can be picked up and dragged, and settle with spring physics when let go.",
+        "A flash wall of her work at full quality, in the order she sets, with a lightbox that swipes between pieces and swipes down to close.",
+        "A shop on the same domain, with checkout inside the cart drawer through Stripe, so buying never leaves the site.",
+        "Shipping is priced from the real delivery address across five zones in Greece and priced again on the server when the address reaches Stripe. Every price and quantity is set server-side, never taken from the browser.",
+        "The print is a limited run tracked in Stripe itself, with no database: once paid orders reach the limit, it switches to sold out on its own.",
+        "TattooParlor schema with the studio's real address, so a search for a tattoo artist in Athens can match the business and not only the name.",
       ],
       el: [
-        "Γκαλερί χτισμένη γύρω από εικόνα πλήρους ποιότητας αντί για μικρογραφίες, με τη σειρά να την ελέγχει η ίδια και όχι ο αλγόριθμος ενός feed.",
-        "Κατάστημα για flash και prints στο ίδιο domain με το portfolio, ώστε η δουλειά και ο τρόπος αγοράς της να μην απέχουν ποτέ έναν σύνδεσμο.",
-        "Η διεπαφή είναι στιλιζαρισμένη στη δική της ταυτότητα και όχι σε template, γιατί για μια καλλιτέχνιδα το site είναι μέρος του portfolio, όχι απλώς το δοχείο του.",
-        "Schema TattooParlor με την πραγματική διεύθυνση του στούντιο, ώστε μια αναζήτηση για καλλιτέχνη τατουάζ στην Αθήνα να μπορεί να ταιριάξει την επιχείρηση και όχι μόνο το όνομα.",
-        "Πολιτική απορρήτου και όροι ως πραγματικές διαδρομές, κάτι που ένα κατάστημα που δέχεται πληρωμές πρέπει να έχει και να μπορεί να δείξει.",
+        "Σχεδιασμός σαν φύλλο με αυτοκόλλητα, παρμένος από τα δικά της flash: τα αυτοκόλλητα της αρχικής πιάνονται και σέρνονται, και κάθονται με φυσική ελατηρίου όταν τα αφήσεις.",
+        "Ένας τοίχος με τα flash της σε πλήρη ποιότητα, με τη σειρά που ορίζει η ίδια, και lightbox που περνά από έργο σε έργο με swipe και κλείνει με swipe προς τα κάτω.",
+        "Κατάστημα στο ίδιο domain, με πληρωμή μέσα στο καλάθι μέσω Stripe, ώστε η αγορά να μη φεύγει ποτέ από το site.",
+        "Τα μεταφορικά υπολογίζονται από την πραγματική διεύθυνση σε πέντε ζώνες στην Ελλάδα και ξαναϋπολογίζονται στον server όταν η διεύθυνση φτάσει στο Stripe. Κάθε τιμή και ποσότητα ορίζεται στον server, ποτέ από τον browser.",
+        "Το print είναι περιορισμένη σειρά που καταγράφεται στο ίδιο το Stripe, χωρίς βάση δεδομένων: μόλις οι πληρωμένες παραγγελίες φτάσουν το όριο, γίνεται εξαντλημένο από μόνο του.",
+        "Schema TattooParlor με την πραγματική διεύθυνση του στούντιο, ώστε μια αναζήτηση για καλλιτέχνη τατουάζ στην Αθήνα να ταιριάζει την επιχείρηση και όχι μόνο το όνομα.",
       ],
     } as BLA,
     outcome: {
       en: [
-        "The portfolio lives on a domain she owns, so no platform decides who sees it.",
-        "The page title targets what a customer actually searches, the style and the city, rather than only the artist's name.",
+        "The portfolio and the shop live on a domain she owns, so no platform decides who sees the work or takes a cut of a sale beyond the card fee.",
+        "Prices, stock and shipping are decided on the server, so a tampered request can't buy the print for less.",
       ],
       el: [
-        "Το portfolio ζει σε domain που της ανήκει, οπότε καμία πλατφόρμα δεν αποφασίζει ποιος το βλέπει.",
-        "Ο τίτλος της σελίδας στοχεύει σε αυτό που όντως αναζητά ένας πελάτης, το στιλ και την πόλη, και όχι μόνο στο όνομα της καλλιτέχνιδας.",
+        "Το portfolio και το κατάστημα ζουν σε domain που της ανήκει, οπότε καμία πλατφόρμα δεν αποφασίζει ποιος βλέπει τη δουλειά ούτε παίρνει ποσοστό από μια πώληση πέρα από τη χρέωση της κάρτας.",
+        "Οι τιμές, το απόθεμα και τα μεταφορικά αποφασίζονται στον server, οπότε ένα πειραγμένο αίτημα δεν μπορεί να αγοράσει το print φθηνότερα.",
       ],
     } as BLA,
     logo: "/logos/ellietattooer.webp",
-    stack: ["Next.js", "TypeScript", "Tailwind", "E-commerce", "Schema.org"],
-    image: "/projects/ellietattooer.webp",
-    imageMobile: "/projects/ellietattooer-mobile.webp",
+    stack: ["Astro", "React islands", "Stripe", "Motion", "Schema.org"],
+    image: "ellie",
   },
   {
     slug: "mastichari-massage",
@@ -1436,13 +1439,12 @@ export const caseStudies: CaseStudy[] = [
     } as BLA,
     logo: "/logos/mastichari.webp",
     stack: ["Eleventy", "Fastify", "JavaScript", "10 languages", "Schema.org"],
-    image: "/projects/mastichari.webp",
-    imageMobile: "/projects/mastichari-mobile.webp",
+    image: "mastichari",
   },
   {
     slug: "those-rambling-fools",
     client: "Those Rambling Fools",
-    projectTitle: "Those Rambling Fools Band",
+    projectTitle: "Those Rambling Fools",
     seoTitle: {
       en: "Those Rambling Fools, Band Site",
       el: "Those Rambling Fools, Συγκρότημα",
@@ -1453,44 +1455,44 @@ export const caseStudies: CaseStudy[] = [
     } as BL,
     sector: "artists",
     service: "websites",
-    live: "https://thoseramblingfools.com/",
+    live: "https://www.thoseramblingfools.com/",
     summary: {
       en: "A band writing original music from Kos, needing somewhere to be heard that is not a streaming profile identical to every other streaming profile.",
       el: "Ένα συγκρότημα που γράφει δική του μουσική από την Κω, με ανάγκη για ένα σημείο όπου να ακούγεται, που να μην είναι ένα προφίλ streaming ίδιο με κάθε άλλο προφίλ streaming.",
     } as BL,
     challenge: {
-      en: "Every band has the same links to the same platforms, so the site itself has to be the thing worth visiting. It also has to be a real site underneath the interaction: gigs people can find, a story worth reading, and enough structure for a search engine to understand that this is a music group with releases rather than a page of animation.",
-      el: "Κάθε συγκρότημα έχει τους ίδιους συνδέσμους προς τις ίδιες πλατφόρμες, οπότε το ίδιο το site πρέπει να είναι αυτό που αξίζει την επίσκεψη. Πρέπει επίσης να είναι πραγματικό site από κάτω: εμφανίσεις που βρίσκει ο κόσμος, μια ιστορία που αξίζει να διαβαστεί, και αρκετή δομή ώστε μια μηχανή αναζήτησης να καταλάβει ότι πρόκειται για μουσικό σχήμα με κυκλοφορίες και όχι για μια σελίδα με animation.",
+      en: "Every band has the same links to the same platforms, so the site itself has to be the thing worth visiting. It also has to be a real site underneath the interaction: gigs people can find, a story worth reading, both kept current by the band without calling a developer, and enough structure for a search engine to understand that this is a music group with releases rather than a page of animation.",
+      el: "Κάθε συγκρότημα έχει τους ίδιους συνδέσμους προς τις ίδιες πλατφόρμες, οπότε το ίδιο το site πρέπει να είναι αυτό που αξίζει την επίσκεψη. Πρέπει επίσης να είναι πραγματικό site από κάτω: εμφανίσεις που βρίσκει ο κόσμος, μια ιστορία που αξίζει να διαβαστεί, και τα δύο ενημερωμένα από το ίδιο το συγκρότημα χωρίς να καλεί προγραμματιστή, και αρκετή δομή ώστε μια μηχανή αναζήτησης να καταλάβει ότι πρόκειται για μουσικό σχήμα με κυκλοφορίες και όχι για μια σελίδα με animation.",
     } as BL,
     approach: {
       en: [
-        "A working vinyl record player as the centre of the page: the interaction is the point, not decoration bolted onto a template.",
-        "Separate routes for the story and for upcoming gigs, so each is its own indexable page that can be linked and shared on its own.",
-        "MusicGroup and MusicAlbum schema naming the members and the releases, which is what lets a search engine present the band as an entity rather than a string of text.",
-        "The heavy interaction is kept off the critical path, so the content is present in the served HTML rather than waiting on the animation to finish.",
-        "Privacy and terms as real routes, because a site collecting anything at all needs them and they cost nothing to do properly.",
+        "A real turntable as the home screen: the tonearm is drawn in SVG over a photo of the deck and pivots on its printed bearing, with the needle angle worked out from the arm's geometry so it lands on the lead-in and reaches the label.",
+        "The band's LPs play at 33⅓ and the Mule singles at 45, each record tints the room while it plays, and the button sounds are synthesized in the browser rather than loaded as files.",
+        "The music keeps playing across pages: navigation goes through Astro's view-transition router, so moving to the gigs or the story never reloads the player.",
+        "Our Story and Upcoming Gigs are edited by the band from their own admin and rendered on request, while every other page is prerendered.",
+        "MusicGroup and MusicAlbum schema naming both members and every release, plus a real 1200x630 share image for the pages people share.",
       ],
       el: [
-        "Ένα λειτουργικό πικάπ βινυλίου στο κέντρο της σελίδας: η αλληλεπίδραση είναι το ζητούμενο, όχι διακόσμηση βιδωμένη πάνω σε template.",
-        "Ξεχωριστές διαδρομές για την ιστορία και για τις επερχόμενες εμφανίσεις, ώστε καθεμία να είναι δική της ευρετηριάσιμη σελίδα που μπορεί να συνδεθεί και να μοιραστεί αυτόνομα.",
-        "Schema MusicGroup και MusicAlbum που ονοματίζει τα μέλη και τις κυκλοφορίες, κάτι που επιτρέπει σε μια μηχανή αναζήτησης να παρουσιάσει το συγκρότημα ως οντότητα και όχι ως μια σειρά χαρακτήρων.",
-        "Η βαριά αλληλεπίδραση μένει εκτός της κρίσιμης διαδρομής, ώστε το περιεχόμενο να υπάρχει στο HTML που σερβίρεται αντί να περιμένει να τελειώσει το animation.",
-        "Πολιτική απορρήτου και όροι ως πραγματικές διαδρομές, γιατί ένα site που συλλέγει οτιδήποτε τις χρειάζεται και δεν κοστίζει τίποτα να γίνουν σωστά.",
+        "Ένα πραγματικό πικάπ ως αρχική οθόνη: ο βραχίονας είναι σχεδιασμένος σε SVG πάνω από φωτογραφία του πικάπ και περιστρέφεται στο τυπωμένο έδρανό του, με τη γωνία της βελόνας να υπολογίζεται από τη γεωμετρία του βραχίονα ώστε να πέφτει στην αρχή του αυλακιού και να φτάνει ως την ετικέτα.",
+        "Τα LP του συγκροτήματος παίζουν στις 33⅓ και τα singles των Mule στις 45, κάθε δίσκος χρωματίζει τον χώρο όσο παίζει, και οι ήχοι των κουμπιών συντίθενται στον browser αντί να φορτώνονται ως αρχεία.",
+        "Η μουσική συνεχίζει να παίζει από σελίδα σε σελίδα: η πλοήγηση περνά από τον router του Astro με view transitions, οπότε η μετάβαση στις εμφανίσεις ή στην ιστορία δεν ξαναφορτώνει ποτέ το player.",
+        "Το Our Story και το Upcoming Gigs τα ενημερώνει το συγκρότημα από το δικό του admin και αποδίδονται κατά το αίτημα, ενώ κάθε άλλη σελίδα είναι προκατασκευασμένη.",
+        "Schema MusicGroup και MusicAlbum με ονόματα και των δύο μελών και κάθε κυκλοφορίας, και πραγματική εικόνα κοινοποίησης 1200x630 για τις σελίδες που μοιράζεται ο κόσμος.",
       ],
     } as BLA,
     outcome: {
       en: [
-        "Four indexable routes rather than one long scroll, so gigs and the band's story can rank and be shared separately.",
-        "The band is described in structured data as a music group with named members and releases.",
+        "Gigs and the band's story are separate, indexable pages the band keeps current themselves.",
+        "The interaction sits on top of complete HTML, so a search engine reads the band, its records and its dates without running the player.",
       ],
       el: [
-        "Τέσσερις ευρετηριάσιμες διαδρομές αντί για ένα μακρύ scroll, ώστε οι εμφανίσεις και η ιστορία του συγκροτήματος να μπορούν να καταταγούν και να μοιραστούν ξεχωριστά.",
-        "Το συγκρότημα περιγράφεται στα structured data ως μουσικό σχήμα με ονοματισμένα μέλη και κυκλοφορίες.",
+        "Οι εμφανίσεις και η ιστορία του συγκροτήματος είναι ξεχωριστές, ευρετηριάσιμες σελίδες που το συγκρότημα κρατά ενημερωμένες μόνο του.",
+        "Η αλληλεπίδραση κάθεται πάνω σε πλήρες HTML, οπότε μια μηχανή αναζήτησης διαβάζει το συγκρότημα, τους δίσκους και τις ημερομηνίες του χωρίς να τρέξει το player.",
       ],
     } as BLA,
     logo: "/logos/trf.webp",
-    stack: ["Next.js", "TypeScript", "Tailwind", "Interactive Animations", "Schema.org"],
-    image: "/projects/trf.webp",
-    imageMobile: "/projects/trf-mobile.webp",
+    stack: ["Astro", "React islands", "Web Audio", "View Transitions", "Schema.org"],
+    image: "trf",
+    clip: { src: "/work/trf-turntable", width: 960, height: 750 },
   },
 ];

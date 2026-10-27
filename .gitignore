@@ -8,3 +8,9 @@ node_modules/
 .env
 .env*.local
 __pycache__/
+
+# Astro
+dist/
+.astro/
+# page-view counter data when STATS_DIR is unset (local dev)
+data/

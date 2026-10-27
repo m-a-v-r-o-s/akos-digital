@@ -1,5 +1,5 @@
-import type { Lang } from "@/lib/i18n";
-import type { TermsSection, TermsContent } from "@/lib/terms";
+import type { Lang } from "./i18n.ts";
+import type { TermsSection, TermsContent } from "./terms.ts";
 
 export type { TermsSection, TermsContent };
 
@@ -11,7 +11,7 @@ export type { TermsSection, TermsContent };
 export const privacy: Record<Lang, TermsContent> = {
   en: {
     title: "Privacy Policy",
-    updated: "Last updated: 1 July 2026",
+    updated: "Last updated: 27 October 2026",
     back: "Back to home",
     footer:
       "Akos Digital Services · Epidamnou 21, 11254, Athens, Greece · info@akosds.com",
@@ -27,7 +27,6 @@ export const privacy: Record<Lang, TermsContent> = {
         body: [
           "When you submit the quote request form or the ESPA eligibility form, I collect the details you provide: your name, email, phone number, and any project or business information you enter.",
           "Alongside a submission I also record your IP address and browser user-agent. These are used solely to rate-limit the form against automated abuse and spam, on the basis of my legitimate interest in keeping the site working.",
-          "The site's cookie banner stores a single technical preference (accepted or rejected, and which categories) so it doesn't ask again on your next visit.",
           "I don't collect payment details on this site, and I don't require an account to browse it.",
         ],
       },
@@ -35,14 +34,13 @@ export const privacy: Record<Lang, TermsContent> = {
         heading: "Why I use it",
         body: [
           "Form submissions are used only to respond to your enquiry, prepare a quote, and, if we proceed, deliver the project. This is necessary to take the steps you request before entering into a contract.",
-          "If you've opted in via the cookie banner, anonymous, cookieless analytics help me understand which pages are useful and where visitors run into friction. No profile is built from this data and it isn't used for advertising.",
+          "A simple page counter of my own records which page was opened, the site you came from (its domain only), your country as reported by the network, whether the device is a phone or a computer, and the time. It stores no IP address, sets no cookie and nothing on your device, so it cannot tell visits apart or follow you anywhere. I use these totals, on the basis of my legitimate interest, to see which pages are useful. No profile is built from them and they are never used for advertising. The counts are kept for 13 months.",
         ],
       },
       {
         heading: "Cookies",
         body: [
-          "Strictly necessary: one cookie/local-storage entry that remembers your cookie preference. This is always on, since the site can't function without it.",
-          "Analytics: only loaded once you accept it in the cookie banner. You can withdraw consent at any time from the \"Cookies\" link in the footer.",
+          "This site sets no cookies at all, and loads nothing from third parties: fonts and scripts are served from this domain. That is why there is no cookie banner.",
         ],
       },
       {
@@ -63,14 +61,14 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Your rights",
         body: [
-          "Under the GDPR you can ask me to: access the data I hold about you, correct it, delete it, restrict or object to its processing, or receive it in a portable format. Where processing relies on consent (such as analytics cookies), you can withdraw that consent at any time without affecting anything processed before the withdrawal.",
+          "Under the GDPR you can ask me to: access the data I hold about you, correct it, delete it, restrict or object to its processing, or receive it in a portable format. Where processing relies on consent, you can withdraw that consent at any time without affecting anything processed before the withdrawal.",
           "To exercise any of these rights, email info@akosds.com. If you're not satisfied with my response, you can lodge a complaint with the Hellenic Data Protection Authority (dpa.gr).",
         ],
       },
       {
         heading: "Security",
         body: [
-          "Access to submitted data is limited to me and protected by authentication (a session cookie plus a one-time email passkey). Data in transit to and from this site is encrypted (HTTPS).",
+          "Form submissions are not kept on this site's servers: they are sent as an email to my inbox, which only I can access. Data in transit to and from this site is encrypted (HTTPS).",
         ],
       },
       {
@@ -95,7 +93,7 @@ export const privacy: Record<Lang, TermsContent> = {
   },
   el: {
     title: "Πολιτική Απορρήτου",
-    updated: "Τελευταία ενημέρωση: 1 Ιουλίου 2026",
+    updated: "Τελευταία ενημέρωση: 27 Οκτωβρίου 2026",
     back: "Επιστροφή στην αρχική",
     footer:
       "Akos Digital Services · Επιδάμνου 21, 11254, Αθήνα, Ελλάδα · info@akosds.com",
@@ -111,7 +109,6 @@ export const privacy: Record<Lang, TermsContent> = {
         body: [
           "Όταν υποβάλλετε τη φόρμα αιτήματος προσφοράς ή τη φόρμα επιλεξιμότητας ΕΣΠΑ, συλλέγω τα στοιχεία που παρέχετε: όνομα, email, τηλέφωνο και κάθε πληροφορία έργου ή επιχείρησης που καταχωρείτε.",
           "Μαζί με την υποβολή καταγράφονται επίσης η διεύθυνση IP και ο user-agent του προγράμματος περιήγησής σας. Χρησιμοποιούνται αποκλειστικά για τον περιορισμό ρυθμού υποβολών, ώστε η φόρμα να προστατεύεται από αυτοματοποιημένη κατάχρηση και spam, με βάση το έννομο συμφέρον μου να διατηρώ τον ιστότοπο λειτουργικό.",
-          "Το banner cookies του ιστότοπου αποθηκεύει μία τεχνική προτίμηση (αποδοχή ή απόρριψη, και ποιες κατηγορίες) ώστε να μην ερωτηθείτε ξανά στην επόμενη επίσκεψή σας.",
           "Δεν συλλέγω στοιχεία πληρωμής σε αυτόν τον ιστότοπο, ούτε απαιτείται λογαριασμός για την περιήγηση.",
         ],
       },
@@ -119,14 +116,13 @@ export const privacy: Record<Lang, TermsContent> = {
         heading: "Γιατί τα χρησιμοποιώ",
         body: [
           "Οι υποβολές φορμών χρησιμοποιούνται μόνο για να απαντήσω στο αίτημά σας, να ετοιμάσω προσφορά και, εφόσον προχωρήσουμε, να παραδώσω το έργο. Αυτό είναι απαραίτητο για τα βήματα που ζητάτε πριν τη σύναψη σύμβασης.",
-          "Εφόσον έχετε συναινέσει μέσω του banner cookies, ανώνυμα, χωρίς cookies analytics με βοηθούν να καταλάβω ποιες σελίδες είναι χρήσιμες και πού οι επισκέπτες συναντούν δυσκολίες. Δεν δημιουργείται προφίλ από αυτά τα δεδομένα και δεν χρησιμοποιούνται για διαφήμιση.",
+          "Ένας απλός δικός μου μετρητής σελίδων καταγράφει ποια σελίδα άνοιξε, τον ιστότοπο από τον οποίο ήρθατε (μόνο το domain του), τη χώρα σας όπως τη δηλώνει το δίκτυο, αν η συσκευή είναι κινητό ή υπολογιστής, και την ώρα. Δεν αποθηκεύει διεύθυνση IP, δεν ορίζει cookie ούτε τίποτα στη συσκευή σας, οπότε δεν μπορεί να ξεχωρίσει επισκέψεις ούτε να σας ακολουθήσει πουθενά. Χρησιμοποιώ αυτά τα σύνολα, με βάση το έννομο συμφέρον μου, για να βλέπω ποιες σελίδες είναι χρήσιμες. Δεν δημιουργείται προφίλ και δεν χρησιμοποιούνται ποτέ για διαφήμιση. Οι μετρήσεις διατηρούνται για 13 μήνες.",
         ],
       },
       {
         heading: "Cookies",
         body: [
-          "Απολύτως απαραίτητα: ένα cookie/εγγραφή local-storage που θυμάται την προτίμησή σας για τα cookies. Είναι πάντα ενεργό, καθώς ο ιστότοπος δεν μπορεί να λειτουργήσει χωρίς αυτό.",
-          "Analytics: φορτώνονται μόνο εφόσον τα αποδεχτείτε στο banner cookies. Μπορείτε να ανακαλέσετε τη συναίνεση οποιαδήποτε στιγμή από τον σύνδεσμο \"Cookies\" στο footer.",
+          "Αυτός ο ιστότοπος δεν ορίζει κανένα cookie και δεν φορτώνει τίποτα από τρίτους: οι γραμματοσειρές και τα scripts σερβίρονται από αυτό το domain. Γι' αυτό δεν υπάρχει banner cookies.",
         ],
       },
       {
@@ -147,14 +143,14 @@ export const privacy: Record<Lang, TermsContent> = {
       {
         heading: "Τα δικαιώματά σας",
         body: [
-          "Βάσει του GDPR μπορείτε να ζητήσετε: πρόσβαση στα δεδομένα που τηρώ για εσάς, διόρθωσή τους, διαγραφή τους, περιορισμό ή αντίταξη στην επεξεργασία τους, ή λήψη τους σε φορητή μορφή. Όπου η επεξεργασία βασίζεται σε συναίνεση (όπως τα cookies analytics), μπορείτε να την ανακαλέσετε οποιαδήποτε στιγμή, χωρίς να επηρεάζεται όσα έχουν ήδη επεξεργαστεί πριν την ανάκληση.",
+          "Βάσει του GDPR μπορείτε να ζητήσετε: πρόσβαση στα δεδομένα που τηρώ για εσάς, διόρθωσή τους, διαγραφή τους, περιορισμό ή αντίταξη στην επεξεργασία τους, ή λήψη τους σε φορητή μορφή. Όπου η επεξεργασία βασίζεται σε συναίνεση, μπορείτε να την ανακαλέσετε οποιαδήποτε στιγμή, χωρίς να επηρεάζεται όσα έχουν ήδη επεξεργαστεί πριν την ανάκληση.",
           "Για να ασκήσετε οποιοδήποτε από αυτά τα δικαιώματα, στείλτε email στο info@akosds.com. Αν δεν είστε ικανοποιημένοι με την απάντησή μου, μπορείτε να υποβάλετε καταγγελία στην Αρχή Προστασίας Δεδομένων Προσωπικού Χαρακτήρα (dpa.gr).",
         ],
       },
       {
         heading: "Ασφάλεια",
         body: [
-          "Η πρόσβαση στα υποβληθέντα δεδομένα περιορίζεται σε εμένα και προστατεύεται με έλεγχο ταυτότητας (cookie session και κωδικός πρόσβασης email μίας χρήσης). Τα δεδομένα κατά τη μεταφορά προς και από τον ιστότοπο είναι κρυπτογραφημένα (HTTPS).",
+          "Οι υποβολές φορμών δεν κρατιούνται στους servers του ιστότοπου: αποστέλλονται ως email στο δικό μου γραμματοκιβώτιο, στο οποίο έχω πρόσβαση μόνο εγώ. Τα δεδομένα κατά τη μεταφορά προς και από τον ιστότοπο είναι κρυπτογραφημένα (HTTPS).",
         ],
       },
       {

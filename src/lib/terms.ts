@@ -1,4 +1,4 @@
-import type { Lang } from "@/lib/i18n";
+import type { Lang } from "./i18n.ts";
 
 export type TermsSection = { heading: string; body: string[] };
 

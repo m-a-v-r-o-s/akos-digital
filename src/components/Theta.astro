@@ -1,0 +1,28 @@
+---
+/**
+ * The brand θ as a 3D wireframe: the pixel mark's outline (scripts/gen-theta-path.py)
+ * drawn as stacked slices in a preserve-3d rig, so it reads as an extruded solid.
+ * It sways on its own; site.ts tilts it toward the pointer and lets a finger spin it.
+ */
+import { THETA_RING_EDGES, THETA_WAVE_EDGES, THETA_GRID } from "../lib/thetaPath.ts";
+
+const LAYERS = 7;
+const DEPTH = 64; // px from front slice to back slice
+const layers = Array.from({ length: LAYERS }, (_, i) => ({
+  z: Math.round((DEPTH / 2) - (i * DEPTH) / (LAYERS - 1)),
+  back: i > 0,
+  w: i === 0 ? 1.6 : 1,
+}));
+---
+<div class="theta" data-theta aria-hidden="true">
+  <div class="theta-rig">
+    <div class="theta-spin">
+      {layers.map((l) => (
+        <svg viewBox={`-1 -1 ${THETA_GRID + 2} ${THETA_GRID + 2}`} class:list={{ back: l.back }} style={`transform: translateZ(${l.z}px)`}>
+          <path class="ring" d={THETA_RING_EDGES} stroke-width={l.w} />
+          <path class="wave" d={THETA_WAVE_EDGES} stroke-width={l.w} />
+        </svg>
+      ))}
+    </div>
+  </div>
+</div>

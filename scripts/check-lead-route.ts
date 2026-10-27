@@ -59,13 +59,13 @@ assert.equal(rateLimited("1.1.1.1", later), false, "quota must expire after the 
 
 // ── Honeypot field name ──────────────────────────────────────────────────
 // The guard is worthless if the rendered input and the server check disagree.
-const component = readFileSync(new URL("../src/components/Honeypot.tsx", import.meta.url), "utf8");
-assert.match(
-  component,
-  /name=\{HONEYPOT_FIELD\}/,
-  "Honeypot must render the shared constant as the input name"
-);
-const route = readFileSync(new URL("../src/app/api/lead/route.ts", import.meta.url), "utf8");
+const read = (p: string) => readFileSync(new URL(p, import.meta.url), "utf8");
+for (const [page, poster] of [["request", "../src/scripts/wizard.ts"], ["espa", "../src/pages/[lang]/espa.astro"]]) {
+  assert.match(read(`../src/pages/[lang]/${page}.astro`), /name=\{HONEYPOT_FIELD\}/, `${page} form must render the shared constant as the honeypot input name`);
+  assert.match(read(poster), /\[HONEYPOT_FIELD\]:/, `${page} form must post the honeypot under the shared constant`);
+}
+const route = readFileSync(new URL("../src/pages/api/lead.ts", import.meta.url), "utf8");
+assert.match(route, /export const prerender = false/, "the lead route must run on the server, not be prerendered");
 assert.match(route, /body\[HONEYPOT_FIELD\]/, "route must check the shared constant");
 assert.ok(HONEYPOT_FIELD.length > 0);
 
@@ -87,7 +87,7 @@ assert.ok(
 );
 assert.match(
   route,
-  /export async function OPTIONS/,
+  /export const OPTIONS/,
   "a cross-origin JSON POST is preflighted, so OPTIONS must be handled"
 );
 assert.match(

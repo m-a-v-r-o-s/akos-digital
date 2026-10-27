@@ -1,4 +1,4 @@
-import type { BL, BLA } from "@/lib/data";
+import type { BL, BLA } from "./data.ts";
 
 /**
  * The long-form content for the International Rentals build.
@@ -13,7 +13,7 @@ export type Chapter = {
   eyebrow: BL;
   title: BL;
   body: BLA;
-  /** A board from the gallery, laid out 16:9. */
+  /** A figure from src/assets/studies, by path without extension. */
   image?: string;
   alt?: BL;
   caption?: BL;
@@ -21,7 +21,18 @@ export type Chapter = {
   code?: { label: BL; lines: string[] };
 };
 
-export const international = {
+export type LongStudy = {
+  /** The caseStudies entry this page belongs to carries client, title, summary and status. */
+  slug: string;
+  /** Why there is no link to open. */
+  noLink: BL;
+  facts: { n: BL; k: BL }[];
+  chapters: Chapter[];
+  stack: { group: BL; items: string[] }[];
+  timeline: { when: BL; what: BL; done: boolean }[];
+};
+
+export const international: LongStudy = {
   /** The caseStudies entry this page belongs to carries the rest: client,
       title, summary and status are read from there rather than repeated. */
   slug: "international-rentals",
@@ -89,7 +100,7 @@ export const international = {
           "Ο κανόνας δεν επιβάλλεται κρύβοντας κουμπιά. Η εξουσιοδότηση ζει στη βάση: row-level security ενεργό σε κάθε πίνακα, με πολιτικές που δοκιμάζονται από τη συνεδρία του ίδιου του αντιπροσώπου. Όποιος πειράξει ένα API call με το χέρι βρίσκει τον ίδιο ακριβώς τοίχο, γιατί ο τοίχος δεν είναι στον route handler.",
         ],
       } as BLA,
-      image: "/projects/international/01-two-users.jpg",
+      image: "international/01-two-users",
       alt: {
         en: "The rep's phone app beside the manager's desktop day sheet",
         el: "Η εφαρμογή του αντιπροσώπου στο κινητό δίπλα στο φύλλο ημέρας του ιδιοκτήτη",
@@ -128,7 +139,7 @@ export const international = {
           ") WHERE (status IN ('booked','out','blocked'))",
         ],
       },
-      image: "/projects/international/02-correctness.jpg",
+      image: "international/02-correctness",
       alt: {
         en: "The exclusion constraint, the Postgres error it raises, and the message the rep is shown",
         el: "Το exclusion constraint, το σφάλμα της Postgres και το μήνυμα που βλέπει ο αντιπρόσωπος",
@@ -158,7 +169,7 @@ export const international = {
           "Αν η ημερομηνία παραλαβής δεν πέφτει σε καμία ορισμένη περίοδο, η προσφορά αποτυγχάνει θορυβωδώς. Δεν μαντεύει, και δεν δανείζεται τους αριθμούς της διπλανής περιόδου.",
         ],
       } as BLA,
-      image: "/projects/international/03-pricing.jpg",
+      image: "international/03-pricing",
       alt: {
         en: "A new booking on the rep's phone beside the server-side quote rule",
         el: "Μια νέα κράτηση στο κινητό του αντιπροσώπου δίπλα στον κανόνα τιμολόγησης του server",
@@ -188,7 +199,7 @@ export const international = {
           "Το συμφωνητικό παράγεται ως δίγλωσσο PDF με τους δύο οδηγούς, τη στάθμη καυσίμου, το διάγραμμα ζημιών και την υπογραφή του επισκέπτη στην οθόνη. Χτίζεται ντετερμινιστικά στον server, χωρίς headless browser να συντηρείται στην παραγωγή.",
         ],
       } as BLA,
-      image: "/projects/international/04-pickup.jpg",
+      image: "international/04-pickup",
       alt: {
         en: "The pickup sequence, a failed eligibility check, and the bilingual rental agreement",
         el: "Η ακολουθία παραλαβής, ένας αποτυχημένος έλεγχος καταλληλότητας και το δίγλωσσο συμφωνητικό",

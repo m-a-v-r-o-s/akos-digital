@@ -1,36 +1,31 @@
-import type { Metadata } from "next";
-import type { Lang } from "@/lib/i18n";
-import type { BL } from "@/lib/data";
+import type { Lang } from "./i18n.ts";
+import type { BL } from "./data.ts";
 
 export const SITE_URL = "https://www.akosds.com";
 
-const OG_IMAGE = { url: "/og/cover.jpg", width: 1280, height: 720 };
+export const OG_IMAGE = { url: "/og/cover.jpg", width: 1280, height: 720 };
 
 const SUFFIX = " · Akos Digital Services";
 
-/**
- * Self-referencing canonical for this locale plus the full hreflang set, so
- * /el and /en declare each other as alternates instead of competing for the
- * same query. x-default points at Greek: Greece is the primary market.
- */
-export function alternates(lang: Lang, path = ""): Metadata["alternates"] {
-  return {
-    canonical: `${SITE_URL}/${lang}${path}`,
-    languages: {
-      el: `${SITE_URL}/el${path}`,
-      en: `${SITE_URL}/en${path}`,
-      "x-default": `${SITE_URL}/el${path}`,
-    },
-  };
-}
+export type PageMeta = {
+  lang: Lang;
+  /** Locale-independent path, "" for the homepage. */
+  path: string;
+  title: string;
+  description: string;
+  ogTitle: string;
+};
 
 /**
  * Titles are kept short and single-language, with the page's own name first
  * and the studio name as a suffix. Google lifts a sitelink label from the
  * leading part of the title, so a long "English | Greek" pair left it with
  * nothing short enough to use.
+ *
+ * Base.astro turns this into the canonical, the hreflang set (x-default is
+ * Greek: Greece is the primary market), Open Graph and Twitter tags.
  */
-export function buildMetadata({
+export function buildMeta({
   lang,
   path,
   name,
@@ -42,21 +37,13 @@ export function buildMetadata({
   name: BL;
   description: BL;
   ogTitle?: BL;
-}): Metadata {
-  const title = name[lang] + SUFFIX;
+}): PageMeta {
   return {
-    title,
+    lang,
+    path,
+    title: name[lang] + SUFFIX,
     description: description[lang],
-    alternates: alternates(lang, path),
-    openGraph: {
-      title: (ogTitle ?? name)[lang] + SUFFIX,
-      description: description[lang],
-      url: `${SITE_URL}/${lang}${path}`,
-      locale: lang === "el" ? "el_GR" : "en_US",
-      alternateLocale: lang === "el" ? ["en_US"] : ["el_GR"],
-      type: "website",
-      images: [OG_IMAGE],
-    },
+    ogTitle: (ogTitle ?? name)[lang] + SUFFIX,
   };
 }
 
@@ -118,7 +105,7 @@ export const pageSeo: Record<
   },
 };
 
-export function staticPageMetadata(key: keyof typeof pageSeo, lang: Lang): Metadata {
+export function staticPageMeta(key: keyof typeof pageSeo, lang: Lang): PageMeta {
   const p = pageSeo[key];
-  return buildMetadata({ lang, path: p.path, name: p.name, description: p.description });
+  return buildMeta({ lang, path: p.path, name: p.name, description: p.description });
 }

@@ -1,5 +1,5 @@
-import type { Lang } from "@/lib/i18n";
-import type { Choice } from "@/lib/requestForm";
+import type { Lang } from "./i18n.ts";
+import type { Choice } from "./requestForm.ts";
 
 /**
  * Content for the /espa subpage: explains ESPA website funding and runs a free

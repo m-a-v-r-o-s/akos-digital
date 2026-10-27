@@ -1,5 +1,5 @@
 /**
- * Tiny email sender. Lead submissions (/api/lead) are delivered as email —
+ * Tiny email sender. Lead submissions (/api/lead) are delivered as email:
  * there is no database, so a failed send means a lost lead and the caller
  * must surface the failure rather than swallow it.
  *
@@ -16,7 +16,7 @@ export async function sendMail({ to, subject, text, replyTo }: Mail): Promise<bo
 
   if (!key) {
     console.warn(
-      `[email] RESEND_API_KEY not set — not sending. Intended for ${to}:\n  ${subject}\n  ${text}`
+      `[email] RESEND_API_KEY not set, not sending. Intended for ${to}:\n  ${subject}\n  ${text}`
     );
     return false;
   }

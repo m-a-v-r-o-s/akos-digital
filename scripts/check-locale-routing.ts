@@ -33,43 +33,23 @@ assert.equal(swapLocale("/", "el"), "/el");
 assert.equal(swapLocale("/el/terms", "el"), "/el/terms");
 
 // ── every legacy path still redirects ────────────────────────────────────
-const cfg = readFileSync(new URL("../next.config.mjs", import.meta.url), "utf8");
-for (const p of ["/request", "/espa", "/privacy", "/terms", "/sectors/:slug"]) {
-  assert.ok(
-    cfg.includes(`"${p}"`),
-    `${p} must keep its redirect to /el${p}, or an indexed URL becomes a 404`
-  );
+const { redirectFor } = await import("../src/lib/routes.mjs");
+for (const p of ["/request", "/espa", "/privacy", "/terms", "/sectors/food"]) {
+  assert.equal(redirectFor(p), `/el${p}`, `${p} must keep its redirect to /el${p}, or an indexed URL becomes a 404`);
 }
-assert.ok(
-  cfg.includes('source: "/", destination: "/el"'),
-  "the bare root must redirect to the default locale"
-);
+assert.equal(redirectFor("/"), "/el", "the bare root must redirect to the default locale");
+assert.equal(redirectFor("/7mero"), "/7mero.ai", "the old offer URL keeps its history");
+assert.equal(redirectFor("/en/work"), "/en#work", "the old work index lands on the homepage's work list");
+assert.equal(redirectFor("/el/services/"), "/el/services", "one URL per page: no trailing slash");
+assert.equal(redirectFor("/el/services"), null, "a real page must not redirect");
 
-// ── the sitemap covers both locales, and no locale-less path ─────────────
-const sitemap = readFileSync(new URL("../src/app/sitemap.ts", import.meta.url), "utf8");
+// ── the sitemap covers both locales ──────────────────────────────────────
+const sitemap = readFileSync(new URL("../src/pages/sitemap.xml.ts", import.meta.url), "utf8");
 assert.ok(sitemap.includes("LANGS.flatMap"), "sitemap must emit every path in every locale");
 assert.ok(
   sitemap.includes("/privacy") && sitemap.includes("/terms"),
   "legal pages belong in the sitemap: they are routine sitelink material"
 );
-
-// ── one language per page ────────────────────────────────────────────────
-const bilingual = readFileSync(
-  new URL("../src/components/Bilingual.tsx", import.meta.url),
-  "utf8"
-);
-assert.ok(
-  !bilingual.includes("hidden"),
-  "Bilingual must render only the active locale; a hidden second copy would " +
-    "put both languages back on one URL and make /el and /en duplicates"
-);
-const sector = readFileSync(
-  new URL("../src/components/SectorDetail.tsx", import.meta.url),
-  "utf8"
-);
-assert.ok(
-  !sector.includes("hidden={lang"),
-  "SectorDetail must not dual-render its points, included list or FAQ"
-);
+assert.ok(sitemap.includes('hreflang="x-default"'), "every sitemap URL declares the Greek x-default");
 
 console.log("✓ locale routing OK");

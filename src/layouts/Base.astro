@@ -1,0 +1,227 @@
+---
+import "@fontsource-variable/commissioner/wght.css";
+import "../styles/global.css";
+import Icon from "../components/Icon.astro";
+import Mark from "../components/Mark.astro";
+import { person, services } from "../lib/data.ts";
+import { swapLocale, type Lang } from "../lib/i18n.ts";
+import { SITE_URL, OG_IMAGE, type PageMeta } from "../lib/seo.ts";
+import { ui } from "../lib/ui.ts";
+import { SEVENMERO_URL } from "../lib/links.ts";
+
+interface Props {
+  meta: PageMeta;
+  /** Dark header, for pages whose first section is dark (the homepage hero). */
+  darkTop?: boolean;
+  /** Which main nav entry this page belongs to. */
+  current?: "home" | "services" | "request";
+  /** Page-level structured data, merged next to the site graph. */
+  jsonLd?: object[];
+  noindex?: boolean;
+}
+const { meta, darkTop = false, current, jsonLd = [], noindex = false } = Astro.props;
+const lang: Lang = meta.lang;
+const other: Lang = lang === "el" ? "en" : "el";
+const t = ui[lang];
+const url = `${SITE_URL}/${lang}${meta.path}`;
+const otherHref = swapLocale(Astro.url.pathname, other);
+const home = `/${lang}`;
+
+const sameAs = person.socials.filter((s) => s.href.startsWith("https://")).map((s) => s.href);
+const siteGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE_URL}/#organization`,
+      name: person.company,
+      url: SITE_URL,
+      email: "info@akosds.com",
+      legalName: "AKOS DS",
+      identifier: { "@type": "PropertyValue", name: "GEMI", value: "196793203000" },
+      telephone: "+30-699-535-8972",
+      image: `${SITE_URL}${OG_IMAGE.url}`,
+      description:
+        "Web development studio in Athens, Greece building custom websites, web apps, booking/CRM systems and AI automations, serving Greek and international/English-speaking business owners across Greece.",
+      founder: { "@id": `${SITE_URL}/#person` },
+      areaServed: [
+        { "@type": "Country", name: "Greece" },
+        { "@type": "Country", name: "Cyprus" },
+      ],
+      address: { "@type": "PostalAddress", addressLocality: "Athens", addressCountry: "GR" },
+      knowsLanguage: ["el", "en"],
+      priceRange: "€€",
+      sameAs,
+      makesOffer: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: s.title.en, alternateName: s.title.el, description: s.description.en },
+      })),
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: person.name.en,
+      alternateName: person.name.el,
+      jobTitle: "Web Developer",
+      url: SITE_URL,
+      email: "info@akosds.com",
+      knowsLanguage: ["el", "en"],
+      worksFor: { "@id": `${SITE_URL}/#organization` },
+      sameAs,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: person.company,
+      inLanguage: ["el", "en"],
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
+};
+const ld = (o: object) => JSON.stringify(o).replace(/</g, "\\u003c");
+const navItems = [
+  { href: `${home}#work`, label: t.works, key: "" },
+  { href: `${home}#sectors`, label: t.sectors, key: "" },
+  { href: `/${lang}/services`, label: t.services, key: "services" },
+  { href: `${home}#about`, label: t.about, key: "" },
+  { href: `/${lang}/request`, label: t.contact, key: "request" },
+];
+const socialIcons = person.socials as { label: string; href: string; icon: "github" | "behance" | "partnely" | "instagram" | "phone" | "telegram" | "whatsapp" | "email" }[];
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>{meta.title}</title>
+  <meta name="description" content={meta.description} />
+  {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={url} />}
+  {!noindex && (
+    <>
+      <link rel="alternate" hreflang="el" href={`${SITE_URL}/el${meta.path}`} />
+      <link rel="alternate" hreflang="en" href={`${SITE_URL}/en${meta.path}`} />
+      <link rel="alternate" hreflang="x-default" href={`${SITE_URL}/el${meta.path}`} />
+    </>
+  )}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={person.company} />
+  <meta property="og:title" content={meta.ogTitle} />
+  <meta property="og:description" content={meta.description} />
+  <meta property="og:url" content={url} />
+  <meta property="og:locale" content={lang === "el" ? "el_GR" : "en_US"} />
+  <meta property="og:locale:alternate" content={lang === "el" ? "en_US" : "el_GR"} />
+  <meta property="og:image" content={`${SITE_URL}${OG_IMAGE.url}`} />
+  <meta property="og:image:width" content={String(OG_IMAGE.width)} />
+  <meta property="og:image:height" content={String(OG_IMAGE.height)} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content={darkTop ? "#141210" : "#f5f0e8"} />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" href="/projects/favicon.ico" sizes="any" />
+  <script type="application/ld+json" set:html={ld(siteGraph)} />
+  {jsonLd.map((o) => <script type="application/ld+json" set:html={ld(o)} />)}
+</head>
+<body>
+  <a class="skip" href="#main">{t.skip}</a>
+
+  <header class:list={["site-header", { dark: darkTop }]} data-header>
+    <div class="wrap bar">
+      <a class="brand" href={home} aria-label={`${person.company}, ${t.home}`}>
+        <Mark />
+        <span>© {person.company}</span>
+      </a>
+      <nav class="nav" aria-label={t.mainNav}>
+        {navItems.map((n) => (
+          <a href={n.href} aria-current={n.key && n.key === current ? "page" : undefined}>{n.label}</a>
+        ))}
+      </nav>
+      <div class="tools">
+        <a class="chip" href={otherHref} hreflang={other} lang={other} aria-label={t.switchTo}>{t.switchShort}</a>
+      </div>
+    </div>
+  </header>
+
+  <button class="menu-btn" type="button" data-menu-open aria-label={t.openMenu} aria-haspopup="dialog">
+    <span class="burger" aria-hidden="true"><i></i><i></i></span>
+  </button>
+
+  <dialog class="menu" aria-label={t.menu} data-menu>
+    <div class="top">
+      <span class="label" style="margin:0">{t.menu}</span>
+      <button class="chip" type="button" data-menu-close aria-label={t.closeMenu}>✕</button>
+    </div>
+    <nav aria-label={t.menu}>
+      <ul class="list-plain">
+        <li><a href={home} aria-current={current === "home" ? "page" : undefined}>{t.home}</a></li>
+        {navItems.map((n) => (
+          <li><a href={n.href} aria-current={n.key && n.key === current ? "page" : undefined}>{n.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div>
+      <p class="label">{lang === "el" ? "Γλώσσα" : "Language"}</p>
+      <a class="chip" href={otherHref} hreflang={other} lang={other}>{t.switchTo}</a>
+    </div>
+    <div>
+      <p class="label">{t.socials}</p>
+      <div class="socials">
+        {socialIcons.map((s) => (
+          <a href={s.href} aria-label={s.label} {...(s.href.startsWith("https://") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+            <Icon name={s.icon} size={18} />
+          </a>
+        ))}
+      </div>
+    </div>
+  </dialog>
+
+  <main id="main" tabindex="-1">
+    <slot />
+  </main>
+
+  <footer class="site-footer dark" id="contact">
+    <div class="wrap">
+      <div class="lets">
+        <span class="mark"><Mark /></span>
+        <h2>{t.lets[0]}<br />{t.lets[1]}</h2>
+      </div>
+      <div class="rule">
+        <a class="round accent magnet" href={`/${lang}/request`} data-magnet><span>{t.getInTouch}</span></a>
+      </div>
+      <div class="contact-pills">
+        <a class="btn" href="mailto:info@akosds.com">info@akosds.com</a>
+        <a class="btn" href="tel:+306995358972">+30 699 535 8972</a>
+      </div>
+      <div class="foot-grid">
+        <div style="display:flex;gap:40px;flex-wrap:wrap">
+          <div><p class="k">{t.version}</p><p>{t.edition}</p></div>
+          <div><p class="k">{t.localTime}</p><p><span data-clock>Athens</span></p></div>
+        </div>
+        <div>
+          <p class="k">{t.socials}</p>
+          <div class="socials">
+            {socialIcons.map((s) => (
+              <a href={s.href} aria-label={s.label} {...(s.href.startsWith("https://") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+                <Icon name={s.icon} size={18} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <p>{t.copyright} {t.madeBy} <a href="https://www.akosds.com">Akos Digital Services</a>.</p>
+        <nav aria-label={`${t.privacy}, ${t.terms}`}>
+          <a href={`/${lang}/services`}>{t.services}</a>
+          <a href={SEVENMERO_URL}>7μερο.ai</a>
+          <a href={`/${lang}/espa`}>ΕΣΠΑ</a>
+          <a href={`/${lang}/privacy`}>{t.privacy}</a>
+          <a href={`/${lang}/terms`}>{t.terms}</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    import "../scripts/site.ts";
+  </script>
+</body>
+</html>

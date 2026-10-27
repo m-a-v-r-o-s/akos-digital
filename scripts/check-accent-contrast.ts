@@ -1,168 +1,76 @@
 /**
- * Self-check for the visitor-switchable accent palette.
+ * Self-check for the drifting accent palette.
  *   node --experimental-strip-types scripts/check-accent-contrast.ts
  *
- * The palette is curated precisely so no choice in it can produce an
- * unreadable page, which is only true for as long as something enforces it.
- * WCAG 2.1 AA (4.5:1) is the floor, checked on every place the accent
- * actually carries text, or sits behind text as a tint.
+ * The accent sits in two places near text: as a fill under ink text (buttons,
+ * the round "Get in touch") and as text on the dark sections. Both are the
+ * same pair, ink against the accent, and WCAG 2.2 AA (4.5:1) is the floor.
+ * The site fades from one accent to another, so the check covers every step
+ * of every fade, not just the eight end points: browsers interpolate a colour
+ * transition in Oklab, and sRGB is checked too in case one doesn't.
  */
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { accents, accentKeys, DEFAULT_ACCENT } from "../src/lib/accents.ts";
 
 const AA = 4.5;
-const INK = [13, 13, 13] as const; // --ink, the page ground and the CTA's text
-const PAPER = [245, 240, 232] as const; // --paper, the label on the glass CTA
+const INK = [20, 18, 16]; // --ink and --night
 
-const parse = (s: string) => {
+type RGB = [number, number, number];
+const parse = (s: string): RGB => {
   const c = s.split(" ").map(Number);
   assert.equal(c.length, 3, `"${s}" must be three space separated channels`);
   assert.ok(c.every((n) => Number.isInteger(n) && n >= 0 && n <= 255), `"${s}" out of range`);
-  return c as [number, number, number];
+  return c as RGB;
 };
-
-/** WCAG 2.1 relative luminance. */
-const lum = (rgb: readonly number[]) =>
-  rgb
-    .map((v) => v / 255)
-    .map((v) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4))
-    .reduce((a, v, i) => a + v * [0.2126, 0.7152, 0.0722][i], 0);
-
+const toLin = (v: number) => ((v /= 255) <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+const toSrgb = (v: number) => 255 * (v <= 0.0031308 ? 12.92 * v : 1.055 * v ** (1 / 2.4) - 0.055);
+const lum = (c: readonly number[]) => 0.2126 * toLin(c[0]) + 0.7152 * toLin(c[1]) + 0.0722 * toLin(c[2]);
 const ratio = (a: readonly number[], b: readonly number[]) => {
   const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
   return (x + 0.05) / (y + 0.05);
 };
 
-/** Flattens a translucent foreground over an opaque background. */
-const over = (fg: readonly number[], bg: readonly number[], alpha: number) =>
-  fg.map((v, i) => alpha * v + (1 - alpha) * bg[i]);
+// Oklab (Björn Ottosson), for interpolating the way CSS does.
+const toOklab = ([r, g, b]: RGB) => {
+  const [R, G, B] = [r, g, b].map(toLin);
+  const l = Math.cbrt(0.4122214708 * R + 0.5363325363 * G + 0.0514459929 * B);
+  const m = Math.cbrt(0.2119034982 * R + 0.6806995451 * G + 0.1073969566 * B);
+  const s = Math.cbrt(0.0883024619 * R + 0.2817188376 * G + 0.6299787005 * B);
+  return [0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s, 1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s, 0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s];
+};
+const fromOklab = ([L, a, b]: number[]): RGB => {
+  const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
+  const m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
+  const s = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
+  const lin = [4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s, -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s, -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s];
+  return lin.map((v) => Math.min(255, Math.max(0, toSrgb(Math.max(0, v))))) as RGB;
+};
+const mix = (a: number[], b: number[], t: number) => a.map((v, i) => v + (b[i] - v) * t);
 
-// ── the palette itself ───────────────────────────────────────────────────
 assert.equal(accents.length, 8, "the set is eight colours; adding a ninth is a decision, not a tweak");
-assert.equal(new Set(accentKeys).size, accents.length, "accent keys must be unique: they index the CSS and localStorage");
-assert.ok(accentKeys.includes(DEFAULT_ACCENT), "the default must be in the set");
-assert.equal(
-  accents.find((a) => a.key === DEFAULT_ACCENT)?.rgb,
-  "232 163 60",
-  "marigold is the current brand and must not drift"
-);
+assert.equal(new Set(accentKeys).size, accents.length, "accent keys must be unique");
+assert.equal(accents.find((a) => a.key === DEFAULT_ACCENT)?.rgb, "232 163 60", "marigold is the brand and must not drift");
+
+let worst = { r: Infinity, at: "" };
 for (const a of accents) {
-  assert.match(a.key, /^[a-z]+$/, `"${a.key}" must be a plain lowercase key: it goes in a DOM attribute`);
-  assert.ok(a.label.en.trim() && a.label.el.trim(), `${a.key} needs both labels: colour is never the only signal`);
+  for (const b of accents) {
+    if (a.key >= b.key) continue;
+    const [A, B] = [parse(a.rgb), parse(b.rgb)];
+    for (let i = 0; i <= 20; i++) {
+      const t = i / 20;
+      for (const [space, c] of [["oklab", fromOklab(mix(toOklab(A), toOklab(B), t))], ["srgb", mix(A, B, t)]] as const) {
+        const r = ratio(c, INK);
+        if (r < worst.r) worst = { r, at: `${a.key} → ${b.key} at ${Math.round(t * 100)}% (${space})` };
+      }
+    }
+  }
 }
+assert.ok(worst.r >= AA, `ink on the accent drops to ${worst.r.toFixed(2)}:1 during ${worst.at}`);
 
-// ── contrast, everywhere the accent carries or backs text ────────────────
-const checks: [string, (a: (typeof accents)[number]) => number][] = [
-  // text-accent on the page ground
-  ["on ink", (a) => ratio(parse(a.rgb), INK)],
-  // the CTA: ink text on a solid accent fill
-  ["CTA fill", (a) => ratio(INK, parse(a.rgb))],
-  // the tag pill is the accent at 10% over ink, so the text sits on the blend,
-  // not on pure ink.
-  ["tag pill", (a) => ratio(parse(a.rgb), over(parse(a.rgb), INK, 0.1))],
-  // the hover states
-  ["light on ink", (a) => ratio(parse(a.lightRgb), INK)],
-  // The sidebar's primary (.cta-face-primary) is not a solid fill: it is the
-  // accent at 32% over ink, 46% on hover, carrying --paper rather than ink,
-  // so that the glass behind it stays visible. A lighter accent lifts that
-  // tint toward the label, so hover is the tight end, not rest.
-  ["glass CTA", (a) => ratio(PAPER, over(parse(a.rgb), INK, 0.32))],
-  ["glass CTA hover", (a) => ratio(PAPER, over(parse(a.rgb), INK, 0.46))],
-];
+// The CSS starts from the same marigold the script and reduced motion rest on.
+const css = readFileSync(new URL("../src/styles/global.css", import.meta.url), "utf8");
+assert.match(css, /@property --accent \{ syntax: "<color>"; inherits: true; initial-value: rgb\(232 163 60\); \}/, "the accent must be a registered <color> so it fades, starting at marigold");
+assert.match(css, /--accent: rgb\(232 163 60\);/, ":root must carry marigold");
 
-const pad = (s: string, n: number) => s.padEnd(n);
-console.log(pad("accent", 12) + checks.map(([n]) => n.padStart(14)).join(""));
-
-const failures: string[] = [];
-for (const a of accents) {
-  const rs = checks.map(([, f]) => f(a));
-  const row = rs.map((r) => `${r.toFixed(2)}:1`.padStart(14)).join("");
-  const bad = rs.some((r) => r < AA);
-  console.log(pad(a.key, 12) + row + (bad ? "   ✗" : ""));
-  rs.forEach((r, i) => {
-    if (r < AA) failures.push(`${a.key} fails "${checks[i][0]}": ${r.toFixed(2)}:1 < ${AA}:1`);
-  });
-}
-
-// The light companion must read as lighter than its base, or the hover state
-// reads as a dimming rather than a lift.
-for (const a of accents) {
-  assert.ok(
-    lum(parse(a.lightRgb)) > lum(parse(a.rgb)),
-    `${a.key}: lightRgb must be lighter than rgb, or hover reads as a dim`
-  );
-}
-
-assert.deepEqual(failures, [], "\n  " + failures.join("\n  ") + "\n");
-console.log(`\n✓ all ${accents.length} accents clear WCAG AA (${AA}:1) in all ${checks.length} places`);
-
-// ── the wiring, which fails silently rather than loudly ──────────────────
-// A contrast table proves nothing if the palette stopped reaching the page.
-import { readFileSync } from "node:fs";
-const read = (p: string) => readFileSync(new URL(p, import.meta.url), "utf8");
-
-// Comments explain these rules, so they would otherwise trip the checks for them.
-const css = read("../src/app/globals.css").replace(/\/\*[\s\S]*?\*\//g, "");
-assert.ok(
-  !/rgba\(201,\s*168,\s*76/.test(css),
-  "a hardcoded gold literal is back in globals.css: it would stay gold at every accent"
-);
-assert.ok(
-  !/--accent(-light)?:\s*rgb\(var\(/.test(css),
-  "a --accent: rgb(var(--accent-rgb)) shorthand is back. A custom property is " +
-    "substituted where it is declared, so it would freeze at :root and the two " +
-    "scoped themes would stop overriding it. Consumers must read the channels."
-);
-for (const theme of ["espa", "smarthome"]) {
-  const block = css.match(new RegExp(`\\.${theme}-theme \\{[^}]*\\}`))?.[0] ?? "";
-  assert.match(
-    block,
-    /--accent-rgb:/,
-    `.${theme}-theme must redefine --accent-rgb on a descendant: that redefinition ` +
-      "is the whole lock that keeps a visitor from recolouring it"
-  );
-}
-
-const rootBlock = css.match(/:root \{[^}]*\}/)?.[0] ?? "";
-const def = accents.find((a) => a.key === DEFAULT_ACCENT)!;
-assert.ok(
-  rootBlock.includes(`--accent-rgb: ${def.rgb}`) &&
-    rootBlock.includes(`--accent-light-rgb: ${def.lightRgb}`),
-  `:root must carry ${DEFAULT_ACCENT}: it is the no-attribute default, so the ` +
-    "layout emits no rule for it and a first-time visitor gets whatever :root says"
-);
-
-const tw = read("../tailwind.config.ts");
-assert.ok(
-  tw.includes("rgb(var(--accent-rgb) / <alpha-value>)"),
-  "Tailwind's accent must stay in the channel form: <alpha-value> cannot be " +
-    "applied to a hex variable, so border-accent/30 would silently go opaque"
-);
-assert.ok(!/gold/i.test(tw), "no gold left in the Tailwind palette");
-
-const layout = read("../src/app/[lang]/layout.tsx");
-assert.ok(
-  layout.includes("accents") && layout.includes("[data-accent="),
-  "the layout must generate the per-accent rules from the array, not by hand"
-);
-assert.ok(
-  layout.includes("accentKeys") && layout.includes("localStorage"),
-  "the boot script must validate the stored key against the known list before " +
-    "putting it in a DOM attribute"
-);
-assert.ok(
-  layout.indexOf("<body") < layout.indexOf("accentBoot"),
-  "the boot script must render inside the body, ahead of the page, or a visitor " +
-    "who picked teal sees a frame of gold"
-);
-
-const controls = read("../src/components/HeaderControls.tsx");
-for (const locked of ["espa", "smarthome"]) {
-  assert.ok(
-    controls.includes(locked),
-    `HeaderControls must still hide the switcher on ${locked}: the cascade makes ` +
-      "it inert there, and an inert control reads as a bug"
-  );
-}
-
-console.log("✓ accent wiring intact");
+console.log(`✓ ink on the accent stays ≥ ${AA}:1 through every fade between all ${accents.length} accents (lowest ${worst.r.toFixed(2)}:1, ${worst.at})`);

@@ -1,9 +1,6 @@
 /**
- * Locale primitives, deliberately in a plain module rather than in
- * LanguageContext. That file is "use client", and Next.js replaces a client
- * module's exports with client references when server code imports them, so
- * a plain array or function read from there is not the value it looks like.
- * Server files (layout, sitemap, route metadata) import these from here.
+ * Locale primitives, in a plain module so pages, endpoints and the node check
+ * scripts can all import them.
  */
 
 export type Lang = "en" | "el";

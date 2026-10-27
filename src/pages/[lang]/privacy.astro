@@ -1,0 +1,15 @@
+---
+import Base from "../../layouts/Base.astro";
+import Legal from "../../components/Legal.astro";
+import { privacy } from "../../lib/privacy.ts";
+import { LANGS, type Lang } from "../../lib/i18n.ts";
+import { staticPageMeta } from "../../lib/seo.ts";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang;
+---
+<Base meta={staticPageMeta("privacy", lang)}>
+  <Legal content={privacy[lang]} lang={lang} />
+</Base>

@@ -1,0 +1,19 @@
+---
+/**
+ * The one 404, prerendered once, so it can't know which language the missing
+ * URL was in. Greek first (the default locale), English right under it.
+ */
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+---
+<Base meta={{ lang: "el", path: "", title: "404 · Akos Digital Services", description: "Η σελίδα δεν βρέθηκε. Page not found.", ogTitle: "404" }} noindex>
+  <div class="wrap page-hero" style="min-height:60svh;align-content:center">
+    <p class="eyebrow">404</p>
+    <h1>Αυτή η σελίδα δεν βρέθηκε.</h1>
+    <p class="lede">Η σελίδα που ψάχνεις δεν υπάρχει, ή έχει μετακινηθεί. <span lang="en">This page doesn't exist, or it has moved.</span></p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a class="btn btn-accent" href="/el">Αρχική σελίδα <Icon name="arrow" size={16} /></a>
+      <a class="btn" href="/en" lang="en">Home page <Icon name="arrow" size={16} /></a>
+    </div>
+  </div>
+</Base>

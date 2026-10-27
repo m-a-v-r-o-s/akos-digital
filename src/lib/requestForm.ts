@@ -1,17 +1,17 @@
-import type { Lang } from "@/lib/i18n";
+import type { Lang } from "./i18n.ts";
 
 export type BL = { en: string; el: string };
 export type Choice = { value: string; label: BL; hint?: BL };
 
 /**
  * Content for the multi-step "Request a Quote" wizard.
- * Choice `value`s are stable, language-independent keys — those are what gets
+ * Choice `value`s are stable, language-independent keys: those are what gets
  * sent in the lead email, so leads stay clean no matter which language was used.
  */
 
 export const needsOptions: Choice[] = [
   { value: "new_website", label: { en: "A brand-new website", el: "Μια ολοκαίνουργια ιστοσελίδα" }, hint: { en: "A site built from scratch", el: "Ιστότοπος από την αρχή" } },
-  { value: "espa_website", label: { en: "A website funded by ESPA", el: "Ιστοσελίδα μέσω ΕΣΠΑ" }, hint: { en: "State-subsidised — see if you qualify", el: "Επιδοτούμενη — δες αν είσαι επιλέξιμος" } },
+  { value: "espa_website", label: { en: "A website funded by ESPA", el: "Ιστοσελίδα μέσω ΕΣΠΑ" }, hint: { en: "State-subsidised, see if you qualify", el: "Επιδοτούμενη, δες αν είσαι επιλέξιμος" } },
   { value: "online_shop", label: { en: "An online shop to sell products", el: "Ένα online κατάστημα για πωλήσεις" }, hint: { en: "E-commerce / payments", el: "E-commerce / πληρωμές" } },
   { value: "bookings", label: { en: "Online bookings or appointments", el: "Online κρατήσεις ή ραντεβού" }, hint: { en: "Let clients book themselves", el: "Οι πελάτες κλείνουν μόνοι τους" } },
   { value: "branding", label: { en: "Logo & visual branding", el: "Λογότυπο & οπτική ταυτότητα" }, hint: { en: "How your brand looks", el: "Η εικόνα της επωνυμίας σου" } },
@@ -123,12 +123,12 @@ export const ui: Record<Lang, {
     qBusinessAbout: "What does it do? (a sentence is plenty)",
     qSituation: "Do you already have a website?",
     qBudget: "What budget are you working with?",
-    qBudgetHint: "A rough idea is fine — it just helps me suggest the right approach.",
+    qBudgetHint: "A rough idea is fine, it just helps me suggest the right approach.",
     qTimeline: "When would you like to launch?",
     qDetails: "Anything else I should know?",
-    qDetailsHint: "Goals, examples you like, a deadline — whatever's on your mind.",
+    qDetailsHint: "Goals, examples you like, a deadline: whatever's on your mind.",
     qDetailsPlaceholder: "Tell me a bit more…",
-    qContact: "Great — how can I reach you?",
+    qContact: "Great, how can I reach you?",
     fEmail: "Email",
     fPhone: "Phone (optional)",
     fContactMethod: "Best way to reach you",
@@ -145,7 +145,7 @@ export const ui: Record<Lang, {
       "A flat €399 + VAT, live in 7 days: one page, two languages, two years of hosting. Same hands, no quote to wait for. If that is closer to what you need, start there instead.",
     nudgeGo: "Take a look at 7μερο",
     nudgeStay: "Carry on with a custom quote",
-    successTitle: "Thank you — request received",
+    successTitle: "Thank you, request received",
     successBody: "I've got your details and I'll be in touch within 24 hours. Talk soon.",
     errorTitle: "Hmm, that didn't go through",
     errorBody: "Your request couldn't be sent. Please try again, or email me directly at info@akosds.com.",
@@ -173,12 +173,12 @@ export const ui: Record<Lang, {
     qBusinessAbout: "Με τι ασχολείται; (μια πρόταση αρκεί)",
     qSituation: "Έχεις ήδη ιστοσελίδα;",
     qBudget: "Τι προϋπολογισμό έχεις υπόψη;",
-    qBudgetHint: "Μια γενική ιδέα αρκεί — απλώς με βοηθά να προτείνω τη σωστή λύση.",
+    qBudgetHint: "Μια γενική ιδέα αρκεί, απλώς με βοηθά να προτείνω τη σωστή λύση.",
     qTimeline: "Πότε θα ήθελες να ξεκινήσει;",
     qDetails: "Κάτι άλλο που πρέπει να ξέρω;",
-    qDetailsHint: "Στόχοι, παραδείγματα που σου αρέσουν, μια προθεσμία — ό,τι σκέφτεσαι.",
+    qDetailsHint: "Στόχοι, παραδείγματα που σου αρέσουν, μια προθεσμία: ό,τι σκέφτεσαι.",
     qDetailsPlaceholder: "Πες μου λίγα παραπάνω…",
-    qContact: "Τέλεια — πώς να επικοινωνήσω μαζί σου;",
+    qContact: "Τέλεια, πώς να επικοινωνήσω μαζί σου;",
     fEmail: "Email",
     fPhone: "Τηλέφωνο (προαιρετικό)",
     fContactMethod: "Καλύτερος τρόπος επικοινωνίας",
@@ -195,7 +195,7 @@ export const ui: Record<Lang, {
       "Σταθερή τιμή 399€ + ΦΠΑ, παράδοση σε 7 μέρες: μονοσέλιδο, δίγλωσσο, με 2 χρόνια hosting. Τα ίδια χέρια, χωρίς να περιμένεις προσφορά. Αν σου ταιριάζει περισσότερο, ξεκίνα από εκεί.",
     nudgeGo: "Δες το 7μερο",
     nudgeStay: "Συνέχεια με προσφορά",
-    successTitle: "Ευχαριστώ — το αίτημα ελήφθη",
+    successTitle: "Ευχαριστώ, το αίτημα ελήφθη",
     successBody: "Έλαβα τα στοιχεία σου και θα επικοινωνήσω εντός 24 ωρών. Τα λέμε σύντομα.",
     errorTitle: "Χμμ, κάτι δεν πήγε καλά",
     errorBody: "Το αίτημα δεν στάλθηκε. Δοκίμασε ξανά ή στείλε μου email απευθείας στο info@akosds.com.",

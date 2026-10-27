@@ -1,0 +1,99 @@
+---
+import Base from "../../../layouts/Base.astro";
+import Icon from "../../../components/Icon.astro";
+import EndCta from "../../../components/EndCta.astro";
+import { servicePages, sectors } from "../../../lib/data.ts";
+import { LANGS, type Lang } from "../../../lib/i18n.ts";
+import { buildMeta, SITE_URL } from "../../../lib/seo.ts";
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => servicePages.map((s) => ({ params: { lang, slug: s.slug } })));
+}
+const lang = Astro.params.lang as Lang;
+const svc = servicePages.find((s) => s.slug === Astro.params.slug)!;
+const L = {
+  en: {
+    back: "All services",
+    eyebrow: "Service",
+    included: "What's included",
+    faq: "Common questions",
+    ctaTitle: "Ready to start?",
+    ctaBody: "Tell me about your project and I'll get back to you within 24 hours, with ideas and a clear, no-obligation quote.",
+    cta: "Request a quote",
+    others: "Other services",
+    forWho: "Who this is usually for",
+    espaNote: "This work can often be funded through ESPA. I check whether you qualify before you commit to anything.",
+    espaLink: "See ESPA funding",
+  },
+  el: {
+    back: "Όλες οι υπηρεσίες",
+    eyebrow: "Υπηρεσία",
+    included: "Τι περιλαμβάνεται",
+    faq: "Συχνές ερωτήσεις",
+    ctaTitle: "Έτοιμος να ξεκινήσεις;",
+    ctaBody: "Πες μου για το έργο σου και θα επικοινωνήσω εντός 24 ωρών, με ιδέες και μια ξεκάθαρη προσφορά χωρίς δέσμευση.",
+    cta: "Ζήτησε προσφορά",
+    others: "Άλλες υπηρεσίες",
+    forWho: "Σε ποιους απευθύνεται συνήθως",
+    espaNote: "Αυτή η δουλειά μπορεί συχνά να χρηματοδοτηθεί μέσω ΕΣΠΑ. Ελέγχω αν πληροίς τις προϋποθέσεις πριν δεσμευτείς σε οτιδήποτε.",
+    espaLink: "Δες τη χρηματοδότηση ΕΣΠΑ",
+  },
+};
+const t = L[lang];
+const related = sectors.filter((s) => svc.relatedSectors.includes(s.slug));
+// Service plus FAQPage in one graph: the page is an offering that also answers questions.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: svc.seoTitle[lang],
+      description: svc.hook[lang],
+      inLanguage: lang,
+      serviceType: svc.seoTitle.en,
+      areaServed: { "@type": "Country", name: "Greece" },
+      provider: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "FAQPage",
+      inLanguage: lang,
+      mainEntity: svc.faq.map((f) => ({ "@type": "Question", name: f.q[lang], acceptedAnswer: { "@type": "Answer", text: f.a[lang] } })),
+    },
+  ],
+};
+---
+<Base meta={buildMeta({ lang, path: `/services/${svc.slug}`, name: svc.seoTitle, description: svc.hook })} current="services" jsonLd={[jsonLd]}>
+  <div class="wrap page-hero">
+    <a class="back" href={`/${lang}/services`}>← {t.back}</a>
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h1>{svc.title[lang]}</h1>
+    <p class="lede">{svc.hook[lang]}</p>
+  </div>
+  <div class="wrap">
+    <div class="block">
+      <ul class="points" style="max-width:76ch">{svc.points[lang].map((p) => <li>{p}</li>)}</ul>
+    </div>
+    <section class="block">
+      <h2>{t.included}</h2>
+      <ul class="included">{svc.included[lang].map((i) => <li>{i}</li>)}</ul>
+      <p class="note">{t.espaNote} <a class="prose-link" href={`/${lang}/espa`}>{t.espaLink}</a></p>
+    </section>
+    <nav class="block" aria-labelledby="who-h">
+      <h2 id="who-h">{t.forWho}</h2>
+      <ul class="linkgrid">{related.map((s) => <li><a href={`/${lang}/sectors/${s.slug}`}>{s.title[lang]} <Icon name="arrow" size={14} /></a></li>)}</ul>
+    </nav>
+    <section class="block">
+      <h2>{t.faq}</h2>
+      <div class="faq">{svc.faq.map((f) => <details><summary>{f.q[lang]}</summary><p>{f.a[lang]}</p></details>)}</div>
+    </section>
+  </div>
+  <EndCta title={t.ctaTitle} body={t.ctaBody} cta={t.cta} href={`/${lang}/request`} />
+  <div class="wrap">
+    <nav class="block" aria-labelledby="others-h" style="padding-bottom:clamp(64px,8vw,112px)">
+      <h2 id="others-h">{t.others}</h2>
+      <ul class="linkgrid">
+        {servicePages.filter((s) => s.slug !== svc.slug).map((s) => <li><a href={`/${lang}/services/${s.slug}`}>{s.seoTitle[lang]} <Icon name="arrow" size={14} /></a></li>)}
+      </ul>
+    </nav>
+  </div>
+</Base>

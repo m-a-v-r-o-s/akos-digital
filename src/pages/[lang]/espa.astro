@@ -1,0 +1,139 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import { LANGS, type Lang } from "../../lib/i18n.ts";
+import { staticPageMeta } from "../../lib/seo.ts";
+import { HONEYPOT_FIELD } from "../../lib/leadGuard.ts";
+import { espaUi, companyTypeOptions, employeesOptions, priorFundingOptions, programOptions } from "../../lib/espa.ts";
+import type { Choice } from "../../lib/requestForm.ts";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang;
+const t = espaUi[lang];
+const msgs = { vRequired: t.vRequired, vEmail: t.vEmail, vConsent: t.vConsent, sending: t.sending, submit: t.submit };
+const groups: { name: string; label: string; options: Choice[] }[] = [
+  { name: "companyType", label: t.fCompanyType, options: companyTypeOptions },
+  { name: "employees", label: t.fEmployees, options: employeesOptions },
+  { name: "priorFunding", label: t.fPrior, options: priorFundingOptions },
+  { name: "program", label: t.fProgram, options: programOptions },
+];
+---
+<Base meta={staticPageMeta("espa", lang)}>
+  <div class="wrap page-hero">
+    <a class="back" href={`/${lang}`}>← {t.back}</a>
+    <img src="/espa-2021-2027.webp" alt="ΕΣΠΑ 2021-2027" width="132" height="80" style="background:#fff;border-radius:10px;padding:6px" />
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h1>{t.title}</h1>
+    <p class="lede">{t.subtitle}</p>
+    <a class="btn btn-accent" href="#check" style="justify-self:start">{t.formTitle} <Icon name="arrow" size={16} /></a>
+  </div>
+
+  <div class="wrap">
+    <section class="block split">
+      <h2>{t.whatTitle}</h2>
+      <div style="display:grid;gap:16px;max-width:70ch">{t.what.map((p) => <p class="lede" style="font-size:18px">{p}</p>)}</div>
+    </section>
+    <section class="block split">
+      <h2>{t.coversTitle}</h2>
+      <ul class="points">{t.covers.map((c) => <li>{c}</li>)}</ul>
+    </section>
+    <section class="block split">
+      <h2>{t.stepsTitle}</h2>
+      <ol class="timeline">
+        {t.steps.map((s) => (
+          <li class="done"><div><p class="when">{s.title}</p><p class="muted">{s.body}</p></div></li>
+        ))}
+      </ol>
+    </section>
+    <p class="note" style="margin-bottom:48px">{t.disclaimer}</p>
+
+    <section class="block" id="check" style="padding-bottom:clamp(80px,10vw,140px)">
+      <header style="display:grid;gap:10px"><h2>{t.formTitle}</h2><p class="muted">{t.formSubtitle}</p></header>
+      <form class="wizard" data-espa data-lang={lang} data-msgs={JSON.stringify(msgs)} novalidate style="max-width:880px">
+        <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))">
+          <label class="field"><span>{t.fBusiness}</span><input class="input" name="businessName" autocomplete="organization" maxlength="200" /></label>
+          <label class="field"><span>{t.fRegion}</span><input class="input" name="region" autocomplete="address-level2" maxlength="120" /></label>
+          <label class="field"><span>{t.fVat} <span class="opt">({t.optional})</span></span><input class="input" name="vat" inputmode="numeric" maxlength="20" /></label>
+          <label class="field"><span>{t.fKad} <span class="opt">({t.optional})</span></span><input class="input" name="kad" maxlength="60" /><small class="muted">{t.fKadHint}</small></label>
+        </div>
+        {groups.map((g) => (
+          <fieldset class="field">
+            <legend class="label-sm" style="font-size:13px;margin-bottom:8px">{g.label}</legend>
+            <div class="choices compact">
+              {g.options.map((o) => (
+                <label class="choice"><input type="radio" name={g.name} value={o.value} /><span>{o.label[lang]}</span></label>
+              ))}
+            </div>
+          </fieldset>
+        ))}
+        <label class="field"><span>{t.fGoal} <span class="opt">({t.optional})</span></span>
+          <textarea class="input" name="goal" rows="3" maxlength="2000" placeholder={t.fGoalPlaceholder}></textarea>
+        </label>
+        <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));padding-top:20px;border-top:1px solid var(--line)">
+          <label class="field"><span>{t.fName}</span><input class="input" name="name" autocomplete="name" maxlength="120" /></label>
+          <label class="field"><span>{t.fEmail}</span><input class="input" type="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" maxlength="200" /></label>
+          <label class="field"><span>{t.fPhone} <span class="opt">({t.optional})</span></span><input class="input" type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="60" /></label>
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" /><span>{t.consent}<small>{t.consentNote}</small></span></label>
+        <div class="hp" aria-hidden="true"><label>Website<input name={HONEYPOT_FIELD} tabindex="-1" autocomplete="off" /></label></div>
+        <p class="form-error" role="alert" data-error></p>
+        <div class="form-alert" role="alert" data-failed hidden>
+          <p style="font-weight:500">{t.errorTitle}</p>
+          <p class="muted">{t.errorBody}</p>
+        </div>
+        <button class="btn btn-ink" type="submit" style="justify-self:start" data-submit>{t.submit}</button>
+      </form>
+      <div class="wizard" data-done hidden tabindex="-1">
+        <p class="eyebrow">✦</p>
+        <h2 class="h-lg">{t.successTitle}</h2>
+        <p class="lede">{t.successBody}</p>
+        <a class="btn btn-ink" href={`/${lang}`} style="justify-self:start">{t.backHome} <Icon name="arrow" size={16} /></a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    import { HONEYPOT_FIELD } from "../../lib/leadGuard.ts";
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const form = document.querySelector<HTMLFormElement>("[data-espa]");
+    if (form) {
+      const msgs = JSON.parse(form.dataset.msgs!);
+      const err = form.querySelector<HTMLElement>("[data-error]")!;
+      const failed = form.querySelector<HTMLElement>("[data-failed]")!;
+      const btn = form.querySelector<HTMLButtonElement>("[data-submit]")!;
+      const v = (n: string) => ((form.elements.namedItem(n) as HTMLInputElement | RadioNodeList | null)?.value ?? "").trim();
+      form.addEventListener("input", () => (err.textContent = ""));
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!v("name") || !v("businessName") || !v("email")) return void (err.textContent = msgs.vRequired);
+        if (!EMAIL_RE.test(v("email"))) return void (err.textContent = msgs.vEmail);
+        if (!(form.elements.namedItem("consent") as HTMLInputElement).checked) return void (err.textContent = msgs.vConsent);
+        failed.hidden = true; btn.disabled = true; btn.textContent = msgs.sending;
+        try {
+          const res = await fetch("/api/lead", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: v("name"), email: v("email"), phone: v("phone"), consent: true,
+              lang: form.dataset.lang, source: "espa-assessment", needs: ["espa_website"],
+              businessName: v("businessName"), details: v("goal"), contactMethod: "email",
+              [HONEYPOT_FIELD]: v(HONEYPOT_FIELD),
+              extra: {
+                vat: v("vat"), kad: v("kad"), region: v("region"), company_type: v("companyType"),
+                employees: v("employees"), prior_funding: v("priorFunding"), program: v("program"),
+              },
+            }),
+          });
+          if (!res.ok) throw new Error(String(res.status));
+          form.hidden = true;
+          const done = document.querySelector<HTMLElement>("[data-done]")!;
+          done.hidden = false; done.focus();
+        } catch {
+          failed.hidden = false; btn.disabled = false; btn.textContent = msgs.submit;
+        }
+      });
+    }
+  </script>
+</Base>

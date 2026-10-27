@@ -1,0 +1,224 @@
+---
+import Base from "../../layouts/Base.astro";
+import Theta from "../../components/Theta.astro";
+import Shot from "../../components/Shot.astro";
+import Icon from "../../components/Icon.astro";
+import { person, education, projects, services, sectors } from "../../lib/data.ts";
+import { LANGS, type Lang } from "../../lib/i18n.ts";
+import { staticPageMeta } from "../../lib/seo.ts";
+import { localeHref, isInternalHref, SEVENMERO_URL } from "../../lib/links.ts";
+import { ui } from "../../lib/ui.ts";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang;
+const t = ui[lang];
+const featured = projects.filter((p) => p.caseStudy);
+const more = projects.filter((p) => !p.caseStudy);
+const ext = (href: string) => (isInternalHref(href) ? {} : { target: "_blank", rel: "noopener noreferrer" });
+const stripTags = (html: string) => html.replace(/<[^>]+>/g, "");
+---
+<Base meta={staticPageMeta("home", lang)} darkTop current="home">
+  <section class="hero dark" aria-label={person.name[lang]}>
+    <div class="wrap hero-grid">
+      <p class="locpill">
+        <span>{t.location[0]}<br />{t.location[1]}</span>
+        <span class="globe" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"></path></svg>
+        </span>
+      </p>
+      <Theta />
+      <p class="hero-role">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 8v10H8"></path></svg>
+        <span>{t.role}<small>{person.company}</small></span>
+        <a class="btn btn-accent" href={`/${lang}/request`} style="justify-self:start;font-size:17px;letter-spacing:0">{t.quote} <Icon name="arrow" size={16} /></a>
+      </p>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        {[0, 1].map(() => (
+          <>
+            <span>{person.name.en}</span><b>·</b><span>{person.name.el}</span><b>·</b>
+          </>
+        ))}
+      </div>
+    </div>
+    <p class="sr-only">{person.name[lang]}</p>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap intro">
+      <h1 class="h-lg reveal">{person.tagline[lang]}</h1>
+      <div class="lede reveal">
+        {person.about[lang].map((p) => <p>{stripTags(p)}</p>)}
+        <a class="round magnet" href="#work" data-magnet><span>{t.seeWork}</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label={t.quote}>
+    <div class="wrap ctas">
+      <a class="cta cta-main" href={`/${lang}/request`}>
+        <span>{t.quote}<span class="sub" style="color:inherit;opacity:.75">{t.quoteSub}</span></span>
+        <Icon name="arrow" size={32} />
+      </a>
+      <a class="cta" href={SEVENMERO_URL} target="_blank" rel="noopener">
+        <span class="seven" aria-hidden="true">7</span>
+        <span>{t.sevenmero}<span class="sub">{t.sevenmeroSub}</span></span>
+      </a>
+      <a class="cta" href={`/${lang}/espa`}>
+        <img src="/espa-2021-2027.webp" alt="" width="99" height="60" />
+        <span>{t.espa}<span class="sub">{t.espaSub}</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h-lg">{t.works}<span class="count">{projects.length}</span></h2>
+        <p class="eyebrow">{t.recentWork}</p>
+      </div>
+      <ul class="rows list-plain" data-rows>
+        {featured.map((p, i) => (
+          <li>
+            <a class="row" href={localeHref(p.caseStudy!, lang)} data-i={i}>
+              <span class="t">{p.title}</span>
+              <span class="meta">
+                {p.status && <span class="badge">{p.status[lang]}</span>}
+                <span>{p.kind[lang]}</span>
+              </span>
+              <span class="thumb"><Shot src={`work/${p.shot}`} alt="" sizes="100vw" /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="preview" data-preview aria-hidden="true">
+        <div class="strip">
+          {featured.map((p) => (
+            <div><Shot src={`work/${p.shot}`} alt="" sizes="400px" /></div>
+          ))}
+        </div>
+        <span class="view">{t.view}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" aria-labelledby="more-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h-md" id="more-h">{t.moreWork}<span class="count">{more.length}</span></h2>
+        <p class="eyebrow">{t.moreWorkSub}</p>
+      </div>
+      <ul class="cards list-plain">
+        {more.map((p) => {
+          const first = p.links[0];
+          return (
+            <li class="card reveal">
+              {p.video ? (
+                <span class="frame">
+                  <video data-inview muted loop playsinline preload="none" poster={p.video.poster} aria-label={p.title} width="1280" height="720">
+                    <source src={`${p.video.loop}.webm`} type="video/webm" />
+                    <source src={`${p.video.loop}.mp4`} type="video/mp4" />
+                  </video>
+                </span>
+              ) : first ? (
+                <a class="frame" href={localeHref(first.href, lang)} {...ext(first.href)} tabindex="-1" aria-hidden="true">
+                  <Shot src={`work/${p.shot}`} alt="" sizes="(min-width: 900px) 33vw, 100vw" />
+                </a>
+              ) : (
+                <span class="frame"><Shot src={`work/${p.shot}`} alt="" /></span>
+              )}
+              <h3 class="t">
+                {first ? <a href={localeHref(first.href, lang)} {...ext(first.href)} style="text-decoration:none">{p.title}</a> : p.title}
+                {p.status && <span class="badge">{p.status[lang]}</span>}
+              </h3>
+              <p class="desc">{p.description[lang]}</p>
+              <div class="foot">
+                <span>{p.tags.slice(0, 3).join(" · ")}</span>
+                <span class="links">
+                  {p.links.map((l) => (
+                    <a href={localeHref(l.href, lang)} {...ext(l.href)}>{l.label[lang]} <Icon name="arrow" size={12} /></a>
+                  ))}
+                  {p.video && (
+                    <button type="button" data-lightbox-open={`lb-${p.shot}`}>{t.watch} <Icon name="arrow" size={12} /></button>
+                  )}
+                </span>
+              </div>
+              {p.video && (
+                <dialog class="lightbox" id={`lb-${p.shot}`} aria-label={`${p.title}, ${t.watch}`}>
+                  <div class="sheet">
+                    <button class="close" type="button" data-lightbox-close aria-label={t.close}>✕</button>
+                    <video controls playsinline preload="none" poster={`${p.video.walkthrough}.webp`} width="1280" height="720">
+                      <source src={`${p.video.walkthrough}.mp4`} type="video/mp4" />
+                    </video>
+                  </div>
+                </dialog>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section tint" id="sectors">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h-lg">{t.whoFor}</h2>
+        <p class="eyebrow">{t.sectors} · {sectors.length}</p>
+      </div>
+      <ul class="tiles list-plain">
+        {sectors.map((s, i) => (
+          <li class="reveal">
+            <a class="tile" href={`/${lang}/sectors/${s.slug}`}>
+              <span class="n">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{s.title[lang]}</h3>
+              <p>{s.hook[lang]}</p>
+              <span class="go">{t.explore} <Icon name="arrow" size={14} /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="h-lg">{t.whatIDo}</h2>
+        <a class="btn" href={`/${lang}/services`}>{t.allServices} <Icon name="arrow" size={16} /></a>
+      </div>
+      <ul class="lines list-plain">
+        {services.map((s, i) => {
+          const inner = (
+            <>
+              <span class="n">{String(i + 1).padStart(2, "0")}</span>
+              <h3>{s.title[lang]}</h3>
+              <p>{s.description[lang]}</p>
+            </>
+          );
+          return <li class="reveal">{s.href ? <a href={`/${lang}${s.href}`} style="display:contents">{inner}</a> : inner}</li>;
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" id="education">
+    <div class="wrap">
+      <div class="section-head"><h2 class="h-md">{t.education}</h2></div>
+      <div class="edu">
+        {education.map((e) => (
+          <div class="reveal">
+            <img class="edu-logo" src={e.logo.src} width={e.logo.width} height={e.logo.height} alt={e.institution[lang]} loading="lazy" decoding="async" />
+            <span class="muted">{e.period}</span>
+            <h3>{e.degree[lang]}, <a class="prose-link" href={e.institutionUrl} target="_blank" rel="noopener noreferrer">{e.institution[lang]}</a></h3>
+            <p class="muted" style="color:var(--ink-2)">{e.description[lang]}</p>
+            <p class="tags">{e.tags.join(" · ")}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

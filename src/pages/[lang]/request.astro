@@ -1,0 +1,149 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import { LANGS, type Lang } from "../../lib/i18n.ts";
+import { staticPageMeta } from "../../lib/seo.ts";
+import { HONEYPOT_FIELD } from "../../lib/leadGuard.ts";
+import { SEVENMERO_URL } from "../../lib/links.ts";
+import {
+  ui, needsOptions, situationOptions, budgetOptions, timelineOptions, contactMethodOptions, TOTAL_STEPS, type Choice,
+} from "../../lib/requestForm.ts";
+
+export function getStaticPaths() {
+  return LANGS.map((lang) => ({ params: { lang } }));
+}
+const lang = Astro.params.lang as Lang;
+const t = ui[lang];
+const msgs = { vRequired: t.vRequired, vPickOne: t.vPickOne, vPickAtLeastOne: t.vPickAtLeastOne, vEmail: t.vEmail, vConsent: t.vConsent, sending: t.sending, submit: t.submit };
+const choiceList = (name: string, options: Choice[], multi = false, compact = false) => ({ name, options, multi, compact });
+const steps = [
+  { key: "name", legend: t.qName, hint: t.qNameHint },
+  { key: "needs", legend: t.qNeeds, hint: t.qNeedsHint, choices: choiceList("needs", needsOptions, true) },
+  { key: "business", legend: t.qBusiness, optional: true },
+  { key: "situation", legend: t.qSituation, choices: choiceList("situation", situationOptions) },
+  { key: "budget", legend: t.qBudget, hint: t.qBudgetHint, choices: choiceList("budget", budgetOptions) },
+  { key: "timeline", legend: t.qTimeline, choices: choiceList("timeline", timelineOptions) },
+  { key: "details", legend: t.qDetails, hint: t.qDetailsHint, optional: true },
+  { key: "contact", legend: t.qContact },
+];
+if (steps.length !== TOTAL_STEPS) throw new Error("request wizard: step count drifted from TOTAL_STEPS");
+---
+<Base meta={staticPageMeta("request", lang)} current="request">
+  <div class="wrap page-hero">
+    <a class="back" href={`/${lang}`}>← {t.backHome}</a>
+    <p class="eyebrow">{t.eyebrow}</p>
+    <h1>{t.title}</h1>
+    <p class="lede">{t.subtitle}</p>
+  </div>
+
+  <div class="wrap" style="padding-bottom:clamp(80px,10vw,140px)">
+    <form class="wizard" data-wizard data-lang={lang} data-msgs={JSON.stringify(msgs)} novalidate>
+      <div>
+        <p class="label-sm" style="display:flex;justify-content:space-between;margin-bottom:10px">
+          <span><span data-step-n>1</span> / {TOTAL_STEPS}</span>
+          <span data-optional hidden>{t.optional}</span>
+        </p>
+        <div class="progress" aria-hidden="true"><i data-progress></i></div>
+      </div>
+
+      {steps.map((s, i) => (
+        <fieldset data-step={i} data-key={s.key} hidden={i > 0} data-optional-step={s.optional ? "" : undefined}>
+          <legend>{s.legend}</legend>
+          {s.hint && <p class="hint">{s.hint}</p>}
+
+          {s.key === "name" && (
+            <label class="field"><span class="sr-only">{s.legend}</span>
+              <input class="input" name="name" autocomplete="name" enterkeyhint="next" maxlength="120" placeholder={lang === "en" ? "Your name" : "Το όνομά σου"} />
+            </label>
+          )}
+          {s.key === "business" && (
+            <>
+              <label class="field"><span>{t.qBusinessName}</span>
+                <input class="input" name="businessName" autocomplete="organization" maxlength="200" />
+              </label>
+              <label class="field"><span>{t.qBusinessAbout}</span>
+                <textarea class="input" name="businessAbout" rows="2" maxlength="600" placeholder={lang === "en" ? "What you do, who you serve…" : "Τι κάνεις, σε ποιους απευθύνεσαι…"}></textarea>
+              </label>
+            </>
+          )}
+          {s.key === "details" && (
+            <label class="field"><span class="sr-only">{s.legend}</span>
+              <textarea class="input" name="details" rows="5" maxlength="2000" placeholder={t.qDetailsPlaceholder}></textarea>
+            </label>
+          )}
+          {s.choices && (
+            <div class:list={["choices", { compact: s.choices.compact }]}>
+              {s.choices.options.map((o) => (
+                <label class="choice">
+                  <input type={s.choices!.multi ? "checkbox" : "radio"} name={s.choices!.name} value={o.value} />
+                  <span>{o.label[lang]}{o.hint && <small>{o.hint[lang]}</small>}</span>
+                </label>
+              ))}
+            </div>
+          )}
+          {s.key === "budget" && (
+            <div class="nudge" data-nudge hidden>
+              <p class="eyebrow">{t.nudgeEyebrow}</p>
+              <h3>{t.nudgeTitle}</h3>
+              <p>{t.nudgeBody}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:12px">
+                <a class="btn btn-accent" href={SEVENMERO_URL}>{t.nudgeGo} <Icon name="arrow" size={16} /></a>
+                <button class="btn" type="button" data-nudge-stay>{t.nudgeStay}</button>
+              </div>
+            </div>
+          )}
+          {s.key === "contact" && (
+            <>
+              <label class="field"><span>{t.fEmail}</span>
+                <input class="input" type="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" maxlength="200" placeholder="you@email.com" />
+              </label>
+              <label class="field"><span>{t.fPhone}</span>
+                <input class="input" type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="60" placeholder="+30 …" />
+              </label>
+              <fieldset class="field" style="border:0;padding:0;margin:0">
+                <legend class="label-sm" style="font-size:13px;margin-bottom:8px">{t.fContactMethod}</legend>
+                <div class="choices compact">
+                  {contactMethodOptions.map((o, j) => (
+                    <label class="choice"><input type="radio" name="contactMethod" value={o.value} checked={j === 0} /><span>{o.label[lang]}</span></label>
+                  ))}
+                </div>
+              </fieldset>
+              <label class="consent">
+                <input type="checkbox" name="consent" />
+                <span>{t.consent}<small>{t.consentNote}</small></span>
+              </label>
+              <div class="hp" aria-hidden="true">
+                <label>Website<input name={HONEYPOT_FIELD} tabindex="-1" autocomplete="off" /></label>
+              </div>
+            </>
+          )}
+        </fieldset>
+      ))}
+
+      <p class="form-error" role="alert" data-error></p>
+      <div class="form-alert" role="alert" data-failed hidden>
+        <p style="font-weight:500">{t.errorTitle}</p>
+        <p class="muted">{t.errorBody}</p>
+      </div>
+
+      <div class="controls">
+        <button class="textbtn" type="button" data-back disabled>← {t.back}</button>
+        <div class="right">
+          <button class="textbtn" type="button" data-skip hidden>{t.skip}</button>
+          <button class="btn btn-ink" type="submit" data-next>{t.next} <Icon name="arrow" size={16} /></button>
+        </div>
+      </div>
+    </form>
+
+    <div class="wizard" data-done hidden tabindex="-1">
+      <p class="eyebrow">✦</p>
+      <h2 class="h-lg">{t.successTitle}</h2>
+      <p class="lede">{t.successBody}</p>
+      <a class="btn btn-ink" href={`/${lang}`} style="justify-self:start">{t.backHome} <Icon name="arrow" size={16} /></a>
+    </div>
+  </div>
+
+  <script>
+    import "../../scripts/wizard.ts";
+  </script>
+</Base>
