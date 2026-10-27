@@ -118,9 +118,9 @@ const stripTags = (html: string) => html.replace(/<[^>]+>/g, "");
             <li class="card reveal">
               {p.video ? (
                 <span class="frame">
-                  <video data-inview muted loop playsinline preload="none" poster={p.video.poster} aria-label={p.title} width="1280" height="720">
-                    <source src={`${p.video.loop}.webm`} type="video/webm" />
-                    <source src={`${p.video.loop}.mp4`} type="video/mp4" />
+                  <video class="whole" data-inview muted loop playsinline preload="none" poster={`${p.video.src}.webp`} aria-label={p.title} width={p.video.width} height={p.video.height}>
+                    <source src={`${p.video.src}.webm`} type="video/webm" />
+                    <source src={`${p.video.src}.mp4`} type="video/mp4" />
                   </video>
                 </span>
               ) : first ? (
@@ -150,8 +150,9 @@ const stripTags = (html: string) => html.replace(/<[^>]+>/g, "");
                 <dialog class="lightbox" id={`lb-${p.shot}`} aria-label={`${p.title}, ${t.watch}`}>
                   <div class="sheet">
                     <button class="close" type="button" data-lightbox-close aria-label={t.close}>✕</button>
-                    <video controls playsinline preload="none" poster={`${p.video.walkthrough}.webp`} width="1280" height="720">
-                      <source src={`${p.video.walkthrough}.mp4`} type="video/mp4" />
+                    <video controls playsinline preload="none" poster={`${p.video.src}.webp`} width={p.video.width} height={p.video.height}>
+                      <source src={`${p.video.src}.webm`} type="video/webm" />
+                      <source src={`${p.video.src}.mp4`} type="video/mp4" />
                     </video>
                   </div>
                 </dialog>

@@ -17,11 +17,9 @@ export const person = {
   } as BL,
   about: {
     en: [
-      "I build purposeful digital presences for brands and other entities across Greece. My work sits at the intersection of visual identity, accurate architecture, and human-centered design.",
       "<a href='#' class='accent-link'>Akos Digital Services</a> is a solo studio. I'm the only person you'll work with, from the first conversation to launch. No account managers, no handoffs. Every project starts with a real conversation about what your brand needs to say and why.",
     ],
     el: [
-      "Δημιουργώ στοχευμένες ψηφιακές παρουσίες για επιχειρήσεις και όχι μόνο στην Ελλάδα. Η δουλειά μου βρίσκεται επάνω στην τομή της οπτικής ταυτότητας και της άρτιας αρχιτεκτονικής με τον ανθρωποκεντρικό σχεδιασμό.",
       "Η <a href='#' class='accent-link'>Akos Digital Services</a> είναι μονομελές στούντιο. Είμαι ο μόνος με τον οποίο θα συνεργαστείς, από την πρώτη κουβέντα ως την παράδοση. Χωρίς μεσάζοντες. Κάθε έργο ξεκινά με μια πραγματική συζήτηση για το τι χρειάζεται να πει η επωνυμία σου και γιατί.",
     ],
   } as BLA,
@@ -98,8 +96,8 @@ export type Project = {
   caseStudy?: string;
   /** The client's mark, same file as its case study's logo. */
   logo?: string;
-  /** A muted loop shown on the card instead of the screenshot, plus a longer walkthrough with sound. */
-  video?: { loop: string; walkthrough: string; poster: string };
+  /** A video on the card instead of the screenshot (muted, plays while on screen), also openable full size: public<src>.webm/.mp4, poster <src>.webp. */
+  video?: { src: string; width: number; height: number };
   links: ProjectLink[];
 };
 
@@ -217,11 +215,7 @@ export const projects: Project[] = [
     shot: "smiledesign",
     sector: "health",
     status: { en: "Pending", el: "Σε αναμονή" },
-    video: {
-      loop: "/work/smiledesign-clinic",
-      walkthrough: "/work/smiledesign-walkthrough",
-      poster: "/work/smiledesign-clinic.webp",
-    },
+    video: { src: "/work/smiledesign-walkthrough", width: 1280, height: 720 },
     links: [],
   },
   {

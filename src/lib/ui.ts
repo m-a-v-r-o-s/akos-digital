@@ -62,7 +62,7 @@ export const ui = {
     closeMenu: "Κλείσιμο μενού",
     switchTo: "English",
     switchShort: "EN",
-    location: ["Σε όλη", "την Ελλάδα και Κύπρο"],
+    location: ["Σε Ελλάδα", "και Κύπρο"],
     role: "Web Developer",
     seeWork: "Δες τα έργα",
     quote: "Ζητήστε Προσφορά",

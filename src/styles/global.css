@@ -292,6 +292,8 @@ dialog.menu[open]::backdrop { background: rgb(20 18 16 / 0.45); }
 .card .frame { position: relative; display: block; padding: clamp(18px, 2.4vw, 32px); background: var(--card); border-radius: 4px; overflow: hidden; }
 .card .frame img, .card .frame video { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 2px; transition: transform 700ms var(--spring-smooth); }
 @media (hover: hover) and (pointer: fine) { .card:hover .frame img, .card:hover .frame video { transform: scale(1.03); } }
+/* A video shown whole, at its own shape: never cropped to the card's 16:10. */
+.card .frame video.whole { aspect-ratio: auto; object-fit: contain; }
 .card .t { font-size: 24px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
 .card .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
 .card .desc { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
