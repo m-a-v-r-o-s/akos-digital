@@ -88,7 +88,27 @@ const jsonLd = {
           <Shot src={`work/${cs.image}`} alt={cs.client} sizes="(min-width: 900px) 70vw, 100vw" eager />
         )}
       </div>
-      <div class="phone"><Shot src={`work/${cs.image}-mobile`} alt="" sizes="(min-width: 760px) 22vw, 100vw" /></div>
+      <div class="phone">
+        {cs.clip?.mobile ? (
+          <video
+            data-inview
+            data-once={cs.clip.once ? "" : undefined}
+            muted
+            playsinline
+            loop={!cs.clip.once}
+            preload="auto"
+            poster={`${cs.clip.mobile.src}.webp`}
+            width={cs.clip.mobile.width}
+            height={cs.clip.mobile.height}
+            aria-label={`${cs.client}, phone`}
+          >
+            <source src={`${cs.clip.mobile.src}.webm`} type="video/webm" />
+            <source src={`${cs.clip.mobile.src}.mp4`} type="video/mp4" />
+          </video>
+        ) : (
+          <Shot src={`work/${cs.image}-mobile`} alt="" sizes="(min-width: 760px) 22vw, 100vw" />
+        )}
+      </div>
     </div>
     {!long && (
       <p class="tags" style="margin-bottom:24px"><strong style="color:var(--ink);font-weight:500">{t.stack}:</strong> {cs.stack.join(" · ")}</p>

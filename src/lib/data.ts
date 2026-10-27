@@ -1222,8 +1222,9 @@ export type CaseStudy = {
   /**
    * A clip of the live site in place of the desktop screenshot: public/work/<src>.webm/.mp4,
    * with <src>.webp as the poster. `once` plays a single time and rests on its last frame.
+   * `mobile` does the same for the phone frame, in place of the phone screenshot.
    */
-  clip?: { src: string; width: number; height: number; once?: boolean };
+  clip?: { src: string; width: number; height: number; once?: boolean; mobile?: { src: string; width: number; height: number } };
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -1329,7 +1330,7 @@ export const caseStudies: CaseStudy[] = [
     logo: "/logos/blessed.webp",
     stack: ["Astro", "three.js", "Claude API", "Instagram API", "Schema.org", "Bilingual"],
     image: "blessed",
-    clip: { src: "/work/blessed-shutter", width: 1280, height: 800, once: true },
+    clip: { src: "/work/blessed-shutter", width: 1280, height: 800, once: true, mobile: { src: "/work/blessed-shutter-mobile", width: 780, height: 1688 } },
   },
   {
     slug: "ellie-tattooer",
@@ -1493,6 +1494,6 @@ export const caseStudies: CaseStudy[] = [
     logo: "/logos/trf.webp",
     stack: ["Astro", "React islands", "Web Audio", "View Transitions", "Schema.org"],
     image: "trf",
-    clip: { src: "/work/trf-turntable", width: 960, height: 750 },
+    clip: { src: "/work/trf-turntable", width: 1280, height: 800 },
   },
 ];

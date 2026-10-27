@@ -367,7 +367,7 @@ dialog.menu[open]::backdrop { background: rgb(20 18 16 / 0.45); }
 .shots { display: grid; gap: 16px; align-items: end; }
 @media (min-width: 760px) { .shots { grid-template-columns: 1fr 0.32fr; } }
 .shots .desk, .shots .phone { background: var(--card); border-radius: 4px; padding: clamp(14px, 2.4vw, 32px); }
-.shots .phone img { border-radius: 18px; }
+.shots .phone img, .shots .phone video { border-radius: 18px; }
 .shots img, .shots video { width: 100%; border-radius: 4px; }
 
 .facts { display: grid; gap: 28px 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); list-style: none; }
