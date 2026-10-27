@@ -98,6 +98,19 @@ if (rows && preview && finePointer) {
   rows.addEventListener("pointerleave", () => { preview.style.setProperty("--ps", "0"); placed = false; });
 }
 
+/* ── Location pill: the coastlines take turns, each held for its data-ms. Reduced motion keeps Greece ── */
+const isles = $$<SVGElement>(".isles svg");
+if (isles.length > 1 && !reduced) {
+  let i = 0;
+  const next = () => {
+    isles[i].classList.remove("on");
+    i = (i + 1) % isles.length;
+    isles[i].classList.add("on");
+    setTimeout(next, Number(isles[i].dataset.ms));
+  };
+  setTimeout(next, Number(isles[0].dataset.ms));
+}
+
 /* ── The θ: tilts toward the pointer; a finger (or mouse) can spin it and let go ── */
 const theta = $<HTMLElement>("[data-theta]");
 if (theta && !reduced) {
