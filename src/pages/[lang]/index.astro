@@ -18,6 +18,15 @@ const featured = projects.filter((p) => p.caseStudy);
 const more = projects.filter((p) => !p.caseStudy);
 const ext = (href: string) => (isInternalHref(href) ? {} : { target: "_blank", rel: "noopener noreferrer" });
 const stripTags = (html: string) => html.replace(/<[^>]+>/g, "");
+// EU flag as a disc: 12 upright five-point stars on a ring, star radius about a sixth of the ring's (the flag's own ratio).
+const euStar = "M" + Array.from({ length: 10 }, (_, k) => {
+  const r = k % 2 ? 0.54 : 1.4, a = (k * Math.PI) / 5 - Math.PI / 2;
+  return `${(r * Math.cos(a)).toFixed(2)} ${(r * Math.sin(a)).toFixed(2)}`;
+}).join("L") + "Z";
+const euStars = Array.from({ length: 12 }, (_, i) => {
+  const a = (i * Math.PI) / 6 - Math.PI / 2;
+  return `translate(${(7.2 * Math.cos(a)).toFixed(2)} ${(7.2 * Math.sin(a)).toFixed(2)})`;
+});
 ---
 <Base meta={staticPageMeta("home", lang)} darkTop current="home">
   <section class="hero dark" aria-label={person.name[lang]}>
@@ -82,10 +91,10 @@ const stripTags = (html: string) => html.replace(/<[^>]+>/g, "");
             <path id="stamp-ring" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" fill="none"></path>
             <text><textPath href="#stamp-ring" textLength="226" lengthAdjust="spacing">ΕΣΠΑ 2021-2027 • ΕΣΠΑ 2021-2027 •</textPath></text>
           </svg>
-          <span class="core">
-            <Icon name="arrow" size={20} />
-            <svg class="tick" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9"></path></svg>
-          </span>
+          <svg class="eu" viewBox="-12 -12 24 24">
+            <circle r="12"></circle>
+            {euStars.map((t, i) => <g transform={t}><path d={euStar} style={`--i:${i}`}></path></g>)}
+          </svg>
         </span>
       </a>
     </div>
