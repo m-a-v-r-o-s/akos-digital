@@ -167,8 +167,8 @@ ul, ol { margin: 0; padding: 0; }
 .brand .ds { --w: 34px; --h: 18px; --silver: linear-gradient(180deg, #f1f2f4 0%, #cfd2d6 55%, #a9adb2 100%); --bezel: #1b1c1e; --mark: #2b2c2e;
   position: relative; flex: none; width: var(--w); height: calc(var(--h) * 2 + 2px); perspective: 160px; transform-style: preserve-3d; }
 .ds .top, .ds .bot { position: absolute; left: 0; width: 100%; height: var(--h); }
-/* Open to about 150° rather than flat: the lid leans back 30° from the base. */
-.ds .top { top: 0; transform-origin: 50% calc(100% + 1px); transform-style: preserve-3d; transform: rotateX(30deg); }
+/* Open to about 165° rather than flat: the lid leans back 15° from the base. */
+.ds .top { top: 0; transform-origin: 50% calc(100% + 1px); transform-style: preserve-3d; transform: rotateX(15deg); }
 .ds .bot, .ds .face, .ds .lid { background: var(--silver); box-shadow: 0 0 0 .75px rgb(20 18 16 / .35), inset 0 1px 0 rgb(255 255 255 / .7); }
 .ds .bot { bottom: 0; border-radius: 2px 2px 5px 5px; }
 .ds .face, .ds .lid { position: absolute; inset: 0; border-radius: 5px 5px 2px 2px; backface-visibility: hidden; }
@@ -190,7 +190,7 @@ ul, ol { margin: 0; padding: 0; }
   .ds .glow { animation: boot .7s steps(1, end) .55s both, flicker 9s steps(1, end) 3s infinite; }
   .ds .bot .glow { animation-delay: .65s, 7.5s; }
 }
-@keyframes lidOpen { from { transform: rotateX(-180deg); } to { transform: rotateX(30deg); } }
+@keyframes lidOpen { from { transform: rotateX(-180deg); } to { transform: rotateX(15deg); } }
 @keyframes flicker { 95% { opacity: .55; } 96% { opacity: 1; } 97% { opacity: .75; } 98% { opacity: 1; } }
 @keyframes boot { 0% { opacity: 0; } 20% { opacity: 1; background: #fff; } 40% { opacity: .25; } 60% { opacity: 1; } }
 @media (max-width: 899px) { .brand .ds { --w: 28px; --h: 15px; } }
