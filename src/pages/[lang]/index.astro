@@ -191,6 +191,31 @@ const euStars = Array.from({ length: 12 }, (_, i) => {
     </div>
   </section>
 
+  <section class="section" style="padding-top:0" id="stack" aria-labelledby="stack-h">
+    <div class="wrap">
+      <div class="section-head stack-head">
+        <h2 class="h-lg" id="stack-h">{t.builtWith}<span class="count">{tools.length}</span></h2>
+        <p class="lede-sm">{t.builtWithLede}</p>
+      </div>
+      <ul class="bw-tiles list-plain">
+        {tools.map((tool) => (
+          <li class="bw-tile" style={tool.icon || tool.mark ? `--brand:#${(tool.icon ?? tool.mark)!.hex}` : undefined}>
+            {tool.icon
+              ? <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d={tool.icon.path}></path></svg>
+              : tool.mark?.mode === "img"
+                ? <img class="mk" src={tool.mark.src} alt="" height="30" width={Math.round(30 * tool.mark.ratio)} loading="lazy" decoding="async" />
+                : tool.mark
+                  ? <span class="mk" aria-hidden="true" style={`--src:url(${tool.mark.src});aspect-ratio:${tool.mark.ratio}`}></span>
+                  : <span class="wm">{tool.name}</span>}
+            {(tool.icon || tool.mark) && <span class="nm">{tool.name}</span>}
+            <span class="use">{tool.use[lang]}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="stack-note">{t.builtWithNote}</p>
+    </div>
+  </section>
+
   <section class="section tint" id="sectors">
     <div class="wrap">
       <div class="section-head">
@@ -230,27 +255,6 @@ const euStars = Array.from({ length: 12 }, (_, i) => {
           return <li class="reveal">{s.href ? <a href={`/${lang}${s.href}`} style="display:contents">{inner}</a> : inner}</li>;
         })}
       </ul>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0" id="stack" aria-labelledby="stack-h">
-    <div class="wrap">
-      <div class="section-head stack-head">
-        <h2 class="h-lg" id="stack-h">{t.builtWith}<span class="count">{tools.length}</span></h2>
-        <p class="lede-sm">{t.builtWithLede}</p>
-      </div>
-      <ul class="bw-tiles list-plain">
-        {tools.map((tool) => (
-          <li class="bw-tile" style={tool.icon ? `--brand:#${tool.icon.hex}` : undefined}>
-            {tool.icon
-              ? <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d={tool.icon.path}></path></svg>
-              : <span class="wm">{tool.name}</span>}
-            {tool.icon && <span class="nm">{tool.name}</span>}
-            <span class="use">{tool.use[lang]}</span>
-          </li>
-        ))}
-      </ul>
-      <p class="stack-note">{t.builtWithNote}</p>
     </div>
   </section>
 
