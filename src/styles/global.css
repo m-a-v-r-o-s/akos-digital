@@ -252,7 +252,8 @@ dialog.menu[open]::backdrop { background: rgb(20 18 16 / 0.45); }
   min-height: 112px; padding: 0 clamp(24px, 3vw, 40px); border-radius: 999px; text-decoration: none;
   border: 1.5px solid var(--ink); font-size: 19px; font-weight: 500;
 }
-.cta-main { background: var(--accent); border-color: var(--accent); font-size: clamp(24px, 2.4vw, 32px); }
+/* Marigold held still: unlike the rest of the site, this button does not drift with --accent. */
+.cta-main { background: rgb(232 163 60); border-color: rgb(232 163 60); font-size: clamp(24px, 2.4vw, 32px); }
 .cta .sub { display: block; font-size: 14px; font-weight: 400; color: var(--muted); }
 @media (hover: hover) and (pointer: fine) { .cta-main:hover { filter: brightness(1.06); } }
 
