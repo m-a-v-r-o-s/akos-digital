@@ -155,9 +155,10 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; }
-/* On paper the accent is too light for text, so D and S take them 45% into ink (≥ 5.1:1 through every fade). */
-.brand .d, .brand .s { color: color-mix(in srgb, var(--accent) 45%, var(--ink)); }
-.dark .brand .d, .dark .brand .s { color: var(--accent); }
+/* D and S are hollow outlines, the θ wireframe's thin-line look. On paper the accent is too
+   light, so the stroke goes 45% into ink (≥ 5.1:1 through every fade). */
+.brand .d, .brand .s { --ds-line: color-mix(in srgb, var(--accent) 45%, var(--ink)); color: transparent; -webkit-text-stroke: 1px var(--ds-line); font-size: 1.2em; line-height: 1; }
+.dark .brand .d, .dark .brand .s { --ds-line: var(--accent); }
 
 /* Header mark: a silver dual-screen handheld drawn in CSS. The lid springs open on load
    (and again on hover, site.ts), then both screens boot in the DS colour.
