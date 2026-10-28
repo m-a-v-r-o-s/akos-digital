@@ -52,6 +52,15 @@ export const olympus: LongStudy = {
           "Η νέα πλατφόρμα τα βάζει όλα σε ένα σημείο που η γραμματεία διαχειρίζεται μόνη της: το δημόσιο site, δηλώσεις και πληρωμές, εγκρίσεις και αριθμούς συμμετοχής, λίστες εκκίνησης για την εταιρεία χρονομέτρησης, αποτελέσματα με ενδιάμεσους χρόνους και ζωντανή σελίδα, το μητρώο από το 2004, πιστοποιητικά τερματισμού σε PDF, νέα, φωτογραφίες, χορηγούς και newsletter. Ελληνικά πρώτα, αγγλικά δίπλα, και κάθε παλιό URL οδηγεί στη νέα του σελίδα.",
         ],
       } as BLA,
+      image: "olympus/01-cover",
+      alt: {
+        en: "Olympus Marathon, race entries and results: the new home page on desktop and phone, with the countdown to the winter race",
+        el: "Olympus Marathon, εγγραφές και αποτελέσματα αγώνων: η νέα αρχική σε desktop και κινητό, με την αντίστροφη μέτρηση για τον χειμερινό αγώνα",
+      } as BL,
+      caption: {
+        en: "The new home page, with the countdown to the next race and registration one tap away. Shown from the test deploy, before launch.",
+        el: "Η νέα αρχική, με αντίστροφη μέτρηση για τον επόμενο αγώνα και την εγγραφή ένα πάτημα μακριά. Από το δοκιμαστικό περιβάλλον, πριν το λανσάρισμα.",
+      } as BL,
     },
     {
       eyebrow: { en: "Registration", el: "Εγγραφή" } as BL,
@@ -69,14 +78,14 @@ export const olympus: LongStudy = {
           "Στην πληρωμή η θέση δεσμεύεται για δεκαπέντε λεπτά και η τιμή υπολογίζεται στον server, σε SQL, ποτέ από τον browser. Κάθε πληρωμή έχει το δικό της αναγνωριστικό, και η επιστροφή της τράπεζας είναι υπογεγραμμένη και idempotent, ώστε μια επανάληψη να μην μπορεί να πληρώσει δύο φορές ή να επιβεβαιώσει θέση που δεν δεσμεύτηκε ποτέ.",
         ],
       } as BLA,
-      image: "olympus/signup-flow",
+      image: "olympus/03-registration",
       alt: {
-        en: "The athlete's registration in five steps, from the form to the confirmation email with the bib number",
-        el: "Η εγγραφή του αθλητή σε πέντε βήματα, από τη φόρμα ως το email επιβεβαίωσης με τον αριθμό συμμετοχής",
+        en: "The price comes only from the server: two phone screens of the entry form, personal details and race-specific fields",
+        el: "Η τιμή βγαίνει μόνο στον server: δύο οθόνες κινητού της φόρμας εγγραφής, προσωπικά στοιχεία και πεδία του αγώνα",
       } as BL,
       caption: {
-        en: "The athlete's path, with the four cases that used to need a phone call answered on screen.",
-        el: "Η διαδρομή του αθλητή, με τις τέσσερις περιπτώσεις που ήθελαν παλιά τηλεφώνημα να απαντώνται στην οθόνη.",
+        en: "The form is built from each race's settings, saves on the device as the athlete types, and never sends an amount: the price is computed in SQL. Payment goes through Piraeus e-POS, by card or IRIS.",
+        el: "Η φόρμα στήνεται από τις ρυθμίσεις κάθε αγώνα, αποθηκεύεται στη συσκευή όσο γράφει ο αθλητής, και δεν στέλνει ποτέ ποσό: η τιμή υπολογίζεται σε SQL. Η πληρωμή γίνεται μέσω Πειραιώς e-POS, με κάρτα ή IRIS.",
       } as BL,
     },
     {
@@ -95,6 +104,15 @@ export const olympus: LongStudy = {
           "Πριν ανοίξουν οι καλοκαιρινές εγγραφές, ένα τεστ φόρτου στέλνει χίλιες πληρωμές την ίδια στιγμή. Ο αγώνας γεμίζει ακριβώς ως τη χωρητικότητά του, και ούτε μία θέση παραπάνω.",
         ],
       } as BLA,
+      image: "olympus/04-capacity",
+      alt: {
+        en: "A thousand payments at once, not one place too many: the checkout SQL that locks the race and counts taken places, and the unique index on bibs",
+        el: "Χίλιες πληρωμές μαζί, καμία θέση παραπάνω: το SQL του checkout που κλειδώνει τον αγώνα και μετρά τις πιασμένες θέσεις, και το μοναδικό index για τα bib",
+      } as BL,
+      caption: {
+        en: "The check runs inside Postgres with the race row locked, so two checkouts can't both take the last place, and a unique index means two athletes never share a bib.",
+        el: "Ο έλεγχος τρέχει μέσα στην Postgres με τη γραμμή του αγώνα κλειδωμένη, οπότε δύο πληρωμές δεν παίρνουν και οι δύο την τελευταία θέση, και ένα μοναδικό index σημαίνει ότι δύο αθλητές δεν μοιράζονται ποτέ bib.",
+      } as BL,
     },
     {
       eyebrow: { en: "The registry", el: "Το μητρώο" } as BL,
@@ -106,22 +124,44 @@ export const olympus: LongStudy = {
         en: [
           "About 13,000 athletes and 21,000 results came over from the old system and the organiser's timing archives. The old system had often created several records for the same person, so duplicates with the same name, birth date and sex are merged, and anything uncertain lands on a review screen for the secretariat instead of being guessed.",
           "Each athlete gets a page with every result since 2004, and a finisher can download a certificate for any race they completed.",
-          "The same archive feeds a records page for every race, with the fastest men and women overall, per age group and the best Greek and foreign finishers, and a statistics page per year built from aggregates only, with no names and no one's age on it.",
         ],
         el: [
           "Περίπου 13.000 αθλητές και 21.000 αποτελέσματα μεταφέρθηκαν από το παλιό σύστημα και τα αρχεία χρονομέτρησης του διοργανωτή. Το παλιό σύστημα συχνά είχε φτιάξει πολλές εγγραφές για το ίδιο πρόσωπο, οπότε τα διπλότυπα με ίδιο όνομα, ημερομηνία γέννησης και φύλο ενώνονται, και ό,τι είναι αβέβαιο πηγαίνει σε οθόνη ελέγχου για τη γραμματεία αντί να μαντεύεται.",
           "Κάθε αθλητής έχει σελίδα με κάθε αποτέλεσμα από το 2004, και όποιος τερμάτισε κατεβάζει πιστοποιητικό για κάθε αγώνα που ολοκλήρωσε.",
+        ],
+      } as BLA,
+      image: "olympus/05-results",
+      alt: {
+        en: "Results since 2004, one table: the results archive by year and a race's results table with search and filters",
+        el: "Αποτελέσματα από το 2004, ένας πίνακας: το αρχείο αποτελεσμάτων ανά χρονιά και ο πίνακας ενός αγώνα με αναζήτηση και φίλτρα",
+      } as BL,
+      caption: {
+        en: "The old site kept results in more than seven table layouts. Now they are data: search by name or bib, filter by category and sex, with split times, a live page on race day and a certificate link the moment an athlete finishes.",
+        el: "Το παλιό site είχε τα αποτελέσματα σε πάνω από επτά μορφές πινάκων. Τώρα είναι δεδομένα: αναζήτηση με όνομα ή bib, φίλτρα ανά κατηγορία και φύλο, ενδιάμεσοι χρόνοι, live σελίδα την ημέρα του αγώνα και link στο πιστοποιητικό μόλις τερματίσει ο αθλητής.",
+      } as BL,
+    },
+    {
+      eyebrow: { en: "Records", el: "Ρεκόρ" } as BL,
+      title: {
+        en: "Worked out from the archive, never typed in",
+        el: "Υπολογίζονται από το αρχείο, δεν γράφονται με το χέρι",
+      } as BL,
+      body: {
+        en: [
+          "The same archive feeds a records page for every race, with the fastest men and women overall, per age group and the best Greek and foreign finishers, and a statistics page per year built from aggregates only, with no names and no one's age on it.",
+        ],
+        el: [
           "Το ίδιο αρχείο τροφοδοτεί μια σελίδα ρεκόρ για κάθε αγώνα, με τους ταχύτερους άνδρες και γυναίκες συνολικά, ανά ηλικιακή ομάδα και τον καλύτερο Έλληνα και ξένο αθλητή, και μια σελίδα στατιστικών ανά χρονιά φτιαγμένη μόνο από συγκεντρωτικά στοιχεία, χωρίς ονόματα και χωρίς την ηλικία κανενός.",
         ],
       } as BLA,
-      image: "olympus/results",
+      image: "olympus/06-records",
       alt: {
-        en: "Results by year, from 2004 to 2026, with filters for sex and category",
-        el: "Αποτελέσματα ανά έτος, από το 2004 ως το 2026, με φίλτρα για φύλο και κατηγορία",
+        en: "Records and statistics, worked out from the archive: the top ten times for men and women, and a phone showing one edition's statistics",
+        el: "Ρεκόρ και στατιστικά, υπολογισμένα από το αρχείο: οι δέκα καλύτεροι χρόνοι ανδρών και γυναικών, και ένα κινητό με τα στατιστικά μίας έκδοσης",
       } as BL,
       caption: {
-        en: "Every year since 2004 is one tap away, and filtering keeps the reader's place instead of jumping back to the top.",
-        el: "Κάθε χρονιά από το 2004 είναι ένα πάτημα μακριά, και το φιλτράρισμα κρατά τη θέση του αναγνώστη αντί να γυρίζει στην αρχή.",
+        en: "Best times per race, sex and age group, and each edition's numbers: starters, finishers, median time and average age. Nobody updates them by hand.",
+        el: "Καλύτεροι χρόνοι ανά αγώνα, φύλο και ηλικιακή ομάδα, και τα νούμερα κάθε έκδοσης: εκκινήσαντες, τερματίσαντες, διάμεσος χρόνος και μέση ηλικία. Κανείς δεν τα ενημερώνει με το χέρι.",
       } as BL,
     },
     {
@@ -140,14 +180,14 @@ export const olympus: LongStudy = {
           "Κάθε αλλαγή καταγράφεται σε ημερολόγιο ελέγχου, οπότε το ποιος άλλαξε τι έχει πάντα απάντηση.",
         ],
       } as BLA,
-      image: "olympus/bib-decision",
+      image: "olympus/07-secretariat",
       alt: {
-        en: "The approval screen, with the next free bib number filled in and the elite block reserved",
-        el: "Η οθόνη έγκρισης, με τον επόμενο ελεύθερο αριθμό συμμετοχής συμπληρωμένο και το ελίτ μπλοκ δεσμευμένο",
+        en: "Made for the secretariat, not for developers: what the secretariat does from one place, with 324 database checks and 456 app tests",
+        el: "Φτιαγμένο για τη γραμματεία, όχι για developers: τι κάνει η γραμματεία από ένα σημείο, με 324 ελέγχους στη βάση και 456 tests εφαρμογής",
       } as BL,
       caption: {
-        en: "Approval fills in the next free bib and keeps the elite block for numbers chosen by hand.",
-        el: "Η έγκριση συμπληρώνει τον επόμενο ελεύθερο αριθμό και κρατά το ελίτ μπλοκ για αριθμούς που δίνονται με το χέρι.",
+        en: "Approvals with registry matches, automatic bibs with an elite block, start lists for timing, team imports from Excel, live results, merged duplicate profiles, and the newsletter, all without a developer.",
+        el: "Εγκρίσεις με προτάσεις από το μητρώο, αυτόματα bib με μπλοκ για τους elite, start list για τη χρονομέτρηση, εισαγωγή ομάδων από Excel, live αποτελέσματα, ενοποίηση διπλών προφίλ και newsletter, όλα χωρίς developer.",
       } as BL,
     },
     {

@@ -26,14 +26,14 @@ const L = {
     stack: "Built with", visit: "Visit the live site", related: "Related", others: "Other work",
     ctaTitle: "Want something like this?", ctaBody: "Tell me what your business needs to do online and I'll come back within 24 hours with a clear, no-obligation quote.",
     longCtaTitle: "Building something this size?", longCtaBody: "Tell me what your business needs to run on and I'll come back within 24 hours with a clear, no-obligation quote.",
-    cta: "Request a quote", noLinkTitle: "Why there is no link", timeline: "Where it stands", shipped: "Built", ahead: "Ahead", fullSize: "Open full size",
+    cta: "Request a quote", boards: "Up close", noLinkTitle: "Why there is no link", timeline: "Where it stands", shipped: "Built", ahead: "Ahead", fullSize: "Open full size",
   },
   el: {
     back: "Όλα τα έργα", eyebrow: "Μελέτη περίπτωσης", challenge: "Το πρόβλημα", approach: "Τι έχτισα", outcome: "Πού βρίσκεται",
     stack: "Χτισμένο με", visit: "Δες το live site", related: "Σχετικά", others: "Άλλα έργα",
     ctaTitle: "Θέλεις κάτι αντίστοιχο;", ctaBody: "Πες μου τι χρειάζεται να κάνει online η επιχείρησή σου και θα επανέλθω εντός 24 ωρών με ξεκάθαρη προσφορά χωρίς δέσμευση.",
     longCtaTitle: "Χτίζεις κάτι αυτού του μεγέθους;", longCtaBody: "Πες μου πάνω σε τι χρειάζεται να τρέχει η επιχείρησή σου και θα επανέλθω εντός 24 ωρών με ξεκάθαρη προσφορά χωρίς δέσμευση.",
-    cta: "Ζήτησε προσφορά", noLinkTitle: "Γιατί δεν υπάρχει σύνδεσμος", timeline: "Πού βρίσκεται", shipped: "Έγινε", ahead: "Μπροστά", fullSize: "Άνοιγμα σε πλήρες μέγεθος",
+    cta: "Ζήτησε προσφορά", boards: "Από κοντά", noLinkTitle: "Γιατί δεν υπάρχει σύνδεσμος", timeline: "Πού βρίσκεται", shipped: "Έγινε", ahead: "Μπροστά", fullSize: "Άνοιγμα σε πλήρες μέγεθος",
   },
 };
 const t = L[lang];
@@ -134,8 +134,8 @@ const jsonLd = {
             )}
             {c.image && c.alt && (
               <figure>
-                <a href={fullSize(c.image)} target="_blank" rel="noopener" aria-label={`${c.alt[lang]}, ${t.fullSize}`}>
-                  <Shot src={`studies/${c.image}`} alt={c.alt[lang]} sizes="(min-width: 1400px) 1300px, 100vw" />
+                <a href={fullSize(`${lang}/${c.image}`)} target="_blank" rel="noopener" aria-label={`${c.alt[lang]}, ${t.fullSize}`}>
+                  <Shot src={`studies/${lang}/${c.image}`} alt={c.alt[lang]} sizes="(min-width: 1400px) 1300px, 100vw" />
                 </a>
                 {c.caption && <figcaption><span>{c.caption[lang]}</span></figcaption>}
               </figure>
@@ -174,6 +174,21 @@ const jsonLd = {
           <section class="block split">
             <h2>{t.approach}</h2>
             <ul class="points">{cs.approach[lang].map((p) => <li>{p}</li>)}</ul>
+          </section>
+        )}
+        {cs.boards && (
+          <section class="chapter">
+            <h2>{t.boards}</h2>
+            <div class="boards">
+              {cs.boards.map((b) => (
+                <figure>
+                  <a href={fullSize(`${lang}/${b.image}`)} target="_blank" rel="noopener" aria-label={`${b.alt[lang]}, ${t.fullSize}`}>
+                    <Shot src={`studies/${lang}/${b.image}`} alt={b.alt[lang]} sizes="(min-width: 1100px) 640px, 100vw" />
+                  </a>
+                  <figcaption><span>{b.caption[lang]}</span></figcaption>
+                </figure>
+              ))}
+            </div>
           </section>
         )}
         {cs.outcome && (

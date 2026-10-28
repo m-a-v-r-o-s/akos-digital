@@ -1214,6 +1214,8 @@ export type CaseStudy = {
   challenge?: BL;
   approach?: BLA;
   outcome?: BLA;
+  /** Portfolio boards from src/assets/studies/<lang>/, by path without extension. */
+  boards?: { image: string; alt: BL; caption: BL }[];
   stack: string[];
   /** Base name of the screenshots in src/assets/work. */
   image: string;
@@ -1329,6 +1331,38 @@ export const caseStudies: CaseStudy[] = [
         "Οι διαφημίσεις Meta του καταστήματος έφτασαν περίπου τις 200.000 προβολές σε έναν μήνα, τον Ιούλιο του 2026.",
       ],
     } as BLA,
+    boards: [
+      {
+        image: "blessed/01-cover",
+        alt: { en: "Blessed Coffee, site, AI and Instagram for a coffee shop: the home page on desktop and phone", el: "Blessed Coffee, site, AI και Instagram για καφέ: η αρχική σε desktop και κινητό" } as BL,
+        caption: { en: "The home page leads with the shop itself: real photos, the logo, and the menu and order buttons.", el: "Η αρχική ξεκινά από το ίδιο το μαγαζί: πραγματικές φωτογραφίες, το λογότυπο και τα κουμπιά για μενού και παραγγελία." } as BL,
+      },
+      {
+        image: "blessed/02-two-shops",
+        alt: { en: "Two neighbourhoods, one site: the shops section and the Kamatero shop page on a phone", el: "Δύο γειτονιές, ένα site: η ενότητα των μαγαζιών και η σελίδα του Καματερού στο κινητό" } as BL,
+        caption: { en: "Each shop has its own page with address, directions, phone and hours that say whether it is open right now. The shop a visitor picks sets the order and call buttons everywhere.", el: "Κάθε μαγαζί έχει δική του σελίδα με διεύθυνση, οδηγίες, τηλέφωνο και ωράριο που λέει αν είναι ανοιχτό τώρα. Το μαγαζί που διαλέγει ο επισκέπτης ορίζει τα κουμπιά παραγγελίας και κλήσης παντού." } as BL,
+      },
+      {
+        image: "blessed/03-menu",
+        alt: { en: "74 items, every one priced: the menu page on desktop and the pastries list on a phone", el: "74 προϊόντα, όλα με τιμή: η σελίδα μενού σε desktop και οι σφολιάτες στο κινητό" } as BL,
+        caption: { en: "Nine categories from coffee to cocktails, with two price columns for the two blends, VAT included. A price changes in one file and the site and the posts update together.", el: "Εννέα κατηγορίες από τον καφέ ως τα cocktails, με δύο στήλες τιμών για τα δύο χαρμάνια, με ΦΠΑ. Μια τιμή αλλάζει σε ένα αρχείο και ενημερώνονται site και posts μαζί." } as BL,
+      },
+      {
+        image: "blessed/04-3d-cup",
+        alt: { en: "The shop's cup in 3D: a render from the site's model, a close-up of the slogan, and an Instagram post with the same cup", el: "Το ποτήρι του μαγαζιού σε 3D: render από το μοντέλο του site, κοντινό στο slogan και post στο Instagram με το ίδιο ποτήρι" } as BL,
+        caption: { en: "The cup turns with the scroll and leans toward the cursor, loading only when it comes into view. The same three.js model renders the Instagram photos, stories and reels.", el: "Το ποτήρι γυρίζει με το scroll και γέρνει προς τον κέρσορα, και φορτώνει μόνο όταν φτάσει στην οθόνη. Το ίδιο μοντέλο three.js βγάζει τις φωτογραφίες, τα stories και τα reels του Instagram." } as BL,
+      },
+      {
+        image: "blessed/05-review-replies",
+        alt: { en: "Every review gets a reply, no promises: the code check that blocks links, emails, phone numbers and freebies in AI-drafted replies", el: "Κάθε κριτική παίρνει απάντηση, καμία υπόσχεση: ο έλεγχος σε κώδικα που μπλοκάρει links, email, τηλέφωνα και κεράσματα στις απαντήσεις του AI" } as BL,
+        caption: { en: "Claude drafts a short owner reply in the reviewer's language every 15 minutes. Anything with a link, an email, a phone number or a promise is blocked and goes to the owner to answer by hand.", el: "Ο Claude γράφει μια σύντομη απάντηση του ιδιοκτήτη στη γλώσσα του πελάτη, κάθε 15 λεπτά. Ό,τι έχει link, email, τηλέφωνο ή υπόσχεση μπλοκάρεται και πηγαίνει στον ιδιοκτήτη να απαντήσει με το χέρι." } as BL,
+      },
+      {
+        image: "blessed/06-instagram",
+        alt: { en: "Posts, stories, reels, from code: six Instagram posts built from the site's data with real photos", el: "Posts, stories, reels από κώδικα: έξι posts του Instagram φτιαγμένα από τα δεδομένα του site με πραγματικές φωτογραφίες" } as BL,
+        caption: { en: "83 posts, 57 stories and 13 reels built from the same data as the site, so prices and hours are never typed twice. Real photos of the shop only, no AI images.", el: "83 posts, 57 stories και 13 reels φτιαγμένα από τα ίδια δεδομένα με το site, οπότε τιμές και ώρες δεν γράφονται ποτέ δεύτερη φορά. Μόνο πραγματικές φωτογραφίες του μαγαζιού, καμία AI εικόνα." } as BL,
+      },
+    ],
     logo: "/logos/blessed.webp",
     stack: ["Astro", "three.js", "Claude API", "Instagram API", "Meta Ads", "Schema.org", "Bilingual"],
     image: "blessed",
@@ -1387,6 +1421,38 @@ export const caseStudies: CaseStudy[] = [
         "Οι τιμές, το απόθεμα και τα μεταφορικά αποφασίζονται στον server, οπότε ένα πειραγμένο αίτημα δεν μπορεί να αγοράσει το print φθηνότερα.",
       ],
     } as BLA,
+    boards: [
+      {
+        image: "ellie/01-cover",
+        alt: { en: "Ellie Tattooer, tattoo portfolio and e-shop: the sticker-sheet home page on desktop and phone", el: "Ellie Tattooer, portfolio και e-shop τατουάζ: η αρχική σαν σελίδα με stickers σε desktop και κινητό" } as BL,
+        caption: { en: "The home page in her pink and mint, with the logo and stickers you can pick up and drag.", el: "Η αρχική στο ροζ και το μέντα της, με το λογότυπο και stickers που πιάνεις και σέρνεις." } as BL,
+      },
+      {
+        image: "ellie/02-flash-wall",
+        alt: { en: "136 tattoos, filtered by colour: the flash wall on desktop and phone with the colour and black and grey filters", el: "136 τατουάζ, φιλτράρονται κατά χρώμα: ο τοίχος με τα flash σε desktop και κινητό με τα φίλτρα έγχρωμο και black & grey" } as BL,
+        caption: { en: "88 in colour and 48 in black and grey, newest first. The filter reads each piece's palette from its description, the same text a screen reader speaks.", el: "88 έγχρωμα και 48 black & grey, τα νεότερα πρώτα. Το φίλτρο διαβάζει την παλέτα κάθε έργου από την περιγραφή του, το ίδιο κείμενο που διαβάζει ένας αναγνώστης οθόνης." } as BL,
+      },
+      {
+        image: "ellie/03-lightbox",
+        alt: { en: "The gallery follows the finger: the full-screen lightbox on a phone beside the flash wall", el: "Η γκαλερί ακολουθεί το δάχτυλο: το lightbox σε πλήρη οθόνη στο κινητό δίπλα στον τοίχο" } as BL,
+        caption: { en: "Swipe for the next piece, pull down to close. Spring physics carry the finger's momentum and resist at the edges, and the motion steps back when a visitor asks for less.", el: "Σύρεις για το επόμενο, τραβάς προς τα κάτω για να κλείσει. Η φυσική ελατηρίου κρατά την ορμή του δαχτύλου και αντιστέκεται στις άκρες, και η κίνηση μειώνεται όταν ο επισκέπτης ζητά λιγότερη." } as BL,
+      },
+      {
+        image: "ellie/04-design",
+        alt: { en: "A site like a sticker sheet: the booking steps and merch section on desktop, and the home page on a phone", el: "Ένα site σαν σελίδα με stickers: τα βήματα για ραντεβού και το merch σε desktop, και η αρχική στο κινητό" } as BL,
+        caption: { en: "Logo, cards and buttons are drawn as stickers. Booking a tattoo is three steps and one message on Instagram, and Ellie replies with a date and a price.", el: "Λογότυπο, κάρτες και κουμπιά είναι σχεδιασμένα σαν αυτοκόλλητα. Το ραντεβού είναι τρία βήματα και ένα μήνυμα στο Instagram, και η Ellie απαντά με ημερομηνία και τιμή." } as BL,
+      },
+      {
+        image: "ellie/05-checkout",
+        alt: { en: "Shipping comes from the address: the shop with the cart drawer open and a postcode entered, on desktop and phone", el: "Τα μεταφορικά βγαίνουν από τη διεύθυνση: το κατάστημα με ανοιχτό καλάθι και ταχυδρομικό κώδικα, σε desktop και κινητό" } as BL,
+        caption: { en: "Checkout happens on the page through Stripe. The server prices every line and works shipping out again from the delivery postcode across five zones in Greece, so the browser never sets a price.", el: "Η πληρωμή γίνεται μέσα στη σελίδα μέσω Stripe. Ο server τιμολογεί κάθε γραμμή και ξαναϋπολογίζει τα μεταφορικά από τον ταχυδρομικό κώδικα σε πέντε ζώνες στην Ελλάδα, οπότε ο browser δεν ορίζει ποτέ τιμή." } as BL,
+      },
+      {
+        image: "ellie/06-stock",
+        alt: { en: "Three posters, the fourth can't be sold: the stock check that runs before every payment, and the merch section", el: "Τρεις αφίσες, η τέταρτη δεν πουλιέται: ο έλεγχος αποθέματος πριν από κάθε πληρωμή, και το merch" } as BL,
+        caption: { en: "Before each checkout the server counts paid prints in Stripe itself, and at three the poster turns sold out on its own. No database to maintain.", el: "Πριν από κάθε πληρωμή ο server μετρά τα πληρωμένα prints στο ίδιο το Stripe, και στις τρεις η αφίσα γίνεται SOLD OUT μόνη της. Καμία βάση δεδομένων να συντηρείται." } as BL,
+      },
+    ],
     logo: "/logos/ellietattooer.webp",
     stack: ["Astro", "React islands", "Stripe", "Motion", "Schema.org"],
     image: "ellie",
@@ -1444,6 +1510,38 @@ export const caseStudies: CaseStudy[] = [
         "Ο χάρτης Google φορτώνει μόνο όταν χρειάζεται, κάτι που μείωσε τη μεταφορά του από 735KB σε 272KB.",
       ],
     } as BLA,
+    boards: [
+      {
+        image: "mastichari/01-cover",
+        alt: { en: "Mastichari Massage, a site in 10 languages: the home page on desktop, and the German home page on a phone", el: "Mastichari Massage, site σε 10 γλώσσες: η αρχική σε desktop, και η γερμανική αρχική στο κινητό" } as BL,
+        caption: { en: "The home page leads with booking on WhatsApp, in the visitor's own language.", el: "Η αρχική ξεκινά με την κράτηση στο WhatsApp, στη γλώσσα του επισκέπτη." } as BL,
+      },
+      {
+        image: "mastichari/02-languages",
+        alt: { en: "His clients are tourists, the site speaks their language: the home page in German, Russian and Italian on three phones", el: "Οι πελάτες του είναι τουρίστες, το site μιλά τη γλώσσα τους: η αρχική στα γερμανικά, ρωσικά και ιταλικά σε τρία κινητά" } as BL,
+        caption: { en: "171 real pages, not a translation widget: every language has its own pages with its own title and description, so a German visitor finds the German page.", el: "171 κανονικές σελίδες, όχι μετάφραση πάνω στη σελίδα: κάθε γλώσσα έχει τις δικές της σελίδες με δικό της τίτλο και περιγραφή, ώστε ο Γερμανός να βρίσκει τη γερμανική σελίδα." } as BL,
+      },
+      {
+        image: "mastichari/03-booking",
+        alt: { en: "One tap to an appointment: the home and contact pages on phones, with the WhatsApp and call bar at the bottom", el: "Ένα πάτημα ως το ραντεβού: η αρχική και η επικοινωνία στο κινητό, με τη μπάρα WhatsApp και κλήσης στο κάτω μέρος" } as BL,
+        caption: { en: "WhatsApp and call stay at the bottom of every page in every language. No form and no spam, and on a narrow screen the call button shrinks to an icon instead of being cut off.", el: "Το WhatsApp και η κλήση μένουν στο κάτω μέρος κάθε σελίδας σε κάθε γλώσσα. Καμία φόρμα, κανένα spam, και στη στενή οθόνη το κουμπί κλήσης γίνεται εικονίδιο αντί να κόβεται." } as BL,
+      },
+      {
+        image: "mastichari/04-credentials",
+        alt: { en: "His papers, as they are: the training and certificates section with scanned certificates, on desktop and phone", el: "Τα χαρτιά του, όπως είναι: η ενότητα εκπαίδευσης με τα σαρωμένα πιστοποιητικά, σε desktop και κινητό" } as BL,
+        caption: { en: "Certificates are shown as scans, with dates and reference numbers exactly as on the document, and every detail was checked against the papers before it went on the site.", el: "Τα πιστοποιητικά δείχνονται σαρωμένα, με ημερομηνίες και αριθμούς πρωτοκόλλου όπως στο έγγραφο, και κάθε στοιχείο ελέγχθηκε με τα χαρτιά πριν μπει στο site." } as BL,
+      },
+      {
+        image: "mastichari/05-reviews",
+        alt: { en: "42 client comments in their own language: the reviews section on desktop and phone", el: "42 σχόλια πελατών στη γλώσσα τους: η ενότητα σχολίων σε desktop και κινητό" } as BL,
+        caption: { en: "Recovered from the old site and checked one by one, they stay in the language each client wrote them in: English, German, French, Russian, Dutch, Italian and Turkish.", el: "Ανακτήθηκαν από το παλιό site και ελέγχθηκαν ένα ένα, και μένουν στη γλώσσα που τα έγραψε ο κάθε πελάτης: αγγλικά, γερμανικά, γαλλικά, ρωσικά, ολλανδικά, ιταλικά και τουρκικά." } as BL,
+      },
+      {
+        image: "mastichari/06-speed",
+        alt: { en: "Fast, even on beach 4G: CLS 0, TBT 0 ms and LCP 1.9 s, beside the massages page", el: "Γρήγορο και στο 4G της παραλίας: CLS 0, TBT 0 ms και LCP 1,9 s, δίπλα στη σελίδα με τα μασάζ" } as BL,
+        caption: { en: "Static pages, right-sized modern images, and a map that loads only when it is reached, which alone took the home page from 735 KB to 272 KB. Lighthouse on mobile with a slow network.", el: "Στατικές σελίδες, σύγχρονες εικόνες στο σωστό μέγεθος, και χάρτης που φορτώνει μόνο όταν φτάσεις σε αυτόν, κάτι που μόνο του έριξε την αρχική από 735 KB σε 272 KB. Lighthouse στο κινητό με αργό δίκτυο." } as BL,
+      },
+    ],
     logo: "/logos/mastichari.webp",
     stack: ["Eleventy", "Fastify", "JavaScript", "10 languages", "Schema.org"],
     image: "mastichari",
@@ -1497,6 +1595,38 @@ export const caseStudies: CaseStudy[] = [
         "Η αλληλεπίδραση κάθεται πάνω σε πλήρες HTML, οπότε μια μηχανή αναζήτησης διαβάζει το συγκρότημα, τους δίσκους και τις ημερομηνίες του χωρίς να τρέξει το player.",
       ],
     } as BLA,
+    boards: [
+      {
+        image: "trf/01-cover",
+        alt: { en: "Those Rambling Fools, a band site with a turntable: the deck playing on desktop and phone", el: "Those Rambling Fools, site μπάντας με πικάπ: το πικάπ σε desktop και κινητό" } as BL,
+        caption: { en: "The home page is the band's turntable, with every record in the crate along the bottom.", el: "Η αρχική είναι το πικάπ της μπάντας, με όλους τους δίσκους στη σειρά από κάτω." } as BL,
+      },
+      {
+        image: "trf/02-tonearm",
+        alt: { en: "The needle lands where it should: the deck beside the tonearm code that works out the angle with the law of cosines", el: "Η βελόνα πέφτει εκεί που πρέπει: το πικάπ δίπλα στον κώδικα που υπολογίζει τη γωνία του βραχίονα με τον νόμο των συνημιτόνων" } as BL,
+        caption: { en: "The SVG tonearm turns on the real pivot in the photo, and its angle is computed for every point on the record, so the needle starts at the lead-in groove and reaches the label.", el: "Ο βραχίονας σε SVG γυρίζει στον πραγματικό άξονα της φωτογραφίας, και η γωνία του υπολογίζεται για κάθε σημείο του δίσκου, ώστε η βελόνα να ξεκινά στην αρχή του αυλακιού και να φτάνει ως την ετικέτα." } as BL,
+      },
+      {
+        image: "trf/03-records",
+        alt: { en: "Every record tints the room: a Mule single spinning on desktop and an LP on a phone", el: "Κάθε δίσκος βάφει το δωμάτιο: ένα single των Mule σε desktop και ένα LP στο κινητό" } as BL,
+        caption: { en: "Five LPs at 33⅓ and two 7-inch Mule singles at 45, with the adapter in the centre. While a record plays, the page takes on the colour of its sleeve.", el: "Πέντε LP στις 33⅓ και δύο 7ιντσα singles των Mule στις 45, με τον αντάπτορα στο κέντρο. Όσο παίζει ένας δίσκος, η σελίδα παίρνει το χρώμα του εξωφύλλου του." } as BL,
+      },
+      {
+        image: "trf/04-audio",
+        alt: { en: "The music doesn't stop when you change page: a record playing on the deck, then the story page with the record still spinning", el: "Η μουσική δεν σταματά όταν αλλάζεις σελίδα: ένας δίσκος στο πικάπ, και μετά η σελίδα της ιστορίας με τον δίσκο να παίζει ακόμα" } as BL,
+        caption: { en: "Navigation never fully reloads the page and the player lives outside it, so the record keeps playing while you read the story or check the gigs.", el: "Η πλοήγηση δεν ξαναφορτώνει ποτέ ολόκληρη τη σελίδα και ο player ζει έξω από αυτήν, οπότε ο δίσκος συνεχίζει όσο διαβάζεις την ιστορία ή βλέπεις τις εμφανίσεις." } as BL,
+      },
+      {
+        image: "trf/05-sound",
+        alt: { en: "The click, the motor, the crackle, no sound files: the Web Audio code that synthesizes the needle crackle", el: "Το κλικ, το μοτέρ, το τρίξιμο, κανένα αρχείο ήχου: ο κώδικας Web Audio που συνθέτει το τρίξιμο της βελόνας" } as BL,
+        caption: { en: "The deck's buttons and the needle landing are synthesized in the browser, so no sound files load, and their volume follows the player's slider.", el: "Τα κουμπιά του πικάπ και η βελόνα που ακουμπά συντίθενται στον browser, οπότε δεν φορτώνεται κανένα αρχείο ήχου, και η ένταση ακολουθεί το slider του player." } as BL,
+      },
+      {
+        image: "trf/06-admin",
+        alt: { en: "The band writes its own pages: the upcoming gigs page on desktop and the Ramblings page on a phone", el: "Η μπάντα γράφει μόνη της: οι επόμενες εμφανίσεις σε desktop και τα Ramblings στο κινητό" } as BL,
+        caption: { en: "The band edits its texts and gigs from its own admin. The admin is locked on every page, locks out after wrong passwords, keeps sessions on the server and stores its data on a persistent volume.", el: "Η μπάντα αλλάζει κείμενα και εμφανίσεις από το δικό της admin. Το admin είναι κλειδωμένο σε κάθε σελίδα, κλειδώνει μετά από λάθος κωδικούς, κρατά τις συνεδρίες στον server και τα δεδομένα σε μόνιμο volume." } as BL,
+      },
+    ],
     logo: "/logos/trf.webp",
     stack: ["Astro", "React islands", "Web Audio", "View Transitions", "Schema.org"],
     image: "trf",

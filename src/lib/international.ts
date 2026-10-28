@@ -71,8 +71,8 @@ export const international: LongStudy = {
       } as BL,
       body: {
         en: [
-          "The company works the way a lot of island rental businesses work. A guest asks at a hotel desk, the rep phones the office, someone looks at a sheet of paper, and a car is either free or it is not. It holds together because the same people have done it for years.",
-          "What it cannot do is answer a question twice the same way. Two reps can promise the same car within the same minute. A price quoted at one desk can differ from the price at the next. A guest who returns a car early frees a car that nobody knows is free. And every one of those failures costs money at exactly the moment the season is busiest.",
+          "The company works the way a lot of island rental businesses work. A guest asks at a hotel desk, the rep phones the office, someone looks at a sheet of paper, and a car is either available or it is not. It holds together because the same people have done it for years.",
+          "What it cannot do is answer a question twice the same way. Two reps can promise the same car within the same minute. A price quoted at one desk can differ from the price at the next. A guest who returns a car early leaves a car available that nobody knows about. And every one of those failures costs money at exactly the moment the season is busiest.",
           "So the brief was not really software. It was: replace the paper without breaking the day, and never be the reason a car gets promised twice.",
         ],
         el: [
@@ -81,6 +81,15 @@ export const international: LongStudy = {
           "Οπότε το ζητούμενο δεν ήταν στην ουσία λογισμικό. Ήταν: αντικατέστησε το χαρτί χωρίς να χαλάσεις τη μέρα, και μη γίνεις ποτέ ο λόγος που ένα αυτοκίνητο υπόσχεται σε δύο ανθρώπους.",
         ],
       } as BLA,
+      image: "international/01-cover",
+      alt: {
+        en: "International Rentals, fleet management for rent a car: four phone screens showing availability, a new booking, a pickup and the day sheet",
+        el: "International Rentals, διαχείριση στόλου rent a car: τέσσερις οθόνες κινητού με διαθεσιμότητα, νέα κράτηση, παραλαβή και φύλλο κινήσεων",
+      } as BL,
+      caption: {
+        en: "The whole working day on a phone: what is available, a new booking, the pickup and the day sheet. Every plate, guest and hotel shown is invented.",
+        el: "Όλη η μέρα δουλειάς σε ένα κινητό: τι είναι ελεύθερο, νέα κράτηση, παραλαβή και φύλλο κινήσεων. Κάθε πινακίδα, επισκέπτης και ξενοδοχείο είναι επινοημένα.",
+      } as BL,
     },
     {
       eyebrow: { en: "Two users", el: "Δύο χρήστες" } as BL,
@@ -100,14 +109,14 @@ export const international: LongStudy = {
           "Ο κανόνας δεν επιβάλλεται κρύβοντας κουμπιά. Η εξουσιοδότηση ζει στη βάση: row-level security ενεργό σε κάθε πίνακα, με πολιτικές που δοκιμάζονται από τη συνεδρία του ίδιου του αντιπροσώπου. Όποιος πειράξει ένα API call με το χέρι βρίσκει τον ίδιο ακριβώς τοίχο, γιατί ο τοίχος δεν είναι στον route handler.",
         ],
       } as BLA,
-      image: "international/01-two-users",
+      image: "international/02-two-users",
       alt: {
-        en: "The rep's phone app beside the manager's desktop day sheet",
-        el: "Η εφαρμογή του αντιπροσώπου στο κινητό δίπλα στο φύλλο ημέρας του ιδιοκτήτη",
+        en: "The rep and the owner don't see the same thing: the rep's new booking screen beside the owner's day sheet with every pickup and return",
+        el: "Ο συνεργάτης και ο ιδιοκτήτης δεν βλέπουν το ίδιο: η νέα κράτηση του συνεργάτη δίπλα στο φύλλο κινήσεων του ιδιοκτήτη με κάθε παραλαβή και επιστροφή",
       } as BL,
       caption: {
-        en: "The rep's day and the manager's day sheet, from one deploy. Every plate, guest and hotel shown here is invented.",
-        el: "Η μέρα του αντιπροσώπου και το φύλλο ημέρας του ιδιοκτήτη, από ένα deploy. Κάθε πινακίδα, επισκέπτης και ξενοδοχείο εδώ είναι επινοημένα.",
+        en: "The rep books one car while the guest waits; the owner sees every pickup and return. No revenue total ever reaches the rep's phone, and row-level security limits each rep to their own records. Every plate, guest and hotel shown is invented.",
+        el: "Ο συνεργάτης κλείνει ένα αυτοκίνητο όσο περιμένει ο πελάτης· ο ιδιοκτήτης βλέπει κάθε παραλαβή και επιστροφή. Κανένα σύνολο εσόδων δεν φτάνει στο κινητό του συνεργάτη, και το row-level security περιορίζει τον καθένα στα δικά του. Κάθε πινακίδα, επισκέπτης και ξενοδοχείο είναι επινοημένα.",
       } as BL,
     },
     {
@@ -139,14 +148,14 @@ export const international: LongStudy = {
           ") WHERE (status IN ('booked','out','blocked'))",
         ],
       },
-      image: "international/02-correctness",
+      image: "international/03-correctness",
       alt: {
-        en: "The exclusion constraint, the Postgres error it raises, and the message the rep is shown",
-        el: "Το exclusion constraint, το σφάλμα της Postgres και το μήνυμα που βλέπει ο αντιπρόσωπος",
+        en: "Two reps, the last car, and the database refuses: the no_double_booking migration beside the message the second rep sees",
+        el: "Δύο συνεργάτες, το τελευταίο αυτοκίνητο, και η βάση αρνείται: το migration no_double_booking δίπλα στο μήνυμα που βλέπει ο δεύτερος συνεργάτης",
       } as BL,
       caption: {
-        en: "A database error nobody should ever read, translated into one sentence a rep can act on.",
-        el: "Ένα σφάλμα βάσης που κανείς δεν πρέπει να διαβάσει, μεταφρασμένο σε μία πρόταση που ο αντιπρόσωπος μπορεί να χρησιμοποιήσει.",
+        en: "When two reps try for the same car at once, one booking goes through and the other is refused by the database. The second rep simply reads that the car was just taken and to pick another.",
+        el: "Όταν δύο συνεργάτες πάνε για το ίδιο αυτοκίνητο μαζί, η μία κράτηση περνά και την άλλη την αρνείται η βάση. Ο δεύτερος συνεργάτης διαβάζει απλώς ότι το αυτοκίνητο μόλις κλείστηκε και να διαλέξει άλλο.",
       } as BL,
     },
     {
@@ -158,26 +167,17 @@ export const international: LongStudy = {
       body: {
         en: [
           "Pricing runs on the server and only on the server. The rep's device asks for a quote and displays the number it gets back. It cannot recompute that number, and it never holds the table the number came from.",
-          "The rules are the client's own, so the app follows them rather than improving on them. Totals are typed in per season, per category and per day count, and they already contain the first-day premium, so the app adds nothing on top. Past seven days it falls to a per-extra-day rate. Baby seats and additional drivers are free and stay free.",
+          "The rules are the client's own, so the app follows them rather than improving on them. Totals are typed in per season, per category and per day count, and they already contain the first-day premium, so the app adds nothing on top. Past seven days it falls to a per-extra-day rate.",
           "Two details keep the money honest over time. Money is integer cents everywhere, from the database through to the PDF, so no float ever touches a total. And the pricing period is stored on the booking itself, so editing next season's price list cannot quietly rewrite what a guest already agreed to pay.",
           "If a pickup date falls in no defined period, quoting fails loudly. It does not guess, and it does not borrow a neighbouring period's numbers.",
         ],
         el: [
           "Η τιμολόγηση τρέχει στον server και μόνο εκεί. Η συσκευή του αντιπροσώπου ζητά προσφορά και εμφανίζει τον αριθμό που παίρνει πίσω. Δεν μπορεί να τον ξαναϋπολογίσει, και δεν κρατά ποτέ τον πίνακα από τον οποίο προέκυψε.",
-          "Οι κανόνες είναι του ίδιου του πελάτη, οπότε η εφαρμογή τους ακολουθεί αντί να τους βελτιώνει. Τα σύνολα καταχωρούνται ανά περίοδο, κατηγορία και αριθμό ημερών, και περιέχουν ήδη την προσαύξηση της πρώτης ημέρας, οπότε η εφαρμογή δεν προσθέτει τίποτα από πάνω. Πέρα από τις επτά ημέρες ισχύει χρέωση ανά επιπλέον ημέρα. Τα παιδικά καθίσματα και οι πρόσθετοι οδηγοί είναι δωρεάν και παραμένουν δωρεάν.",
+          "Οι κανόνες είναι του ίδιου του πελάτη, οπότε η εφαρμογή τους ακολουθεί αντί να τους βελτιώνει. Τα σύνολα καταχωρούνται ανά περίοδο, κατηγορία και αριθμό ημερών, και περιέχουν ήδη την προσαύξηση της πρώτης ημέρας, οπότε η εφαρμογή δεν προσθέτει τίποτα από πάνω. Πέρα από τις επτά ημέρες ισχύει χρέωση ανά επιπλέον ημέρα.",
           "Δύο λεπτομέρειες κρατούν τα χρήματα τίμια στον χρόνο. Τα ποσά είναι ακέραια λεπτά παντού, από τη βάση ως το PDF, ώστε κανένα δεκαδικό να μην αγγίζει σύνολο. Και η περίοδος τιμολόγησης αποθηκεύεται πάνω στην ίδια την κράτηση, ώστε η επεξεργασία του τιμοκαταλόγου της επόμενης σεζόν να μην ξαναγράφει σιωπηλά αυτό που ένας επισκέπτης έχει ήδη συμφωνήσει.",
           "Αν η ημερομηνία παραλαβής δεν πέφτει σε καμία ορισμένη περίοδο, η προσφορά αποτυγχάνει θορυβωδώς. Δεν μαντεύει, και δεν δανείζεται τους αριθμούς της διπλανής περιόδου.",
         ],
       } as BLA,
-      image: "international/03-pricing",
-      alt: {
-        en: "A new booking on the rep's phone beside the server-side quote rule",
-        el: "Μια νέα κράτηση στο κινητό του αντιπροσώπου δίπλα στον κανόνα τιμολόγησης του server",
-      } as BL,
-      caption: {
-        en: "The rep sees one number for the booking in front of them, with the days it was built from.",
-        el: "Ο αντιπρόσωπος βλέπει έναν αριθμό για την κράτηση που έχει μπροστά του, με τις ημέρες από τις οποίες προέκυψε.",
-      } as BL,
     },
     {
       eyebrow: { en: "The paper", el: "Το χαρτί" } as BL,
@@ -201,30 +201,13 @@ export const international: LongStudy = {
       } as BLA,
       image: "international/04-pickup",
       alt: {
-        en: "The pickup sequence, a failed eligibility check, and the bilingual rental agreement",
-        el: "Η ακολουθία παραλαβής, ένας αποτυχημένος έλεγχος καταλληλότητας και το δίγλωσσο συμφωνητικό",
+        en: "The paper became a screen: the pickup's damage step on a car diagram, in Greek and in English",
+        el: "Το χαρτί έγινε οθόνη: το βήμα ζημιών της παραλαβής πάνω σε διάγραμμα αυτοκινήτου, στα ελληνικά και στα αγγλικά",
       } as BL,
       caption: {
-        en: "A guest who is too young for the category cannot be given the car, and the rep is not asked to decide that.",
-        el: "Ένας επισκέπτης πολύ νέος για την κατηγορία δεν μπορεί να πάρει το αυτοκίνητο, και ο αντιπρόσωπος δεν καλείται να το κρίνει.",
+        en: "Kilometres, fuel and existing damage are marked on a diagram of the car, signed with a finger on the phone, and the licence is read by OCR on the server. A failed scan never blocks a pickup: the fields can always be typed in.",
+        el: "Χιλιόμετρα, καύσιμο και υπάρχουσες ζημιές σημειώνονται πάνω σε διάγραμμα του αυτοκινήτου, η υπογραφή μπαίνει με το δάχτυλο στο κινητό, και το δίπλωμα διαβάζεται με OCR στον server. Ένα αποτυχημένο scan δεν μπλοκάρει ποτέ την παράδοση: τα στοιχεία μπαίνουν πάντα και με το χέρι.",
       } as BL,
-    },
-    {
-      eyebrow: { en: "Paying later", el: "Πληρωμή αργότερα" } as BL,
-      title: {
-        en: "Credit for guests who came back, cash up front from strangers",
-        el: "Πίστωση σε όσους ξαναήρθαν, μετρητά μπροστά από τους άγνωστους",
-      } as BL,
-      body: {
-        en: [
-          "Reps have a third way to take payment: pay after. A guest with a past rental that came back may pay nothing up front. Anyone else pays the one-day price in cash first, so a one-day rental from a new guest is simply refused. The rule is a trigger on the bookings table, so no screen can skip it.",
-          "The manager gets a Money screen: cash and card received over any period, what was given free, what is still owed, and every open balance with three ways to close it, paid in cash, paid by card or gratis. The cash screen shows each rep's open pay-after money beside the cash they carry.",
-        ],
-        el: [
-          "Οι αντιπρόσωποι έχουν έναν τρίτο τρόπο πληρωμής: πληρωμή αργότερα. Ένας επισκέπτης με προηγούμενη ενοικίαση που επιστράφηκε κανονικά μπορεί να μην πληρώσει τίποτα μπροστά. Όλοι οι άλλοι πληρώνουν πρώτα την τιμή μίας ημέρας σε μετρητά, οπότε μια μονοήμερη ενοικίαση από νέο επισκέπτη απλώς απορρίπτεται. Ο κανόνας είναι trigger στον πίνακα κρατήσεων, οπότε καμία οθόνη δεν μπορεί να τον παρακάμψει.",
-          "Ο ιδιοκτήτης έχει οθόνη Έσοδα: μετρητά και κάρτες που εισπράχθηκαν σε οποιοδήποτε διάστημα, τι δόθηκε δωρεάν, τι οφείλεται ακόμη, και κάθε ανοιχτό υπόλοιπο με τρεις τρόπους να κλείσει, πληρωμένο σε μετρητά, με κάρτα ή δωρεάν. Η οθόνη ταμείου δείχνει τα ανοιχτά ποσά πληρωμής αργότερα κάθε αντιπροσώπου δίπλα στα μετρητά που κρατά.",
-        ],
-      } as BLA,
     },
     {
       eyebrow: { en: "Two languages", el: "Δύο γλώσσες" } as BL,
@@ -244,6 +227,15 @@ export const international: LongStudy = {
           "Το συμφωνητικό είναι δίγλωσσο στην ίδια σελίδα και όχι σε δύο έγγραφα, που είναι αυτό που πραγματικά χρειάζεται ο επισκέπτης που υπογράφει σε μια ρεσεψιόν, και το ίδιο χρειάζεται και η ελληνική εταιρεία που το εκδίδει.",
         ],
       } as BLA,
+      image: "international/07-bilingual",
+      alt: {
+        en: "The same screen in two languages: the new booking form in Greek beside the same form in English",
+        el: "Η ίδια οθόνη σε δύο γλώσσες: η φόρμα νέας κράτησης στα ελληνικά δίπλα στην ίδια φόρμα στα αγγλικά",
+      } as BL,
+      caption: {
+        en: "Each user works in their own language from one codebase. Colour contrast is checked by a test, not by eye, for WCAG AA on every screen, and the menu follows the finger and closes with a swipe like a native app.",
+        el: "Κάθε χρήστης δουλεύει στη γλώσσα του από τον ίδιο κώδικα. Οι αντιθέσεις χρωμάτων ελέγχονται με test, όχι με το μάτι, για WCAG AA σε κάθε οθόνη, και το μενού ακολουθεί το δάχτυλο και κλείνει με swipe, όπως μια native εφαρμογή.",
+      } as BL,
     },
     {
       eyebrow: { en: "The room it is used in", el: "Ο χώρος όπου χρησιμοποιείται" } as BL,
@@ -334,8 +326,8 @@ export const international: LongStudy = {
     {
       when: { en: "September to October 2026", el: "Σεπτέμβριος ως Οκτώβριος 2026" } as BL,
       what: {
-        en: "A 30-day recycle bin, a fleet export to Excel, and pay after with the manager's Money screen.",
-        el: "Κάδος ανακύκλωσης 30 ημερών, εξαγωγή στόλου σε Excel, και πληρωμή αργότερα με την οθόνη Έσοδα του ιδιοκτήτη.",
+        en: "A 30-day recycle bin and a fleet export to Excel.",
+        el: "Κάδος ανακύκλωσης 30 ημερών και εξαγωγή στόλου σε Excel.",
       } as BL,
       done: true,
     },

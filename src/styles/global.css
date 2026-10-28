@@ -488,6 +488,7 @@ img.mk { filter: grayscale(1); }
 .chapter figure { margin: 12px 0 0; display: grid; gap: 12px; }
 .chapter figure a { display: block; background: var(--card); padding: clamp(10px, 2vw, 24px); border-radius: 4px; }
 .chapter figcaption { font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.boards { display: grid; gap: clamp(24px, 3vw, 40px); grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); align-items: start; }
 .code { margin: 0; padding: 20px 22px; border-radius: 14px; background: var(--night); color: var(--on-night); font: 14px/1.7 ui-monospace, "SF Mono", Menlo, Consolas, monospace; overflow-x: auto; max-width: 70ch; }
 .timeline { list-style: none; display: grid; }
 .timeline li { display: grid; grid-template-columns: 24px 1fr; gap: 16px; padding-bottom: 28px; position: relative; }
