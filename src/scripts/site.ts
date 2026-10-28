@@ -59,11 +59,12 @@ if (!reduced) {
   schedule(s, d, 9000 + Math.random() * 5000);
 }
 
-/* ── Header mark: the handheld opens once on load (CSS); hovering the brand replays it ── */
-const mark = $(".brand .ds");
-if (mark && finePointer && !reduced) {
-  mark.closest(".brand")!.addEventListener("pointerenter", () => {
-    mark.getAnimations({ subtree: true }).forEach((a) => { a.cancel(); a.play(); });
+/* ── Header mark: the handheld opens once on load (CSS); hovering the brand replays it,
+   letter flickers included so they stay in step with the screens ── */
+const brand = $(".brand");
+if (brand && finePointer && !reduced) {
+  brand.addEventListener("pointerenter", () => {
+    brand.getAnimations({ subtree: true }).forEach((a) => { a.cancel(); a.play(); });
   });
 }
 

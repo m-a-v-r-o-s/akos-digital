@@ -128,11 +128,12 @@ const socialIcons = person.socials as { label: string; href: string; icon: "gith
   <header class:list={["site-header", { dark: darkTop }]} data-header>
     <div class="wrap bar">
       <a class="brand" href={home}>
-        <span>Akos<span class="sr-only"> DS</span></span>
+        <span class="akos"><span class="sr-only">Akos</span><span aria-hidden="true"><span>A</span><span>k</span><span>o</span><span>s</span></span></span>
         <span class="ds" aria-hidden="true">
-          <span class="top"><span class="face"><span class="scr"><span class="glow">D</span></span></span><span class="lid"></span></span>
-          <span class="bot"><span class="hinge"></span><span class="pad"></span><span class="scr"><span class="glow">S</span></span><span class="abxy"></span></span>
+          <span class="top"><span class="face"><span class="scr"><span class="glow"></span></span></span><span class="lid"></span></span>
+          <span class="bot"><span class="hinge"></span><span class="pad"></span><span class="scr"><span class="glow"></span></span><span class="abxy"></span></span>
         </span>
+        <span class="sub">Digital<br />Services</span>
       </a>
       <nav class="nav" aria-label={t.mainNav}>
         {navItems.map((n) => (
