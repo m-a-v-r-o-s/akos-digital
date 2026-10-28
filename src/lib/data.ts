@@ -43,22 +43,22 @@ export const education = [
       el: "Piscine",
     } as BL,
     institution: {
-      en: "42 Heilbronn",
-      el: "42 Heilbronn",
+      en: "42 Heilbronn, Germany",
+      el: "42 Heilbronn, Γερμανία",
     } as BL,
     institutionUrl: "https://www.42heilbronn.de/en/",
     logo: { src: "/logos/42-heilbronn.svg", width: 589, height: 200 },
     description: {
-      en: "Attended the full month-long Piscine at 42 Heilbronn, an intensive peer-to-peer coding immersion.",
-      el: "Συμμετοχή στο πλήρες μηνιαίο Piscine της 42 Heilbronn, μία εντατική peer-to-peer εμβάθυνση στον προγραμματισμό.",
+      en: "Attended the full month-long Piscine at 42 Heilbronn in Germany, an intensive peer-to-peer coding immersion.",
+      el: "Συμμετοχή στο πλήρες μηνιαίο Piscine της 42 Heilbronn στη Γερμανία, μία εντατική peer-to-peer εμβάθυνση στον προγραμματισμό.",
     } as BL,
     tags: ["C++", "Python", "Shell", "Algorithms", "Peer Learning", "Logic", "AI"],
   },
   {
-    period: "2018 - 2023",
+    period: "2018 - 2024",
     degree: {
-      en: "Informatics & Telematics",
-      el: "Πληροφορική και Τηλεματική",
+      en: "BSc in Informatics & Telematics",
+      el: "Πτυχίο (BSc) Πληροφορικής και Τηλεματικής",
     } as BL,
     institution: {
       en: "Harokopio University of Athens",
@@ -67,8 +67,8 @@ export const education = [
     institutionUrl: "https://www.hua.gr/",
     logo: { src: "/logos/harokopio.webp", width: 300, height: 300 },
     description: {
-      en: "Studied at the Department of Informatics and Telematics.",
-      el: "Φοίτηση στο Τμήμα Πληροφορικής και Τηλεματικής.",
+      en: "Four-year undergraduate degree (BSc) from the Department of Informatics and Telematics.",
+      el: "Τετραετές προπτυχιακό πτυχίο (BSc) του Τμήματος Πληροφορικής και Τηλεματικής.",
     } as BL,
     tags: ["Informatics", "Telematics", "Networks", "Programming", "Mathematics", "AI"],
   },
