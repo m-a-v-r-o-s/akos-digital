@@ -87,11 +87,11 @@ export const olympus: LongStudy = {
       } as BL,
       body: {
         en: [
-          "Capacity, bib uniqueness and duplicate entries are enforced by Postgres itself, not by application code that two requests arriving together could both slip past. Every constraint and SQL function has its own database test.",
+          "Capacity, bib uniqueness and duplicate entries are enforced by Postgres itself, not by application code that two requests arriving together could both slip past. Every constraint and SQL function has its own database test, 324 checks in pgTAP.",
           "Before summer registrations open, a load test fires a thousand checkouts at the same moment. The race fills to exactly its capacity, and not one place more.",
         ],
         el: [
-          "Η χωρητικότητα, η μοναδικότητα των αριθμών και οι διπλές δηλώσεις ελέγχονται από την ίδια την Postgres, όχι από κώδικα εφαρμογής που δύο αιτήματα μαζί θα μπορούσαν να προσπεράσουν. Κάθε περιορισμός και κάθε συνάρτηση SQL έχει το δικό της τεστ στη βάση.",
+          "Η χωρητικότητα, η μοναδικότητα των αριθμών και οι διπλές δηλώσεις ελέγχονται από την ίδια την Postgres, όχι από κώδικα εφαρμογής που δύο αιτήματα μαζί θα μπορούσαν να προσπεράσουν. Κάθε περιορισμός και κάθε συνάρτηση SQL έχει το δικό της τεστ στη βάση, 324 έλεγχοι σε pgTAP.",
           "Πριν ανοίξουν οι καλοκαιρινές εγγραφές, ένα τεστ φόρτου στέλνει χίλιες πληρωμές την ίδια στιγμή. Ο αγώνας γεμίζει ακριβώς ως τη χωρητικότητά του, και ούτε μία θέση παραπάνω.",
         ],
       } as BLA,
@@ -106,10 +106,12 @@ export const olympus: LongStudy = {
         en: [
           "About 13,000 athletes and 21,000 results came over from the old system and the organiser's timing archives. The old system had often created several records for the same person, so duplicates with the same name, birth date and sex are merged, and anything uncertain lands on a review screen for the secretariat instead of being guessed.",
           "Each athlete gets a page with every result since 2004, and a finisher can download a certificate for any race they completed.",
+          "The same archive feeds a records page for every race, with the fastest men and women overall, per age group and the best Greek and foreign finishers, and a statistics page per year built from aggregates only, with no names and no one's age on it.",
         ],
         el: [
           "Περίπου 13.000 αθλητές και 21.000 αποτελέσματα μεταφέρθηκαν από το παλιό σύστημα και τα αρχεία χρονομέτρησης του διοργανωτή. Το παλιό σύστημα συχνά είχε φτιάξει πολλές εγγραφές για το ίδιο πρόσωπο, οπότε τα διπλότυπα με ίδιο όνομα, ημερομηνία γέννησης και φύλο ενώνονται, και ό,τι είναι αβέβαιο πηγαίνει σε οθόνη ελέγχου για τη γραμματεία αντί να μαντεύεται.",
           "Κάθε αθλητής έχει σελίδα με κάθε αποτέλεσμα από το 2004, και όποιος τερμάτισε κατεβάζει πιστοποιητικό για κάθε αγώνα που ολοκλήρωσε.",
+          "Το ίδιο αρχείο τροφοδοτεί μια σελίδα ρεκόρ για κάθε αγώνα, με τους ταχύτερους άνδρες και γυναίκες συνολικά, ανά ηλικιακή ομάδα και τον καλύτερο Έλληνα και ξένο αθλητή, και μια σελίδα στατιστικών ανά χρονιά φτιαγμένη μόνο από συγκεντρωτικά στοιχεία, χωρίς ονόματα και χωρίς την ηλικία κανενός.",
         ],
       } as BLA,
       image: "olympus/results",

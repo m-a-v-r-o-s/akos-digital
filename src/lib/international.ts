@@ -54,11 +54,11 @@ export const international: LongStudy = {
     },
     {
       n: { en: "2", el: "2" } as BL,
-      k: { en: "languages, 1,082 strings each, kept in step by a test", el: "γλώσσες, 1.082 κείμενα η καθεμία, με τεστ που τις κρατά ίσες" } as BL,
+      k: { en: "languages, 1,099 strings each, kept in step by a test", el: "γλώσσες, 1.099 κείμενα η καθεμία, με τεστ που τις κρατά ίσες" } as BL,
     },
     {
-      n: { en: "47", el: "47" } as BL,
-      k: { en: "test files, 31 of them against a real Postgres", el: "αρχεία τεστ, τα 31 πάνω σε πραγματική Postgres" } as BL,
+      n: { en: "51", el: "51" } as BL,
+      k: { en: "test files, 33 of them against a real Postgres", el: "αρχεία τεστ, τα 33 πάνω σε πραγματική Postgres" } as BL,
     },
   ],
 
@@ -210,6 +210,23 @@ export const international: LongStudy = {
       } as BL,
     },
     {
+      eyebrow: { en: "Paying later", el: "Πληρωμή αργότερα" } as BL,
+      title: {
+        en: "Credit for guests who came back, cash up front from strangers",
+        el: "Πίστωση σε όσους ξαναήρθαν, μετρητά μπροστά από τους άγνωστους",
+      } as BL,
+      body: {
+        en: [
+          "Reps have a third way to take payment: pay after. A guest with a past rental that came back may pay nothing up front. Anyone else pays the one-day price in cash first, so a one-day rental from a new guest is simply refused. The rule is a trigger on the bookings table, so no screen can skip it.",
+          "The manager gets a Money screen: cash and card received over any period, what was given free, what is still owed, and every open balance with three ways to close it, paid in cash, paid by card or gratis. The cash screen shows each rep's open pay-after money beside the cash they carry.",
+        ],
+        el: [
+          "Οι αντιπρόσωποι έχουν έναν τρίτο τρόπο πληρωμής: πληρωμή αργότερα. Ένας επισκέπτης με προηγούμενη ενοικίαση που επιστράφηκε κανονικά μπορεί να μην πληρώσει τίποτα μπροστά. Όλοι οι άλλοι πληρώνουν πρώτα την τιμή μίας ημέρας σε μετρητά, οπότε μια μονοήμερη ενοικίαση από νέο επισκέπτη απλώς απορρίπτεται. Ο κανόνας είναι trigger στον πίνακα κρατήσεων, οπότε καμία οθόνη δεν μπορεί να τον παρακάμψει.",
+          "Ο ιδιοκτήτης έχει οθόνη Έσοδα: μετρητά και κάρτες που εισπράχθηκαν σε οποιοδήποτε διάστημα, τι δόθηκε δωρεάν, τι οφείλεται ακόμη, και κάθε ανοιχτό υπόλοιπο με τρεις τρόπους να κλείσει, πληρωμένο σε μετρητά, με κάρτα ή δωρεάν. Η οθόνη ταμείου δείχνει τα ανοιχτά ποσά πληρωμής αργότερα κάθε αντιπροσώπου δίπλα στα μετρητά που κρατά.",
+        ],
+      } as BLA,
+    },
+    {
       eyebrow: { en: "Two languages", el: "Δύο γλώσσες" } as BL,
       title: {
         en: "Greek and English from the first commit",
@@ -218,12 +235,12 @@ export const international: LongStudy = {
       body: {
         en: [
           "The reps are Greek. Half the guests are not. Retrofitting a second language into a working app is a rewrite, so there has never been a hard-coded user-facing string in this codebase.",
-          "Both languages carry 1,082 strings, and a test fails the build if one of them grows a key the other does not have. Language is a per-user setting rather than a browser guess, because a rep's phone is theirs and a guest's expectations are not.",
+          "Both languages carry 1,099 strings, and a test fails the build if one of them grows a key the other does not have. Language is a per-user setting rather than a browser guess, because a rep's phone is theirs and a guest's expectations are not.",
           "The rental agreement is bilingual on the same page rather than in two documents, which is what a guest signing at a desk actually needs, and what a Greek company issuing it needs too.",
         ],
         el: [
           "Οι αντιπρόσωποι είναι Έλληνες. Οι μισοί επισκέπτες δεν είναι. Το να προστεθεί δεύτερη γλώσσα σε μια εφαρμογή που ήδη δουλεύει είναι ξαναγράψιμο, οπότε σε αυτόν τον κώδικα δεν υπήρξε ποτέ κείμενο χρήστη γραμμένο μέσα στον κώδικα.",
-          "Και οι δύο γλώσσες κρατούν 1.082 κείμενα, και ένα τεστ ρίχνει το build αν η μία αποκτήσει κλειδί που δεν έχει η άλλη. Η γλώσσα είναι ρύθμιση ανά χρήστη και όχι εικασία του browser, γιατί το κινητό του αντιπροσώπου είναι δικό του, ενώ οι προσδοκίες του επισκέπτη δεν είναι.",
+          "Και οι δύο γλώσσες κρατούν 1.099 κείμενα, και ένα τεστ ρίχνει το build αν η μία αποκτήσει κλειδί που δεν έχει η άλλη. Η γλώσσα είναι ρύθμιση ανά χρήστη και όχι εικασία του browser, γιατί το κινητό του αντιπροσώπου είναι δικό του, ενώ οι προσδοκίες του επισκέπτη δεν είναι.",
           "Το συμφωνητικό είναι δίγλωσσο στην ίδια σελίδα και όχι σε δύο έγγραφα, που είναι αυτό που πραγματικά χρειάζεται ο επισκέπτης που υπογράφει σε μια ρεσεψιόν, και το ίδιο χρειάζεται και η ελληνική εταιρεία που το εκδίδει.",
         ],
       } as BLA,
@@ -255,14 +272,16 @@ export const international: LongStudy = {
       } as BL,
       body: {
         en: [
-          "47 test files, 31 of which run against a real Postgres with the same policies that ship. No service-role shortcuts and no route handlers in the way: a rep session doing its worst, checked against what it is allowed to see.",
+          "51 test files, 33 of which run against a real Postgres with the same policies that ship. No service-role shortcuts and no route handlers in the way: a rep session doing its worst, checked against what it is allowed to see.",
           "The two engines were written before the screens that use them, because a wrong availability answer or a wrong price is not a visual bug and would not have been caught by looking.",
-          "45 migrations, every write audit-logged, and a permanent read-only audit trail the manager can filter by actor, entity and date. When something is disputed in August, the answer exists.",
+          "50 migrations, every write audit-logged, and a permanent read-only audit trail the manager can filter by actor, entity and date. When something is disputed in August, the answer exists.",
+          "The same log is the recycle bin: a hotel, car, price sheet, date range or block deleted in the last 30 days can be restored from settings, with everything that was deleted along with it.",
         ],
         el: [
-          "47 αρχεία τεστ, τα 31 από τα οποία τρέχουν πάνω σε πραγματική Postgres με τις ίδιες πολιτικές που βγαίνουν στην παραγωγή. Χωρίς παρακάμψεις service-role και χωρίς route handlers στη μέση: μια συνεδρία αντιπροσώπου που κάνει ό,τι χειρότερο μπορεί, ελεγμένη απέναντι σε αυτό που της επιτρέπεται να δει.",
+          "51 αρχεία τεστ, τα 33 από τα οποία τρέχουν πάνω σε πραγματική Postgres με τις ίδιες πολιτικές που βγαίνουν στην παραγωγή. Χωρίς παρακάμψεις service-role και χωρίς route handlers στη μέση: μια συνεδρία αντιπροσώπου που κάνει ό,τι χειρότερο μπορεί, ελεγμένη απέναντι σε αυτό που της επιτρέπεται να δει.",
           "Οι δύο μηχανές γράφτηκαν πριν από τις οθόνες που τις χρησιμοποιούν, γιατί μια λάθος απάντηση διαθεσιμότητας ή μια λάθος τιμή δεν είναι οπτικό σφάλμα και δεν θα φαινόταν με το μάτι.",
-          "45 migrations, κάθε εγγραφή καταγεγραμμένη, και ένα μόνιμο αρχείο ελέγχου μόνο για ανάγνωση που ο ιδιοκτήτης φιλτράρει ανά χρήστη, οντότητα και ημερομηνία. Όταν κάτι αμφισβητηθεί τον Αύγουστο, η απάντηση υπάρχει.",
+          "50 migrations, κάθε εγγραφή καταγεγραμμένη, και ένα μόνιμο αρχείο ελέγχου μόνο για ανάγνωση που ο ιδιοκτήτης φιλτράρει ανά χρήστη, οντότητα και ημερομηνία. Όταν κάτι αμφισβητηθεί τον Αύγουστο, η απάντηση υπάρχει.",
+          "Το ίδιο αρχείο είναι και ο κάδος ανακύκλωσης: ένα ξενοδοχείο, αυτοκίνητο, τιμοκατάλογος, διάστημα ημερομηνιών ή μπλοκάρισμα που διαγράφηκε τις τελευταίες 30 ημέρες επαναφέρεται από τις ρυθμίσεις, μαζί με ό,τι διαγράφηκε μαζί του.",
         ],
       } as BLA,
     },
@@ -309,6 +328,14 @@ export const international: LongStudy = {
       what: {
         en: "The bilingual contract, the on-screen signature and licence OCR with a manual fallback that always works.",
         el: "Το δίγλωσσο συμφωνητικό, η υπογραφή στην οθόνη και το OCR διπλώματος με χειροκίνητη εναλλακτική που δουλεύει πάντα.",
+      } as BL,
+      done: true,
+    },
+    {
+      when: { en: "September to October 2026", el: "Σεπτέμβριος ως Οκτώβριος 2026" } as BL,
+      what: {
+        en: "A 30-day recycle bin, a fleet export to Excel, and pay after with the manager's Money screen.",
+        el: "Κάδος ανακύκλωσης 30 ημερών, εξαγωγή στόλου σε Excel, και πληρωμή αργότερα με την οθόνη Έσοδα του ιδιοκτήτη.",
       } as BL,
       done: true,
     },
