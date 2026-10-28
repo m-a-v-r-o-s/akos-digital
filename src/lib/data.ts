@@ -1274,6 +1274,7 @@ export const caseStudies: CaseStudy[] = [
     } as BL,
     stack: ["Astro", "Supabase Postgres", "Piraeus e-POS", "myDATA", "Bilingual"],
     image: "olympus-app",
+    clip: { src: "/work/olympus-hero-{lang}", width: 1600, height: 1000, once: true, mobile: { src: "/work/olympus-hero-mobile-{lang}", width: 780, height: 1688 } },
   },
   {
     slug: "blessed-coffee",
@@ -1457,6 +1458,7 @@ export const caseStudies: CaseStudy[] = [
     logo: "/logos/ellietattooer.webp",
     stack: ["Astro", "React islands", "Stripe", "Motion", "Schema.org"],
     image: "ellie",
+    clip: { src: "/work/ellie-hero", width: 1600, height: 1000, once: true, mobile: { src: "/work/ellie-hero-mobile", width: 780, height: 1688 } },
   },
   {
     slug: "mastichari-massage",
@@ -1546,6 +1548,7 @@ export const caseStudies: CaseStudy[] = [
     logo: "/logos/mastichari.webp",
     stack: ["Eleventy", "Fastify", "JavaScript", "10 languages", "Schema.org"],
     image: "mastichari",
+    clip: { src: "/work/mastichari-hero-{lang}", width: 1600, height: 1000, once: true, mobile: { src: "/work/mastichari-hero-mobile-{lang}", width: 780, height: 1688 } },
   },
   {
     slug: "those-rambling-fools",
@@ -1631,6 +1634,6 @@ export const caseStudies: CaseStudy[] = [
     logo: "/logos/trf.webp",
     stack: ["Astro", "React islands", "Web Audio", "View Transitions", "Schema.org"],
     image: "trf",
-    clip: { src: "/work/trf-turntable", width: 1280, height: 800 },
+    clip: { src: "/work/trf-hero", width: 1600, height: 1000, once: true, mobile: { src: "/work/trf-hero-mobile", width: 780, height: 1688 } },
   },
 ];
