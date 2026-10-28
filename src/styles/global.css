@@ -419,7 +419,8 @@ img.mk { filter: grayscale(1); }
 .lines h3 { font-size: clamp(24px, 2.2vw, 30px); letter-spacing: -0.015em; }
 .lines p { color: var(--ink-2); font-size: 17px; }
 .edu { display: grid; gap: 28px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
-.edu > div { display: grid; gap: 10px; padding-top: 20px; border-top: 1px solid var(--ink); align-content: start; }
+/* Each card spans five shared rows (logo, period, title, description, tags), so side-by-side descriptions line up whatever the title wraps to. */
+.edu > div { display: grid; grid-row: span 5; grid-template-rows: subgrid; gap: 10px; padding-top: 20px; border-top: 1px solid var(--ink); align-content: start; }
 .edu h3 { font-size: 26px; letter-spacing: -0.015em; }
 .edu-logo { height: 64px; width: auto; margin-bottom: 8px; }
 
