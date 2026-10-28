@@ -49,8 +49,8 @@ export const education = [
     institutionUrl: "https://www.42heilbronn.de/en/",
     logo: { src: "/logos/42-heilbronn.svg", width: 589, height: 200 },
     description: {
-      en: "Attended the full month-long Piscine at 42 Heilbronn in Germany, an intensive peer-to-peer coding immersion.",
-      el: "Συμμετοχή στο πλήρες μηνιαίο Piscine της 42 Heilbronn στη Γερμανία, μία εντατική peer-to-peer εμβάθυνση στον προγραμματισμό.",
+      en: "Was selected for the full month-long Piscine at 42 Heilbronn in Germany, an intensive peer-to-peer coding immersion.",
+      el: "Επιλέχθηκα για το πλήρες μηνιαίο Piscine της 42 Heilbronn στη Γερμανία, μία εντατική peer-to-peer εμβάθυνση στον προγραμματισμό.",
     } as BL,
     tags: ["C++", "Python", "Shell", "Algorithms", "Peer Learning", "Logic", "AI"],
   },
