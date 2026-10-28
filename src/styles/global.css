@@ -155,11 +155,15 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; }
-/* Lockup: the handheld, then the akos wordmark over a tracked DIGITAL SERVICES line */
-.brand .word { display: flex; flex-direction: column; gap: .2em; }
-.brand .akos { font-size: 1.5em; font-weight: 600; letter-spacing: -0.05em; line-height: .78; }
-.brand .sub { font-size: max(8px, .36em); font-weight: 600; letter-spacing: .22em; line-height: 1; text-transform: uppercase; color: #9a938a; }
+/* Lockup: the handheld, then the Akos wordmark over DIGITAL / SERVICES, about as tall as the handheld */
+.brand .word { display: flex; flex-direction: column; gap: .16em; }
+.brand .akos { font-size: 1.1em; font-weight: 600; letter-spacing: -0.05em; line-height: .78; }
+.brand .akos [aria-hidden] > :last-child { letter-spacing: 0; } /* the s ends the box where its ink ends */
+.brand .sub { font-size: max(8px, .36em); font-weight: 600; line-height: 1.15; text-transform: uppercase; color: #9a938a; }
 .dark .brand .sub { color: #77716a; }
+/* Akos sets the width; DIGITAL and SERVICES each spread their letters edge to edge under it */
+.brand .sub [aria-hidden] { display: grid; }
+.brand .sub .ln { display: flex; justify-content: space-between; }
 /* D and S stand out from the rest of the line */
 .brand .sub .hi { color: var(--ink); }
 .dark .brand .sub .hi { color: var(--on-night); }
@@ -197,7 +201,7 @@ ul, ol { margin: 0; padding: 0; }
   .ds .glow { animation: boot .7s steps(1, end) .55s both, flicker 9s steps(1, end) 3s infinite; }
   .ds .bot .glow { animation-delay: .65s, 7.5s; }
   /* brand letters flicker on their own clocks, set per letter in Base.astro */
-  .flick [aria-hidden] > span { display: inline-block; animation: flicker var(--fp) steps(1, end) var(--fd) infinite; }
+  .flick [aria-hidden] span:not(.ln) { display: inline-block; animation: flicker var(--fp) steps(1, end) var(--fd) infinite; }
 }
 @keyframes lidOpen { from { transform: rotateX(-180deg); } to { transform: rotateX(15deg); } }
 @keyframes flicker { 95% { opacity: .55; } 96% { opacity: 1; } 97% { opacity: .75; } 98% { opacity: 1; } }

@@ -141,7 +141,7 @@ const socialIcons = person.socials as { label: string; href: string; icon: "gith
         </span>
         <span class="word">
           <span class="akos flick"><span class="sr-only">Akos</span><span aria-hidden="true">{flick("Akos").map((l) => <span style={l.style}>{l.ch}</span>)}</span></span>
-          <span class="sub flick"><span class="sr-only">Digital Services</span><span aria-hidden="true">{flick("Digital", 4).map((l, i) => <span class:list={{ hi: !i }} style={l.style}>{l.ch}</span>)}{" "}{flick("Services", 2).map((l, i) => <span class:list={{ hi: !i }} style={l.style}>{l.ch}</span>)}</span></span>
+          <span class="sub flick"><span class="sr-only">Digital Services</span><span aria-hidden="true"><span class="ln">{flick("Digital", 4).map((l, i) => <span class:list={{ hi: !i }} style={l.style}>{l.ch}</span>)}</span><span class="ln">{flick("Services", 2).map((l, i) => <span class:list={{ hi: !i }} style={l.style}>{l.ch}</span>)}</span></span></span>
         </span>
       </a>
       <nav class="nav" aria-label={t.mainNav}>
