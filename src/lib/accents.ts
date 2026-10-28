@@ -1,5 +1,5 @@
 /**
- * The eight accents the site drifts through (src/scripts/site.ts).
+ * The seven accents the site drifts through (src/scripts/site.ts).
  *
  * A curated set: scripts/check-accent-contrast.ts checks every colour, and
  * every step of the fade between any two of them, against the places the
@@ -31,7 +31,6 @@ export const accents: Accent[] = [
   { key: "lavender",   rgb: "180 154 232" },
   { key: "teal",       rgb: "79 196 176" },
   { key: "sage",       rgb: "143 191 106" },
-  { key: "platinum",   rgb: "198 203 209" },
 ];
 
 export const accentKeys = accents.map((a) => a.key);

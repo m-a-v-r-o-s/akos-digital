@@ -6,7 +6,7 @@
  * the round "Get in touch") and as text on the dark sections. Both are the
  * same pair, ink against the accent, and WCAG 2.2 AA (4.5:1) is the floor.
  * The site fades from one accent to another, so the check covers every step
- * of every fade, not just the eight end points: browsers interpolate a colour
+ * of every fade, not just the seven end points: browsers interpolate a colour
  * transition in Oklab, and sRGB is checked too in case one doesn't.
  */
 import assert from "node:assert/strict";
@@ -48,7 +48,7 @@ const fromOklab = ([L, a, b]: number[]): RGB => {
 };
 const mix = (a: number[], b: number[], t: number) => a.map((v, i) => v + (b[i] - v) * t);
 
-assert.equal(accents.length, 8, "the set is eight colours; adding a ninth is a decision, not a tweak");
+assert.equal(accents.length, 7, "the set is seven colours; adding an eighth is a decision, not a tweak");
 assert.equal(new Set(accentKeys).size, accents.length, "accent keys must be unique");
 assert.equal(accents.find((a) => a.key === DEFAULT_ACCENT)?.rgb, "232 163 60", "marigold is the brand and must not drift");
 

@@ -27,7 +27,7 @@ button, [role="button"], summary { -webkit-user-select: none; user-select: none;
 }
 
 /* ── Tokens ──
-   Paper and ink are the brand's own pair. The accent moves through eight
+   Paper and ink are the brand's own pair. The accent moves through seven
    curated colours, all light: it is only ever a fill under ink text, or text
    on the dark sections, the two places scripts/check-accent-contrast.ts
    proves it clears AA, at every step of every fade. On paper, coloured text
@@ -155,6 +155,8 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; }
+/* Akos runs up the side of the handheld, bottom to top, about as tall as it */
+.brand .akos { writing-mode: vertical-rl; rotate: 180deg; font-size: .76em; line-height: 1; }
 .brand .sub { font-size: .64em; line-height: 1.1; letter-spacing: .01em; }
 
 /* Header mark: a silver dual-screen handheld drawn in CSS. The lid springs open on load
