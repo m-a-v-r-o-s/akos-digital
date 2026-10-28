@@ -1220,7 +1220,7 @@ export type CaseStudy = {
   /** Base name of the screenshots in src/assets/work. */
   image: string;
   /**
-   * A clip of the live site in place of the desktop screenshot: public/work/<src>.webm/.mp4,
+   * A clip of the live site in place of the desktop screenshot: public/work/<src>.webm/.mp4 ("{lang}" in <src> picks a per-language render),
    * with <src>.webp as the poster. `once` plays a single time and rests on its last frame.
    * `mobile` does the same for the phone frame, in place of the phone screenshot.
    */
@@ -1251,6 +1251,7 @@ export const caseStudies: CaseStudy[] = [
     logo: "/logos/international.webp",
     stack: ["Next.js", "TypeScript", "Postgres RLS", "Android TWA", "Bilingual"],
     image: "international",
+    clip: { src: "/work/international-fleet-{lang}", width: 1600, height: 1000, once: true, mobile: { src: "/work/international-fleet-mobile-{lang}", width: 780, height: 1732 } },
   },
   {
     slug: "olympus-marathon",
