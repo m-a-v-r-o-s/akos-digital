@@ -155,15 +155,11 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; }
-/* D and S are hollow outlines, the θ wireframe's thin-line look. On paper the accent is too
-   light, so the stroke goes 45% into ink (≥ 5.1:1 through every fade). */
-.brand .d, .brand .s { --ds-line: color-mix(in srgb, var(--accent) 45%, var(--ink)); color: transparent; -webkit-text-stroke: 1px var(--ds-line); font-size: 1.2em; line-height: 1; }
-.dark .brand .d, .dark .brand .s { --ds-line: var(--accent); }
 
 /* Header mark: a silver dual-screen handheld drawn in CSS. The lid springs open on load
-   (and again on hover, site.ts), then both screens boot in the DS colour.
+   (and again on hover, site.ts), then both screens boot in the DS colour, D on top, S below.
    Inner parts are placed in % so the whole thing scales from --w and --h. */
-.brand .ds { --w: 34px; --h: 18px; --silver: linear-gradient(180deg, #f1f2f4 0%, #cfd2d6 55%, #a9adb2 100%); --bezel: #1b1c1e; --mark: #2b2c2e;
+.brand .ds { --w: 40px; --h: 21px; --silver: linear-gradient(180deg, #f1f2f4 0%, #cfd2d6 55%, #a9adb2 100%); --bezel: #1b1c1e; --mark: #2b2c2e;
   position: relative; flex: none; width: var(--w); height: calc(var(--h) * 2 + 2px); perspective: 160px; transform-style: preserve-3d; }
 .ds .top, .ds .bot { position: absolute; left: 0; width: 100%; height: var(--h); }
 /* Open to about 165° rather than flat: the lid leans back 15° from the base. */
@@ -175,7 +171,7 @@ ul, ol { margin: 0; padding: 0; }
 .ds .lid::after { content: ""; position: absolute; left: 32%; right: 32%; top: 34%; bottom: 34%; border-radius: 50%; box-shadow: inset 0 0 0 .75px rgb(20 18 16 / .2); }
 .ds .scr { position: absolute; left: 22%; right: 22%; top: 10%; bottom: 14%; border-radius: 1.5px; background: var(--bezel); padding: 2px; }
 .ds .bot .scr { left: 24%; right: 24%; top: 12%; bottom: 12%; background: none; }
-.ds .glow { display: block; width: 100%; height: 100%; border-radius: 1px; }
+.ds .glow { display: grid; place-items: center; width: 100%; height: 100%; border-radius: 1px; color: var(--bezel); font-size: calc(var(--h) * .55); font-weight: 700; line-height: 1; }
 .ds .glow { background: var(--accent); }
 .ds .hinge { position: absolute; left: 22%; right: 22%; top: -1.5px; height: 3px; border-radius: 1.5px; background: linear-gradient(180deg, #8d9196, #dcdfe2 45%, #8d9196); }
 /* generic controls, kept unlike any real console: two buttons stacked vertically left, a cross
@@ -193,7 +189,7 @@ ul, ol { margin: 0; padding: 0; }
 @keyframes lidOpen { from { transform: rotateX(-180deg); } to { transform: rotateX(15deg); } }
 @keyframes flicker { 95% { opacity: .55; } 96% { opacity: 1; } 97% { opacity: .75; } 98% { opacity: 1; } }
 @keyframes boot { 0% { opacity: 0; } 20% { opacity: 1; background: #fff; } 40% { opacity: .25; } 60% { opacity: 1; } }
-@media (max-width: 899px) { .brand .ds { --w: 28px; --h: 15px; } }
+@media (max-width: 899px) { .brand .ds { --w: 32px; --h: 17px; } }
 .nav { display: flex; align-items: center; gap: 4px 26px; flex-wrap: wrap; }
 .nav a { text-decoration: none; font-size: 17px; position: relative; padding-block: 6px; }
 .nav a::after { content: ""; position: absolute; left: 50%; bottom: -2px; width: 5px; height: 5px; border-radius: 50%; background: currentColor; transform: translateX(-50%) scale(0); transition: transform 300ms var(--spring-snappy); }
