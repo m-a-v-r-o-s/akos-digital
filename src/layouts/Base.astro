@@ -134,12 +134,15 @@ const socialIcons = person.socials as { label: string; href: string; icon: "gith
   <header class:list={["site-header", { dark: darkTop }]} data-header>
     <div class="wrap bar">
       <a class="brand" href={home}>
-        <span class="flick"><span class="sr-only">Akos</span><span aria-hidden="true">{flick("Akos").map((l) => <span style={l.style}>{l.ch}</span>)}</span></span>
         <span class="ds" aria-hidden="true">
           <span class="top"><span class="face"><span class="scr"><span class="glow"></span></span></span><span class="lid"></span></span>
-          <span class="bot"><span class="hinge"></span><span class="pad"></span><span class="scr"><span class="glow"></span></span><span class="abxy"></span></span>
+          <span class="hinge"></span>
+          <span class="bot"><span class="pad"></span><span class="scr"><span class="glow"></span></span><span class="abxy"></span></span>
         </span>
-        <span class="sub flick"><span class="sr-only">Digital Services</span><span aria-hidden="true">{flick("Digital", 4).map((l) => <span style={l.style}>{l.ch}</span>)}<br />{flick("Services", 2).map((l) => <span style={l.style}>{l.ch}</span>)}</span></span>
+        <span class="word">
+          <span class="akos flick"><span class="sr-only">Akos</span><span aria-hidden="true">{flick("akos").map((l) => <span style={l.style}>{l.ch}</span>)}</span></span>
+          <span class="sub flick"><span class="sr-only">Digital Services</span><span aria-hidden="true">{flick("Digital", 4).map((l) => <span style={l.style}>{l.ch}</span>)}{" "}{flick("Services", 2).map((l) => <span style={l.style}>{l.ch}</span>)}</span></span>
+        </span>
       </a>
       <nav class="nav" aria-label={t.mainNav}>
         {navItems.map((n) => (
