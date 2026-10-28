@@ -155,14 +155,12 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; }
-/* On paper the accents are too light for text, so D and S take them 45% into ink (≥ 5.1:1 through every fade). */
-.brand .d { color: color-mix(in srgb, var(--accent) 45%, var(--ink)); }
-.brand .s { color: color-mix(in srgb, var(--accent-2) 45%, var(--ink)); }
-.dark .brand .d { color: var(--accent); }
-.dark .brand .s { color: var(--accent-2); }
+/* On paper the accent is too light for text, so D and S take them 45% into ink (≥ 5.1:1 through every fade). */
+.brand .d, .brand .s { color: color-mix(in srgb, var(--accent) 45%, var(--ink)); }
+.dark .brand .d, .dark .brand .s { color: var(--accent); }
 
 /* Header mark: a silver dual-screen handheld drawn in CSS. The lid springs open on load
-   (and again on hover, site.ts), then the screens boot in the D and S colours.
+   (and again on hover, site.ts), then both screens boot in the DS colour.
    Inner parts are placed in % so the whole thing scales from --w and --h. */
 .brand .ds { --w: 34px; --h: 18px; --silver: linear-gradient(180deg, #f1f2f4 0%, #cfd2d6 55%, #a9adb2 100%); --bezel: #1b1c1e; --mark: #2b2c2e;
   position: relative; flex: none; width: var(--w); height: calc(var(--h) * 2 + 2px); perspective: 160px; transform-style: preserve-3d; }
@@ -177,8 +175,7 @@ ul, ol { margin: 0; padding: 0; }
 .ds .scr { position: absolute; left: 19%; right: 19%; top: 10%; bottom: 14%; border-radius: 1.5px; background: var(--bezel); padding: 1px; }
 .ds .bot .scr { top: 12%; bottom: 12%; background: #2a2b2d; }
 .ds .glow { display: block; width: 100%; height: 100%; border-radius: 1px; }
-.ds .top .glow { background: var(--accent); }
-.ds .bot .glow { background: var(--accent-2); }
+.ds .glow { background: var(--accent); }
 .ds .hinge { position: absolute; left: 22%; right: 22%; top: -1.5px; height: 3px; border-radius: 1.5px; background: linear-gradient(180deg, #8d9196, #dcdfe2 45%, #8d9196); }
 /* generic controls: one round pad left, two round buttons right */
 .ds .pad, .ds .abxy { position: absolute; top: 50%; width: 11%; aspect-ratio: 1; transform: translateY(-50%); }
