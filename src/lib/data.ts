@@ -37,7 +37,7 @@ export const person = {
 
 export const education = [
   {
-    period: "July 2023",
+    period: "Summer Camp 2023",
     degree: {
       en: "Piscine",
       el: "Piscine",
