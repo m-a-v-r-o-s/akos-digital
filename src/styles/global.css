@@ -158,8 +158,11 @@ ul, ol { margin: 0; padding: 0; }
 /* Lockup: the handheld, then the akos wordmark over a tracked DIGITAL SERVICES line */
 .brand .word { display: flex; flex-direction: column; gap: .2em; }
 .brand .akos { font-size: 1.5em; font-weight: 600; letter-spacing: -0.05em; line-height: .78; }
-.brand .sub { font-size: max(8px, .36em); font-weight: 600; letter-spacing: .22em; line-height: 1; text-transform: uppercase; color: var(--muted); }
-.dark .brand .sub { color: var(--on-night-muted); }
+.brand .sub { font-size: max(8px, .36em); font-weight: 600; letter-spacing: .22em; line-height: 1; text-transform: uppercase; color: #9a938a; }
+.dark .brand .sub { color: #77716a; }
+/* D and S stand out from the rest of the line */
+.brand .sub .hi { color: var(--ink); }
+.dark .brand .sub .hi { color: var(--on-night); }
 
 /* Header mark: a silver dual-screen handheld drawn in CSS. The lid springs open on load
    (and again on hover, site.ts), then both screens boot in the DS colour.
