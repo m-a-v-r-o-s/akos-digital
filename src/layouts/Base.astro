@@ -27,6 +27,12 @@ const url = `${SITE_URL}/${lang}${meta.path}`;
 const otherHref = swapLocale(Astro.url.pathname, other);
 const home = `/${lang}`;
 
+/* Brand letters flicker like the DS screens, each on its own clock ([period, delay] in s).
+   [9, 3] and [9, 7.5] are the top and bottom screens' own flickers. */
+const FLICKS = [[9, 3], [11, 5.2], [9, 7.5], [13, 1.4], [10, 6.1], [12, 2.3], [14, 8.8], [11, 0.6], [13, 4.4], [10, 9.7]];
+const flick = (word: string, from = 0) =>
+  [...word].map((ch, i) => { const [p, d] = FLICKS[(from + i) % FLICKS.length]; return { ch, style: `--fp:${p}s;--fd:${d}s` }; });
+
 const sameAs = person.socials.filter((s) => s.href.startsWith("https://")).map((s) => s.href);
 const siteGraph = {
   "@context": "https://schema.org",
@@ -128,12 +134,12 @@ const socialIcons = person.socials as { label: string; href: string; icon: "gith
   <header class:list={["site-header", { dark: darkTop }]} data-header>
     <div class="wrap bar">
       <a class="brand" href={home}>
-        <span class="akos"><span class="sr-only">Akos</span><span aria-hidden="true"><span>A</span><span>k</span><span>o</span><span>s</span></span></span>
+        <span class="flick"><span class="sr-only">Akos</span><span aria-hidden="true">{flick("Akos").map((l) => <span style={l.style}>{l.ch}</span>)}</span></span>
         <span class="ds" aria-hidden="true">
           <span class="top"><span class="face"><span class="scr"><span class="glow"></span></span></span><span class="lid"></span></span>
           <span class="bot"><span class="hinge"></span><span class="pad"></span><span class="scr"><span class="glow"></span></span><span class="abxy"></span></span>
         </span>
-        <span class="sub">Digital<br />Services</span>
+        <span class="sub flick"><span class="sr-only">Digital Services</span><span aria-hidden="true">{flick("Digital", 4).map((l) => <span style={l.style}>{l.ch}</span>)}<br />{flick("Services", 2).map((l) => <span style={l.style}>{l.ch}</span>)}</span></span>
       </a>
       <nav class="nav" aria-label={t.mainNav}>
         {navItems.map((n) => (
