@@ -177,10 +177,12 @@ ul, ol { margin: 0; padding: 0; }
 .ds .glow { display: block; width: 100%; height: 100%; border-radius: 1px; }
 .ds .glow { background: var(--accent); }
 .ds .hinge { position: absolute; left: 22%; right: 22%; top: -1.5px; height: 3px; border-radius: 1.5px; background: linear-gradient(180deg, #8d9196, #dcdfe2 45%, #8d9196); }
-/* generic controls: one round pad left, two round buttons right */
-.ds .pad, .ds .abxy { position: absolute; top: 50%; width: 11%; aspect-ratio: 1; transform: translateY(-50%); }
-.ds .pad { left: 4%; border-radius: 50%; background: var(--mark); }
-.ds .abxy { right: 4%; background: radial-gradient(circle at 30% 70%, var(--mark) 1px, transparent 1.3px), radial-gradient(circle at 70% 30%, var(--mark) 1px, transparent 1.3px); }
+/* generic controls, kept unlike any real console: a ringed thumb-stick left, two buttons stacked
+   vertically right, and a green power light by the screen's lower right corner */
+.ds .pad, .ds .abxy { position: absolute; top: 50%; transform: translateY(-50%); }
+.ds .pad { left: 5%; width: 15%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #6a6d72 0 32%, var(--mark) 40%); box-shadow: 0 .5px 0 rgb(255 255 255 / .7); }
+.ds .abxy { right: 6%; width: 4px; height: 64%; background: radial-gradient(circle at 50% 22%, var(--mark) 1.4px, transparent 1.7px), radial-gradient(circle at 50% 78%, var(--mark) 1.4px, transparent 1.7px); }
+.ds .bot::after { content: ""; position: absolute; left: 79%; bottom: 11%; width: 1.5px; height: 1.5px; border-radius: 50%; background: #3fe07a; box-shadow: 0 0 2px #3fe07a; }
 @media (prefers-reduced-motion: no-preference) {
   .ds .top { animation: lidOpen .9s var(--spring-snappy) both; }
   /* after the boot, each screen gives a brief flicker every 9s, out of step with the other */
