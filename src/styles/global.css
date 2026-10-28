@@ -245,8 +245,10 @@ dialog.menu[open]::backdrop { background: rgb(20 18 16 / 0.45); }
 .hero-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 24px; min-height: min(68svh, 640px); padding-block: 8px 24px; }
 @media (min-width: 900px) { .hero-grid { grid-template-columns: 1fr minmax(360px, 520px) 1fr; } }
 .locpill {
+  /* bleed to the viewport's left edge, past the centered .wrap on wide screens */
+  --bleed: calc(var(--gutter) + max(0px, (100vw - var(--max)) / 2));
   display: inline-flex; align-items: center; gap: 18px; justify-self: start;
-  margin-left: calc(-1 * var(--gutter)); padding: 12px 12px 12px var(--gutter);
+  margin-left: calc(-1 * var(--bleed)); padding: 12px 12px 12px var(--bleed);
   border-radius: 0 999px 999px 0; background: var(--night-2); font-size: 16px; line-height: 1.3;
 }
 .locpill .isles { width: 60px; height: 60px; border-radius: 50%; background: #3a3530; display: grid; place-items: center; }
