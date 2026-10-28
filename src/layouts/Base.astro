@@ -124,7 +124,8 @@ const socialIcons = person.socials as { label: string; href: string; icon: "gith
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content={darkTop ? "#141210" : "#f5f0e8"} />
   <meta name="color-scheme" content="light" />
-  <link rel="icon" href="/projects/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <script type="application/ld+json" set:html={ld(siteGraph)} />
   {jsonLd.map((o) => <script type="application/ld+json" set:html={ld(o)} />)}
 </head>
