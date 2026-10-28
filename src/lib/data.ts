@@ -67,8 +67,8 @@ export const education = [
     institutionUrl: "https://www.hua.gr/",
     logo: { src: "/logos/harokopio.webp", width: 300, height: 300 },
     description: {
-      en: "Four-year undergraduate degree (BSc) from the Department of Informatics and Telematics.",
-      el: "Τετραετές προπτυχιακό πτυχίο (BSc) του Τμήματος Πληροφορικής και Τηλεματικής.",
+      en: "Studied on the four-year undergraduate degree (BSc) at the Department of Informatics and Telematics.",
+      el: "Φοίτηση στο τετραετές προπτυχιακό πρόγραμμα (BSc) του Τμήματος Πληροφορικής και Τηλεματικής.",
     } as BL,
     tags: ["Informatics", "Telematics", "Networks", "Programming", "Mathematics", "AI"],
   },
