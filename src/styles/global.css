@@ -155,8 +155,6 @@ ul, ol { margin: 0; padding: 0; }
 .site-header { position: relative; z-index: 20; }
 .site-header .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; min-height: 88px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; }
-/* Akos runs up the side of the handheld, bottom to top, about as tall as it */
-.brand .akos { writing-mode: vertical-rl; rotate: 180deg; font-size: .76em; line-height: 1; }
 .brand .sub { font-size: .64em; line-height: 1.1; letter-spacing: .01em; }
 
 /* Header mark: a silver dual-screen handheld drawn in CSS. The lid springs open on load
