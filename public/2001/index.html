@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Αθηνά Βαγενά · Αστρολόγος</title>
+<meta name="description" content="Αθηνά Βαγενά, αστρολόγος από το 2001. Γενέθλιοι χάρτες, συναστρίες, ετήσιες προβλέψεις και τα ζώδια της ημέρας.">
+<meta name="theme-color" content="#f2eee6">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&text=%E2%99%88%E2%99%89%E2%99%8A%E2%99%8B%E2%99%8C%E2%99%8D%E2%99%8E%E2%99%8F%E2%99%90%E2%99%91%E2%99%92%E2%99%93%E2%98%89%E2%98%BD%E2%98%BF&display=block">
+<link rel="preload" as="image" href="/2001/assets/athina-440.webp" imagesrcset="/2001/assets/athina-440.webp 440w, /2001/assets/athina-720.webp 720w" imagesizes="(min-width: 960px) 300px, 50vw">
+<style>
+:root {
+  --spring-smooth: linear(0, 0.017, 0.06, 0.119, 0.187, 0.258, 0.33, 0.4, 0.467, 0.528, 0.585, 0.637, 0.683, 0.724, 0.761, 0.794, 0.822, 0.847, 0.868, 0.887, 0.904, 0.918, 0.93, 0.94, 0.949, 0.957, 0.963, 0.969, 0.974, 0.978, 0.981, 0.984, 0.987, 0.989, 0.99, 0.992, 0.993, 0.994, 0.995, 0.996, 0.997, 0.997, 0.998, 0.998, 0.998, 0.999, 0.999, 1);
+  --spring-smooth-ms: 736ms;
+  --press-ms: 120ms;
+  --press-scale: 0.97;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --bone: #f2eee6;
+  --paper: #fbf9f4;
+  --ink: #121116;
+  --ink-2: #2a282e;
+  --muted: #5d5850;
+  --rule: #cfc7b8;
+  --gold: #a07c3a;
+  --gold-soft: rgba(160, 124, 58, .14);
+  --display: "GFS Didot", "Didot", "Bodoni 72", serif;
+  --sans: "Manrope", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --glyph: "Noto Sans Symbols", "Segoe UI Symbol", serif;
+  --gutter: 16px;
+}
+@supports not (transition-timing-function: linear(0, 1)) { :root { --spring-smooth: cubic-bezier(0.25, 1, 0.5, 1); } }
+@media (min-width: 720px) { :root { --gutter: 40px; } }
+
+* { box-sizing: border-box; }
+html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bone); color: var(--ink); font: 400 16px/1.6 var(--sans); overflow-x: clip; }
+a, button, label { touch-action: manipulation; }
+button { -webkit-user-select: none; user-select: none; font: inherit; color: inherit; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.press { transition: transform var(--press-ms) var(--ease-out); }
+.press:active { transform: scale(var(--press-scale)); }
+.g { font-family: var(--glyph); font-variant-emoji: text; }
+
+/* ticker */
+.sky { border-bottom: 1px solid var(--rule); overflow: hidden; font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); background: var(--paper); }
+.sky-track { display: flex; width: max-content; animation: tick 48s linear infinite; }
+.sky-row { display: flex; gap: 32px; padding: 10px 16px; white-space: nowrap; }
+.sky-row span::before { content: "✦"; color: var(--gold); margin-right: 10px; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bone) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.top-in { display: flex; align-items: center; gap: 24px; height: 64px; padding: 0 var(--gutter); max-width: 1440px; margin: 0 auto; }
+.mark { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: inherit; margin-right: auto; }
+.mark b { font: 400 22px/1 var(--display); letter-spacing: .01em; white-space: nowrap; }
+.mark small, .top .btn .long { display: none; }
+@media (min-width: 720px) { .mark small { display: inline; } .top .btn .long { display: inline; } .top .btn .short { display: none; } }
+.mark small { font: 500 10px/1 var(--mono); letter-spacing: .16em; color: var(--muted); text-transform: uppercase; }
+.nav { display: none; gap: 28px; }
+.nav a { color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500; position: relative; padding: 6px 0; }
+.nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 360ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .nav a:hover::after { transform: scaleX(1); } }
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 20px; border: 1px solid var(--ink); background: var(--ink); color: var(--bone); text-decoration: none; font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn .arr { transition: transform 360ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover .arr { transform: translateX(4px); }
+  .btn.ghost:hover { background: var(--ink); color: var(--bone); }
+}
+.top .btn { min-height: 40px; padding: 0 14px; font-size: 11px; }
+.menu-b { width: 44px; height: 44px; border: 1px solid var(--rule); background: none; display: grid; place-content: center; gap: 5px; cursor: pointer; }
+.menu-b i { display: block; width: 18px; height: 1px; background: var(--ink); transition: transform 300ms var(--ease-out); }
+.menu-b[aria-expanded="true"] i:first-child { transform: translateY(3px) rotate(45deg); }
+.menu-b[aria-expanded="true"] i:last-child { transform: translateY(-3px) rotate(-45deg); }
+.drawer { border-top: 1px solid var(--rule); padding: 8px var(--gutter) 20px; }
+.drawer a { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; font: 400 26px/1.1 var(--display); }
+.drawer a span { font: 500 11px/1 var(--mono); color: var(--muted); align-self: center; }
+@media (min-width: 960px) { .nav { display: flex; } .menu-b, .drawer { display: none !important; } }
+
+/* hero */
+.hero { position: relative; max-width: 1440px; margin: 0 auto; padding: 36px var(--gutter) 56px; display: grid; gap: 40px; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font: 500 11px/1.4 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+.eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--gold); }
+h1 { font: 400 clamp(60px, 18vw, 176px)/.86 var(--display); letter-spacing: -.02em; margin: 0; }
+h1 .ln { display: block; overflow: hidden; padding-bottom: .06em; }
+h1 .ln > span { display: block; }
+h1 .ln:nth-child(2) { padding-left: .5em; }
+.lede { font-size: 17px; line-height: 1.65; color: var(--ink-2); max-width: 34em; margin: 28px 0 0; }
+.lede a { color: inherit; text-underline-offset: 3px; text-decoration-color: var(--gold); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.creds { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
+.creds li { padding: 14px 12px 14px 0; border-bottom: 1px solid var(--rule); }
+.creds b { display: block; font: 400 22px/1.1 var(--display); }
+.creds span { font: 500 10px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+.wheel-wrap { position: relative; width: min(92%, 560px); margin: 28px auto 0; aspect-ratio: 1; }
+@media (max-width: 959px) {
+  .hero { gap: 0; padding-top: 28px; }
+  .hero-t { display: contents; }
+  .eyebrow { order: 1; } h1 { order: 2; } .wheel-wrap { order: 3; } .lede { order: 4; } .ctas { order: 5; } .creds { order: 6; }
+}
+.wheel { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.wheel .spin { transform-origin: 0 0; animation: spin 360s linear infinite; }
+@keyframes spin { to { transform: rotate(-360deg); } }
+.wheel text { font-family: var(--glyph); fill: var(--ink); }
+.wheel .lbl { font-family: var(--mono); font-size: 7.5px; letter-spacing: .14em; fill: var(--muted); }
+.portrait { position: absolute; left: 25%; top: 25%; width: 50%; height: 50%; border-radius: 50%; overflow: hidden; background: #111; }
+.portrait img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); transition: filter 900ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .wheel-wrap:hover .portrait img { filter: none; } }
+.wheel-cap { position: absolute; left: 0; right: 0; bottom: -8px; text-align: center; font: 400 15px/1.4 var(--display); color: var(--ink-2); }
+
+@media (min-width: 960px) {
+  .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; min-height: calc(100svh - 97px); padding-top: 48px; padding-bottom: 64px; }
+  .creds { grid-template-columns: repeat(4, 1fr); }
+  .wheel-wrap { width: min(100%, 580px); }
+}
+
+/* entrance */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 1100ms var(--spring-smooth) both; animation-delay: calc(var(--d, 0) * 90ms + 150ms); }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+  h1 .ln > span { animation: up 1200ms var(--ease-out) both; animation-delay: calc(var(--d) * 120ms + 100ms); }
+  @keyframes up { from { transform: translateY(105%); } }
+  .wheel .draw { stroke-dasharray: 1900; stroke-dashoffset: 1900; animation: draw 2200ms var(--ease-out) 300ms forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .wheel .ticks { animation: fade 1400ms ease 900ms both; }
+  .wheel .signs { animation: fade 1400ms ease 1200ms both; }
+  .portrait { animation: iris 1400ms var(--ease-out) 200ms both; }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes iris { from { clip-path: circle(0% at 50% 50%); } to { clip-path: circle(50% at 50% 50%); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky-track, .wheel .spin { animation: none; }
+  :root { --press-scale: 1; }
+}
+
+/* zodiac picker */
+.sec { max-width: 1440px; margin: 0 auto; padding: 64px var(--gutter); border-top: 1px solid var(--rule); }
+.sec-h { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; margin-bottom: 28px; }
+.sec-h h2 { font: 400 clamp(38px, 9vw, 72px)/.95 var(--display); margin: 0; letter-spacing: -.01em; }
+.sec-h p { margin: 0; font: 500 11px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.signs-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--rule); border-top: 1px solid var(--rule); }
+.sign-b { position: relative; display: grid; justify-items: start; gap: 2px; padding: 14px 10px 12px; min-height: 92px; border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: transparent; text-align: left; cursor: pointer; transition: background 300ms var(--ease-out), color 300ms var(--ease-out); }
+.sign-b .g { font-size: 26px; line-height: 1; margin-bottom: 8px; }
+.sign-b b { font: 400 17px/1.1 var(--display); }
+.sign-b small { font: 500 9.5px/1.3 var(--mono); letter-spacing: .06em; color: var(--muted); }
+.sign-b[aria-pressed="true"] { background: var(--ink); color: var(--bone); }
+.sign-b[aria-pressed="true"] small { color: #bdb5a7; }
+.sign-b .now { position: absolute; top: 10px; right: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+@media (hover: hover) and (pointer: fine) { .sign-b:not([aria-pressed="true"]):hover { background: var(--paper); } }
+@media (min-width: 720px) { .signs-grid { grid-template-columns: repeat(6, 1fr); } }
+@media (min-width: 1200px) { .signs-grid { grid-template-columns: repeat(12, 1fr); } .sign-b { min-height: 112px; } }
+
+.reading { display: grid; gap: 24px; margin-top: 32px; padding: 28px 0 0; }
+.reading .big { display: flex; align-items: center; gap: 18px; }
+.reading .big .g { font-size: 64px; line-height: 1; color: var(--gold); }
+.reading h3 { font: 400 clamp(44px, 11vw, 88px)/.9 var(--display); margin: 0; }
+.reading .when { font: 500 11px/1.5 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 10px 0 0; }
+.reading .txt { font: 400 clamp(20px, 4.6vw, 28px)/1.4 var(--display); margin: 0; max-width: 30em; }
+.meters { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 8px 28px; margin: 20px 0 0; padding: 0; list-style: none; font: 500 10.5px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.meters i { display: flex; gap: 3px; margin-top: 6px; }
+.meters i::before { content: ""; width: 66px; height: 3px; background: linear-gradient(90deg, var(--ink) calc(var(--v) * 20%), var(--rule) 0); }
+.reading .more { margin-top: 20px; }
+.fadeswap { transition: opacity 260ms ease, transform 420ms var(--ease-out); }
+.fadeswap.out { opacity: 0; transform: translateY(8px); }
+@media (min-width: 960px) { .reading { grid-template-columns: 5fr 7fr; align-items: start; gap: 56px; } }
+
+/* services */
+.svc { display: grid; border-top: 1px solid var(--ink); }
+.svc article { display: grid; grid-template-rows: auto auto 1fr auto; gap: 10px; padding: 24px 0 28px; border-bottom: 1px solid var(--rule); }
+.svc .n { font: 500 11px/1 var(--mono); color: var(--gold); letter-spacing: .12em; }
+.svc h3 { font: 400 32px/1.02 var(--display); margin: 0; }
+.svc p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+.svc .meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; font: 500 11px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.svc .meta a { color: var(--ink); text-underline-offset: 4px; min-height: 24px; display: inline-flex; align-items: center; }
+@media (min-width: 720px) { .svc { grid-template-columns: 1fr 1fr; column-gap: 40px; } }
+@media (min-width: 1200px) { .svc { grid-template-columns: repeat(4, 1fr); } .svc article { padding-right: 12px; } }
+
+.quote { margin: 56px 0 0; text-align: center; font: 400 clamp(28px, 6vw, 56px)/1.1 var(--display); }
+.quote cite { display: block; margin-top: 14px; font: 500 11px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; font-style: normal; color: var(--muted); }
+
+footer { border-top: 1px solid var(--rule); padding: 28px var(--gutter) calc(28px + env(safe-area-inset-bottom, 0px)); font: 500 11px/1.7 var(--mono); letter-spacing: .06em; color: var(--muted); }
+footer .in { max-width: 1440px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+footer a { color: var(--ink); }
+
+.switch { position: fixed; z-index: 20; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; border: 1px solid var(--ink); background: var(--bone); font: 500 11px/1 var(--mono); letter-spacing: .1em; }
+.switch a, .switch span { display: grid; place-items: center; min-height: 32px; padding: 0 10px; text-decoration: none; color: var(--ink); }
+.switch span { background: var(--ink); color: var(--bone); }
+</style>
+</head>
+<body>
+
+<div class="sky" aria-label="Ο ουρανός σήμερα">
+  <div class="sky-track">
+    <div class="sky-row" id="sky"><span>Ο ουρανός σήμερα</span></div>
+    <div class="sky-row" id="sky2" aria-hidden="true"></div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="#" aria-label="Αθηνά Βαγενά, αρχική"><b>Αθηνά Βαγενά</b><small>Αστρολόγος</small></a>
+    <nav class="nav" aria-label="Κύριο μενού">
+      <a href="#zodia">Ζώδια</a><a href="#ypiresies">Υπηρεσίες</a><a href="#">Άρθρα</a><a href="#">Βίντεο</a><a href="#">Σχετικά</a>
+    </nav>
+    <a class="btn press" href="#ypiresies"><span class="long">Κλείστε συνεδρία</span><span class="short">Ραντεβού</span></a>
+    <button class="menu-b press" aria-expanded="false" aria-controls="drawer" aria-label="Μενού"><i></i><i></i></button>
+  </div>
+  <nav class="drawer" id="drawer" hidden aria-label="Μενού κινητού">
+    <a href="#zodia">Ζώδια <span>01</span></a><a href="#ypiresies">Υπηρεσίες <span>02</span></a><a href="#">Άρθρα <span>03</span></a><a href="#">Βίντεο <span>04</span></a><a href="#">Σχετικά <span>05</span></a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="h1">
+    <div class="hero-t">
+      <p class="eyebrow rise" style="--d:0">Αστρολόγος · από τον Ιούνιο του 2001</p>
+      <h1 id="h1"><span class="ln"><span style="--d:0">Αθηνά</span></span><span class="ln"><span style="--d:1">Βαγενά</span></span></h1>
+      <p class="lede rise" style="--d:3">Γενέθλιοι χάρτες, συναστρίες και ετήσιες προβλέψεις, με 25 χρόνια στην αστρολογία και τα εργαλεία του Life Coaching. Κάθε πρωί γράφω τα <a href="https://www.flash.gr/athina-vaghena" rel="noopener">«Ζώδια Σήμερα» στο flash.gr</a>.</p>
+      <div class="ctas rise" style="--d:4">
+        <a class="btn press" href="#ypiresies">Κλείστε συνεδρία <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn ghost press" href="#zodia">Το ζώδιό σου σήμερα <span class="arr" aria-hidden="true">↓</span></a>
+      </div>
+      <ul class="creds rise" style="--d:5">
+        <li><b>25</b><span>χρόνια προβλέψεων</span></li>
+        <li><b>1.100+</b><span>άρθρα για τα ζώδια</span></li>
+        <li><b>Astro Κους Κους</b><span>η εκπομπή της</span></li>
+        <li><b>Κ. Λεφάκης</b><span>σταθερή συνεργασία</span></li>
+      </ul>
+    </div>
+
+    <figure class="wheel-wrap rise" style="--d:2; margin:0">
+      <svg class="wheel" viewBox="-300 -300 600 600" aria-hidden="true"><g class="spin" id="spin"></g><g id="planets"></g></svg>
+      <div class="portrait">
+        <img src="/2001/assets/athina-440.webp" srcset="/2001/assets/athina-440.webp 440w, /2001/assets/athina-720.webp 720w" sizes="(min-width: 960px) 300px, 50vw" width="440" height="440" alt="Η αστρολόγος Αθηνά Βαγενά" fetchpriority="high">
+      </div>
+      <figcaption class="sr-only" id="wheel-cap">Ζωδιακός κύκλος με τη θέση του Ήλιου και της Σελήνης σήμερα.</figcaption>
+    </figure>
+  </section>
+
+  <section class="sec" id="zodia" aria-labelledby="zh">
+    <div class="sec-h">
+      <h2 id="zh">Τα ζώδια σήμερα</h2>
+      <p id="today"></p>
+    </div>
+    <div class="signs-grid" id="signs" role="group" aria-label="Διάλεξε ζώδιο"></div>
+    <div class="reading fadeswap" id="reading" aria-live="polite">
+      <div>
+        <div class="big"><span class="g" id="r-g" aria-hidden="true"></span><h3 id="r-name"></h3></div>
+        <p class="when" id="r-when"></p>
+      </div>
+      <div>
+        <p class="txt" id="r-txt"></p>
+        <ul class="meters" id="r-meters"></ul>
+        <a class="btn ghost press more" href="#">Όλη η εβδομάδα <span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ypiresies" aria-labelledby="sh">
+    <div class="sec-h">
+      <h2 id="sh">Συνεδρίες</h2>
+      <p>Online ή δια ζώσης · κατόπιν ραντεβού</p>
+    </div>
+    <div class="svc">
+      <article><span class="n">01</span><h3>Γενέθλιος χάρτης</h3><p>Ο ουρανός τη στιγμή που γεννηθήκατε, εξηγημένος απλά: χαρακτήρας, ταλέντα και οι μεγάλοι κύκλοι της ζωής σας.</p><div class="meta"><span>75′ · γραπτή περίληψη</span><a href="#">Κλείστε</a></div></article>
+      <article><span class="n">02</span><h3>Συναστρία</h3><p>Δύο χάρτες δίπλα δίπλα: τι σας δένει, πού συγκρούεστε και πώς λειτουργεί η σχέση στην καθημερινότητα.</p><div class="meta"><span>60′ · για ζευγάρια</span><a href="#">Κλείστε</a></div></article>
+      <article><span class="n">03</span><h3>Ετήσια πρόβλεψη</h3><p>Η ηλιακή σας επιστροφή και οι διελεύσεις της χρονιάς, μήνα με μήνα, για να ξέρετε πότε να κινηθείτε.</p><div class="meta"><span>60′ · γύρω από τα γενέθλια</span><a href="#">Κλείστε</a></div></article>
+      <article><span class="n">04</span><h3>Αστρολογία &amp; Coaching</h3><p>Ο χάρτης σας ως αφετηρία, και μετά δουλειά πάνω σε έναν συγκεκριμένο στόχο με εργαλεία Life Coaching και NLP.</p><div class="meta"><span>3 × 50′</span><a href="#">Κλείστε</a></div></article>
+    </div>
+    <blockquote class="quote">«Στην αστρολογία είσαι πάντα μαθητής.»<cite>Αθηνά Βαγενά</cite></blockquote>
+  </section>
+</main>
+
+<footer>
+  <div class="in">
+    <span>Πρόταση σχεδίου · ενδεικτικά κείμενα και υπηρεσίες · φωτογραφία από το προφίλ στο flash.gr</span>
+    <span>Σχεδιασμός &amp; ανάπτυξη: <a href="https://www.akosds.com">Akos Digital Services</a></span>
+  </div>
+</footer>
+
+<nav class="switch" aria-label="Εκδοχές σχεδίου"><span aria-current="page">Α · Καθαρή</span><a href="/2001/mystiki">Β · Μυστική</a></nav>
+
+<script>
+const SIGNS = [
+  ['♈', 'Κριός', 'στον Κριό', '21/3–19/4'], ['♉', 'Ταύρος', 'στον Ταύρο', '20/4–20/5'], ['♊', 'Δίδυμοι', 'στους Διδύμους', '21/5–20/6'],
+  ['♋', 'Καρκίνος', 'στον Καρκίνο', '21/6–22/7'], ['♌', 'Λέων', 'στον Λέοντα', '23/7–22/8'], ['♍', 'Παρθένος', 'στην Παρθένο', '23/8–22/9'],
+  ['♎', 'Ζυγός', 'στον Ζυγό', '23/9–22/10'], ['♏', 'Σκορπιός', 'στον Σκορπιό', '23/10–21/11'], ['♐', 'Τοξότης', 'στον Τοξότη', '22/11–21/12'],
+  ['♑', 'Αιγόκερως', 'στον Αιγόκερω', '22/12–19/1'], ['♒', 'Υδροχόος', 'στον Υδροχόο', '20/1–18/2'], ['♓', 'Ιχθύες', 'στους Ιχθύες', '19/2–20/3'],
+];
+// Indicative texts, written for Mercury retrograde in Scorpio (24/10 to 13/11/2026). [love, work, mood] out of 5.
+const READ = [
+  ['Ο ανάδρομος Ερμής ανακατεύει κοινά οικονομικά και υποσχέσεις που δόθηκαν βιαστικά. Ξαναδιάβασε ό,τι υπογράφεις και άφησε τη μεγάλη κουβέντα για τα χρήματα για λίγες μέρες αργότερα.', [3, 2, 3]],
+  ['Οι σχέσεις βρίσκονται στο επίκεντρο και κάποιος από το παρελθόν μπορεί να ξαναεμφανιστεί. Άκου τι έχει να πει πριν αποφασίσεις αν του ανοίγεις ξανά την πόρτα.', [4, 3, 3]],
+  ['Καθυστερήσεις στη δουλειά σε κάνουν ανυπόμονο, όμως ένα λάθος που εντοπίζεις σήμερα σε γλιτώνει από μεγαλύτερο μπελά. Φρόντισε και τον ύπνο σου.', [3, 2, 3]],
+  ['Η καρδιά σου ζητά χρόνο και ηρεμία. Μια παλιά δημιουργική ιδέα, ή ένα παλιό φλερτ, ζητά δεύτερη ευκαιρία και αξίζει να το σκεφτείς.', [4, 3, 4]],
+  ['Θέματα σπιτιού και οικογένειας σε απασχολούν περισσότερο απ\' όσο δείχνεις. Μια ανοιχτή κουβέντα με έναν δικό σου άνθρωπο ξεκαθαρίζει την ατμόσφαιρα.', [3, 3, 2]],
+  ['Μηνύματα που χάνονται, ραντεβού που αλλάζουν: έλεγξε δύο φορές τα λόγια σου. Ένα τηλεφώνημα από αδελφό ή γείτονα φέρνει χρήσιμη πληροφορία.', [3, 4, 3]],
+  ['Τα οικονομικά θέλουν προσοχή, κυρίως τα μικρά έξοδα που μαζεύονται. Καλή μέρα για να βάλεις τάξη σε λογαριασμούς και συνδρομές.', [3, 3, 3]],
+  ['Ο Ήλιος και ο ανάδρομος Ερμής στο ζώδιό σου σε φέρνουν αντιμέτωπο με τον εαυτό σου. Ξαναγράψε σχέδια που βιάστηκες να ξεκινήσεις, εδώ η επιμονή σου αποδίδει.', [4, 3, 4]],
+  ['Νιώθεις κουρασμένος από τους γρήγορους ρυθμούς και χρειάζεσαι ένα διάλειμμα πριν τα γενέθλιά σου. Ένα όνειρο ή μια διαίσθηση αξίζει να το σημειώσεις.', [2, 3, 2]],
+  ['Παλιές φιλίες επιστρέφουν και μια ομάδα σε χρειάζεται. Πες ναι μόνο σε ό,τι χωράει πραγματικά στο πρόγραμμά σου.', [3, 4, 4]],
+  ['Στη δουλειά κάποιος επανεξετάζει μια απόφαση που σε αφορά. Κράτα τα χαρτιά σου τακτοποιημένα και μίλα με στοιχεία.', [2, 4, 3]],
+  ['Σχέδια για ταξίδι ή σπουδές αλλάζουν ημερομηνία, χωρίς να ακυρώνονται. Η υπομονή σου ανταμείβεται και μαθαίνεις κάτι που σου ανοίγει δρόμο.', [4, 3, 4]],
+];
+const T = '︎', NS = 'http://www.w3.org/2000/svg', rad = (d) => d * Math.PI / 180;
+
+// Low-precision ephemeris (about 1 degree for the Sun, 2 for the Moon): enough for a decorative wheel.
+const now = new Date();
+const d = (now - Date.UTC(2000, 0, 1, 12)) / 864e5;
+const norm = (x) => ((x % 360) + 360) % 360;
+const g = rad(357.528 + 0.9856003 * d);
+const sunLon = norm(280.46 + 0.9856474 * d + 1.915 * Math.sin(g) + 0.02 * Math.sin(2 * g));
+const M = rad(134.963 + 13.064993 * d), F = rad(93.272 + 13.22935 * d), D = rad(297.85 + 12.190749 * d);
+const moonLon = norm(218.316 + 13.176396 * d + 6.289 * Math.sin(M) + 1.274 * Math.sin(2 * D - M) + 0.658 * Math.sin(2 * D));
+const elong = norm(moonLon - sunLon), illum = Math.round((1 - Math.cos(rad(elong))) / 2 * 100);
+const phase = elong < 12 ? 'Νέα Σελήνη' : elong < 168 ? 'Σελήνη αύξουσα' : elong < 192 ? 'Πανσέληνος' : 'Σελήνη φθίνουσα';
+const sunSign = Math.floor(sunLon / 30), moonSign = Math.floor(moonLon / 30);
+const mercRx = now >= new Date(2026, 9, 24) && now < new Date(2026, 10, 14);
+
+const dateStr = new Intl.DateTimeFormat('el-GR', { weekday: 'long', day: 'numeric', month: 'long' }).format(now);
+const sky = [dateStr, `Ήλιος ${SIGNS[sunSign][2]} ${Math.floor(sunLon % 30)}°`, `${phase} ${illum}%`, `Σελήνη ${SIGNS[moonSign][2]}`];
+if (mercRx) sky.push('Ερμής ανάδρομος έως 13/11');
+sky.push('Νέα ζώδια κάθε μέρα');
+const skyHtml = sky.map((s) => `<span>${s}</span>`).join('');
+document.getElementById('sky').innerHTML = skyHtml;
+document.getElementById('sky2').innerHTML = skyHtml;
+document.getElementById('today').textContent = dateStr;
+
+// Wheel: Aries at 9 o'clock, signs counter-clockwise, like a chart.
+const pt = (lon, r) => [-r * Math.cos(rad(lon)), r * Math.sin(rad(lon))];
+const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent && parent.appendChild(n); return n; };
+const spin = document.getElementById('spin');
+const ring = el('g', { fill: 'none', stroke: '#121116' }, spin);
+for (const [r, w] of [[292, 1], [268, .6], [214, 1], [154, .6]]) el('circle', { r, 'stroke-width': w, class: 'draw' }, ring);
+const ticks = el('g', { class: 'ticks', stroke: '#121116' }, spin);
+let td = '';
+for (let i = 0; i < 360; i++) {
+  const len = i % 30 === 0 ? 24 : i % 10 === 0 ? 14 : i % 5 === 0 ? 9 : 5;
+  const [x1, y1] = pt(i, 268), [x2, y2] = pt(i, 268 + len);
+  td += `M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}`;
+}
+el('path', { d: td, 'stroke-width': .5 }, ticks);
+const signsG = el('g', { class: 'signs' }, spin);
+const [a1, b1] = pt(sunSign * 30, 268), [a2, b2] = pt(sunSign * 30 + 30, 268), [c1, e1] = pt(sunSign * 30 + 30, 214), [c2, e2] = pt(sunSign * 30, 214);
+el('path', { d: `M${a1} ${b1}A268 268 0 0 0 ${a2} ${b2}L${c1} ${e1}A214 214 0 0 1 ${c2} ${e2}Z`, fill: 'rgba(160,124,58,.16)' }, signsG);
+SIGNS.forEach(([glyph, name], i) => {
+  const [x1, y1] = pt(i * 30, 214), [x2, y2] = pt(i * 30, 268);
+  el('line', { x1, y1, x2, y2, stroke: '#121116', 'stroke-width': .8 }, signsG);
+  const mid = i * 30 + 15, [gx, gy] = pt(mid, 248), [lx, ly] = pt(mid, 226);
+  const t = el('text', { x: gx, y: gy, 'font-size': 20, 'text-anchor': 'middle', 'dominant-baseline': 'central', transform: `rotate(${-90 - mid} ${gx} ${gy})` }, signsG);
+  t.textContent = glyph + T;
+  const l = el('text', { x: lx, y: ly, class: 'lbl', 'text-anchor': 'middle', 'dominant-baseline': 'central', transform: `rotate(${-90 - mid} ${lx} ${ly})` }, signsG);
+  l.textContent = name.toUpperCase();
+});
+// Sun and Moon ride with the wheel.
+for (const [lon, glyph, col] of [[sunLon, '☉', '#a07c3a'], [moonLon, '☽', '#121116']]) {
+  const [x1, y1] = pt(lon, 214), [x2, y2] = pt(lon, 196), [x, y] = pt(lon, 182);
+  el('line', { x1, y1, x2, y2, stroke: col, 'stroke-width': 1.4 }, signsG);
+  el('text', { x, y, 'font-size': 18, fill: col, 'text-anchor': 'middle', 'dominant-baseline': 'central', style: `fill:${col}` }, signsG).textContent = glyph + T;
+}
+
+// Sign picker
+const grid = document.getElementById('signs'), reading = document.getElementById('reading');
+let saved = null;
+try { saved = localStorage.getItem('vagena-sign'); } catch (e) {}
+let cur = saved !== null && SIGNS[+saved] ? +saved : sunSign;
+SIGNS.forEach(([glyph, name, , dates], i) => {
+  const b = document.createElement('button');
+  b.className = 'sign-b press';
+  b.type = 'button';
+  b.setAttribute('aria-pressed', i === cur);
+  b.innerHTML = `<span class="g" aria-hidden="true">${glyph}${T}</span><b>${name}</b><small>${dates}</small>${i === sunSign ? '<span class="now" title="Εποχή του"></span>' : ''}`;
+  b.addEventListener('click', () => pick(i, true));
+  grid.appendChild(b);
+});
+function fill(i) {
+  const [glyph, name, , dates] = SIGNS[i], [txt, [love, work, mood]] = READ[i];
+  document.getElementById('r-g').textContent = glyph + T;
+  document.getElementById('r-name').textContent = name;
+  document.getElementById('r-when').textContent = `${dates} · ${dateStr}`;
+  document.getElementById('r-txt').textContent = txt;
+  document.getElementById('r-meters').innerHTML = [['Έρωτας', love], ['Δουλειά', work], ['Διάθεση', mood]]
+    .map(([k, v]) => `<li>${k}<i style="--v:${v}" aria-label="${v} στα 5"></i></li>`).join('');
+}
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function pick(i, user) {
+  if (i === cur && user) return;
+  cur = i;
+  [...grid.children].forEach((b, j) => b.setAttribute('aria-pressed', j === i));
+  try { localStorage.setItem('vagena-sign', i); } catch (e) {}
+  if (reduce) return fill(i);
+  reading.classList.add('out');
+  setTimeout(() => { fill(i); reading.classList.remove('out'); }, 200);
+}
+fill(cur);
+
+// Mobile menu
+const mb = document.querySelector('.menu-b'), drawer = document.getElementById('drawer');
+mb.addEventListener('click', () => { const open = mb.getAttribute('aria-expanded') !== 'true'; mb.setAttribute('aria-expanded', open); drawer.hidden = !open; });
+drawer.addEventListener('click', (e) => { if (e.target.closest('a')) { mb.setAttribute('aria-expanded', 'false'); drawer.hidden = true; } });
+</script>
+</body>
+</html>
