@@ -24,12 +24,12 @@ export const person = {
     ],
   } as BLA,
   socials: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/akosds/", icon: "linkedin" },
     { label: "GitHub", href: "https://github.com/m-a-v-r-o-s", icon: "github" },
     { label: "Behance", href: "https://www.behance.net/akosdigital", icon: "behance" },
     { label: "Partnely", href: "https://partnely.com/partners/theodoros-mayros-akos-digital-services", icon: "partnely" },
     { label: "Instagram", href: "https://www.instagram.com/akosdigitalservices", icon: "instagram" },
     { label: "Phone", href: "tel:+306995358972", icon: "phone" },
-    { label: "Telegram", href: "https://t.me/+306995358972", icon: "telegram" },
     { label: "WhatsApp", href: "https://wa.me/306995358972", icon: "whatsapp" },
     { label: "Email", href: "mailto:info@akosds.com", icon: "email" },
   ],
