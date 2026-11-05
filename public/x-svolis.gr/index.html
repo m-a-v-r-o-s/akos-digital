@@ -263,8 +263,8 @@ p{margin:0;max-width:64ch}
 .foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .foot a{color:#fff;text-decoration:none}
 @media (hover:hover){.foot a:hover{text-decoration:underline}}
-.foot .lp{background:#fff;border-radius:14px;padding:10px 14px;width:max-content;max-width:100%}
-.foot .lp img{height:44px;width:auto}
+.foot .lp{width:max-content;max-width:100%}
+.foot .lp img{height:clamp(72px,8vw,96px);width:auto}
 .foot .legal{grid-column:1/-1;border-top:1px solid #34313d;padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#a9a6b5}
 .foot .legal a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 @media (max-width:860px){.foot .in{grid-template-columns:1fr 1fr}}
