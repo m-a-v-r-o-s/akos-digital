@@ -478,7 +478,9 @@ body.is-admin{padding-bottom:0;background:var(--paper)}
 .lcard img{height:64px;width:auto}
 .lcard form{display:grid;gap:14px}
 .lcard .fld input{font:600 18px var(--f-b);padding:13px 14px;border:2px solid #cfcdd8;border-radius:12px;width:100%;min-height:52px}
-.lcard #l-c{letter-spacing:.4em;font-family:var(--f-m)}
+.lerr{color:var(--shut);font-weight:700;font-size:14px}
+.lhint{background:var(--y);border-radius:10px;padding:10px 12px;font-size:14px}
+.lhint b{font-family:var(--f-m);letter-spacing:.04em;user-select:all}
 @media (max-width:1100px){.ssplit{grid-template-columns:minmax(0,240px) minmax(0,1fr)}.spv{grid-column:1/-1;position:static}}
 @media (max-width:900px){
   .app-in{grid-template-columns:1fr}
@@ -1087,7 +1089,7 @@ let REQ = [
     log: [{ t: new Date(T0 - 190 * HR), x: 'Λήψη από τη φόρμα του site' }, { t: new Date(T0 - 40 * HR), x: 'Κατάσταση: Ολοκληρώθηκε' }] },
 ];
 const HIST = [{ t: new Date(T0 - 2 * 24 * HR), label: 'Πρώτη δημοσίευση του νέου site', snap: clone(LIVE) }];
-let AUTH = false, LOGIN = 1, TAB = 'dash', REQF = 'all', REQQ = '', WF = 'all', DIRTY = new Set();
+let AUTH = false, TAB = 'dash', REQF = 'all', REQQ = '', WF = 'all', DIRTY = new Set();
 const SEL = { req: 'r5', svc: 'entypa' };
 const TABS = [['dash', 'Πίνακας'], ['req', 'Αιτήματα'], ['work', 'Δουλειές μας'], ['svc', 'Υπηρεσίες'], ['home', 'Αρχική σελίδα'], ['info', 'Στοιχεία & ωράριο'], ['ann', 'Ανακοίνωση'], ['hist', 'Ιστορικό']];
 const SEC = { S: 'Υπηρεσίες', ORDER: 'Υπηρεσίες', SHID: 'Υπηρεσίες', W: 'Δουλειές', FEAT: 'Δουλειές', HID: 'Δουλειές', UP: 'Δουλειές', HOME: 'Αρχική', INFO: 'Στοιχεία & ωράριο', ANN: 'Ανακοίνωση' };
@@ -1117,18 +1119,20 @@ function paintTop() {
     : `<span class="clean">Όλα δημοσιευμένα</span><a class="btn" href="#home">Δείτε το site</a>`;
 }
 const repaint = () => { const p = $('[data-panel]'); if (p) p.innerHTML = PANELS[TAB](); };
+const DEMO_PW = 'svolis2026'; // demo only: the real build uses a one-time code by email
 function loginHTML() {
   return `<div class="login"><div class="lcard"><img src="/x-svolis.gr/img/logo.png" alt="X-Σβόλης" width="550" height="150"><h2>Διαχείριση site</h2>
-  ${LOGIN === 1
-    ? `<p class="hint" style="font-size:15px">Γράψτε το email σας και θα σας στείλουμε κωδικό μιας χρήσης. Δεν χρειάζεται να θυμάστε κωδικό πρόσβασης.</p>
-       <form data-login="1"><div class="fld"><label for="l-e">Email</label><input id="l-e" type="email" inputmode="email" autocomplete="email" value="info@x-svolis.gr" required></div><button class="btn m" type="submit">Στείλτε μου κωδικό</button></form>`
-    : `<p class="hint" style="font-size:15px">Στείλαμε 6ψήφιο κωδικό στο <b>info@x-svolis.gr</b>. Ισχύει 10 λεπτά.</p>
-       <form data-login="2"><div class="fld"><label for="l-c">Κωδικός</label><input id="l-c" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required placeholder="000000"></div><button class="btn m" type="submit">Σύνδεση</button><p class="hint">Demo: γράψτε οποιουσδήποτε 6 αριθμούς.</p></form>`}
+  <form data-login novalidate><div class="fld"><label for="l-p">Κωδικός</label><input id="l-p" type="password" autocomplete="current-password" required aria-describedby="l-hint l-err"></div>
+    <p class="lerr" id="l-err" role="alert" hidden>Λάθος κωδικός. Δοκιμάστε ξανά.</p>
+    <button class="btn m" type="submit">Σύνδεση</button></form>
+  <p class="lhint" id="l-hint">Κωδικός για το demo: <b>${DEMO_PW}</b></p>
   <a class="lnk" href="#home">← Πίσω στο site</a></div></div>`;
 }
 function login(e) {
-  e.preventDefault(); if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
-  if (e.target.dataset.login === '1') { LOGIN = 2; renderAdmin(); $('#l-c')?.focus(); } else { AUTH = true; renderAdmin(); window.scrollTo(0, 0); }
+  e.preventDefault();
+  const pw = $('#l-p'), err = $('#l-err');
+  if (pw.value.trim() !== DEMO_PW) { err.hidden = false; pw.setAttribute('aria-invalid', 'true'); pw.select(); return; }
+  AUTH = true; renderAdmin(); window.scrollTo(0, 0);
 }
 
 /* ---------- panels ---------- */
@@ -1325,7 +1329,7 @@ app.addEventListener('click', (e) => {
   const a = act.dataset.act, r = REQ.find((x) => x.id === SEL.req);
   if (a === 'publish') publish();
   else if (a === 'discard') { DRAFT = clone(LIVE); DIRTY.clear(); renderAdmin(); toast('Οι αλλαγές ακυρώθηκαν.'); }
-  else if (a === 'logout') { AUTH = false; LOGIN = 1; renderAdmin(); }
+  else if (a === 'logout') { AUTH = false; renderAdmin(); }
   else if (a === 'send' && r) { r.log.push({ t: new Date(), x: 'Στάλθηκε απάντηση με email' }); if (r.st === 'new') r.st = 'replied'; renderAdmin(); toast('Η απάντηση στάλθηκε (demo).'); }
   else if (a === 'dl') toast('Στο κανονικό σύστημα το αρχείο κατεβαίνει στον υπολογιστή σας.');
   else if (a === 'itadd') { const v = $('#s-add').value.trim(); if (!v) return; D.S[SEL.svc].items.push(v); dirty('Υπηρεσίες'); repaint(); $('#s-add')?.focus(); }
