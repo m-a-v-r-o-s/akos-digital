@@ -134,7 +134,8 @@ p{margin:0;max-width:64ch}
 .s4{width:32%;aspect-ratio:1;right:6%;bottom:5%;border-radius:50%;padding:8px;--rot:-8deg;animation-delay:-1s}
 .s4 img{border-radius:50%}
 .spiral{position:absolute;left:47%;top:43%;width:88px;height:88px;border-radius:50%;z-index:3;pointer-events:none;
-  background:repeating-radial-gradient(circle,var(--m) 0 4px,#fff 4px 9px);box-shadow:0 0 0 7px #fff,0 10px 30px -8px rgba(0,0,0,.4);animation:spin 14s linear infinite}
+  background:#fff;padding:7px;box-shadow:0 10px 30px -8px rgba(0,0,0,.4);animation:spin 14s linear infinite}
+.spiral svg{display:block;width:100%;height:100%}
 @supports (animation-timeline:scroll()){.spiral{animation:spin linear both;animation-timeline:scroll(root)}}
 @media (max-width:860px){.hero .in{grid-template-columns:1fr}.col{height:min(92vw,420px)}.spiral{width:62px;height:62px}}
 @media (max-width:420px){.calls{grid-template-columns:1fr}}
@@ -184,7 +185,13 @@ p{margin:0;max-width:64ch}
 .fact{border-top:3px solid var(--y);padding-top:12px;display:grid;gap:2px}
 .fact b{font:900 clamp(30px,3.4vw,42px)/1 var(--f-d);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .fact > span{font-size:14px;color:#c9c7d3}
-.badge40{background:#fff;border-radius:50%;aspect-ratio:1;width:min(100%,340px);padding:9%;display:grid;place-items:center;justify-self:center;transform:rotate(-3deg);box-shadow:0 30px 60px -24px rgba(0,0,0,.6)}
+.band.dark{overflow:hidden}
+.b40{position:relative;width:min(100%,340px);justify-self:center;display:grid}
+.badge40{position:relative;background:#fff;border-radius:50%;aspect-ratio:1;width:100%;padding:11%;display:grid;place-items:center;transform:rotate(-3deg);box-shadow:0 30px 60px -24px rgba(0,0,0,.6)}
+.burst{position:absolute;left:-40%;top:-40%;width:180%;height:180%;pointer-events:none;fill:#2b6fd6;animation:spin 90s linear infinite}
+.burst circle{transform-box:fill-box;transform-origin:center}
+.b40.in-view .burst circle{animation:dot 700ms var(--ease-out) both;animation-delay:calc(var(--j) * 70ms)}
+@keyframes dot{from{opacity:0;transform:scale(0)}}
 .badge40 img{width:100%;height:auto}
 
 /* masonry work */
@@ -531,7 +538,7 @@ body.is-admin{padding-bottom:0;background:var(--paper)}
       <button class="stk s2" type="button" data-open-work="imerologio-2020" aria-label="Δείτε: ημερολόγιο γραφείου με σπιράλ"><img src="/x-svolis.gr/img/imerologio-2020.jpg" alt="" width="709" height="824"></button>
       <button class="stk s3" type="button" data-open-work="mprelok-kentita" aria-label="Δείτε: κεντητά μπρελόκ"><img src="/x-svolis.gr/img/mprelok-kentita.jpg" alt="" width="912" height="1181"></button>
       <button class="stk s4" type="button" data-open-work="kentima-petseta" aria-label="Δείτε: κέντημα σε πετσέτα"><img src="/x-svolis.gr/img/kentima-petseta.jpg" alt="" width="1146" height="1200"></button>
-      <span class="spiral" aria-hidden="true"></span>
+      <span class="spiral" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M50.00 50.00 L50.22 49.85 L50.48 49.78 L50.77 49.79 L51.06 49.91 L51.32 50.12 L51.54 50.41 L51.68 50.79 L51.74 51.22 L51.69 51.69 L51.52 52.17 L51.23 52.65 L50.82 53.08 L50.30 53.44 L49.68 53.70 L48.97 53.85 L48.21 53.85 L47.41 53.70 L46.62 53.38 L45.87 52.89 L45.19 52.24 L44.62 51.44 L44.18 50.51 L43.92 49.47 L43.85 48.35 L43.99 47.20 L44.35 46.04 L44.93 44.93 L45.74 43.91 L46.75 43.02 L47.94 42.31 L49.28 41.80 L50.74 41.54 L52.27 41.54 L53.81 41.82 L55.33 42.39 L56.76 43.24 L58.04 44.37 L59.14 45.74 L60.00 47.32 L60.58 49.07 L60.84 50.95 L60.77 52.89 L60.34 54.82 L59.57 56.70 L58.45 58.45 L57.00 60.00 L55.27 61.31 L53.30 62.31 L51.13 62.96 L48.84 63.22 L46.50 63.08 L44.17 62.51 L41.93 61.52 L39.86 60.14 L38.04 58.37 L36.53 56.28 L35.39 53.92 L34.66 51.34 L34.40 48.64 L34.62 45.88 L35.33 43.16 L36.52 40.56 L38.18 38.18 L40.26 36.08 L42.71 34.36 L45.47 33.08 L48.45 32.28 L51.57 32.02 L54.74 32.31 L57.85 33.16 L60.81 34.56 L63.51 36.49 L65.87 38.89 L67.80 41.70 L69.23 44.85 L70.10 48.24 L70.36 51.78 L70.00 55.36 L69.00 58.86 L67.39 62.18 L65.20 65.20 L62.48 67.83 L59.31 69.97 L55.77 71.54 L51.97 72.48 L48.01 72.74 L44.02 72.31 L40.13 71.17 L36.45 69.35 L33.11 66.89 L30.21 63.85 L27.87 60.32 L26.16 56.39 L25.14 52.17 L24.88 47.80 L25.39 43.40 L26.67 39.12 L28.69 35.08 L31.42 31.42 L34.78 28.26 L38.67 25.70 L42.99 23.85 L47.62 22.76 L52.41 22.50 L57.21 23.08 L61.89 24.50 L66.29 26.74 L70.27 29.73 L73.70 33.41 L76.46 37.66 L78.46 42.37 L79.62 47.41 L79.88 52.61 L79.23 57.83 L77.66 62.90 L75.22 67.66 L71.96 71.96 L67.96 75.66 L63.35 78.63 L58.24 80.77 L52.80 82.00 L47.18 82.26 L41.55 81.54 L36.09 79.83 L30.97 77.18 L26.35 73.65 L22.39 69.34 L19.21 64.36 L16.93 58.86 L15.63 53.01 L15.36 46.97 L16.16 40.93 L18.01 35.08 L20.86 29.60 L24.66 24.66 L29.29 20.43 L34.63 17.04 L40.52 14.62 L46.78 13.25 L53.24 12.98 L59.69 13.85 L65.93 15.84 L71.77 18.91 L77.03 22.97 L81.53 27.92 L85.12 33.62 L87.69 39.90 L89.13 46.58 L89.40 53.45 L88.46 60.30 L86.33 66.94 L83.05 73.14 L78.72 78.72 L73.45 83.48 L67.39 87.29 L60.72 90.00 L53.63 91.51 L46.34 91.78 L39.08 90.77 L32.05 88.49 L25.49 85.01 L19.59 80.41" fill="none" stroke="#a01f8c" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
     </div>
   </div></section>
 
@@ -550,7 +557,7 @@ body.is-admin{padding-bottom:0;background:var(--paper)}
       <div class="facts"><div class="fact"><b>1984</b><span>έτος ίδρυσης</span></div><div class="fact"><b>42</b><span>χρόνια στην Παλλήνη</span></div><div class="fact"><b>20+</b><span>είδη υπηρεσιών</span></div></div>
       <div class="btns"><a class="btn m press" href="#about">Σχετικά με εμάς</a></div>
     </div>
-    <div class="badge40 rv"><img src="/x-svolis.gr/img/40-xronia.jpg" alt="40 χρόνια κοντά σας" width="906" height="770" loading="lazy"></div>
+    <div class="b40 rv"><svg class="burst" data-burst aria-hidden="true"></svg><div class="badge40"><img src="/x-svolis.gr/img/40-xronia.jpg" alt="40 χρόνια κοντά σας" width="731" height="422" loading="lazy"></div></div>
   </div></section>
 
   <section class="band"><div class="in split">
@@ -652,7 +659,7 @@ body.is-admin{padding-bottom:0;background:var(--paper)}
     </div>
   </div></section>
   <section class="band dark"><div class="in split rev">
-    <div class="badge40"><img src="/x-svolis.gr/img/40-xronia.jpg" alt="40 χρόνια κοντά σας" width="906" height="770" loading="lazy"></div>
+    <div class="b40 rv"><svg class="burst" data-burst aria-hidden="true"></svg><div class="badge40"><img src="/x-svolis.gr/img/40-xronia.jpg" alt="40 χρόνια κοντά σας" width="731" height="422" loading="lazy"></div></div>
     <div class="stack">
       <span class="lab">Από το 1984</span>
       <h2>Πάνω από 40 χρόνια στην Παλλήνη.</h2>
@@ -1340,6 +1347,14 @@ app.addEventListener('drop', (e) => { const w = e.target.closest('[data-wi]'); i
 app.addEventListener('dragend', () => { dragI = null; $$('.witem.drag').forEach((x) => x.classList.remove('drag')); });
 
 /* ---------- boot ---------- */
+// his logo's dot burst: rays of dots, long and short alternating, smaller toward the tips
+$$('[data-burst]').forEach((svg) => {
+  svg.setAttribute('viewBox', '-100 -100 200 200'); let h = '';
+  for (let i = 0; i < 40; i++) { const a = (i / 40) * 2 * Math.PI, n = i % 2 ? 4 : 6;
+    for (let j = 0; j < n; j++) { const r = 60 + j * 6.4, d = Math.max(0.7, 1.9 - j * 0.22);
+      h += `<circle cx="${(Math.cos(a) * r).toFixed(2)}" cy="${(Math.sin(a) * r).toFixed(2)}" r="${d.toFixed(2)}" style="--j:${j}"/>`; } }
+  svg.innerHTML = h;
+});
 const hdr = $('.hdr'), onScroll = () => hdr.classList.toggle('stuck', scrollY > 2);
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 $$('[data-form]').forEach(renderForm); renderGrids(); renderWork(); renderHero(); tagInfo(); applyInfo(); route();
