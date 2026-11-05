@@ -431,9 +431,6 @@ body.is-admin{padding-bottom:0;background:var(--paper)}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag{display:inline-flex;align-items:center;gap:4px;background:var(--paper);border-radius:999px;padding:4px 4px 4px 12px;font-size:14px;font-weight:600}
 .tag button{width:28px;height:28px;border-radius:50%;border:0;background:#fff;cursor:pointer;font:700 15px/1 var(--f-b)}
-.pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px}
-.pk{padding:0;border:2px solid transparent;border-radius:10px;overflow:hidden;cursor:pointer;aspect-ratio:1;background:var(--paper)}
-.pk img{width:100%;height:100%;object-fit:cover}.pk.on{border-color:var(--m);box-shadow:0 0 0 2px #fff inset}
 .serp{border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:3px;font-family:Arial,system-ui,sans-serif;background:#fff}
 .serp cite{font-style:normal;font-size:13px;color:#4d5156}.serp b{font-size:19px;font-weight:400;color:#1a0dab}.serp p{font-size:14px;color:#4d5156}
 .spv{display:grid;gap:12px;position:sticky;top:90px}
@@ -443,8 +440,25 @@ body.is-admin{padding-bottom:0;background:var(--paper)}
 .words input{font:800 17px var(--f-d)!important}
 .wd0{background:var(--c-ink)!important;color:#fff!important;border-color:var(--c-ink)!important}.wd1{background:var(--m)!important;color:#fff!important;border-color:var(--m)!important}.wd2{background:var(--y)!important;border-color:var(--y)!important}
 .hpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.hp{display:grid;gap:6px}.hp img{aspect-ratio:4/3;object-fit:cover;border-radius:10px;width:100%}
-.hp select{font:500 13px var(--f-b);padding:8px;border-radius:9px;border:1.5px solid #cfcdd8;min-height:40px;width:100%;background:#fff}
+.hp{position:relative;display:grid;gap:6px;padding:0;border:0;background:none;text-align:left;cursor:pointer;font:inherit;color:var(--k)}
+.hp img{aspect-ratio:4/3;object-fit:cover;border-radius:12px;width:100%;border:2px solid var(--line);transition:border-color 160ms}
+.hp .hpcap{font-size:13px;font-weight:600;line-height:1.3;color:var(--mut)}
+.hp .hpchg{position:absolute;right:8px;top:8px;background:var(--k);color:#fff;font:700 12px/1 var(--f-b);padding:8px 11px;border-radius:999px}
+@media (hover:hover) and (pointer:fine){.hp:hover img{border-color:var(--m)}}
+.hp.one{max-width:320px}
+#pk{width:min(1040px,calc(100% - 24px));max-height:88dvh;border:2px solid var(--k);border-radius:20px;padding:0;background:#fff;color:var(--k);overscroll-behavior:contain}
+#pk::backdrop{background:rgba(22,20,28,.55)}
+.pkh{position:sticky;top:0;background:#fff;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.pkh h3{font-size:20px;margin-right:auto}
+.pkh .btn{min-height:44px;padding:0 16px;font-size:14px}
+.pkc{padding:14px 18px 0}.pkc .chip{min-height:40px;padding:6px 14px;font-size:14px}
+.pkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;padding:16px 18px 20px}
+.pkx{padding:0;border:0;background:none;display:grid;gap:6px;text-align:left;cursor:pointer;font:inherit;color:var(--k);align-content:start}
+.pkx img{aspect-ratio:4/3;object-fit:cover;width:100%;border-radius:12px;border:3px solid transparent;background:var(--paper)}
+.pkx span{font-size:13px;line-height:1.3;font-weight:600}
+.pkx.on img{border-color:var(--m)}
+.pkx.on span::before{content:"Τωρινή · ";color:var(--m)}
+@media (hover:hover) and (pointer:fine){.pkx:not(.on):hover img{border-color:var(--c)}}
 .mini{background:var(--w);border:2px solid var(--k);border-radius:16px;padding:18px;display:grid;gap:12px;position:sticky;top:90px}
 .mini .mw{font:900 30px/1 var(--f-d);letter-spacing:-.03em;display:flex;flex-wrap:wrap;gap:4px}
 .mini .mw span{padding:0 .1em;border-radius:.12em}
@@ -731,6 +745,8 @@ body.is-admin{padding-bottom:0;background:var(--paper)}
   <span>Δείγμα με το λογότυπο, τις φωτογραφίες και τα κείμενά σας. Το αλλάζετε μόνος σας από ένα απλό πάνελ.</span>
   <div class="btns"><a class="btn m" href="#admin" data-prop-close>Δείτε πώς το αλλάζετε</a><button class="btn" type="button" data-prop-close>Κλείσιμο</button></div>
 </div>
+
+<dialog id="pk" aria-label="Διαλέξτε φωτογραφία"></dialog>
 
 <dialog id="lb" aria-label="Προβολή φωτογραφίας">
   <div class="stage" data-lb-stage><img src="/x-svolis.gr/img/van-panogou.jpg" alt="Αυτοκόλλητα σε επαγγελματικό βαν" data-lb-img></div>
@@ -1183,7 +1199,7 @@ const PANELS = {
   },
   svc() {
     if (!DRAFT.S[SEL.svc]) SEL.svc = DRAFT.ORDER[0];
-    const k = SEL.svc, s = DRAFT.S[k], pick = [...DRAFT.W.filter((w) => w[2] === k), ...DRAFT.W.filter((w) => w[2] !== k)].slice(0, 24);
+    const k = SEL.svc, s = DRAFT.S[k];
     return `<div class="ssplit"><div class="slist">${DRAFT.ORDER.map((x, i) => `<div class="srow${x === k ? ' on' : ''}${DRAFT.SHID.includes(x) ? ' off' : ''}"><button class="sname" type="button" data-ssel="${x}">${esc(DRAFT.S[x].t)}${DRAFT.SHID.includes(x) ? ' (κρυφή)' : ''}</button><button class="ib" type="button" data-smv="${i}" data-d="-1" aria-label="Πάνω">↑</button><button class="ib" type="button" data-smv="${i}" data-d="1" aria-label="Κάτω">↓</button></div>`).join('')}
       <button class="btn" type="button" data-act="newsvc">+ Νέα υπηρεσία</button></div>
     <div class="sed">
@@ -1193,17 +1209,17 @@ const PANELS = {
       <div class="fld"><label for="s-txt">Κείμενο σελίδας <small>κενή γραμμή = νέα παράγραφος</small></label><textarea id="s-txt" rows="7" data-b="S.${k}.txt" data-paras>${esc(s.txt.join('\n\n'))}</textarea></div>
       <div class="fld"><span class="lbl">Τι φτιάχνουμε</span><div class="tags">${s.items.map((t, i) => `<span class="tag">${esc(t)}<button type="button" data-itdel="${i}" aria-label="Αφαίρεση: ${esc(t)}">×</button></span>`).join('')}</div>
         <div class="addrow"><input id="s-add" placeholder="π.χ. Επαγγελματικές κάρτες" aria-label="Νέο είδος" maxlength="60" enterkeyhint="done"><button class="btn" type="button" data-act="itadd">Προσθήκη</button></div></div>
-      <div class="fld"><span class="lbl">Φωτογραφία κάρτας</span><div class="pick">${pick.map((w) => `<button class="pk${w[0] === s.img ? ' on' : ''}" type="button" data-simg="${w[0]}" aria-pressed="${w[0] === s.img}" aria-label="${esc(w[1])}"><img src="${src(w[0])}" alt="" loading="lazy"></button>`).join('')}</div></div>
+      <div class="fld"><span class="lbl">Φωτογραφία κάρτας</span><button type="button" class="hp one" data-svcpick aria-label="Αλλαγή φωτογραφίας κάρτας: ${esc(capOf(s.img))}"><img src="${src(s.img)}" alt=""><span class="hpcap">${esc(capOf(s.img))}</span><span class="hpchg">Αλλαγή</span></button></div>
       <div class="fld"><span class="lbl">Έτσι φαίνεται στη Google</span><div class="serp" data-serp>${serp(k)}</div></div>
       <button class="btn del" type="button" data-confirm data-act="delsvc">Διαγραφή υπηρεσίας</button></div>
     <div class="spv"><span class="lab">Προεπισκόπηση κάρτας</span><div class="svc-grid" style="grid-template-columns:1fr" data-svpv>${card(k, DRAFT)}</div></div></div>`;
   },
   home() {
-    const H = DRAFT.HOME, opts = visW(DRAFT);
+    const H = DRAFT.HOME;
     return `<div class="hsplit"><div class="box">
       <div class="fld"><span class="lbl">Τίτλος: 4 λέξεις, οι 3 πρώτες με χρώμα</span><div class="words">${H.words.map((w, i) => `<input class="wd${i}" aria-label="Λέξη ${i + 1}" data-b="HOME.words.${i}" value="${esc(w)}" maxlength="14">`).join('')}</div></div>
       <div class="fld"><label for="h-p">Κείμενο κάτω από τον τίτλο <small data-count="h-p">${H.p.length}/260</small></label><textarea id="h-p" rows="4" data-b="HOME.p" maxlength="260">${esc(H.p)}</textarea></div>
-      <div class="fld"><span class="lbl">Οι 4 φωτογραφίες δίπλα στον τίτλο</span><div class="hpick">${H.hero.map((id, i) => `<div class="hp"><img src="${src(id)}" alt=""><select data-hero="${i}" aria-label="Φωτογραφία ${i + 1}">${opts.map((w) => `<option value="${w[0]}" ${w[0] === id ? 'selected' : ''}>${esc(w[1])}</option>`).join('')}</select></div>`).join('')}</div></div>
+      <div class="fld"><span class="lbl">Οι 4 φωτογραφίες δίπλα στον τίτλο</span><div class="hpick">${H.hero.map((id, i) => `<button type="button" class="hp" data-heropick="${i}" aria-label="Αλλαγή φωτογραφίας ${i + 1}: ${esc(capOf(id))}"><img src="${src(id)}" alt=""><span class="hpcap">${esc(capOf(id))}</span><span class="hpchg">Αλλαγή</span></button>`).join('')}</div></div>
       <div class="fld"><span class="lbl">Μαύρη λωρίδα κάτω από την αρχή</span>${H.strip.map((t, i) => `<input aria-label="Λωρίδα ${i + 1}" data-b="HOME.strip.${i}" value="${esc(t)}" maxlength="40" style="margin-top:6px">`).join('')}</div>
     </div><div class="mini" data-hpv>${heroPv()}</div></div>`;
   },
@@ -1262,6 +1278,33 @@ function livePv() {
   $$('[data-count]').forEach((c) => { const i = $('#' + c.dataset.count); if (i) c.textContent = `${i.value.length}/${i.maxLength}`; });
 }
 
+/* ---------- photo picker: choose by looking at the photos, not their names ---------- */
+const capOf = (id) => (DRAFT.W.find((x) => x[0] === id) || ['', ''])[1];
+function addUploads(fileList, cat) {
+  const files = [...fileList].filter((f) => /^image\/(jpeg|png|webp)$/.test(f.type) && f.size <= 10 * 1024 * 1024);
+  if (files.length < fileList.length) toast('Μόνο JPG, PNG ή WebP έως 10 MB.');
+  return Promise.all(files.map((f, i) => new Promise((ok) => { const r = new FileReader(); r.onload = () => ok([`up-${Date.now()}-${i}`, f.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' '), r.result]); r.readAsDataURL(f); })))
+    .then((rows) => { rows.forEach(([id, cap, url]) => { DRAFT.UP[id] = url; DRAFT.W.unshift([id, cap, cat]); }); if (rows.length) dirty('Δουλειές'); return rows.map((r) => r[0]); });
+}
+const pkDlg = $('#pk'); let PK = null;
+function openPicker(current, cat, onPick) { PK = { current, cat: DRAFT.W.some((w) => w[2] === cat) ? cat : 'all', onPick }; paintPicker(); pkDlg.showModal(); pkDlg.scrollTop = 0; }
+function paintPicker() {
+  const vis = visW(DRAFT), cats = DRAFT.ORDER.filter((k) => vis.some((w) => w[2] === k)), list = vis.filter((w) => PK.cat === 'all' || w[2] === PK.cat);
+  pkDlg.innerHTML = `<div class="pkh"><h3>Διαλέξτε φωτογραφία</h3><label class="btn upl">+ Νέα φωτογραφία<input class="vh" type="file" accept="image/jpeg,image/png,image/webp" data-pkup></label><button class="ib" type="button" data-pkclose aria-label="Κλείσιμο">×</button></div>
+  <div class="chips pkc" role="group" aria-label="Κατηγορία">${[['all', 'Όλες'], ...cats.map((k) => [k, DRAFT.S[k].t])].map(([k, t]) => `<button class="chip" type="button" data-pkcat="${k}" aria-pressed="${PK.cat === k}">${esc(t)}</button>`).join('')}</div>
+  <div class="pkg">${list.map((w) => `<button class="pkx${w[0] === PK.current ? ' on' : ''}" type="button" data-pkid="${w[0]}" aria-pressed="${w[0] === PK.current}"><img src="${src(w[0])}" alt="" loading="lazy"><span>${esc(w[1])}</span></button>`).join('')}</div>`;
+}
+pkDlg.addEventListener('click', (e) => {
+  const g = (a) => e.target.closest(`[data-${a}]`);
+  if (e.target === pkDlg || g('pkclose')) { pkDlg.close(); return; }
+  if (g('pkcat')) { PK.cat = g('pkcat').dataset.pkcat; paintPicker(); return; }
+  if (g('pkid')) { pkDlg.close(); PK.onPick(g('pkid').dataset.pkid); toast('Η φωτογραφία άλλαξε. Πατήστε «Δημοσίευση» για να φανεί στο site.'); }
+});
+pkDlg.addEventListener('change', (e) => {
+  if (!('pkup' in e.target.dataset)) return;
+  addUploads(e.target.files, PK.cat !== 'all' ? PK.cat : DRAFT.ORDER[0]).then((ids) => { if (ids.length) { pkDlg.close(); PK.onPick(ids[0]); toast('Ανέβηκε και μπήκε στη θέση. Γράψτε λεζάντα στις «Δουλειές μας».'); } });
+});
+
 /* ---------- publish / discard / restore ---------- */
 function refreshSite() { S = LIVE.S; W = LIVE.W; renderGrids(); renderWork(); renderHero(); applyInfo(); }
 function publish() {
@@ -1290,15 +1333,9 @@ app.addEventListener('change', (e) => {
     D.FEAT = t.checked ? [...D.FEAT, id] : D.FEAT.filter((x) => x !== id); dirty('Δουλειές'); repaint(); }
   else if (t.dataset.wvis) { const id = t.dataset.wvis; D.HID = t.checked ? D.HID.filter((x) => x !== id) : [...D.HID, id]; dirty('Δουλειές'); t.closest('.witem').classList.toggle('off', !t.checked); }
   else if ('wf' in t.dataset) { WF = t.value; repaint(); }
-  else if ('upload' in t.dataset) {
-    const files = [...t.files].filter((f) => /^image\/(jpeg|png|webp)$/.test(f.type) && f.size <= 10 * 1024 * 1024);
-    if (files.length < t.files.length) toast('Μόνο JPG, PNG ή WebP έως 10 MB.');
-    Promise.all(files.map((f, i) => new Promise((ok) => { const r = new FileReader(); r.onload = () => ok([`up-${Date.now()}-${i}`, f.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' '), r.result]); r.readAsDataURL(f); })))
-      .then((rows) => { rows.forEach(([id, cap, url]) => { D.UP[id] = url; D.W.unshift([id, cap, WF !== 'all' ? WF : D.ORDER[0]]); }); if (rows.length) { dirty('Δουλειές'); repaint(); toast(`Προστέθηκαν ${rows.length}. Γράψτε λεζάντα και πατήστε «Δημοσίευση».`); } });
-  }
+  else if ('upload' in t.dataset) addUploads(t.files, WF !== 'all' ? WF : D.ORDER[0]).then((ids) => { if (ids.length) { repaint(); toast(`Προστέθηκαν ${ids.length}. Γράψτε λεζάντα και πατήστε «Δημοσίευση».`); } });
   else if (t.dataset.svis) { const k = t.dataset.svis; D.SHID = t.checked ? D.SHID.filter((x) => x !== k) : [...D.SHID, k]; dirty('Υπηρεσίες'); repaint(); }
   else if (t.dataset.hopen) { const d = t.dataset.hopen; D.INFO.hours[d] = t.checked ? (d === '6' ? ['09:00', '14:30'] : ['09:00', '17:30']) : null; dirty('Στοιχεία & ωράριο'); repaint(); }
-  else if (t.dataset.hero) { D.HOME.hero[+t.dataset.hero] = t.value; dirty('Αρχική'); repaint(); }
   else if ('anntone' in t.dataset) { D.ANN.tone = t.value; dirty('Ανακοίνωση'); livePv(); }
   else if ('annon' in t.dataset) { D.ANN.on = t.checked; dirty('Ανακοίνωση'); livePv(); }
   else if (t.dataset.rst) { const r = REQ.find((x) => x.id === t.dataset.rst); r.st = t.value; r.log.push({ t: new Date(), x: 'Κατάσταση: ' + ST[t.value] }); renderAdmin(); }
@@ -1321,7 +1358,9 @@ app.addEventListener('click', (e) => {
     if (D.ORDER.some((k) => D.S[k].img === id)) { toast('Είναι φωτογραφία κάρτας υπηρεσίας. Αλλάξτε την εκεί πρώτα.'); repaint(); return; }
     D.W.splice(i, 1); D.FEAT = D.FEAT.filter((x) => x !== id); D.HID = D.HID.filter((x) => x !== id); dirty('Δουλειές'); repaint(); return; }
   if (g('itdel')) { D.S[SEL.svc].items.splice(+g('itdel').dataset.itdel, 1); dirty('Υπηρεσίες'); repaint(); return; }
-  if (g('simg')) { D.S[SEL.svc].img = g('simg').dataset.simg; dirty('Υπηρεσίες'); repaint(); return; }
+  if (g('heropick')) { const i = +g('heropick').dataset.heropick, H = D.HOME.hero;
+    openPicker(H[i], 'all', (id) => { const j = H.indexOf(id); if (j > -1 && j !== i) H[j] = H[i]; H[i] = id; dirty('Αρχική'); repaint(); }); return; }
+  if (g('svcpick')) { const k = SEL.svc; openPicker(D.S[k].img, k, (id) => { D.S[k].img = id; dirty('Υπηρεσίες'); repaint(); }); return; }
   if (g('holdel')) { D.INFO.holidays = D.INFO.holidays.filter((x) => x.d !== g('holdel').dataset.holdel); dirty('Στοιχεία & ωράριο'); repaint(); return; }
   if (g('restore')) { const h = HIST[+g('restore').dataset.restore]; LIVE = clone(h.snap); DRAFT = clone(LIVE); DIRTY.clear();
     HIST.unshift({ t: new Date(), label: 'Επαναφορά έκδοσης ' + fmtDT(h.t), snap: clone(LIVE) }); refreshSite(); renderAdmin(); toast('Έγινε επαναφορά.'); return; }
