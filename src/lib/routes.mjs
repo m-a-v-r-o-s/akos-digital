@@ -1,9 +1,9 @@
 // Routing rules for server.mjs, in their own module so scripts/check-locale-routing.ts
 // can test them without starting the server.
 
-export const STATIC_DIRS = ['/7mero.ai', '/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001'];
+export const STATIC_DIRS = ['/7mero.ai', '/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001', '/x-svolis.gr'];
 // Client pitches, not public content.
-export const NOINDEX = ['/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001'];
+export const NOINDEX = ['/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001', '/x-svolis.gr'];
 export const under = (p, dir) => p === dir || p.startsWith(dir + '/');
 
 // Static folders are served by exact file path, so their directory indexes
@@ -18,6 +18,7 @@ export const REWRITES = {
   '/pediada': '/pediada/index.html',
   '/2001': '/2001/index.html',
   '/2001/mystiki': '/2001/mystiki/index.html',
+  '/x-svolis.gr': '/x-svolis.gr/index.html',
 };
 
 /** Permanent redirects carried over from next.config.mjs, so indexed and shared URLs keep their history. */
