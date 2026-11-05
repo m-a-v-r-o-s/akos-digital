@@ -192,7 +192,8 @@ p{margin:0;max-width:64ch}
 .burst circle{transform-box:fill-box;transform-origin:center}
 .b40.in-view .burst circle{animation:dot 700ms var(--ease-out) both;animation-delay:calc(var(--j) * 70ms)}
 @keyframes dot{from{opacity:0;transform:scale(0)}}
-.badge40 img{width:100%;height:auto}
+.badge40{overflow:hidden}
+.badge40 img{width:100%;height:auto;mix-blend-mode:multiply}
 
 /* masonry work */
 .mason{columns:4 240px;column-gap:16px}
