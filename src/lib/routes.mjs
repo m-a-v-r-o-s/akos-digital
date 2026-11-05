@@ -6,6 +6,20 @@ export const STATIC_DIRS = ['/7mero.ai', '/olympus', '/elaiotriveio', '/3d-eshop
 export const NOINDEX = ['/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001', '/x-svolis.gr'];
 export const under = (p, dir) => p === dir || p.startsWith(dir + '/');
 
+// Pitch mockups come down one calendar month after they first went up (7mero.ai is
+// the product page and never expires). From that day (Athens time) the whole folder
+// answers 410 Gone with a short notice. To bring one back, move its date.
+export const EXPIRES = {
+  '/olympus': '2026-11-02',
+  '/elaiotriveio': '2026-11-19',
+  '/3d-eshop': '2026-11-19',
+  '/pediada': '2026-11-19',
+  '/2001': '2026-11-30',
+  '/x-svolis.gr': '2026-12-05',
+};
+export const expired = (p, now = Date.now()) =>
+  Object.entries(EXPIRES).some(([dir, day]) => under(p, dir) && now >= Date.parse(`${day}T00:00:00+02:00`));
+
 // Static folders are served by exact file path, so their directory indexes
 // have to be named.
 export const REWRITES = {

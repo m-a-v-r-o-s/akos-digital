@@ -52,4 +52,14 @@ assert.ok(
 );
 assert.ok(sitemap.includes('hreflang="x-default"'), "every sitemap URL declares the Greek x-default");
 
+// ── pitch mockups expire one month after they go up ──────────────────────
+const { expired, EXPIRES } = await import("../src/lib/routes.mjs");
+const at = (iso: string) => Date.parse(iso);
+assert.ok(!("/7mero.ai" in EXPIRES), "7mero.ai is the product page: it never expires");
+assert.ok(!expired("/x-svolis.gr", at("2026-12-04T23:59:00+02:00")), "a mockup stays up until its day");
+assert.ok(expired("/x-svolis.gr", at("2026-12-05T00:00:01+02:00")), "a mockup goes down on its day, Athens time");
+assert.ok(expired("/x-svolis.gr/img/logo.png", at("2026-12-06T12:00:00+02:00")), "its images go down with it");
+assert.ok(!expired("/x-svolis.grx", at("2030-01-01")), "lookalike paths are not part of the folder");
+assert.ok(!expired("/7mero.ai", at("2030-01-01")) && !expired("/el", at("2030-01-01")), "the site itself never expires");
+
 console.log("✓ locale routing OK");

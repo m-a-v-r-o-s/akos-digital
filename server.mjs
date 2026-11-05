@@ -3,7 +3,7 @@
 // runs, so redirects, rewrites and headers have to happen here to reach
 // every response.
 import http from 'node:http';
-import { STATIC_DIRS, NOINDEX, REWRITES, under, redirectFor } from './src/lib/routes.mjs';
+import { STATIC_DIRS, NOINDEX, REWRITES, under, redirectFor, expired } from './src/lib/routes.mjs';
 
 process.env.ASTRO_NODE_AUTOSTART = 'disabled';
 const { handler } = await import('./dist/server/entry.mjs');
@@ -57,6 +57,18 @@ const HEADERS = {
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
 };
 
+// Shown for a pitch mockup past its date (see EXPIRES in routes.mjs).
+const EXPIRED_CSP = "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'";
+const EXPIRED_PAGE = `<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>Η πρόταση δεν είναι πλέον διαθέσιμη · Akos Digital Services</title>
+<style>:root{color-scheme:light dark;--bg:#f6f5f2;--fg:#1a1a1a;--mut:#5c5a55}@media (prefers-color-scheme:dark){:root{--bg:#121212;--fg:#efede8;--mut:#a9a6a0}}
+body{margin:0;min-height:100vh;min-height:100svh;display:grid;place-items:center;background:var(--bg);color:var(--fg);font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px max(20px,env(safe-area-inset-right)) 24px max(20px,env(safe-area-inset-left));box-sizing:border-box}
+main{max-width:34rem}h1{font-size:clamp(26px,5vw,36px);line-height:1.15;margin:0 0 14px;text-wrap:balance}p{margin:0 0 10px;color:var(--mut)}a{color:var(--fg);font-weight:600}.en{font-size:14px;margin-top:22px}</style></head>
+<body><main><h1>Αυτή η πρόταση δεν είναι πλέον διαθέσιμη</h1>
+<p>Το δείγμα και η προσφορά ίσχυαν για έναν μήνα και έχουν λήξει.</p>
+<p>Για νέα προσφορά γράψτε μου στο <a href="mailto:info@akosds.com">info@akosds.com</a> ή δείτε το <a href="https://www.akosds.com/el">akosds.com</a>.</p>
+<p class="en" lang="en">This proposal is no longer available.</p></main></body></html>`;
+
 function cacheControl(path) {
   // Content-hashed by Astro; the adapter marks these immutable itself.
   if (path.startsWith('/_astro/')) return null;
@@ -82,6 +94,12 @@ const server = http.createServer((req, res) => {
   if (to) {
     res.writeHead(308, { Location: to + qs });
     return res.end();
+  }
+
+  if (expired(path)) {
+    for (const [k, v] of Object.entries(HEADERS)) res.setHeader(k, v);
+    res.writeHead(410, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow', 'Content-Security-Policy': EXPIRED_CSP });
+    return res.end(EXPIRED_PAGE);
   }
 
   const legacy = STATIC_DIRS.some((d) => under(path, d));
