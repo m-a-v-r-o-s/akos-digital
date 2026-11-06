@@ -188,6 +188,7 @@ p{margin:0;max-width:64ch}
 .fact > span{font-size:14px;color:#c9c7d3}
 .band.dark{overflow:hidden}
 .b40{position:relative;width:min(100%,340px);justify-self:center;display:grid}
+@media (max-width:860px){.b40{margin-top:min(30%,100px)}} /* stacked: burst reaches ~1/3 badge width above it, clear the button */
 .badge40{position:relative;background:#fff;border-radius:50%;aspect-ratio:1;width:100%;padding:11%;display:grid;place-items:center;transform:rotate(-3deg);box-shadow:0 30px 60px -24px rgba(0,0,0,.6)}
 .burst{position:absolute;left:-40%;top:-40%;width:180%;height:180%;pointer-events:none;fill:#2b6fd6;animation:spin 90s linear infinite}
 .burst circle{transform-box:fill-box;transform-origin:center}
