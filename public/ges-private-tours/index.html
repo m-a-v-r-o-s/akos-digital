@@ -198,6 +198,8 @@ nav.main a:hover::after,nav.main a[aria-current="page"]::after{transform:scaleX(
 .chip:active{transform:scale(.96)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--gold2)}
 a.chip{text-decoration:none}
+.dark .chip:not(.wa):not(.vb){background:transparent;border-color:rgba(215,174,78,.55);color:var(--gold2)}
+.dark .chip:not(.wa):not(.vb):hover{background:rgba(215,174,78,.12)}
 .chip.wa{background:#1f9f55;border-color:#1f9f55;color:#fff}
 .chip.vb{background:#6f4fd1;border-color:#6f4fd1;color:#fff}
 .chip svg{width:18px;height:18px;fill:currentColor}
@@ -664,7 +666,7 @@ V.tour = id => {
 let TM = Object.assign({ port: 'rhodes', likes: ['history'], pace: 'relaxed', guests: 2, access: false, name: '', email: '', phone: '', ship: '', notes: '' }, store.get('tm', {}));
 const LIKES = [['history', 'History and ancient sites', 'Ιστορία και αρχαία'], ['beach', 'Beaches and swimming', 'Παραλίες και μπάνιο'], ['food', 'Food and wine', 'Φαγητό και κρασί'], ['boat', 'Boat and islands', 'Σκάφος και νησιά'], ['family', 'With children', 'Με παιδιά'], ['photo', 'Views and photos', 'Θέα και φωτογραφίες'], ['villages', 'Villages and local life', 'Χωριά και τοπική ζωή'], ['shopping', 'Shopping', 'Ψώνια']];
 V['tailor-made'] = () => `
-<section class="phero" style="min-height:380px"><img src="/ges-private-tours/img/couple.jpg" alt=""><div class="wrap"><span class="ey on-d">${L('Tailor-made', 'Κατά παραγγελία')}</span><h1>${L('Design your day', 'Σχεδιάστε τη μέρα σας')}</h1><p>${L('Answer a few questions. Evi replies within 2 hours with a private plan and a fixed price.', 'Απαντήστε σε λίγες ερωτήσεις. Η Εύη σας απαντά μέσα σε 2 ώρες με πρόγραμμα και σταθερή τιμή.')}</p></div></section>
+<section class="phero" style="min-height:380px"><img src="/ges-private-tours/img/tailor-hero.jpg" alt="" style="object-position:50% 55%"><div class="wrap"><span class="ey on-d">${L('Tailor-made', 'Κατά παραγγελία')}</span><h1>${L('Design your day', 'Σχεδιάστε τη μέρα σας')}</h1><p>${L('Answer a few questions. Evi replies within 2 hours with a private plan and a fixed price.', 'Απαντήστε σε λίγες ερωτήσεις. Η Εύη σας απαντά μέσα σε 2 ώρες με πρόγραμμα και σταθερή τιμή.')}</p></div></section>
 <section><div class="wrap two">
   <form class="panel" id="tmform" novalidate style="display:grid;gap:22px">
     <div class="grid3"><div class="fld"><label for="tm-port">${L('Port', 'Λιμάνι')}</label><select id="tm-port" data-tm="port">${D.ports.map(p => `<option value="${p.id}"${p.id === TM.port ? ' selected' : ''}>${esc(nm(p))}</option>`).join('')}</select></div>
@@ -690,7 +692,7 @@ V['tailor-made'] = () => `
 </div></section>`;
 
 V.about = () => `
-<section class="phero"><img src="/ges-private-tours/img/rhodes.jpg" alt="${L('Rhodes town from the air', 'Η πόλη της Ρόδου από ψηλά')}"><div class="wrap"><span class="ey on-d">${L('Creative · Passionate · Trustworthy', 'Δημιουργικοί · Με πάθος · Αξιόπιστοι')}</span><h1>${L('About us', 'Ποιοι είμαστε')}</h1></div></section>
+<section class="phero"><img src="/ges-private-tours/img/about-hero.jpg" alt="" style="object-position:50% 40%"><div class="wrap"><span class="ey on-d">${L('Creative · Passionate · Trustworthy', 'Δημιουργικοί · Με πάθος · Αξιόπιστοι')}</span><h1>${L('About us', 'Ποιοι είμαστε')}</h1></div></section>
 <section><div class="wrap two">
   <div class="sec-h" data-rise style="margin:0"><span class="ey">G.E.S Travel Agency</span><h2>${L('Two generations of Rhodes hospitality', 'Δύο γενιές φιλοξενίας στη Ρόδο')}</h2>
   <p>${L('Founded by George Sialadakis, a veteran of the Greek travel industry, and now run by Evi Sialadakis, a new generation tourism specialist. Our office is on Kanada street, a few steps from the port of Rhodes.', 'Την ίδρυσε ο Γιώργος Σιαλαδάκης, με χρόνια εμπειρίας στον τουρισμό, και σήμερα τη διευθύνει η Εύη Σιαλαδάκη. Το γραφείο μας είναι στην οδό Καναδά, λίγα βήματα από το λιμάνι της Ρόδου.')}</p>
