@@ -1,9 +1,9 @@
 // Routing rules for server.mjs, in their own module so scripts/check-locale-routing.ts
 // can test them without starting the server.
 
-export const STATIC_DIRS = ['/7mero.ai', '/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001', '/x-svolis.gr', '/aspire-transfer'];
+export const STATIC_DIRS = ['/7mero.ai', '/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001', '/x-svolis.gr', '/aspire-transfer', '/ges-private-tours'];
 // Client pitches, not public content.
-export const NOINDEX = ['/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001', '/x-svolis.gr', '/aspire-transfer'];
+export const NOINDEX = ['/olympus', '/elaiotriveio', '/3d-eshop', '/pediada', '/2001', '/x-svolis.gr', '/aspire-transfer', '/ges-private-tours'];
 export const under = (p, dir) => p === dir || p.startsWith(dir + '/');
 
 // Pitch mockups come down one calendar month after they first went up (7mero.ai is
@@ -17,6 +17,7 @@ export const EXPIRES = {
   '/2001': '2026-11-30',
   '/x-svolis.gr': '2026-12-05',
   '/aspire-transfer': '2026-12-12',
+  '/ges-private-tours': '2026-12-12',
 };
 export const expired = (p, now = Date.now()) =>
   Object.entries(EXPIRES).some(([dir, day]) => under(p, dir) && now >= Date.parse(`${day}T00:00:00+02:00`));
@@ -35,6 +36,7 @@ export const REWRITES = {
   '/2001/mystiki': '/2001/mystiki/index.html',
   '/x-svolis.gr': '/x-svolis.gr/index.html',
   '/aspire-transfer': '/aspire-transfer/index.html',
+  '/ges-private-tours': '/ges-private-tours/index.html',
 };
 
 /** Permanent redirects carried over from next.config.mjs, so indexed and shared URLs keep their history. */

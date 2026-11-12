@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#041215">
+<title>G.E.S Private Tours · Private shore excursions in every Greek port</title>
+<meta name="description" content="Private, tailor-made tours in every major Greek cruise port, planned around your ship's hours. By G.E.S Travel Agency, Rhodes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Port Clock: their black-teal and gold for chrome, limestone light for planning. Logo's serif italic sets the voice; Space Grotesk carries times and ship hours. */
+:root{
+  --ink:#041215; --ink2:#0a1f23; --ink3:#12302f; --line-d:rgba(255,255,255,.1);
+  --gold:#d7ae4e; --gold2:#ecd18a; --goldd:#86651a; --goldgrad:linear-gradient(135deg,#f0d58c 0%,#d7ae4e 50%,#a9821f 100%);
+  --paper:#f2f4f3; --card:#ffffff; --text:#0c1d20; --muted:#4f6265; --line:#d9e0df;
+  --sea:#0b7a83; --sea-soft:#dcefee; --warn:#a86a00; --warn-soft:#fbefd8; --no:#8a9799;
+  --on-d:#eef3f2; --muted-d:#a5b7b8;
+  --f-d:"Playfair Display",Georgia,serif; --f-b:"DM Sans",system-ui,sans-serif; --f-u:"Space Grotesk",system-ui,sans-serif;
+  --spring:linear(0,.178 4.2%,.531 10.6%,.787 17.3%,.931 24.5%,.986 31.7%,1.003 40%,1.004 52%,1);
+  --r:16px; --hdr:76px;
+  --gx:max(20px,env(safe-area-inset-left,0px)); --gxr:max(20px,env(safe-area-inset-right,0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--text);font:16px/1.65 var(--f-b);-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:600}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gx);padding-right:var(--gxr)}
+.ey{font:500 12px/1.2 var(--f-u);letter-spacing:.22em;text-transform:uppercase;color:var(--goldd)}
+.dark .ey,.ey.on-d{color:var(--gold)}
+.disp{font-family:var(--f-d);font-style:italic;font-weight:600;letter-spacing:-.01em}
+.u{font-family:var(--f-u)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.dark{background:var(--ink);color:var(--on-d)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;border:1px solid transparent;font:600 15px var(--f-b);text-decoration:none;transition:transform .5s var(--spring),background .3s,border-color .3s,color .3s;touch-action:manipulation;user-select:none;white-space:nowrap}
+.btn:active{transform:scale(.96);transition-duration:.08s}
+.btn-gold{background:var(--goldgrad);color:var(--ink)}
+.btn-ink{background:var(--ink);color:var(--gold2)}
+.btn-line{border-color:var(--line);background:var(--card);color:var(--text)}
+.btn-line:hover{border-color:var(--goldd)}
+.dark .btn-line{background:transparent;border-color:rgba(215,174,78,.5);color:var(--gold2)}
+section{padding-block:clamp(64px,8vw,112px)}
+.sec-h{display:grid;gap:12px;margin-bottom:clamp(26px,4vw,44px);max-width:740px}
+.sec-h h2{font:600 italic clamp(32px,4.4vw,54px)/1.06 var(--f-d)}
+.sec-h p{color:var(--muted);font-size:17px}
+.dark .sec-h p{color:var(--muted-d)}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--ink);z-index:60}
+header.site{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;color:var(--on-d);transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+header.site.solid,header.site.always{background:rgba(4,18,21,.9);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-color:var(--line-d)}
+.hdr{height:var(--hdr);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand img{width:150px;height:auto}
+nav.main{display:flex;gap:28px;font:500 14px var(--f-b)}
+nav.main a{text-decoration:none;opacity:.85;padding:8px 0;position:relative}
+nav.main a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--spring)}
+nav.main a:hover,nav.main a[aria-current="page"]{opacity:1}
+nav.main a:hover::after,nav.main a[aria-current="page"]::after{transform:scaleX(1)}
+.hdr-r{display:flex;align-items:center;gap:12px}
+.lang{display:flex;border:1px solid var(--line-d);border-radius:999px;padding:3px}
+.lang button{background:none;border:0;min-width:40px;min-height:32px;border-radius:999px;font:600 12px var(--f-u);letter-spacing:.1em;color:var(--muted-d)}
+.lang button[aria-pressed="true"]{background:rgba(215,174,78,.18);color:var(--gold2)}
+.hdr .btn{min-height:42px;padding:0 20px;font-size:14px}
+.burger{display:none;background:none;border:1px solid var(--line-d);width:44px;height:44px;border-radius:50%;place-items:center}
+.burger span{display:block;width:16px;height:1px;background:var(--on-d);box-shadow:0 5px 0 var(--on-d),0 -5px 0 var(--on-d)}
+@media (max-width:1000px){nav.main,.hdr .btn{display:none}.burger{display:grid}.brand img{width:126px}}
+.drawer{position:fixed;inset:0;z-index:70;background:rgba(2,10,12,.55);opacity:0;pointer-events:none;transition:opacity .35s}
+.drawer.open{opacity:1;pointer-events:auto}
+.drawer .panel{position:absolute;right:0;top:0;bottom:0;width:min(86vw,360px);background:var(--ink);color:var(--on-d);padding:calc(env(safe-area-inset-top,0px) + 22px) 26px 26px;display:flex;flex-direction:column;gap:4px;transform:translateX(100%);transition:transform .6s var(--spring)}
+.drawer.open .panel{transform:none}
+.drawer a{font:600 italic 26px/1.2 var(--f-d);text-decoration:none;padding:12px 0;border-bottom:1px solid var(--line-d)}
+.drawer .close{align-self:flex-end;background:none;border:1px solid var(--line-d);border-radius:50%;width:44px;height:44px;font-size:20px;margin-bottom:12px;color:var(--on-d)}
+
+.js [data-rise]{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform 1s var(--spring)}
+.js [data-rise].in{opacity:1;transform:none}
+
+/* hero */
+.hero{position:relative;padding:calc(var(--hdr) + clamp(70px,12vw,150px)) 0 0;color:var(--on-d);isolation:isolate;overflow:hidden;background:var(--ink)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;z-index:-2;animation:kb 20s ease-out both}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,18,21,.72) 0%,rgba(4,18,21,.5) 28%,rgba(4,18,21,.62) 48%,rgba(4,18,21,.9) 72%,var(--ink) 100%)}
+.hero h1,.hero .lede{text-shadow:0 2px 24px rgba(4,18,21,.55)}
+.hero-copy{display:grid;gap:20px;max-width:760px;padding-bottom:clamp(40px,6vw,64px)}
+.hero h1{font:600 italic clamp(44px,7vw,92px)/1 var(--f-d);letter-spacing:-.015em}
+.hero h1 span{color:var(--gold)}
+.hero .lede{font-size:clamp(17px,1.7vw,20px);color:#d8e3e2;max-width:52ch}
+.stars{color:var(--gold);letter-spacing:.3em;font-size:14px}
+
+/* planner */
+.planner{background:var(--card);color:var(--text);border-radius:22px;box-shadow:0 40px 90px -40px rgba(4,18,21,.6);padding:clamp(18px,2.6vw,30px);display:grid;gap:18px;position:relative;z-index:2}
+.pl-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.pl-top h2{font:600 italic clamp(22px,2.4vw,30px)/1.1 var(--f-d)}
+.pl-top p{color:var(--muted);font-size:14px}
+.pl-f{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr auto;gap:10px;align-items:end}
+@media (max-width:900px){.pl-f{grid-template-columns:1fr 1fr}.pl-f .fld:first-child{grid-column:1/-1}.pl-f .btn{grid-column:1/-1}}
+.fld{display:grid;gap:6px;min-width:0}
+.fld label,.lbl{font:500 11px var(--f-u);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.fld input,.fld select,.fld textarea{width:100%;min-height:52px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;transition:border-color .3s,background .3s;appearance:none;-webkit-appearance:none;color:var(--text)}
+.fld select{background-image:linear-gradient(45deg,transparent 50%,var(--goldd) 50%),linear-gradient(135deg,var(--goldd) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px}
+.fld input[type="time"]{font-family:var(--f-u);font-weight:500}
+.fld textarea{min-height:100px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:0;border-color:var(--goldd);background:#fff}
+.fld .hint{font-size:13px;color:var(--muted)}
+.ashore{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;border-radius:14px;background:var(--sea-soft);color:#064d53;font-size:15px}
+.ashore b{font:600 22px var(--f-u);color:var(--sea)}
+.ashore.bad{background:var(--warn-soft);color:#6b4300}
+.ashore.bad b{color:var(--warn)}
+
+/* fit list */
+.fits{display:grid;gap:10px}
+.fit{display:grid;grid-template-columns:120px 1fr auto;gap:18px;align-items:center;padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--card);text-decoration:none;transition:border-color .3s,transform .5s var(--spring)}
+.fit:hover{border-color:var(--goldd);transform:translateY(-2px)}
+.fit img{width:120px;height:84px;object-fit:cover;border-radius:10px}
+.fit h3{font:600 17px/1.3 var(--f-b)}
+.fit .pr{text-align:right;display:grid;gap:2px}
+.fit .pr b{font:600 20px var(--f-u)}
+.fit .pr small{color:var(--muted);font-size:12px}
+.fit.no{opacity:.55}
+@media (max-width:640px){.fit{grid-template-columns:84px 1fr}.fit img{width:84px;height:84px}.fit .pr{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;text-align:left}}
+.tl{position:relative;height:26px;margin-top:8px}
+.tl .track{position:absolute;left:0;right:0;top:11px;height:4px;border-radius:4px;background:var(--line)}
+.tl .seg{position:absolute;top:8px;height:10px;border-radius:10px;background:var(--sea);transform-origin:left;transform:scaleX(0);transition:transform 1s var(--spring)}
+.tl.drawn .seg{transform:scaleX(1)}
+.fit.tight .seg{background:var(--warn)}
+.fit.no .seg{background:var(--no)}
+.tl .tick{position:absolute;top:0;font:500 10px var(--f-u);color:var(--muted);translate:-50% 0;white-space:nowrap}
+.tl .tick::after{content:"";position:absolute;left:50%;top:13px;width:1px;height:12px;background:var(--muted)}
+.tl .tick.end{color:var(--text)}
+.status{display:inline-flex;align-items:center;gap:6px;font:500 12px var(--f-u);letter-spacing:.04em;margin-top:2px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sea)}
+.fit.tight .status::before{background:var(--warn)}
+.fit.no .status::before{background:var(--no)}
+
+/* ports */
+.ports{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.ports a:first-child{grid-column:span 2;grid-row:span 2}
+@media (max-width:960px){.ports{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.ports{grid-template-columns:1fr}.ports a:first-child{grid-column:auto;grid-row:auto}}
+.pcard{position:relative;border-radius:var(--r);overflow:hidden;min-height:240px;display:flex;align-items:flex-end;text-decoration:none;color:#fff;isolation:isolate}
+.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.pcard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(4,18,21,.88) 6%,rgba(4,18,21,0) 60%)}
+.pcard:hover img{transform:scale(1.06)}
+.pcard .in{padding:20px;display:grid;gap:4px}
+.pcard h3{font:600 italic 30px/1.05 var(--f-d)}
+.pcard small{font:500 12px var(--f-u);letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+.pcard .home{position:absolute;top:16px;left:16px;background:var(--goldgrad);color:var(--ink);font:600 11px var(--f-u);letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+
+/* tours grid */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:960px){.tgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.tgrid{grid-template-columns:1fr}}
+.tcard{background:var(--card);border-radius:var(--r);overflow:hidden;border:1px solid var(--line);text-decoration:none;display:flex;flex-direction:column;transition:transform .6s var(--spring),box-shadow .4s}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(4,18,21,.45)}
+.tcard .ph{aspect-ratio:4/3;overflow:hidden;position:relative}
+.tcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.tcard:hover .ph img{transform:scale(1.06)}
+.tcard .port{position:absolute;left:12px;top:12px;background:rgba(4,18,21,.8);color:var(--gold2);font:500 11px var(--f-u);letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+.tcard .bd{padding:18px 20px 20px;display:grid;gap:8px;flex:1}
+.tcard h3{font:600 italic 22px/1.2 var(--f-d)}
+.tcard p{color:var(--muted);font-size:15px}
+.tcard .meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.tcard .meta b{font:600 18px var(--f-u);color:var(--text)}
+
+/* home-port feature */
+.homeport{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+@media (max-width:900px){.homeport{grid-template-columns:1fr}}
+.collage{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:220px 220px;gap:12px}
+.collage img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.collage img:first-child{grid-row:span 2}
+@media (max-width:560px){.collage{grid-template-rows:160px 160px}}
+.people{display:flex;gap:12px;flex-wrap:wrap}
+.person{flex:1;min-width:220px;border:1px solid var(--line-d);border-radius:14px;padding:14px 16px;display:grid;gap:2px}
+.person small{font:500 11px var(--f-u);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.person b{font:500 19px var(--f-u)}
+
+/* promise */
+.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-d)}
+@media (max-width:800px){.promise{grid-template-columns:1fr}}
+.promise div{padding:26px 26px 26px 0;display:grid;gap:8px}
+.promise div+div{padding-left:26px;border-left:1px solid var(--line-d)}
+@media (max-width:800px){.promise div+div{padding-left:0;border-left:0;border-top:1px solid var(--line-d)}}
+.promise b{font:600 italic 24px var(--f-d);color:var(--gold2)}
+.promise p{color:var(--muted-d);font-size:15px}
+
+/* tailor */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);font:500 14px var(--f-b);transition:background .3s,border-color .3s,color .3s,transform .5s var(--spring)}
+.chip:active{transform:scale(.96)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--gold2)}
+a.chip{text-decoration:none}
+.chip.wa{background:#1f9f55;border-color:#1f9f55;color:#fff}
+.chip.vb{background:#6f4fd1;border-color:#6f4fd1;color:#fff}
+.chip svg{width:18px;height:18px;fill:currentColor}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,32px)}
+.panel.dark{background:var(--ink);color:var(--on-d);border-color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:900px){.two{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:560px){.grid2,.grid3{grid-template-columns:1fr}}
+
+/* page hero */
+.phero{position:relative;min-height:440px;display:flex;align-items:flex-end;padding:calc(var(--hdr) + 80px) 0 56px;color:var(--on-d);isolation:isolate;overflow:hidden;background:var(--ink)}
+.phero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;animation:kb 16s ease-out both}
+.phero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(4,18,21,.92) 6%,rgba(4,18,21,.35) 60%,rgba(4,18,21,.6) 100%)}
+.phero .wrap{width:100%;display:grid;gap:14px}
+.phero h1{font:600 italic clamp(40px,6vw,80px)/1.02 var(--f-d)}
+.phero p{max-width:58ch;font-size:18px;color:#d8e3e2}
+.crumb{font:500 12px var(--f-u);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-decoration:none}
+
+/* tour detail */
+.tdet{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:900px){.tdet{grid-template-columns:1fr}}
+.itin{list-style:none;margin:0;padding:0;border-left:2px dotted var(--goldd);display:grid;gap:20px}
+.itin li{padding-left:24px;position:relative}
+.itin li::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--goldd)}
+.itin b{display:block;font:600 18px var(--f-b)}
+.itin span{color:var(--muted);font-size:15px}
+.itin .t{font:500 13px var(--f-u);color:var(--goldd)}
+.sticky{position:sticky;top:calc(var(--hdr) + 20px)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:10px 16px;font-size:15px;margin:0}
+.kv dt{color:var(--muted)} .kv dd{margin:0;text-align:right;font-weight:500}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
+.total b{font:600 38px/1 var(--f-u);font-variant-numeric:tabular-nums}
+.check{display:flex;align-items:center;gap:12px;min-height:50px;padding:0 14px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--card)}
+.check input{width:20px;height:20px;accent-color:var(--ink)}
+.check span{flex:1}
+.check em{font-style:normal;font:500 13px var(--f-u);color:var(--goldd)}
+.seg2{display:inline-flex;padding:4px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+.seg2 button{border:0;background:none;min-height:40px;padding:0 16px;border-radius:999px;font:600 13px var(--f-b);color:var(--muted)}
+.seg2 button[aria-pressed="true"]{background:var(--ink);color:var(--gold2)}
+
+/* booking */
+.stepper{display:flex;gap:6px;margin-bottom:22px}
+.stepper span{flex:1;display:grid;gap:8px;font:500 11px var(--f-u);letter-spacing:.14em;text-transform:uppercase;color:var(--no)}
+.stepper span::before{content:"";height:3px;border-radius:3px;background:var(--line)}
+.stepper span.on{color:var(--text)} .stepper span.on::before{background:var(--ink)}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.notice{display:flex;gap:10px;align-items:flex-start;font-size:14px;padding:12px 14px;border-radius:12px;background:var(--warn-soft);color:#6b4300}
+.card-demo{display:grid;gap:12px;padding:18px;border-radius:14px;background:var(--ink);color:var(--on-d)}
+.card-demo .fld input{background:rgba(255,255,255,.06);border-color:var(--line-d);color:var(--on-d)}
+.card-demo .fld label{color:var(--muted-d)}
+.done{text-align:center;display:grid;gap:16px;justify-items:center;padding:30px 0}
+.tick-c{width:84px;height:84px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+.tick-c svg{width:40px;height:40px;stroke:var(--gold);fill:none;stroke-width:2;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .9s .2s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.bad{color:#b4231a;font-size:14px}
+.mbar{display:none}
+@media (max-width:900px){
+  .sticky{position:static}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(4,18,21,.96);color:var(--on-d);backdrop-filter:blur(12px);border-top:1px solid rgba(215,174,78,.4);padding:12px var(--gxr) calc(12px + env(safe-area-inset-bottom,0px)) var(--gx);justify-content:space-between;align-items:center;gap:12px}
+  .mbar b{font:600 24px var(--f-u);color:var(--gold2)}
+  .mbar small{display:block;color:var(--muted-d);font-size:12px}
+  body.has-mbar{padding-bottom:84px}
+}
+
+/* faq */
+.faq{display:grid;max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 40px 20px 0;font:600 18px var(--f-b);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:15px;font-size:26px;color:var(--goldd);transition:transform .5s var(--spring)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 20px;color:var(--muted);max-width:70ch}
+
+/* floating */
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:45;display:grid;gap:10px}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:0 12px 30px -10px rgba(0,0,0,.5);transition:transform .5s var(--spring)}
+.fab a:hover{transform:scale(1.08)} .fab a:active{transform:scale(.94)}
+.fab svg{width:26px;height:26px;fill:#fff}
+.fab .wa{background:#1f9f55} .fab .vb{background:#6f4fd1}
+body.has-mbar .fab{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+.demo{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:46;display:flex;align-items:center;gap:8px;background:#fff;color:#0c1d20;border:1px solid var(--line);border-radius:999px;padding:5px 5px 5px 14px;font:500 12px var(--f-b);box-shadow:0 10px 30px -8px rgba(0,0,0,.4);max-width:calc(100vw - 100px)}
+.demo b{font-weight:700;white-space:nowrap}
+.demo .seg{display:flex;background:var(--paper);border-radius:999px;padding:2px}
+.demo .seg button{border:0;background:none;border-radius:999px;min-height:30px;padding:0 10px;font:600 12px var(--f-b);white-space:nowrap}
+.demo .seg button[aria-pressed="true"]{background:var(--ink);color:var(--gold2)}
+.demo a{font-weight:700;padding:0 8px;white-space:nowrap}
+body.has-mbar .demo{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+@media (max-width:560px){.demo>b,.demo>a{display:none}}
+
+footer.site{padding-block:64px calc(40px + env(safe-area-inset-bottom,0px));font-size:14px;color:var(--muted-d)}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
+footer h4{font:500 11px var(--f-u);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer a{text-decoration:none} footer a:hover{color:var(--gold2)}
+.fbot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:48px;padding-top:22px;border-top:1px solid var(--line-d);font-size:13px}
+.fbot a{text-decoration:underline;text-underline-offset:3px}
+
+/* admin */
+.adm{padding-top:calc(var(--hdr) + 40px);min-height:100svh}
+.login{max-width:420px;margin:40px auto;display:grid;gap:16px}
+.atabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:24px;overflow-x:auto}
+.atabs button{background:none;border:0;border-bottom:2px solid transparent;padding:12px 16px;font:600 14px var(--f-b);color:var(--muted);white-space:nowrap}
+.atabs button[aria-pressed="true"]{color:var(--text);border-color:var(--gold)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.tbl table{width:100%;border-collapse:collapse;min-width:680px;font-size:14px}
+.tbl th,.tbl td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.tbl th{font:500 11px var(--f-u);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl input[type="number"]{width:84px;min-height:40px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font:500 15px var(--f-u);background:var(--paper)}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600;background:var(--sea-soft);color:var(--sea)}
+.pill.req{background:var(--warn-soft);color:var(--warn)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+@media (max-width:760px){.stats{grid-template-columns:1fr 1fr}}
+.stat{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card)}
+.stat b{display:block;font:600 30px var(--f-u)}
+.stat small{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.toast{position:fixed;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));translate:-50% 0;z-index:90;background:var(--ink);color:var(--gold2);padding:12px 20px;border-radius:999px;font-weight:600;font-size:14px;opacity:0;transform:translateY(16px);transition:opacity .3s,transform .5s var(--spring);pointer-events:none;max-width:calc(100vw - 32px);text-align:center}
+.toast.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.js [data-rise]{opacity:1;transform:none}.tl .seg{transform:none}}
+</style>
+</head>
+<body>
+<a href="#main" class="sr" id="skip">Skip to content</a>
+<header class="site" id="hdr">
+  <div class="wrap hdr">
+    <a class="brand" href="#home" aria-label="G.E.S Private Tours home"><img src="/ges-private-tours/img/logo-mark.png" alt="G.E.S Travel" width="520" height="111"></a>
+    <nav class="main" id="nav" aria-label="Main"></nav>
+    <div class="hdr-r">
+      <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="el">ΕΛ</button></div>
+      <a class="btn btn-gold" href="#tailor-made" id="hdrCta"></a>
+      <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true"><div class="panel" role="dialog" aria-modal="true" aria-label="Menu"><button class="close" type="button" id="drawerClose" aria-label="Close menu">×</button><div id="drawerLinks" style="display:grid"></div></div></div>
+<main id="main" tabindex="-1"></main>
+<footer class="site dark" id="footer"></footer>
+<div class="fab" id="fab"></div>
+<div class="demo" id="demo"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+document.documentElement.classList.add('js');
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = { get(k, d) { try { const v = localStorage.getItem('ges:' + k); return v ? JSON.parse(v) : d } catch { return d } },
+                set(k, v) { try { localStorage.setItem('ges:' + k, JSON.stringify(v)) } catch {} } };
+
+/* ---------- data (admin-editable, kept in this browser) ---------- */
+const DEFAULTS = {
+  ports: [
+    { id:'rhodes', img:'rhodes', home:true, en:'Rhodes', el:'Ρόδος', pen:'Cruise pier, a 5 minute walk to the Old Town walls', pel:'Προβλήτα κρουαζιέρας, 5 λεπτά με τα πόδια από τα τείχη', arr:'08:00', dep:'17:00' },
+    { id:'athens', img:'acropolis', en:'Athens · Piraeus', el:'Αθήνα · Πειραιάς', pen:'Piraeus cruise terminals, 30 minutes to the Acropolis', pel:'Σταθμοί κρουαζιέρας Πειραιά, 30 λεπτά από την Ακρόπολη', arr:'07:00', dep:'18:00' },
+    { id:'mykonos', img:'mykonos', en:'Mykonos', el:'Μύκονος', pen:'New port at Tourlos, 10 minutes to town', pel:'Νέο λιμάνι Τούρλου, 10 λεπτά από τη Χώρα', arr:'09:00', dep:'18:00' },
+    { id:'santorini', img:'santorini', en:'Santorini', el:'Σαντορίνη', pen:'Tender to Fira old port, we meet you at the top', pel:'Με λάντζα στον Γιαλό των Φηρών, σας περιμένουμε πάνω', arr:'08:00', dep:'16:00' },
+    { id:'heraklion', img:'knossos', en:'Heraklion · Crete', el:'Ηράκλειο · Κρήτη', pen:'Heraklion port, 15 minutes to Knossos', pel:'Λιμάνι Ηρακλείου, 15 λεπτά από την Κνωσό', arr:'08:00', dep:'17:00' },
+    { id:'chania', img:'chania', en:'Chania · Crete', el:'Χανιά · Κρήτη', pen:'Souda Bay, 20 minutes to the old harbour', pel:'Σούδα, 20 λεπτά από το ενετικό λιμάνι', arr:'08:00', dep:'18:00' },
+    { id:'corfu', img:'corfu-ship', en:'Corfu', el:'Κέρκυρα', pen:'Corfu cruise port, 10 minutes to the Old Town', pel:'Λιμάνι κρουαζιέρας, 10 λεπτά από την Παλιά Πόλη', arr:'08:00', dep:'17:00' }
+  ],
+  tours: [
+    { id:'lindos', port:'rhodes', img:'lindos', h:5.5, p4:380, p8:480, on:true, en:'Lindos village and Acropolis', el:'Λίνδος και Ακρόπολη',
+      sen:'Whitewashed lanes, the Acropolis above St Paul\'s Bay, and a swim stop on the way back.', sel:'Τα ασπρισμένα σοκάκια, η Ακρόπολη πάνω από τον Άγιο Παύλο και στάση για μπάνιο στην επιστροφή.',
+      stops:[['Pickup at the ship','Παραλαβή από το πλοίο',0],['Tsambika viewpoint','Θέα από την Τσαμπίκα',45],['Lindos village and Acropolis','Λίνδος και Ακρόπολη',90],['Swim stop at Agathi beach','Μπάνιο στην Αγάθη',60]] },
+    { id:'medieval', port:'rhodes', img:'rhodes-walls', h:3, p4:160, p8:220, on:true, en:'Medieval Town walking tour', el:'Περίπατος στη Μεσαιωνική Πόλη',
+      sen:'The Street of the Knights, the Grand Master\'s Palace and the hidden lanes, with a licensed guide.', sel:'Η Οδός Ιπποτών, το Παλάτι του Μεγάλου Μαγίστρου και τα κρυφά σοκάκια, με αδειούχο ξεναγό.',
+      stops:[['Meet at the pier','Συνάντηση στην προβλήτα',0],['Street of the Knights','Οδός Ιπποτών',40],['Palace of the Grand Master','Παλάτι του Μεγάλου Μαγίστρου',50],['Old Town lanes and coffee','Σοκάκια και καφές',40]] },
+    { id:'cooking', port:'rhodes', img:'cooking', h:6, p4:420, p8:560, on:true, en:'Rhodes city tour, cooking class and wine', el:'Ξενάγηση, μαγειρική και κρασί',
+      sen:'See the city, then cook a Rhodian lunch with a local family and taste wines from the island.', sel:'Γνωρίστε την πόλη, μαγειρέψτε ροδίτικο φαγητό με τοπική οικογένεια και δοκιμάστε κρασιά του νησιού.',
+      stops:[['City highlights by car','Τα αξιοθέατα με αυτοκίνητο',60],['Cooking class in a village home','Μαγειρική σε σπίτι στο χωριό',150],['Wine tasting','Γευσιγνωσία κρασιού',60]] },
+    { id:'symi', port:'rhodes', img:'symi', h:8, p4:690, p8:890, on:true, en:'Symi by private speedboat', el:'Σύμη με ιδιωτικό σκάφος',
+      sen:'Across to the painted harbour of Symi, the Panormitis monastery and a swim in a quiet bay.', sel:'Στο χρωματιστό λιμάνι της Σύμης, στη Μονή Πανορμίτη και μπάνιο σε ήσυχο κόλπο.',
+      stops:[['Board at Mandraki','Επιβίβαση στο Μανδράκι',0],['Panormitis monastery','Μονή Πανορμίτη',60],['Symi harbour and lunch','Λιμάνι Σύμης και φαγητό',120],['Swim stop','Στάση για μπάνιο',45]] },
+    { id:'vitaminsea', port:'rhodes', img:'beach', h:5, p4:300, p8:390, on:true, en:'City tour and Vitamin Sea', el:'Ξενάγηση και Vitamin Sea',
+      sen:'The best of Rhodes town in the morning, then the beach of your choice until it is time to sail.', sel:'Τα καλύτερα της πόλης το πρωί και μετά η παραλία της επιλογής σας.',
+      stops:[['Old Town and Mandraki','Παλιά Πόλη και Μανδράκι',75],['Monte Smith hill','Λόφος Μόντε Σμιθ',30],['Beach time','Χρόνος για παραλία',120]] },
+    { id:'family', port:'rhodes', img:'family', h:4, p4:260, p8:340, on:true, en:'Family friendly Rhodes', el:'Ρόδος για οικογένειες',
+      sen:'Short hops, shady stops and a beach with shallow water. Child seats included.', sel:'Μικρές διαδρομές, σκιερές στάσεις και παραλία με ρηχά νερά. Παιδικά καθίσματα δωρεάν.',
+      stops:[['Aquarium','Ενυδρείο',45],['Old Town ice cream stop','Παγωτό στην Παλιά Πόλη',40],['Shallow beach','Ρηχή παραλία',90]] },
+    { id:'halki', port:'rhodes', img:'halki', h:9, p4:740, p8:940, on:true, en:'Halki island by boat', el:'Χάλκη με σκάφος',
+      sen:'A slow day on the quietest island of the Dodecanese, with turquoise water and a long lunch.', sel:'Μια ήρεμη μέρα στο πιο ήσυχο νησί της Δωδεκανήσου, με τιρκουάζ νερά και φαγητό.',
+      stops:[['Drive to Kamiros Skala','Διαδρομή στην Κάμειρο Σκάλα',60],['Boat to Halki','Σκάφος για Χάλκη',75],['Nimborio harbour and lunch','Νημποριό και φαγητό',150]] },
+    { id:'acropolis', port:'athens', img:'acropolis', h:5, p4:390, p8:490, on:true, en:'Acropolis, Plaka and the Stadium', el:'Ακρόπολη, Πλάκα και Στάδιο',
+      sen:'Skip the queues with a licensed guide, then lunch in Plaka and a photo stop at the Panathenaic Stadium.', sel:'Χωρίς ουρές με αδειούχο ξεναγό, φαγητό στην Πλάκα και στάση στο Παναθηναϊκό Στάδιο.',
+      stops:[['Pickup at the terminal','Παραλαβή από τον σταθμό',0],['Acropolis with a guide','Ακρόπολη με ξεναγό',120],['Plaka lunch','Φαγητό στην Πλάκα',60],['Panathenaic Stadium','Παναθηναϊκό Στάδιο',20]] },
+    { id:'sounion', port:'athens', img:'sounion', h:6, p4:420, p8:520, on:true, en:'Athens Riviera and Sounion', el:'Ριβιέρα και Σούνιο',
+      sen:'The coast road to the Temple of Poseidon, with a swim at Vouliagmeni Lake.', sel:'Η παραλιακή ως τον Ναό του Ποσειδώνα, με μπάνιο στη Λίμνη Βουλιαγμένης.',
+      stops:[['Coast road','Παραλιακή',60],['Vouliagmeni Lake','Λίμνη Βουλιαγμένης',60],['Temple of Poseidon','Ναός του Ποσειδώνα',60]] },
+    { id:'corinth', port:'athens', img:'corinth', h:5, p4:390, p8:490, on:true, en:'Ancient Corinth and the Canal', el:'Αρχαία Κόρινθος και Διώρυγα',
+      sen:'Where St Paul preached, and the canal that cut the Peloponnese from the mainland.', sel:'Εκεί που κήρυξε ο Απόστολος Παύλος και η διώρυγα που χώρισε την Πελοπόννησο.',
+      stops:[['Corinth Canal','Διώρυγα',30],['Ancient Corinth','Αρχαία Κόρινθος',90],['Acrocorinth view','Ακροκόρινθος',30]] },
+    { id:'mykonos-town', port:'mykonos', img:'littlevenice', h:3, p4:220, p8:290, on:true, en:'Little Venice and the windmills', el:'Μικρή Βενετία και ανεμόμυλοι',
+      sen:'Mykonos town at walking pace, from the windmills to the waterfront bars of Little Venice.', sel:'Η Χώρα με τα πόδια, από τους ανεμόμυλους στη Μικρή Βενετία.',
+      stops:[['Windmills','Ανεμόμυλοι',30],['Little Venice','Μικρή Βενετία',60],['Paraportiani church','Παραπορτιανή',20]] },
+    { id:'mykonos-island', port:'mykonos', img:'mykonos', h:4, p4:290, p8:380, on:true, en:'Island highlights and a beach', el:'Το νησί και μια παραλία',
+      sen:'Ano Mera monastery, the north coast viewpoints and an hour at a quiet beach.', sel:'Μονή Τουρλιανής στην Άνω Μερά, θέα στη βόρεια ακτή και μία ώρα σε ήσυχη παραλία.',
+      stops:[['Ano Mera monastery','Άνω Μερά',40],['Armenistis lighthouse','Φάρος Αρμενιστή',30],['Beach hour','Μία ώρα παραλία',60]] },
+    { id:'oia', port:'santorini', img:'oia', h:5, p4:420, p8:520, on:true, en:'Oia, Fira and a caldera winery', el:'Οία, Φηρά και οινοποιείο',
+      sen:'The blue domes of Oia, the cliff path in Fira and a tasting of Assyrtiko above the caldera.', sel:'Οι μπλε τρούλοι της Οίας, το μονοπάτι στα Φηρά και Ασύρτικο πάνω από την καλντέρα.',
+      stops:[['Meet at the cable car top','Συνάντηση στο τελεφερίκ',0],['Oia village','Οία',75],['Caldera winery','Οινοποιείο στην καλντέρα',60],['Fira','Φηρά',45]] },
+    { id:'santorini-south', port:'santorini', img:'santorini', h:4, p4:330, p8:420, on:true, en:'Akrotiri and the Red Beach', el:'Ακρωτήρι και Κόκκινη Παραλία',
+      sen:'The Bronze Age town buried by the eruption, then the red cliffs of the south.', sel:'Η προϊστορική πόλη κάτω από την ηφαιστειακή στάχτη και οι κόκκινοι βράχοι του νότου.',
+      stops:[['Akrotiri excavations','Ανασκαφή Ακρωτηρίου',75],['Red Beach viewpoint','Κόκκινη Παραλία',30],['Pyrgos village','Πύργος',45]] },
+    { id:'knossos', port:'heraklion', img:'knossos', h:4, p4:300, p8:390, on:true, en:'Knossos Palace and Heraklion', el:'Ανάκτορο Κνωσού και Ηράκλειο',
+      sen:'The palace of King Minos with a guide, then the Venetian walls and the market of Heraklion.', sel:'Το ανάκτορο του Μίνωα με ξεναγό, τα ενετικά τείχη και η αγορά του Ηρακλείου.',
+      stops:[['Knossos with a guide','Κνωσός με ξεναγό',100],['Lions Square','Λιοντάρια',30],['Venetian harbour','Ενετικό λιμάνι',30]] },
+    { id:'chania', port:'chania', img:'chania', h:4, p4:300, p8:390, on:true, en:'Chania old harbour and town', el:'Παλιό λιμάνι και πόλη των Χανίων',
+      sen:'The lighthouse, the Mosque of the Janissaries and the leather lanes of the Venetian town.', sel:'Ο φάρος, το Γιαλί Τζαμισί και τα στενά της ενετικής πόλης.',
+      stops:[['Souda war cemetery viewpoint','Θέα στη Σούδα',20],['Old harbour','Παλιό λιμάνι',60],['Market and lanes','Αγορά και στενά',60]] },
+    { id:'corfu', port:'corfu', img:'corfu', h:3.5, p4:260, p8:340, on:true, en:'Corfu Old Town and Old Fortress', el:'Παλιά Πόλη και Παλαιό Φρούριο',
+      sen:'The Liston arcades, the Old Fortress above the sea and Kanoni with its view of Mouse Island.', sel:'Το Λιστόν, το Παλαιό Φρούριο πάνω από τη θάλασσα και το Κανόνι με το Ποντικονήσι.',
+      stops:[['Old Fortress','Παλαιό Φρούριο',50],['Liston and Spianada','Λιστόν και Σπιανάδα',40],['Kanoni viewpoint','Κανόνι',30]] }
+  ],
+  extras: [
+    { id:'guide', en:'Licensed guide at the sites', el:'Αδειούχος ξεναγός', price:150, min:0 },
+    { id:'wine', en:'Wine tasting stop', el:'Στάση για κρασί', price:60, min:60 },
+    { id:'lunch', en:'Taverna lunch stop (pay on the day)', el:'Φαγητό σε ταβέρνα (πληρωμή επιτόπου)', price:0, min:60 },
+    { id:'child', en:'Child seats', el:'Παιδικά καθίσματα', price:0, min:0 }
+  ],
+  bookings: [
+    { ref:'GES-1042', name:'Linda Morales', tour:'lindos', date:'2026-11-18', ship:'Celebrity Edge', guests:4, total:380, paid:114, status:'paid' },
+    { ref:'GES-1041', name:'Thomas Becker', tour:'acropolis', date:'2026-11-20', ship:'AIDAblu', guests:6, total:490, paid:0, status:'request' },
+    { ref:'GES-1039', name:'Yuki Sato', tour:'oia', date:'2026-11-21', ship:'Norwegian Getaway', guests:2, total:420, paid:126, status:'paid' }
+  ],
+  deposit: 30, buffer: 60
+};
+let D = Object.assign(structuredClone(DEFAULTS), store.get('data', {}));
+const save = () => store.set('data', D);
+let lang = store.get('lang', 'en');
+let mode = store.get('mode', 'pay');   // 'pay' = online payment (+250), 'request' = request form
+const L = (en, el) => lang === 'el' ? el : en;
+const portOf = id => D.ports.find(p => p.id === id) || D.ports[0];
+const tourOf = id => D.tours.find(t => t.id === id);
+const nm = o => o ? (lang === 'el' ? o.el : o.en) : '';
+const r5 = n => Math.round(n / 5) * 5;
+const eur = n => '€' + Math.round(n);
+const toMin = s => { const [h, m] = (s || '0:0').split(':').map(Number); return h * 60 + (m || 0); };
+const fmt = m => { m = ((m % 1440) + 1440) % 1440; return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); };
+const hrs = h => { const H = Math.floor(h), M = Math.round((h - H) * 60); return H + 'h' + (M ? ' ' + M + 'm' : ''); };
+const tomorrow = () => new Date(Date.now() + 864e5).toISOString().slice(0, 10);
+
+/* ---------- ship-time planner ---------- */
+let P = Object.assign({ port: 'rhodes', arr: '08:00', dep: '17:00' }, store.get('plan', {}));
+const savePlan = () => store.set('plan', P);
+function fit(t) {
+  const ashore = toMin(P.dep) - toMin(P.arr);
+  const start = toMin(P.arr) + 30;                  // 30 min to get off the ship
+  const end = start + t.h * 60;
+  const latest = toMin(P.dep) - D.buffer;           // back on board an hour before all aboard
+  const spare = latest - end;
+  return { ashore, start, end, spare, ok: spare >= 0, tight: spare >= 0 && spare < 45 };
+}
+function timeline(t, f) {
+  const a = toMin(P.arr), b = toMin(P.dep), span = Math.max(60, b - a);
+  const pct = m => Math.max(0, Math.min(100, (m - a) / span * 100));
+  const l = pct(f.start), w = Math.max(2, pct(f.end) - l);
+  return `<div class="tl" aria-hidden="true"><div class="track"></div><div class="seg" style="left:${l}%;width:${w}%"></div>
+    <span class="tick" style="left:0;translate:0 0">${fmt(a)}</span><span class="tick" style="left:${pct(f.end)}%">${fmt(f.end)}</span><span class="tick end" style="left:100%;translate:-100% 0">${L('All aboard', 'Επιβίβαση')} ${fmt(b)}</span></div>`;
+}
+function fitRow(t) {
+  const f = fit(t);
+  const cls = f.ok ? (f.tight ? 'tight' : '') : 'no';
+  const st = f.ok ? (f.tight ? L(`Fits, back on board at ${fmt(f.end + 0)} with ${D.buffer + f.spare} min to spare`, `Χωράει, επιστροφή ${fmt(f.end)}, ${D.buffer + f.spare}′ περιθώριο`) : L(`Back at ${fmt(f.end)}, ${Math.floor((D.buffer + f.spare) / 60)}h ${(D.buffer + f.spare) % 60}m before all aboard`, `Επιστροφή ${fmt(f.end)}, ${Math.floor((D.buffer + f.spare) / 60)}ω ${(D.buffer + f.spare) % 60}′ πριν την επιβίβαση`)) : L(`Needs ${-f.spare} more minutes in port`, `Χρειάζεται ${-f.spare}′ ακόμα`);
+  return `<a class="fit ${cls}" href="#tour-${t.id}"><img src="/ges-private-tours/img/${t.img}.jpg" alt="" loading="lazy"><div style="min-width:0"><h3>${esc(nm(t))}</h3><span class="status">${st}</span>${timeline(t, f)}</div><div class="pr"><b>${priceTxt(t.p4)}</b><small>${hrs(t.h)} · ${L('up to 4', 'έως 4')}</small></div></a>`;
+}
+const priceTxt = n => mode === 'pay' ? eur(n) : L('from ', 'από ') + eur(n);
+function ashoreBox() {
+  const a = toMin(P.dep) - toMin(P.arr);
+  if (a < 180) return `<div class="ashore bad" id="ashore"><b>${a > 0 ? hrs(a / 60) : '—'}</b><span>${L('Check the times: all aboard must be at least 3 hours after arrival.', 'Ελέγξτε τις ώρες: η επιβίβαση πρέπει να είναι τουλάχιστον 3 ώρες μετά την άφιξη.')}</span></div>`;
+  return `<div class="ashore" id="ashore"><b>${hrs(a / 60)}</b><span>${L(`ashore in ${nm(portOf(P.port))}. We plan every tour to have you back ${D.buffer} minutes before all aboard.`, `στη στεριά, ${nm(portOf(P.port))}. Κάθε εκδρομή τελειώνει ${D.buffer} λεπτά πριν την επιβίβαση.`)}</span></div>`;
+}
+function planner(full) {
+  const tours = D.tours.filter(t => t.on && t.port === P.port).sort((x, y) => fit(y).ok - fit(x).ok || x.h - y.h);
+  return `<form class="planner" id="planner" aria-label="${L('Plan your day in port', 'Σχεδιάστε τη μέρα σας')}">
+    <div class="pl-top"><h2>${L('How long is your ship in port?', 'Πόσες ώρες μένει το πλοίο;')}</h2><p>${L('Enter your ship times. We show the tours that get you back on board in time.', 'Βάλτε τις ώρες του πλοίου. Σας δείχνουμε τις εκδρομές που σας φέρνουν πίσω εγκαίρως.')}</p></div>
+    <div class="pl-f">
+      <div class="fld"><label for="pl-port">${L('Port', 'Λιμάνι')}</label><select id="pl-port" data-p="port">${D.ports.map(p => `<option value="${p.id}"${p.id === P.port ? ' selected' : ''}>${esc(nm(p))}</option>`).join('')}</select></div>
+      <div class="fld"><label for="pl-arr">${L('Ship arrives', 'Άφιξη πλοίου')}</label><input id="pl-arr" type="time" data-p="arr" value="${P.arr}"></div>
+      <div class="fld"><label for="pl-dep">${L('All aboard', 'Επιβίβαση')}</label><input id="pl-dep" type="time" data-p="dep" value="${P.dep}"></div>
+      <div class="fld"><label for="pl-date">${L('Date', 'Ημερομηνία')}</label><input id="pl-date" type="date" data-p="date" value="${P.date || tomorrow()}" min="${tomorrow()}"></div>
+      <a class="btn btn-ink" href="#port-${P.port}" id="pl-go">${L('See all tours', 'Όλες οι εκδρομές')}</a>
+    </div>
+    ${ashoreBox()}
+    <div class="fits" id="fits">${tours.slice(0, full ? 99 : 3).map(fitRow).join('') || `<p style="color:var(--muted)">${L('No tours here yet. Ask us for a tailor-made day.', 'Δεν υπάρχουν ακόμα εκδρομές. Ζητήστε μια εξατομικευμένη μέρα.')}</p>`}</div>
+  </form>`;
+}
+function refreshPlanner(full) {
+  const box = $('#fits'); if (!box) return;
+  const tours = D.tours.filter(t => t.on && t.port === P.port).sort((x, y) => fit(y).ok - fit(x).ok || x.h - y.h);
+  box.innerHTML = tours.slice(0, full ? 99 : 3).map(fitRow).join('');
+  $('#ashore').outerHTML = ashoreBox();
+  $('#pl-go').href = '#port-' + P.port;
+  drawTL();
+}
+const drawTL = () => requestAnimationFrame(() => requestAnimationFrame(() => document.querySelectorAll('.tl').forEach(e => e.classList.add('drawn'))));
+
+/* ---------- icons ---------- */
+const I = {
+  wa:'<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>',
+  vb:'<svg viewBox="0 0 24 24"><path d="M11.4 2C9.5 2 5.3 2.3 3.3 4.2 1.8 5.7 1.3 7.9 1.2 10.6c-.1 2.7-.2 7.8 4.7 9.2v2.1s0 .9.5 1c.7.2 1.1-.4 1.7-1.1l1.2-1.4c3.3.3 5.9-.4 6.2-.5.7-.2 4.4-.7 5-5.7.6-5.1-.3-8.4-2-9.9C17.5 3.2 15.8 2 11.4 2zm.2 1.6c3.8 0 5.2.9 5.6 1.3 1.4 1.2 2.1 4.1 1.6 8.4-.5 4-3.4 4.3-4 4.5-.2.1-2.5.6-5.3.4l-2.9 3.2v-3c-4-1.1-3.9-5.3-3.8-7.6.1-2.3.5-4.1 1.7-5.3C6.2 3.9 9.8 3.6 11.6 3.6zM12 6.3c-.2 0-.2.3 0 .3 1.6 0 3 .5 4.1 1.5 1 1 1.6 2.4 1.6 4.2 0 .2.3.2.3 0 0-2-.6-3.5-1.7-4.5-1.2-1-2.6-1.5-4.3-1.5zm-3.1.8c-.3 0-.5.1-.8.3-.4.3-.8.7-.9 1.2-.1.4.1.8.4 1.3.6 1.1 1.4 2.2 2.4 3.1l.1.1.1.1c.9 1 2 1.8 3.1 2.4.5.3.9.5 1.3.4.5-.1.9-.5 1.2-.9.3-.4.3-.8 0-1.1l-1.4-1c-.4-.3-.9-.2-1.1.1l-.4.5c-.2.3-.6.2-.6.2-2.6-.7-3.3-3.3-3.3-3.3s0-.4.2-.6l.5-.4c.3-.2.4-.7.1-1.1l-1-1.4c-.1-.2-.3-.3-.5-.3zm3.4.7c-.2 0-.2.3 0 .3 1.1.1 1.9.5 2.5 1.1.6.6.9 1.4.9 2.4 0 .2.3.2.3 0 0-1.1-.4-2-1-2.6-.7-.7-1.6-1.1-2.7-1.2zm.3 1.2c-.2 0-.2.3 0 .3.9.1 1.4.6 1.4 1.5 0 .2.3.2.3 0 0-1.1-.6-1.7-1.7-1.8z"/></svg>'
+};
+const PEOPLE = [{ n: 'Evi Sialadakis', t: '+30 694 085 6665' }, { n: 'George Sialadakis', t: '+30 694 439 0535' }];
+const EMAIL = 'gestravelbookings@gmail.com', OFFICE = '+30 22410 87548';
+const tel = n => n.replace(/[^+\d]/g, '');
+const WA = 'https://wa.me/' + tel(PEOPLE[0].t).replace('+', '');
+const VB = 'viber://chat?number=' + encodeURIComponent(tel(PEOPLE[0].t));
+
+/* ---------- chrome ---------- */
+const NAV = [['ports', 'Ports', 'Λιμάνια'], ['tours', 'Tours', 'Εκδρομές'], ['tailor-made', 'Tailor-made', 'Κατά παραγγελία'], ['about', 'About us', 'Ποιοι είμαστε'], ['contact', 'Contact', 'Επικοινωνία']];
+function chrome(view) {
+  document.documentElement.lang = lang;
+  const cur = view.startsWith('port-') ? 'ports' : view.startsWith('tour-') ? 'tours' : view;
+  const links = NAV.map(([h, en, el]) => `<a href="#${h}"${cur === h ? ' aria-current="page"' : ''}>${L(en, el)}</a>`).join('');
+  $('#nav').innerHTML = links;
+  $('#drawerLinks').innerHTML = `<a href="#home">${L('Home', 'Αρχική')}</a>` + links;
+  $('#hdrCta').textContent = L('Plan my day', 'Σχεδιάστε τη μέρα');
+  document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+  $('#skip').textContent = L('Skip to content', 'Μετάβαση στο περιεχόμενο');
+  $('#fab').innerHTML = `<a class="wa" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp">${I.wa}</a><a class="vb" href="${VB}" aria-label="Viber">${I.vb}</a>`;
+  $('#demo').innerHTML = `<b>Mockup</b><div class="seg" role="group" aria-label="Booking mode"><button type="button" data-mode="pay" aria-pressed="${mode === 'pay'}">${L('Online payment +€250', 'Online πληρωμή +€250')}</button><button type="button" data-mode="request" aria-pressed="${mode === 'request'}">${L('Request form', 'Φόρμα αιτήματος')}</button></div><a href="#admin">Admin</a>`;
+  $('#footer').innerHTML = `<div class="wrap"><div class="fgrid">
+    <div style="display:grid;gap:14px;align-content:start"><img src="/ges-private-tours/img/logo.png" alt="G.E.S Travel, Private Tours All Over Greece" width="220" style="width:220px"><p>${L('Private, tailor-made tours in every major Greek port, planned around your ship. A G.E.S Travel Agency site, Rhodes.', 'Ιδιωτικές εκδρομές κατά παραγγελία σε κάθε μεγάλο λιμάνι της Ελλάδας, γύρω από το πρόγραμμα του πλοίου σας. Από την G.E.S Travel Agency, Ρόδος.')}</p></div>
+    <div><h4>${L('Ports', 'Λιμάνια')}</h4><ul>${D.ports.map(p => `<li><a href="#port-${p.id}">${esc(nm(p))}</a></li>`).join('')}</ul></div>
+    <div><h4>${L('Contact', 'Επικοινωνία')}</h4><ul>${PEOPLE.map(p => `<li><a href="tel:${tel(p.t)}">${p.t}</a><br><small>${p.n}</small></li>`).join('')}<li><a href="mailto:${EMAIL}">${EMAIL}</a></li></ul></div>
+    <div><h4>${L('Office', 'Γραφείο')}</h4><ul><li>${L('Kanada 37, Rhodes 85100', 'Καναδά 37, Ρόδος 85100')}</li><li>${L('Near the port', 'Δίπλα στο λιμάνι')}</li><li>${L('Daily 09:00 to 21:00', 'Καθημερινά 09:00 έως 21:00')}</li><li><a href="https://www.gestravelagency.com" target="_blank" rel="noopener">gestravelagency.com</a></li></ul></div>
+  </div><div class="fbot"><span>© 2026 G.E.S Travel Agency</span><span>${L('Website by', 'Ιστοσελίδα από')} <a href="https://www.akosds.com" target="_blank" rel="noopener">Akos Digital Services</a></span></div></div>`;
+}
+
+/* ---------- blocks ---------- */
+const tourCard = t => `<a class="tcard" href="#tour-${t.id}" data-rise><div class="ph"><img src="/ges-private-tours/img/${t.img}.jpg" alt="" loading="lazy"><span class="port">${esc(nm(portOf(t.port)).split(' ·')[0])}</span></div><div class="bd"><h3>${esc(nm(t))}</h3><p>${esc(lang === 'el' ? t.sel : t.sen)}</p><div class="meta"><span>${hrs(t.h)} · ${L('private', 'ιδιωτική')}</span><b>${priceTxt(t.p4)}</b></div></div></a>`;
+const portCards = () => D.ports.map(p => { const n = D.tours.filter(t => t.on && t.port === p.id).length; return `<a class="pcard" href="#port-${p.id}" data-rise><img src="/ges-private-tours/img/${p.img}.jpg" alt="" loading="lazy">${p.home ? `<span class="home">${L('Our home port', 'Η έδρα μας')}</span>` : ''}<div class="in"><small>${n} ${L(n === 1 ? 'tour' : 'tours', 'εκδρομές')}</small><h3>${esc(nm(p))}</h3></div></a>`; }).join('');
+const promise = () => `<section class="dark"><div class="wrap">
+  <div class="sec-h" data-rise><span class="ey">${L('The G.E.S promise', 'Η δέσμευσή μας')}</span><h2>${L('Your ship will not leave without you', 'Το πλοίο δεν θα φύγει χωρίς εσάς')}</h2><p>${L('Ship lines sell big group tours. We plan a private day around your exact times, and we watch the clock so you do not have to.', 'Οι εταιρείες κρουαζιέρας πουλάνε ομαδικές εκδρομές. Εμείς σχεδιάζουμε μια ιδιωτική μέρα γύρω από τις δικές σας ώρες.')}</p></div>
+  <div class="promise" data-rise>
+    <div><b>${L(`Back ${D.buffer} minutes early`, `Πίσω ${D.buffer}′ νωρίτερα`)}</b><p>${L('Every tour is timed to drop you at the gangway an hour before all aboard.', 'Κάθε εκδρομή τελειώνει στη σκάλα του πλοίου μία ώρα πριν την επιβίβαση.')}</p></div>
+    <div><b>${L('We track your ship', 'Παρακολουθούμε το πλοίο')}</b><p>${L('Late arrival or a tender delay? Your driver and guide adjust the day, not the other way round.', 'Αργεί το πλοίο ή η λάντζα; Ο οδηγός και ο ξεναγός προσαρμόζουν τη μέρα.')}</p></div>
+    <div><b>${L('One team, every port', 'Μία ομάδα, κάθε λιμάνι')}</b><p>${L('Book Rhodes, Santorini and Athens in one message, with one point of contact for the whole cruise.', 'Κλείστε Ρόδο, Σαντορίνη και Αθήνα με ένα μήνυμα και έναν άνθρωπο για όλη την κρουαζιέρα.')}</p></div>
+  </div></div></section>`;
+function faq() {
+  return [
+    [L('What if our ship arrives late?', 'Τι γίνεται αν το πλοίο αργήσει;'), L('We track your ship and shorten or reorder the stops so you are still back an hour before all aboard. You never pay for time you did not get.', 'Παρακολουθούμε το πλοίο και προσαρμόζουμε τις στάσεις ώστε να επιστρέψετε μία ώρα πριν την επιβίβαση.')],
+    [L('Is the price per person?', 'Η τιμή είναι ανά άτομο;'), L('No. Prices are per private group, up to 4 guests in a Mercedes car or up to 8 in a Mercedes Sprinter.', 'Όχι. Η τιμή είναι ανά ιδιωτική ομάδα, έως 4 άτομα σε Mercedes ή έως 8 σε Mercedes Sprinter.')],
+    [L('Are entrance tickets included?', 'Περιλαμβάνονται τα εισιτήρια;'), L('Site tickets are paid on the day, so you only pay for what you visit. We can pre-book skip-the-line tickets for the Acropolis and Knossos.', 'Τα εισιτήρια πληρώνονται επιτόπου. Μπορούμε να κλείσουμε εισιτήρια χωρίς ουρά για Ακρόπολη και Κνωσό.')],
+    [L('Can we change the plan on the day?', 'Μπορούμε να αλλάξουμε το πρόγραμμα;'), L('Yes. It is your private tour. Tell your driver and we adjust, as long as you are back in time.', 'Ναι, η εκδρομή είναι δική σας. Πείτε το στον οδηγό, αρκεί να γυρίσουμε εγκαίρως.')],
+    [L('What is the cancellation policy?', 'Ποια είναι η πολιτική ακύρωσης;'), L('Free cancellation up to 48 hours before, and a full refund if your ship skips the port.', 'Δωρεάν ακύρωση έως 48 ώρες πριν και πλήρης επιστροφή αν το πλοίο δεν πιάσει λιμάνι.')]
+  ].map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('');
+}
+
+/* ---------- views ---------- */
+const V = {};
+V.home = () => `
+<section class="hero" aria-labelledby="h1" style="padding-bottom:0">
+  <img src="/ges-private-tours/img/lindos.jpg" alt="${L('Lindos bay and Acropolis, Rhodes', 'Ο κόλπος και η Ακρόπολη της Λίνδου')}" fetchpriority="high">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="stars" aria-hidden="true">★ ★ ★ ★ ★</span>
+      <h1 id="h1">${L('Private tours in <span>every Greek port</span>', 'Ιδιωτικές εκδρομές <span>σε κάθε ελληνικό λιμάνι</span>')}</h1>
+      <p class="lede">${L('From Rhodes to Santorini, Athens and Crete: a private car, a local guide and a plan built around your ship\'s hours.', 'Από τη Ρόδο ως τη Σαντορίνη, την Αθήνα και την Κρήτη: ιδιωτικό αυτοκίνητο, τοπικός ξεναγός και πρόγραμμα γύρω από τις ώρες του πλοίου σας.')}</p>
+    </div>
+    <div style="padding-bottom:clamp(48px,6vw,80px)">${planner(false)}</div>
+  </div>
+</section>
+
+<section aria-labelledby="ports-h"><div class="wrap">
+  <div class="sec-h" data-rise><span class="ey">${L('Where we go', 'Πού πάμε')}</span><h2 id="ports-h">${L('Seven ports, one team', 'Επτά λιμάνια, μία ομάδα')}</h2><p>${L('Based in Rhodes, with trusted guides and Mercedes drivers in every major cruise port of Greece.', 'Με έδρα τη Ρόδο και συνεργάτες ξεναγούς και οδηγούς σε κάθε μεγάλο λιμάνι κρουαζιέρας.')}</p></div>
+  <div class="ports">${portCards()}</div>
+</div></section>
+
+<section aria-labelledby="hp-h" style="padding-top:0"><div class="wrap homeport">
+  <div class="collage" data-rise><img src="/ges-private-tours/img/symi.jpg" alt="${L('Symi harbour', 'Το λιμάνι της Σύμης')}" loading="lazy"><img src="/ges-private-tours/img/boat.jpg" alt="" loading="lazy"><img src="/ges-private-tours/img/halki.jpg" alt="" loading="lazy"></div>
+  <div style="display:grid;gap:20px" data-rise>
+    <div class="sec-h" style="margin:0"><span class="ey">${L('Rhodes, our home port', 'Ρόδος, η έδρα μας')}</span><h2 id="hp-h">${L('Islands you can reach by lunch', 'Νησιά που φτάνετε ως το μεσημέρι')}</h2><p>${L('From Rhodes we take you further than any ship tour: Symi\'s painted harbour, the quiet of Halki, or a speedboat to a bay with no one else in it.', 'Από τη Ρόδο σας πάμε πιο μακριά από κάθε εκδρομή του πλοίου: η Σύμη, η ησυχία της Χάλκης, ένας κόλπος μόνο για εσάς.')}</p></div>
+    <div class="chips"><a class="chip" href="#tour-symi">${L('Symi by speedboat', 'Σύμη με σκάφος')}</a><a class="chip" href="#tour-halki">${L('Halki by boat', 'Χάλκη')}</a><a class="chip" href="#tour-lindos">Lindos</a><a class="chip" href="#tour-cooking">${L('Cooking class', 'Μαγειρική')}</a></div>
+    <a class="btn btn-ink" href="#port-rhodes" style="justify-self:start">${L('All Rhodes tours', 'Όλες οι εκδρομές στη Ρόδο')}</a>
+  </div>
+</div></section>
+
+${promise()}
+
+<section aria-labelledby="tm-h"><div class="wrap two">
+  <div class="sec-h" data-rise style="margin:0"><span class="ey">${L('Tailor-made', 'Κατά παραγγελία')}</span><h2 id="tm-h">${L('Nothing fits? We will build your day', 'Δεν βρήκατε κάτι; Φτιάχνουμε τη μέρα σας')}</h2><p>${L('Tell us what you love and how long your ship stays. Evi replies with a private plan, a fixed price and a timeline that gets you back on board.', 'Πείτε μας τι σας αρέσει και πόσο μένει το πλοίο. Η Εύη σας απαντά με πρόγραμμα, σταθερή τιμή και ώρα επιστροφής.')}</p><a class="btn btn-gold" href="#tailor-made" style="justify-self:start;margin-top:8px">${L('Design my day', 'Σχεδιάστε τη μέρα μου')}</a></div>
+  <div class="collage" data-rise style="grid-template-rows:200px 200px"><img src="/ges-private-tours/img/couple.jpg" alt="" loading="lazy"><img src="/ges-private-tours/img/sprinter.jpg" alt="${L('Inside our Mercedes Sprinter', 'Μέσα στο Mercedes Sprinter μας')}" loading="lazy"><img src="/ges-private-tours/img/cooking.jpg" alt="" loading="lazy"></div>
+</div></section>
+
+<section aria-labelledby="pop-h" style="padding-top:0"><div class="wrap">
+  <div class="sec-h" data-rise><span class="ey">${L('Most booked', 'Οι πιο δημοφιλείς')}</span><h2 id="pop-h">${L('Favourite private tours', 'Αγαπημένες εκδρομές')}</h2></div>
+  <div class="tgrid">${['lindos', 'acropolis', 'oia', 'knossos', 'symi', 'corfu'].map(tourOf).filter(t => t && t.on).map(tourCard).join('')}</div>
+  <div style="margin-top:26px"><a class="btn btn-line" href="#tours">${L('All tours', 'Όλες οι εκδρομές')}</a></div>
+</div></section>
+
+<section aria-labelledby="faq-h" style="padding-top:0"><div class="wrap"><div class="sec-h" data-rise><span class="ey">FAQ</span><h2 id="faq-h">${L('Before you book', 'Πριν κλείσετε')}</h2></div><div class="faq" data-rise>${faq()}</div></div></section>`;
+
+V.ports = () => `
+<section class="phero"><img src="/ges-private-tours/img/corfu-ship.jpg" alt=""><div class="wrap"><span class="ey on-d">${L('Private shore excursions', 'Ιδιωτικές εκδρομές από το λιμάνι')}</span><h1>${L('Ports', 'Λιμάνια')}</h1><p>${L('Pick your port to see private tours timed for your ship.', 'Επιλέξτε λιμάνι για εκδρομές στα μέτρα του πλοίου σας.')}</p></div></section>
+<section><div class="wrap"><div class="ports">${portCards()}</div></div></section>`;
+
+V.port = id => {
+  const p = D.ports.find(x => x.id === id); if (!p) return V.ports();
+  if (P.port !== p.id) { P.port = p.id; P.arr = p.arr; P.dep = p.dep; savePlan(); }
+  return `
+<section class="phero"><img src="/ges-private-tours/img/${p.img}.jpg" alt=""><div class="wrap"><a class="crumb" href="#ports">← ${L('All ports', 'Όλα τα λιμάνια')}</a><h1>${esc(nm(p))}</h1><p>${esc(lang === 'el' ? p.pel : p.pen)}</p></div></section>
+<section style="padding-top:40px"><div class="wrap">${planner(true)}</div></section>
+<section style="padding-top:0"><div class="wrap"><div class="sec-h"><span class="ey">${L('Want something else?', 'Θέλετε κάτι άλλο;')}</span><h2>${L(`Tailor-made in ${nm(p).split(' ·')[0]}`, `Κατά παραγγελία, ${nm(p).split(' ·')[0]}`)}</h2></div><a class="btn btn-gold" href="#tailor-made" data-tm-port="${p.id}">${L('Design my day', 'Σχεδιάστε τη μέρα μου')}</a></div></section>`;
+};
+
+V.tours = () => `
+<section class="phero"><img src="/ges-private-tours/img/oia.jpg" alt=""><div class="wrap"><span class="ey on-d">${L('Private · Tailor-made', 'Ιδιωτικές · Κατά παραγγελία')}</span><h1>${L('All tours', 'Όλες οι εκδρομές')}</h1><p>${L('Every tour is private, priced per group and timed for your ship.', 'Κάθε εκδρομή είναι ιδιωτική, με τιμή ανά ομάδα και πρόγραμμα γύρω από το πλοίο.')}</p></div></section>
+${D.ports.map(p => { const ts = D.tours.filter(t => t.on && t.port === p.id); return ts.length ? `<section style="padding-block:56px 0"><div class="wrap"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:20px"><h2 class="disp" style="font-size:clamp(28px,3vw,38px)">${esc(nm(p))}</h2><a href="#port-${p.id}" class="u" style="color:var(--goldd);font-weight:500">${L('Check against my ship times →', 'Έλεγχος με τις ώρες του πλοίου →')}</a></div><div class="tgrid">${ts.map(tourCard).join('')}</div></div></section>` : ''; }).join('')}
+<div style="height:80px"></div>`;
+
+/* tour detail with tailor-made extras */
+let X = store.get('extras', {});
+let G = store.get('group', 4);
+function tourTotal(t) {
+  const base = G > 4 ? t.p8 : t.p4;
+  const ex = D.extras.filter(e => X[t.id + ':' + e.id]).reduce((s, e) => s + e.price, 0);
+  return base + ex;
+}
+const tourHours = t => t.h + D.extras.filter(e => X[t.id + ':' + e.id]).reduce((s, e) => s + e.min, 0) / 60;
+V.tour = id => {
+  const t = tourOf(id); if (!t) return V.tours();
+  const p = portOf(t.port);
+  const tt = { ...t, h: tourHours(t) };
+  const f = fit(tt);
+  let clock = toMin(P.port === t.port ? P.arr : p.arr) + 30;
+  return `
+<section class="phero"><img src="/ges-private-tours/img/${t.img}.jpg" alt=""><div class="wrap"><a class="crumb" href="#port-${p.id}">← ${esc(nm(p))}</a><h1>${esc(nm(t))}</h1><p>${esc(lang === 'el' ? t.sel : t.sen)}</p></div></section>
+<section><div class="wrap tdet">
+  <div style="display:grid;gap:34px">
+    <div data-rise><h2 class="disp" style="font-size:28px;margin-bottom:22px">${L('Your day', 'Η μέρα σας')}</h2>
+      <ol class="itin">${t.stops.map(s => { const at = clock; clock += s[2] + 20; return `<li><span class="t">${fmt(at)}</span><b>${esc(lang === 'el' ? s[1] : s[0])}</b>${s[2] ? `<span>${s[2]} ${L('min', 'λεπτά')}</span>` : ''}</li>`; }).join('')}<li><span class="t">${fmt(f.end)}</span><b>${L('Back at your ship', 'Επιστροφή στο πλοίο')}</b><span>${L(`${D.buffer} minutes before all aboard`, `${D.buffer} λεπτά πριν την επιβίβαση`)}</span></li></ol></div>
+    <div data-rise><h2 class="disp" style="font-size:28px;margin-bottom:8px">${L('Make it yours', 'Κάντε τη δική σας')}</h2><p style="color:var(--muted);margin-bottom:16px">${L('Add what you like. The time and price update as you go.', 'Προσθέστε ό,τι θέλετε. Ώρα και τιμή ενημερώνονται αμέσως.')}</p>
+      <div style="display:grid;gap:10px">${D.extras.map(e => `<label class="check"><input type="checkbox" data-x="${t.id}:${e.id}"${X[t.id + ':' + e.id] ? ' checked' : ''}><span>${esc(nm(e))}</span><em>${e.min ? '+' + e.min + ' min · ' : ''}${e.price ? '+' + eur(e.price) : L('free', 'δωρεάν')}</em></label>`).join('')}</div></div>
+  </div>
+  <aside class="panel sticky" data-rise>
+    <div style="display:grid;gap:14px">
+      <span class="lbl">${L('Private group', 'Ιδιωτική ομάδα')}</span>
+      <div class="seg2" role="group" aria-label="${L('Group size', 'Μέγεθος ομάδας')}"><button type="button" data-g="4" aria-pressed="${G <= 4}">${L('1 to 4 · Mercedes car', '1 έως 4 · Mercedes')}</button><button type="button" data-g="8" aria-pressed="${G > 4}">${L('5 to 8 · Sprinter', '5 έως 8 · Sprinter')}</button></div>
+      <dl class="kv"><dt>${L('Duration', 'Διάρκεια')}</dt><dd>${hrs(tt.h)}</dd><dt>${L('Starts', 'Αναχώρηση')}</dt><dd>${L('At your ship', 'Από το πλοίο')}</dd><dt>${L('With your ship times', 'Με τις ώρες του πλοίου')}</dt><dd style="color:${f.ok ? 'var(--sea)' : 'var(--warn)'}">${P.port === t.port ? (f.ok ? L('Fits', 'Χωράει') : L('Too long', 'Δεν χωράει')) : '—'}</dd></dl>
+      <div class="total"><span class="lbl">${mode === 'pay' ? L('Total per group', 'Σύνολο ανά ομάδα') : L('From', 'Από')}</span><b>${eur(tourTotal(t))}</b></div>
+      <a class="btn btn-gold" href="#book" data-book="${t.id}" style="width:100%">${mode === 'pay' ? L('Book and pay deposit', 'Κράτηση με προκαταβολή') : L('Request this tour', 'Αίτημα για την εκδρομή')}</a>
+      <p style="color:var(--muted);font-size:13px;text-align:center">${L('Free cancellation up to 48 hours before', 'Δωρεάν ακύρωση έως 48 ώρες πριν')}</p>
+    </div>
+  </aside>
+</div></section>`;
+};
+
+/* tailor-made request */
+let TM = Object.assign({ port: 'rhodes', likes: ['history'], pace: 'relaxed', guests: 2, access: false, name: '', email: '', phone: '', ship: '', notes: '' }, store.get('tm', {}));
+const LIKES = [['history', 'History and ancient sites', 'Ιστορία και αρχαία'], ['beach', 'Beaches and swimming', 'Παραλίες και μπάνιο'], ['food', 'Food and wine', 'Φαγητό και κρασί'], ['boat', 'Boat and islands', 'Σκάφος και νησιά'], ['family', 'With children', 'Με παιδιά'], ['photo', 'Views and photos', 'Θέα και φωτογραφίες'], ['villages', 'Villages and local life', 'Χωριά και τοπική ζωή'], ['shopping', 'Shopping', 'Ψώνια']];
+V['tailor-made'] = () => `
+<section class="phero" style="min-height:380px"><img src="/ges-private-tours/img/couple.jpg" alt=""><div class="wrap"><span class="ey on-d">${L('Tailor-made', 'Κατά παραγγελία')}</span><h1>${L('Design your day', 'Σχεδιάστε τη μέρα σας')}</h1><p>${L('Answer a few questions. Evi replies within 2 hours with a private plan and a fixed price.', 'Απαντήστε σε λίγες ερωτήσεις. Η Εύη σας απαντά μέσα σε 2 ώρες με πρόγραμμα και σταθερή τιμή.')}</p></div></section>
+<section><div class="wrap two">
+  <form class="panel" id="tmform" novalidate style="display:grid;gap:22px">
+    <div class="grid3"><div class="fld"><label for="tm-port">${L('Port', 'Λιμάνι')}</label><select id="tm-port" data-tm="port">${D.ports.map(p => `<option value="${p.id}"${p.id === TM.port ? ' selected' : ''}>${esc(nm(p))}</option>`).join('')}</select></div>
+    <div class="fld"><label for="tm-arr">${L('Ship arrives', 'Άφιξη')}</label><input id="tm-arr" type="time" data-p="arr" value="${P.arr}"></div>
+    <div class="fld"><label for="tm-dep">${L('All aboard', 'Επιβίβαση')}</label><input id="tm-dep" type="time" data-p="dep" value="${P.dep}"></div></div>
+    <div class="grid2"><div class="fld"><label for="tm-date">${L('Date', 'Ημερομηνία')}</label><input id="tm-date" type="date" data-p="date" value="${P.date || tomorrow()}" min="${tomorrow()}"></div><div class="fld"><label for="tm-ship">${L('Ship name', 'Όνομα πλοίου')}</label><input id="tm-ship" data-tm="ship" value="${esc(TM.ship)}" placeholder="Celebrity Edge" maxlength="40"></div></div>
+    <div style="display:grid;gap:10px"><span class="lbl">${L('What do you love?', 'Τι σας αρέσει;')}</span><div class="chips" role="group">${LIKES.map(([k, en, el]) => `<button type="button" class="chip" data-like="${k}" aria-pressed="${TM.likes.includes(k)}">${L(en, el)}</button>`).join('')}</div></div>
+    <div class="grid2"><div style="display:grid;gap:10px"><span class="lbl">${L('Pace', 'Ρυθμός')}</span><div class="seg2" role="group"><button type="button" data-pace="relaxed" aria-pressed="${TM.pace === 'relaxed'}">${L('Relaxed', 'Χαλαρός')}</button><button type="button" data-pace="full" aria-pressed="${TM.pace === 'full'}">${L('See it all', 'Να τα δούμε όλα')}</button></div></div>
+    <div class="fld"><label for="tm-g">${L('Guests', 'Άτομα')}</label><select id="tm-g" data-tm="guests" data-num>${[1,2,3,4,5,6,7,8,10,12,16].map(n => `<option${n === TM.guests ? ' selected' : ''}>${n}</option>`).join('')}</select></div></div>
+    <label class="check"><input type="checkbox" data-tm="access"${TM.access ? ' checked' : ''}><span>${L('Someone in our group has limited mobility', 'Κάποιος στην ομάδα έχει κινητικά προβλήματα')}</span></label>
+    <div class="grid3"><div class="fld"><label for="tm-n">${L('Name', 'Όνομα')}</label><input id="tm-n" data-tm="name" value="${esc(TM.name)}" autocomplete="name" maxlength="80"></div><div class="fld"><label for="tm-e">Email</label><input id="tm-e" type="email" data-tm="email" value="${esc(TM.email)}" autocomplete="email" maxlength="120"></div><div class="fld"><label for="tm-ph">WhatsApp</label><input id="tm-ph" type="tel" data-tm="phone" value="${esc(TM.phone)}" autocomplete="tel" maxlength="20"></div></div>
+    <div class="fld"><label for="tm-notes">${L('Anything else?', 'Κάτι ακόμα;')}</label><textarea id="tm-notes" data-tm="notes" maxlength="1000" placeholder="${L('A birthday, a wheelchair, a place you have always wanted to see…', 'Γενέθλια, αναπηρικό αμαξίδιο, ένα μέρος που θέλατε πάντα να δείτε…')}">${esc(TM.notes)}</textarea></div>
+    <p class="bad" id="tm-err" hidden></p>
+    <button class="btn btn-gold" type="submit" style="justify-self:start">${L('Send my request', 'Αποστολή αιτήματος')}</button>
+  </form>
+  <aside style="display:grid;gap:18px" class="sticky">
+    <div class="panel dark" style="display:grid;gap:14px;border:0"><span class="ey">${L('What happens next', 'Τι ακολουθεί')}</span>
+      <ol style="margin:0;padding-left:20px;display:grid;gap:10px;color:var(--muted-d)"><li>${L('Evi reads your request and checks guides for your date.', 'Η Εύη ελέγχει διαθεσιμότητα ξεναγών για την ημερομηνία σας.')}</li><li>${L('You get a plan, a timeline back to the ship and one fixed price.', 'Λαμβάνετε πρόγραμμα, ώρα επιστροφής και μία σταθερή τιμή.')}</li><li>${L('Change anything you like, then confirm with a small deposit.', 'Αλλάζετε ό,τι θέλετε και επιβεβαιώνετε με μικρή προκαταβολή.')}</li></ol>
+      <div class="people">${PEOPLE.slice(0, 1).map(p => `<div class="person"><small>${p.n}</small><b>${p.t}</b></div>`).join('')}</div>
+    </div>
+    <img src="/ges-private-tours/img/family.jpg" alt="" style="border-radius:20px;width:100%;aspect-ratio:4/3;object-fit:cover" loading="lazy">
+  </aside>
+</div></section>`;
+
+V.about = () => `
+<section class="phero"><img src="/ges-private-tours/img/rhodes.jpg" alt="${L('Rhodes town from the air', 'Η πόλη της Ρόδου από ψηλά')}"><div class="wrap"><span class="ey on-d">${L('Creative · Passionate · Trustworthy', 'Δημιουργικοί · Με πάθος · Αξιόπιστοι')}</span><h1>${L('About us', 'Ποιοι είμαστε')}</h1></div></section>
+<section><div class="wrap two">
+  <div class="sec-h" data-rise style="margin:0"><span class="ey">G.E.S Travel Agency</span><h2>${L('Two generations of Rhodes hospitality', 'Δύο γενιές φιλοξενίας στη Ρόδο')}</h2>
+  <p>${L('Founded by George Sialadakis, a veteran of the Greek travel industry, and now run by Evi Sialadakis, a new generation tourism specialist. Our office is on Kanada street, a few steps from the port of Rhodes.', 'Την ίδρυσε ο Γιώργος Σιαλαδάκης, με χρόνια εμπειρίας στον τουρισμό, και σήμερα τη διευθύνει η Εύη Σιαλαδάκη. Το γραφείο μας είναι στην οδό Καναδά, λίγα βήματα από το λιμάνι της Ρόδου.')}</p>
+  <p>${L('Private Tours All Over Greece started with the cruise guests who asked us: can you do this in Santorini too? Now we can, with guides and drivers we have worked with for years.', 'Οι ιδιωτικές εκδρομές σε όλη την Ελλάδα ξεκίνησαν από επισκέπτες κρουαζιέρας που μας ρωτούσαν: μπορείτε να το κάνετε και στη Σαντορίνη; Τώρα μπορούμε.')}</p></div>
+  <div class="collage" data-rise><img src="/ges-private-tours/img/sprinter.jpg" alt="" loading="lazy"><img src="/ges-private-tours/img/boat.jpg" alt="" loading="lazy"><img src="/ges-private-tours/img/beach.jpg" alt="" loading="lazy"></div>
+</div></section>
+${promise()}`;
+
+V.contact = () => `
+<section class="phero" style="min-height:360px"><img src="/ges-private-tours/img/halki.jpg" alt=""><div class="wrap"><span class="ey on-d">${L('Daily 09:00 to 21:00', 'Καθημερινά 09:00 έως 21:00')}</span><h1>${L('Contact', 'Επικοινωνία')}</h1></div></section>
+<section><div class="wrap two">
+  <div class="panel dark" style="display:grid;gap:16px;border:0" data-rise>
+    <div class="people">${PEOPLE.map(p => `<div class="person"><small>${p.n}</small><b><a href="tel:${tel(p.t)}" style="text-decoration:none">${p.t}</a></b></div>`).join('')}</div>
+    <div class="people"><div class="person"><small>${L('Office', 'Γραφείο')}</small><b>${OFFICE}</b></div><div class="person"><small>Email</small><b style="font-size:16px">${EMAIL}</b></div></div>
+    <div class="chips"><a class="chip wa" href="${WA}" target="_blank" rel="noopener">${I.wa}WhatsApp</a><a class="chip vb" href="${VB}">${I.vb}Viber</a><a class="chip" href="https://maps.google.com/?q=Kanada+37,+Rhodes+85100" target="_blank" rel="noopener">${L('Kanada 37, Rhodes · Map', 'Καναδά 37, Ρόδος · Χάρτης')}</a></div>
+  </div>
+  <form class="panel" id="cform" novalidate data-rise style="display:grid;gap:14px"><h2 class="disp" style="font-size:26px">${L('Send a message', 'Στείλτε μήνυμα')}</h2>
+    <div class="fld"><label for="c-n">${L('Name', 'Όνομα')}</label><input id="c-n" autocomplete="name" maxlength="80"></div>
+    <div class="fld"><label for="c-e">Email</label><input id="c-e" type="email" autocomplete="email" maxlength="120"></div>
+    <div class="fld"><label for="c-m">${L('Message', 'Μήνυμα')}</label><textarea id="c-m" maxlength="2000"></textarea></div>
+    <p class="bad" id="c-err" hidden></p><button class="btn btn-gold" type="submit" style="justify-self:start">${L('Send', 'Αποστολή')}</button></form>
+</div></section>`;
+
+/* booking */
+let B = Object.assign({ tour: 'lindos', date: '', ship: '', guests: 2, name: '', email: '', phone: '', step: 1 }, store.get('book', {}));
+const saveB = () => store.set('book', B);
+V.book = () => {
+  const t = tourOf(B.tour) || D.tours[0];
+  const total = tourTotal(t), dep = Math.round(total * D.deposit / 100);
+  if (B.step === 4) return `<section style="padding-top:calc(var(--hdr) + 60px)"><div class="wrap"><div class="panel done" style="max-width:640px;margin:0 auto">
+    <div class="tick-c"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><span class="ey">${mode === 'pay' ? L('Booking confirmed', 'Η κράτηση επιβεβαιώθηκε') : L('Request sent', 'Το αίτημα στάλθηκε')}</span>
+    <h1 class="disp" style="font-size:clamp(30px,4vw,44px)">${L('See you in', 'Τα λέμε')} ${esc(nm(portOf(t.port)).split(' ·')[0])}${B.name ? ', ' + esc(B.name.split(' ')[0]) : ''}</h1>
+    <p style="color:var(--muted);max-width:46ch">${mode === 'pay' ? L('Your guide\'s name and the exact meeting point at the pier arrive on WhatsApp 24 hours before.', 'Το όνομα του ξεναγού και το σημείο συνάντησης θα έρθουν σε WhatsApp 24 ώρες πριν.') : L('Evi confirms availability and the final price within 2 hours.', 'Η Εύη επιβεβαιώνει διαθεσιμότητα και τιμή μέσα σε 2 ώρες.')}</p>
+    <dl class="kv" style="width:100%;max-width:420px;text-align:left"><dt>${L('Reference', 'Κωδικός')}</dt><dd class="u" style="color:var(--goldd)">${esc(D.bookings[0].ref)}</dd><dt>${L('Tour', 'Εκδρομή')}</dt><dd>${esc(nm(t))}</dd><dt>${L('Date', 'Ημερομηνία')}</dt><dd>${esc(B.date)}</dd>${mode === 'pay' ? `<dt>${L('Paid today', 'Πληρώθηκαν')}</dt><dd>${eur(dep)}</dd><dt>${L('On the day', 'Την ημέρα')}</dt><dd>${eur(total - dep)}</dd>` : ''}</dl>
+    <div class="chips" style="justify-content:center"><a class="chip wa" href="${WA}" target="_blank" rel="noopener">${I.wa}WhatsApp</a><button class="btn btn-line" type="button" id="again">${L('Plan another port', 'Άλλο λιμάνι')}</button></div></div></div></section>`;
+  const steps = mode === 'pay' ? [L('Your day', 'Η μέρα'), L('Details', 'Στοιχεία'), L('Payment', 'Πληρωμή')] : [L('Your day', 'Η μέρα'), L('Details', 'Στοιχεία')];
+  const last = steps.length;
+  const body = B.step === 1 ? `<div style="display:grid;gap:12px">
+      <div class="fld"><label for="b-tour">${L('Tour', 'Εκδρομή')}</label><select id="b-tour" data-b="tour">${D.tours.filter(x => x.on).map(x => `<option value="${x.id}"${x.id === t.id ? ' selected' : ''}>${esc(nm(portOf(x.port)).split(' ·')[0])} · ${esc(nm(x))}</option>`).join('')}</select></div>
+      <div class="grid2"><div class="fld"><label for="b-date">${L('Date', 'Ημερομηνία')}</label><input id="b-date" type="date" data-b="date" value="${B.date || P.date || tomorrow()}" min="${tomorrow()}"></div><div class="fld"><label for="b-ship">${L('Ship name', 'Όνομα πλοίου')}</label><input id="b-ship" data-b="ship" value="${esc(B.ship)}" placeholder="Celebrity Edge" maxlength="40"></div></div>
+      <div class="grid2"><div class="fld"><label for="b-arr">${L('Ship arrives', 'Άφιξη')}</label><input id="b-arr" type="time" data-p="arr" value="${P.arr}"></div><div class="fld"><label for="b-dep">${L('All aboard', 'Επιβίβαση')}</label><input id="b-dep" type="time" data-p="dep" value="${P.dep}"></div></div>
+      <div class="fld"><label for="b-g">${L('Guests', 'Άτομα')}</label><select id="b-g" data-b="guests" data-num>${[1,2,3,4,5,6,7,8].map(n => `<option${n === B.guests ? ' selected' : ''}>${n}</option>`).join('')}</select><span class="hint">${B.guests > 4 ? L('Mercedes Sprinter, up to 8 guests', 'Mercedes Sprinter, έως 8 άτομα') : L('Mercedes car, up to 4 guests', 'Mercedes, έως 4 άτομα')}</span></div></div>`
+    : B.step === 2 ? `<div style="display:grid;gap:12px">
+      <div class="fld"><label for="b-name">${L('Full name', 'Ονοματεπώνυμο')}</label><input id="b-name" data-b="name" value="${esc(B.name)}" autocomplete="name" maxlength="80"></div>
+      <div class="grid2"><div class="fld"><label for="b-email">Email</label><input id="b-email" type="email" data-b="email" value="${esc(B.email)}" autocomplete="email" maxlength="120"></div><div class="fld"><label for="b-phone">WhatsApp</label><input id="b-phone" type="tel" data-b="phone" value="${esc(B.phone)}" autocomplete="tel" placeholder="+1 555 0100" maxlength="20"></div></div>
+      <p class="bad" id="b-err" hidden></p></div>`
+    : `<div style="display:grid;gap:16px"><div class="notice">${L('Mockup: no card is charged and nothing is sent. The live site takes payment through Stripe, so card numbers never touch the server.', 'Mockup: δεν χρεώνεται κάρτα. Το κανονικό site χρησιμοποιεί Stripe.')}</div>
+      <div class="card-demo"><div class="fld"><label for="p-c">${L('Card number', 'Αριθμός κάρτας')}</label><input id="p-c" value="4242 4242 4242 4242" readonly class="u"></div><div class="grid2"><div class="fld"><label for="p-x">${L('Expiry', 'Λήξη')}</label><input id="p-x" value="12 / 29" readonly class="u"></div><div class="fld"><label for="p-v">CVC</label><input id="p-v" value="123" readonly class="u"></div></div></div></div>`;
+  const tt = { ...t, h: tourHours(t) }, f = fit(tt);
+  const next = B.step === last ? (mode === 'pay' ? L(`Pay ${eur(dep)} deposit`, `Πληρωμή ${eur(dep)}`) : L('Send request', 'Αποστολή αιτήματος')) : L('Continue', 'Συνέχεια');
+  return `<section style="padding-top:calc(var(--hdr) + 44px)"><div class="wrap">
+    <div class="sec-h"><span class="ey">${mode === 'pay' ? L('Book online', 'Online κράτηση') : L('Request a tour', 'Αίτημα εκδρομής')}</span><h1 class="disp" style="font-size:clamp(32px,4.4vw,52px)">${esc(nm(t))}</h1></div>
+    <div class="tdet"><form class="panel" id="bform" novalidate><div class="stepper">${steps.map((s, i) => `<span class="${i < B.step ? 'on' : ''}"${i + 1 === B.step ? ' aria-current="step"' : ''}>${s}</span>`).join('')}</div>${body}
+      <div class="actions">${B.step > 1 ? `<button class="btn btn-line" type="button" id="back">${L('Back', 'Πίσω')}</button>` : '<span></span>'}<button class="btn btn-gold" type="submit">${next}</button></div></form>
+    <aside class="panel sticky" style="display:grid;gap:14px"><img src="/ges-private-tours/img/${t.img}.jpg" alt="" style="border-radius:12px;aspect-ratio:16/10;object-fit:cover;width:100%">
+      <dl class="kv"><dt>${L('Port', 'Λιμάνι')}</dt><dd>${esc(nm(portOf(t.port)))}</dd><dt>${L('Duration', 'Διάρκεια')}</dt><dd>${hrs(tt.h)}</dd><dt>${L('Back at the ship', 'Επιστροφή')}</dt><dd style="color:${f.ok ? 'var(--sea)' : 'var(--warn)'}">${fmt(f.end)}</dd><dt>${L('Vehicle', 'Όχημα')}</dt><dd>${B.guests > 4 ? 'Mercedes Sprinter' : 'Mercedes'}</dd></dl>
+      ${mode === 'pay' ? `<div class="total"><span class="lbl">${L('Total', 'Σύνολο')}</span><b>${eur(total)}</b></div><div style="display:flex;justify-content:space-between;color:var(--muted);font-size:14px"><span>${L('Deposit today', 'Προκαταβολή σήμερα')} (${D.deposit}%)</span><span class="u">${eur(dep)}</span></div>` : `<p style="color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:14px">${L('From', 'Από')} ${eur(total)}. ${L('Evi confirms the final price within 2 hours.', 'Η Εύη επιβεβαιώνει την τελική τιμή μέσα σε 2 ώρες.')}</p>`}
+    </aside></div></div></section>
+    ${mode === 'pay' ? `<div class="mbar"><div><small>${L('Total', 'Σύνολο')}</small><b>${eur(total)}</b></div><button class="btn btn-gold" type="button" id="mnext">${next}</button></div>` : ''}`;
+};
+
+/* admin */
+let admin = { in: store.get('admin', false), tab: 'bookings' };
+V.admin = () => {
+  if (!admin.in) return `<section class="adm"><div class="wrap"><form class="panel login" id="login" novalidate>
+    <div class="dark" style="border-radius:12px;padding:18px;display:grid;place-items:center"><img src="/ges-private-tours/img/logo-mark.png" alt="" width="200" style="width:200px"></div>
+    <h1 class="disp" style="font-size:26px;text-align:center">${L('Owner login', 'Είσοδος')}</h1>
+    <div class="fld"><label for="a-e">Email</label><input id="a-e" type="email" value="${EMAIL}" autocomplete="username"></div>
+    <div class="fld"><label for="a-p">${L('Password', 'Κωδικός')}</label><input id="a-p" type="password" autocomplete="current-password"><span class="hint">${L('Demo password', 'Κωδικός demo')}: <b class="u">ges2026</b>. ${L('The live panel also sends a one-time code by email.', 'Το κανονικό panel στέλνει και κωδικό μίας χρήσης στο email.')}</span></div>
+    <p class="bad" id="a-err" hidden>${L('Wrong password. Use the demo password above.', 'Λάθος κωδικός.')}</p>
+    <button class="btn btn-gold" type="submit">${L('Log in', 'Είσοδος')}</button></form></div></section>`;
+  const tabs = [['bookings', L('Bookings', 'Κρατήσεις')], ['tours', L('Tours', 'Εκδρομές')], ['add', L('Add a tour', 'Νέα εκδρομή')], ['ports', L('Ports', 'Λιμάνια')]];
+  let body = '';
+  if (admin.tab === 'bookings') { const paid = D.bookings.filter(b => b.status === 'paid');
+    body = `<div class="stats"><div class="stat"><b>${D.bookings.length}</b><small>${L('Upcoming', 'Επερχόμενες')}</small></div><div class="stat"><b>${paid.length}</b><small>${L('Paid', 'Πληρωμένες')}</small></div><div class="stat"><b>${D.bookings.length - paid.length}</b><small>${L('Requests', 'Αιτήματα')}</small></div><div class="stat"><b>${eur(paid.reduce((s, b) => s + b.paid, 0))}</b><small>${L('Deposits', 'Προκαταβολές')}</small></div></div>
+    <div class="tbl"><table><thead><tr><th>Ref</th><th>${L('Guest', 'Πελάτης')}</th><th>${L('Tour', 'Εκδρομή')}</th><th>${L('Date', 'Ημ/νία')}</th><th>${L('Ship', 'Πλοίο')}</th><th>${L('Pax', 'Άτ.')}</th><th>${L('Total', 'Σύνολο')}</th><th>${L('Status', 'Κατάσταση')}</th></tr></thead><tbody>
+    ${D.bookings.map(b => `<tr><td class="u" style="color:var(--goldd)">${esc(b.ref)}</td><td>${esc(b.name)}</td><td>${esc(nm(tourOf(b.tour)) || b.tour)}</td><td class="u">${esc(b.date)}</td><td>${esc(b.ship)}</td><td>${b.guests}</td><td class="u">${eur(b.total)}</td><td><span class="pill${b.status === 'paid' ? '' : ' req'}">${b.status === 'paid' ? L('Deposit paid', 'Πληρωμένη') : L('Request', 'Αίτημα')}</span></td></tr>`).join('')}</tbody></table></div>`; }
+  if (admin.tab === 'tours') body = `<form id="toursform" style="display:grid;gap:20px"><div class="tbl"><table><thead><tr><th>${L('Tour', 'Εκδρομή')}</th><th>${L('Port', 'Λιμάνι')}</th><th>${L('Hours', 'Ώρες')}</th><th>€ 1-4</th><th>€ 5-8</th><th>${L('Live', 'Ενεργή')}</th></tr></thead><tbody>
+    ${D.tours.map((t, i) => `<tr><td>${esc(nm(t))}</td><td>${esc(nm(portOf(t.port)).split(' ·')[0])}</td><td><input type="number" min="1" max="14" step=".5" data-th="${i}" value="${t.h}" aria-label="${L('Hours', 'Ώρες')}"></td><td><input type="number" min="50" max="5000" step="5" data-p4="${i}" value="${t.p4}" aria-label="€ 1-4"></td><td><input type="number" min="50" max="5000" step="5" data-p8="${i}" value="${t.p8}" aria-label="€ 5-8"></td><td><input type="checkbox" data-on="${i}"${t.on ? ' checked' : ''} style="width:20px;height:20px;accent-color:var(--ink)" aria-label="${L('Live', 'Ενεργή')}"></td></tr>`).join('')}</tbody></table></div>
+    <button class="btn btn-gold" type="submit" style="justify-self:start">${L('Save tours', 'Αποθήκευση')}</button></form>`;
+  if (admin.tab === 'add') body = `<form class="panel" id="addform" novalidate style="display:grid;gap:14px;max-width:820px">
+    <div class="grid2"><div class="fld"><label for="n-en">${L('Title (English)', 'Τίτλος (Αγγλικά)')}</label><input id="n-en" maxlength="70" placeholder="Nafplio and Mycenae"></div><div class="fld"><label for="n-el">${L('Title (Greek)', 'Τίτλος (Ελληνικά)')}</label><input id="n-el" maxlength="70" placeholder="Ναύπλιο και Μυκήνες"></div></div>
+    <div class="fld"><label for="n-sen">${L('Short description', 'Σύντομη περιγραφή')}</label><textarea id="n-sen" maxlength="240"></textarea></div>
+    <div class="grid3"><div class="fld"><label for="n-port">${L('Port', 'Λιμάνι')}</label><select id="n-port">${D.ports.map(p => `<option value="${p.id}">${esc(nm(p))}</option>`).join('')}</select></div><div class="fld"><label for="n-h">${L('Hours', 'Ώρες')}</label><input id="n-h" type="number" min="1" max="14" step=".5" value="4"></div><div class="fld"><label for="n-p">${L('Price 1 to 4 guests €', 'Τιμή 1-4 ατόμων €')}</label><input id="n-p" type="number" min="50" max="5000" step="5" value="300"></div></div>
+    <div class="fld"><label for="n-img">${L('Photo', 'Φωτογραφία')}</label><select id="n-img">${['lindos','symi','halki','boat','beach','acropolis','sounion','corinth','oia','santorini','mykonos','littlevenice','knossos','chania','corfu','rhodes-walls'].map(i => `<option>${i}</option>`).join('')}</select><span class="hint">${L('On the live site you upload your own photo here.', 'Στο κανονικό site ανεβάζετε εδώ τη δική σας φωτογραφία.')}</span></div>
+    <p class="bad" id="n-err" hidden></p><button class="btn btn-gold" type="submit" style="justify-self:start">${L('Publish tour', 'Δημοσίευση')}</button></form>`;
+  if (admin.tab === 'ports') body = `<div style="display:grid;gap:20px"><div class="tbl"><table><thead><tr><th>${L('Port', 'Λιμάνι')}</th><th>${L('Tours', 'Εκδρομές')}</th><th>${L('Typical arrival', 'Συνήθης άφιξη')}</th><th>${L('Typical all aboard', 'Συνήθης αναχώρηση')}</th></tr></thead><tbody>${D.ports.map(p => `<tr><td>${esc(nm(p))}</td><td>${D.tours.filter(t => t.port === p.id).length}</td><td class="u">${p.arr}</td><td class="u">${p.dep}</td></tr>`).join('')}</tbody></table></div>
+    <form class="panel" id="portform" novalidate style="display:grid;gap:14px;max-width:820px"><h3 class="disp" style="font-size:22px">${L('Add a port', 'Νέο λιμάνι')}</h3><div class="grid2"><div class="fld"><label for="np-en">${L('Name (English)', 'Όνομα (Αγγλικά)')}</label><input id="np-en" maxlength="40" placeholder="Nafplio"></div><div class="fld"><label for="np-el">${L('Name (Greek)', 'Όνομα (Ελληνικά)')}</label><input id="np-el" maxlength="40" placeholder="Ναύπλιο"></div></div>
+    <div class="fld"><label for="np-img">${L('Photo', 'Φωτογραφία')}</label><select id="np-img">${['corinth','sounion','boat','beach','halki','symi'].map(i => `<option>${i}</option>`).join('')}</select></div><p class="bad" id="np-err" hidden></p><button class="btn btn-gold" type="submit" style="justify-self:start">${L('Add port', 'Προσθήκη')}</button></form></div>`;
+  return `<section class="adm"><div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px"><div><span class="ey">Admin</span><h1 class="disp" style="font-size:clamp(28px,3.6vw,42px)">${L('Kalimera, Evi', 'Καλημέρα, Εύη')}</h1></div>
+    <div class="chips"><a class="chip" href="#home">${L('View site', 'Προβολή site')}</a><button class="chip" type="button" id="reset">${L('Reset demo', 'Επαναφορά demo')}</button><button class="chip" type="button" id="logout">${L('Log out', 'Έξοδος')}</button></div></div>
+    <div class="atabs" role="group">${tabs.map(([k, l]) => `<button type="button" data-atab="${k}" aria-pressed="${admin.tab === k}">${l}</button>`).join('')}</div>${body}</div></section>`;
+};
+
+/* ---------- router ---------- */
+let view = 'home';
+function render(top = true) {
+  const h = (location.hash || '#home').slice(1);
+  if (h !== 'main') view = h || 'home';
+  const [base, sub] = view.startsWith('tour-') ? ['tour', view.slice(5)] : view.startsWith('port-') ? ['port', view.slice(5)] : [view, null];
+  chrome(view);
+  $('#main').innerHTML = (V[base] || V.home)(sub);
+  $('#hdr').classList.toggle('always', ['book', 'admin'].includes(base));
+  document.body.classList.toggle('has-mbar', base === 'book' && mode === 'pay' && B.step < 4);
+  document.title = (base === 'home' ? 'G.E.S Private Tours · ' + L('Private shore excursions in every Greek port', 'Ιδιωτικές εκδρομές σε κάθε ελληνικό λιμάνι') : ($('#main h1')?.textContent.trim() || '') + ' · G.E.S Private Tours');
+  if (top) window.scrollTo({ top: 0, behavior: 'instant' });
+  rise(); hdr(); drawTL();
+}
+function softRender() { const y = scrollY, id = document.activeElement?.id; render(false); document.querySelectorAll('[data-rise]').forEach(e => e.classList.add('in')); window.scrollTo({ top: y, behavior: 'instant' }); if (id && document.getElementById(id)) document.getElementById(id).focus({ preventScroll: true }); }
+let io;
+function rise() { io?.disconnect(); io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' }); document.querySelectorAll('[data-rise]').forEach(e => io.observe(e)); }
+const hdr = () => $('#hdr').classList.toggle('solid', scrollY > 30);
+addEventListener('scroll', hdr, { passive: true });
+addEventListener('hashchange', () => { if (location.hash !== '#main') render(); });
+function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 2400); }
+const emailOk = s => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
+function need(o, errSel) {
+  const miss = [];
+  if ((o.name || '').trim().length < 2) miss.push(L('your name', 'όνομα'));
+  if (!emailOk((o.email || '').trim())) miss.push(L('a valid email', 'σωστό email'));
+  const e = $(errSel); if (!e) return true;
+  if (miss.length) { e.hidden = false; e.textContent = L('Please add ', 'Συμπληρώστε ') + miss.join(L(' and ', ' και ')) + '.'; return false; }
+  e.hidden = true; return true;
+}
+function addBooking(status, o) {
+  const t = tourOf(o.tour) || D.tours[0], total = tourTotal(t);
+  D.bookings.unshift({ ref: 'GES-' + (1043 + D.bookings.length), name: o.name.trim().slice(0, 80), tour: t.id, date: o.date || P.date || tomorrow(), ship: (o.ship || '').slice(0, 40), guests: o.guests || 2, total, paid: status === 'paid' ? Math.round(total * D.deposit / 100) : 0, status });
+  save();
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, a'); if (!t) return;
+  if (t.dataset.lang) { lang = t.dataset.lang; store.set('lang', lang); softRender(); return; }
+  if (t.dataset.mode) { mode = t.dataset.mode; store.set('mode', mode); if (B.step > 1) B.step = 1; saveB(); softRender(); toast(mode === 'pay' ? L('Showing online payment with deposit (+€250)', 'Online πληρωμή με προκαταβολή (+€250)') : L('Showing the request form', 'Φόρμα αιτήματος')); return; }
+  if (t.dataset.book) { B.tour = t.dataset.book; B.step = 1; B.guests = G > 4 ? 6 : 2; saveB(); }
+  if (t.dataset.tmPort) { TM.port = t.dataset.tmPort; store.set('tm', TM); }
+  if (t.id === 'burger') { $('#drawer').classList.add('open'); $('#drawer').setAttribute('aria-hidden', 'false'); t.setAttribute('aria-expanded', 'true'); $('#drawerClose').focus(); return; }
+  if (t.id === 'drawerClose' || t.closest('#drawerLinks')) { $('#drawer').classList.remove('open'); $('#drawer').setAttribute('aria-hidden', 'true'); $('#burger').setAttribute('aria-expanded', 'false'); }
+  if (t.dataset.g) { G = +t.dataset.g; store.set('group', G); softRender(); return; }
+  if (t.dataset.like) { const k = t.dataset.like; TM.likes = TM.likes.includes(k) ? TM.likes.filter(x => x !== k) : [...TM.likes, k]; store.set('tm', TM); t.setAttribute('aria-pressed', TM.likes.includes(k)); return; }
+  if (t.dataset.pace) { TM.pace = t.dataset.pace; store.set('tm', TM); t.parentElement.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === t)); return; }
+  if (t.id === 'back') { B.step--; saveB(); softRender(); return; }
+  if (t.id === 'mnext') { $('#bform').requestSubmit(); return; }
+  if (t.id === 'again') { B.step = 1; saveB(); location.hash = '#ports'; return; }
+  if (t.dataset.atab) { admin.tab = t.dataset.atab; softRender(); return; }
+  if (t.id === 'logout') { admin.in = false; store.set('admin', false); render(); return; }
+  if (t.id === 'reset') { D = structuredClone(DEFAULTS); save(); softRender(); toast(L('Demo data reset', 'Επαναφορά δεδομένων')); return; }
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#drawer').classList.contains('open')) $('#drawerClose').click(); });
+$('#drawer').addEventListener('click', e => { if (e.target.id === 'drawer') $('#drawerClose').click(); });
+document.addEventListener('input', e => {
+  const el = e.target, v = el.type === 'checkbox' ? el.checked : el.dataset.num !== undefined ? +el.value : el.value;
+  if (el.dataset.p) { P[el.dataset.p] = v; if (el.dataset.p === 'port') { const p = portOf(v); P.arr = p.arr; P.dep = p.dep; savePlan(); softRender(); return; } savePlan(); if ($('#fits')) refreshPlanner(view.startsWith('port-')); if (view === 'book' || view.startsWith('tour-')) softRender(); return; }
+  if (el.dataset.x) { X[el.dataset.x] = v; store.set('extras', X); softRender(); return; }
+  if (el.dataset.tm) { TM[el.dataset.tm] = v; store.set('tm', TM); return; }
+  if (el.dataset.b) { B[el.dataset.b] = v; saveB(); if (['tour', 'guests'].includes(el.dataset.b)) { if (el.dataset.b === 'guests') { G = v > 4 ? 8 : 4; store.set('group', G); } softRender(); } return; }
+});
+document.addEventListener('submit', e => {
+  e.preventDefault(); const f = e.target;
+  if (f.id === 'planner') return;
+  if (f.id === 'bform') {
+    const last = mode === 'pay' ? 3 : 2;
+    if (B.step === 2 && !need(B, '#b-err')) return;
+    if (B.step === last) { addBooking(mode === 'pay' ? 'paid' : 'request', B); B.step = 4; saveB(); render(); return; }
+    B.step++; saveB(); softRender(); window.scrollTo({ top: 0, behavior: 'smooth' }); return;
+  }
+  if (f.id === 'tmform') { if (!need(TM, '#tm-err')) return; addBooking('request', { name: TM.name, tour: D.tours.find(t => t.port === TM.port)?.id, ship: TM.ship, guests: TM.guests }); toast(L('Request sent (mockup). Evi replies within 2 hours.', 'Το αίτημα στάλθηκε (mockup).')); return; }
+  if (f.id === 'cform') { const n = $('#c-n').value.trim(), m = $('#c-e').value.trim(), msg = $('#c-m').value.trim(), err = $('#c-err'); if (n.length < 2 || !emailOk(m) || msg.length < 5) { err.hidden = false; err.textContent = L('Please fill in your name, a valid email and a message.', 'Συμπληρώστε όνομα, email και μήνυμα.'); return; } err.hidden = true; f.reset(); toast(L('Message sent (mockup).', 'Το μήνυμα στάλθηκε (mockup).')); return; }
+  if (f.id === 'login') { if ($('#a-p').value === 'ges2026') { admin.in = true; store.set('admin', true); render(); } else $('#a-err').hidden = false; return; }
+  if (f.id === 'toursform') { D.tours.forEach((t, i) => { const h = +f.querySelector(`[data-th="${i}"]`).value, a = +f.querySelector(`[data-p4="${i}"]`).value, b = +f.querySelector(`[data-p8="${i}"]`).value; if (h >= 1 && h <= 14) t.h = h; if (a >= 50 && a <= 5000) t.p4 = r5(a); if (b >= 50 && b <= 5000) t.p8 = r5(b); t.on = f.querySelector(`[data-on="${i}"]`).checked; }); save(); softRender(); toast(L('Tours saved. The site is updated.', 'Αποθηκεύτηκε.')); return; }
+  if (f.id === 'addform') { const en = $('#n-en').value.trim(), el = $('#n-el').value.trim() || en, h = +$('#n-h').value, p = +$('#n-p').value, err = $('#n-err');
+    if (en.length < 3 || !(h >= 1 && h <= 14) || !(p >= 50 && p <= 5000)) { err.hidden = false; err.textContent = L('Add a title, hours between 1 and 14 and a price between €50 and €5000.', 'Συμπληρώστε τίτλο, ώρες 1 έως 14 και τιμή €50 έως €5000.'); return; }
+    const id = 'custom-' + Date.now().toString(36), sen = $('#n-sen').value.trim().slice(0, 240);
+    D.tours.push({ id, port: $('#n-port').value, img: $('#n-img').value, h, p4: r5(p), p8: r5(p * 1.3), on: true, en: en.slice(0, 70), el: el.slice(0, 70), sen, sel: sen, stops: [[L('Pickup at the ship', 'Παραλαβή από το πλοίο'), 'Παραλαβή από το πλοίο', 0]] });
+    save(); toast(L('Tour published. Opening it now.', 'Η εκδρομή δημοσιεύτηκε.')); location.hash = '#tour-' + id; return; }
+  if (f.id === 'portform') { const en = $('#np-en').value.trim(), el = $('#np-el').value.trim() || en, err = $('#np-err');
+    if (en.length < 2) { err.hidden = false; err.textContent = L('Add the port name.', 'Συμπληρώστε το όνομα.'); return; }
+    const id = 'p-' + Date.now().toString(36); D.ports.push({ id, img: $('#np-img').value, en: en.slice(0, 40), el: el.slice(0, 40), pen: '', pel: '', arr: '08:00', dep: '17:00' }); save(); softRender(); toast(L('Port added. Add its first tour next.', 'Το λιμάνι προστέθηκε.')); return; }
+});
+render(false);
+})();
+</script>
+</body>
+</html>
