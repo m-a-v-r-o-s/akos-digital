@@ -60,6 +60,7 @@ assert.ok(!expired("/x-svolis.gr", at("2026-12-04T23:59:00+02:00")), "a mockup s
 assert.ok(expired("/x-svolis.gr", at("2026-12-05T00:00:01+02:00")), "a mockup goes down on its day, Athens time");
 assert.ok(expired("/x-svolis.gr/img/logo.png", at("2026-12-06T12:00:00+02:00")), "its images go down with it");
 assert.ok(!expired("/x-svolis.grx", at("2030-01-01")), "lookalike paths are not part of the folder");
+assert.ok(!expired("/aspire-transfer", at("2026-12-11T23:59:00+02:00")) && expired("/aspire-transfer/img/hero.jpg", at("2026-12-12T00:00:01+02:00")), "aspire-transfer runs one month");
 assert.ok(!expired("/7mero.ai", at("2030-01-01")) && !expired("/el", at("2030-01-01")), "the site itself never expires");
 
 console.log("✓ locale routing OK");
