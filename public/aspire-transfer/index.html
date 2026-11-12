@@ -128,8 +128,10 @@ nav.main a:hover::after,nav.main a[aria-current="page"]::after{right:0}
 
 /* fare board */
 .board{border-top:1px solid var(--gold)}
-.board a{display:grid;grid-template-columns:1fr auto 110px 40px;gap:20px;align-items:center;padding:20px 4px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .3s,padding .5s var(--spring)}
-.board a:hover{background:rgba(201,164,92,.06);padding-left:14px}
+.board a{display:grid;grid-template-columns:1fr auto 110px 40px;gap:20px;align-items:center;padding:20px 4px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .3s}
+.board a:hover{background:rgba(201,164,92,.06)}
+.board .rt{transition:transform .5s var(--spring)}
+.board a:hover .rt{transform:translateX(10px)}
 .board .rt{font:300 clamp(18px,2.2vw,24px) var(--f-d);letter-spacing:.04em}
 .board .rt span{color:var(--gold)}
 .board .t{font:13px var(--f-m);color:var(--dim)}
