@@ -518,7 +518,7 @@ function chrome(view) {
   document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
   $('#skip').textContent = L('Skip to content', 'Μετάβαση στο περιεχόμενο');
   $('#fab').innerHTML = `<a class="wa" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp">${I.wa}</a><a class="vb" href="${VB}" aria-label="Viber">${I.vb}</a>`;
-  $('#demo').innerHTML = `<b>Mockup</b><div class="seg" role="group" aria-label="Booking mode"><button type="button" data-mode="pay" aria-pressed="${mode === 'pay'}">${L('Online payment +€250', 'Online πληρωμή +€250')}</button><button type="button" data-mode="request" aria-pressed="${mode === 'request'}">${L('Request form', 'Φόρμα αιτήματος')}</button></div><a href="#admin">Admin</a>`;
+  $('#demo').innerHTML = `<b>Mockup</b><div class="seg" role="group" aria-label="Booking mode"><button type="button" data-mode="pay" aria-pressed="${mode === 'pay'}">${L('Online payment +€170', 'Online πληρωμή +€170')}</button><button type="button" data-mode="request" aria-pressed="${mode === 'request'}">${L('Request form', 'Φόρμα αιτήματος')}</button></div><a href="#admin">Admin</a>`;
   $('#footer').innerHTML = `<div class="wrap"><div class="fgrid">
     <div style="display:grid;gap:14px;align-content:start"><img src="/ges-private-tours/img/logo.png" alt="G.E.S Travel, Private Tours All Over Greece" width="220" style="width:220px"><p>${L('Private, tailor-made tours in every major Greek port, planned around your ship. A G.E.S Travel Agency site, Rhodes.', 'Ιδιωτικές εκδρομές κατά παραγγελία σε κάθε μεγάλο λιμάνι της Ελλάδας, γύρω από το πρόγραμμα του πλοίου σας. Από την G.E.S Travel Agency, Ρόδος.')}</p></div>
     <div><h4>${L('Ports', 'Λιμάνια')}</h4><ul>${D.ports.map(p => `<li><a href="#port-${p.id}">${esc(nm(p))}</a></li>`).join('')}</ul></div>
@@ -812,7 +812,7 @@ function addBooking(status, o) {
 document.addEventListener('click', e => {
   const t = e.target.closest('button, a'); if (!t) return;
   if (t.dataset.lang) { lang = t.dataset.lang; store.set('lang', lang); softRender(); return; }
-  if (t.dataset.mode) { mode = t.dataset.mode; store.set('mode', mode); if (B.step > 1) B.step = 1; saveB(); softRender(); toast(mode === 'pay' ? L('Showing online payment with deposit (+€250)', 'Online πληρωμή με προκαταβολή (+€250)') : L('Showing the request form', 'Φόρμα αιτήματος')); return; }
+  if (t.dataset.mode) { mode = t.dataset.mode; store.set('mode', mode); if (B.step > 1) B.step = 1; saveB(); softRender(); toast(mode === 'pay' ? L('Showing online payment with deposit (+€170)', 'Online πληρωμή με προκαταβολή (+€170)') : L('Showing the request form', 'Φόρμα αιτήματος')); return; }
   if (t.dataset.book) { B.tour = t.dataset.book; B.step = 1; B.guests = G > 4 ? 6 : 2; saveB(); }
   if (t.dataset.tmPort) { TM.port = t.dataset.tmPort; store.set('tm', TM); }
   if (t.id === 'burger') { $('#drawer').classList.add('open'); $('#drawer').setAttribute('aria-hidden', 'false'); t.setAttribute('aria-expanded', 'true'); $('#drawerClose').focus(); return; }
